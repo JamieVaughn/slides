@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+	<title>...</title>
+
+	<link href="../inspire/inspire.css" rel="stylesheet" />
+	<link href="../inspire/theme.css" rel="stylesheet" />
+	<link href="../inspire/talk.css" rel="stylesheet" />
+	<link href="../inspire/utils.css" rel="stylesheet" />
+
+</head>
+<body class="language-markup" data-prism-plugins="normalize-whitespace">
+
+<header id="intro" class="slide">
+	<h1>Asynchronous Javascript</h1>
+	<p></p>
+</header>
+<section>
+	<header class="slide">
+		<h1>Promises</h1>
+		<p>...and other long-running tasks.</p>
+	</header>
+
+	<article class="slide" title="">
+		<h2>Promises</h2>
+		<ul>
+			<li>The Promise object represents the eventual completion (or failure) of an asynchronous operation, and its resulting value.</li>
+			<li>Promises allow us to write callbacks in a linear or serial manner and avoid "Callback Hell"</li>
+			<li>It returns a temporary proxy value for something not known when the promise is created.</li>
+			<li>It allows you to associate handlers with an asynchronous action's eventual success value or failure reason.</li>
+		</ul>
+	</article>
+
+	<article class="slide">
+		<h2>Promises can exist in four states:</h2>
+		<ul>
+			<li>⏳ Pending: initial state. Async operation is still in process.</li>
+			<li>✅ Fulfilled: the operation was successful. It invokes .then callback. E.g., .then(onSuccess).</li>
+			<li>⛔️ Rejected: the operation failed. It invokes the .catch or .then ‘s second argument (if any). E.g., .catch(onError) or .then(..., onError)</li>
+			<li>😵 Settled: it’s the promise final state. The promise is dead. Nothing else can be resolved or rejected anymore. The .finally method is invoked.</li>
+		</ul>
+	</article>
+
+	<article class="slide">
+		<h2>Process Diagram</h2>
+		<img src="img/promises-states.png" alt="">
+	</article>
+
+	<article class="slide">
+		<h2>Promises Provide a Placeholder for a Future Value</h2>
+		<pre class='language-js'><code>function futureValue(x) {
+	return wait(x, 5000)
+}
+function wait(value, time) { 
+	return new Promise(function(resolve, reject) {
+		setTimeout(() => {
+			console.log(`done after ${time/1000} seconds`)
+			return resolve(value)
+		}, time)
+	})
+}
+let test = futureValue('test')</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>What's a Callback Again?</h2>
+		<ul>
+			<li>Any function that is executed at some indeterminate time after initial page render (Window Mounting).</li>
+			<li><strong>Usually</strong> callbacks are passed as a parameter in another function that is invoked by some user triggered Event</li>
+		</ul>
+		<pre class='language-js'><code>// Not always user generated, though
+// just displaced in time from initial Mount
+let callback = val => console.log(val)
+
+setTimeout(callback('finally'), Math.random()*10_000) 
+
+document.addEventListener('click', callback)</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Callback Hell is a terrible place</h2>
+		<img src="img/callback_hell.jpeg" class='delayed stack' alt="callback hell screen capture">
+		<pre class="language-js"><code>function callbackHell(🔥) {
+🔥 return function() {
+🔥🔥 callback1(🔥, function() {
+🔥🔥🔥 callback2(🔥, function() {
+🔥🔥🔥🔥 callback3(🔥, function() {
+🔥🔥🔥🔥🔥 callback4(🔥, function() {
+🔥🔥🔥🔥🔥🔥 callback5(🔥, function(src, callback) {
+🔥🔥🔥🔥🔥🔥🔥 finally(src, callback)
+🔥🔥🔥🔥🔥🔥 })
+🔥🔥🔥🔥🔥 })
+🔥🔥🔥🔥 })
+🔥🔥🔥 })
+🔥🔥 })
+🔥 }
+}</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Callback Hell to Promises</h2>
+		<pre class='language-js'><code>a(() => {
+	b(() => {
+		c(() => {
+			d(() => {
+				// and so on ...
+			})
+		})
+	})
+})</code></pre>
+<pre class='language-js'><code>Promise.resolve()
+	.then(a)
+	.then(b)
+	.then(c)
+	.then(d)
+	.catch(console.error)</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Synchronous vs Asynchronous</h2>
+		<pre class='language-js'><code>console.log('First')
+console.log('Second')
+console.log('Third')</code></pre>
+<pre class='language-js'><code>console.log('First')
+fetch('https://example.com')
+	.then(() => console.log("Second"))
+console.log('Third')</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Why Structure it this way?</h2>
+		<ul>
+			<li>Event-based Nature of user input</li>
+			<li>Procedural vs. Declarative</li>
+		</ul>
+		<pre class='language-js' data-before="Procedural"><code>let tweets = loadDataSync(data)
+// ...Waiting for enough time to pass
+// Do something with the data
+setTimeout(data.filter(...), delay)
+doSomeOtherThings()</code></pre>
+<pre class='language-js' data-before="Declarative"><code>loadDataAsync(function (data) {
+	// ... Ready to use the data 
+	// ... no matter when it arrives
+	data.filter(() => ...)
+})
+doSomeOtherThings()</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Async/Sync</h2>
+		<a href="https://medium.com/better-programming/is-javascript-synchronous-or-asynchronous-what-the-hell-is-a-promise-7aa9dd8f3bfb">medium</a>
+	</article>
+	<article class="slide">
+		<h2>Event Loop Video</h2>
+		<p><a href="https://youtu.be/8aGhZQkoFbQ?t=60">What is the Event Loop?</a></p>
+	</article>
+
+	<article class="slide">
+		<h2>Event Loop</h2>
+		<p>Tasks, task queue & the main thread</p>
+		<video src="img/event_loop.mp4" loop autoplay></video>
+	</article>
+
+	<article class="slide">
+		<h2>Blocking or Non-Blocking?</h2>
+		<pre class='language-js'><code data-line-numbers="3-5|8-10|13-15">function futureValue(x = 'test', iter = 1_000) {
+	let promise = wait(x, iter)
+	return promise;
+}
+function wait(value, iterations) {
+	console.time(value) 
+	return new Promise(function(resolve, reject) {
+		if(iterations < 0) {
+			return reject('error: failed @ ' + value)
+		}
+		let num
+		for(let i = 0; i <= iterations ** 2; i++) {
+			num = i ** 2
+			if(i === iterations ** 2) {
+				console.timeEnd(value)
+				return resolve(value) 
+			}
+		}
+	})
+}
+let test = futureValue()</code></pre>
+	</article>
+	<article class='slide'>
+		<h2>Blocking or non Blocking?</h2>
+		<pre class='language-js'><code>console.log('begin the program')
+console.time('program')
+noBlocking(500, function (j, end) {
+	if(end) {
+		console.log(`0 -> ${j}`)
+		console.timeEnd('program')
+	}
+})
+function noBlocking(n, callback){
+	var i = 0
+	function loop () {
+		if (i &lt; n) {
+			i++;
+			callback(i, false)
+			window.requestAnimationFrame(loop)
+		}
+		else callback(i, true)
+	} 
+	loop()
+}</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Promises Animation Code Along</h2>
+		<p>Animating a multi-step Spinner</p>
+	</article>
+	
+</section>
+
+<section>
+	<header class="slide">
+		<h1>Fetch</h1>
+		<p>Client/Server Communication</p>
+	</header>
+
+	<article class="slide">
+		<h2>Our First Peak at Fetch</h2>
+		<p><code>fetch</code> is a Promise that accepts a URL, then makes an HTTP request to that resource and asynchronously returns with a data payload</p>
+		<pre class='language-js'><code>let f = fetch('https://jsonplaceholder.typicode.com/todos')
+// We call .then on it:
+f.then(response => response.json())
+// the .json() method is built into the fetch API, for formatting response data into JSON format
+.then(data => console.log(data))</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Primer on JSON</h2>
+		<ul>
+			<li>Javascript Object Notation (Counterpart to XML format)</li>
+			<li>Universal data payload format for the Web</li>
+		</ul>
+		<pre><code class="med-code">{"menu": {
+"id": "file",
+"value": "File",
+"popup": {
+"menuitem": [
+{"value": "New", "onclick": "CreateNewDoc()"},
+{"value": "Open", "onclick": "OpenDoc()"},
+{"value": "Close", "onclick": "CloseDoc()"}
+]
+}
+}}</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>The <code>JSON</code> object</h2>
+	<pre><code class='large-code'>JSON.stringify()
+JSON.parse()</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Not Fetching JSON?</h2>
+		<p>Instead of <code>response.json()</code>, use <code>response.text()</code></p>
+		<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Response#methods">The Response Methods</a></p>
+		<p><a href="https://stackoverflow.com/questions/37693982/how-to-fetch-xml-with-fetch-api">fetching text</a></p>
+		<h4>XML libraries</h4>
+		<ul>
+			<li><a href="https://github.com/Leonidas-from-XIV/node-xml2js">xml2js</a></li>
+			<li><a href="https://github.com/nfarina/xmldoc">xmldoc</a></li>
+		</ul>
+	</article>
+
+	<article class="slide">
+		<h2>Let's have a look in the console at what this does</h2>
+		<pre><code class="med-code">let f = fetch('https://jsonplaceholder.typicode.com/todos')
+// We call .then on it:
+f.then(response => response.json())
+// the .json() method is built into the fetch API, for formatting response data into JSON format
+.then(data => console.log(data))</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2><code>Promise.all()</code></h2>
+	</article>
+	<article class="slide">
+		<h2>Legacy XHR Syntax</h2>
+		<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest">XMLHttpRequest</a></p>
+		<p><a href="https://gomakethings.com/why-i-still-use-xhr-instead-of-the-fetch-api/">Go Make Things Site</a></p>
+		<h3>Polyfills for Internet Explorer</h3>
+		<p><a href="https://unpkg.com/unfetch@4.1.0/polyfill/index.js">Fetch Polyfill</a></p>
+		<p><a href="https://github.com/getify/native-promise-only">Promises Polyfill</a></p>
+	</article>
+	<article class="slide">
+		<h2><code>async</code> / <code>await</code></h2>
+		<p>Another way to write promises</p>
+	</article>
+	<article class="slide">
+		<h2>Writing A Curried Fetch Utility</h2>
+		<pre><code class="med-code">var f = protocol => domain => path => fetch(protocol+domain+path).then(r =>r.json()).then(d=> console.log(d))
+var prot = f('https://')
+var dom = p('jsonplaceholder.typicode.com/')
+var todos = dom('todos')
+var firstTodo = dom('todos/1')
+var users = dom('users')</code></pre>
+	</article>
+	<article class="slide">
+		<h2>Code Along with Public APIs</h2>
+		<p><a href="https://github.com/public-apis/public-apis">Public APIs Github Resource</a></p>
+		<h3>Let's make a User Fetching App</h3>
+		<ul><p><a href="https://github.com/JamieVaughn/user-mgr">User Manager App starter</a></p>
+			<li>Add more cross functionality to your app </li>
+			<li>Or start a whole new one!</li>
+			<li>Set your github settings in your usr-mgr repo to expose it on your portfolio</li>
+		</ul>
+	</article>
+	<!-- <article class="slide">
+
+	</article>
+	<article class="slide">
+
+	</article>
+	<article class="slide">
+
+	</article> -->
+
+
+</section>
+
+<footer class="slide" title="The End">
+	<h2>Thanks!</h2>
+</footer>
+
+<script src="../inspire/inspire.js"></script>
+
+</body>
+</html>
