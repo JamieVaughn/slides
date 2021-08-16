@@ -1,0 +1,86 @@
+.stack {
+  position: absolute;
+  z-index: 9;
+  bottom: 10%;
+}
+.rotate {
+  transform: rotate(-15deg);
+}
+pre {
+  position: relative;
+}
+pre.wrong::before {
+  content: '🚫';
+  position: absolute;
+  left: -4rem;
+  font-size: 4rem;
+  top: 2rem;
+
+}
+pre.correct::before {
+  content: '✅';
+  position: absolute;
+  left: -4rem;
+  font-size: 4rem;
+  top: 2rem;
+}
+pre[data-before]::before {
+  content: attr(data-before);
+  position: absolute;
+  right: calc(100% - 1.5rem);
+  top: 33%;
+  transform: rotate(-90deg);
+}
+.back-lit {
+  filter: drop-shadow(0 0 14px #fff)
+}
+.back-dark {
+  filter: drop-shadow(0 0 14px #000)
+}
+.backdrop {
+background: white;
+border-radius: 100px;
+padding: 2rem;
+}
+.stamped {
+  position: absolute;
+  top: 30%;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.tilt {
+  background: var(--dark1);
+  transform: rotate(-15deg);
+}
+
+
+/* columns */
+.nolist {
+	list-style: none;
+}
+.emolist li::marker {
+  font-size: 1rem;
+}
+.emolist li:nth-child(1)::marker {
+  content: '🔴';
+}
+.emolist li:nth-child(2)::marker {
+  content: '🟠';
+}
+.emolist li:nth-child(3)::marker {
+  content: '🟡';
+}
+.emolist li:nth-child(4)::marker {
+  content: '🟢';
+}
+.emolist li:nth-child(5)::marker {
+  content: '🔵';
+}
+.emolist li:nth-child(6)::marker {
+  content: '🟣';
+}
+[class*='col-'] > li {padding: 0 1rem;}
+.col-2 {columns: 2}
+.col-3 {columns: 3}
+.col-4 {columns: 4}
+.col-6 {columns: 6}
