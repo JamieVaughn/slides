@@ -3,225 +3,960 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-	<title>Intro to HTML</title>
-
+	<meta name="description" content="HTML: The Structure of Wb Pages">
+	<meta name="author" content="Jamie Vaughn">
+	<title>HTML: The Structure of Web Pages</title>
+	<!-- Inspire css -->
 	<link href="../inspire/inspire.css" rel="stylesheet" />
 	<link href="../inspire/theme.css" rel="stylesheet" />
 	<link href="../inspire/talk.css" rel="stylesheet" />
 	<link href="../inspire/utils.css" rel="stylesheet" />
 
+	<!-- Custom css -->
+	<link href="./css/computer.css" rel="stylesheet" />
 </head>
-<body class="language-markup" data-prism-plugins="normalize-whitespace">
+<body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
 
 <header id="intro" class="slide">
 	<h1>
-		Inspire.js
+		Web Design & Development
 	</h1>
 	<h2>
-		Lean,&nbsp;hackable,&nbsp;extensible slide&nbsp;deck&nbsp;framework
+		HTML
 	</h2>
-	<p class="attribution">By <a href="http://lea.verou.me">Lea Verou</a> and <a href="https://github.com/LeaVerou/inspire.js/graphs/contributors">contributors</a></p>
+	<p class="attribution">MCC: Section 1</p>
 </header>
-<section>
+<article class="slide">
+	<h2>Index</h2>
+	<ul class='col-2 emolist'>
+		<li><a href="./#part-1">Part 1</a></li>
+		<li><a href="./#part-2">Part 2</a></li>
+		<li><a href="./#part-3">Part 3</a></li>
+		<li><a href="./#part-4">Part 4</a></li>
+		<li><a href="./#part-5">Part 5</a></li>
+		<li><a href="./#part-6">Part 6</a></li>
+	</ul>
+</article>
+<section id='part-1'>
 	<header class="slide">
-		<h1>Introduction</h1>
+		<h3>HTML</h3>
+		<h1>Becoming a Web Developer</h1>
 	</header>
 
 	<article class="slide" title="Inspire.js: Introduction">
-		<h1>Main idea</h1>
-
-		<ul class="delayed-children">
-			<li>An HTML file contains the whole presentation</li>
-			<li>Themes as CSS files</li>
-			<li>Plugins for extra functionality, autoloaded when used</li>
-			<li>Nice JavaScript API for really custom things</li>
+		<h1>What is web development?</h1>
+		<ul>
+			<li>The process of building websites</li>
+			<li>The tools of modern web development</li>
+			<li>Best practices, conventions and style guides</li>
 		</ul>
 	</article>
 
 	<article class="slide">
-		<h1>History</h1>
-		<ul>
-			<li>Originally created in 2010 for my first talk, at <a href="http://front-trends.com">Front Trends 2010</a></li>
-			<li>By popular demand, it was released shortly after, named CSSS</li>
-			<li>Huge refactor and renaming to Inspire.js in Sep 2018</li>
-		</ul>
+		<h2>What you need to get started?</h2>
+		<div class='flex'>
+			<p><strong>Open, patient & curious mind</strong></p>
+			<p><strong>Your Computer</strong></p>
+		</div>
+		<div class="flex">
+			<img class="plain back-lit" data-src="img/brain.png" alt="A clear mind">
+			<img class='back-lit' src="img/undraw_computer.svg" alt="Computer Monitor">
+		</div>
 	</article>
 
+	<article class='slide'>
+		<h2>Code is numbers, letters and symbols</h2>
+		<p class="delayed">Regardless of what programming language you use, <strong>all</strong> code can be read in <strong>any</strong> text editor.</p>
+		<div class="flex">
+			<div class='delayed'>
+				<p>Javascript</p>
+			<pre class="language-js"><code>function click(e) {
+	e.preventDefault()
+	return (
+		e.target.value
+	)
+}</code></pre>
+			</div>
+			
+			<div class='delayed'>
+				<p>HTML</p>
+				<pre class="language-html"><code>&lt;body&gt;
+	&lt;section&gt;
+		&lt;h1&gt;Hello&lt;/h1&gt;
+		&lt;p&gt;World&lt;/p&gt;
+	&lt;/section&gt;
+&lt;/body&gt;</code></pre>
+		</div>
+			<div class='delayed'>
+			<p>CSS</p>
+<pre class="language-css"><code>.heading {
+	font-size: 2rem;
+	color: #a45bec;
+	border: 1px solid red;
+	margin: 1rem auto;
+}</code></pre>
+		</div>
+	</article>
+	<article class='slide'>
+		<h2>Basic technology stack</h2>
+		<div><span style='margin: 0.25rem;display: inline-block; transform: scaleX(-1) translateY(10px)'>↴</span> Browser / Client</div>
+<svg viewBox="0 0 1513 635">
+	<defs>
+		<linearGradient x1="0%" y1="-1384.684%" x2="50%" y2="-1384.684%" id="a1">
+			<stop stop-color="#C6C6C6" offset="0%" />
+			<stop stop-color="#E3E3E3" offset="20.485%" />
+			<stop stop-color="#A5A5A8" offset="100%" />
+		</linearGradient>
+		<linearGradient x1="37.179%" y1="20.999%" x2="50%" y2="100%" id="e2">
+			<stop stop-color="#E3E3E3" offset="0%" />
+			<stop stop-color="#A5A5A8" offset="100%" />
+		</linearGradient>
+		<linearGradient x1="51.071%" y1="85.309%" y2="50%" id="c">
+			<stop stop-color="#FFF" offset="0%" />
+			<stop stop-color="#FFF" stop-opacity="0" offset="100%" />
+		</linearGradient>
+		<linearGradient x1="51.071%" y1="85.309%" y2="50%" id="d">
+			<stop stop-color="#FFF" offset="0%" />
+			<stop stop-color="#FFF" stop-opacity="0" offset="100%" />
+		</linearGradient>
+	</defs>
+	<g fill="none" fill-rule="evenodd">
+		<g>
+			<path fill="#F5F5F5" d="M0 60.32h899.897V635H0z" />
+			<path d="M7 0C3.132 0 0 3.137 0 7.008V60.32h899.897V7.008c0-3.87-3.126-7.008-7-7.008H7z"
+				fill="#D4D4D4" />
+			<ellipse fill="#E96E4C" cx="27.988" cy="30.16" rx="8.232" ry="8.225" />
+			<path
+				d="M53.232 38.385c4.546 0 8.23-3.682 8.23-8.225 0-4.543-3.684-8.226-8.23-8.226-4.547 0-8.232 3.683-8.232 8.226 0 4.543 3.685 8.225 8.232 8.225z"
+				fill="#E6AA34" />
+			<ellipse fill="#85C33D" cx="78.476" cy="31.256" rx="8.232" ry="8.225" />
+			<path opacity=".85" fill="#FFF" d="M99.878 15.354h779.268v29.61H99.878z" />
+		</g>
+		<g>
+			<g class="delayed">
+				<path stroke="#E65017" stroke-width="6" fill="#F36619" d="M64 437h750v180H64z" />
+				<text font-family="Arial" font-size="32" fill="#000" transform="translate(64 437)">
+					<tspan x="363" y="80">For structuring and </tspan>
+					<tspan x="363" y="117.047">presenting </tspan>
+					<tspan x="521.328" y="117.047" font-weight="bold">content</tspan>
+				</text>
+				<path
+					d="M114 502h16.706v16.51h15.28V502h16.707v50h-16.706v-16.743h-15.28V552H114v-50zm70.66 16.58h-14.706v-16.578h46.125v16.58h-14.713V552H184.66v-33.42zM223.4 502h17.42l10.714 17.568L262.24 502h17.425v50h-16.637v-24.783l-11.494 17.777h-.287l-11.5-17.777V552H223.4v-50zm64.58 0h16.71v33.47h23.49V552h-40.2V502z"
+					fill="#FFF" />
+			</g>
+			<g class="delayed">
+				<path stroke="#0971B8" stroke-width="5" fill="#2CA8DD" d="M114 257h650v180H114z" />
+				<text font-family="Arial" font-size="32" fill="#000" transform="translate(114 257)">
+					<tspan x="278" y="76.906">For formatting the </tspan>
+					<tspan x="539.438" y="76.906" font-weight="bold">look</tspan>
+					<tspan x="605.219" y="76.906"> </tspan>
+					<tspan x="278" y="113.953">of the web page</tspan>
+				</text>
+				<path
+					d="M338.694 335.72h-21.777l22.647 24.58V372H292.92v-13.7h22.64l-22.64-24.582V322h45.773v13.718zm-55.018 0H261.9l22.645 24.58V372h-46.643v-13.7h22.643L237.9 333.718V322h45.775v13.718zm-54.48.555H205.7v21.453h23.496v14.27H189v-49.997h40.196v14.275z"
+					fill="#FFF" />
+			</g>
+			<g class="delayed">
+				<path stroke="#E6A305" stroke-width="5" fill="#F1C000" d="M189 77h500v180H189z" />
+				<text font-family="Arial" font-size="32" fill="#000" transform="translate(189 77)">
+					<tspan x="197" y="62.203">For providing </tspan>
+					<tspan x="197" y="99.25">dyamic, </tspan>
+					<tspan x="316.141" y="99.25" font-weight="bold">interactive</tspan>
+					<tspan x="476.219" y="99.25"> </tspan>
+					<tspan x="197" y="136.297">capabilities</tspan>
+				</text>
+				<g fill="#FFF">
+					<path
+						d="M327.208 155.165h-20.966l21.803 23.594v11.228H283.14V176.84h21.797l-21.798-23.593V142h44.068v13.166zM276.67 142v47.948H238v-15.85h22.6V142h16.074-.003z" />
+				</g>
+			</g>
+		</g>
+		<g class="delayed">
+			<path
+				d="M1512.538 438.333c0 19.826-48.21 35.9-107.678 35.9-59.47 0-107.68-16.074-107.68-35.9 0-19.826 48.21-35.898 107.68-35.898 59.47 0 107.678 16.072 107.678 35.898z"
+				fill="#2E3436" />
+			<path
+				d="M2.22 41.005v164.522h.684c-.44 1.32-.683 2.57-.683 3.93 0 19.826 48.153 35.88 107.622 35.88 59.468 0 107.62-16.054 107.62-35.88 0-1.36-.24-2.61-.683-3.93h.682V41.005H2.222z"
+				fill="url(#a1)" transform="translate(1295 216)" />
+			<path
+				d="M217.538 39.666c0 19.826-48.21 35.898-107.678 35.898-59.47 0-107.68-16.072-107.68-35.898 0-19.826 48.21-35.898 107.68-35.898 59.47 0 107.678 16.072 107.678 35.898z"
+				fill="url(#e2)" transform="translate(1295 216)" />
+			<path
+				d="M1297.05 375.065c.805 19.594 48.825 35.366 107.792 35.366 58.798 0 106.55-15.677 107.62-35.194-18.867 16.05-59.908 27.165-107.62 27.165-47.81 0-88.977-11.23-107.792-27.335z"
+				fill="#565656" />
+			<path
+				d="M2.05 40.15c.805 19.595 48.825 35.367 107.792 35.367 58.798 0 106.55-15.678 107.62-35.196-1.18 1.005-2.41 1.943-3.758 2.906l-.17.17c-12.53 15.186-54.137 26.312-103.692 26.312-49.865 0-91.758-11.32-104.034-26.653l-.34-.342c-1.197-.873-2.36-1.658-3.418-2.563z"
+				fill="url(#c)" transform="translate(1295 216)" />
+			<path
+				d="M1297.05 317.53c.805 19.596 48.825 35.368 107.792 35.368 58.798 0 106.55-15.678 107.62-35.196-18.867 16.052-59.908 27.166-107.62 27.166-47.81 0-88.977-11.232-107.792-27.337z"
+				fill="#565656" />
+			<path
+				d="M2.05.513C2.855 20.107 50.875 35.88 109.842 35.88c58.798 0 106.55-15.68 107.62-35.197l-.854.684c-6.79 17.642-51.99 31.266-106.766 31.266-55.28 0-100.953-13.73-107.11-31.608L2.05.513z"
+				fill="url(#d)" transform="translate(1295 317.02)" />
+			<path
+				d="M2.05 159.065c.805 19.594 48.825 35.366 107.792 35.366 58.798 0 106.55-15.677 107.62-35.194l-.854.683c-6.79 17.64-51.99 31.265-106.766 31.265-55.28 0-100.953-13.73-107.11-31.608l-.682-.512z"
+				fill="url(#d)" transform="translate(1295 216)" />
+			<path
+				d="M1297.733 434.35c6.156 17.88 51.828 31.61 107.11 31.61 54.776 0 99.975-13.626 106.765-31.267-19.222 15.68-59.74 26.482-106.766 26.482-47.273 0-88.01-11.01-107.11-26.824z"
+				fill="#565656" />
+		</g>
+		<path class="delayed" d="M921 357h354M921 357l10.8-3v6l-10.8-3zM1275 357l-10.8-3v6l10.8-3z" stroke="#fff"
+			stroke-width="10" />
+	</g>
+</svg>
+<a href="https://frontendmasters.com/books/front-end-handbook/2019/">Frontend Masters Handbook</a>
+
+	<p class="presenter-notes">
+		Possible to build perfectly functional websites using just HTML and CSS<br>
+		Javascript to add some interactivity<br>
+		Database to store more information for retrieval when required<br>
+		Depends heavily on your purpose
+	</p>
+	</article>
 	<article class="slide">
-		<h1>Syntax</h1>
-
-		<ul>
-			<li>Slides are defined by adding the <code>slide</code> class to any elements.</li>
-			<li><code>&lt;header class="slide"></code> is a header slide (relevant for the <a href="#overview">Overview</a>)</li>
-		</ul>
+		<div class="flex full-height">
+				<div class="flex-col">
+					<h2>Client-side</h2>
+					<img src="img/laptop.svg" height="180" width="180" alt="laptop">
+					<p>
+						Frontend <a href='https://roadmap.sh/frontend'>Roadmap</a><br>
+						<small>Adapted <a href='img/essential-roadmap.jpg'>Essential Roadmap</a></small>
+					</p>
+					<img class="delayed" src="img/tech.svg" height="150" alt="HTML, CSS, JS Logos">
+				</div>
+				<div class="flex-col">
+					<h2 class='delayed'>Server-side</h2>
+					<img class='delayed' src="img/server.svg" height="180" width="180" alt="A rack of servers">
+					<p class='delayed'><strong>Backend</strong></p>
+					<img class='delayed' src="img/backend_langs.svg" height="200" alt="Backend language logos">
+				</div>
+			</div>
 	</article>
-
-	<article class="slide" id="navigation">
-		<h1>Keyboard Navigation</h1>
-		<ul>
-			<li><kbd>→</kbd> or <kbd>↓</kbd> to advance to the next slide or incrementally displayed item</li>
-			<li><kbd>←</kbd> or <kbd>↑</kbd> to go to the previous slide or incrementally displayed item</li>
-			<li><kbd>Ctrl</kbd><kbd>→</kbd> or <kbd>Ctrl</kbd><kbd>↓</kbd> to jump to the next slide</li>
-			<li><kbd>Ctrl</kbd><kbd>←</kbd> or <kbd>Ctrl</kbd><kbd>↑</kbd> to jump to the previous slide</li>
-			<li>Home to go to the first slide, End to go to the last</li>
-			<li><kbd>Ctrl</kbd><kbd>G</kbd> to jump to an arbitrary slide (by slide number or identifier)</li>
-		</ul>
-	</article>
-</section>
-
-<section>
-	<header class="slide">
-		<h1>Features</h1>
-	</header>
-
-	<article class="slide" id="data-insert">
-		<h1>Repeated slides</h1>
-
-		<ul>
-			<li>Use attribute <code>data-insert="#id"</code> on an empty slide to re-insert it later in the slideshow</li>
-			<li>Notice how this slide will also be re-inserted after the next one!</li>
-		</ul>
-	</article>
-
 	<article class="slide">
-		<h1>IDs and titles</h1>
-		<ul>
-			<li>IDs are dynamically assigned by JavaScript, but you can also use your own</li>
-			<li>Slide titles (used in the browser tab when the slide is active, and in the <a href="#overview">Overview</a>) via the <code>title</code> or <code>data-title</code> attributes or headings in the slide.</li>
-			<li>If only an id or only a title is provided, the other is extracted from it.</li>
+		<ul class='stamped' style='z-index: -1;'>
+			<li style='list-style: none;'><h4>Then theres...</h4></li>
+			<li class="delayed">Libraries</li>
+			<li class="delayed">Frameworks</li>
+			<li class="delayed">Tools</li>
 		</ul>
+		<img src="img/overwhelming.svg" class="delayed backdrop" height="400px" alt="A bunch of Tech logos">
+		<h2 class="delayed tilt stamped">Feeling overwhelmed?</h2>
 	</article>
-
-	<article class="slide" data-insert="#data-insert"></article>
-
-	<article class="slide">
-		<h1>Incremental display</h1>
-
-		<ul class="delayed-children">
-			<li>Incremental display of slide contents (just add <code>class="delayed"</code>)</li>
-			<li>Use selector <code>.delayed:not(.current):not(.displayed)</code> to change the style of undisplayed items</li>
-			<li>Use selector <code>.delayed.displayed</code> to change the style of displayed items</li>
-			<li>Use selector <code>.delayed.current</code> to change the style of current items</li>
-			<li>Use <code>class="delayed-children"</code> to apply the <code>delayed</code> class to all of an element’s children</li>
-			<li>
-				Nested delayed items <strong class="delayed">are possible</strong>!
-			</li>
-		</ul>
+	<article class='slide'>
+		<h2>Let's just start with the foundation of the web</h2>
+		<div class="flex">
+			<svg height="300px" viewBox="0 0 101 143">
+				<g fill="none" fill-rule="evenodd"><path d="M9.167 131.086L0 28.236h100.724L91.548 131.07 50.3 142.51 9.167 131.085z" fill="#E45126"/>
+					<path d="M50.362 133.765l33.33-9.244 7.842-87.874H50.362v97.12z" fill="#F36619"/>
+					<path d="M50.318 74.79v12.614h15.528l-1.464 16.36-14.064 3.797v13.126l25.85-7.168.19-2.13 2.963-33.21.31-3.387H50.318zm0-25.53v12.614h30.458l.253-2.836.573-6.395.3-3.384H50.32z" fill="#FFF"/>
+					<path d="M50.362 74.79H33.676l-1.152-12.917h17.838V49.258h-31.62l.303 3.385 3.1 34.76H50.36v-12.61zm0 32.76l-.055.016-14.044-3.794-.898-10.06H22.707l1.767 19.806 25.83 7.174.058-.017V107.55z" fill="#EBEBEB"/>
+					<path d="M9.37.284h6.41v6.333h5.86V.284h6.41v19.18h-6.41V13.04h-5.86v6.423H9.372V.283zm27.107 6.36h-5.642V.284h17.693v6.36h-5.643v12.82h-6.408V6.644zm14.86-6.36h6.682l4.11 6.74 4.104-6.74h6.684v19.18h-6.382V9.956l-4.41 6.82h-.11l-4.41-6.82v9.506h-6.272V.282zm24.772 0h6.41v12.84h9.01v6.34H76.11V.284z" fill="#fefefe"/>
+				</g>
+			</svg>
+			<svg height="300px" viewBox="0 0 101 143">
+				<g fill="none" fill-rule="evenodd"><path d="M9.353 131.094L.186 28.244H100.91l-9.176 102.833-41.247 11.44-41.134-11.423z" fill="#1673B6"/>
+					<path d="M50.548 133.774l33.33-9.245 7.842-87.877H50.548v97.12z" fill="#35A9DB"/><path d="M50.548 73.915h16.686l1.153-12.917h-17.84V48.383h31.62l-.302 3.385-3.1 34.76H50.55V73.916z" fill="#FFF"/>
+					<path d="M50.624 106.675l-.055.016-14.045-3.793-.897-10.06H22.97l1.767 19.806 25.828 7.173.06-.016v-13.125z" fill="#EBEBEB"/>
+					<path d="M66.162 85.995l-1.518 16.894-14.063 3.796v13.124l25.85-7.167.19-2.13 2.194-24.518H66.162z" fill="#FFF"/>
+					<path d="M50.592 48.384v12.614h-30.46l-.25-2.836-.575-6.394-.302-3.384h31.587zm-.044 25.533V86.53H36.682l-.252-2.834-.575-6.395-.3-3.383h14.993z" fill="#EBEBEB"/>
+					<path d="M79.117 5.55h-8.36l8.694 9.438v4.492H61.544v-5.26h8.693l-8.693-9.438V.284h17.574V5.55zm-21.123 0h-8.36l8.694 9.438v4.492H40.42v-5.26h8.694L40.42 4.782V.284h17.574V5.55zm-20.916.214h-9.02V14h9.02v5.48H21.646V.283h15.432v5.48z" fill="#fefefe"/>
+				</g>
+			</svg>
+		</div>
 	</article>
-</section>
+	</section>
 
-<section>
-	<header class="slide">
-		<h1>Plugins</h1>
-	</header>
-
-	<article class="slide" id="overview">
-		<h1>Overview</h1>
-
-		<ul>
-			<li>Loaded automatically, use <code>&lt;code class="no-overview"></code> to prevent this.</li>
-			<li>Press <kbd>Ctrl</kbd>+<kbd>H</kbd> (or <kbd>Shift</kbd>+<kbd>H</kbd>) to trigger, <kbd>Esc</kbd> to close.</li>
-			<li class="delayed">Cool, huh? You can press <kbd>Ctrl</kbd><kbd>Shift</kbd><kbd>H</kbd> to see all slides</li>
-		</ul>
-	</article>
-
-	<article class="slide">
-		<h1>Syntax highlighting with PrismJS</h1>
-
-		<ul>
-			<li>Autoloads core & languages used</li>
-			<li>Load plugins by listing their ids in a <code>data-prism-plugins</code> attribute, on any element (first one will be used).</li>
-			<li>Automatically figures out dependencies & aliases</li>
-			<li>CSS is up to you!</li>
-		</ul>
-		<pre class="language-jsx"><code>var start = new Date().getTime();
-setInterval(function() {
-	React.render(
-		&lt;ExampleApplication elapsed={new Date().getTime() - start} />,
-		document.getElementById('container')
-	);
-}, 50);</code></pre>
-	</article>
-
-	<article class="slide" data-video="https://mavo.io/demos/eshop/video.mp4" style="--url: 'https://mavo.io/demos/eshop'" id="media-plugin">
-		<div>
-			<h1>Annotated videos</h1>
+	<section id='part-2'>
+		<header class='slide'>
+			<h3>HTML</h3>
+			<h1>Hypertext Mark-up Language</h1>
+		</header>
+		<article class='slide'>
+			<h2>Hypertext Mark-up Language (HTML)</h2>
 			<ul>
-				<li><code>data-video</code> for URL</li>
-				<li><code>class="annotation"</code> for annotations</li>
-				<li><code>data-time</code> and <code>data-pause</code> on annotations</li>
+				<li><strong>Structures</strong> the document and tells browsers what a certain element's function is</li>
+				<li>Content is "marked-up" using tags</li>
+				<li>Tags usually (but not always) come in pairs,<pre><code>&lt;p&gt;This is an example of a paragraph tag or element&lt;/p&gt;</code></pre></li>
+				<li>What's a self-closing tag? <pre><code>&lt;br/&gt; &lt;img/&gt; &lt;input/&gt;</code></pre></li>
+				<li>The opening tag, closing tag and internal content generates an <strong>HTML element</strong></li>
+				<li>
+					<strong>Tag</strong> vs. <strong>Element</strong>?
+					<ul>
+						<li>Tag: the code as written</li>
+						<li>Element: the code object in computer memory</li>
+					</ul>
+				</li>
+			</ul>
+			<p class="presenter-notes">
+				Tags are markers wrapped around text in the document to indicate how user-agents should interpret it
+			</p>
+		</article>
+		<article class=slide>
+			<h2>History of HTML</h2>
+			<ul>
+				<li>Invented by <strong>Tim Berners-Lee</strong> in 1989 as a means for easy linking of references in research papers using hypertext</li>
+				<li>Created the <strong>Hypertext Transfer Protocol (HTTP)</strong> for retrieving text from other documents via hypertext links</li>
+				<li>Specifications were introduced as a guide for standardisation among browser vendors</li>
+				<li>1994: the URL spec was defined. <code>protocol://host.domain:port/path/subpath?query#fragment</code></li>
+			</ul>
+		</article>
+		<article class='slide'>
+			<h2>Structure of an HTML Document</h2>
+			<pre><code>&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+	&lt;head&gt;
+	  &lt;title&gt;Example page&lt;/title&gt;
+	&lt;/head&gt;
+	&lt;body&gt;
+	  &lt;h1&gt;Hello world&lt;/h1&gt;
+	&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+		</article>
+		<article class='slide'>
+			<h2>Document Type</h2>
+			<pre><code>&lt;!DOCTYPE html&gt;</code></pre>
+			<ul>
+				<li>Appears just above the opening <code>&lt;html&gt;</code> tag
+				<li>Tells the browser to render the HTML in <strong>standards</strong> mode</li>
+				<li>Let's validation software know which version of HTML to validate against</li>
+				<li>Advised to use the <strong>HTML5 doctype</strong></li>
+			</ul>
+			<p class="presenter-notes">
+				Standards mode means browsers try to render the page according to CSS specifications<br>
+				Outdated or incomplete doctypes will be rendered in quirks mode, things may not appear as you expect
+			</p>
+		</article>
+		<article class='slide'>
+			<h2><code class="ga-lowercase">&lt;html&gt;</code> element</h2>
+			<pre><code>&lt;html lang="en"&gt;
+	&lt;!-- HTML code for web page --&gt;
+&lt;/html&gt;</code></pre>
+			<ul>
+				<li>Represents the root of an HTML document</li>
+				<li>Encouraged to specify a language attribute</li>
+				<li>Language attribute aids speech synthesis (screen readers), translation tools and other language-related functionality</li>
+			</ul>
+			<p class="presenter-notes">
+				The web was built with accessibility and semantics in mind<br>
+				All this functionality is built into HTML
+			</p>
+		</article>
+		<article class='slide'>
+			<h2><code class="ga-lowercase">&lt;head&gt;</code> element</h2>
+			<pre><code>&lt;head&gt;
+	&lt;meta charset="utf-8"&gt;
+	&lt;title&gt;Your site title&lt;/title&gt;
+	&lt;meta name="description" content="A short description of your website"&gt;
+	&lt;meta name="author" content="Your name"&gt;
+	&lt;link rel="stylesheet" href="css/styles.css?v=1.0"&gt;
+&lt;/head&gt;</code></pre>
+			<ul>
+				<li>Contains instructions for the browser and meta data for the website</li>
+				<li>Title and description are what shows up on search engine results</li>
+				<li>Stylesheets and Script tags are also declared here</li>
+			</ul>
+		</article>
+		<article class='slide'>
+			<h2><code>&lt;body&gt;</code> element</h2>
+			<div class="flex full-height align">
+			<pre><code>&lt;body&gt;
+	&lt;header&gt;
+  	&lt;img src="img/logo.png" alt="Site logo"&gt;
+	&lt;nav&gt;
+      &lt;ul&gt;
+      	&lt;li&gt;&lt;a href="#"&gt;Home&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href="#"&gt;About&lt;/a&gt;&lt;/li&gt;
+      	&lt;li&gt;&lt;a href="#"&gt;Contact&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+	&lt;/nav>
+	&lt;/header&gt;
+	&lt;main&gt;
+	  &lt;h1&gt;Page header&lt;/h1&gt;
+      &lt;p&gt;Some content in a paragraph.&lt;/p&gt;
+	&lt;/main&gt;
+&lt;/body&gt;</code></pre>
+			<ul style='font-size: 180%'>
+				<li>Represents the <strong>main content</strong> of the document</li>
+				<li>Holds the content that is rendered for the user</li>
+				<li>Only one <code>&lt;body&gt;</code> element on a web page</li>
 			</ul>
 		</div>
-		<span class="annotation top-pointer" style="top: 44%; left: 59.5%; --pointer-left: 4em;" data-time="3000 to 3500" data-pause>Click to dismiss & resume</span>
-		<span class="annotation top-pointer" style="top: 26%; left: 67.1%" data-time="5200 to 5700" data-pause="2000">Auto-resume after 2sec</span>
 	</article>
+		<article class='slide'>
+			<h2>Formatting your web page <a href='https://htmlreference.io/'>1</a>, <a href='https://www.advancedwebranking.com/html/'>2</a></h2>
+			<ul class='nolist' style="columns: 6">
+				<li><code>&lt;address&gt;</code></li>
+				<li><code>&lt;article&gt;</code></li>
+				<li><code>&lt;footer&gt;</code></li>
+				<li><code>&lt;header&gt;</code></li>
+				<li><code>&lt;h1&gt;</code></li>
+				<li><code>&lt;h2&gt;</code></li>
+				<li><code>&lt;h3&gt;</code></li>
+				<li><code>&lt;h4&gt;</code></li>
+				<li><code>&lt;h5&gt;</code></li>
+				<li><code>&lt;h6&gt;</code></li>
+				<li><code>&lt;hgroup&gt;</code></li>
+				<li><code>&lt;nav&gt;</code></li>
+				<li><code>&lt;section&gt;</code></li>
+				<li><code>&lt;dd&gt;</code></li>
+				<li><code>&lt;div&gt;</code></li>
+				<li><code>&lt;dl&gt;</code></li>
+				<li><code>&lt;dt&gt;</code></li>
+				<li><code>&lt;figcaption&gt;</code></li>
+				<li><code>&lt;figure&gt;</code></li>
+				<li><code>&lt;hr&gt;</code></li>
+				<li><code>&lt;li&gt;</code></li>
+				<li><code>&lt;main&gt;</code></li>
+				<li><code>&lt;ol&gt;</code></li>
+				<li><code>&lt;p&gt;</code></li>
+				<li><code>&lt;pre&gt;</code></li>
+				<li><code>&lt;ul&gt;</code></li>
+				<li><code>&lt;caption&gt;</code></li>
+				<li><code>&lt;col&gt;</code></li>
+				<li><code>&lt;colgroup&gt;</code></li>
+				<li><code>&lt;table&gt;</code></li>
+				<li><code>&lt;tbody&gt;</code></li>
+				<li><code>&lt;td&gt;</code></li>
+				<li><code>&lt;tfoot&gt;</code></li>
+				<li><code>&lt;th&gt;</code></li>
+				<li><code>&lt;thead&gt;</code></li>
+				<li><code>&lt;tr&gt;</code></li>
+				<li><code>&lt;button&gt;</code></li>
+				<li><code>&lt;datalist&gt;</code></li>
+				<li><code>&lt;fieldset&gt;</code></li>
+				<li><code>&lt;form&gt;</code></li>
+				<li><code>&lt;input&gt;</code></li>
+				<li><code>&lt;keygen&gt;</code></li>
+				<li><code>&lt;label&gt;</code></li>
+				<li><code>&lt;legend&gt;</code></li>
+				<li><code>&lt;meter&gt;</code></li>
+				<li><code>&lt;optgroup&gt;</code></li>
+				<li><code>&lt;option&gt;</code></li>
+				<li><code>&lt;output&gt;</code></li>
+				<li><code>&lt;progress&gt;</code></li>
+				<li><code>&lt;select&gt;</code></li>
+				<li><code>&lt;details&gt;</code></li>
+				<li><code>&lt;dialog&gt;</code></li>
+				<li><code>&lt;menu&gt;</code></li>
+				<li><code>&lt;menuitem&gt;</code></li>
+				<li><code>&lt;summary&gt;</code></li>
+				<li><code>&lt;abbr&gt;</code></li>
+				<li><code>&lt;b&gt;</code></li>
+				<li><code>&lt;bdi&gt;</code></li>
+				<li><code>&lt;bdo&gt;</code></li>
+				<li><code>&lt;br&gt;</code></li>
+				<li><code>&lt;cite&gt;</code></li>
+				<li><code>&lt;code&gt;</code></li>
+				<li><code>&lt;data&gt;</code></li>
+				<li><code>&lt;dfn&gt;</code></li>
+				<li><code>&lt;em&gt;</code></li>
+				<li><code>&lt;i&gt;</code></li>
+				<li><code>&lt;kbd&gt;</code></li>
+				<li><code>&lt;mark&gt;</code></li>
+				<li><code>&lt;q&gt;</code></li>
+				<li><code>&lt;rp&gt;</code></li>
+				<li><code>&lt;rt&gt;</code></li>
+				<li><code>&lt;rtc&gt;</code></li>
+				<li><code>&lt;ruby&gt;</code></li>
+				<li><code>&lt;s&gt;</code></li>
+				<li><code>&lt;samp&gt;</code></li>
+				<li><code>&lt;small&gt;</code></li>
+				<li><code>&lt;span&gt;</code></li>
+				<li><code>&lt;strong&gt;</code></li>
+				<li><code>&lt;sub&gt;</code></li>
+				<li><code>&lt;sup&gt;</code></li>
+				<li><code>&lt;time&gt;</code></li>
+				<li><code>&lt;u&gt;</code></li>
+				<li><code>&lt;var&gt;</code></li>
+				<li><code>&lt;wbr&gt;</code></li>
+				<li><code>&lt;area&gt;</code></li>
+				<li><code>&lt;audio&gt;</code></li>
+				<li><code>&lt;map&gt;</code></li>
+				<li><code>&lt;track&gt;</code></li>
+				<li><code>&lt;video&gt;</code></li>
+				<li><code>&lt;embed&gt;</code></li>
+				<li><code>&lt;object&gt;</code></li>
+				<li><code>&lt;param&gt;</code></li>
+				<li><code>&lt;source&gt;</code></li>
+				<li><code>&lt;canvas&gt;</code></li>
+				<li><code>&lt;noscript&gt;</code></li>
+				<li><code>&lt;script&gt;</code></li>
+				<li><code>&lt;del&gt;</code></li>
+				<li><code>&lt;ins&gt;</code></li>
+			</ul>
+			<p class="presenter-notes">
+				The web was built with accessibility and semantics in mind<br>
+				All this functionality is built into HTML
+			</p>
+		</article>
+		<article class="demo slide" id="livedemo">
+      <textarea class="language-html">
+<p>Try Writing some HTML!</p>
+</textarea>
+      <textarea class="language-css">* {
+          font-size: 150%;
+        }
+      </textarea>
+    </article>
+		<article class='slide'>
+			<h1>HTML Code Along</h1>
+			<p><a href='https://glitch.com/edit/#!/html-article'>Article Code Exercise</a></p>
+		</article>
+	</section>
+<!-- Part 3 -->
+	<section id='part-3'>
+			<header class='slide'>
+				<h3>HTML</h3>
+				<h1>Element Hierarchy and Trees</h1>
+			</header>
+			<article class='slide'>
+					<h2>Tree Data Structures</h2>
+					<div class='flex'>
+							<img src="https://i.udemycdn.com/course/750x422/2018184_5e45_2.jpg" alt="Symbolic Tree" >
+							<img style="transform: rotate(180deg)" src="https://i.udemycdn.com/course/750x422/2018184_5e45_2.jpg" alt="Symbolic Tree Flipped upside down">
+					</div>
+			</article>
+			<article class='slide'>
+					<h2>Tree Terminology</h2>
+					<ul>
+						<li>Nodes, Edges/Branches, Nesting, Binary Trees, Traversal</li>
+						<li>This concept comes up in HTML, CSS, JS and Git</li>
+						<li><strong>But they don't always look quite like this one!</strong></li>
+					</ul>
+					<img class='backdrop' src="https://open4tech.com/wp-content/uploads/2018/12/tree-data-struct.png" alt="">
+			</article>
+			<article class='slide'>
+				<h3>Binary Tree</h3>
+				<img class='backdrop' src="img/Binary_tree.svg" alt="binary tree">
+				<p>Height: 3, Size: 9, Unbalanced, Unsorted</p>
+			</article>
+			<article class='slide'>
+				<h3>Perfect Binary Tree</h3>
+				<p><span style='display: inline-block; transform: scaleX(-1) translateY(10px)'>↴</span> Perfect: Balanced, Sorted, Full</p>
+				<img width="56%" src="https://qph.fs.quoracdn.net/main-qimg-d37edec64bc1790d4ce47aaea6f77675" alt="binary tree">
+				<p>Complete: Balanced, Not Sorted, Not Full <span style='display: inline-block; transform: scaleY(-1) translateY(10px)'>↴</span></p>
+			</article>
+			<article class='slide'>
+					<h2>Challenge: Which of these is a tree?</h2>
+					<div class='flex most-height'>
+							<img src="https://camo.githubusercontent.com/1717788c4852450b4a031a23cea093b733239664/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6b6576696e7169755f6e65742f696d616765732f68696572617263686963616c5f636f6c6f722e706e67" alt="">
+							<img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/fb273c17399179.562b97c670ec9.jpg" alt="">
+					</div>
+			</article>
+			<article class='slide'>
+				<h2>Which of these is a tree?</h2>
+				<div class='flex most-height'>
+						<img src="img/sankey_not_tree.png" alt="">
+						<img src="img/redditsankey.png" alt="">
+				</div>
+			</article>
+			<article class='slide'>
+				<h2>... So trees can be visualized in many ways</h2>
+				<p>But most commonly they'll look like a graph</p>
+				<img class='backdrop' src="img/Binary_tree.svg" alt="binary tree">
+				<p>but...</p>
+			</article>
+			<article class='slide'>
+					<h2>Not all Graphs are Trees</h2>
+					<p>Which of these two is the Tree?</p>
+					<div class='flex most-height'>
+							<img src="img/digraph.png" alt="">
+							<img src="img/tree-graph.png" alt="">
+					</div>
+			</article>
+			<article class='slide'>
+					<h2>Trees have single directional relationships</h2>
+					<figure>
+						<caption>This is NOT a tree, because you can't determine the parent from the child</caption>
+						<br>
+						<img src="img/di-graph.png" alt="">
+					</figure>
+			</article>
+			<article class='slide'>
+				<div class='flex'>
+					<div class="flex-col">
+							<h2>Code as Tree Structures</h2>
+							<ul class='nolist'> 
+								<li>These are both trees!</li> 
+								<li>You'll need to be able to visualize the implicit tree structure in your code.</li>
+								<li>Whether it is HTML, CSS, JS, JSON etc...</li> 
+							</ul>
+						</div>
+						<div class="flex-col">
+							<pre style='font-size: 50%' class='language-pug'><code>.card.text-center
+	.card-header Hello World
+	.card-body
+		.card-title this is Pug-lang
+		i.fa.fa-home.fa-2x.text-primary
+	.card-footer it compiles to HTML</code></pre>
+							<pre style='font-size: 50%' class='language-json'><code>{
+	"menu": {
+		"id": "file",
+		"value": "File",
+		"popup": {
+			"menuitem": [
+				"New",
+				"Open",
+				"Close"
+			]
+		}
+	}
+}</code></pre>
+						</div>	
+					</div>
+			</article>
+			<article class='slide'>
+								<h2>HTML as a Tree Structure</h2>
+								<div class="flex full-height">
+								<pre class='language-html'><code>&lt;ul&gt;
+	&lt;li&gt;item&lt;/li&gt;
+	&lt;li&gt;item&lt;/li&gt;
+	&lt;li&gt;
+		&lt;!-- This is an HTML comment--&gt;
+		&lt;!-- which is also part of the tree --&gt;
+		&lt;ul&gt;
+			&lt;li&gt;nested item&lt;/li&gt;
+			&lt;li&gt;nested itm&lt;/li&gt;
+			&lt;li&gt;nested item&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+								<pre><code>&lt;details&gt;
+	&lt;summary&gt;Title&lt;/summary&gt;
+	&lt;p&gt;Content&lt;/p&gt;
+	&lt;p&gt;Content&lt;/p&gt;
+	&lt;p&gt;Content&lt;/p&gt;
+&lt;/details&gt;</code></pre>
+							</div>
+						</article>
+			<article class='slide'>
+				<h2>DOM - Document Object Model</h2>
+				<h4>Let's <kbd>Inspect</kbd> → <kbd>Elements</kbd> in the dev tools</h4>
+				<img style='max-height: 90%; clip-path: polygon(0 0, 100% 0, 100% 92%, 0 92%);' src='img/domtree.jpg' />
+			</article>
+			<article class='slide'>
+				<h2>Verifying Correct HTML Code</h2>
+				<p><a href="https://developer.mozilla.org/en-US/docs/Tools/Validators">HTML Validators</a></p>
+					<ul>
+						<li>Shows syntax errors by type & line number</li>
+						<li>Can suggest accessibility and semantic improvements</li>
+						<li>Great addition to the "Read, Search, [ Validate ], Ask" mantra</li>
+					</ul>
+			</article>
+	</section>
+	<!-- Part 4 -->
+	<section id="part-4">
+			<header class="slide">
+				<h3>HTML</h3>
+				<h1>Semantics & Accessibilty</h1>
+				<p>Standards and Tools</p>
+			</header>
+		<article class='slide'>
+			<h2>Semantic HTML</h2>
+			<p>Using the right HTML element for the purpose</p>
+			<ul>
+				<li>Helps your developer colleagues</li>
+				<li>Helps indexing algorithms (i.e. Google)</li>
+				<li>Is invisible to <i>many</i> users, but helps some immensely!</li>
+				<li><a href="https://www.w3schools.com/html/html5_semantic_elements.asp">W3Schools Semantic Elements</a></li>
+				<li><a href="https://www.freecodecamp.org/news/semantic-html5-elements/">Semantic HTML Explained</a></li>
+			</ul>
+		</article>
+		<article class='slide'>
+			<h2>Semantic HTML in action</h2>
+			<p>What HTML tags would communicate each block's role?</p>
+			<img class='flex most-height' src="img/semantic-initial-content.png" alt="Web Page layout">
+			<h2 class="delayed tilt stamped">Accessibility Landmark Tags!</h2>
+			<h2 class="delayed tilt stamped">Landmarks? What do those do?</h2>
+		</article>
+		<article class='slide'>
+			<h2>Semantic HTML in action</h2>
+			<p>Add <a href="https://www.w3.org/TR/wai-aria-practices/examples/landmarks/HTML5.html">landmark tags:</a>
+				<code>&lt;header></code> <code>&lt;nav></code> <code>&lt;main></code> 
+				<code>&lt;aside></code> <code>&lt;section></code> <code>&lt;footer></code></p>
+			<img class='flex most-height' src="img/semantic-html5-mid.png" alt="Web Page with Semantic landmarks">
+		</article>
+		<article class='slide'>
+			<h2>Semantic HTML in action</h2>
+			<p>Landmark tags can be nested</p>
+			<img src="img/semantic-html5-final.png" alt="">
+		</article>
+		<article class='slide'>
+			<h2>Semantics: Buttons vs Links</h2>
+			<p>When to use <code>&lt;button&gt;</code> and when to use <code>&lt;a&gt;</code></p>
+			<ul>
+				<li>Buttons are for executing some javascript code</li>
+				<li>Links are for navigating to a new view (usually a new page URL)</li>
+				<li>Navigating to another part of the current page?
+					<a href="./#semantic-html-in-action-3">Go To Previous Slide</a>
+				</li>
+			</ul>
+			<p><a href="https://www.nngroup.com/articles/in-page-links/">Neilson User Research</a></p>
+		</article>
+		<article class='slide'>
+			<h2>Image Semantics:</h2> 
+			<h4>Visual Content or Visual Decoration</h4>
+			<p style='white-space: nowrap;'>
+				<code style="background: #3f3f3f; color: #cc9393; padding: 4px; border-radius: 2px;">&lt;img <span style="color: #e3ceab">src="..."</span>&gt;</code> <strong>vs</strong> <code style="background: #3f3f3f; color: #e3ceab; padding: 4px; border-radius: 2px;">background-image: <span style="color: #8cd0d3">url(...)</span></code>
+			</p>
+			<ul>
+				<li>Use the <code>&lt;img&gt;</code> tag if the image represents actual page content</li>
+				<li>The <code>&lt;img&gt;</code> tag is accessible & can be indexed for SEO</li>
+				<li>The <code>background-image</code> property is fine for <a href="https://www.toptal.com/designers/subtlepatterns/">non-content (i.e. patterns, gradients)</a>, but is not accessible</li>
+				<li>The <code>background-image</code> offers sprite animation use cases (lacks "alt" attribute, so provide a text label)</li>
+			</ul>
+		</article>
+		<article class='slide'>
+			<h2>Semantics and Accessibility</h2>
+			<ul>
+				<li>To make the web easier to use and access, and available to anyone with any device</li>
+				<li>Encompasses all disabilities, including visual, auditory, physical, speech, cognitive and neurological disabilities</li>
+				<li>Benefits people <em>without</em> disabilities as well</li>
+				<li>Accessible websites benefit from search engine optimisation (SEO)</li>
+			</ul>
+		</article>
+		<article class='slide'>
+			<h2>Basic accessibility checklist (1/2)</h2>
+			<ul>
+				<li><strong>Page title</strong>: To adequately and briefly describe the content of the page</li>
+				<li><strong>Image text alternatives</strong>: To make visual information accessible</li>
+				<li><strong>Headings</strong>: To provide meaningful hierarchy for facilitation of navigation</li>
+				<li><strong>ARIA Landmark Tags</strong>: uses the landmark semantic tags</li>
+				<li><strong>Contrast ratio</strong>: To have sufficient luminance contrast ratio, for people with different
+					requirements - <a href="https://webaim.org/resources/contrastchecker/">Web Tool</a></li>
+				<li><strong>Resize text</strong>: To ensure visibility and usability as text size increases</li>
+			</ul>
+		</article>
+		<article class='slide'>
+			<h2>Basic accessibility checklist (2/2)</h2>
+			<ul>
+				<li><strong>Keyboard access & visual focus</strong>: To provide full functionality through a keyboard, and
+					visible focus with logical order</li>
+				<li><strong>Forms, labels & errors</strong>: To have proper labels, keyboard access, clear instructions, and
+					effective error handling</li>
+				<li><strong>Multimedia alternatives</strong>: To have alternative formats for audio and visual impaired (ARIA elements, transcripts)</li>
+			</ul>
+			<p>Accessibility goes hand in hand with semantic HTML5</p>
+		</article>
+		<article class='slide'>
+				<h2>ARIA - Accessible Rich Internet Applications</h2>
+				<p> <a href="https://wave.webaim.org/report#/https://www.freedomscientific.com/products/software/jaws/">WAVE Tool</a> </p>
+				<p>Visit <a href="https://www.w3.org/WAI/">Web Accessibility Initiative (WAI)</a> to understand more about this
+								important aspect of the web</p>
+				<p>Meeting the Web Content Accessibility Guidelines (WCAG) Guidelines: <a href="https://www.w3.org/WAI/WCAG21/quickref/">Quick Reference</a> </p>
+				<p>Screen Reader tools like JAWS and ChromeVox: <a href="https://www.tpgi.com/accessibility-testing-as-a-screen-reader-user/">Read more about testing accessibility</a></p>
+		</article>
+		<article class='slide'>
+			<h2>Last Resort: ARIA Labels</h2>
+			<p>ARIA Spec: Accessible Rich Internet Applications Specification</p>
+			<p>Offers ways to make non-semantic HTML become semantic</p>
+			<p>Use by adding "aria-role" attributes</p>
+			<p>This article shows us the possible ARIA roles:</p>
+			<p><a href="https://developers.google.com/web/fundamentals/accessibility/semantics-aria">Introduction to ARIA</a></p>
+		</article>
+		<article class='slide'>
+			<h2>Web Accessibility as a Specialization</h2>
+			<ul>
+				<li>The ADA legislation is making WCAG a requirement for many sites - <small><a href="https://www.atilus.com/top-10-ada-lawsuits/">Lawsuits</a></small></li>
+				<li>Growth in hiring for this especially in government or gov-contracting companies</li>
+				<li>Great way to use HTML/CSS skills, if you're still learning JS + beyond</li>
+				<li><a href="https://frontendmasters.com/books/front-end-handbook/2019/#3.2">Job titles</a></li>
+				<li><a href="https://www.linkedin.com/jobs/search/?keywords=web%20accessibility">LinkedIn Accessibility Job Search</a></li>
+			</ul>
+		</article>
+	</section>
+<!-- INSERT -->
 
-	<article class="demo slide" id="livedemo">
-		<textarea class="language-html"><p>Live demo!</p></textarea>
-		<textarea class="language-css">
-			p {
-				font-size: 250%;
-				color: #f06;
-			}
-		</textarea>
+	
+		
+	
+	<!-- TODO -->
+	<article>
+		<aside class="notes">
+			Programming languages similar to human languages<br>
+			Some languages need to be compiled, others need an interpreter
+		</aside>
+</article>
+
+
+
+
+
+				<!---Part 3 -->
+<article>
+	
+
+</article>
+
+<!-- Part 4 -->
+<article>
+	<section data-background="#000" class="ga-reverse">
+		<header class="ga-header">
+			<h3>MCC Frontend Academy</h3>
+		</header>
+		</header>
+		<h1>HTML: Element Attributes</h1>
+		<p><small>Part 4</small></p>
 	</article>
-
-	<article class="isolated demo slide" id="isolated-livedemo">
-		<textarea class="language-html"><p>Live demo in iframe!</p></textarea>
-		<textarea class="language-css">
-			p {
-				font-size: 250%;
-				color: #f06;
-			}
-		</textarea>
-	</article>
-
-	<article class="slide">
-		<h1>Timer</h1>
+	<article>
+		<h4>HTML Attributes</h4>
 		<ul>
-			<li>Define the talk duration with the attribute <code>data-duration</code> on the <code>body</code>.</li>
-			<li>Timer in the form of a progress bar on the top</li>
-			<li>Style the timer and the end state with the selectors <code>#timer</code> and <code>#timer.end</code> respectively.</li>
+			<li>"Config Data" that modifies the element's behavior</li>
+			<li>They are place inside the opening tag</li>
+			<li>Multiple attributes are separated by a space</li>
+			<li>Have a name followed by an equal sign then a value.</li>
+			<li>The value should be wrapped in quotation marks (single or double, just be consistent)</li>
+		</ul>
+		<img src="img/attribute_diagram.png" alt="">
+	</article>
+	<article>
+		<h4>Key/Value vs. Boolean Attributes</h4>
+		<ul>
+			<li>Most attributes are a "pair", they have a name (or key) and a value</li>
+			<li>Some attributes are <b>Boolean</b> attributes and don't need an explicit value</li>
+			<li>They will simply take on a value of <code>true</code> if they are present</li>
+		</ul>
+		<pre><code>&lt;input id="first-name" class="signup" required /&gt;
+&lt;details open /&gt;</code></pre>
+	</article>
+	<article>
+		<h4>Global Attributes vs. Specific Attributes</h4>
+		<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global Attributes</a></p>
+		<p>Specific Attributes have to be looked up on a case by case basis</p>
+		<ul>
+			<li><a href="https://htmlreference.io/element/base/">HTMLReference.io for <code>&lt;base&gt;</code></a></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">MDN for <code>&lt;input&gt;</code></a></li>
 		</ul>
 	</article>
+	<article>
+		<h3>Reading Docs is important!! So let's practice</h3>
+		<div style="display: flex; justify-content: space-around;">
+			<ul>
+				<li><code>&lt;a&gt;</code></li>
+				<li><code>&lt;img&gt;</code></li>
+				<li><code>&lt;audio&gt;</code></li>
+				<li><code>&lt;video&gt;</code></li>
+				<li><code>&lt;area&gt; & &lt;map&gt;</code></li>
+				<li><code>&lt;button&gt;</code></li>
+				<li><code>&lt;link&gt;</code></li>
+			</ul>
+			<ul>
+				<li><code>&lt;script&gt;</code></li>
+				<li><code>&lt;meter&gt;</code></li>
+				<li><code>&lt;progress&gt;</code></li>
+				<li><code>&lt;bdo&gt;</code></li>
+				<li><code>&lt;blockquote&gt;</code></li>
+				<li><code>&lt;data&gt;</code></li>
+				<li><code>&lt;time&gt;</code></li>
+			</ul>
+		</div>
+	</article>
+</article>
 
-	<article class="slide" data-resolution="1024 768">
-		<h1>Resolution</h1>
+
+<!-- Part 5 -->
+				<article>
+	<section data-background="#000" class="ga-reverse">
+		<header class="ga-header">
+			<h3>MCC Frontend Academy</h3>
+		</header>
+		<h1>HTML: Forms and User Input</h1>
+		<p><small>Part 5</small></p>
+	</article>
+						<article>
+								<h2>Semantic Form Elements</h2>
+								<p>(But for Forms it's more than just Semantic)</p>
+								<ul class="ga-multi">
+			<li><code>&lt;form&gt;</code></li>
+			<li><code>&lt;fieldset&gt;</code></li>
+			<li><code>&lt;legend&gt;</code></li>
+			<li><code>&lt;label&gt;</code></li>
+			<li><code>&lt;input&gt;</code></li>
+			<li><code>&lt;textarea&gt;</code></li>
+			<li><code>&lt;button&gt;</code></li>
+			<li><code>&lt;output&gt;</code></li>
+			<li><code>&lt;option&gt;</code></li>
+			<li><code>&lt;optgroup&gt;</code></li>
+			<li><code>&lt;select&gt;</code></li>
+			<li><code>&lt;meter&gt;</code></li>
+			<li><code>&lt;keygen&gt;</code></li>
+			<li><code>&lt;datalist&gt;</code></li>
+								</ul>
+
+						</article>
+						<article>
+								<h2>The Input Element</h2>
+								<p>The go-to form element</p>
+								<p> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">Input Element on MDN</a> </p>
+								<p> <a href="https://www.wufoo.com/html5/">Status of HTML5 Form Attributes</a> </p>
+						</article>
+						<article>
+								<h2>The Form Element</h2>
+								<pre> <code>&lt;form action="/signup.php" method="get" class="form-example"&gt;&lt;/form&gt;</code> </pre>
+								<p>Default Behavior is to redirect to route of the action attribute</p>
+								<p>It will use the Defined HTTP Method</p>
+								<p> Can overide default behavior for AJAX/Single Page Apps</p>
+								<p> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">Form Element on MDN</a> </p>
+								<p> <a href="https://htmlreference.io/forms/">Form Element on HTMLreference.io</a> </p>
+						</article>
+						<article>
+							<h3>Accessible Forms</h3>
+							<p>Forms are perhaps the hardest (and the most important) to add accessibility</p>
+							<p>Use Semantic Elements with proper labels and ids to get correct keyboard access</p>
+							<p>Using ARIA roles and labels when necessary as a fallback</p>
+							<ul>
+								<li><a href="https://webaim.org/techniques/forms/">WebAim Accessible Forms In Depth</a></li>
+								<li><a href="https://htmldog.com/guides/html/advanced/forms/">Accessible Forms Quick Ref </a></li>
+							</ul>
+						</article>
+						<article>
+							<h3>Let's Make our Own Contact Form</h3>
+							<p>Having a contact me or newsletter signup form is a nice touch for our portfolio <a href="https://wjv.io">site</a></p>
+							<p>Try using the resources we just went over to make your own</p>
+							<br />
+							<p>If you are feeling very brave, you can even hook it into an email API service so it actually sends messages!</p>
+							<p>Check out the <a href="https://mailthis.to">Mailthis.to docs</a> to investigate how!</p>
+						</article>
+				</article>
+			
+<section style="text-align: left;" data-background="#000" class="ga-reverse">
+	<header class="ga-header">
+		<h3>MCC Frontend Academy</h3>
+	</header>
+	<h2 style="color: white;">HTML Boilerplate</h2>
 		<ul>
-			<li>Design for a specific resolution, and have slides scale up and down based on the viewport.</li>
-			<li>Define with the attribute <code>data-resolution</code> on the <code>&lt;body></code> for all slides, a grouping element, or individual slides (like this one!).</li>
-			<li>Try resizing the viewport, note how the slide size adapts!</li>
+			<li><a href="https://gist.github.com/salomvary/1351188">Minimum</a></li>
+			<li><a href="https://www.taniarascia.com/basic-html5-file/#basic-indexhtml">Basic</a></li>
+			<li><a href="https://www.matuzo.at/blog/html-boilerplate/">Medium</a></li>
+			<li><a href="https://github.com/h5bp/html5-boilerplate/blob/master/src/index.html">Maximum</a></li>
+			<li><a href="https://csswizardry.com/2011/01/the-real-html5-boilerplate/">"The Real HTML Boilerplate"</a></li>
+			<li><a href="https://htmlhead.dev/">The Head Element In Depth</a></li>
 		</ul>
-	</article>
-
-	<article class="slide">
-		<h1>Presenter View</h1>
-
+</article>
+<section style="text-align: left;" data-background="#000" class="ga-reverse">
+	<header class="ga-header">
+		<h3>MCC Frontend Academy</h3>
+	</header>
+	<h2 style="color: white;">Other things to explore...</h2>
 		<ul>
-			<li>Use <code>&lt;p class="presenter-notes"></code> for presenter notes. You need at least one of these to have the plugin loaded.</li>
-			<li>Presenter view with <kbd>Ctrl</kbd><kbd>P</kbd> (or <kbd>Shift</kbd><kbd>P</kbd>)</li>
-			<li>Also timer, upcoming slide</li>
-		</ul>
-	</article>
+			<li><a href="https://www.w3.org/standards/">W3C Standards</a></li>
+			<li><a href="https://developers.google.com/search/docs/beginner/seo-starter-guide">SEO Guidelines</a></li>
+			<li><a href="https://developers.google.com/search/docs/advanced/robots/intro">Intro to Robots.txt</a></li>
+			<li><a href="https://frontendchecklist.io/">Frontend Checklist</a></li>
+			<li><a href="https://caniuse.com/">Can I Use</a></li>
+			<li><a href="https://a11y.coffee/intro/">A11y.coffee</a></li>
+			<li><a href="https://howdns.works/">How DNS works</a></li>
+			<li><a href="https://github.com/alex/what-happens-when">What happens when...</a></li>
 
-	<article class="slide" id="slidestyle">
-		<style data-slide>
-			.slide {
-				background: rebeccapurple;
-			}
-		</style>
-		<h1>Slide-specific CSS</h1>
-		<p>You can use the <code>data-slide</code> attribute on <code>&lt;style></code> elements in slides, to only style the current slide or inside sections that include multiple slides to style all of them and nothing else.</p>
-		<p>For example, run <code class="language-js">$('#slidestyle style').sheet.cssRules[0].selectorText</code> in the console to see how the original selector gets changed.</p>
-	</article>
-</section>
+			
+		</ul>
+</article>
 
 <footer class="slide" title="The End">
 	<h1>Thank you!</h1>
-	<p>Get it or contribute at <a href="https://github.com/LeaVerou/inspire.js">github.com/LeaVerou/inspire.js</a></p>
 </footer>
 
-<script src="../inspire/inspire.js"></script>
 
+<script src="../inspire/inspire.js"></script>
 </body>
 </html>
