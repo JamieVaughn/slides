@@ -97,7 +97,7 @@ console.log(myVar)
 	<article class="slide">
     <h2>Node Server</h2>
     <p><a href="https://nodejs.org/en/docs/">Node API Docs</a></p>
-    <pre><code>const http = require('http');
+    <pre class='language-js'><code>const http = require('http');
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -133,14 +133,36 @@ server.listen(port, hostname, () => {
     <p><a href="https://docs.npmjs.com/">NPM Docs</a></p>
   </article>
 
+  <article class='slide'>
+    <h2>The package.json file</h2>
+    <ul>
+      <li>Keeps track of you project dependencies: Prod vs Dev</li>
+      <li>Run `npm init` and answer the form questions</li>
+      <li>Defining npm scripts in the package.json file</li>
+    </ul>
+    </article>
+
   <article class="slide">
     <h2>Let's Create a Node Server with Nodemon</h2>
+    <code>npm install --save-dev nodemon</code>
+    <p><a href="https://nodemon.io/">nodemon.io</a></p>
   </article>
 
   <article class="slide">
     <h2>Using Knockout</h2>
     <p><a href="https://www.npmjs.com/package/knockout">Knockout MVVM</a></p>
     <p><code>npm install knockout</code></p>
+    <p><a href="https://codepen.io/heliocrat/pen/GRmzzKo?editors=1010">Knockout Clicker</a></p>
+  </article>
+
+  <article class="slide">
+    <h2>Observables</h2>
+    <p>✨ How to run code automatically when something changes ✨</p>
+    <p><a href="https://knockoutjs.com/documentation/introduction.html">Knockout Docs</a></p>
+  </article>
+
+  <article class="slide">
+    <h2>Code-Along: Simple Dragon clicker with Knockout!</h2>
   </article>
 </section>
 
