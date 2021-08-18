@@ -142,11 +142,11 @@ server.listen(port, hostname, () => {
     </ul>
     </article>
 
-  <article class="slide">
+  <!-- <article class="slide">
     <h2>Let's Create a Node Server with Nodemon</h2>
     <code>npm install --save-dev nodemon</code>
     <p><a href="https://nodemon.io/">nodemon.io</a></p>
-  </article>
+  </article> -->
 
   <article class="slide">
     <h2>Using Knockout</h2>
@@ -167,6 +167,79 @@ server.listen(port, hostname, () => {
 </section>
 
 <section id='part-3'>
+  <header class='slide'>
+    <h3>App Tooling</h3>
+    <h1>Git Commands</h1>
+  </header>
+  <article class="slide">
+    <h2>Git Version Control</h2>
+    <p>These commands will accomplish the same things as the Github GUI</p>
+    <p>But they are more efficient</p>
+    <p>And we have the opportunity for more powerful, customized commands in the terminal</p>
+  </article>
+  <article class="slide">
+    <h2>Local, Remote & Origin</h2>
+    <div class='flex'>
+      <a href="http://jlord.us/git-it/challenges/remote_control.html"><img class='backdrop' src="http://jlord.us/git-it/assets/imgs/remotes.png" alt=""></a>
+      <a href="http://jlord.us/git-it/challenges/forks_and_clones.html"><img class='backdrop' src="http://jlord.us/git-it/assets/imgs/clone.png" alt=""></a>
+    </div>
+  </article>
+  <article class="slide">
+    <h2>Staging, Committing, Pushing & Pulling</h2>
+    <img height='350' src="img/git_workflow.png" alt="">
+  </article>
+  <article class="slide">
+    <h2>Branching</h2>
+    <a href="http://jlord.us/git-it/challenges/branches_arent_just_for_birds.html">
+      <img class='backdrop' height='350' src="http://jlord.us/git-it/assets/imgs/branches.png" alt="">
+    </a>
+  </article>
+  <article class="slide">
+    <h2>Basic Git commands</h2>
+    <ul class='col-2 nolist'>
+      <li><code>git clone</code> - copies a remote repo</li>
+      <li><code>git pull</code> - pulls down latest changes</li>
+      <li><code>git add .</code> - Stages all changes</li>
+      <li><code>git revert</code> - unstages staged changes</li>
+      <li><code>git commit -m "Commit message"</code> - Commits changes locally</li>
+      <li><code>git push</code> - Pushes local commits to remote</li>
+      <li><code>git branch</code> - displays branches</li>
+      <ul>
+        <li>flags: <code>-d &lt;branchname></code> to delete a branch</li>
+      </ul>
+      <li><code>git checkout &lt;branchname></code> - Checks out branch</li>
+      <li><code>git checkout -b &lt;branchname></code> - Creates & checks out new branch</li>
+      <li><code>git fetch</code> - Fetches remote to view dif</li>
+      <li><code>git merge &lt;branchname></code> - Merges in branch to current</li>
+      <li><code>git diff</code> - Shows changes in red/green</li>
+      <li><code>git log</code> - Shows the git history</li>
+      <ul>
+        <li>flags: <br><code>--graph --decorate --oneline</code></li>
+      </ul>
+      <li><code>git reset --hard HEAD</code> - Resets your local branch to the HEAD of remote</li>
+    </ul>
+  </article>
+  <article class="slide">
+    <h2>Guided Git Tutorial</h2>
+    <p><a href="https://gitimmersion.com/index.html">Git Immersion</a></p>
+  </article>
+  <article class="slide">
+    <h2>Interactive Git</h2>
+    <p><a href="https://learngitbranching.js.org/">Learn Git</a></p>
+  </article>
+  <article class="slide">
+    <h2>Resources</h2>
+    <ul>
+      <li><a href="https://docs.github.com/en/get-started/quickstart/set-up-git">Github Docs</a></li>
+      <li><a href="https://dangitgit.com/">DangitGit.com</a></li>
+      <li><a href="http://jlord.us/git-it/index.html">Git-It</a></li>
+      <li><a href="https://rogerdudler.github.io/git-guide/">Git Guide</a></li>
+      <li><a href="https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/">Freecodecamp</a></li>
+    </ul>
+  </article>
+</section>
+
+<section id='part-4'>
 	<header class="slide">
     <h3>App Tooling</h3>
     <h1>Syntactically Awesome Style Sheets</h1>
