@@ -275,7 +275,7 @@ server.listen(port, hostname, () => {
     <ul>
       <li>There are various flavors</li>
       <li>They all transpile a special syntax down to CSS</li>
-      <li>[Intro to Preprocessors](https://htmlmag.com/article/an-introduction-to-css-preprocessors-sass-less-stylus)</li>
+      <li><a href="https://htmlmag.com/article/an-introduction-to-css-preprocessors-sass-less-stylus">Intro to Preprocessors</a></li>
       <li><a href="https://csspre.com/compare/">Preprocessor Comparison</a></li>
       <li><a href="https://devhints.io/sass">Cheatsheet</a></li>
     </ul>
@@ -296,7 +296,7 @@ server.listen(port, hostname, () => {
   <article class='slide'>
     <h2>SCSS variables</h2>
     <p>Variable <code>map</code> and <code>map.get(key)</code></p>
-    <pre><code class="med-code">$primary-color: #333;
+    <pre class='language-scss'><code class="med-code">$primary-color: #333;
 $colors: ("primary": $primary-color, "secondary": #454545)
 body {
 color: $primary-color;
@@ -312,7 +312,7 @@ background: map-get($colors, "secondary")
       <li>with/without `&` operator</li>
       <li>nest css hyphenated rules:</li>
     </ul>
-    <pre><code class="med-code">header {
+    <pre class='language-scss'><code class="med-code">header {
 .title {
 &.bold{
     font-weight: bold
@@ -332,7 +332,7 @@ family: 'Signika', sans-serif
       <li>@mixin and @include (like variables for larger chunks of css)</li>
       <li>mixins can take args:</li>
     </ul>
-    <pre><code class="med-code">@mixin flagProps($val){
+    <pre class='language-scss'><code class="med-code">@mixin flagProps($val){
 opacity: ($val)
 letter-spacing: 2*$val
 }
@@ -342,16 +342,17 @@ letter-spacing: 2*$val
   <article class='slide'>
     <h2>More Mixin Use cases</h2>
     <p>You can spread args too</p>
-    <pre><code class="med-code">@mixin flagProps($vals...){
+    <pre class='language-scss'><code class="med-code">@mixin flagProps($vals...){
 border: $vals;
 }
 @include flagProps(1px, solid, crimson){
-border: $props;</code></pre>
+border: $props;
+}</code></pre>
   </article>
   <article class='slide'>
     <h2>Extends</h2>
     <p>Great for a success or error message use case</p>
-    <pre><code class="med-code">.msg {
+    <pre class='language-scss'><code class="med-code">.msg {
 font-size: 2rem;
 line-height: 2rem;
 }
@@ -361,11 +362,8 @@ color: crimson
 }</code></pre>
   </article>
   <article class='slide'>
-    <h2></h2>
-  </article>
-  <article class='slide'>
     <h2>Other Utilities</h2>
-    <pre><code class="med-code">@if @else
+    <pre class='language-scss'><code class="med-code">@if @else
 @for
 @each
 @while
@@ -373,7 +371,7 @@ color: crimson
   </article>
   <article class='slide'>
     <h2>If Else</h2>
-    <pre><code class="med-code">@if $background == 'black' {
+    <pre class='language-scss'><code class="med-code">@if $background == 'black' {
 color: white;
 }
 @else {
@@ -382,7 +380,7 @@ color: black;
   </article>
   <article class='slide'>
     <h2>For Loop</h2>
-    <pre><code class="med-code">@for $i from 1 through 8 {
+    <pre class='language-scss'><code class="med-code">@for $i from 1 through 8 {
 [data-id-#{$i}] {
 margin-left: 2px * $i;
 }
@@ -390,7 +388,7 @@ margin-left: 2px * $i;
   </article>
   <article class='slide'>
     <h2>Example <code>@function</code></h2>
-    <pre><code class="med-code">@use "sass:list"
+    <pre class='language-scss'><code class="med-code">@use "sass:list"
 @function remove-where($list, $condition) {
 $new-list: ();
 $separator: list.separator($list)
@@ -423,12 +421,12 @@ $separator: list.separator($list)
   <article class='slide'>
     <h2>Using node-sass</h2>
     <p>open new terminal cmd+T/ctrl+T to leave the watcher in the background</p>
-    <pre><code class="med-code">npm install node-sass -g //install node sass globally
-node-sass //it runs!!
-node-sass scss/style.scss -o css //output dir: /css input file: /css/style.scss
-node-sass scss -o css //output dir: /css input: /scss (all .scss files there)
+    <pre class='language-bash'><code class="med-code">npm install node-sass -g # install node sass globally
+node-sass # it runs!!
+node-sass scss/style.scss -o css # output dir: /css input file: /css/style.scss
+node-sass scss -o css # output dir: /css input: /scss (all .scss files there)
 node-sass scss -o css --output-style expanded ( or compressed)
-node-sass scss -o css -w //watch flag so we can continue to work</code></pre>
+node-sass scss -o css -w # watch flag so we can continue to work</code></pre>
   </article>
   <article class="slide">
     <h2>Sass</h2>
@@ -442,7 +440,7 @@ node-sass scss -o css -w //watch flag so we can continue to work</code></pre>
       <li>Run `npm init` and answer the form questions</li>
       <li>Then modify your "scripts" rule to be:</li>
     </ul>
-    <pre><code class="med-code">"scripts": {
+    <pre class='language-json'><code class="med-code">"scripts": {
 "test": "echo \"Error: no test specified\" && exit 1",
 "sass": "node-sass scss -o css --output-style compressed && node-sass",
 "watch:sass": "node-sass scss -o css --output-style compressed -w"
@@ -452,8 +450,9 @@ node-sass scss -o css -w //watch flag so we can continue to work</code></pre>
     <h2>Trade-offs between using SCSS and native CSS</h2>
     <div class="flex">
       <ul>Pros
-        <li>Syntax Convenience</li>
-        <li>Code Organization</li>
+        <li>Syntax Help: Nesting (for now)</li>
+        <li>Extra utils: functions, loops, mixins</li>
+        <li>Code Organization?</li>
       </ul>
       <ul>Cons
         <li>Slight learning curve for new developers</li>
