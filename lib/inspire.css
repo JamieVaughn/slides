@@ -53,6 +53,7 @@ body {
 }
 .flex > * {
 	flex: 0 1 100%;
+	margin-top: 0;
 }
 .flex > p {
 	text-align: center;
@@ -62,6 +63,9 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+}
+p {
+	margin: 0.5rem 0;
 }
 
 /* So that people can override and do things like
