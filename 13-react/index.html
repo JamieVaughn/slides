@@ -15,7 +15,7 @@
 
   <!-- Custom css -->
 </head>
-<body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
+<body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="55">
 
 <header id="intro" class="slide">
 	<h1>
@@ -189,13 +189,10 @@
 		<h2>Flux Architecture</h2>
 		<img src="img/flux2.png" alt="">
 	</article>
-	
-	
-
-	<!-- <article class="slide">
-		<h2>Synthetic Events</h2>
-		<p>vs. DOM Events</p>
-	</article> -->
+	<article class="slide">
+		<h2>Example Flux Diagram</h2>
+		<img src="img/example_forum_tree.png" height='600px' alt="">
+	</article>
 
 	<article class="slide">
 		<h2>Back to the Future</h2>
@@ -220,36 +217,211 @@
 	</article>
 	<article class="slide">
 		<h2>Virtual DOM</h2>
-		<strong>React Builds a new Virtual DOM Subtree</strong>
+		<p>
+			<strong>React Builds a new Virtual DOM Subtree</strong> 
+			using the 
+			<a href="https://reactjs.org/docs/reconciliation.html">The Reconciliation Algorithm</a>
+		</p>
 		<ul>
 			<li>Diffs it with the old one</li>
 			<li>Computes the minimal set of DOM mutations and puts them in a queue</li>
 			<li>Scheduler batch executes all computed updates</li>
 		</ul>
+		<p></p>
+	</article>
+
+	<article class="slide">
+		<h2>V-DOM & Direct DOM Manipulation</h2>
+		<p>
+			<blockquote>React is unaware of changes made to the DOM outside of React. It determines updates based on its own internal representation, and if the same DOM nodes are manipulated by another library, React gets confused and has no way to recover.</blockquote>
+		</p>
+		<cite><a href="https://reactjs.org/docs/integrating-with-other-libraries.html">React Docs</a></cite>
+		<p>In general, it's not recommended to mix other DOM manipulation libraries with a Virtual DOM & its Reconciliation Process. (although it is possible with extra work).</p>
+	</article>
+
+	<article class="slide">
+		<h2>Let's make a Simple React Site</h2>
+		<p>Webpages with React!</a></p>
+		<p>Reproduce this website layout with <strong>presentational components!</strong></p>
+		<p><a href="https://codepen.io/heliocrat/pen/RwpGLZb">Codepen</a></p>
+		<p><a href="https://reactjs.org/docs/rendering-elements.html">Docs on Rendering Simple Elements</a></p>
 	</article>
 	<article class="slide">
-		<h2>Example Flux Diagram</h2>
-		<img src="img/example_forum_tree.png" height='600px' alt="">
+		<h2>Adding Props to our Component</h2>
+		<p>Props let us customize our Functional/Presentationl Components</p>
+		<p><a href="https://reactjs.org/docs/components-and-props.html">Components & Props</a></p>
+		<pre class="language-js"><code>
+function PresentationalComponent(props) {
+  return (
+    &lt;div className=`${props.css}` data-id={props.id}>
+      {props.flag ? props.content : 'Default Content'}
+    &lt;/div>
+  )
+}
+		</code></pre>
 	</article>
+
 	<article class="slide">
-		<h2>Let's make Something</h2>
-		<p>A Clicker!</p>
-		<p>A Random Number App!</p>
+		<h2>Adding Events to our Component</h2>
+		<h3><a href="https://reactjs.org/docs/events.html#gatsby-focus-wrapper">Synthetic Events</a></h3>
+		<p>Using events & event handlers in React is slightly different that conventional DOM Events</p>
+		<pre class="language-js"><code>
+function EventComponent(props) {
+	handleClick = (e) => {
+		console.log(e)
+	}
+	return (
+		&lt;div onClick={handleClick}>
+			Click Me!
+		&lt;/div>
+	)
+}	</code></pre>
 	</article>
+
 </section>
 
 <section>
 	<header class="slide">
+		<h3>React</h3>
+		<h1>Hooks API</h1>
 	</header>
 
-	<article class="slide" id="data-insert">
+	<article class="slide">
+		<h2>React Hooks</h2>
+		<p><a href="https://reactjs.org/docs/hooks-reference.html">Available Hooks</a></p>
+		<strong>What can they do for us?</strong>
+		<ul>
+			<li>Manage State</li>
+			<li>Handle Synchronization/LifeCycles</li>
+			<li>Store References</li>
+			<li>Create Reducers to help with Action Dispatching</li>
+			<li>Optimize Component Execution</li>
+			<li>And More!</li>
+		</ul>
+	</article>
+	<article class="slide">
+		<h2>Hooks APIs</h2>
+		<p>Every Hook has its own unique API, so we need to go through each one by one.</p>
+		<p>Starting with <code>useState</code></p>
 	</article>
 
 	<article class="slide">
+		<h2>Managing Internal State</h2>
+		<p>With Hooks!</p>
+		<p><a href="https://reactjs.org/docs/hooks-state.html"><code>useState(state)</code></a></p>
 	</article>
+
+	<article class="slide">
+		<h2>Rules of Hooks</h2>
+		<p><a href="https://reactjs.org/docs/hooks-rules.html">Reactjs.org</a></p>
+		<p><a href="https://reactjs.org/docs/hooks-faq.html">Hooks FAQ</a></p>
+	</article>
+
+	<article class="slide">
+		<h2>Let's make Something with State</h2>
+		<p><a href="https://github.com/JamieVaughn/react-clicker">A Clicker!</a></p>
+		<p>A Random Number App!</p>
+	</article>
+
+	<article class="slide">
+		<h2>Lifting State Up</h2>
+		<p>We can't share state between siblings or up to parents with <code>useState</code></p>
+		<p>So we have to "Lift State Up" - Declare the state higher in the Component Tree so it can be passed down the tree</p>
+		<img src="img/component_tree.png" alt="Component Tree">
+	</article>
+
+	<article class="slide">
+		<h2>Prop Drilling</h2>
+		<p>We can pass state down the Component Tree with a concept called Prop Drilling</p>
+		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js"><code>&lt;App data={{img, user}}/></code></pre><span>↴</span></div>
+		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js" style='margin-left: 20%'><code>&lt;Main data={{img, user}}/></code></pre><span>↴</span></div>
+		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js" style='margin-left: 35%'><code>&lt;User data={{img, user}}/></code></pre><span>↴</span></div>
+		<div class='flex' style='margin: 0;'><pre class="language-js" style='margin-left: 60%'><code>&lt;Avatar data={{img}}/></code></pre><span></span></div>
+	</article>
+
+	<article class="slide">
+		<h2>Thinking in React <sup><a href="https://reactjs.org/docs/thinking-in-react.html">Docs</a></sup></h2>
+		<p>Using Component Architecture to Build Apps</p>
+		<ul>
+			<li>Build a component Hierarchy from a Mock</li>
+			<li>Layout the components in React</li>
+			<li>Think about where the State Should live</li>
+		</ul>
+		<div class="flex">
+			<img src="img/Search_component.png" alt="">
+			<ul>
+				<li><code>&lt;FilterableProductTable /></code></li>
+				<ul>
+					<li><code>&lt;SearchBar /></code></li>
+					<li><code>&lt;ProductTable /></code></li>
+					<ul>
+						<li><code>&lt;ProductCategoryRow /></code></li>
+						<li><code>&lt;ProductRow /></code></li>
+					</ul>
+				</ul>
+			</ul>
+		</div>
+	</article>
+
+	<article class="slide">
+		<h2>Custom Hooks!</h2>
+		<p>We can actually go beyond the Basic React Hooks, and make our own hooks utilities!</p>
+		<p>This is where React's feature of easy code reuse really shines.</p>
+	</article>
+
+	<header class='slide'>
+		<h3>React</h3>
+		<h1>Other APIs</h1>
+	</header>
+
+	<article class="slide">
+		<h2>React Fragments</h2>
+		<p><a href="https://reactjs.org/docs/fragments.html">fragments</a></p>
+		<pre class="language-jsx"><code>return (
+  &lt;>
+    &lt;div>hello&lt;/div>
+    &lt;div>world&lt;/div>
+  &lt;>
+)</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Prop Types</h2>
+		<p><a href="https://reactjs.org/docs/typechecking-with-proptypes.html#gatsby-focus-wrapper">Type Checking with Prop Types</a></p>
+	</article>
+
+	<article class="slide">
+		<h2>React Profiler</h2>
+		<p><a href="https://reactjs.org/docs/profiler.html">Profiler API</a></p>
+	</article>
+
+	<article class="slide">
+		<h2>React Developer Tools</h2>
+		<p><a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">Browser Extension</a></p>
+	</article>
+
+	<article class="slide">
+		<h2>Render Props</h2>
+		<p>A render prop is a prop that renders a View... in other words: it's a component that is passed as a prop.</p>
+		<p><a href="https://reactjs.org/docs/render-props.html">Using Render Props</a></p>
+	</article>
+
+	<article class="slide">
+		<h2>Strict Mode</h2>
+		<p>Strict Mode is a wrapping component that is used in development to help catch issues/bugs.</p>
+		<p><a href="https://reactjs.org/docs/strict-mode.html">Using Strict Mode</a></p>
+	</article>
+
+	<article>
+		<h2>Take Home Challenge!</h2>
+		<p>Try out the "Tutorial Fade" technique on this:</p>
+		<p><a href="https://reactjs.org/tutorial/tutorial.html">React Tic Tac Toe Tutorial</a></p>
+	</article>
+
 </section>
 
 <footer class="slide" title="The End">
+	<h2>Thanks!</h2>
 </footer>
 
 <script src="../lib/inspire.js"></script>

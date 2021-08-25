@@ -125,6 +125,9 @@ img {
 	max-height: 100%;
 	object-fit: contain;
 }
+article.slide > img {
+	max-height: 75%;
+}
 
 ::selection {
 	background: var(--dark1);
