@@ -42,6 +42,9 @@ body {
 	padding: 0.5rem 0;
 	margin: 1rem 0;
 }
+.slide .flex.tight {
+	margin: 0;
+}
 .align {
 	align-items: center;
 }

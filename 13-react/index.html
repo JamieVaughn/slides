@@ -181,7 +181,7 @@
 		<img src="img/generic_system.png" height='600px' alt="">
 	</article>
 
-	<article class="slide" style='position: relative'>
+	<article class="slide">
 		<h2>Flux Architecture</h2>
 		<img src="img/flux1.png" alt="">
 	</article>
@@ -319,8 +319,111 @@ function EventComponent(props) {
 
 	<article class="slide">
 		<h2>Let's make Something with State</h2>
-		<p><a href="https://github.com/JamieVaughn/react-clicker">A Clicker!</a></p>
-		<p>A Random Number App!</p>
+		<p>A Dice Rolling App!</p>
+	</article>
+
+	<article class="slide">
+		<h2>React Fragments</h2>
+		<p><a href="https://reactjs.org/docs/fragments.html">fragments</a></p>
+		<pre class="language-jsx"><code>const MyComponent = () => {
+  return (
+    &lt;> // React JSX Fragment
+      &lt;div>hello&lt;/div>
+      &lt;div>world&lt;/div>
+    &lt;>
+  )
+}</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Prop Types</h2>
+		<p><a href="https://reactjs.org/docs/typechecking-with-proptypes.html#gatsby-focus-wrapper">Type Checking with Prop Types</a></p>
+		<p><a href="https://www.npmjs.com/package/prop-types">npm docs</a></p>
+		<p><code>&lt;script src="https://unpkg.com/prop-types@15.6/prop-types.js">&lt;/script></code></p>
+		<pre class="language-js"><code>import PropTypes from 'prop-types';
+
+MyComponent.propTypes = { 
+  handleClick: PropTypes.func.isRequired 
+}</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Hooks Way vs Class Way</h2>
+		<p>The legacy way to create React Components uses <code>React.Component</code></p>
+		<div class="flex tight" style='align-items: center;'>
+			<pre class="language-js"><code>const MyComponent = ({message = 'Hi'}) => (
+	&lt;div>A Class Component: {props.message}&lt;/div>
+)</code></pre>
+		<pre class="language-js"><code>class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return (
+      &lt;div>A Class Component: {this.props.message}&lt;/div>
+    )
+  }
+}</code></pre>
+		</div>
+		<div class="flex tight">
+			<h4 style='margin: 0'>Rendering Either Type to the DOM</h4>
+			<h4 style='margin: 0'>Providing Default Parameters</h4>
+		</div>
+		<div class="flex tight">
+			<pre class="language-js"><code>
+ReactDOM.render(
+  &lt;MyComponent />, document.getElementById('root')
+)</code></pre>
+<pre class="language-js"><code>MyComponent.defaultProps = {
+  message: 'Hi'
+}</code></pre>
+		</div>
+		
+	</article>
+	<article class="slide">
+		<h2>Stateful Components</h2>
+		<ul>
+			<li>The React Class Components used to be the only way to implement internal State</li>
+		  <li>But now we can have state in a function with the `useState` Hook.</li>
+			<li><a href="https://reactjs.org/docs/react-without-es6.html#declaring-default-props">React Without ES6</a></li>
+		</ul>
+		<p>
+		<pre class="language-js"><code>class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+	    name: 'Bob'
+    }
+  }
+  render() {
+    return (
+	    &lt;div>First Name: {this.state.name}</div>
+    )
+  }
+}</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Even Handling in Class Components</h2>
+
+		<pre class="language-js"><code>class Camper extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {name: 'Bob'}
+    this.changeName = this.changeName.bind(this);
+    this.addLastName = this.addLastName.bind(this);
+  }
+  changeName() { this.setState({name: 'Alice'}) }
+  addLastName() { this.setState(prev => ({name: prev + 'Smith'})) }
+  render() {
+    return (
+      &lt;p>{this.props.name}&lt;/p>
+      &lt;p>{this.state.name}&lt;/p>
+      &lt;button onClick={this.changeName}>Change Name&lt;/button>
+      &lt;button onClick={this.addLastName}>Add Last Name&lt;/button>
+    )
+  }
+}</code></pre>
 	</article>
 
 	<article class="slide">
@@ -333,10 +436,10 @@ function EventComponent(props) {
 	<article class="slide">
 		<h2>Prop Drilling</h2>
 		<p>We can pass state down the Component Tree with a concept called Prop Drilling</p>
-		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js"><code>&lt;App data={{img, user}}/></code></pre><span>↴</span></div>
-		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js" style='margin-left: 20%'><code>&lt;Main data={{img, user}}/></code></pre><span>↴</span></div>
-		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js" style='margin-left: 35%'><code>&lt;User data={{img, user}}/></code></pre><span>↴</span></div>
-		<div class='flex' style='margin: 0;'><pre class="language-js" style='margin-left: 60%'><code>&lt;Avatar data={{img}}/></code></pre><span></span></div>
+		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js"><code>&lt;App img={img} user={user} /></code></pre><span>↴</span></div>
+		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js" style='margin-left: 20%'><code>&lt;Main img={img} user={user} /></code></pre><span>↴</span></div>
+		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js" style='margin-left: 35%'><code>&lt;User img={img} user={user} /></code></pre><span>↴</span></div>
+		<div class='flex' style='margin: 0;'><pre class="language-js" style='margin-left: 60%'><code>&lt;Avatar img={img} /></code></pre><span></span></div>
 	</article>
 
 	<article class="slide">
@@ -364,31 +467,21 @@ function EventComponent(props) {
 	</article>
 
 	<article class="slide">
-		<h2>Custom Hooks!</h2>
-		<p>We can actually go beyond the Basic React Hooks, and make our own hooks utilities!</p>
-		<p>This is where React's feature of easy code reuse really shines.</p>
+		<h2>Let's Revisit Dragon Clicker with React!</h2>
+		<p><a href="https://github.com/JamieVaughn/react-clicker">React Dragon Clicker!</a></p>
 	</article>
+
+	<article class="slide">
+		<h2>Hook/Class Refactoring Challenge</h2>
+		<p>Let's practice refactoring React Components!</p>
+		<p>Refactor a Hook component into a Class Component and Vice Versa!</p>
+	</article>
+	
 
 	<header class='slide'>
 		<h3>React</h3>
 		<h1>Other APIs</h1>
 	</header>
-
-	<article class="slide">
-		<h2>React Fragments</h2>
-		<p><a href="https://reactjs.org/docs/fragments.html">fragments</a></p>
-		<pre class="language-jsx"><code>return (
-  &lt;>
-    &lt;div>hello&lt;/div>
-    &lt;div>world&lt;/div>
-  &lt;>
-)</code></pre>
-	</article>
-
-	<article class="slide">
-		<h2>Prop Types</h2>
-		<p><a href="https://reactjs.org/docs/typechecking-with-proptypes.html#gatsby-focus-wrapper">Type Checking with Prop Types</a></p>
-	</article>
 
 	<article class="slide">
 		<h2>React Profiler</h2>
@@ -412,7 +505,13 @@ function EventComponent(props) {
 		<p><a href="https://reactjs.org/docs/strict-mode.html">Using Strict Mode</a></p>
 	</article>
 
-	<article>
+	<article class="slide">
+		<h2>Custom Hooks!</h2>
+		<p>We can actually go beyond the Basic React Hooks, and make our own hooks utilities!</p>
+		<p>This is where React's feature of easy code reuse really shines.</p>
+	</article>
+
+	<article class='slide'>
 		<h2>Take Home Challenge!</h2>
 		<p>Try out the "Tutorial Fade" technique on this:</p>
 		<p><a href="https://reactjs.org/tutorial/tutorial.html">React Tic Tac Toe Tutorial</a></p>
