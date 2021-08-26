@@ -308,7 +308,8 @@ function EventComponent(props) {
 	<article class="slide">
 		<h2>Managing Internal State</h2>
 		<p>With Hooks!</p>
-		<p><a href="https://reactjs.org/docs/hooks-state.html"><code>useState(state)</code></a></p>
+		<p>The most important thing is to never mutate state directly.</p>
+		<p>Mutate state with <a href="https://reactjs.org/docs/hooks-state.html"><code>useState(state)</code></a></p>
 	</article>
 
 	<article class="slide">
@@ -405,7 +406,7 @@ ReactDOM.render(
 
 	<article class="slide">
 		<h2>Even Handling in Class Components</h2>
-
+		<p>The most important thing is to never mutate state directly. Mutate state with <code>this.setState()</code></p>
 		<pre class="language-js"><code>class Camper extends React.Component {
   constructor(props) {
     super(props)
