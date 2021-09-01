@@ -556,9 +556,61 @@ ReactDOM.render(
 
 	<article class="slide">
 		<h2>The <code>useEffect</code> Hook</h2>
-
+		<p>This is for keeping components in-sync with any change to our model (state, props, refs or any data)</p>
+		<p>It essentially sets up a watcher (or listener) on any arbitrary variable</p>
+		<p>Then it will run the callback inside when a change is detected</p>
 	</article>
-	
+	<article class="slide">
+		<h2><code>useEffect</code> Example</h2>
+		<pre class="language-js"><code>function MyComponent() {
+  const [clicked, setClicked] = useState(false)
+  const [users, setUsers] = useState(null)
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then(resp => resp.json())
+      .then(data => {
+      setUsers(data);
+    });
+  }, [clicked]);
+  return (
+    &lt;>
+		  &lt;div>{JSON.stringify(users)}&lt;/div>
+		  &lt;button onClick={() => setClicked(!clicked)}>Fetch Users&lt;/button>
+    &lt;/>
+  )
+}</code></pre>
+	</article>
+	<article>
+		<h2>useEffect as an eventListener</h2>
+		<p><a href="https://wjv.io/blog/posts/use_effect.html">React's useEffect as an "Event Listener"</a></p>
+		<pre class="language-js"><code>useEffectListener([foo], () => {
+  // do side effects
+})
+		
+addEventListener('click', e => {
+  // do side effects
+})
+		</code></pre>
+	</article>
+	<article class="slide">
+		<h2>Syncing Data in React class components</h2>
+		<h4>class components use "Lifecycle Methods"</h4>
+		<p><a href="https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class">Adding Lifecycle Methods to a Class</a></p>
+		<p><a href="https://reactjs.org/docs/react-component.html#the-component-lifecycle">Component Lifecycle methods</a></p>
+	</article>
+	<article class="slide">
+		<h2>Lifecycle Method Diagram</h2>
+		<p><a href="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">Demo</a></p>
+	</article>
+	<article class="slide">
+		<h2>Comparing useEffect with Lifecycle Methods</h2>
+		<img src="img/useeffect_lifecycle.png" alt="">
+	</article>
+	<article class="slide">
+		<h2>Code Along</h2>
+		<p>Let's try out useEffect in a small App!</p>
+		<p>(and we'll see how it compares to Lifecycle Methods)</p>
+	</article>
 
 	<header class='slide'>
 		<h3>React</h3>
