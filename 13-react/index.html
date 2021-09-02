@@ -109,6 +109,12 @@
 		<img src="./img/seperate_by_component.png" height='600px' alt="directory tree">
 	</article>
 	<article class="slide">
+		<h2>JSX</h2>
+		<p>React's syntax for defining View templates</p>
+		<p><a href="https://babeljs.io/repl/">Transpiler</a></p>
+		<img src="img/jsx.png" alt="jsx example">
+	</article>
+	<article class="slide">
 		<h2>Strength of Components</h2>
 		<img src="img/Build_one.png" height='600px' alt="component architecture">
 	</article>
@@ -137,8 +143,20 @@
 	</article>
 
 	<article class="slide">
-		<h2>Component Architecture</h2>
-		<img src="img/comp_diagram.png" height='600px' alt="Component diagram">
+		<h2>What does a React Component look like?</h2>
+		<div class="flex most-height align">
+			<img src="img/comp_diagram.png" height='600px' alt="Component diagram">
+			<pre class="language-js"><code>function MyComponent (props) {
+  const defaultName = 'Buddy'
+  const handleClick = e => console.log(e)
+  return (
+    &lt;div onClick={handleClick}>
+      &lt;h1>Hello&lt;/h1>
+      &lt;h2>{props.name ?? defaultName}!&lt;/h2>
+    &lt;/div>
+  )
+}</code></pre>
+		</div>
 	</article>
 
 	<article class="slide">
@@ -157,14 +175,30 @@
 		</div>
 	</article>
 	<article class="slide">
+		<h2>Define Components separately</h2>
+		<p>While its perfectly fine to nest components when composing them (i.e invoking them)</p>
+		<p>Do not nest components when defining them</p>
+			<strong>Incorrect way:</strong>
+		</div>
+			<pre class="language-js wrong"><code>function ParentComponent() {
+  // Don't define a component inside a component:
+  const ChildComponent = () => &lt;div>Hello&lt;/div> 
+
+  return &lt;ChildComponent />
+}</code></pre>
+			
+			<strong>Correct way:</strong>
+
+			<pre class="language-js correct"><code>const ChildComponent = () => &lt;div>Hello&lt;/div>
+
+function ParentComponent() {
+  return &lt;ChildComponent />
+}</code></pre>
+
+	</article>
+	<article class="slide">
 		<h2>Importing Component Files</h2>
 		<img src="img/full_react_file.png" height='600px' alt="Full react component file">
-	</article>
-
-	<article class="slide">
-		<h2>JSX</h2>
-		<p><a href="https://babeljs.io/repl/">Transpiler</a></p>
-		<img src="img/jsx.png" alt="jsx example">
 	</article>
 
 	<article class="slide">
@@ -240,6 +274,62 @@
 	</article>
 
 	<article class="slide">
+		<h2>Rendering in React in Depth</h2>
+		<p><a href="https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/">Article</a></p>
+		<ul>
+			<li>Render Phase: work of rendering components/calculating changes</li>
+			<ul>
+				<li>Rendering Components means describing the UI in data format (as js objects)</li>
+				<li>Reconciliation</li>
+				<li>Concurrent Mode chunks/debounces/forfeits Render Phase work only</li>
+				<li>Render Batching: these trigger Queued Renders so they may be async: 
+					<ul>
+						<li>useState setters</li>
+						<li>useReducer dispatches</li>
+						<li>this.setState()</li>
+						<li>this.forceUpdate()</li>
+					</ul>
+				</li>
+			</ul>
+			<li>Commit Phase: applying those changes to the DOM</li>
+			<ul>
+				<li>Update all Refs</li>
+				<li>Run didMount, didUpdate lifecycles & useLayoutEffect synchronously</li>
+				<li></li>
+			</ul>
+			<li>Passive Effects Phase: runs useEffect hooks</li>
+			<li></li>
+			<li></li>
+		</ul>
+	</article>
+	<article class="slide">
+		<h2>Commit Phase Details</h2>
+		<p>
+			There's some additional edge cases inside of the commit-phase lifecycle methods: componentDidMount, componentDidUpdate, and useLayoutEffect. These largely exist to allow you to perform additional logic after a render, but before the browser has had a chance to paint. In particular, a common use case is:
+		</p>
+		<ul>
+			<li>Render a component the first time with some partial but incomplete data. The initial "partial" rendered UI won't be visible to the user - only the "final" UI will show up</li>
+			<li>In a commit-phase lifecycle, use refs to measure the real size of the actual DOM nodes in the page</li>
+			<li>Set some state in the component based on those measurements</li>
+			<li>Immediately re-render with the updated data</li>
+		</ul>
+	</article>
+	<article class="slide">
+		<h2>Standard Render Behavior</h2>
+		<p><a href="https://blog.isquaredsoftware.com/2020/05/blogged-answers-a-mostly-complete-guide-to-react-rendering-behavior/#standard-render-behavior">Explanation</a></p>
+		<p>There's a rendred component tree of A > B > C > D. The user clicks a button in B that increments a counter:</p>
+		<ul>
+			<li>We call setState() in B, which queues a re-render of B.</li>
+			<li>React starts the render pass from the top of the tree</li>
+			<li>React sees that A is not marked as needing an update, and moves past it</li>
+			<li>React sees that B is marked as needing an update, and renders it. B returns <C /> as it did last time.</li>
+			<li>C was not originally marked as needing an update. However, because its parent B rendered, React now moves downwards and renders C as well. C returns <D /> again.</li>
+			<li>D was also not marked for rendering, but since its parent C rendered, React moves downwaard and renders D too.</li>
+		</ul>
+		<p>This means that calling setState() in your root <App> component, with no other changes altering the behavior, will cause React to re-render every single component in the component tree.</p>
+	</article>
+
+	<article class="slide">
 		<h2>Let's make a Simple React Site</h2>
 		<p>Webpages with React!</a></p>
 		<p>Reproduce this website layout with <strong>presentational components!</strong></p>
@@ -310,6 +400,16 @@ function EventComponent(props) {
 		<p>With Hooks!</p>
 		<p>The most important thing is to never mutate state directly.</p>
 		<p>Mutate state with <a href="https://reactjs.org/docs/hooks-state.html"><code>useState(state)</code></a></p>
+		<pre class="language-js"><code>const MyComponent = props => {
+  const [clicks, setClicks] = React.useState(0)
+	// clicks += 1  ⇦don't mutate or reassign directly
+  return (
+    &lt;button onClick={() => setClicks(clicks+1)}>
+      First Name: {clicks}
+    &lt;/button>
+  )
+}
+</code></pre>
 	</article>
 
 	<article class="slide">
@@ -322,6 +422,7 @@ function EventComponent(props) {
 		<h2>Let's make Something with State</h2>
 		<p>A Dice Rolling App!</p>
 	</article>
+
 
 	<article class="slide">
 		<h2>React Fragments</h2>
@@ -352,9 +453,14 @@ MyComponent.propTypes = {
 	</article>
 
 	<article class="slide">
+		<h2>Let's Revisit Dragon Clicker with React!</h2>
+		<p><a href="https://github.com/JamieVaughn/react-clicker">React Dragon Clicker!</a></p>
+	</article>
+
+	<article class="slide">
 		<h2>Hooks Way vs Class Way</h2>
 		<p>The legacy way to create React Components uses <code>React.Component</code></p>
-		<div class="flex tight" style='align-items: center;'>
+		<div class="flex tight align">
 			<pre class="language-js"><code>const MyComponent = ({message = 'Hi'}) => (
 	&lt;div>A Class Component: {props.message}&lt;/div>
 )</code></pre>
@@ -393,24 +499,26 @@ ReactDOM.render(
 	<article class="slide">
 		<h2>Stateful Components</h2>
 		<ul>
-			<li>The React Class Components used to be the only way to implement internal State</li>
-		  <li>But now we can have state in a function with the `useState` Hook.</li>
-			<li><a href="https://reactjs.org/docs/react-without-es6.html#declaring-default-props">React Without ES6</a></li>
+			<li>The React Class Components used to be the only way to implement internal State <sup><a href="https://reactjs.org/docs/react-without-es6.html#declaring-default-props">React before ES6</a></sup></li>
+		  <li>But now we can have state in a function with the <code>useState</code> Hook.</li>
 		</ul>
-		<p>
-		<pre class="language-js"><code>class MyComponent extends React.Component {
+		<div class="flex most-height align" >
+			<pre class="language-js"><code>class MyComponent extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-	    name: 'Bob'
+      name: 'Bob'
     }
   }
   render() {
-    return (
-	    &lt;div>First Name: {this.state.name}&lt;/div>
-    )
+    return &lt;div>First Name: {this.state.name}&lt;/div>
   }
 }</code></pre>
+<pre class="language-js"><code>const MyComponent = props => {
+  const [name, setName] = React.useState('Bob')
+  return &lt;div>First Name: {name}&lt;/div>
+}</code></pre>
+		</div>
 	</article>
 
 	<article class="slide">
@@ -434,6 +542,12 @@ ReactDOM.render(
     )
   }
 }</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Hook/Class Refactoring Challenge</h2>
+		<p>Let's practice refactoring React Components!</p>
+		<p>Refactor a Hook component into a Class Component and Vice Versa!</p>
 	</article>
 
 	<article class="slide">
@@ -544,44 +658,44 @@ ReactDOM.render(
 	</article>
 
 	<article class="slide">
-		<h2>Let's Revisit Dragon Clicker with React!</h2>
-		<p><a href="https://github.com/JamieVaughn/react-clicker">React Dragon Clicker!</a></p>
-	</article>
-
-	<article class="slide">
-		<h2>Hook/Class Refactoring Challenge</h2>
-		<p>Let's practice refactoring React Components!</p>
-		<p>Refactor a Hook component into a Class Component and Vice Versa!</p>
-	</article>
-
-	<article class="slide">
 		<h2>The <code>useEffect</code> Hook</h2>
 		<p>This is for keeping components in-sync with any change to our model (state, props, refs or any data)</p>
 		<p>It essentially sets up a watcher (or listener) on any arbitrary variable</p>
 		<p>Then it will run the callback inside when a change is detected</p>
+		<pre class="language-js"><code>function MyComponent (props) {
+  useEffect(() => {
+    // do side effects (runs if `dependency` changes)
+    return () => {
+      // clean up references (runs if removed from DOM)
+    }
+  }, [dependency])
+
+  return &lt;div>useEffect hook is awesome!&lt;/div>
+}
+		</code></pre>
 	</article>
 	<article class="slide">
-		<h2><code>useEffect</code> Example</h2>
+		<h2><code>useEffect</code> Example <sup><a href="https://jsonplaceholder.typicode.com/todos/1">todo</a></sup></h2>
 		<pre class="language-js"><code>function MyComponent() {
-  const [clicked, setClicked] = useState(false)
-  const [users, setUsers] = useState(null)
+  const [id, setId] = useState()
+  const [todo, setTodo] = useState(null)
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/users")
+    fetch(`https://jsonplaceholder.typicode.com/todos/${id}`)
       .then(resp => resp.json())
       .then(data => {
-      setUsers(data);
-    });
-  }, [clicked]);
+        setTodo(data);
+      });
+  }, [id]);
   return (
     &lt;>
-		  &lt;div>{JSON.stringify(users)}&lt;/div>
-		  &lt;button onClick={() => setClicked(!clicked)}>Fetch Users&lt;/button>
+      &lt;input type='number' onChange={e => setId(e.target.value)}/>
+	  &lt;div>{JSON.stringify(todo)}&lt;/div>
     &lt;/>
   )
 }</code></pre>
 	</article>
-	<article>
-		<h2>useEffect as an eventListener</h2>
+	<article class='slide'>
+		<h2>useEffect as an Event Listener</h2>
 		<p><a href="https://wjv.io/blog/posts/use_effect.html">React's useEffect as an "Event Listener"</a></p>
 		<pre class="language-js"><code>useEffectListener([foo], () => {
   // do side effects
@@ -594,13 +708,65 @@ addEventListener('click', e => {
 	</article>
 	<article class="slide">
 		<h2>Syncing Data in React class components</h2>
-		<h4>class components use "Lifecycle Methods"</h4>
-		<p><a href="https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class">Adding Lifecycle Methods to a Class</a></p>
-		<p><a href="https://reactjs.org/docs/react-component.html#the-component-lifecycle">Component Lifecycle methods</a></p>
+		<div class="flex full-height align">
+			<ul>
+				<li class="nolist"><strong>Class components use <a href="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">"Lifecycle Methods"</a></strong></li>
+				<li><p><a href="https://reactjs.org/docs/state-and-lifecycle.html#adding-lifecycle-methods-to-a-class">Adding Lifecycle Methods to a Class</a></p></li>
+				<li><p><a href="https://reactjs.org/docs/react-component.html#the-component-lifecycle">Component Lifecycle methods</a></p></li>
+				<li><code>componentDidMount</code></li>
+				<li><code>componentDidUpdate</code></li>
+				<li><code>componentWillUnmount</code></li>
+				<li><code>componentDidCatch</code></li>
+				<li><code>shouldComponentUpdate</code></li>
+			</ul>
+		<pre class="language-js"><code>class MyComponent extends React.Component {
+  constructor(props) { super(props) }
+  componentDidMount() { // runs after added to DOM
+  }
+  componentDidUpdate() { // runs when updated
+  }
+  componentWillUnmount() { // runs before removal from DOM
+  }
+  componentDidCatch() { // runs if encountering an error
+  }
+  shouldComponentUpdate() { // run a check & return true or false
+    // if returns false, then render() will not run
+  }
+  render() {
+    return &lt;div>Hello Lifecycle Methods!&lt;/div>
+  }
+}
+		</code></pre>
+	</div>
 	</article>
 	<article class="slide">
-		<h2>Lifecycle Method Diagram</h2>
-		<p><a href="https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/">Demo</a></p>
+		<h2>Lifecycle Method Equivalents</h2>
+		<div class="flex">
+			<ul style='flex-shrink: 1.5'>
+				<li class="nolist"><code>componentDidMount</code></li>
+				<li class="nolist"><code>componentDidUpdate</code></li>
+				<li class="nolist"><em style="color: orangered">No equivalent</em></li>
+				<li class="nolist"><code>componentWillUnmount</code></li>
+				<li class="nolist"><code>componentDidCatch</code></li>
+				<li class="nolist"><code>shouldComponentUpdate</code></li>
+			</ul>
+			<ul style='flex-shrink: 2'>
+				<li class="nolist">⟺</li>
+				<li class="nolist">⟺</li>
+				<li class="nolist">⟺</li>
+				<li class="nolist">⟺</li>
+				<li class="nolist">⟺</li>
+				<li class="nolist">⟺</li>
+			</ul>
+			<ul style='flex-grow: 2'>
+				<li class="nolist">No dependency array</li>
+				<li class="nolist">Empty dependency array</li>
+				<li class="nolist">Populated dependency array</li>
+				<li class="nolist">Return callback</li>
+				<li class="nolist"><em style="color: orangered">No direct equivalent</em> <code>try/catch</code></li>
+				<li class="nolist">Normal control flow <code>if/else</code></li>
+			</ul>
+		</div>
 	</article>
 	<article class="slide">
 		<h2>Comparing useEffect with Lifecycle Methods</h2>

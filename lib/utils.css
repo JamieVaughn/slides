@@ -12,17 +12,17 @@ pre {
 pre.wrong::before {
   content: '🚫';
   position: absolute;
-  left: -4rem;
-  font-size: 4rem;
-  top: 2rem;
+  left: -2.1rem;
+  font-size: 2rem;
+  top: 0.2rem;
 
 }
 pre.correct::before {
   content: '✅';
   position: absolute;
-  left: -4rem;
-  font-size: 4rem;
-  top: 2rem;
+  left: -2.1rem;
+  font-size: 2rem;
+  top: 0.2rem;
 }
 pre[data-before]::before {
   content: attr(data-before);

@@ -48,6 +48,10 @@ body {
 .align {
 	align-items: center;
 }
+.flex.hasEmoji {
+	margin: 2rem;
+	gap: 2rem;
+}
 .flex.full-height {
 	max-height: 100%;
 }
