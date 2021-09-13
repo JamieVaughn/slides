@@ -600,21 +600,7 @@ ReactDOM.render(
 		<h2>Let's Code some Forms in React!</h2>
 		<p>Controlled Form</p>
 		<p>Uncontrolled Form</p>
-	</article>
-
-	<article class='slide'>
-		<h2>VS Code Snippets</h2>
-		<p>Let's take advantage of VS Code's Snippets feature, so we can type out React components faster!</p>
-		<p><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets">Docs</a></p>
-		<p><kbd>File/Code</kbd>><kbd>Preferences</kbd>><kbd>User Snippets</kbd> (then select language)</p>
-		<pre class="language-json"><code>"Print to console Test": {
-  "prefix": "log",
-  "body": [
-    "console.log('Hello ${1:name}!!!');",
-    "$2"
-  ],
-  "description": "Log output to console"
-}</code></pre>
+		<p><a href="https://felixgerschau.com/react-hooks-form-validation-typescript/">React Hooks form validation patterns</a></p>
 	</article>
 
 	<article class="slide">
@@ -821,11 +807,11 @@ addEventListener('click', e => {
 		<p><a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">Browser Extension</a></p>
 	</article>
 
-	<article class="slide">
+	<!-- <article class="slide">
 		<h2>Render Props</h2>
 		<p>A render prop is a prop that renders a View... in other words: it's a component that is passed as a prop.</p>
 		<p><a href="https://reactjs.org/docs/render-props.html">Using Render Props</a></p>
-	</article>
+	</article> -->
 
 	<article class="slide">
 		<h2>Strict Mode</h2>
@@ -833,10 +819,56 @@ addEventListener('click', e => {
 		<p><a href="https://reactjs.org/docs/strict-mode.html">Using Strict Mode</a></p>
 	</article>
 
+	<article class='slide'>
+		<h2>VS Code Snippets</h2>
+		<p>Let's take advantage of VS Code's Snippets feature, so we can type out React components faster!</p>
+		<p><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets">Docs</a></p>
+		<p><kbd>File/Code</kbd>><kbd>Preferences</kbd>><kbd>User Snippets</kbd> (then select language)</p>
+		<pre class="language-json"><code>"Print to console Test": {
+  "prefix": "log",
+  "body": [
+    "console.log('Hello ${1:name}!!!');",
+    "$2"
+  ],
+  "description": "Log output to console"
+}</code></pre>
+	</article>
+
 	<article class="slide">
-		<h2>Custom Hooks!</h2>
-		<p>We can actually go beyond the Basic React Hooks, and make our own hooks utilities!</p>
-		<p>This is where React's feature of easy code reuse really shines.</p>
+		<h2>Children Props</h2>
+		<code><code>&ltdiv>{props.children}&lt;/div></code></code>
+		<p>The <code>children</code> prop is passed in automatically if you nest any jsx asa child of your component</p>
+		<pre class="language-js"><code>function MyComponent () {
+  return (
+			&main>
+				&lt;nav>A Nav Bar&lt;/nav>
+			  {children}
+				&lt;footer>a footer&lt;/footer>
+			&lt;/main>
+	 )</code></pre>
+		<pre class="language-js"><code>return (
+   &lt;MyComponent>
+			&div>This child element gets passed through into MyComponent&lt;div>
+	 &lt;/MyComponent>
+)</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>The App Shell</h2>
+		<strong>It is the part of the UI that persists when navigating around the app.</strong>
+		<p>An application shell architecture makes the most sense for apps and sites with relatively unchanging navigation but changing content.</p>
+		<p>Structure your app for a clear distinction between the page shell (the persistent UI) and the dynamic content.</p>
+		<p><a href="https://developers.google.com/web/fundamentals/architecture/app-shell">App Shell Model</a></p>
+	</article>
+
+	<article class="slide">
+		<h2>Building with Vite.js</h2>
+		<p><a href="https://vitejs.dev/">Vite Docs</a></p>
+	</article>
+
+	<article class="slide">
+		<h2>Let's Build a Layout with Vite.js</h2>
+		<p><a href="https://vitejs.dev/guide/#browser-support">Get Started with Vite!</a></p>
 	</article>
 
 	<article class='slide'>
@@ -845,6 +877,106 @@ addEventListener('click', e => {
 		<p><a href="https://reactjs.org/tutorial/tutorial.html">React Tic Tac Toe Tutorial</a></p>
 	</article>
 
+</section>
+
+<section>
+	<header class='slide'>
+		<h3>React</h3>
+		<h1>Advanced Hooks</h1>
+	</header>
+	<article class="slide">
+		<h2>useContext</h2>
+		<p>Share data without passing props</p>
+	</article>
+	<article class="slide">
+		<h2>useReducer</h2>
+		<p>Create an action reducer function & its dispatcher with less boilerplate</p>
+		<p>Its a different way to manage state updates.</p>
+	</article>
+	<article class="slide">
+		<h2>useLayoutEffect</h2>
+		<p>Just like useEffect, but runs after the virtualDOM is mounted</p>
+	</article>
+	<article class="slide">
+		<h2>useMemo</h2>
+		<p>Memoize a components returned jsx (i.e. its <strong>View</strong> template output)</p>
+		<p>Memoize means it caches the result of the function call so it can use it directly if the parameters didn't change.</p>
+	</article>
+	<article class="slide">
+		<h2>useCallback</h2>
+		<p>Similar to useMemo, this will help with rendering performance optimization</p>
+		<p>If you are passing a component down to multiple other components you can wrap it in <code>useCallback()</code> so that a single execution of the component is reused in all places instead of executed for each one.</p>
+	</article>
+	<article class="slide">
+		<h2>A Couple Others</h2>
+		<ul>
+			<li><code>useImperativeHandle</code>: run imperative code on a useRef Element before it is passed down as a prop</li>
+			<li><code>useDebugValue</code>: This is for help debugging/labeling custom Hooks with the React Dev Tools</li>
+		</ul>
+	</article>
+	<article class="slide">
+		<h2>Hooks Links</h2>
+		<strong>Hooks Learning Guides</strong>
+		<ul>
+			<li><a href="https://react-hooks-cheatsheet.com/">Hooks cheat sheet</a></li>
+			<li><a href="https://reactwithhooks.netlify.app/">React Docs with Hooks</a></li>
+			<li><a href="https://wattenberger.com/blog/react-hooks">Thinking in React Hooks</a></li>
+			<li><a href="https://www.youtube.com/watch?v=TNhaISOUy6Q">Hooks Overview video</a></li>
+		</ul>
+		<strong>Hooks Catalogs</strong>
+		<ul>
+			<li><a href="https://usehooks.com/">useHooks.com</a></li>
+			<li><a href="https://antonioru.github.io/beautiful-react-hooks/">Beautiful Hooks</a></li>
+			<li><a href="https://nikgraf.github.io/react-hooks/">Collection of Hooks</a></li>
+		</ul>
+	</article>
+	<article class="slide">
+		<h2>Custom Hooks!</h2>
+		<p>We can actually go beyond the Basic React Hooks, and make our own hooks utilities!</p>
+		<p>This is where React's feature of easy code reuse really shines.</p>
+	</article>
+	<article class="slide">
+		<h2>Let's Create our own Hooks!</h2>
+		<ul>
+			<li><code>useFetch</code></li>
+			<li><code>useInterval</code></li>
+			<li><code>useLocalStorage</code></li>
+			<li><code>usePreviousValue</code></li>
+		</ul>
+	</article>
+	<article class="slide">
+		<pre class="language-js"><code>export default function useMousePosition () {
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+
+  useEffect(() => {
+    const setFromEvent = e => setPosition({ x: e.clientX, y: e.clientY })
+    window.addEventListener('mousemove', setFromEvent)
+
+    return () => {
+        window.removeEventListener('mousemove', setFromEvent)
+    }
+  }, [])
+
+  return position
+}</code></pre>
+	</article>
+	<article class="slide">
+		<pre class="language-js"><code>const useOutsideClick = (ref, callback) => {
+  const handleClick = e => {
+    if (ref.current && !ref.current.contains(e.target)) {
+    callback()
+    }
+  }
+
+  useEffect(() => {
+    document.addEventListener('click', handleClick)
+
+    return () => {
+      document.removeEventListener('click', handleClick)
+    }
+  })
+}</code></pre>
+	</article>
 </section>
 
 <footer class="slide" title="The End">
