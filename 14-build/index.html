@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <meta name="description" content="MCC Web Design & Development Slides">
+	<meta name="author" content="Jamie Vaughn">
+  <title>Template</title>
+  <!-- Inspire css -->
+	<link href="../lib/inspire.css" rel="stylesheet" />
+	<link href="../lib/theme.css" rel="stylesheet" />
+	<link href="../lib/talk.css" rel="stylesheet" />
+	<link href="../lib/utils.css" rel="stylesheet" />
+
+  <!-- Custom css -->
+</head>
+<body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
+
+<header id="intro" class="slide">
+  <h1>
+		Web Design & Development
+	</h1>
+	<h2>
+		Build Tools
+	</h2>
+	<p class="attribution">MCC: Section 3</p>
+</header>
+<section>
+	<header class="slide">
+    <h1>Javascript Bundling Tools</h1>
+	</header>
+
+	<article class="slide" title="">
+    <h2>What is Bundling</h2>
+    <ul>
+      <li>Concatenating Files to reduce number of network requests</li>
+      <li>Minifying code to shorten files</li>
+      <li>Transpiling Code to ECMAScript spec</li>
+      <li>Optimizing, Tree Shaking</li>
+    </ul>
+	</article>
+
+	<article class="slide">
+    <h2>Why?</h2>
+    <p>This is all for produciton code deployment</p>
+    <p>We want every minor optimization done for us to improve load speeds.</p>
+    <p>But it's tedious, so we get a script to do it for us.</p>
+	</article>
+
+  <article class="slide">
+    <h2>Minimum React Build Tool With Parcel</h2>
+    <pre><code class="med-code">npm install -g parcel-bundler
+mkdir <my-react-app-name> && cd <my-react-app-name>
+# insert whatever app name you want for the directory
+touch index.html && touch index.jsx && touch styles.css
+# Folder will look like this:
+# my-react-app-name (directory)
+#  ├── index.html  (file)
+#  ├── index.jsx  (file)
+#  └── style.css(file)
+# Paste in content for these two files from next slide
+parcel index.html
+# Then visit the served page (http://localhost:1234)</code></pre>
+  </article>
+
+  <article class="slide">
+    <h2>Minimum content for <code>index.html</code></h2>
+    <pre><code class="med-code" id='copy-index' data-clipboard-text="`<html>
+<head>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div id="app"></div>
+<script src="./index.jsx"></script>
+</body>
+</html>`">&lt;html>
+&lt;head>
+&lt;link rel="stylesheet" href="./styles.css">
+&lt;/head>
+&lt;body>
+&lt;div id="app">&lt;/div>
+&lt;script src="./index.jsx">&lt;/script>
+&lt;/body>
+&lt;/html></code></pre>
+  </article>
+  <article class="slide">
+    <h2>Minimum Content for <code>index.jsx</code></h2>
+    <pre><code class="med-code" id="copy-react" data-clipboard-text="`import React from 'react';
+import ReactDOM from 'react-dom';
+function App() {
+return <h1>Your React app is running!</h1>;
+}
+ReactDOM.render(<App />, document.getElementById('app'));`">import React from 'react';
+import ReactDOM from 'react-dom';
+function App() {
+return &lt;h1>Your React app is running!&lt;/h1>;
+}
+ReactDOM.render(&lt;App />, document.getElementById('app'));</code></pre>
+  </article>
+
+  <article class="slide">
+    <h2>Parcel Bundler <sup><a href="https://parceljs.org/">Docs</a></sup></h2>
+    <ul>
+      <li>Parcel builds the react app into a production ready <code>/dist</code> folder including required <code>node_modules</code></li>
+      <li>It creates a <code>package.json</code> to keep track of package versions</li>
+      <li>It does the JSX transpiling like Babel does</li>
+      <li>It handles <code>import</code>/<code>export</code> statements</li>
+      <li>It enables hot-reloading for fast development</li>
+    </ul>
+  </article>
+
+  <article class="slide">
+    <h2>Let's try out Parcel.js!</h2>
+    <p><a href="https://parceljs.org/getting_started.html">Get Started!</a></p>
+  </article>
+
+</section>
+
+<!-- <section>
+	<header class="slide">
+	</header>
+
+	<article class="slide" id="data-insert">
+	</article>
+
+	<article class="slide">
+	</article>
+</section>
+
+<footer class="slide" title="The End">
+</footer> -->
+
+<script src="../lib/inspire.js"></script>
+
+</body>
+</html>
