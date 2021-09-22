@@ -893,36 +893,42 @@ addEventListener('click', e => {
 	<article class="slide">
 		<h2>The Context API <sup><a href="https://reactwithhooks.netlify.app/docs/hooks-reference.html#usecontext">hooks</a>, <sup><a href="https://reactjs.org/docs/context.html">docs</a></sup></h2>
 		<p>Share data without passing props</p>
-		<0l>
+		<ol>
 			<li>create a Context</li>
 			<li>Add initial state if needed</li>
 			<li>Create a Provider to subscribe to state changes outside of a component</li>
 			<li>Wrap a component subtree with the Provider</li>
 			<li>Access the state with <code>useContext(MyContext)</code></li>
-		</0l>
+		</ol>
+	</article>
+	<article class="slide">
+		<h2>Usage</h2>
 		<pre class="language-js"><code>import { createContext, useContext } from 'react'
+
 const MyContext = createContext();
+
 function App() {
-  return (
-    &lt;MyContext.Provider value={{key: 'value'}}>
-      &lt;ChildComponent />
-    &lt;/MyContext.Provider>
-  );
+	return (
+		&lt;MyContext.Provider value={{key: 'value'}}>
+			&lt;ChildComponent />
+		&lt;/MyContext.Provider>
+	);
 }
 function ChildComponent() { // look! no props!
-  const state = useContext(MyContext);
-  return (
-    &lt;div>
-      {state.key}
-    &lt;/div>
-  );
+	const state = useContext(MyContext);
+	return (
+		&lt;div>
+			{state.key}
+		&lt;/div>
+	);
 }
 </code></pre>
 	</article>
 	<article class="slide">
 		<h2>Before you useContext </sup><sup><a href="https://reactjs.org/docs/context.html#before-you-use-context">docs</a></sup></h2>
 		<p>Consider if it's the right use case. You may want to use component composition or state management library instead.</p>
-		<div class="flex">
+		<h3>Pros & Cons</h3>
+		<div class="flex" style='gap:5rem;'>
 			<ul>
 				<li>It's good for passing values to different nesting levels</li>
 				<li>And for providing a globally needed value to all nesting levels</li>
@@ -944,6 +950,27 @@ function ChildComponent() { // look! no props!
 		</ul>
 		<p><code>useReducer</code> shares a lot of similarities with Redux, a common third party state management library</p>
 		<p></p>
+	</article>
+	<article class="slide">
+		<h2>Usage</h2>
+		<pre class="language-js"><code>import { useReducer } from 'react';
+			
+function MyComponent() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  const action = {
+    type: 'ActionType'
+  };
+  return (
+    &lt;button onClick={() => dispatch(action)}>
+      Click me
+    &lt;/button>
+  );
+}
+		</code></pre>
+	</article>
+	<article class="slide">
+		<h2>Reducer Pattern (Flux)</h2>
+		<img style='background: white' src="https://dmitripavlutin.com/d730963db46908eaa6113c3e18a5472f/reducer-4.svg" alt="">
 	</article>
 	<article class="slide">
 		<h2>useLayoutEffect</h2>
