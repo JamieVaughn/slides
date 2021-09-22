@@ -838,19 +838,25 @@ addEventListener('click', e => {
 		<h2>Children Props</h2>
 		<code><code>&ltdiv>{props.children}&lt;/div></code></code>
 		<p>The <code>children</code> prop is passed in automatically if you nest any jsx asa child of your component</p>
-		<pre class="language-js"><code>function MyComponent () {
+		<pre class="language-js"><code>function MyComponent (props) {
   return (
-			&main>
+			&lt;main>
 				&lt;nav>A Nav Bar&lt;/nav>
-			  {children}
+			  {props.children}
 				&lt;footer>a footer&lt;/footer>
 			&lt;/main>
 	 )</code></pre>
 		<pre class="language-js"><code>return (
    &lt;MyComponent>
-			&div>This child element gets passed through into MyComponent&lt;div>
+			&lt;div>This child element gets passed through into MyComponent&lt;/div>
 	 &lt;/MyComponent>
 )</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Containment Pattern</h2>
+		<p>Containment refers to the pattern where multiple separate components can be passed as props so that they can be arranged in the layout in a particular way.</p>
+		<p><a href="https://reactjs.org/docs/composition-vs-inheritance.html#containment">Using the containment pattern with multiple components as children</a></p>
 	</article>
 
 	<article class="slide">
@@ -885,13 +891,59 @@ addEventListener('click', e => {
 		<h1>Advanced Hooks</h1>
 	</header>
 	<article class="slide">
-		<h2>useContext</h2>
+		<h2>The Context API <sup><a href="https://reactwithhooks.netlify.app/docs/hooks-reference.html#usecontext">hooks</a>, <sup><a href="https://reactjs.org/docs/context.html">docs</a></sup></h2>
 		<p>Share data without passing props</p>
+		<0l>
+			<li>create a Context</li>
+			<li>Add initial state if needed</li>
+			<li>Create a Provider to subscribe to state changes outside of a component</li>
+			<li>Wrap a component subtree with the Provider</li>
+			<li>Access the state with <code>useContext(MyContext)</code></li>
+		</0l>
+		<pre class="language-js"><code>import { createContext, useContext } from 'react'
+const MyContext = createContext();
+function App() {
+  return (
+    &lt;MyContext.Provider value={{key: 'value'}}>
+      &lt;ChildComponent />
+    &lt;/MyContext.Provider>
+  );
+}
+function ChildComponent() { // look! no props!
+  const state = useContext(MyContext);
+  return (
+    &lt;div>
+      {state.key}
+    &lt;/div>
+  );
+}
+</code></pre>
 	</article>
 	<article class="slide">
-		<h2>useReducer</h2>
-		<p>Create an action reducer function & its dispatcher with less boilerplate</p>
-		<p>Its a different way to manage state updates.</p>
+		<h2>Before you useContext </sup><sup><a href="https://reactjs.org/docs/context.html#before-you-use-context">docs</a></sup></h2>
+		<p>Consider if it's the right use case. You may want to use component composition or state management library instead.</p>
+		<div class="flex">
+			<ul>
+				<li>It's good for passing values to different nesting levels</li>
+				<li>And for providing a globally needed value to all nesting levels</li>
+			</ul>
+			<ul>
+				<li>But it causes all children of the provider to rerender on update</li>
+				<li>...which can lead to performance issues if overused</li>
+			</ul>
+		</div>
+		<p></p>
+	</article>
+	<article class="slide">
+		<h2>useReducer <sup><a href="https://reactwithhooks.netlify.app/docs/hooks-reference.html#usereducer">hooks</a></sup>, <sup><a href="https://reactjs.org/docs/hooks-reference.html#usereducer">docs</a></sup></h2>
+		<ul>
+			<li>Create an action reducer function & its dispatcher with less boilerplate</li>
+			<li>It's a more systematic way to manage state updates following the Flux architecture.</li>
+			<li>Clearly enumerates the possible states of your app</li>
+			<li>Can create multiple reducers to handle distinct concerns and merge them in a <code>rootReducer</code></li>
+		</ul>
+		<p><code>useReducer</code> shares a lot of similarities with Redux, a common third party state management library</p>
+		<p></p>
 	</article>
 	<article class="slide">
 		<h2>useLayoutEffect</h2>
