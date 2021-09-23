@@ -1011,34 +1011,33 @@ function MyComponent() {
 	</article>
 	<article class="slide">
 		<h2>useCallback</h2>
-		<div class="flex align">
 			<ul>
 				<li>Similar to useMemo, this will help with rendering performance optimization</li>
 				<li>Wrap a function in <code>useCallback()</code> so that a single instance of the function is reused in all places instead of executed for each one.</li>
 				<li>Useful if you are passing a function down to multiple other components</li>
 				<li>Or if you are including the function in a <code>useEffect</code> deps array</li>
 			</ul>
-		<pre class="language-js"><code></code></pre>
+	</article>
+	<article class="slide">
+		<h2>Usage</h2>
 <pre class="language-js"><code>const MyButtonComponent = () => {
-  const [num, setNum] = useState(0)
+	const [num, setNum] = useState(0)
 
-  const roll = useCallback(
-  () => setNum(Math.ceil(Math.random() * 4)),
-    [setNum]
-  )
+	const roll = useCallback(
+	() => setNum(Math.ceil(Math.random() * 4)),
+		[setNum]
+	)
 
 	useEffect(() => {
 		// do side effects
 	}, [increment]) // useCallback caches increment to limit detected changes here
 
-  return (
-    &lt;button onClick={() => roll()}>
-      &lt;MyOutputComponent num={num} />
-    &lt;/button>
+	return (
+		&lt;button onClick={() => roll()}>
+			&lt;MyOutputComponent num={num} />
+		&lt;/button>
 	)
 }</code></pre>
-</div>
-
 	</article>
 	<article class="slide">
 		<h2>useLayoutEffect</h2>
@@ -1085,11 +1084,13 @@ function MyComponent() {
 		<ul>
 			<li>Makes for super easy code reuse & modular utilities</li>
 			<li>Easily separates concerns for easy one-concern-per-file architecture</li>
-			<li></li>
+			<li>Can handle Sync or Async effects easily!</li>
 		</ul>
 	</article>
 	<article class="slide">
 		<h2>Hooks Links</h2>
+		<div class="flex">
+		<div>
 		<strong>Hooks Learning Guides</strong>
 		<ul>
 			<li><a href="https://react-hooks-cheatsheet.com/">Hooks cheat sheet</a></li>
@@ -1097,14 +1098,19 @@ function MyComponent() {
 			<li><a href="https://wattenberger.com/blog/react-hooks">Thinking in React Hooks</a></li>
 			<li><a href="https://www.youtube.com/watch?v=TNhaISOUy6Q">Hooks Overview video</a></li>
 		</ul>
+	</div>
+	<div>
 		<strong>Hooks Catalogs</strong>
 		<ul>
 			<li><a href="https://usehooks.com/">useHooks.com</a></li>
 			<li><a href="https://antonioru.github.io/beautiful-react-hooks/">Beautiful Hooks</a></li>
 			<li><a href="https://nikgraf.github.io/react-hooks/">Collection of Hooks</a></li>
 		</ul>
+	</div>
+</div>
 	</article>
 	<article class="slide">
+		<h2>useMousePosition</h2>
 		<pre class="language-js"><code>export default function useMousePosition () {
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
@@ -1137,6 +1143,7 @@ export const useMeasure = deps => {
 };</code></pre>
 	</article>
 	<article class="slide">
+		<h2>useOutsideClick</h2>
 		<pre class="language-js"><code>const useOutsideClick = (ref, callback) => {
   const handleClick = e => {
     if (ref.current && !ref.current.contains(e.target)) {
