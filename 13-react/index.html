@@ -952,13 +952,17 @@ function ChildComponent() { // look! no props!
 		<p></p>
 	</article>
 	<article class="slide">
+		<h2>Reducer Pattern (Flux)</h2>
+		<img style='background: white' src="https://dmitripavlutin.com/d730963db46908eaa6113c3e18a5472f/reducer-4.svg" alt="">
+	</article>
+	<article class="slide">
 		<h2>Usage</h2>
 		<pre class="language-js"><code>import { useReducer } from 'react';
-			
+const initialState = {key: 'value'}
 function MyComponent() {
   const [state, dispatch] = useReducer(reducer, initialState);
   const action = {
-    type: 'ActionType'
+    type: 'ActionType' // type is the only *required* key on an action
   };
   return (
     &lt;button onClick={() => dispatch(action)}>
@@ -969,28 +973,119 @@ function MyComponent() {
 		</code></pre>
 	</article>
 	<article class="slide">
-		<h2>Reducer Pattern (Flux)</h2>
-		<img style='background: white' src="https://dmitripavlutin.com/d730963db46908eaa6113c3e18a5472f/reducer-4.svg" alt="">
+		<h2>Reducer Function</h2>
+		<pre class="language-js"><code>function reducer (state, action) {
+ switch(action.type) {
+  case 'delete': 
+    return handleDelete(action.id)
+  case 'add':
+    return ([...state, action.todo])
+  case 'complete': 
+    return handleComplete(action.id)
+  case 'edit':
+    return handleEdit(action.id, action.text)
+  case 'reset':
+    return []
+  default:
+    return state
+ }
+}</code></pre>
 	</article>
 	<article class="slide">
-		<h2>useLayoutEffect</h2>
-		<p>Just like useEffect, but runs after the virtualDOM is mounted</p>
+		<h2>Hooks From Scratch Video</h2>
+		<p>Swyx codes up <a href="https://www.swyx.io/hooks/">React hooks from scratch</a> to give us a peek under the hood:</p>
+		<p><a href="https://www.youtube.com/watch?v=KJP1E-Y-xyo">Getting Closure on React Hooks Video</a></p>
 	</article>
+	<header class="slide">
+		<h1>Less Common Hooks</h1>
+	</header>
 	<article class="slide">
 		<h2>useMemo</h2>
 		<p>Memoize a components returned jsx (i.e. its <strong>View</strong> template output)</p>
-		<p>Memoize means it caches the result of the function call so it can use it directly if the parameters didn't change.</p>
+		<p>Memoize means it caches the vDOM result of the component call so it can use the cached version without re-executing it if the parameters didn't change.</p>
+		<pre class="language-js"><code>const MyOutputComponent = React.memo(props => {
+  const renders = useRef(0)
+	console.log('renders', renders.current++)
+  return &lt;output>{props.num}&lt;/output>
+})</code></pre>
 	</article>
 	<article class="slide">
 		<h2>useCallback</h2>
-		<p>Similar to useMemo, this will help with rendering performance optimization</p>
-		<p>If you are passing a component down to multiple other components you can wrap it in <code>useCallback()</code> so that a single execution of the component is reused in all places instead of executed for each one.</p>
+		<div class="flex align">
+			<ul>
+				<li>Similar to useMemo, this will help with rendering performance optimization</li>
+				<li>Wrap a function in <code>useCallback()</code> so that a single instance of the function is reused in all places instead of executed for each one.</li>
+				<li>Useful if you are passing a function down to multiple other components</li>
+				<li>Or if you are including the function in a <code>useEffect</code> deps array</li>
+			</ul>
+		<pre class="language-js"><code></code></pre>
+<pre class="language-js"><code>const MyButtonComponent = () => {
+  const [num, setNum] = useState(0)
+
+  const roll = useCallback(
+  () => setNum(Math.ceil(Math.random() * 4)),
+    [setNum]
+  )
+
+	useEffect(() => {
+		// do side effects
+	}, [increment]) // useCallback caches increment to limit detected changes here
+
+  return (
+    &lt;button onClick={() => roll()}>
+      &lt;MyOutputComponent num={num} />
+    &lt;/button>
+	)
+}</code></pre>
+</div>
+
 	</article>
 	<article class="slide">
-		<h2>A Couple Others</h2>
+		<h2>useLayoutEffect</h2>
+		<p>Just like useEffect, but runs after the virtualDOM updates are committed to the real DOM.</p>
+		<p>Primarily if you need to read some implicit state from the DOM for some purpose</p>
+		<p>Use cases: animations, reading properties of DOM elements, procedural changes with vanilla js to DOM nodes</p>
+	</article>
+	<article class="slide">
+		<h2>useImperativeHandle</h2>
+		<p><code>useImperativeHandle</code>: run imperative code on a useRef Element before it is passed down as a prop</p>
+		<p>Imperative Code is basically synonymous with Procedural code.</p>
+		<p>Use cases: customize DOM node implicit state in forwarded Refs</p>
+	</article>
+	<article class="slide">
+		<h2>useDebugValue</h2>
+		<p><code>useDebugValue</code>: This is for help debugging/labeling custom Hooks with the React Dev Tools</p>
+		<p>Only to be invoked inside another custom Hook</p>
+		<p>Let's you see identify your custom Hooks in React Dev Tools</p>
+	</article>
+	<article class="slide">
+		<h2>Usage</h2>
+		<p><a href="https://reactwithhooks.netlify.app/docs/hooks-reference.html">Hooks List</a></p>
 		<ul>
-			<li><code>useImperativeHandle</code>: run imperative code on a useRef Element before it is passed down as a prop</li>
-			<li><code>useDebugValue</code>: This is for help debugging/labeling custom Hooks with the React Dev Tools</li>
+			<li><code>useLayoutEffect</code></li>
+			<li><code>useMemo</code></li>
+			<li><code>useCallback</code></li>
+			<li><code>useImperativeHandle</code></li>
+			<li><code>useDebugValue</code></li>
+		</ul>
+	</article>
+	<article class="slide">
+		<h2>Redux Hooks</h2>
+		<p><a href="https://react-redux.js.org/api/hooks#using-hooks-in-a-react-redux-app">Docs</a></p>
+		<ul>
+			<li><code>useSelector</code></li>
+			<li><code>useDispatch</code></li>
+			<li><code>useStore</code></li>
+			<li><code>useActions</code></li>
+		</ul>
+	</article>
+	<article class="slide">
+		<h2>Custom Hooks!</h2>
+		<p>We can go beyond the basic, built-in React Hooks with <a href="https://reactjs.org/docs/hooks-custom.html#extracting-a-custom-hook">our own custom hooks utilities!</a></p>
+		<ul>
+			<li>Makes for super easy code reuse & modular utilities</li>
+			<li>Easily separates concerns for easy one-concern-per-file architecture</li>
+			<li></li>
 		</ul>
 	</article>
 	<article class="slide">
@@ -1010,20 +1105,6 @@ function MyComponent() {
 		</ul>
 	</article>
 	<article class="slide">
-		<h2>Custom Hooks!</h2>
-		<p>We can actually go beyond the Basic React Hooks, and make our own hooks utilities!</p>
-		<p>This is where React's feature of easy code reuse really shines.</p>
-	</article>
-	<article class="slide">
-		<h2>Let's Create our own Hooks!</h2>
-		<ul>
-			<li><code>useFetch</code></li>
-			<li><code>useInterval</code></li>
-			<li><code>useLocalStorage</code></li>
-			<li><code>usePreviousValue</code></li>
-		</ul>
-	</article>
-	<article class="slide">
 		<pre class="language-js"><code>export default function useMousePosition () {
   const [position, setPosition] = useState({ x: 0, y: 0 })
 
@@ -1038,6 +1119,22 @@ function MyComponent() {
 
   return position
 }</code></pre>
+	</article>
+	<article class="slide">
+		<h2>useBoundingClientRect</h2>
+		<pre class="language-js"><code>import { useState, useRef, useLayoutEffect } from "react";
+
+export const useMeasure = deps => {
+  const [rect, setRect] = useState({});
+  const myRef = useRef();
+
+  useLayoutEffect(() => {
+    setRect(myRef.current.getBoundingClientRect());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, deps);
+
+  return [rect, myRef];
+};</code></pre>
 	</article>
 	<article class="slide">
 		<pre class="language-js"><code>const useOutsideClick = (ref, callback) => {
@@ -1055,6 +1152,20 @@ function MyComponent() {
     }
   })
 }</code></pre>
+	</article>
+	<article class="slide">
+		<h2>Error Boundaries</h2>
+		<p><a href="https://reactjs.org/docs/error-boundaries.html">React Docs</a></p>
+		<p><a href="https://github.com/JoschuaSchneider/use-error-boundary">useErrorBoundary</a></p>
+	</article>
+	<article class="slide">
+		<h2>Let's Create our own Hooks!</h2>
+		<ul>
+			<li><code>useFetch</code></li>
+			<li><code>useInterval</code></li>
+			<li><code>useLocalStorage</code></li>
+			<li><code>usePreviousValue</code></li>
+		</ul>
 	</article>
 </section>
 
