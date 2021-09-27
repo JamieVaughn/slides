@@ -260,14 +260,15 @@ server.listen(port, hostname, () => {
       <li>Originally developed by Ruby developers</li>
       <li>Deprecated packages: `ruby-sass`, `compass`</li>
       <li>Now there's a C++ compiler/transpiler called `libsass`</li>
-      <li>`node-sass` is a node.js binding for `libsass`</li>
+      <li>The npm <a href="https://www.npmjs.com/package/sass">sass<code></code></a> package is a node.js binding for `libsass`</li>
     </ul>
   </article>
   <article class='slide'>
-    <h2>Node-sass and libsass docs</h2>
+    <h2><code>sass</code> and libsass docs</h2>
     <ul>
-      <li><a href="https://github.com/sass/node-sass"><code>node-sass</code></a></li>
-      <li><a href="https://github.com/sass/libsass"><code>libsass</code></a></li>
+      <li><a href="https://sass-lang.com/">Sass-lang docs</a></li>
+      <li><a href="https://github.com/sass/sass"><code>sass packgage github</code></a></li>
+      <li><a href="https://github.com/sass/libsass"><code>libsass package github</code></a></li>
     </ul>
   </article>
   <article class='slide'>
@@ -419,19 +420,19 @@ $separator: list.separator($list)
     <pre><code class="med-code">@import _filename.scss</code></pre>
   </article>
   <article class='slide'>
-    <h2>Using node-sass</h2>
+    <h2>Using Sass</h2>
     <p>open new terminal cmd+T/ctrl+T to leave the watcher in the background</p>
-    <pre class='language-bash'><code class="med-code">npm install node-sass -g # install node sass globally
-node-sass # it runs!!
-node-sass scss/style.scss -o css # output dir: /css input file: /css/style.scss
-node-sass scss -o css # output dir: /css input: /scss (all .scss files there)
-node-sass scss -o css --output-style expanded ( or compressed)
-node-sass scss -o css -w # watch flag so we can continue to work</code></pre>
+    <pre class='language-bash'><code class="med-code">npm install sass -g # install node sass globally
+sass # it runs!!
+sass scss/style.scss -o css # output dir: /css input file: /css/style.scss
+sass scss -o css # output dir: /css input: /scss (all .scss files there)
+sass scss -o css --output-style expanded ( or compressed)
+sass scss -o css -w # watch flag so we can continue to work</code></pre>
   </article>
   <article class="slide">
     <h2>Sass</h2>
-    <p>Let's install the package <code>node-sass</code>, and try out SASS!</p>
-    <p><a href="https://www.npmjs.com/package/node-sass">node-sass</a></p>
+    <p>Let's install the npm package <code>sass</code>, and try out SASS!</p>
+    <p><a href="https://www.npmjs.com/package/sass">sass</a></p>
   </article>
   <article class='slide'>
     <h2>The package.json file</h2>
@@ -442,8 +443,8 @@ node-sass scss -o css -w # watch flag so we can continue to work</code></pre>
     </ul>
     <pre class='language-json'><code class="med-code">"scripts": {
 "test": "echo \"Error: no test specified\" && exit 1",
-"sass": "node-sass scss -o css --output-style compressed && node-sass",
-"watch:sass": "node-sass scss -o css --output-style compressed -w"
+"sass": "sass scss -o css --output-style compressed && sass",
+"watch:sass": "sass scss -o css --output-style compressed -w"
 }</code></pre>
   </article>
   <article class='slide'>
