@@ -242,8 +242,8 @@ const reducer = (state, action) => {
   </article>
   <article class="slide">
     <h2>Everything's a List!</h2>
-    <p><small>(Ok, maybe not eerything)</small></p>
-    <ul>
+    <p><small>(Ok, maybe not everything...)</small></p>
+    <ul style="columns: 2">
       <li>Shopping Cart</li>
       <li>Music/video Playlist</li>
       <li>Photo Gallery</li>
@@ -252,6 +252,8 @@ const reducer = (state, action) => {
       <li>Forum</li>
       <li>Blog post site</li>
       <li>News Aggregator Site</li>
+      <li>Email Inbox</li>
+      <li>Search results page</li>
     </ul>
   </article>
   <article class="slide">
@@ -259,9 +261,14 @@ const reducer = (state, action) => {
     <p>Is it a change that is:</p>
     <ol>
       <li>Fundamental to the business logic</li>
-      <li>Cosmetic</li>
+      <li>... Or merely cosmetic</li>
     </ol>
-    <p>Given that where will the change need to happen? M? V? C?</p>
+    <p>Depending on which it is... where should the refactor need to happen?</p>
+    <ol>
+      <li>JSX/View Template</li>
+      <li>Reducer or Hook Logic (Controller)</li>
+      <li>Store (Model)</li>
+    </ol>
     <p>Is there an implementation that's already there that is similar? If so use that as a starting point and make your code conform to the style of that implementation to keep the codebase consistent.</p>
   </article>
   
