@@ -1,0 +1,17 @@
+.no-select {
+  user-select: none;
+}
+.trail { /* className for the trail elements */
+  position: absolute;
+  border-radius: 6px;
+  background: crimson;
+  z-index: 999;
+  height: 6px;
+  width: 6px;
+}
+.vert {
+  height: 16px; width: 6px;
+}
+.horiz {
+  height: 6px; width: 16px;
+}

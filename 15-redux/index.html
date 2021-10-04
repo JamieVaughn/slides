@@ -276,7 +276,6 @@ const reducer = (state, action) => {
       <li><code>createSlice()</code>: accepts an object of reducer functions, a slice name, and an initial state value, and automatically generates a slice reducer with corresponding action creators and action types.</li>
       <li><code>createAsyncThunk</code>: accepts an action type string and a function that returns a promise, and generates a thunk that dispatches <code>pending/fulfilled/rejected</code> action types based on that promise</li>
       <li><code>createEntityAdapter</code>: generates a set of resusable reducers and selectors to manage normalized data in the store</li>
-      <li><code>createSelector</code> utility is exported from the Reselect library</li>
     </ul>
   </article>
   <article class="slide">
@@ -289,11 +288,18 @@ npm install react-redux
       <li>Create a store using RTK configureStore function & pass in reducer(s)</li>
       <ul class='nolist'>
         <li><pre class="language-js"><code>import { configureStore } from '@reduxjs/toolkit'
-const store = configureStore({ reducer: counterReducer })</code></pre></li>
+import reducer from '../features/slice.js'
+const store = configureStore({ reducer: { featureName: reducer } })</code></pre></li>
       </ul>
       <li>import Redux store into App entry point file (root component file)</li>
       <li>Wrap the root React component with <code>&lt;Provider store={store}> &lt;App /> &lt/Provider></code></li>
-      <li>Start writing your "slices" files with a <code>name</code>, <code>initialState</code> and <code>reducers</code>.</li>
+      <li>Start writing your "slice" file:
+        <ul>
+          <li><code>import { createSlice } from '@reduxjs/toolkit'</code></li>
+          <li>Write you slice: <code>export const slice = createSlice({ ... })</code></li>
+          <li>Add a <code>name</code>, <code>initialState</code> and <code>reducers</code> to your slice</li>
+          <li>From your slice.js file, export your <code>slice.actions</code> and default export your <code>slice.reducer</code></li>
+        </ul>
     </ol>
   </article>
   
