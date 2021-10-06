@@ -188,7 +188,7 @@
   </article>
   <article class="slide">
     <h2>Data type: Enums</h2>
-    <p>Javascript doesn't have these natively, but we try to "fake" them with actions.</p>
+    <p>Javascript doesn't have these natively, but we try to imitate them with actions.</p>
     <p>Typescript does have them though: <a href="https://www.typescriptlang.org/docs/handbook/enums.html#string-enums">String Enums</a></p>
   </article>
 
@@ -197,7 +197,7 @@
     <p>These are functions that return our action objects with the type property and any necessary payload data populated.</p>
     <p>Action Creators follow the <strong>Factory Function</strong> Design Pattern... The are functions that return objects!</p>
     <p>These are used to minimize the redundancy of typing the action object & type, minimize mistakes and automate passing payloads in.</p>
-    <pre class="language-js"><code>const addTodo = text => {
+    <pre class="language-ts"><code>const addTodo = text => {
   return {
     type: 'todos/todoAdded',
     payload: text
@@ -481,10 +481,12 @@ function MyComponent() {
     <p>But what if we want our side effect to update a database? or use a Promise?</p>
     <p>We'll need a way for our Reducer function to do asynchronous operations, and still update the Store correctly and re-render our components correctly. Despite the time lags.</p>
     <div class="flex">
-      <code>dispatch({type, payload})</code>
+      <pre class="language-ts"><code>dispatch({type, payload})</code></pre>
       <div>
-        <code>dispatch( update({type, paylod}).then(res => { ... }) )</code>
-        <code>dispatch( async ({type, payload}) => { ... } )</code>
+        <pre class="language-ts">
+        <code>dispatch( update({type, paylod}).then(res => { ... }) )
+        dispatch( async ({type, payload}) => { ... } )</code>
+      </pre>
       </div>
     </div>
   </article>
@@ -500,7 +502,7 @@ function MyComponent() {
     <p>What's a Thunk?</p>
     <p>A specific kind of curried Redux function that can contain asynchronous logic</p>
     <ul>
-      <li>A fancy word for a pattern to handle asynchronous logic</li>
+      <li>Async Pattern: "thunk" is a fancy word for a pattern to handle asynchronous logic</li>
       <li>Thunks are just functions that return another function (Remember Currying?)</li>
       <ul>
         <li>An inside thunk function, which gets dispatch and getState as arguments</li>
@@ -510,18 +512,36 @@ function MyComponent() {
     </ul>
 	</article>
   <article class="slide">
+    <h2>In Simple terms</h2>
+    <p>Lets the store accept a <strong>function</strong> as a dispatched "action".</p>
+    <p>Lets your logic that talks to the store  ahead of time (separate from your components) without knowing what the store is doing with regard to other actions. </p>
+    <hr>
+    <p>Breaks up an action into multiple stages: dispatch a <strong>pending</strong> action, then send off a fetch request or promise and then it can dispatch a <strong>fulfilled</strong> (success) or <strong>rejected</strong> (failed) action depending on how the promise resolved.</p>
+  </article>
+  <article class="slide">
+    <h2>Decomposing Async Actions</h2>
+    <p>Thunks let us decompose one async user interaction into two (or more) more granular redux actions, so they can be handled separately (and therefore at different times).</p>
+    <img src="img/thunk_dispatch_diagram.png" alt="">
+  </article>
+  <article class="slide">
     <h2>Thunk Example</h2>
     <ul>
       <li>It can be dispatched like a regular action: <code>dispatch(incrementAsync(10))</code></li>
       <li>Async code can then be executed and other actions can be dispatched in the meantime</li>
     </ul>
-    <pre class="language-js"><code>// This will call the thunk with the `dispatch` function as the first argument.
+    <pre class="language-ts"><code>// This will call the thunk with the `dispatch` function as the first argument.
 export const incrementAsync = amount => dispatch => {
   setTimeout(() => {
     dispatch(incrementByAmount(amount))
   }, 1000)
 }
 store.dispatch(incrementAsync(5))</code></pre>
+  </article>
+  <article class="slide">
+    <h2><code>createAsyncThunk()</code></h2>
+    <p>Defining thunk actions uses <code>createAsyncThunk</code></p>
+    <p>If we want to combine our regular reducers with our async reducers we need <code>extraReducers</code>field on <code>createSlice</code></p>
+    <p><a href="https://redux-toolkit.js.org/api/createAsyncThunk">RTK Docs</a></p>
   </article>
 
   <articles class="slide">
@@ -546,8 +566,8 @@ store.dispatch(incrementAsync(5))</code></pre>
     <h2>Resources & Review</h2>
     <ul>
       <li><a href="https://redux.js.org/tutorials/essentials/part-2-app-structure#what-youve-learned">What we've learned</a> </li>
-      <li></li>
-      <li></li>
+      <!-- <li></li>
+      <li></li> -->
     </ul>
   </article>
   
