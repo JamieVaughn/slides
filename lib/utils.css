@@ -41,6 +41,7 @@ pre[data-before]::before {
 background: white;
 border-radius: 100px;
 padding: 2rem;
+width: fit-content;
 }
 .stamped {
   position: absolute;
