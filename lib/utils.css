@@ -62,23 +62,26 @@ width: fit-content;
 .emolist li::marker {
   font-size: 1rem;
 }
-.emolist li:nth-child(1)::marker {
+.emolist li:nth-child(1n)::marker {
   content: '🔴';
 }
-.emolist li:nth-child(2)::marker {
+.emolist li:nth-child(2n)::marker {
   content: '🟠';
 }
-.emolist li:nth-child(3)::marker {
+.emolist li:nth-child(3n)::marker {
   content: '🟡';
 }
-.emolist li:nth-child(4)::marker {
+.emolist li:nth-child(4n)::marker {
   content: '🟢';
 }
-.emolist li:nth-child(5)::marker {
+.emolist li:nth-child(5n)::marker {
   content: '🔵';
 }
-.emolist li:nth-child(6)::marker {
+.emolist li:nth-child(6n)::marker {
   content: '🟣';
+}
+.emolist li:nth-child(7n)::marker {
+  content: '🌑';
 }
 [class*='col-'] > li {padding: 0 1rem;}
 .col-2 {columns: 2}
