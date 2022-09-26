@@ -38,6 +38,7 @@
 		<li><a href="./#part-6">Part 6</a></li>
 	</ul>
 </article>
+<!-- Part 1 -->
 <section id='part-1'>
 	<header class="slide">
 		<h3>HTML</h3>
@@ -68,6 +69,7 @@
 	<article class='slide'>
 		<h2>Code is numbers, letters and symbols</h2>
 		<p class="delayed">Regardless of what programming language you use, <strong>all</strong> code can be read in <strong>any</strong> text editor.</p>
+		<!-- <p class="'delayed">Some languages need to be compiled, others need an interpreter</p> -->
 		<div class="flex">
 			<div class='delayed'>
 				<p>Javascript</p>
@@ -267,6 +269,7 @@
 	</article>
 	</section>
 
+	<!-- Part 2 -->
 	<section id='part-2'>
 		<header class='slide'>
 			<h3>HTML</h3>
@@ -766,197 +769,181 @@
 			</ul>
 		</article>
 	</section>
-<!-- INSERT -->
 
-	
-		
-	
-	<!-- TODO -->
-	<article>
-		<aside class="notes">
-			Programming languages similar to human languages<br>
-			Some languages need to be compiled, others need an interpreter
-		</aside>
-</article>
+	<!---Part 5 -->
+	<section id="part-5">
+		<article class="slide">
+			<section data-background="#000" class="ga-reverse">
+				<header class="ga-header">
+					<h3>MCC Frontend Academy</h3>
+				</header>
+				</header>
+				<h1>HTML: Element Attributes</h1>
+				<p><small>Part 4</small></p>
+			</article>
+			<article class="slide">
+				<h4>HTML Attributes</h4>
+				<ul>
+					<li>"Config Data" that modifies the element's behavior</li>
+					<li>They are place inside the opening tag</li>
+					<li>Multiple attributes are separated by a space</li>
+					<li>Have a name followed by an equal sign then a value.</li>
+					<li>The value should be wrapped in quotation marks (single or double, just be consistent)</li>
+				</ul>
+				<img src="img/attribute_diagram.png" alt="">
+			</article>
+			<article class="slide">
+				<h4>Key/Value vs. Boolean Attributes</h4>
+				<ul>
+					<li>Most attributes are a "pair", they have a name (or key) and a value</li>
+					<li>Some attributes are <b>Boolean</b> attributes and don't need an explicit value</li>
+					<li>They will simply take on a value of <code>true</code> if they are present</li>
+				</ul>
+				<pre><code>&lt;input id="first-name" class="signup" required /&gt;
+		&lt;details open /&gt;</code></pre>
+			</article>
+			<article class="slide">
+				<h4>Global Attributes vs. Specific Attributes</h4>
+				<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global Attributes</a></p>
+				<p>Specific Attributes have to be looked up on a case by case basis</p>
+				<ul>
+					<li><a href="https://htmlreference.io/element/base/">HTMLReference.io for <code>&lt;base&gt;</code></a></li>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">MDN for <code>&lt;input&gt;</code></a></li>
+				</ul>
+			</article>
+			<article class="slide">
+				<h3>Reading Docs is important!! So let's practice</h3>
+				<div style="display: flex; justify-content: space-around;">
+					<ul>
+						<li><code>&lt;a&gt;</code></li>
+						<li><code>&lt;img&gt;</code></li>
+						<li><code>&lt;audio&gt;</code></li>
+						<li><code>&lt;video&gt;</code></li>
+						<li><code>&lt;area&gt; & &lt;map&gt;</code></li>
+						<li><code>&lt;button&gt;</code></li>
+						<li><code>&lt;link&gt;</code></li>
+					</ul>
+					<ul>
+						<li><code>&lt;script&gt;</code></li>
+						<li><code>&lt;meter&gt;</code></li>
+						<li><code>&lt;progress&gt;</code></li>
+						<li><code>&lt;bdo&gt;</code></li>
+						<li><code>&lt;blockquote&gt;</code></li>
+						<li><code>&lt;data&gt;</code></li>
+						<li><code>&lt;time&gt;</code></li>
+					</ul>
+				</div>
+			</article>
+	</section>
 
-
-
-
-
-				<!---Part 3 -->
-<article>
-	
-
-</article>
-
-<!-- Part 4 -->
-<article>
-	<section data-background="#000" class="ga-reverse">
-		<header class="ga-header">
-			<h3>MCC Frontend Academy</h3>
-		</header>
-		</header>
-		<h1>HTML: Element Attributes</h1>
-		<p><small>Part 4</small></p>
-	</article>
-	<article>
-		<h4>HTML Attributes</h4>
-		<ul>
-			<li>"Config Data" that modifies the element's behavior</li>
-			<li>They are place inside the opening tag</li>
-			<li>Multiple attributes are separated by a space</li>
-			<li>Have a name followed by an equal sign then a value.</li>
-			<li>The value should be wrapped in quotation marks (single or double, just be consistent)</li>
-		</ul>
-		<img src="img/attribute_diagram.png" alt="">
-	</article>
-	<article>
-		<h4>Key/Value vs. Boolean Attributes</h4>
-		<ul>
-			<li>Most attributes are a "pair", they have a name (or key) and a value</li>
-			<li>Some attributes are <b>Boolean</b> attributes and don't need an explicit value</li>
-			<li>They will simply take on a value of <code>true</code> if they are present</li>
-		</ul>
-		<pre><code>&lt;input id="first-name" class="signup" required /&gt;
-&lt;details open /&gt;</code></pre>
-	</article>
-	<article>
-		<h4>Global Attributes vs. Specific Attributes</h4>
-		<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes">Global Attributes</a></p>
-		<p>Specific Attributes have to be looked up on a case by case basis</p>
-		<ul>
-			<li><a href="https://htmlreference.io/element/base/">HTMLReference.io for <code>&lt;base&gt;</code></a></li>
-			<li><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/Input">MDN for <code>&lt;input&gt;</code></a></li>
-		</ul>
-	</article>
-	<article>
-		<h3>Reading Docs is important!! So let's practice</h3>
-		<div style="display: flex; justify-content: space-around;">
-			<ul>
-				<li><code>&lt;a&gt;</code></li>
-				<li><code>&lt;img&gt;</code></li>
-				<li><code>&lt;audio&gt;</code></li>
-				<li><code>&lt;video&gt;</code></li>
-				<li><code>&lt;area&gt; & &lt;map&gt;</code></li>
-				<li><code>&lt;button&gt;</code></li>
-				<li><code>&lt;link&gt;</code></li>
+	<!-- Part 6 -->
+	<section id="part-6">
+		<article class="slide">
+			<header class="ga-header">
+				<h3>MCC Frontend Academy</h3>
+			</header>
+			<h1>HTML: Forms and User Input</h1>
+			<p><small>Part 5</small></p>
+		</article>
+		<article class="slide">
+			<h2>Semantic Form Elements</h2>
+			<p>(But for Forms it's more than just Semantic)</p>
+			<ul class="ga-multi">
+<li><code>&lt;form&gt;</code></li>
+<li><code>&lt;fieldset&gt;</code></li>
+<li><code>&lt;legend&gt;</code></li>
+<li><code>&lt;label&gt;</code></li>
+<li><code>&lt;input&gt;</code></li>
+<li><code>&lt;textarea&gt;</code></li>
+<li><code>&lt;button&gt;</code></li>
+<li><code>&lt;output&gt;</code></li>
+<li><code>&lt;option&gt;</code></li>
+<li><code>&lt;optgroup&gt;</code></li>
+<li><code>&lt;select&gt;</code></li>
+<li><code>&lt;meter&gt;</code></li>
+<li><code>&lt;keygen&gt;</code></li>
+<li><code>&lt;datalist&gt;</code></li>
 			</ul>
-			<ul>
-				<li><code>&lt;script&gt;</code></li>
-				<li><code>&lt;meter&gt;</code></li>
-				<li><code>&lt;progress&gt;</code></li>
-				<li><code>&lt;bdo&gt;</code></li>
-				<li><code>&lt;blockquote&gt;</code></li>
-				<li><code>&lt;data&gt;</code></li>
-				<li><code>&lt;time&gt;</code></li>
-			</ul>
-		</div>
 	</article>
+	<article class="slide">
+		<h2>The Input Element</h2>
+		<p>The go-to form element</p>
+		<p> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">Input Element on MDN</a> </p>
+		<p> <a href="https://www.wufoo.com/html5/">Status of HTML5 Form Attributes</a> </p>
 </article>
-
-
-<!-- Part 5 -->
-				<article>
-	<section data-background="#000" class="ga-reverse">
-		<header class="ga-header">
-			<h3>MCC Frontend Academy</h3>
-		</header>
-		<h1>HTML: Forms and User Input</h1>
-		<p><small>Part 5</small></p>
-	</article>
-						<article>
-								<h2>Semantic Form Elements</h2>
-								<p>(But for Forms it's more than just Semantic)</p>
-								<ul class="ga-multi">
-			<li><code>&lt;form&gt;</code></li>
-			<li><code>&lt;fieldset&gt;</code></li>
-			<li><code>&lt;legend&gt;</code></li>
-			<li><code>&lt;label&gt;</code></li>
-			<li><code>&lt;input&gt;</code></li>
-			<li><code>&lt;textarea&gt;</code></li>
-			<li><code>&lt;button&gt;</code></li>
-			<li><code>&lt;output&gt;</code></li>
-			<li><code>&lt;option&gt;</code></li>
-			<li><code>&lt;optgroup&gt;</code></li>
-			<li><code>&lt;select&gt;</code></li>
-			<li><code>&lt;meter&gt;</code></li>
-			<li><code>&lt;keygen&gt;</code></li>
-			<li><code>&lt;datalist&gt;</code></li>
-								</ul>
-
-						</article>
-						<article>
-								<h2>The Input Element</h2>
-								<p>The go-to form element</p>
-								<p> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input">Input Element on MDN</a> </p>
-								<p> <a href="https://www.wufoo.com/html5/">Status of HTML5 Form Attributes</a> </p>
-						</article>
-						<article>
-								<h2>The Form Element</h2>
-								<pre> <code>&lt;form action="/signup.php" method="get" class="form-example"&gt;&lt;/form&gt;</code> </pre>
-								<p>Default Behavior is to redirect to route of the action attribute</p>
-								<p>It will use the Defined HTTP Method</p>
-								<p> Can overide default behavior for AJAX/Single Page Apps</p>
-								<p> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">Form Element on MDN</a> </p>
-								<p> <a href="https://htmlreference.io/forms/">Form Element on HTMLreference.io</a> </p>
-						</article>
-						<article>
-							<h3>Accessible Forms</h3>
-							<p>Forms are perhaps the hardest (and the most important) to add accessibility</p>
-							<p>Use Semantic Elements with proper labels and ids to get correct keyboard access</p>
-							<p>Using ARIA roles and labels when necessary as a fallback</p>
-							<ul>
-								<li><a href="https://webaim.org/techniques/forms/">WebAim Accessible Forms In Depth</a></li>
-								<li><a href="https://htmldog.com/guides/html/advanced/forms/">Accessible Forms Quick Ref </a></li>
-							</ul>
-						</article>
-						<article>
-							<h3>Let's Make our Own Contact Form</h3>
-							<p>Having a contact me or newsletter signup form is a nice touch for our portfolio <a href="https://wjv.io">site</a></p>
-							<p>Try using the resources we just went over to make your own</p>
-							<br />
-							<p>If you are feeling very brave, you can even hook it into an email API service so it actually sends messages!</p>
-							<p>Check out the <a href="https://mailthis.to">Mailthis.to docs</a> to investigate how!</p>
-						</article>
-				</article>
-			
-<section style="text-align: left;" data-background="#000" class="ga-reverse">
-	<header class="ga-header">
-		<h3>MCC Frontend Academy</h3>
-	</header>
-	<h2 style="color: white;">HTML Boilerplate</h2>
-		<ul>
-			<li><a href="https://gist.github.com/salomvary/1351188">Minimum</a></li>
-			<li><a href="https://www.taniarascia.com/basic-html5-file/#basic-indexhtml">Basic</a></li>
-			<li><a href="https://www.matuzo.at/blog/html-boilerplate/">Medium</a></li>
-			<li><a href="https://github.com/h5bp/html5-boilerplate/blob/master/src/index.html">Maximum</a></li>
-			<li><a href="https://csswizardry.com/2011/01/the-real-html5-boilerplate/">"The Real HTML Boilerplate"</a></li>
-			<li><a href="https://htmlhead.dev/">The Head Element In Depth</a></li>
-		</ul>
+<article class="slide">
+	<h2>The Form Element</h2>
+	<pre> <code>&lt;form action="/signup.php" method="get" class="form-example"&gt;&lt;/form&gt;</code> </pre>
+	<p>Default Behavior is to redirect to route of the action attribute</p>
+	<p>It will use the Defined HTTP Method</p>
+	<p> Can overide default behavior for AJAX/Single Page Apps</p>
+	<p> <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/form">Form Element on MDN</a> </p>
+	<p> <a href="https://htmlreference.io/forms/">Form Element on HTMLreference.io</a> </p>
 </article>
-<section style="text-align: left;" data-background="#000" class="ga-reverse">
-	<header class="ga-header">
-		<h3>MCC Frontend Academy</h3>
-	</header>
-	<h2 style="color: white;">Other things to explore...</h2>
-		<ul>
-			<li><a href="https://www.w3.org/standards/">W3C Standards</a></li>
-			<li><a href="https://developers.google.com/search/docs/beginner/seo-starter-guide">SEO Guidelines</a></li>
-			<li><a href="https://developers.google.com/search/docs/advanced/robots/intro">Intro to Robots.txt</a></li>
-			<li><a href="https://frontendchecklist.io/">Frontend Checklist</a></li>
-			<li><a href="https://caniuse.com/">Can I Use</a></li>
-			<li><a href="https://a11y.coffee/intro/">A11y.coffee</a></li>
-			<li><a href="https://howdns.works/">How DNS works</a></li>
-			<li><a href="https://github.com/alex/what-happens-when">What happens when...</a></li>
-
-			
-		</ul>
+<article class="slide">
+<h3>Accessible Forms</h3>
+<p>Forms are perhaps the hardest (and the most important) to add accessibility</p>
+<p>Use Semantic Elements with proper labels and ids to get correct keyboard access</p>
+<p>Using ARIA roles and labels when necessary as a fallback</p>
+<ul>
+	<li><a href="https://webaim.org/techniques/forms/">WebAim Accessible Forms In Depth</a></li>
+	<li><a href="https://htmldog.com/guides/html/advanced/forms/">Accessible Forms Quick Ref </a></li>
+</ul>
 </article>
+<article class="slide">
+<h3>Let's Make our Own Contact Form</h3>
+<p>Having a contact me or newsletter signup form is a nice touch for our portfolio <a href="https://wjv.io">site</a></p>
+<p>Try using the resources we just went over to make your own</p>
+<br />
+<p>If you are feeling very brave, you can even hook it into an email API service so it actually sends messages!</p>
+<p>Check out the <a href="https://mailthis.to">Mailthis.to docs</a> to investigate how!</p>
+</article>
+	</section>
 
-<footer class="slide" title="The End">
-	<h1>Thank you!</h1>
-</footer>
+	<!-- Part 7 -->
+	<section id="part-7">
+		<article class="slide">
+			<header class="ga-header">
+				<h3>MCC Frontend Academy</h3>
+			</header>
+			<h2 style="color: white;">HTML Boilerplate</h2>
+				<ul>
+					<li><a href="https://gist.github.com/salomvary/1351188">Minimum</a></li>
+					<li><a href="https://www.taniarascia.com/basic-html5-file/#basic-indexhtml">Basic</a></li>
+					<li><a href="https://www.matuzo.at/blog/html-boilerplate/">Medium</a></li>
+					<li><a href="https://github.com/h5bp/html5-boilerplate/blob/master/src/index.html">Maximum</a></li>
+					<li><a href="https://csswizardry.com/2011/01/the-real-html5-boilerplate/">"The Real HTML Boilerplate"</a></li>
+					<li><a href="https://htmlhead.dev/">The Head Element In Depth</a></li>
+				</ul>
+		</article>
+	</section>
 
+	<section id="part-8">
+		<article class="slide">
+			<header class="ga-header">
+				<h3>MCC Frontend Academy</h3>
+			</header>
+			<h2 style="color: white;">Other things to explore...</h2>
+				<ul>
+					<li><a href="https://www.w3.org/standards/">W3C Standards</a></li>
+					<li><a href="https://developers.google.com/search/docs/beginner/seo-starter-guide">SEO Guidelines</a></li>
+					<li><a href="https://developers.google.com/search/docs/advanced/robots/intro">Intro to Robots.txt</a></li>
+					<li><a href="https://frontendchecklist.io/">Frontend Checklist</a></li>
+					<li><a href="https://caniuse.com/">Can I Use</a></li>
+					<li><a href="https://a11y.coffee/intro/">A11y.coffee</a></li>
+					<li><a href="https://howdns.works/">How DNS works</a></li>
+					<li><a href="https://github.com/alex/what-happens-when">What happens when...</a></li>
+				</ul>
+		</article>
+	</section>
+
+	<section>
+		<article class="slide">
+			<footer class="slide" title="The End">
+				<h1>Thank you!</h1>
+			</footer>
+		</article>
+	</section>
 
 <script src="../lib/inspire.js"></script>
 <script src="../laser/laser.js"></script>
