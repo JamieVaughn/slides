@@ -1,0 +1,24 @@
+ul.horiz-flex-list {
+  display: flex; 
+  justify-content: space-between; 
+  list-style: none;
+}
+.horiz-flex-list li {
+  border: 2px solid crimson;
+  border-radius: 8px;
+  padding: 0 4px;
+}
+.fieldsets fieldset {
+  border: 1px solid black !important;
+  border-radius: 16px;
+  min-width: 30%;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+.fieldsets fieldset span {
+  min-width: 45%;
+}
+.alpha > li {
+  list-style-type: counter();
+}
