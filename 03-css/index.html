@@ -34,7 +34,7 @@
 	<article class="slide" title="">
     <h1>Cascading Style Sheets (CSS)</h1>
     <p><a href="https://web.dev/learn/css/">Learn CSS</a></p>
-    <ol type="A">
+    <ol type="1">
         <li>Tells the browser how to <strong>display</strong> a certain element</li>
         <li>Offers lots of power & versatility: <a href="http://www.csszengarden.com/">CSS Zen Garden</a></li>
         <li>Follows the general ruleset:</li>
@@ -46,9 +46,10 @@
             </ol>
         </li>
     </ol>
-        <pre><code>h1 {
-  font-size: 24px;
+    <pre class="language-css"><code>h1 {
+    font-size: 24px;
 }</code></pre>
+        
     
     <details class="notes">
         Not a programming language like Javascript, nor a mark-up language like HTML<br>
@@ -127,73 +128,79 @@
   </article>
   <article class="slide">
     <h2>More Types of CSS selectors</h2>
-    <ul>
-        <li><strong>Attribute</strong>: matches all the elements with provided attribute, e.g. <code
-            class="ga-nowrap">&lt;video controls&gt;</code> or <code
-            class="ga-nowrap">&lt;a href="https://google.com"&gt;</code>
-            <pre><code>[controls] {}</code></pre>
-            <pre><code>[href="https://google.com"] {}</code></pre>
+    <ul class="flex gap:32 list-style:none">
+        <li><strong>Attribute</strong>: matches all the elements with provided attribute 
+            <br>e.g. <code>&lt;video controls&gt;</code> or <br>
+            <code>&lt;a href="https://wjv.io"&gt;</code>
+            <pre class="language-css">
+                <code>[controls] {}
+[href="https://wjv.io"] {}</code>
+            </pre>
         </li>
-        <li><strong>Combination</strong>: matches all the elements with the specified combination of selectors, e.g. <code
+        <li><strong>Combination</strong>: matches all the elements with the specified combination of selectors, 
+            <br>e.g. <code
                 class="ga-nowrap">&lt;div class="wrapper"&gt;</code>
-            <pre><code>div.wrapper {}</code></pre>
-            <i>notice there is no space between this combination selector</i>
+            <br>
+            <pre class="language-css"><code>div.wrapper {}</code></pre>
+            <em>notice there is no space between this combination selector</em>
         </li>
     </ul>
   </article>
   <article class="slide">
     <h2>Even More Types of CSS selectors</h2>
-    <ul>
-        <li>
-            <div style="display: flex;">
-                <div style="display: flex; flex-direction: column;">
-                    <span><strong>Nested:</strong> matches the </span><span>nested <b>descendant</b> element with the specified <b>ancestor</b></span>
-                </div>
-                <pre style="margin-top: -1.85rem;"><code>&lt;ul&gt;
-&lt;h1&gt;Title&lt;/h1&gt;
-&lt;li&gt;
-&lt;a href="/link"&gt;Link&lt;/a&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;
-&lt;a href="/hello"&gt;Hello&lt;/a&gt;
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;item&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-    </div>
-    <div class="tight-code nmt">
-        <pre><code>ul li {}</code></pre>
-        <pre><code>ul a {}</code></pre>
-        <pre><code>ul > li {}</code></pre>
-        <pre style="background: #3f3f3f; display: flex; align-items: center;"><code>ul > li > a {} // this only matches the first link</code></pre>
-        <pre style="background: #3f3f3f; display: flex; align-items: center;"><code>ul > a {} // this selector won't match anything above 🚫</code></pre>
-    </div>
-    </li>
-    <li>
-        <strong>Sibling Selectors:</strong> matches subsequent sibling or siblings (no back-traversal)
-        <div class="tight-code">
-            <pre><code>h1 + li {} // selects first suubsequent li element after h1</code></pre>
-            <pre><code>h1 ~ li {} // selects all subsequent li elements after h1</code></pre>
+    <div class="flex align">
+        <div>
+            <span class="f:28">
+                <strong>Nested:</strong> matches the nested 
+                <strong>descendant</strong> element with the specified 
+                <strong>ancestor</strong>
+            </span>
+            <div class="tight-code nmt">
+                <pre class="language-css"><code>
+ul li {}
+ul a {}
+ul > li {}
+ul > li > a {} // only matches first link
+ul > a {} // 🚫 won't match anything to the right </code></pre>
+            </div>
         </div>
-    </li>
-</ul>
+        <pre><code>&lt;ul&gt;
+  &lt;h1&gt;Title&lt;/h1&gt;
+  &lt;li&gt;
+    &lt;a href="/link"&gt;Link&lt;/a&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;
+      &lt;a href="/hello"&gt;Hello&lt;/a&gt;
+    &lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+
+    </div>
+    <br>
+    <p>
+        <span class="f:28"><strong>Sibling Selectors:</strong> matches subsequent sibling or siblings (no back-traversal)</span>
+        <div class="tight-code">
+            <pre class="language-css"><code>h1 + li {} // selects first subsequent li element after h1</code></pre>
+            <pre class="language-css"><code>h1 ~ li {} // selects all subsequent li elements after h1</code></pre>
+        </div>
+    </p>
   </article>
   <article class="slide">
     <h2>CSS Selectors Docs</h2>
     <ul>
         <li>Psuedo-selectors & Psuedo-classes</li>
-        <li>Psuedo-elements (::after & ::before)</li>
-        <li>:is() & :where() selectors <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is">MDN</a>, <a href="https://kilianvalkhof.com/2021/css-html/css-nesting-specificity-and-you/">Article</a></li>
+        <li>Psuedo-elements (<code>::after</code> & <code>::before</code>)</li>
+        <li><code>:is()</code> & <code>:where()</code> selectors <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is">MDN</a>, <a href="https://kilianvalkhof.com/2021/css-html/css-nesting-specificity-and-you/">Article</a></li>
         <li><a href="https://www.w3schools.com/cssref/css_selectors.asp">W3 Schools CSS Selectors List</a></li>
         <li><a href="https://guide.freecodecamp.org/css/tutorials/css-selectors-cheat-sheet/">FCC Selector Cheat Sheet</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">MDN CSS Selectors List</a></li>
-        <li style="list-style: none;"> Side note: CSS comments use <code>//</code> or <code>/* */</code> </li>
+        <li style="list-style: none;"> Side note: CSS comments use <code>/* ... */</code> </li>
     </ul>
-    <pre><code>// This is a single line comment
-
-/* This is a multi-line 
-CSS comment */</code></pre>
+    <pre class="language-css"><code>
+/* This is a comment in CSS
+They can be multi-line too */</code></pre>
   </article>
   <article class="slide">
     <h2>CSS Validator</h2>
