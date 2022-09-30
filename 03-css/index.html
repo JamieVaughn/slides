@@ -58,6 +58,28 @@
     </details>
 	</article>
 
+    <article class="slide">
+            <h2>Styles: Inline, Internal & External</h2>
+            <div class="flex gap:8">
+
+            <pre><code>&lt;body&gt;
+  &lt;div style="color: white;"&gt;&lt;/div&gt;
+&lt;body&gt;</code></pre>
+            <pre><code>&lt;head&gt;
+  &lt;style&gt;
+    selector {
+      property1: value;
+    }
+  &lt;/style&gt;
+&lt;/head&gt;</code></pre>
+<pre><code>&lt;head&gt;
+  &lt;link href='css/styles.css'&gt;
+&lt;/head&gt;</code></pre>
+</div>
+<p><strong>Head vs Body:</strong> <br> <code>&lt;body&gt;</code> is for content & <code>&lt;head&gt;</code> is for metadata</p>
+
+    </article>
+
   <article class="slide">
     <h2>Structure of a CSS rule</h2>
     <div class="flex align">
@@ -103,6 +125,133 @@
         </div>
     </ul>
   </article>
+  <article class="slide">
+    <h2>More Types of CSS selectors</h2>
+    <ul>
+        <li><strong>Attribute</strong>: matches all the elements with provided attribute, e.g. <code
+            class="ga-nowrap">&lt;video controls&gt;</code> or <code
+            class="ga-nowrap">&lt;a href="https://google.com"&gt;</code>
+            <pre><code>[controls] {}</code></pre>
+            <pre><code>[href="https://google.com"] {}</code></pre>
+        </li>
+        <li><strong>Combination</strong>: matches all the elements with the specified combination of selectors, e.g. <code
+                class="ga-nowrap">&lt;div class="wrapper"&gt;</code>
+            <pre><code>div.wrapper {}</code></pre>
+            <i>notice there is no space between this combination selector</i>
+        </li>
+    </ul>
+  </article>
+  <article class="slide">
+    <h2>Even More Types of CSS selectors</h2>
+    <ul>
+        <li>
+            <div style="display: flex;">
+                <div style="display: flex; flex-direction: column;">
+                    <span><strong>Nested:</strong> matches the </span><span>nested <b>descendant</b> element with the specified <b>ancestor</b></span>
+                </div>
+                <pre style="margin-top: -1.85rem;"><code>&lt;ul&gt;
+&lt;h1&gt;Title&lt;/h1&gt;
+&lt;li&gt;
+&lt;a href="/link"&gt;Link&lt;/a&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;
+&lt;a href="/hello"&gt;Hello&lt;/a&gt;
+&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;item&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    </div>
+    <div class="tight-code nmt">
+        <pre><code>ul li {}</code></pre>
+        <pre><code>ul a {}</code></pre>
+        <pre><code>ul > li {}</code></pre>
+        <pre style="background: #3f3f3f; display: flex; align-items: center;"><code>ul > li > a {} // this only matches the first link</code></pre>
+        <pre style="background: #3f3f3f; display: flex; align-items: center;"><code>ul > a {} // this selector won't match anything above 🚫</code></pre>
+    </div>
+    </li>
+    <li>
+        <strong>Sibling Selectors:</strong> matches subsequent sibling or siblings (no back-traversal)
+        <div class="tight-code">
+            <pre><code>h1 + li {} // selects first suubsequent li element after h1</code></pre>
+            <pre><code>h1 ~ li {} // selects all subsequent li elements after h1</code></pre>
+        </div>
+    </li>
+</ul>
+  </article>
+  <article class="slide">
+    <h2>CSS Selectors Docs</h2>
+    <ul>
+        <li>Psuedo-selectors & Psuedo-classes</li>
+        <li>Psuedo-elements (::after & ::before)</li>
+        <li>:is() & :where() selectors <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is">MDN</a>, <a href="https://kilianvalkhof.com/2021/css-html/css-nesting-specificity-and-you/">Article</a></li>
+        <li><a href="https://www.w3schools.com/cssref/css_selectors.asp">W3 Schools CSS Selectors List</a></li>
+        <li><a href="https://guide.freecodecamp.org/css/tutorials/css-selectors-cheat-sheet/">FCC Selector Cheat Sheet</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">MDN CSS Selectors List</a></li>
+        <li style="list-style: none;"> Side note: CSS comments use <code>//</code> or <code>/* */</code> </li>
+    </ul>
+    <pre><code>// This is a single line comment
+
+/* This is a multi-line 
+CSS comment */</code></pre>
+  </article>
+  <article class="slide">
+    <h2>CSS Validator</h2>
+    <p><a href="https://jigsaw.w3.org/css-validator/">Validate your css</a> ... just like we did with html!</p>
+  </article>
+
+  <article class="slide">
+    <h2>CSS Selector Challenge</h2>
+    <p>Have some fun practicing your css selectors with this game: <a href="https://flukeout.github.io/">CSS Diner</a></p>
+    <br />
+    <h3>CSS Selectors Explained</h3>
+    <p><a href="https://kittygiraudel.github.io/selectors-explained">Selectors translated into plain english</a></p>
+  </article>
+
+  <article class="slide">
+    <h2>CSS Properties <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference">Common Ones (~39+)</a></small></h2>
+    <ul class="horiz-flex-list col-2">
+        <li><a href="https://cssreference.io/">CSSReference.io</a></li>
+        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">MDN</a></li>
+        <li><a href="https://htmldog.com/references/css/properties/#foodC2">By Category</a></li>
+        <li><a href="https://www.w3.org/Style/CSS/all-properties.en.html">W3 complete list</a></li>
+    </ul>
+    <ul style="columns: 4; list-style: none; margin-left: 0;">
+        <li><code>background</code></li>
+        <li><code>border</code></li>
+        <li><code>border-radius</code></li>
+        <li><code>box-sizing</code></li>
+        <li><code>clip-path</code></li>
+        <li><code>color</code></li>
+        <li><code>cursor</code></li>
+        <li><code>display</code></li>
+        <li><code>filter</code></li>
+        <li><code>font-family</code></li>
+        <li><code>font-size</code></li>
+        <li><code>font-style</code></li>
+        <li><code>font-weight</code></li>
+        <li style="white-space: nowrap;"><code>height</code> (min/max)</li>
+        <li><code>left/right</code></li> 
+        <li><code>letter-spacing</code></li>
+        <li><code>line-height</code></li>
+        <li><code>list-style</code></li>
+        <li><code>margin</code></li>
+        <li><code>opacity</code></li>
+        <li><code>overflow</code></li>
+        <li><code>padding</code></li>
+        <li><code>position</code></li>
+        <li><code>text-align</code></li>
+        <li><code>text-decoration</code></li>
+        <li><code>text-indent</code></li>
+        <li><code>text-transform</code></li>
+        <li><code>top/bottom</code></li>
+        <li><code>transform</code></li>
+        <li><code>visibility</code></li>
+        <li style="white-space: nowrap;"><code>width</code> (min/max)</li>
+        <li><code>z-index</code></li>
+        <li><code>word-spacing</code></li>
+    </ul>
+  </article>
 
 	<article class="slide">
 	</article>
@@ -128,133 +277,6 @@
   <div class="slides">
 
       <section>
-
-          <section>
-              <h2>More Types of CSS selectors</h2>
-              <ul>
-                  <li><strong>Attribute</strong>: matches all the elements with provided attribute, e.g. <code
-                      class="ga-nowrap">&lt;video controls&gt;</code> or <code
-                      class="ga-nowrap">&lt;a href="https://google.com"&gt;</code>
-                      <pre><code>[controls] {}</code></pre>
-                      <pre><code>[href="https://google.com"] {}</code></pre>
-                  </li>
-                  <li><strong>Combination</strong>: matches all the elements with the specified combination of selectors, e.g. <code
-                          class="ga-nowrap">&lt;div class="wrapper"&gt;</code>
-                      <pre><code>div.wrapper {}</code></pre>
-                      <i>notice there is no space between this combination selector</i>
-                  </li>
-              </ul>
-          </section>
-          <section>
-              <h2>Even More Types of CSS selectors</h2>
-              <ul>
-                  <li>
-                      <div style="display: flex;">
-                          <div style="display: flex; flex-direction: column;">
-                              <span><strong>Nested:</strong> matches the </span><span>nested <b>descendant</b> element with the specified <b>ancestor</b></span>
-                          </div>
-                          <pre style="margin-top: -1.85rem;"><code>&lt;ul&gt;
-&lt;h1&gt;Title&lt;/h1&gt;
-&lt;li&gt;
-&lt;a href="/link"&gt;Link&lt;/a&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;
-&lt;a href="/hello"&gt;Hello&lt;/a&gt;
-&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;item&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-              </div>
-              <div class="tight-code nmt">
-                  <pre><code>ul li {}</code></pre>
-                  <pre><code>ul a {}</code></pre>
-                  <pre><code>ul > li {}</code></pre>
-                  <pre style="background: #3f3f3f; display: flex; align-items: center;"><code>ul > li > a {} // this only matches the first link</code></pre>
-                  <pre style="background: #3f3f3f; display: flex; align-items: center;"><code>ul > a {} // this selector won't match anything above 🚫</code></pre>
-              </div>
-              </li>
-              <li>
-                  <strong>Sibling Selectors:</strong> matches subsequent sibling or siblings (no back-traversal)
-                  <div class="tight-code">
-                      <pre><code>h1 + li {} // selects first suubsequent li element after h1</code></pre>
-                      <pre><code>h1 ~ li {} // selects all subsequent li elements after h1</code></pre>
-                  </div>
-              </li>
-          </ul>
-          </section>
-          <section>
-              <h2>CSS Selectors Docs</h2>
-              <ul>
-                  <li>Psuedo-selectors & Psuedo-classes</li>
-                  <li>Psuedo-elements (::after & ::before)</li>
-                  <li>:is() & :where() selectors <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is">MDN</a>, <a href="https://kilianvalkhof.com/2021/css-html/css-nesting-specificity-and-you/">Article</a></li>
-                  <li><a href="https://www.w3schools.com/cssref/css_selectors.asp">W3 Schools CSS Selectors List</a></li>
-                  <li><a href="https://guide.freecodecamp.org/css/tutorials/css-selectors-cheat-sheet/">FCC Selector Cheat Sheet</a></li>
-                  <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">MDN CSS Selectors List</a></li>
-                  <li style="list-style: none;"> Side note: CSS comments use <code>//</code> or <code>/* */</code> </li>
-              </ul>
-              <pre><code>// This is a single line comment
-
-/* This is a multi-line 
-CSS comment */</code></pre>
-          </section>
-          <section>
-              <h2>CSS Validator</h2>
-              <p><a href="https://jigsaw.w3.org/css-validator/">Validate your css</a> ... just like we did with html!</p>
-          </section>
-          <section>
-              <h2>CSS Selector Challenge</h2>
-              <p>Have some fun practicing your css selectors with this game: <a href="https://flukeout.github.io/">CSS Diner</a></p>
-              <br />
-              <h3>CSS Selectors Explained</h3>
-              <p><a href="https://kittygiraudel.github.io/selectors-explained">Selectors translated into plain english</a></p>
-          </section>
-          <section>
-              <h2>CSS Properties <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference">Common Ones (~39+)</a></small></h2>
-              <ul class="horiz-flex-list">
-                  <li><a href="https://cssreference.io/">CSSReference.io</a></li>
-                  <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">MDN</a></li>
-                  <li><a href="https://htmldog.com/references/css/properties/#foodC2">By Category</a></li>
-                  <li><a href="https://www.w3.org/Style/CSS/all-properties.en.html">W3 complete list</a></li>
-              </ul>
-              <ul style="columns: 3; list-style: none; margin-left: 0;">
-                  <li>background</li>
-                  <li>border</li>
-                  <li>border-radius</li>
-                  <li>box-sizing</li>
-                  <li>clip-path</li>
-                  <li>color</li>
-                  <li>cursor</li>
-                  <li>display</li>
-                  <li>filter</li>
-                  <li>font-family</li>
-                  <li>font-size</li>
-                  <li>font-style</li>
-                  <li>font-weight</li>
-                  <li style="white-space: nowrap;">height (min/max)</li>
-                  <li>left/right</li> 
-                  <li>letter-spacing</li>
-                  <li>line-height</li>
-                  <li>list-style</li>
-                  <li>margin</li>
-                  <li>opacity</li>
-                  <li>overflow</li>
-                  <li>padding</li>
-                  <li>position</li>
-                  <li>text-align</li>
-                  <li>text-decoration</li>
-                  <li>text-indent</li>
-                  <li>text-transform</li>
-                  <li>top/bottom</li>
-                  <li>transform</li>
-                  <li>visibility</li>
-                  <li style="white-space: nowrap;">width (min/max)</li>
-                  <li>z-index</li>
-                  <li>word-spacing</li>
-              </ul>
-          </section>
-
           <section>
               <h2>CSS Length Units</h2>
               <p>CSS Lengths represent a distance within the browser viewport. They can be assigned to some css properties as a value. <span style="border: 1px solid black; border-radius: 8px;">Percent: <span>%</span></span></p>
@@ -289,23 +311,7 @@ padding: 20px 2rem 10% 5vmin
               <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">MDN on CSS Lengths</a></p>
           </section>
 
-          <section>
-              <h2>Styles: Inline, Internal & External</h2>
-              <pre><code>&lt;body&gt;
-&lt;div style='color: white;'&gt;&lt;/div&gt;
-&lt;body&gt;</code></pre>
-              <pre><code>&lt;head&gt;
-&lt;style&gt;
-selector {
-property1: value;
-}
-&lt;/style&gt;
-&lt;/head&gt;</code></pre>
-  <pre><code>&lt;head&gt;
-&lt;link href='css/styles.css'&gt;
-&lt;/head&gt;</code></pre>
-<p><strong>Head vs Body:</strong> <br> &lt;body&gt; is for content & &lt;head&gt; is for metadata</p>
-          </section>
+          
 
 
 
