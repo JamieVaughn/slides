@@ -4,7 +4,7 @@ ul.horiz-flex-list {
   list-style: none;
 }
 .horiz-flex-list li {
-  border: 2px solid crimson;
+  border: 2px solid linen;
   border-radius: 8px;
   padding: 0 4px;
 }

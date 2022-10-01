@@ -20,6 +20,9 @@
 </head>
 <body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
 
+
+<!-- Part 1 CSS Basics -->
+
 <header id="intro" class="slide">
 	<h1>Web Design & Development</h1>
   <h2>CSS</h2>
@@ -229,7 +232,7 @@ They can be multi-line too */</code></pre>
 
   <article class="slide">
     <h2>CSS Properties <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference">Common Ones (~39+)</a></small></h2>
-    <ul class="horiz-flex-list col-2">
+    <ul class="horiz-flex-list col-2 gap:16">
         <li><a href="https://cssreference.io/">CSSReference.io</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">MDN</a></li>
         <li><a href="https://htmldog.com/references/css/properties/#foodC2">By Category</a></li>
@@ -274,8 +277,8 @@ They can be multi-line too */</code></pre>
 
   <artile class="slide">
     <h2>CSS Length Units</h2>
-    <div class="fieldsets d:flex t:center">
-        <fieldset class="d:flex jc:center">
+    <div class=" d:flex t:center">
+        <fieldset class="d:flex ai:center jc:center">
             <legend>Percent</legend>
             <code>%</code>
         </fieldset> 
@@ -386,7 +389,7 @@ They can be multi-line too */</code></pre>
     <ul>
         <li><p>Elements, classes and ids have increasing degrees of specificity</p></li>
         <li><p>Combining Selectors increases specificity</p></li>
-        <li><p>Highest specificity wins. Order also matters. !important doesn't change specificity, but it does take precedence over all.</p></li>
+        <li><p>Highest specificity wins. Order also matters. <code>!important</code> doesn't change specificity, but it does take precedence over all.</p></li>
         <li><p>In general, you want to choose selectors with smallest possible specificity, so you do have to fight it later</p></li>
     </ul>
     <br>
@@ -396,9 +399,12 @@ They can be multi-line too */</code></pre>
 
     <article class="slide">
         <h2>Let's use what we've learned!</h2>
-        <p>We'll try adding some basic CSS to our Resume & Contact Form</p>
+        <p>As a way of extending our resumse & contact form projects...</p>
+        <strong>We'll start adding some basic CSS to our Resume & Contact Form</strong>
     </article>
 </section>
+
+<!-- Part 2 Design Systems -->
 
 <section>
 	<header class="slide">
@@ -437,14 +443,17 @@ They can be multi-line too */</code></pre>
 
     <article class="slide">
         <h2>Color Space & Color Gamut</h2>
-        <div style="display: flex; align-items: center;">
-            <img style="max-height: 55vh" src="img/hex_color.png" alt="hex code color breakdown">
-            <div >
-                <p>HSL( <br> <span style="font-size: 1.5rem;">360, 100%, 100%</span> <br>)</p>
+        <div class="d:flex ai:center gap:32">
+            <div class="d:flex flex-direction:column">
+                <h4>RGB Scale (w/ hex values)</h4>
+                <img style="max-height: 55vh" src="img/hex_color.png" alt="hex code color breakdown">
+            </div>
+            <div class="d:flex jc:center flex-direction:column">
+                <p>HSL( <span style="font-size: 2rem;">360, 100%, 100%</span> )</p>
                 <img style="max-height: 175px;" src="img/HSL_color_solid_cylinder_saturation_gray.png" alt="hsl color cylinder">
             </div>
-            <h4>Color Tools & Diagrams</h4>
-            <ul >
+            <ul class="t:right list-style:none">
+                <h4>Color Tools <br>& Diagrams</h4>
                 <li><a href="https://en.wikipedia.org/wiki/CIELAB_color_space">CIELAB</a></li>
                 <li><a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space#/media/File:CIE1931xy_gamut_comparison.svg">CIE Color Space</a></li>
                 <li><a href="https://coolors.co/">Coolors</a></li>
@@ -507,106 +516,14 @@ They can be multi-line too */</code></pre>
     </article>
 
 	<article class="slide">
+        <h2>Let's make our own Basic Pattern library!</h2>
+        <p><small>(This could eventually be used for the FCC technical docs project)</small></p>
+        <p>To summarize what goes into these check out these articles: <a href="https://www.uxpin.com/create-design-system-guide/">UXPing</a>, <a href="https://www.csshero.org/create-web-design-style-guide/">CSSHero</a></p>
+        <p><a href="/deck/pattern-library/">Pattern Library Starter Template</a> <small><a href="https://github.com/JamieVaughn/deck/blob/master/pattern-library/index.html">Github Link</a></small></p>
 	</article>
-</section>
 
-
-<!-- Old to migrate -->
-<div class="reveal">
-
-  <div class="slides">
-
-
-      <section>
-          
-          
-          
-          <section>
-          </section>
-          
-          
-          
-          
-          <section>
-              <h2>CSS Custom Properties</h2>
-              <h4>a.k.a. "CSS Variables"</h4>
-              <p>Assign a property:</p> 
-              <pre><code>:root {
---name: "value";
---my-color: #1060bb;
---my-font: Montserrat, sans-serif;
-}</code></pre>
-              <p>Invoke a property with <code>var()</code>:</p>
-               <pre><code>button {
-color: var(--my-color);
-}</code></pre>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">MDN: Custom Properties</a></p>
-          </section>
-          <section>
-              <h2>CSS Variable Scoping</h2>
-              <ul>
-                  <li>The variables on the <code>:root</code> selector will be available to all elements on the page</li>
-                  <li>But you can declare variables lower down in the HTML render tree by using more specific selectors</li>
-                  <li>This will "scope" those variables to only particular parts of your site</li>
-              </ul>
-              <p>
-              <p>
-              <p>
-              <div class="flex" style="gap: 4px;align-items: stretch;">
-                  <pre style="width: 45%; flex-shrink: 1;"><code class="med-code">:root {
---my-color: royalblue;    
-}
-footer {
---my-color: darkorchid;
-}
-body, footer {
-color: var(--my-color)
-}</code></pre>
-              <div>
-                  <pre style="width: 100%; flex-grow: 2;"><code class="med-code">&lt;body&gt;
-&lt;p&gt;This is body text&lt;/p&gt;
-&lt;footer&gt;This is my footer&lt;/footer&gt;
-&lt;/body&gt;</code></pre>
-                      <img src="img/scoped_css_vars.png" alt="">
-                  </div>
-              </div>
-              
-          </section>
-          <section>
-              <h2>CSS Math Functions</h2>
-              <code>calc() min() max() clamp()</code>
-              <p>CSS supports dynamic calculations:</p>
-                  <pre><code>div {
-width: calc(100% - 20px);
-height: max(100%, 400px);
-margin: min(16px, 1vw);
-font-size: clamp(12px, 2vmin, 28px);
-
-/* combine them! */ 
-padding: calc(4px * min(calc(50% / 2), 20vh));
-
-/* you can use /, *, -, or + operators with calc(), just
-don't forget the spaces and match up all the parens! */
-}</code></pre>
-          </section>
-          <section>
-              <h2>CSS Filters</h2>
-              <p>Modify appearances:</p>
-              <pre><code>div {
-filter: hue-rotate(45deg) contrast(50%);
-}</code></pre>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter">MDN: Filter Function</a></p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions">MDN: All CSS Functions</a></p>
-
-          </section>
-          <section>
-              <h2>Let's make our own Basic Pattern library!</h2>
-              <p><small>(This could eventually be used for the FCC technical docs project)</small></p>
-              <p>To summarize what goes into these check out these articles: <a href="https://www.uxpin.com/create-design-system-guide/">UXPing</a>, <a href="https://www.csshero.org/create-web-design-style-guide/">CSSHero</a></p>
-              <p><a href="/deck/pattern-library/">Pattern Library Starter Template</a> <small><a href="https://github.com/JamieVaughn/deck/blob/master/pattern-library/index.html">Github Link</a></small></p>
-          </section>
-          <section>
-              <h2>Pre-Made Design Systems</h2>
+    <article class="slide">
+        <h2>Pre-Made Design Systems</h2>
               <ul>
                   <li>
                       <a href="https://andybrewer.github.io/mvp/">MVP.css</a>
@@ -627,18 +544,104 @@ filter: hue-rotate(45deg) contrast(50%);
                       <a href="https://bulma.io/">Bulma</a>
                   </li>
               </ul>
-          </section>
-          <section>
-              <h2>Splitting & Barreling CSS Files with:</h2>
-              <p><code style="font-size: 4rem;">@import </code><sup><a style="transform: translateY(-50px);" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import">MDN</a></sup></p>
-              <div style="display: flex;">
-                  <div>
-                      <p style="margin: 0">We can split our css files by concern/purpose</p>
-                      <img src="img/css_barrel.png" alt="file structure for css barreling">
-                  </div>
-                  <div style="width: 100%">
-                      <p style="margin: 0">Barreling: packaging split files to export to one &lt;link /&gt; tag</p>
-              <pre style="margin: 20px 0; width: 100%"><code>/* content of styles/index.css above */
+    </article>
+</section>
+
+
+<!-- Part 3 Advanced CSS-->
+
+<section>
+    <header class="slide">
+        <h2>Elements of Web Design</h2>
+		<h1>Advanced CSS</h1>
+    </header>
+
+    <article class="slide">
+        <h2>CSS Filters</h2>
+        <p>Modify appearances:</p>
+        <pre><code>div {
+  filter: hue-rotate(45deg) contrast(50%);
+}</code></pre>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter">MDN: Filter Function</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions">MDN: All CSS Functions</a></p>
+  </article>
+
+    <article class="slide">
+        <h2>CSS Math Functions</h2>
+              <code>calc() min() max() clamp()</code>
+              <p>CSS supports dynamic calculations:</p>
+                  <pre><code>div {
+  width: calc(100% - 20px);
+  height: max(100%, 400px);
+  margin: min(16px, 1vw);
+  font-size: clamp(12px, 2vmin, 28px);
+
+  /* combine them! */ 
+  padding: calc(4px * min(calc(50% / 2), 20vh));
+
+  /* you can use /, *, -, or + operators with calc(), just
+  don't forget the spaces and match up all the parens! */
+}</code></pre>
+    </article>
+
+        <article class="slide">
+            <h2>CSS Custom Properties</h2>
+            <h4>a.k.a. "CSS Variables"</h4>
+            <p>Assign a property:</p> 
+            <pre><code>:root {
+  --name: "value";
+  --my-color: #1060bb;
+  --my-font: Montserrat, sans-serif;
+}</code></pre>
+            <p>Invoke a property with <code>var()</code>:</p>
+             <pre><code>button {
+  color: var(--my-color);
+}</code></pre>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">MDN: Custom Properties</a></p>
+        </article>
+
+        <article class="slide">
+            <h2>CSS Variable Scoping</h2>
+            <ul>
+                <li>The variables on the <code>:root</code> selector will be available to all elements on the page</li>
+                <li>But you can declare variables lower down in the HTML render tree by using more specific selectors</li>
+                <li>This will "scope" those variables to only particular parts of your site</li>
+            </ul>
+            <p>
+            <p>
+            <p>
+            <div class="flex" style="gap: 4px;align-items: stretch;">
+                <pre style="width: 45%; flex-shrink: 1;"><code class="med-code">:root {
+--my-color: royalblue;    
+}
+footer {
+--my-color: darkorchid;
+}
+body, footer {
+color: var(--my-color)
+}</code></pre>
+            <div>
+                <pre style="width: 100%; flex-grow: 2;"><code class="med-code">&lt;body&gt;
+&lt;p&gt;This is body text&lt;/p&gt;
+&lt;footer&gt;This is my footer&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+                    <img src="img/scoped_css_vars.png" alt="">
+                </div>
+            </div>
+            
+          </article>
+
+          <article class="slide">
+            <h2>Splitting & Barreling CSS Files with:</h2>
+            <p><code style="font-size: 4rem;">@import </code><sup><a style="transform: translateY(-50px);" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import">MDN</a></sup></p>
+            <div style="display: flex;">
+                <div>
+                    <p style="margin: 0">We can split our css files by concern/purpose</p>
+                    <img src="img/css_barrel.png" alt="file structure for css barreling">
+                </div>
+                <div style="width: 100%">
+                    <p style="margin: 0">Barreling: packaging split files to export to one &lt;link /&gt; tag</p>
+            <pre style="margin: 20px 0; width: 100%"><code>/* content of styles/index.css above */
 
 /* variables have to be imported first so 
 they are available to the other files */
@@ -647,220 +650,220 @@ they are available to the other files */
 @import url(forms.css);
 @import url(buttons.css);
 @import url(media.css);
-              </code></pre>
-                  </div>
-              </div>
-              <p>But the number of separate files increases, so does the page load speed... it's best to keep it under 6</p>
-          </section>
-          <section>
-              <h2>Affordances in User Interfaces</h2>
-              <div style='display: flex'>
-                  <img style="max-width: 33%" src="img/design_of_everyday_things.jpeg" alt="">
-                  <img style="max-width: 33%" src="img/push_pull.jpeg" alt="">
-                  <img style="max-width: 33%" src="img/turn.jpg" alt="">
-              </div>
-              <p><a href="https://en.wikipedia.org/wiki/Ethnography">Ethnography</a> & User Research</p>
-          </section>
-          <section>
-              <h2>CSS Transitions & Animations</h2>
-              <p>Design Systems do most of the affordances work</p>
-              <p>... but motion & animation can go along way to add affordances too!</p>
-              <div style="display: flex;">
-                  <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">Transition property</a></p>
-                  <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">@Keyframes</a></p>
-                  <p><a href="https://animate.style/">Animation Library: anime.style</a></p>
-              </div>
-              <img src="img/affordance_login.gif" alt="">
-          </section>
-      </section>
+            </code></pre>
+                </div>
+            </div>
+            <p>But the number of separate files increases, so does the page load speed... it's best to keep it under 6</p>
+        </article>
+
+        <article class="slide">
+            <h2>Affordances in User Interfaces</h2>
+            <div style='display: flex'>
+                <img style="max-width: 33%" src="img/design_of_everyday_things.jpeg" alt="">
+                <img style="max-width: 33%" src="img/push_pull.jpeg" alt="">
+                <img style="max-width: 33%" src="img/turn.jpg" alt="">
+            </div>
+            <p><a href="https://en.wikipedia.org/wiki/Ethnography">Ethnography</a> & User Research</p>
+        </article>
+        <article class="slide">
+            <h2>CSS Transitions & Animations</h2>
+            <p>Design Systems do most of the affordances work</p>
+            <p>... but motion & animation can go along way to add affordances too!</p>
+            <div style="display: flex;">
+                <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">Transition property</a></p>
+                <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">@Keyframes</a></p>
+                <p><a href="https://animate.style/">Animation Library: anime.style</a></p>
+            </div>
+            <img src="img/affordance_login.gif" alt="">
+        </article>
+
+</section>
+
+<!-- Part 4 Render Pipeline-->
+
+<section>
+    <header class="slide">
+        <h2>CSS Triggers and the CSSOM</h2>
+        <h1>How The Browser<br><span class="j-emoji">⚡</span>Renders Stuff<span class="j-emoji">⚡</span></h1>
+    </header>
+    
+    <article class="slide">
+        <h2>How browsers render stuff </h2>
+        <small><a href="https://www.youtube.com/watch?v=SmE4OwHztCc&t=974s">visualized</a></small>
+        <ul>
+            <li>Different browsers use different rendering engines but follow similar flow</li>
+            <li>Browser will parse the markup, then "Recalculate Style" to figure out what styles apply to which elements
+            </li>
+            <li>Next, it will "Layout" all the DOM elements</li>
+            <li>Then, "Paint" the pixel data for the elements</li>
+            <li>And, "Composite" will combine and render the painted layers out onto the screen</li>
+        </ul>
+    </article>
+    <article class="slide">
+        <h2>Rendering: HTML and CSS Parsers</h2>
+        <img src="https://miro.medium.com/max/991/0*kHHVVD-aPHl1-hqf." alt="">
+        <p>Browser creates the DOM and the CSSOM</p>
+    </article>
+    <article class="slide">
+        <h2>The DOM</h2>
+        <img src="https://miro.medium.com/max/1123/0*srDldqk7TnH9K8ap." alt="">
+    </article>
+    <article class="slide">
+        <h2>The CSSOM</h2>
+        <img src="https://miro.medium.com/max/582/0*Nj_cMcnaN2xw1O-r." alt="">
+    </article>
+    <article class="slide">
+        <h2>The Render Tree</h2>
+        <img src="https://miro.medium.com/max/1150/0*APACDBNpjbwC_gMr." alt="">
+        <p>But if you change anything in the DOM or CSSOM, the Render Tree must be recalculated</p>
+    </article>
+    <article class="slide">
+        <h2>Think of it as a pyramid</h2>
+        <img class="plain" srcset="img/rendering-pyramid.jpg" data-src="img/rendering-pyramid.jpg" src="#"
+            alt="Rendering pyramid" />
+        <p>If you change something at the bottom, the whole pyramid has to be rebuilt.</p>
+        <p>If you change just the top layer, the foundation beneath remains intact.</p>
+    </article>
+    
+    <article class="slide">
+        <h2>Layout</h2>
+        <ul>
+            <li>Generate geometry and position of each element</li>
+            <li>Very expensive because engine must reflow the relevant element and all its children to take into account
+                the new layout</li>
+            <li>Occurs when the DOM tree is manipulated, or a style which affects layout is changed, when browser window
+                size is changed, when className property is changed</li>
+        </ul>
+    </article>
+    <article class="slide">
+        <h2>Visualizing The Layout FLow</h2>
+        <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a> property</li>
+            <li>Outside: Inline vs Block Elements</li>
+            <li>Inside: Flow-root, table, flex, grid</li>
+        </ul>
+        <img src="../04-css-2/img/inside-display.svg" alt="">
+    </article>
+
+    <article class="slide">
+        <h2>CSS properties that trigger Layout</h2>
+        <span><small>You don't want to dynamically change these - <a href='https://csstriggers.com/'>Reference</a></small></span>
+        <ul style="columns: 3; list-style: none;">
+            <li>width</li>
+            <li>height</li>
+            <li>padding</li>
+            <li>margin</li>
+            <li>display</li>
+            <li>border-width</li>
+            <li>border</li>
+            <li>top</li>
+            <li>position</li>
+            <li>font-size</li>
+            <li>float</li>
+            <li>text-align</li>
+            <li>overflow-y</li>
+            <li>font-weight</li>
+            <li>overflow</li>
+            <li>left</li>
+            <li>font-family</li>
+            <li>line-height</li>
+            <li>vertical-align</li>
+            <li>right</li>
+            <li>clear</li>
+            <li>white-space</li>
+            <li>bottom</li>
+            <li>min-height</li>
+        </ul>
+    </article>
 
 
-      <section>
-          <section>
-              <h2>How The Browser Renders Stuff<span class="j-emoji">⚡</span></h2>
-              <p><small>CSS Triggers and the CSSOM</small></p>
-          </section>
-          
-          <section>
-              <h2>How browsers render stuff </h2>
-              <small><a href="https://www.youtube.com/watch?v=SmE4OwHztCc&t=974s">visualized</a></small>
-              <ul>
-                  <li>Different browsers use different rendering engines but follow similar flow</li>
-                  <li>Browser will parse the markup, then "Recalculate Style" to figure out what styles apply to which elements
-                  </li>
-                  <li>Next, it will "Layout" all the DOM elements</li>
-                  <li>Then, "Paint" the pixel data for the elements</li>
-                  <li>And, "Composite" will combine and render the painted layers out onto the screen</li>
-              </ul>
-          </section>
-          <section>
-              <h2>Rendering: HTML and CSS Parsers</h2>
-              <img src="https://miro.medium.com/max/991/0*kHHVVD-aPHl1-hqf." alt="">
-              <p>Browser creates the DOM and the CSSOM</p>
-          </section>
-          <section>
-              <h2>The DOM</h2>
-              <img src="https://miro.medium.com/max/1123/0*srDldqk7TnH9K8ap." alt="">
-          </section>
-          <section>
-              <h2>The CSSOM</h2>
-              <img src="https://miro.medium.com/max/582/0*Nj_cMcnaN2xw1O-r." alt="">
-          </section>
-          <section>
-              <h2>The Render Tree</h2>
-              <img src="https://miro.medium.com/max/1150/0*APACDBNpjbwC_gMr." alt="">
-              <p>But if you change anything in the DOM or CSSOM, the Render Tree must be recalculated</p>
-          </section>
-          <section>
-              <h2>Think of it as a pyramid</h2>
-              <img class="plain" srcset="img/rendering-pyramid.jpg" data-src="img/rendering-pyramid.jpg" src="#"
-                  alt="Rendering pyramid" />
-              <p>If you change something at the bottom, the whole pyramid has to be rebuilt.</p>
-              <p>If you change just the top layer, the foundation beneath remains intact.</p>
-          </section>
-          
-              <section>
-                  <h2>Layout</h2>
-                  <ul>
-                      <li>Generate geometry and position of each element</li>
-                      <li>Very expensive because engine must reflow the relevant element and all its children to take into account
-                          the new layout</li>
-                      <li>Occurs when the DOM tree is manipulated, or a style which affects layout is changed, when browser window
-                          size is changed, when className property is changed</li>
-                  </ul>
-              </section>
-              <section>
-                  <h2>Visualizing The Layout FLow</h2>
-                  <ul>
-                      <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a> property</li>
-                      <li>Outside: Inline vs Block Elements</li>
-                      <li>Inside: Flow-root, table, flex, grid</li>
-                  </ul>
-                  <img src="../04-css-2/img/inside-display.svg" alt="">
-              </section>
-          
-              <section>
-                  <h2>CSS properties that trigger Layout</h2>
-                  <span><small>You don't want to dynamically change these - <a href='https://csstriggers.com/'>Reference</a></small></span>
-                  <ul style="columns: 3; list-style: none;">
-                      <li>width</li>
-                      <li>height</li>
-                      <li>padding</li>
-                      <li>margin</li>
-                      <li>display</li>
-                      <li>border-width</li>
-                      <li>border</li>
-                      <li>top</li>
-                      <li>position</li>
-                      <li>font-size</li>
-                      <li>float</li>
-                      <li>text-align</li>
-                      <li>overflow-y</li>
-                      <li>font-weight</li>
-                      <li>overflow</li>
-                      <li>left</li>
-                      <li>font-family</li>
-                      <li>line-height</li>
-                      <li>vertical-align</li>
-                      <li>right</li>
-                      <li>clear</li>
-                      <li>white-space</li>
-                      <li>bottom</li>
-                      <li>min-height</li>
-                  </ul>
-              </section>
-          
-          
-              <section>
-                  <h2>Paint</h2>
-                  <ul>
-                      <li>Fill out pixels for each element into layers</li>
-                      <li>Make something visible when it previously was not, like adding outline or changing background colour
-                      </li>
-                      <li>Expensive because the engine searches through all elements to determine what is visible and what should
-                          be displayed</li>
-                      <li>Browser vendors are scrambling to improve the renderer, but until recently browsers weren't built to
-                          handle animations efficiently</li>
-                  </ul>
-              </section>
-          
-              <section>
-                  <h2>CSS properties that trigger Paint</h2>
-                  <span><small>Generally ok to change. Doesn't reflow the DOM, but some have intensive calculations so fluid animation of these can be costly.</small></span>
-                  <ul style="columns: 3; list-style: none">
-                      <li>color</li>
-                      <li>border-style</li>
-                      <li>visibility</li>
-                      <li>background</li>
-                      <li>text-decoration</li>
-                      <li>background-image</li>
-                      <li>background-position</li>
-                      <li>background-repeat</li>
-                      <li>outline-color</li>
-                      <li>outline</li>
-                      <li>outline-style</li>
-                      <li>border-radius</li>
-                      <li>outline-width</li>
-                      <li>box-shadow</li>
-                      <li>background-size</li>
-                  </ul>
-              </section>
-              <section>
-                  <h2>Composite</h2>
-                  <p><small>These are safe to dynamically change and animate.</small></p>
-                  <ul>
-                      <li>Opacity and Transforms trigger composite</li>
-                      <li>Blink and Webkit creates new layer for elements with CSS transforms or opacity</li>
-                      <li><code>translateZ(0)</code> is used to force layer creation which ensures both the layer is painted as soon as the
-                          animation starts</li>
-                      <li>Watch <a href="https://www.youtube.com/watch?v=9rizDPIIYEY">The Web's Black Magic</a> for best explanation
-                          on rendering and compositing</li>
-                  </ul>
-              </section>
-              <section>
-                  <h2>Why is compositing so much faster?</h2>
-                  <ul>
-                      <li>GPU accelerated compositing - browser developers started moving things over to the GPU.</li>
-                      <li><code>opacity</code>, <code>transform</code>, <code>filter</code>, <code>clip-path</code> can be GPU-accelerated</li>
-                      <li>There are two tasks that could potentially move over to the GPU:</li>
-                      <li>
-                          <ul>
-                              <li>Painting the layers - harder to do</li>
-                              <li>Compositing them together - easier to do</li>
-                          </ul>
-                      </li>
-                  </ul>
-                  <p>Using the GPU for the paint step is supported on some browsers under some conditions, but not widespread yet. <a href="https://chromestatus.com/metrics/css/animated">But they're working on it!</a></p>
-              </section>
-              <section>
-                  <h2>Bottom Line</h2>
-                  <p>Reach for these first when animating:</p>
-                  <ul>
-                      <li><code>transform</code> <br> <small>...ignores inline elements (i.e. <code>&lt;span&gt;</code>); change to inline-block/block</small></li>
-                      <li><code>opacity</code></li>
-                      <li><code>filter</code></li>
-                      <li><code>clip path</code> & <code>background-color</code> are soon to be added <a href="https://developer.chrome.com/blog/hardware-accelerated-animations/">(in chrome)</a></li>
-                      <li>If you are animating a property (especially one above), <code>will-change</code> <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/will-change">MDN</a></sup> creates a composite layer for it</li>
-                      <li>i.e. Animating color? <code>will-change: color;</code></li>
-                  </ul>
-                  
-              </section>
-              <section>
-                  <h2>Two Advanced Things to File Away</h2>
-                  <p><small>Not important early in your CSS journey, but as JS is added these offer lots of power</small></p>
-                  <ul>
-                      <li><a href='https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model'>CSS Object Model API</a></li>
-                      <li><a href='https://developer.mozilla.org/en-US/docs/Web/Houdini'>CSS Houdini API</a> -  <a href='https://github.com/nucliweb/awesome-css-houdini/'>When is it ready?</a></li> 
-                  </ul>
-              </section>
-          
-      </section>
-  </div>
-</div>
+    <article class="slide">
+        <h2>Paint</h2>
+        <ul>
+            <li>Fill out pixels for each element into layers</li>
+            <li>Make something visible when it previously was not, like adding outline or changing background colour
+            </li>
+            <li>Expensive because the engine searches through all elements to determine what is visible and what should
+                be displayed</li>
+            <li>Browser vendors are scrambling to improve the renderer, but until recently browsers weren't built to
+                handle animations efficiently</li>
+        </ul>
+    </article>
 
-<!-- End old migrate-->
+    <article class="slide">
+        <h2>CSS properties that trigger Paint</h2>
+        <span><small>Generally ok to change. Doesn't reflow the DOM, but some have intensive calculations so fluid animation of these can be costly.</small></span>
+        <ul style="columns: 3; list-style: none">
+            <li>color</li>
+            <li>border-style</li>
+            <li>visibility</li>
+            <li>background</li>
+            <li>text-decoration</li>
+            <li>background-image</li>
+            <li>background-position</li>
+            <li>background-repeat</li>
+            <li>outline-color</li>
+            <li>outline</li>
+            <li>outline-style</li>
+            <li>border-radius</li>
+            <li>outline-width</li>
+            <li>box-shadow</li>
+            <li>background-size</li>
+        </ul>
+    </article>
+    <article class="slide">
+        <h2>Composite</h2>
+        <p><small>These are safe to dynamically change and animate.</small></p>
+        <ul>
+            <li>Opacity and Transforms trigger composite</li>
+            <li>Blink and Webkit creates new layer for elements with CSS transforms or opacity</li>
+            <li><code>translateZ(0)</code> is used to force layer creation which ensures both the layer is painted as soon as the
+                animation starts</li>
+            <li>Watch <a href="https://www.youtube.com/watch?v=9rizDPIIYEY">The Web's Black Magic</a> for best explanation
+                on rendering and compositing</li>
+        </ul>
+    </article>
+    <article class="slide">
+        <h2>Why is compositing so much faster?</h2>
+        <ul>
+            <li>GPU accelerated compositing - browser developers started moving things over to the GPU.</li>
+            <li><code>opacity</code>, <code>transform</code>, <code>filter</code>, <code>clip-path</code> can be GPU-accelerated</li>
+            <li>There are two tasks that could potentially move over to the GPU:</li>
+            <li>
+                <ul>
+                    <li>Painting the layers - harder to do</li>
+                    <li>Compositing them together - easier to do</li>
+                </ul>
+            </li>
+        </ul>
+        <p>Using the GPU for the paint step is supported on some browsers under some conditions, but not widespread yet. <a href="https://chromestatus.com/metrics/css/animated">But they're working on it!</a></p>
+    </article>
+    <article class="slide">
+        <h2>Bottom Line</h2>
+        <p>Reach for these first when animating:</p>
+        <ul>
+            <li><code>transform</code> <br> <small>...ignores inline elements (i.e. <code>&lt;span&gt;</code>); change to inline-block/block</small></li>
+            <li><code>opacity</code></li>
+            <li><code>filter</code></li>
+            <li><code>clip path</code> & <code>background-color</code> are soon to be added <a href="https://developer.chrome.com/blog/hardware-accelerated-animations/">(in chrome)</a></li>
+            <li>If you are animating a property (especially one above), <code>will-change</code> <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/will-change">MDN</a></sup> creates a composite layer for it</li>
+            <li>i.e. Animating color? <code>will-change: color;</code></li>
+        </ul>
+        
+    </article>
+    <article class="slide">
+        <h2>Two Advanced Things to File Away</h2>
+        <p><small>Not important early in your CSS journey, but as JS is added these offer lots of power</small></p>
+        <ul>
+            <li><a href='https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model'>CSS Object Model API</a></li>
+            <li><a href='https://developer.mozilla.org/en-US/docs/Web/Houdini'>CSS Houdini API</a> -  <a href='https://github.com/nucliweb/awesome-css-houdini/'>When is it ready?</a></li> 
+        </ul>
+    </article>
+    
+</section>
 
 <footer class="slide" title="The End">
+    <h3>Thank you!</h3>
 </footer>
 
 <script src="../lib/inspire.js"></script>
