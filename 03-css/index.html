@@ -61,8 +61,8 @@
 
     <article class="slide">
             <h2>Styles: Inline, Internal & External</h2>
+            <p><strong>Head vs Body:</strong> <br> <code>&lt;body&gt;</code> is for content & <code>&lt;head&gt;</code> is for metadata</p>
             <div class="flex gap:8">
-
             <pre><code>&lt;body&gt;
   &lt;div style="color: white;"&gt;&lt;/div&gt;
 &lt;body&gt;</code></pre>
@@ -77,8 +77,7 @@
   &lt;link href='css/styles.css'&gt;
 &lt;/head&gt;</code></pre>
 </div>
-<p><strong>Head vs Body:</strong> <br> <code>&lt;body&gt;</code> is for content & <code>&lt;head&gt;</code> is for metadata</p>
-
+<p><a href="https://stackblitz.com/edit/web-platform-9zmgk7?file=index.html,styles.css">Examples in editor</a></p>
     </article>
 
   <article class="slide">
@@ -108,21 +107,24 @@
     <ul>
         <li><strong>Element</strong>: matches all the elements of that name on the page 
         </li>
-        <div class="flex gap:100">
-          <code class="d:flex m:0|auto jc:center">&lt;p&gt;text&lt;/p&gt;</code>
-          <pre class="language-css d:flex m:0|auto jc:center"><code>p {}</code></pre>
+        <div class="d:flex gap:10 ai:stretch jc:center">
+          <code>&lt;p&gt;text&lt;/p&gt;</code>
+          <span class="mt:12">←</span>
+          <pre class="language-css d:flex jc:center"><code>p {}</code></pre>
         </div>
         <li><strong>Class</strong>: matches all elements with the specified class, e.g.
         </li>
-        <div class="flex gap:100">
+        <div class="d:flex gap:10 ai:center jc:center">
           <code>&lt;div class="example"&gt;</code>
-          <pre class="language-css d:flex m:0|auto jc:center w:2xs"><code>.example {}</code></pre>
+          <span class="mt:8">←</span>
+          <pre class="language-css d:flex jc:center w:2xs"><code>.example {}</code></pre>
         </div>
         <li><strong>ID</strong>: matches the element with the specified id, e.g. 
         </li>
-        <div class="flex gap:100">
+        <div class="d:flex gap:10 ai:center jc:center">
           <code>&lt;div id="example"&gt;</code>
-          <pre class="language-css d:flex m:0|auto jc:center w:2xs"><code>#example {}</code></pre>
+          <span class="mt:8">←</span>
+          <pre class="language-css d:flex jc:center w:2xs"><code>#example {}</code></pre>
         </div>
     </ul>
   </article>
@@ -150,11 +152,12 @@
     <h2>Even More Types of CSS selectors</h2>
     <div class="flex align">
         <div>
-            <span class="f:28">
+            <div class="f:28 position:relative">
                 <strong>Nested:</strong> matches the nested 
                 <strong>descendant</strong> element with the specified 
                 <strong>ancestor</strong>
-            </span>
+                <span class="position:absolute bottom:0 right:0">↱</span>
+            </div>
             <div class="tight-code nmt">
                 <pre class="language-css"><code>
 ul li {}
@@ -180,7 +183,11 @@ ul > a {} // 🚫 won't match anything to the right </code></pre>
     </div>
     <br>
     <p>
-        <span class="f:28"><strong>Sibling Selectors:</strong> matches subsequent sibling or siblings (no back-traversal)</span>
+        <div class="f:28 position:relative">
+            <strong>Sibling Selectors:</strong> 
+            matches subsequent sibling or siblings (no back-traversal)
+            <div class="position:absolute top:-10 right:-40 transform:scaleY(-1)">↴</div>
+        </div>
         <div class="tight-code">
             <pre class="language-css"><code>h1 + li {} // selects first subsequent li element after h1</code></pre>
             <pre class="language-css"><code>h1 ~ li {} // selects all subsequent li elements after h1</code></pre>
@@ -203,16 +210,21 @@ ul > a {} // 🚫 won't match anything to the right </code></pre>
 They can be multi-line too */</code></pre>
   </article>
   <article class="slide">
+    <!-- <h2>"CSS Selectors Explained" Tool</h2> -->
+    <small style="color:gold; font-weight: bold;"><a href="https://kittygiraudel.github.io/selectors-explained">✨ CSS Selectors Explained Tool ✨</a></small>
+    <iframe src="https://kittygiraudel.github.io/selectors-explained" 
+    frameborder="0"
+     class="w:full overflow-y:none h:full"></iframe>
+  </article>
+  <article class="slide">
     <h2>CSS Validator</h2>
     <p><a href="https://jigsaw.w3.org/css-validator/">Validate your css</a> ... just like we did with html!</p>
   </article>
 
   <article class="slide">
     <h2>CSS Selector Challenge</h2>
-    <p>Have some fun practicing your css selectors with this game: <a href="https://flukeout.github.io/">CSS Diner</a></p>
-    <br />
-    <h3>CSS Selectors Explained</h3>
-    <p><a href="https://kittygiraudel.github.io/selectors-explained">Selectors translated into plain english</a></p>
+    <p>Have some fun practicing your css selectors with this game: </p>
+    <p><a href="https://flukeout.github.io/">CSS Diner</a></p>
   </article>
 
   <article class="slide">
@@ -260,18 +272,234 @@ They can be multi-line too */</code></pre>
     </ul>
   </article>
 
-	<article class="slide">
-	</article>
+  <artile class="slide">
+    <h2>CSS Length Units</h2>
+    <div class="fieldsets d:flex t:center">
+        <fieldset class="d:flex jc:center">
+            <legend>Percent</legend>
+            <code>%</code>
+        </fieldset> 
+        <fieldset>
+            <legend>Fonts</legend>
+            <code>ch</code>
+            <code>em</code>
+            <code>ex</code>
+            <code>rem</code>
+        </fieldset>
+        <fieldset>
+            <legend>Viewport</legend>
+            <code>vh</code>
+            <code>vw</code>
+            <code>vmin</code>
+            <code>vmax</code>
+        </fieldset>
+        <fieldset>
+            <legend>Absolute</legend>
+            <code>px</code>
+            <code>cm</code>
+            <code>mm</code>
+            <code>in</code>
+            <code>pc</code>
+            <code>pt</code>
+        </fieldset>
+    </div>
+    <p class="t:center">CSS Lengths represent a distance within the browser viewport.</p>
+    <p>They can be assigned to some css properties as a value.</p>
+    <pre class="language-css"><code>.example {
+  padding: 20px 2rem 10% 5vmin;
+}</code></pre>
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">MDN on CSS Lengths</a></p>
+</artile>
+
+<article class="slide">
+    <h2>CSS Specificity & the Cascade </h2>
+    <small>
+        <a href="img/css-specificity-wars.png">Star Wars Specificity</a> - 
+        <a href='https://stuffandnonsense.co.uk/archives/css_specificity_wars.html'>(ref)</a>
+        <a href="https://polypane.app/css-specificity-calculator/#selector=main%20%3Ais(h1%2C%20h2%2C%20h3)">Calculator</a>
+    </small>
+    <div>
+        <div class="ga-col4-25">
+            <div class="ga-box">0-∞</div>
+            <p>Inline styles</p>
+        </div>
+        <div class="ga-col4-25">
+            <div class="ga-box">0-1</div>
+            <p>IDs</p>
+        </div>
+        <div class="ga-col4-25">
+            <div class="ga-box">0-∞</div>
+            <p style="margin: 0 -1rem">Classes, attributes, pseudo-classes</p>
+        </div>
+        <div class="ga-col4-25">
+            <div class="ga-box">0-∞</div>
+            <p style="margin: 0 -1rem;">Elements, pseudo-elements</p>
+        </div>
+    </div>
+    <div>
+        <div class="ga-col3-33">
+            <pre><code>#myID .class3 div {
+background: blue;
+}</code></pre>
+          <p>0, 1, 1, 1</p>
+        </div>
+        <div class="ga-col3-33">
+            <pre><code>.class1 .class2 p {
+background: green;
+}</code></pre>
+            <p>0, 0, 2, 1</p>
+        </div>
+        <div class="ga-col3-33">
+            
+            <pre><code>ul {
+background: red;
+}</code></pre>
+          <p>0, 0, 0, 1</p>
+        </div>
+    </div>
+    <aside class="notes">
+        Complicated part about CSS is specificity<br>
+        Elements, classes and ids have increasing degrees of specificity<br>
+        <a href="https://wattenberger.com/blog/css-cascade">Wattenberger Specificity Quiz game</a>
+        Possible to combine selectors<br>
+        Highest specificity wins. Order also matters. !important doesn't change specificity, but it does take precedence over all.
+    </aside>
+  </article>
+
+    <article class="slide">
+        <h2 style="margin: 0">The Box Model <sup><a href="https://web.dev/learn/css/box-model/">web.dev</a></sup></h2>
+        <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing">box-sizing</a></small><br>
+        <a href="https://codepen.io/heliocrat/full/GRregGN"><img style="width: auto; max-height: 50vh;" src="img/css-box-model.png" alt="Box model Diagram"></a>
+        <p style="margin: 0; font-size: 2rem;">Let's inspect it in the dev tools! - It's under Elements > Computed</p>
+    </article>
+    <article class="slide">
+        <h2>CSS Resets & the Useragent</h2>
+        <p><small>
+            <a href="https://codepen.io/heliocrat/full/yLgwKKa">Demo</a>
+        </small></p>
+        <ul>
+            <li><a href="https://meyerweb.com/eric/tools/css/reset/">Reset</a>, <a href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">CDN</a></li>
+            <li><a href="https://necolas.github.io/normalize.css/">Normalize</a>, <a href="https://cdn.jsdelivr.net/npm/normalize.css/normalize.css">CDN</a> </li>
+            <li><a href="https://csstools.github.io/sanitize.css/">Sanitize</a>, <a href="https://cdn.jsdelivr.net/npm/sanitize.css/sanitize.css">CDN</a></li>
+            <li><a href="https://getbootstrap.com/docs/4.0/content/reboot/">Reboot</a>, <a href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap-reboot.css">CDN</a></li>
+            <li> <a href="https://css-tricks.com/reboot-resets-reasoning/">The Why</a> </li>
+            <li> <a href="https://bitsofco.de/a-look-at-css-resets-in-2018/">More Discussion</a> </li>
+            <li> <a href="https://www.webfx.com/blog/web-design/a-comprehensive-guide-to-css-resets/">Exhaustive history of the CSS reset</a> </li>
+            
+        </ul>
+    </article>
+
+    <article class="slide">
+        <h2>Let's use what we've learned!</h2>
+        <p>We'll try adding some basic CSS to our Resume & Contact Form</p>
+    </article>
 </section>
 
 <section>
 	<header class="slide">
-		<h2></h2>
-		<h1></h1>
+		<h2>Elements of Web Design</h2>
+		<h1>Design Systems, <br>Pattern Libraries & <br>Style Guides</h1>
 	</header>
 
-	<article class="slide" id="data-insert">
+    <article class="slide">
+        <h2>What's a Design System?</h2>
+        <p><small>Also called a pattern library (and sometimes a style guide)</small></p>
+        <p>A consistent & modular library of reusable themes, components, motifs & rules for coherently styling & assembling web pages.</p>
+        <p><a href="https://designsystem.digital.gov/">US Gov Design System</a> - <a href="https://designsystem.digital.gov/utilities/color/">Color System Example</a></p>
+    </article>
+
+    <article class="slide">
+        <h2>Colors In CSS</h2>
+        <ul style="border: 1px solid #777; border-radius: 16px; padding: 16px; display:flex; justify-content: space-between; margin: 0; list-style: none; text-align: center;">
+            <li>Named Color <span style="color: purple">purple</span></li>
+            <li>Hex Color <span style="color: #f94">#f94</span> or <span style="color: #ff9f4f">#ff9f4f</span></li>
+            <li>RGB() color <span style="color: rgb(24, 118, 196); white-space: nowrap; font-size: 2.1rem">rgb(24, 118, 196)</span></li>
+            <li>HSL() color <span style="color: hsl(150, 90%, 40%); white-space: nowrap; font-size: 2.1rem">hsl(150, 90%, 40%)</span></li>
+        </ul>
+        <p>Transparency in Hex, RGB & HSL: <b>Alpha Channel</b></p>
+        <p style="display: flex; justify-content: space-between; font-size: 2.1rem">
+            <span style="color: #ff9f4f75">#ff9f4f99 </span>
+            <span style="color: rgba(24, 118, 196, 0.5)"> rgba(24, 118, 196, 0.5) </span>
+            <span style="color: hsla(150,90%,40%,0.5)"> hsla(150, 90%, 40%, 0.5) </span>
+        </p>
+        <div class=" flex bordered">
+            <p><a href="https://www.w3schools.com/cssref/css_colors.asp">W3 CSS colors</a></p>
+            <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">MDN Color</a></p>
+            <p><a href="https://colours.neilorangepeel.com/">Colors.Neil</a></p>
+        </div>
+        <p>Check out the Color Picker in the Elements Inspector</p>
+    </article>
+
+    <article class="slide">
+        <h2>Color Space & Color Gamut</h2>
+        <div style="display: flex; align-items: center;">
+            <img style="max-height: 55vh" src="img/hex_color.png" alt="hex code color breakdown">
+            <div >
+                <p>HSL( <br> <span style="font-size: 1.5rem;">360, 100%, 100%</span> <br>)</p>
+                <img style="max-height: 175px;" src="img/HSL_color_solid_cylinder_saturation_gray.png" alt="hsl color cylinder">
+            </div>
+            <h4>Color Tools & Diagrams</h4>
+            <ul >
+                <li><a href="https://en.wikipedia.org/wiki/CIELAB_color_space">CIELAB</a></li>
+                <li><a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space#/media/File:CIE1931xy_gamut_comparison.svg">CIE Color Space</a></li>
+                <li><a href="https://coolors.co/">Coolors</a></li>
+                <li><a href="https://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF">Paletton</a></li>
+                <li><a href="https://mycolor.space/">Color Theme Tool</a></li>
+                <li><a href="https://tallys.github.io/color-theory/">Color Guide for Devs</a></li>
+            </ul>
+        </div>
+    </article>
+
+	<article class="slide">
+        <img style="max-height: 100%" src="img/typography-hierarchy.jpg" alt="">
 	</article>
+
+    <article class="slide">
+        <h2>Typography in CSS</h2>
+        <p>Typographcial hierarchy can guide the user through your page in a controlled way.</p>
+        <p>It can set your page a part and make it distinct</p>
+        <p>It is usually a central component to a company or product Brand</p>
+        <h4>Think about Component Spacing, as well </h4>
+        <ul>
+            <li><a href="https://www.designsystems.com/iconography-guide/">Read more about Icons</a></li>
+            <li>Use existing icon libraries <a href="https://teenyicons.com/">(like this one)</a> to save time</li>
+            <li><a href="https://www.designsystems.com/space-grids-and-layouts/">Read more about spacing.</a></li>
+        </ul>
+    </article>
+
+    <article class="slide">
+        <h2><a href="https://fonts.google.com/">Google Fonts</a> is easiest to start with</h2>
+        <p>Simply find a font and put it into the href of a <br> <code style="padding: 2px;background: #ddd; border-radius: 8px;">&lt;link href="" rel="stylesheet" /&gt;</code> tag similar to a css file</p>
+        <strong>Font Tip:</strong> A quick, easy way to distinguish your site is using two fonts: 
+        <ul>
+            <li>one for headings & titles</li>
+            <li>one for body & copy text</li>
+        </ul>
+        <p><a href="https://www.colorsandfonts.com/">Colors & Fonts Tool</a></p>
+    </article>
+
+    <article class="slide">
+        <h2>Examples of Design Systems / Pattern Libraries</h2>
+        <ul>
+            <li><a href="https://ux.mailchimp.com/patterns/typography">Mail Chimp</a></li>
+            <li><a href="https://www.carbondesignsystem.com/guidelines/typography/overview/">IBM</a></li>
+            <li><a href="https://polaris.shopify.com/design/typography#navigation">Shopify</a></li>
+            <li><a href="https://airbnb.design/building-a-visual-language/">AirBnB</a></li>
+        </ul>
+    </article>
+
+    <article class="slide">
+        <h2 style="margin-bottom: 0; background: #ffffffdd">How it Could look:</h2>
+        <h4><a style="background: #ffffffdd" href="https://codyhouse.co/demo/style-guide-template/index.html">Fleshed out example pattern library</a></h4>
+        <div style="display: flex; flex-direction: column; align-items: flex-end;">
+            <img style="margin: 0" src="img/Montserrat.png" alt="">
+            <img style="max-width: 55%; margin: 0" src="img/example_pallete.png" alt="">
+        </div>
+        <div style="max-width: 100vw; display: flex; align-items: center; justify-content: space-around;">
+            <img style="transform: translateY(-350px); z-index: -1; max-width: 30vw;" src="img/buttons.png" alt="buttons">
+            <img style="transform: translateY(-200px);; max-width: 45vw" src="img/colors.png" alt="colors">
+        </div>
+    </article>
 
 	<article class="slide">
 	</article>
@@ -283,227 +511,17 @@ They can be multi-line too */</code></pre>
 
   <div class="slides">
 
-      <section>
-          <section>
-              <h2>CSS Length Units</h2>
-              <p>CSS Lengths represent a distance within the browser viewport. They can be assigned to some css properties as a value. <span style="border: 1px solid black; border-radius: 8px;">Percent: <span>%</span></span></p>
-              <div class="fieldsets" style="display: flex; justify-content: space-between;">   
-                  <fieldset>
-                      <legend>Fonts</legend>
-                      <span>ch</span>
-                      <span>em</span>
-                      <span>ex</span>
-                      <span>rem</span>
-                  </fieldset>
-                  <fieldset>
-                      <legend>Viewport</legend>
-                      <span>vh</span>
-                      <span>vw</span>
-                      <span>vmin</span>
-                      <span>vmax</span>
-                  </fieldset>
-                  <fieldset>
-                      <legend>Absolute</legend>
-                      <span>px</span>
-                      <span>cm</span>
-                      <span>mm</span>
-                      <span>in</span>
-                      <span>pc</span>
-                      <span>pt</span>
-                  </fieldset>
-              </div>
-              <pre><code>div.example {
-padding: 20px 2rem 10% 5vmin
-}</code></pre>
-              <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">MDN on CSS Lengths</a></p>
-          </section>
 
+      <section>
           
-
-
-
+          
+          
           <section>
-              <h2>CSS Specificity & the Cascade </h2>
-              <small>
-                  <a href="img/css-specificity-wars.png">Star Wars Specificity</a> - 
-                  <a href='https://stuffandnonsense.co.uk/archives/css_specificity_wars.html'>(ref)</a>
-                  <a href="https://polypane.app/css-specificity-calculator/#selector=main%20%3Ais(h1%2C%20h2%2C%20h3)">Calculator</a>
-              </small>
-              <div>
-                  <div class="ga-col4-25">
-                      <div class="ga-box">0-∞</div>
-                      <p>Inline styles</p>
-                  </div>
-                  <div class="ga-col4-25">
-                      <div class="ga-box">0-1</div>
-                      <p>IDs</p>
-                  </div>
-                  <div class="ga-col4-25">
-                      <div class="ga-box">0-∞</div>
-                      <p style="margin: 0 -1rem">Classes, attributes, pseudo-classes</p>
-                  </div>
-                  <div class="ga-col4-25">
-                      <div class="ga-box">0-∞</div>
-                      <p style="margin: 0 -1rem;">Elements, pseudo-elements</p>
-                  </div>
-              </div>
-              <div>
-                  <div class="ga-col3-33">
-                      <pre><code>#myID .class3 div {
-background: blue;
-}</code></pre>
-                    <p>0, 1, 1, 1</p>
-                  </div>
-                  <div class="ga-col3-33">
-                      <pre><code>.class1 .class2 p {
-background: green;
-}</code></pre>
-                      <p>0, 0, 2, 1</p>
-                  </div>
-                  <div class="ga-col3-33">
-                      
-                      <pre><code>ul {
-background: red;
-}</code></pre>
-                    <p>0, 0, 0, 1</p>
-                  </div>
-              </div>
-              <aside class="notes">
-                  Complicated part about CSS is specificity<br>
-                  Elements, classes and ids have increasing degrees of specificity<br>
-                  <a href="https://wattenberger.com/blog/css-cascade">Wattenberger Specificity Quiz game</a>
-                  Possible to combine selectors<br>
-                  Highest specificity wins. Order also matters. !important doesn't change specificity, but it does take precedence over all.
-              </aside>
           </section>
-  
-          <section>
-              <h2 style="margin: 0">The Box Model <sup><a href="https://web.dev/learn/css/box-model/">web.dev</a></sup></h2>
-              <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing">box-sizing</a></small><br>
-              <a href="https://codepen.io/heliocrat/full/GRregGN"><img style="width: auto; max-height: 50vh;" src="https://sabe.io/classes/css/css-box-model-padding-border-margin/css-box-model.png" alt="Box model Diagram"></a>
-              <p style="margin: 0; font-size: 2rem;">Let's inspect it in the dev tools! - It's under Elements > Computed</p>
-          </section>
-          <section>
-              <h2>CSS Resets & the Useragent</h2>
-              <p><small>
-                  <a href="https://codepen.io/heliocrat/full/yLgwKKa">Demo</a>
-              </small></p>
-              <ul>
-                  <li><a href="https://meyerweb.com/eric/tools/css/reset/">Reset</a>, <a href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">CDN</a></li>
-                  <li><a href="https://necolas.github.io/normalize.css/">Normalize</a>, <a href="https://cdn.jsdelivr.net/npm/normalize.css/normalize.css">CDN</a> </li>
-                  <li><a href="https://csstools.github.io/sanitize.css/">Sanitize</a>, <a href="https://cdn.jsdelivr.net/npm/sanitize.css/sanitize.css">CDN</a></li>
-                  <li><a href="https://getbootstrap.com/docs/4.0/content/reboot/">Reboot</a>, <a href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap-reboot.css">CDN</a></li>
-                  <li> <a href="https://css-tricks.com/reboot-resets-reasoning/">The Why</a> </li>
-                  <li> <a href="https://bitsofco.de/a-look-at-css-resets-in-2018/">More Discussion</a> </li>
-                  <li> <a href="https://www.webfx.com/blog/web-design/a-comprehensive-guide-to-css-resets/">Exhaustive history of the CSS reset</a> </li>
-                  
-              </ul>
-          </section>
-          <section>
-              <h2>Let's use what we've learned!</h2>
-              <p>We'll try adding some basic CSS to our Resume & Contact Form</p>
-          </section>
-      </section>
-
-      <section>
-          <section data-background="#000" class="ga-reverse">
-              <header class="ga-header">
-                      <h3>MCC Frontend Academy</h3>
-              </header>
-              <h1>Elements of Web Design Systems</h1>
-          </section>
-          <section>
-              <h2>What's a Design System?</h2>
-              <p><small>Also called a pattern library (and sometimes a style guide)</small></p>
-              <p>A consistent & modular library of reusable themes, components, motifs & rules for coherently styling & assembling web pages.</p>
-              <p><a href="https://designsystem.digital.gov/">US Gov Design System</a> - <a href="https://designsystem.digital.gov/utilities/color/">Color System Example</a></p>
-          </section>
-          <section>
-              <h2>Colors In CSS</h2>
-              <ul style="border: 1px solid #777; border-radius: 16px; padding: 16px; display:flex; justify-content: space-between; margin: 0; list-style: none; text-align: center;">
-                  <li>Named Color <span style="color: purple">purple</span></li>
-                  <li>Hex Color <span style="color: #f94">#f94</span> or <span style="color: #ff9f4f">#ff9f4f</span></li>
-                  <li>RGB() color <span style="color: rgb(24, 118, 196); white-space: nowrap; font-size: 2.1rem">rgb(24, 118, 196)</span></li>
-                  <li>HSL() color <span style="color: hsl(150, 90%, 40%); white-space: nowrap; font-size: 2.1rem">hsl(150, 90%, 40%)</span></li>
-              </ul>
-              <p>Transparency in Hex, RGB & HSL: <b>Alpha Channel</b></p>
-              <p style="display: flex; justify-content: space-between; font-size: 2.1rem">
-                  <span style="color: #ff9f4f75">#ff9f4f99 </span>
-                  <span style="color: rgba(24, 118, 196, 0.5)"> rgba(24, 118, 196, 0.5) </span>
-                  <span style="color: hsla(150,90%,40%,0.5)"> hsla(150, 90%, 40%, 0.5) </span>
-              </p>
-              <div class=" flex bordered">
-                  <p><a href="https://www.w3schools.com/cssref/css_colors.asp">W3 CSS colors</a></p>
-                  <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">MDN Color</a></p>
-                  <p><a href="https://colours.neilorangepeel.com/">Colors.Neil</a></p>
-              </div>
-              <p>Check out the Color Picker in the Elements Inspector</p>
-          </section>
-          <section>
-              <h2>Color Space & Color Gamut</h2>
-              <div style="display: flex; align-items: center;">
-                  <img style="max-height: 55vh" src="img/hex_color.png" alt="hex code color breakdown">
-                  <div >
-                      <p>HSL( <br> <span style="font-size: 1.5rem;">360, 100%, 100%</span> <br>)</p>
-                      <img style="max-height: 175px;" src="img/HSL_color_solid_cylinder_saturation_gray.png" alt="hsl color cylinder">
-                  </div>
-                  <h4>Color Tools & Diagrams</h4>
-                  <ul >
-                      <li><a href="https://en.wikipedia.org/wiki/CIELAB_color_space">CIELAB</a></li>
-                      <li><a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space#/media/File:CIE1931xy_gamut_comparison.svg">CIE Color Space</a></li>
-                      <li><a href="https://coolors.co/">Coolors</a></li>
-                      <li><a href="https://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF">Paletton</a></li>
-                      <li><a href="https://mycolor.space/">Color Theme Tool</a></li>
-                      <li><a href="https://tallys.github.io/color-theory/">Color Guide for Devs</a></li>
-                  </ul>
-              </div>
-          </section>
-          <section>
-              <img style="max-height: 60vh" src="img/typography-hierarchy.jpg" alt="">
-          </section>
-          <section>
-              <h2>Typography in CSS</h2>
-              <p>Typographcial hierarchy can guide the user through your page in a controlled way.</p>
-              <p>It can set your page a part and make it distinct</p>
-              <p>It is usually a central component to a company or product Brand</p>
-              <h4>Think about Component Spacing, as well </h4>
-              <ul>
-                  <li><a href="https://www.designsystems.com/iconography-guide/">Read more about Icons</a></li>
-                  <li>Use existing icon libraries <a href="https://teenyicons.com/">(like this one)</a> to save time</li>
-                  <li><a href="https://www.designsystems.com/space-grids-and-layouts/">Read more about spacing.</a></li>
-              </ul>
-          </section>
-          <section>
-                  <h2><a href="https://fonts.google.com/">Google Fonts</a> is easiest to start with</h2>
-                  <p>Simply find a font and put it into the href of a <br> <code style="padding: 2px;background: #ddd; border-radius: 8px;">&lt;link href="" rel="stylesheet" /&gt;</code> tag similar to a css file</p>
-                  <strong>Font Tip:</strong> A quick, easy way to distinguish your site is using two fonts: 
-                  <ul>
-                      <li>one for headings & titles</li>
-                      <li>one for body & copy text</li>
-                  </ul>
-                  <p><a href="https://www.colorsandfonts.com/">Colors & Fonts Tool</a></p>
-          </section>
-          <section>
-              <h2>Examples of Design Systems / Pattern Libraries</h2>
-              <ul>
-                  <li><a href="https://ux.mailchimp.com/patterns/typography">Mail Chimp</a></li>
-                  <li><a href="https://www.carbondesignsystem.com/guidelines/typography/overview/">IBM</a></li>
-                  <li><a href="https://polaris.shopify.com/design/typography#navigation">Shopify</a></li>
-                  <li><a href="https://airbnb.design/building-a-visual-language/">AirBnB</a></li>
-              </ul>
-          </section>
-          <section>
-              <h2 style="margin-bottom: 0; background: #ffffffdd">How it Could look:</h2>
-              <h4><a style="background: #ffffffdd" href="https://codyhouse.co/demo/style-guide-template/index.html">Fleshed out example pattern library</a></h4>
-              <div style="display: flex; flex-direction: column; align-items: flex-end;">
-                  <img style="margin: 0" src="img/Montserrat.png" alt="">
-                  <img style="max-width: 55%; margin: 0" src="img/example_pallete.png" alt="">
-              </div>
-              <div style="max-width: 100vw; display: flex; align-items: center; justify-content: space-around;">
-                  <img style="transform: translateY(-350px); z-index: -1; max-width: 30vw;" src="img/buttons.png" alt="buttons">
-                  <img style="transform: translateY(-200px);; max-width: 45vw" src="img/colors.png" alt="colors">
-              </div>
-          </section>
+          
+          
+          
+          
           <section>
               <h2>CSS Custom Properties</h2>
               <h4>a.k.a. "CSS Variables"</h4>
