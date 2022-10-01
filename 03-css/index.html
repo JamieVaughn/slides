@@ -15,7 +15,7 @@
 
    <!-- Custom css -->
 	 <link rel="stylesheet" href="../laser/laser.css">
-   <link rel="stylesheet" href="../css/styles.css">
+   <link rel="stylesheet" href="./css/styles.css">
    <script src="https://cdn.master.co/css"></script>
 </head>
 <body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
@@ -312,82 +312,87 @@ They can be multi-line too */</code></pre>
 </artile>
 
 <article class="slide">
+    <h2 style="margin: 0">The Box Model <sup><a href="https://web.dev/learn/css/box-model/">web.dev</a></sup></h2>
+    <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing">box-sizing</a></small><br>
+    <a href="https://codepen.io/heliocrat/full/GRregGN"><img style="width: auto; max-height: 50vh;" src="img/css-box-model.png" alt="Box model Diagram"></a>
+    <p style="margin: 0; font-size: 2rem;">Let's inspect it in the dev tools! - It's under Elements > Computed</p>
+</article>
+<article class="slide">
+    <h2>CSS Resets & the Useragent</h2>
+    <p><small>
+        <a href="https://codepen.io/heliocrat/full/yLgwKKa">Demo</a>
+    </small></p>
+    <ul>
+        <li><a href="https://meyerweb.com/eric/tools/css/reset/">Reset</a>, <a href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">CDN</a></li>
+        <li><a href="https://necolas.github.io/normalize.css/">Normalize</a>, <a href="https://cdn.jsdelivr.net/npm/normalize.css/normalize.css">CDN</a> </li>
+        <li><a href="https://csstools.github.io/sanitize.css/">Sanitize</a>, <a href="https://cdn.jsdelivr.net/npm/sanitize.css/sanitize.css">CDN</a></li>
+        <li><a href="https://getbootstrap.com/docs/4.0/content/reboot/">Reboot</a>, <a href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap-reboot.css">CDN</a></li>
+        <li> <a href="https://css-tricks.com/reboot-resets-reasoning/">The Why</a> </li>
+        <li> <a href="https://bitsofco.de/a-look-at-css-resets-in-2018/">More Discussion</a> </li>
+        <li> <a href="https://www.webfx.com/blog/web-design/a-comprehensive-guide-to-css-resets/">Exhaustive history of the CSS reset</a> </li>
+    </ul>
+</article>
+
+<article class="slide">
     <h2>CSS Specificity & the Cascade </h2>
     <small>
         <a href="img/css-specificity-wars.png">Star Wars Specificity</a> - 
         <a href='https://stuffandnonsense.co.uk/archives/css_specificity_wars.html'>(ref)</a>
         <a href="https://polypane.app/css-specificity-calculator/#selector=main%20%3Ais(h1%2C%20h2%2C%20h3)">Calculator</a>
     </small>
-    <div>
-        <div class="ga-col4-25">
-            <div class="ga-box">0-∞</div>
+    <div class="pt:12 d:grid grid-template-columns:repeat(4,1fr) ai:start jc:center t:center">
+        <div class="d:flex ai:center flex-direction:column jc:center">
+            <div class="ga-box">0 - <span class="f:24">∞</span></div>
             <p>Inline styles</p>
         </div>
-        <div class="ga-col4-25">
-            <div class="ga-box">0-1</div>
+        <div class="d:flex ai:center flex-direction:column jc:center">
+            <div class="ga-box lh:1.5">0 - 1</div>
             <p>IDs</p>
         </div>
-        <div class="ga-col4-25">
-            <div class="ga-box">0-∞</div>
-            <p style="margin: 0 -1rem">Classes, attributes, pseudo-classes</p>
+        <div class="d:flex ai:center flex-direction:column jc:center">
+            <div class="ga-box">0 - <span class="f:24">∞</span></div>
+            <p>Classes, attributes, pseudo-classes</p>
         </div>
-        <div class="ga-col4-25">
-            <div class="ga-box">0-∞</div>
-            <p style="margin: 0 -1rem;">Elements, pseudo-elements</p>
+        <div class="d:flex ai:center flex-direction:column jc:center">
+            <div class="ga-box">0 - <span class="f:24">∞</span></div>
+            <p>Elements,<br>pseudo-elements</p>
         </div>
     </div>
-    <div>
-        <div class="ga-col3-33">
-            <pre><code>#myID .class3 div {
-background: blue;
+    <div class="d:flex">
+        <div class="d:flex flex-direction:column ai:center">
+            <pre class="language-css"><code>#myID .class3 div {
+  background: blue;
 }</code></pre>
           <p>0, 1, 1, 1</p>
         </div>
-        <div class="ga-col3-33">
-            <pre><code>.class1 .class2 p {
-background: green;
+        <div class="d:flex flex-direction:column ai:center">
+            <pre class="language-css"><code>.class1 .class2 p {
+  background: green;
 }</code></pre>
             <p>0, 0, 2, 1</p>
         </div>
-        <div class="ga-col3-33">
+        <div class="d:flex flex-direction:column ai:center">
             
-            <pre><code>ul {
-background: red;
+            <pre class="language-css"><code>ul {
+  background: red;
 }</code></pre>
           <p>0, 0, 0, 1</p>
         </div>
     </div>
-    <aside class="notes">
-        Complicated part about CSS is specificity<br>
-        Elements, classes and ids have increasing degrees of specificity<br>
-        <a href="https://wattenberger.com/blog/css-cascade">Wattenberger Specificity Quiz game</a>
-        Possible to combine selectors<br>
-        Highest specificity wins. Order also matters. !important doesn't change specificity, but it does take precedence over all.
-    </aside>
   </article>
 
-    <article class="slide">
-        <h2 style="margin: 0">The Box Model <sup><a href="https://web.dev/learn/css/box-model/">web.dev</a></sup></h2>
-        <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing">box-sizing</a></small><br>
-        <a href="https://codepen.io/heliocrat/full/GRregGN"><img style="width: auto; max-height: 50vh;" src="img/css-box-model.png" alt="Box model Diagram"></a>
-        <p style="margin: 0; font-size: 2rem;">Let's inspect it in the dev tools! - It's under Elements > Computed</p>
-    </article>
-    <article class="slide">
-        <h2>CSS Resets & the Useragent</h2>
-        <p><small>
-            <a href="https://codepen.io/heliocrat/full/yLgwKKa">Demo</a>
-        </small></p>
-        <ul>
-            <li><a href="https://meyerweb.com/eric/tools/css/reset/">Reset</a>, <a href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">CDN</a></li>
-            <li><a href="https://necolas.github.io/normalize.css/">Normalize</a>, <a href="https://cdn.jsdelivr.net/npm/normalize.css/normalize.css">CDN</a> </li>
-            <li><a href="https://csstools.github.io/sanitize.css/">Sanitize</a>, <a href="https://cdn.jsdelivr.net/npm/sanitize.css/sanitize.css">CDN</a></li>
-            <li><a href="https://getbootstrap.com/docs/4.0/content/reboot/">Reboot</a>, <a href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap-reboot.css">CDN</a></li>
-            <li> <a href="https://css-tricks.com/reboot-resets-reasoning/">The Why</a> </li>
-            <li> <a href="https://bitsofco.de/a-look-at-css-resets-in-2018/">More Discussion</a> </li>
-            <li> <a href="https://www.webfx.com/blog/web-design/a-comprehensive-guide-to-css-resets/">Exhaustive history of the CSS reset</a> </li>
-            
-        </ul>
-    </article>
+  <article class="slide">
+    <h2>One of the most complicated parts about CSS is specificity</h2>
+    <ul>
+        <li><p>Elements, classes and ids have increasing degrees of specificity</p></li>
+        <li><p>Combining Selectors increases specificity</p></li>
+        <li><p>Highest specificity wins. Order also matters. !important doesn't change specificity, but it does take precedence over all.</p></li>
+        <li><p>In general, you want to choose selectors with smallest possible specificity, so you do have to fight it later</p></li>
+    </ul>
+    <br>
+    <p>Let's practice with this quiz:</p>
+    <a href="https://wattenberger.com/blog/css-cascade">Wattenberger Specificity Quiz game</a>
+  </article>
 
     <article class="slide">
         <h2>Let's use what we've learned!</h2>

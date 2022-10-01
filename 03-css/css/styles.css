@@ -22,3 +22,8 @@ ul.horiz-flex-list {
 .alpha > li {
   list-style-type: counter();
 }
+.ga-box {
+  border: 2px solid white;
+  border-radius: 4px;
+  padding: 12px;
+}
