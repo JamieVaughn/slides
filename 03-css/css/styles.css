@@ -27,3 +27,14 @@ ul.horiz-flex-list {
   border-radius: 4px;
   padding: 12px;
 }
+
+.how-it-could-work {
+  max-height: 90vh;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr 100px 150px 1fr 1fr;
+  justify-content: start;
+  align-items: flex-start;
+  padding-bottom: 1rem;
+}
