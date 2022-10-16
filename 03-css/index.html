@@ -485,7 +485,7 @@ They can be multi-line too */</code></pre>
 
     <article class="slide">
         <h2><a href="https://fonts.google.com/">Google Fonts</a> is easiest to start with</h2>
-        <p>Simply find a font and put it into the href of a <br> <code style="padding: 2px;background: #ddd; border-radius: 8px;">&lt;link href="" rel="stylesheet" /&gt;</code> tag similar to a css file</p>
+        <p>Simply find a font and put it into the href of a <br> <code>&lt;link href="" rel="stylesheet" /&gt;</code> tag similar to a css file</p>
         <strong>Font Tip:</strong> A quick, easy way to distinguish your site is using two fonts: 
         <ul>
             <li>one for headings & titles</li>
@@ -520,31 +520,40 @@ They can be multi-line too */</code></pre>
         <h2>Let's make our own Basic Pattern library!</h2>
         <p><small>(This could eventually be used for the FCC technical docs project)</small></p>
         <p>To summarize what goes into these check out these articles: <a href="https://www.uxpin.com/create-design-system-guide/">UXPing</a>, <a href="https://www.csshero.org/create-web-design-style-guide/">CSSHero</a></p>
-        <p><a href="pattern-library/">Pattern Library Starter Template</a> <small><a href="https://github.com/JamieVaughn/code-along/tree/master/pattern-library">Github Link</a></small></p>
+        <p><a href="pattern-library/">Pattern Library Starter Template</a></p>
+        <p><small><a href="https://github.com/JamieVaughn/code-along/tree/master/html_css/pattern-library">Github Link</a></small></p>
+        <p><a href="https://raw.githubusercontent.com/JamieVaughn/code-along/master/pattern-library/index.html">Raw HTML</a></p>
 	</article>
 
     <article class="slide">
         <h2>Pre-Made Design Systems</h2>
-              <ul>
-                  <li>
-                      <a href="https://andybrewer.github.io/mvp/">MVP.css</a>
-                  </li>
-                  <li>
-                      <a href="https://yegor256.github.io/tacit/">Tacit</a>
-                  </li>
-                  <li>
-                      <a href="http://getskeleton.com/">Skeleton</a>
-                  </li>
-                  <li>
-                      <a href="https://milligram.io/">Milligram</a>
-                  </li>
-                  <li>
-                      <a href="https://getbootstrap.com/">Bootstrap</a>
-                  </li>
-                  <li>
-                      <a href="https://bulma.io/">Bulma</a>
-                  </li>
-              </ul>
+        <div class="d:flex gap:200 jc:center ai:center">
+            <ol class="w:max text:center">
+                <span>Frameworks:</span>
+                <li>
+                    <a href="https://getbootstrap.com/">Bootstrap</a>
+                </li>
+                <li>
+                    <a href="https://bulma.io/">Bulma</a>
+                </li>
+            </ol>
+            <ol class="w:max text:center">
+                <span>Lightweight Pattern Libraries</span>
+                <li>
+                    <a href="https://andybrewer.github.io/mvp/">MVP.css</a>
+                </li>
+                <li>
+                    <a href="https://yegor256.github.io/tacit/">Tacit</a>
+                </li>
+                <li>
+                    <a href="http://getskeleton.com/">Skeleton</a>
+                </li>
+                <li>
+                    <a href="https://milligram.io/">Milligram</a>
+                </li>
+                
+            </ol>
+        </div>
     </article>
 </section>
 
@@ -558,20 +567,57 @@ They can be multi-line too */</code></pre>
     </header>
 
     <article class="slide">
-        <h2>CSS Filters</h2>
-        <p>Modify appearances:</p>
-        <pre class="language-css"><code>div {
-  filter: hue-rotate(45deg) contrast(50%);
+        <h2>CSS Custom Properties</h2>
+        <h4>a.k.a. "CSS Variables"</h4>
+        <p>Assign a property:</p> 
+        <pre class="language-css"><code>:root {
+--name: "value";
+--my-color: #1060bb;
+--my-font: Montserrat, sans-serif;
 }</code></pre>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter">MDN: Filter Function</a></p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions">MDN: All CSS Functions</a></p>
-  </article>
+        <p>Invoke a property with <code>var()</code>:</p>
+         <pre class="language-css"><code>button {
+color: var(--my-color);
+}</code></pre>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">MDN: Custom Properties</a></p>
+    </article>
+
+    <article class="slide">
+        <h2>CSS Variable Scoping</h2>
+        <ul>
+            <li>The variables on the <code>:root</code> selector will be available to all elements on the page</li>
+            <li>But you can declare variables lower down in the HTML render tree by using more specific selectors</li>
+            <li>This will "scope" those variables to only particular parts of your site</li>
+        </ul>
+        <p>
+        <p>
+        <p>
+        <div class="flex" style="gap: 4px;align-items: stretch;">
+            <pre class="language-css"><code>:root {
+--my-color: royalblue;    
+}
+footer {
+--my-color: darkorchid;
+}
+body, footer {
+color: var(--my-color)
+}</code></pre>
+        <div>
+            <pre class="language-html"><code>&lt;body&gt;
+&lt;p&gt;This is body text&lt;/p&gt;
+&lt;footer&gt;This is my footer&lt;/footer&gt;
+&lt;/body&gt;</code></pre>
+                <div class="text:center"><img class="m:20|auto" src="img/scoped_css_vars.png" alt=""></div>
+            </div>
+        </div>
+        
+      </article>
 
     <article class="slide">
         <h2>CSS Math Functions</h2>
-              <code>calc() min() max() clamp()</code>
+              <pre class="language-css"><code>calc() min() max() clamp()</code></pre>
               <p>CSS supports dynamic calculations:</p>
-                  <pre><code>div {
+                  <pre class="language-css"><code>div {
   width: calc(100% - 20px);
   height: max(100%, 400px);
   margin: min(16px, 1vw);
@@ -585,64 +631,27 @@ They can be multi-line too */</code></pre>
 }</code></pre>
     </article>
 
-        <article class="slide">
-            <h2>CSS Custom Properties</h2>
-            <h4>a.k.a. "CSS Variables"</h4>
-            <p>Assign a property:</p> 
-            <pre><code>:root {
-  --name: "value";
-  --my-color: #1060bb;
-  --my-font: Montserrat, sans-serif;
+    <article class="slide">
+        <h2>CSS Filters</h2>
+        <p>Modify appearances:</p>
+        <pre class="language-css"><code>div {
+  filter: hue-rotate(45deg) contrast(50%);
 }</code></pre>
-            <p>Invoke a property with <code>var()</code>:</p>
-             <pre><code>button {
-  color: var(--my-color);
-}</code></pre>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">MDN: Custom Properties</a></p>
-        </article>
-
-        <article class="slide">
-            <h2>CSS Variable Scoping</h2>
-            <ul>
-                <li>The variables on the <code>:root</code> selector will be available to all elements on the page</li>
-                <li>But you can declare variables lower down in the HTML render tree by using more specific selectors</li>
-                <li>This will "scope" those variables to only particular parts of your site</li>
-            </ul>
-            <p>
-            <p>
-            <p>
-            <div class="flex" style="gap: 4px;align-items: stretch;">
-                <pre style="width: 45%; flex-shrink: 1;"><code class="med-code">:root {
---my-color: royalblue;    
-}
-footer {
---my-color: darkorchid;
-}
-body, footer {
-color: var(--my-color)
-}</code></pre>
-            <div>
-                <pre style="width: 100%; flex-grow: 2;"><code class="med-code">&lt;body&gt;
-&lt;p&gt;This is body text&lt;/p&gt;
-&lt;footer&gt;This is my footer&lt;/footer&gt;
-&lt;/body&gt;</code></pre>
-                    <img src="img/scoped_css_vars.png" alt="">
-                </div>
-            </div>
-            
-          </article>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter">MDN: Filter Function</a></p>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions">MDN: All CSS Functions</a></p>
+  </article>
 
           <article class="slide">
             <h2>Splitting & Barreling CSS Files with:</h2>
-            <p><code style="font-size: 4rem;">@import </code><sup><a style="transform: translateY(-50px);" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import">MDN</a></sup></p>
+            <p><code style="font-size: 2rem; margin: 0 1rem;">@import </code><sup><a style="transform: translateY(-50px);" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import">MDN</a></sup></p>
             <div style="display: flex;">
                 <div>
                     <p style="margin: 0">We can split our css files by concern/purpose</p>
                     <img src="img/css_barrel.png" alt="file structure for css barreling">
                 </div>
                 <div style="width: 100%">
-                    <p style="margin: 0">Barreling: packaging split files to export to one &lt;link /&gt; tag</p>
-            <pre style="margin: 20px 0; width: 100%"><code>/* content of styles/index.css above */
+                    <p style="margin: 0">Barreling: packaging split files to export to one <code>&lt;link /&gt;</code> tag</p>
+            <pre class="language-css" style="margin: 20px 0; width: 100%"><code>/* content of styles/index.css above */
 
 /* variables have to be imported first so 
 they are available to the other files */
@@ -670,12 +679,15 @@ they are available to the other files */
             <h2>CSS Transitions & Animations</h2>
             <p>Design Systems do most of the affordances work</p>
             <p>... but motion & animation can go along way to add affordances too!</p>
-            <div style="display: flex;">
+            <div class="d:flex gap:32">
                 <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">Transition property</a></p>
                 <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">@Keyframes</a></p>
                 <p><a href="https://animate.style/">Animation Library: anime.style</a></p>
             </div>
-            <img src="img/affordance_login.gif" alt="">
+            <div class="flex">
+                <img src="img/CSS-Animated-Form.gif">
+                <img src="img/affordance_login.gif" alt="">
+            </div>
         </article>
 
 </section>
