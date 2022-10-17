@@ -235,6 +235,7 @@ They can be multi-line too */</code></pre>
 
   <article class="slide">
     <h2>CSS Properties <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference">Common Ones (~39+)</a></small></h2>
+    <h3>Let's Practice reading docs!</h3>
     <ul class="horiz-flex-list col-2 gap:16">
         <li><a href="https://cssreference.io/">CSSReference.io</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">MDN</a></li>
@@ -726,7 +727,7 @@ they are available to the other files */
     </article>
     <article class="slide">
         <h2>The DOM</h2>
-        <img src="https://miro.medium.com/max/1123/0*srDldqk7TnH9K8ap." alt="">
+        <img class="bg:white" src="https://miro.medium.com/max/1123/0*srDldqk7TnH9K8ap." alt="">
     </article>
     <article class="slide">
         <h2>The CSSOM</h2>
@@ -734,19 +735,21 @@ they are available to the other files */
     </article>
     <article class="slide">
         <h2>The Render Tree</h2>
-        <img src="https://miro.medium.com/max/1150/0*APACDBNpjbwC_gMr." alt="">
+        <img class="bg:white" src="https://miro.medium.com/max/1150/0*APACDBNpjbwC_gMr." alt="">
+        
         <p>But if you change anything in the DOM or CSSOM, the Render Tree must be recalculated</p>
     </article>
     <article class="slide">
         <h2>Think of it as a pyramid</h2>
-        <img class="plain" srcset="img/rendering-pyramid.jpg" data-src="img/rendering-pyramid.jpg" src="#"
-            alt="Rendering pyramid" />
+        <div class="bg:goldenrod w:250 text:center f:bold">Composite</div>
+        <div class="bg:dodgerblue w:375 text:center f:bold">Paint</div>
+        <div class="bg:seagreen w:500 text:center f:bold">Layout</div>
         <p>If you change something at the bottom, the whole pyramid has to be rebuilt.</p>
         <p>If you change just the top layer, the foundation beneath remains intact.</p>
     </article>
     
     <article class="slide">
-        <h2>Layout</h2>
+        <h3 class="bg:seagreen color:white f:bold p:8">Layout</h3>
         <ul>
             <li>Generate geometry and position of each element</li>
             <li>Very expensive because engine must reflow the relevant element and all its children to take into account
@@ -756,49 +759,51 @@ they are available to the other files */
         </ul>
     </article>
     <article class="slide">
-        <h2>Visualizing The Layout FLow</h2>
-        <ul>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a> property</li>
-            <li>Outside: Inline vs Block Elements</li>
-            <li>Inside: Flow-root, table, flex, grid</li>
-        </ul>
-        <img src="../04-css-2/img/inside-display.svg" alt="">
+        <h3>Visualizing The <span class="bg:seagreen color:white f:bold p:8">Layout</span> FLow</h3>
+        <div class="d:flex ai:center jc:center gap:16">
+            <ul>
+                <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a> property</li>
+                <li>Outside: Inline vs Block Elements</li>
+                <li>Inside: Flow-root, table, flex, grid</li>
+            </ul>
+            <img class="bg:white w:600" src="./img/inside-display.svg" alt="">
+        </div>
     </article>
 
     <article class="slide">
-        <h2>CSS properties that trigger Layout</h2>
+        <h2>CSS properties that trigger <span class="bg:seagreen color:white f:bold p:8">Layout</span></h2>
         <span><small>You don't want to dynamically change these - <a href='https://csstriggers.com/'>Reference</a></small></span>
         <ul style="columns: 3; list-style: none;">
-            <li>width</li>
-            <li>height</li>
-            <li>padding</li>
-            <li>margin</li>
-            <li>display</li>
-            <li>border-width</li>
-            <li>border</li>
-            <li>top</li>
-            <li>position</li>
-            <li>font-size</li>
-            <li>float</li>
-            <li>text-align</li>
-            <li>overflow-y</li>
-            <li>font-weight</li>
-            <li>overflow</li>
-            <li>left</li>
-            <li>font-family</li>
-            <li>line-height</li>
-            <li>vertical-align</li>
-            <li>right</li>
-            <li>clear</li>
-            <li>white-space</li>
-            <li>bottom</li>
-            <li>min-height</li>
+            <li><code>width</code></li>
+            <li><code>height</code></li>
+            <li><code>padding</code></li>
+            <li><code>margin</code></li>
+            <li><code>display</code></li>
+            <li><code>border-width</code></li>
+            <li><code>border</code></li>
+            <li><code>top</code></li>
+            <li><code>position</code></li>
+            <li><code>font-size</code></li>
+            <li><code>float</code></li>
+            <li><code>text-align</code></li>
+            <li><code>overflow-y</code></li>
+            <li><code>font-weight</code></li>
+            <li><code>overflow</code></li>
+            <li><code>left</code></li>
+            <li><code>font-family</code></li>
+            <li><code>line-height</code></li>
+            <li><code>vertical-align</code></li>
+            <li><code>right</code></li>
+            <li><code>clear</code></li>
+            <li><code>white-space</code></li>
+            <li><code>bottom</code></li>
+            <li><code>min-height</code></li>
         </ul>
     </article>
 
 
     <article class="slide">
-        <h2>Paint</h2>
+        <h3 class="bg:dodgerblue f:bold p:8">Paint</h3>
         <ul>
             <li>Fill out pixels for each element into layers</li>
             <li>Make something visible when it previously was not, like adding outline or changing background colour
@@ -811,28 +816,28 @@ they are available to the other files */
     </article>
 
     <article class="slide">
-        <h2>CSS properties that trigger Paint</h2>
+        <h2>CSS properties that trigger <span class="bg:dodgerblue color:white f:bold p:8">Paint</span></h2>
         <span><small>Generally ok to change. Doesn't reflow the DOM, but some have intensive calculations so fluid animation of these can be costly.</small></span>
         <ul style="columns: 3; list-style: none">
-            <li>color</li>
-            <li>border-style</li>
-            <li>visibility</li>
-            <li>background</li>
-            <li>text-decoration</li>
-            <li>background-image</li>
-            <li>background-position</li>
-            <li>background-repeat</li>
-            <li>outline-color</li>
-            <li>outline</li>
-            <li>outline-style</li>
-            <li>border-radius</li>
-            <li>outline-width</li>
-            <li>box-shadow</li>
-            <li>background-size</li>
+            <li><code>color</code></li>
+            <li><code>border-style</code></li>
+            <li><code>visibility</code></li>
+            <li><code>background</code></li>
+            <li><code>text-decoration</code></li>
+            <li><code>background-image</code></li>
+            <li><code>background-position</code></li>
+            <li><code>background-repeat</code></li>
+            <li><code>outline-color</code></li>
+            <li><code>outline</code></li>
+            <li><code>outline-style</code></li>
+            <li><code>border-radius</code></li>
+            <li><code>outline-width</code></li>
+            <li><code>box-shadow</code></li>
+            <li><code>background-size</code></li>
         </ul>
     </article>
     <article class="slide">
-        <h2>Composite</h2>
+        <h3 class="bg:goldenrod color:white f:bold p:8">Composite</h3>
         <p><small>These are safe to dynamically change and animate.</small></p>
         <ul>
             <li>Opacity and Transforms trigger composite</li>
@@ -844,19 +849,18 @@ they are available to the other files */
         </ul>
     </article>
     <article class="slide">
-        <h2>Why is compositing so much faster?</h2>
-        <ul>
-            <li>GPU accelerated compositing - browser developers started moving things over to the GPU.</li>
-            <li><code>opacity</code>, <code>transform</code>, <code>filter</code>, <code>clip-path</code> can be GPU-accelerated</li>
-            <li>There are two tasks that could potentially move over to the GPU:</li>
-            <li>
-                <ul>
-                    <li>Painting the layers - harder to do</li>
-                    <li>Compositing them together - easier to do</li>
-                </ul>
-            </li>
-        </ul>
+        <h2>Why is <span class="bg:goldenrod color:white f:bold p:8">compositing</span> so much faster?</h2>
         <p>Using the GPU for the paint step is supported on some browsers under some conditions, but not widespread yet. <a href="https://chromestatus.com/metrics/css/animated">But they're working on it!</a></p>
+        <div class="flex">
+            <div>
+                <ul>
+                    <li>GPU accelerated: <code>opacity</code>, <code>transform</code>, <code>filter</code>, <code>clip-path</code></li>
+                    <li>Multi-thread compositing - separate GPU thread</li>
+                    <li>Both Painting & compositing could be on GPU, but compositing is easier than painting to do there.</li>
+                </ul>
+            </div>
+            <img src="img/composite_threading.jpg" style="width: 600px"/>
+        </div>
     </article>
     <article class="slide">
         <h2>Bottom Line</h2>
@@ -872,12 +876,120 @@ they are available to the other files */
         
     </article>
     <article class="slide">
-        <h2>Two Advanced Things to File Away</h2>
+        <a href="https://www.w3.org/TR/CSS22/visuren.html#block-formatting">Visual Formatting Model</a>
+        <h2>Who establishes new block formatting contexts?</h2>
+        <ul>
+          <li class="fragment">Floats</li>
+          <li class="fragment">Absolutely positioned elements</li>
+          <li class="fragment">Block containers that are <strong>not</strong> block boxes</li>
+          <li class="fragment">Block boxes with <code>overflow</code> <strong>other than</strong> <code>visible</code></li>
+          
+        </ul>
+        <details class="notes">
+          <p>Earlier I mentioned that when a new formatting context is established, boxes within this new context are largely
+            shielded from their outside environment. Which can come in pretty handy at times.</p>
+          <p>There are a number of ways to establish new BFCs:</p>
+          <ul>
+            <li>You can float a box</li>
+            <li>Or position it absolutely</li>
+            <li>If you make the box an inline-block, a table-cell or table-caption, that can give you a new BFC</li>
+            <li>Or you could set a block box's <code>overflow</code> value to anything but its initial value of
+              <code>visible</code></li>
+            <li>And in some situations, via <code>transform</code> and <code>opacity</code></li>
+          </ul>
+        </details>
+      </article>
+      <article class="slide">
+        <h2>Positioning schemes</h2>
+        <div class="flex ai:center">
+          <figure class="fragment" style="margin-right:1em">
+            <img data-src="img/normal-flow.svg" alt="Normal flow" class="plain" style="height:2.5em">
+            <figcaption>Normal  flow</figcaption>
+          </figure>
+          <figure class="fragment" style="margin-right:1em">
+            <img data-src="img/floats.svg" alt="Floats" class="plain" style="height:3em">
+            <figcaption>Floats</figcaption>
+          </figure>
+          <figure class="fragment">
+            <img data-src="img/flex-abs.svg" alt="Absolute positioning" class="plain" style="max-height:8em">
+            <figcaption>Absolute positioning</figcaption>
+          </figure>
+        </div>
+        <details class="notes">
+          <p>There are 3 types of positioning schemes, normal flow, floats and absolute positioning.
+            <p>Boxes in a normal flow will belong to a formatting context. And right now, we have several of those. Relatively
+              positioned boxes remain part of this normal flow.</p>
+            <p>When we float a box, it is first laid out in the normal flow, then taken out of it and shifted as far left, or
+              right, as possible.</p>
+            <p>When a box is absolutely positioned, it's removed from the normal flow altogether, and given a position with
+              respect to its containing box.</p>
+            </details>
+        </article>
+        <article class="slide">
+            <h2>Stacking Context and Position Property</h2>
+            <h2 class="fragment j-stamp">Use Carefully!!</h2>
+        </article>
+
+          <article class="slide">
+            <h2>Position Property Values</h2>
+            <ul>
+              <li><code>static</code></li>
+              <li><code>relative</code></li>
+              <li><code>fixed</code></li>
+              <li><code>absolute</code></li>
+              <li><code>sticky</code></li>
+            </ul>
+          </article>
+
+          <article class="slide">
+            <h2>Adjacent Positioning Properties</h2>
+            <ul>
+              <li><code>top</code></li>
+              <li><code>bottom</code></li>
+              <li><code>left</code></li>
+              <li><code>right</code></li>
+              <li><code>z-index</code></li>
+            </ul>
+          </article>
+
+          <article class="slide">
+            <h2>Z-index and the Stacking Context</h2>
+            <ul>
+              <li><a href='https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context'>MDN Stacking context</a></li>
+              <li><a href='https://coder-coder.com/z-index-isnt-working/'>Why doesn't z-index work?</a></li>
+              <li><a href='https://philipwalton.com/articles/what-no-one-told-you-about-z-index/'>What I wish I knew about z-index</a></li>
+            </ul>
+            <div>
+              <img src="/img/inside-display.svg" alt="">
+            </div>
+        </article>
+
+        <article class="slide">
+          <h2>
+            Children of a stacking Context are painted in order of:
+          </h2>
+          <ul>
+            <li>Elements with negative z-index</li>
+            <li>Elements with position static</li>
+            <li>Elements with stack level of 0 (i.e. positioned elements)</li>
+            <li>Positioned elements with positive z-index</li>
+          </ul>
+        </article>
+      
+    <article class="slide">
+        <h2>A Few Advanced Things to File Away</h2>
         <p><small>Not important early in your CSS journey, but as JS is added these offer lots of power</small></p>
         <ul>
-            <li><a href='https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model'>CSS Object Model API</a></li>
-            <li><a href='https://developer.mozilla.org/en-US/docs/Web/Houdini'>CSS Houdini API</a> -  <a href='https://github.com/nucliweb/awesome-css-houdini/'>When is it ready?</a></li> 
+            <li><a href='https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model'>CSS Object Model Docs</a></li>
+            <li><a href='https://developer.mozilla.org/en-US/docs/Web/API/CSS_Typed_OM_API'>CSS Object Model API</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Painting_API">CSS Paint API</a></li>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Properties_and_Values_API">CSS Properties & Values API</a></li>
+            <!-- <li><a href='https://developer.mozilla.org/en-US/docs/Web/Houdini'>CSS Houdini API</a> -  <a href='https://github.com/nucliweb/awesome-css-houdini/'>When is it ready?</a></li>  -->
         </ul>
+    </article>
+
+    <article class="slide">
+        <h2>Let's Try making some Media Objects!!</h2>
     </article>
     
 </section>
