@@ -49,9 +49,12 @@
             </ol>
         </li>
     </ol>
+    <div class="flex">
+        <img src="./img/Selector.png" />
     <pre class="language-css"><code>h1 {
     font-size: 24px;
 }</code></pre>
+    </div>
         
     
     <details class="notes">
@@ -62,27 +65,6 @@
     </details>
 	</article>
 
-    <article class="slide">
-            <h2>Styles: Inline, Internal & External</h2>
-            <p><strong>Head vs Body:</strong> <br> <code>&lt;body&gt;</code> is for content & <code>&lt;head&gt;</code> is for metadata</p>
-            <div class="flex gap:8">
-            <pre><code>&lt;body&gt;
-  &lt;div style="color: white;"&gt;&lt;/div&gt;
-&lt;body&gt;</code></pre>
-            <pre><code>&lt;head&gt;
-  &lt;style&gt;
-    selector {
-      property1: value;
-    }
-  &lt;/style&gt;
-&lt;/head&gt;</code></pre>
-<pre><code>&lt;head&gt;
-  &lt;link href='css/styles.css'&gt;
-&lt;/head&gt;</code></pre>
-</div>
-<p><a href="https://stackblitz.com/edit/web-platform-9zmgk7?file=index.html,styles.css">Examples in editor</a></p>
-    </article>
-
   <article class="slide">
     <h2>Structure of a CSS rule</h2>
     <div class="flex align">
@@ -91,12 +73,14 @@
   property2: value;
   property3: value;
 }</code></pre>
-      <pre class="language-css"><code>div {
-  color: #fff;
+      <pre class="language-css"><code>a {
+  color: #f2fff2;
   font-size: 24px;
+  font-weight: bold;
   text-decoration: underline;
 }</code></pre>
     </div>
+    <p><a style="color: #f2fff2;font-size: 24px;font-weight: bold;text-decoration: underline;" href="./">Example &lt;a&gt; tag</a></p>
     <ul>
         <li>The <strong>selector</strong> identifies which HTML element(s) the style rule will be applied to</li>
         <li>The <strong>curly braces</strong> contain the property-value pairs, each separated by a semi-colon</li>
@@ -104,6 +88,27 @@
         <li>The <strong>value</strong> is what the properties are set to for that element</li>
     </ul>
   </article>
+
+  <article class="slide">
+    <h2>Styles: Inline, Internal & External</h2>
+    <p><strong>Head vs Body:</strong> <br> <code>&lt;body&gt;</code> is for content & <code>&lt;head&gt;</code> is for metadata</p>
+    <div class="flex gap:8">
+    <pre><code>&lt;body&gt;
+&lt;div style="color: white;"&gt;&lt;/div&gt;
+&lt;body&gt;</code></pre>
+    <pre><code>&lt;head&gt;
+&lt;style&gt;
+selector {
+property1: value;
+}
+&lt;/style&gt;
+&lt;/head&gt;</code></pre>
+<pre><code>&lt;head&gt;
+&lt;link href='css/styles.css'&gt;
+&lt;/head&gt;</code></pre>
+</div>
+<p><a href="https://stackblitz.com/edit/web-platform-9zmgk7?file=index.html,styles.css">Examples in editor</a></p>
+</article>
 
   <article class="slide">
     <h2>Basic Types of CSS selectors</h2>
