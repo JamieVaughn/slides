@@ -1018,6 +1018,104 @@ they are available to the other files */
     
 </section>
 
+<section>
+    <header class="slide">
+        <h2>Media Queries</h2>
+        <h1>Responsive Web Design</h1>
+    </header>
+      <article class="slide">
+        <h2 class="fragment j-stamp">Media Queries</h2>
+        <p>Media Queries allow you to conditionally apply different css rules to your html elements</p>
+        <h4>The standard format:</h4>
+        <pre class='language-css'><code class='fragment'>@media ( condition ) {
+/* responsive css rules go here */ 
+}</code></pre>
+      </article>
+      <article class="slide">
+        <h2>The Go-to Media Queries</h2>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width">width</a> & <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover">hover</a></p>
+        <ul style='columns: 2;' class="arrow-marker">
+          <li class="red">width <small>(min/max-width)</small></li>
+          <li>height <small>(min/max-height)</small></li>
+          <li class="red">hover <small>(any-hover)</small></li>
+          <li>orientation</li>
+          <li>pointer <small>(any-pointer)</small></li>
+          <li>aspect-ratio</li>
+          <li>prefers-reduced-motion</li>
+          <li>resolution</li>
+          <li>scripting</li>
+          <li>prefers-color-scheme</li>
+          <li>color-gamut</li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Breakpoints</h2>
+        <img src="img/screen_sizes.webp" alt="">
+        <p><a href="https://uxtricks.design/blogs/ux-design/responsive-design/">UXTricks</a></p>
+      </article>
+      <article class="slide">
+        <h2>Examples - Checking by device type</h2>
+        <pre class="language-css"><code>/* you can combine multiple conditions with the `and` keyword */
+@media screen and (min-width: 660px) and (max-width: 1199px) {
+  /* css rules for tablets & laptops */
+  h1 {
+    color: black;
+  }
+}
+@media screen and (max-width: 1200px) {
+  /* css rules for desktops */
+  button {
+    color: black;
+  }
+}
+@media screen and (hover: hover) {
+  /* css rules for mouse input devices (i.e. not smartphones) */
+  button:hover {
+    box-shadow: 3px 3px 6px grey;
+  }
+}</code></pre>
+        
+      </article>
+      <article class="slide">
+        <h2>Media Queries with the Link tag</h2>
+        <p style='margin: 0'>You can put a whole link tag behind a media query too:</p>
+        <code>&lt;link rel="stylesheet" media="screen and (max-width: 768px)" href="mobile.css"&gt;</code>
+        <br>
+        <pre class="language-html"><code>
+&lt;head&gt;
+  &lt;link rel="stylesheet" media="screen and (max-width: 759px)" href="mobile.css"&gt;
+  &lt;link rel="stylesheet" media="screen and (min-width: 760px) and (max-width: 1099px)" href="tablet.css"&gt;
+  &lt;link rel="stylesheet" media="screen and (min-width: 1100px)" href="desktop.css"&gt;
+&lt;/head&gt;
+        </code></pre>
+      </article>
+      <article class="slide">
+        <h2>Media Types</h2>
+        <div style="display: flex; flex-direction: column; justify-content: space-between;">
+          <p><code>all</code>	Default. Used for all media type devices</p>
+          <p><code>print</code>	Used for printers</p>
+          <p><code>screen</code>	Used for computer screens, tablets, smart-phones etc.</p>
+          <p><code>speech</code>	Used for screenreaders that "reads" the page out loud</p>
+        </div>
+      </article>
+      <article class="slide">
+        <h2>All Media Queries</h2>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media">Media Queries</a></p>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features">MDN</a></p>
+        <p><a href="https://css-tricks.com/a-complete-guide-to-css-media-queries/">Complete Guide to Media Queries</a></p>
+      </article>
+      <article class="slide">
+        <h2>Mobile First Responsiveness</h2>
+        <img src="img/mobilefirstresponsive.png" alt="mobile first responsive design single columns">
+        <p>Recommendation: Start with single column layout and add more complexity from there</p>
+
+      </article>
+      <article class="slide">
+        <h2>Let's try making our media object Responsive</h2>
+      </article>
+
+</section>
+
 <footer class="slide" title="The End">
     <h3>Thank you!</h3>
 </footer>

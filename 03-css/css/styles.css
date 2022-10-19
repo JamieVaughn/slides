@@ -38,3 +38,16 @@ ul.horiz-flex-list {
   align-items: flex-start;
   padding-bottom: 1rem;
 }
+
+.arrow-marker li::marker {
+  content: '→';
+  font-size: 2rem;
+}
+.arrow-marker .red {
+  text-decoration: underline;
+  text-decoration-color: crimson;
+}
+.arrow-marker .red::marker {
+  font-weight: bold;
+  color: crimson;
+}
