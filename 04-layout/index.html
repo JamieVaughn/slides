@@ -262,6 +262,37 @@
 		</div>
 		<aside class="notes">The setup here is 6 items we want to place into a 3-column grid. One approach for creating such a layout is by using the <code>inline-block</code> technique. For a three column grid, we set the display of the items to <code>inline-block</code> and give them all a width of a third of the container.</aside>
 	</article>
+
+	<article class="slide">
+		<h2>Layout technique: <code>float</code></h2>
+		<div class="livecode livecode-2p" style="max-height: 40vh;">
+			<div class="result float" style="font-size:75%;">
+				<div class="float__item" style="border:1px solid;padding:1em 0;">
+					<p>Item A</p>
+				</div>
+				<div class="float__item" style="border:1px solid;padding:1em 0;">
+					<p>Item B</p>
+				</div>
+				<div class="float__item" style="border:1px solid;padding:1em 0;">
+					<p>Item C</p>
+				</div>
+				<div class="float__item" style="border:1px solid;padding:1em 0;">
+					<p>Item D</p>
+				</div>
+				<div class="float__item" style="border:1px solid;padding:1em 0;">
+					<p>Item E</p>
+				</div>
+				<div class="float__item" style="border:1px solid;padding:1em 0;">
+					<p>Item F</p>
+				</div>
+			</div>
+			<div class="code"><style class="code-editor" contenteditable="true">.float__item {
+	float: left;
+	width: calc(100% / 3);
+	}</style></div>
+		</div>
+		<aside class="notes">It's almost the same if you use <code>float</code>, because you also need to set a width on each item.</aside>
+	</article>
 	
 </section>
 
@@ -280,36 +311,7 @@
 
 
 
-<section style="margin-top: -10px">
-	<h2>Layout technique: <code>float</code></h2>
-	<div class="livecode livecode-2p" style="max-height: 40vh;">
-		<div class="result float" style="font-size:75%;">
-			<div class="float__item" style="border:1px solid;padding:1em 0;">
-				<p>Item A</p>
-			</div>
-			<div class="float__item" style="border:1px solid;padding:1em 0;">
-				<p>Item B</p>
-			</div>
-			<div class="float__item" style="border:1px solid;padding:1em 0;">
-				<p>Item C</p>
-			</div>
-			<div class="float__item" style="border:1px solid;padding:1em 0;">
-				<p>Item D</p>
-			</div>
-			<div class="float__item" style="border:1px solid;padding:1em 0;">
-				<p>Item E</p>
-			</div>
-			<div class="float__item" style="border:1px solid;padding:1em 0;">
-				<p>Item F</p>
-			</div>
-		</div>
-		<div class="code"><style class="code-editor" contenteditable="true">.float__item {
-float: left;
-width: calc(100% / 3);
-}</style></div>
-	</div>
-	<aside class="notes">It's almost the same if you use <code>float</code>, because you also need to set a width on each item.</aside>
-</section>
+
 
 <section style="margin-top: -10px">
 	<h2>Layout technique: <code>flex</code></h2>
