@@ -293,6 +293,40 @@
 		</div>
 		<aside class="notes">It's almost the same if you use <code>float</code>, because you also need to set a width on each item.</aside>
 	</article>
+
+	<article class="slide">
+		<h2>Layout technique: <code>flex</code></h2>
+		<div class="livecode livecode-2p" style="max-height: 40vh;">
+			<div class="result flexbox" style="font-size:75%;">
+				<div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item A</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item B</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item C</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item D</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item E</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item F</p></div>
+			</div>
+			<div class="code"><style class="code-editor" contenteditable="true">.flexbox {
+	display: flex;
+	flex-wrap: wrap;
+	}
+	
+	.flexbox__item {
+	flex: 1 1 calc(100% / 3);
+	}</style></div>
+		</div>
+		<aside class="notes">
+			<p>For Flexbox, to ensure our items line up in three columns, we have to make sure the `flex-basis` is a third of the container. Again, the properties we are applying go on the item.</p>
+			<p>For all 3 techniques I just described, there isn't actually a grid. It just looks that way because we've forced the items to line up with each other.</p>
+		</aside>
+	</article>
+
+	<article class="slide">
+		<blockquote>“Grid is the only layout technique that establishes a <strong>relationship</strong> between rows and columns of grid items.”</blockquote>
+		<aside class="notes">
+			<p>But for Grid, the dimensions for rows and columns are defined on the parent container instead. The grid is real.</p>
+			<p>Before CSS grid, we've always tried to size our elements as best we could, then crossed our fingers and hoped the browser would render them in the right place. But now with grid, we can control exactly where our elements should go.</p>
+		</aside>
+	</article>
+
+	<article class="slide">
+		<h2>Properties on the Grid container</h2>
+		<aside class="notes">Let's look at the properties that are applied to the Grid container first, which will determine the size and structure of the grid we want to create.</aside>
+	</article>
 	
 </section>
 
@@ -313,42 +347,14 @@
 
 
 
-<section style="margin-top: -10px">
-	<h2>Layout technique: <code>flex</code></h2>
-	<div class="livecode livecode-2p" style="max-height: 40vh;">
-		<div class="result flexbox" style="font-size:75%;">
-			<div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item A</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item B</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item C</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item D</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item E</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item F</p></div>
-		</div>
-		<div class="code"><style class="code-editor" contenteditable="true">.flexbox {
-display: flex;
-flex-wrap: wrap;
-}
-
-.flexbox__item {
-flex: 1 1 calc(100% / 3);
-}</style></div>
-	</div>
-	<aside class="notes">
-		<p>For Flexbox, to ensure our items line up in three columns, we have to make sure the `flex-basis` is a third of the container. Again, the properties we are applying go on the item.</p>
-		<p>For all 3 techniques I just described, there isn't actually a grid. It just looks that way because we've forced the items to line up with each other.</p>
-	</aside>
-</section>
-
-<section>
-	<blockquote>“Grid is the only layout technique that establishes a <strong>relationship</strong> between rows and columns of grid items.”</blockquote>
-	<aside class="notes">
-		<p>But for Grid, the dimensions for rows and columns are defined on the parent container instead. The grid is real.</p>
-		<p>Before CSS grid, we've always tried to size our elements as best we could, then crossed our fingers and hoped the browser would render them in the right place. But now with grid, we can control exactly where our elements should go.</p>
-	</aside>
-</section>
 
 
 
 
-<section>
-	<h2>Properties on the Grid container</h2>
-	<aside class="notes">Let's look at the properties that are applied to the Grid container first, which will determine the size and structure of the grid we want to create.</aside>
-</section>
+
+
+
+
 
 <section>
 	<h2>CSS Grid basics</h2>
