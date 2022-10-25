@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="description" content="MCC Web Design & Development Slides" />
+    <meta name="author" content="Jamie Vaughn" />
+    <title>Template</title>
+    <!-- Inspire css -->
+    <link href="../lib/inspire.css" rel="stylesheet" />
+    <link href="../lib/theme.css" rel="stylesheet" />
+    <link href="../lib/talk.css" rel="stylesheet" />
+    <link href="../lib/utils.css" rel="stylesheet" />
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="../laser/laser.css" />
+    <script src="https://cdn.master.co/css"></script>
+  </head>
+  <body
+    class="language-markup"
+    data-prism-plugins="normalize-whitespace"
+    data-duration="30"
+  >
+    <header id="intro" class="slide">
+      <h1></h1>
+      <h2></h2>
+      <p class="attribution">MCC: Section #</p>
+    </header>
+    <section>
+      <header class="slide">
+        <h2>SVG</h2>
+        <h1>Scalable Vector Graphics</h1>
+      </header>
+
+      <article class="slide">
+        <h2>Raster vs. Vector</h2>
+        <p>
+          xml vector graphics format - styled with CSS & controlled with JS.
+        </p>
+        <div
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <p>Native element code:</p>
+          <svg
+            viewBox="0 0 24 24"
+            width="100"
+            height="100"
+            stroke="gold"
+            fill="transparent"
+          >
+            <polygon points="12 2, 22 22, 2 22"></polygon>
+            <line x1="12" y1="10" x2="12" y2="14"></line>
+            <circle cx="12" cy="18" r="0.5"></circle>
+          </svg>
+        </div>
+        <img src="img/bitmap_vs_svg.png" alt="" />
+      </article>
+
+      <article class="slide">
+        <h2>Why SVG?</h2>
+        <ul>
+          <li>More customizable than icon fonts (like font-awesome)</li>
+          <li>
+            Full graphic not a font glyph (which is treated as mere text with
+            only text css rules)
+          </li>
+          <li>Full gamut of css rules apply</li>
+          <li>Has proper DOM integration for JS</li>
+          <li>Better image fallback options</li>
+          <li>Can be animated</li>
+          <li>Easy Spriting options</li>
+          <li>But they are more complicated</li>
+        </ul>
+      </article>
+
+      <article class="slide">
+        <h2>
+          Using SVG
+          <sup><a href="https://css-tricks.com/using-svg/">article</a></sup>
+        </h2>
+        <ul>
+          <li>Inline</li>
+          <li>As an img src</li>
+          <li>As an &lt;object&gt; (not common)</li>
+        </ul>
+        <p>displaying in an img tag (no dom) vs inline (dom element access)</p>
+      </article>
+
+      <article class="slide">
+        <h2>Finding SVG Icons</h2>
+        <span
+          >Download: <a href="https://icomoon.io">icomoon.io</a>,
+          <a href="https://thenounproject.com">thenounproject.com</a>,
+          <a href="https://iconmonstr.com">iconmonstr.com</a>,
+          <a href="https://flaticon.com">flaticon.com</a>
+        </span>
+
+        <div class="grid" style="margin-top: 2rem">
+          <ul>
+            <strong>Create w/ Vector Graphic Program:</strong>
+            <li>Inkscape <small>(free/open-source</small></li>
+            <li>Vector Magic <small>(freemium)</small></li>
+            <li>Adobe Illustrator <small>(paid)</small></li>
+          </ul>
+          <ul style="margin-top: 2rem">
+            <strong>Optimizing/Minifying svg: </strong>
+            <li>
+              <a href="https://jakearchibald.github.io/svgomg/">SVGOMG tool</a>
+            </li>
+            <li><a href="https://github.com/svg/svgo">SVGO tool</a></li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="slide">
+        <h2>
+          CSS vs. SVG Graphics
+          <sup
+            ><a
+              href="https://www.sarasoueidan.com/blog/building-a-circular-navigation-with-svg/"
+              >Article</a
+            ></sup
+          >
+        </h2>
+        <div class="grid">
+          <img
+            src="https://media.slid.es/uploads/sarasoueidan/images/1191412/css-draw-menu.gif"
+            alt=""
+          />
+          <img
+            src="https://d33wubrfki0l68.cloudfront.net/f4105f8487910e2832fb9fe6e7503dd6053a9d32/419f8/images/svg-menu-icons-alignment.svg"
+            alt=""
+          />
+        </div>
+      </article>
+
+      <article class="slide">
+        <h2>SVG Opening Tag</h2>
+        <p>only required attrs for opening tag:</p>
+        <pre><code class="large-code">&lt;svg 
+xmlns="https://www.w3.org/2000/svg" 
+viewBox="0 0 500 500"
+&gt;
+<!-- svg graphic elements here -->
+&lt;/svg&gt;</code></pre>
+      </article>
+
+      <article class="slide">
+        <h2>ViewBox</h2>
+        <div class="grid">
+          <img src="img/viewbox.png" alt="" />
+          <ul>
+            <li>The "viewport" window of the svg</li>
+            <li>Origin is in upper left</li>
+            <li><code>viewBox="min-x, min-y, width, height"</code></li>
+            <li>
+              Viewbox will be mapped to the box model of the rendered svg image
+              and sets the aspect ratio
+            </li>
+          </ul>
+        </div>
+        <p>
+          Use explicit width/height on svg tag for icons needing consistent
+          appearance
+        </p>
+        <p>Use css width/height on icons/container for responsive scaling</p>
+      </article>
+
+      <article class="slide">
+        <h2>Change the ViewBox</h2>
+        <p>Redefine what portion of the svg is visible.</p>
+        <img src="img/subviewbox.png" alt="" />
+      </article>
+    </section>
+
+    <section>
+      <header class="slide">
+        <h2>SVG</h2>
+        <h1>SVG Shapes</h1>
+      </header>
+
+      <article class="slide">
+        <h2>
+          SVG Shape Elements
+          <small
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes"
+              >MDN</a
+            ></small
+          >
+        </h2>
+        <ul style="columns: 2">
+          <li>line</li>
+          <li>rect</li>
+          <li>circle</li>
+          <li>ellipse</li>
+          <li>polyline</li>
+          <li>polygon</li>
+          <li>path</li>
+          <li>text</li>
+        </ul>
+      </article>
+
+      <article class="slide">
+        <h2>Line</h2>
+        <pre><code class="large-code">&lt;line x1 y1 x2 y2 /&gt;</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Rect</h2>
+        <pre><code class="large-code">&lt;rect x y width height rx ry /&gt;</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Circle</h2>
+        <pre><code class="large-code">&lt;circle cx cy r /&gt;</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Ellipse</h2>
+        <pre><code class="large-code">&lt;ellipse cx cy rx ry /&gt;</code></pre>
+        <img
+          style="width: 400px"
+          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fc%2Fc0%2FMoment_of_area_of_an_ellipse.svg%2F1200px-Moment_of_area_of_an_ellipse.svg.png&f=1&nofb=1"
+          alt=""
+        />
+      </article>
+
+      <article class="slide">
+        <h2>Polyline & Polygon</h2>
+        <p>
+          Takes a series of number pairs separated by a space with the pair
+          delimited by a comma
+        </p>
+        <pre><code class="large-code">&lt;polyline points="n,n n,n" /&gt;</code></pre>
+        <pre><code class="large-code">&lt;polygon points="n,n n,n" /&gt; </code></pre>
+        <p><code>points="1,1 2,3 4,5 7,2"</code></p>
+        <p>
+          The difference is the polygon draws a final stroke to close the shape
+          automatically
+        </p>
+      </article>
+
+      <article class="slide">
+        <h2>Path</h2>
+        <p>
+          The most abstract, low level shape… makes sense to computers but is
+          very complicated for a human to understand
+        </p>
+        <p>Typically need tools to write this one</p>
+        <pre><code class="large-code">&lt;path d="special syntax" /&gt;</code></pre>
+        <p>
+          <a href="https://codepen.io/anthonydugois/pen/mewdyZ">Path WYSIWYG</a>
+        </p>
+      </article>
+
+      <article class="slide">
+        <h2>Path Syntax</h2>
+        <!-- MoveTo: M, m
+    LineTo: L, l, H, h, V, v
+    Elliptical Arc Curve: A, a
+    ClosePath: Z, z
+    Cubic Bézier Curve: C, c, S, s
+    Quadratic Bézier Curve: Q, q, T, t
+    
+    This is easier to remember than it looks: M for moving, H/h for horizontal lines, V/v for vertical lines, A/a for arcs, L/l for lines in any direction, and so on. -->
+
+        <p>
+          <a href="https://css-tricks.com/svg-path-syntax-illustrated-guide/"
+            >Path Syntax</a
+          >
+        </p>
+        <!-- M 4 4: Browser, please lift up your imaginary pen and move it to the point (4, 4).
+    h 16: From the location where you currently are, draw a line extending 16px to the right. -->
+      </article>
+
+      <article class="slide">
+        <h2>Text in SVG</h2>
+        <pre><code class="large-code">&lt;text x y dx dy&gt;Example Text&lt;/text&gt;</code></pre>
+        <p>selectable and stylable unlike other image text</p>
+        <p>Uses fill not color</p>
+        <p><code>dx dy</code> are essentialy positional transformation attrs</p>
+        <p>
+          Text doesn't wrap nicely in svg though… can use tspan to position new
+          lines
+        </p>
+        <pre><code class="large-code">&lt;tspan x y&gt;New line of text&lt;/tspan&gt;</code></pre>
+      </article>
+
+      <article class="slide">
+        <h2>Common Attributes</h2>
+        <ul style="columns: 2">
+          <li><code>stroke="blue"</code></li>
+          <li><code>stroke-width="4"</code></li>
+          <li><code>fill="white"</code></li>
+          <li><code>transform="translateX(20px)"</code></li>
+          <li><code>transform-origin="translateX(20px)"</code></li>
+        </ul>
+        <p>Manipulate shapes with transform css rules as before</p>
+        <p>
+          In svg you can define the transform as an attribute (no style attr
+          needed)
+        </p>
+        <p>
+          Pitfall of transform: the origin is the 0, 0 point of the parent svg
+        </p>
+        <p>Use <code>transform-origin</code> to change the axis of rotation</p>
+        <p>(set it to the x+width/2, y+height/2 coords)</p>
+        <p>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute"
+            >MDN List</a
+          >
+        </p>
+      </article>
+
+      <article class="slide">
+        <h2>Stroke Attributes</h2>
+        <ul>
+          <li>stroke: color value</li>
+          <li>stroke-width: number</li>
+          <li>
+            stroke-linecap: butt, square, round
+            <sup
+              ><a
+                href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap"
+                >MDN</a
+              ></sup
+            >
+          </li>
+          <li>
+            stroke-linejoin: miter, round, bevel
+            <sup
+              ><a
+                href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin"
+                >MDN</a
+              ></sup
+            >
+          </li>
+          <li>stroke-miterlimit: number</li>
+          <li>stroke-opacity: 0-1</li>
+          <li>
+            stroke-dasharray="10,10" // length of dash, length of gap can be a
+            repeated pattern: "10, 10, 1, 1, 20, 50"
+          </li>
+          <li>stroke-dashoffset="number"</li>
+          <li>
+            <a href="https://css-tricks.com/svg-line-animation-works/"
+              >You can animate lines using these dash properties</a
+            >
+          </li>
+        </ul>
+      </article>
+
+      <article class="slide">
+        <h2>Let's Animate our Name with SVG!</h2>
+        <p>
+          <a href="https://danmarshall.github.io/google-font-to-svg-path/"
+            >With this Text to SVG Tool</a
+          >
+        </p>
+        <p><a href="https://codepen.io/heliocrat/pen/XWMEzmY">Like This</a></p>
+      </article>
+      <article class="slide">
+        <h2>Comprehensive References</h2>
+        <p>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element"
+            >MDN SVG Elements list</a
+          >
+        </p>
+        <p>
+          <a href="https://www.w3docs.com/learn-html/svg-reference.html"
+            >W3docs svg elements</a
+          >
+        </p>
+      </article>
+
+      <article class="slide">
+        <h2>SVG Filters</h2>
+        <p><a href="https://codepen.io/lbebber/pen/KwGEQv">Squiggly Text</a></p>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element#filter_primitive_elements"
+            >MDN List</a
+          >
+        </p>
+      </article>
+
+      <article class="slide">
+        <h2>SVG accessibility</h2>
+        <pre><code><svg aria-labelledby="title-id" aria-describedby="desc-id"> <!-- must match the id"s below -->
+    <title id="title-id">Descriptive title for svg image</title>
+    <desc id="desc-id">Description of image (like an alt tag)</desc> 
+    <text role="presentation" role="hidden">Text that we don't want read by screen reader</text>
+    </svg>
+        </code></pre>
+        <p>Add title and desc inside a &lt;use&gt; declaration as well</p>
+      </article>
+
+      <article class="slide">
+        <h2>Use cases</h2>
+        <ul>
+          <li>Icons & Logos</li>
+          <li>Loading Spinners</li>
+          <li>Animations</li>
+          <li>Affordances</li>
+          <li>Data Visualization & Infographics</li>
+        </ul>
+      </article>
+
+      <article class="slide">
+        <h2>Let's Make some SVG Spinners</h2>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL"
+            >Animate SVG with SMIL</a
+          >
+        </p>
+      </article>
+    </section>
+
+    <footer class="slide" title="The End">Thank you!</footer>
+
+    <script src="../lib/inspire.js"></script>
+    <script src="../laser/laser.js"></script>
+  </body>
+</html>
