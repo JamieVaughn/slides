@@ -35,7 +35,7 @@
 		<br>
 		<br>
 		<div style="position: relative; display: flex; justify-content: space-around; border: 5px solid orange; padding: 4rem;  color: white">
-			<span style="line-height: 38px; position: absolute; left: 0; top: -38px; color: black; font-size: 38px; z-index: 10;">Flex Container</span>
+			<span style="line-height: 38px; position: absolute; left: 0; top: -38px; font-size: 38px; z-index: 10;">Flex Container</span>
 	
 			<div style="position: relative; width: 200px; height: 200px; line-height: 200px; background: limegreen;">
 				1
@@ -60,20 +60,24 @@
 	</article>
 	<article class="slide">
 		<h2>Flexbox ➡ Wrapping on single dimension</h2>
-	<div style="margin: 0 auto;max-width: 50%;" class="l-double">
-		<figure style="margin: 0 auto; width:90%;">
-			<img class="plain" data-src="img/daisy-h.svg">
-			<p>display: flex</p>
-			<p>flex-wrap: wrap</p>
+	<div class="flex">
+		<figure>
+			<pre class="language-css"><code>
+display: flex;
+flex-wrap: wrap;
+</code></pre>
+			<img data-src="img/daisy-h.svg">
 		</figure>
-		<figure style="margin: 0 auto; width:90%;">
-			<img class="plain" data-src="img/daisy-v.svg">
-			<p>display: flex</p>
-			<p>flex-direction: column</p>
-			<p>flex-wrap: wrap</p>
+		<figure>
+			<pre class="language-css"><code>
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+			</code></pre>
+			<img data-src="img/daisy-v.svg">
 		</figure>
 	</div>
-	<detail class="notes">Flexbox is suited for laying out items in a single dimension. Where there isn't a relationship between the rows and columns. Think of it more like a long daisy chain of flex children.</detail>
+	<details class="notes">Flexbox is suited for laying out items in a single dimension. Where there isn't a relationship between the rows and columns. Think of it more like a long daisy chain of flex children.</details>
 	</article>
 
 	<article class="slide">
@@ -130,11 +134,11 @@
 			<article class="slide">
 				<h2>Flex Order <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order">MDN</a></small></h2>
 				<p >The <code>order</code> property can control where a flex-item will be in the flex-container... even though the order of the HTML doesn't change!</p>
-				<pre style='margin: 0 auto 4rem;'><code>.flex-item {
-				order: -1;
-				}</code></pre>
+				<pre class="language-css"><code>.flex-item {
+  order: -1;
+}</code></pre>
 				<div style="position: relative; display: flex; justify-content: space-around; border: 5px solid orange; padding: 4rem;  color: white">
-					<span style="line-height: 38px; position: absolute; left: 0; top: -38px; color: black; font-size: 38px; z-index: 10;">Flex Container</span>
+					<span style="line-height: 38px; position: absolute; left: 0; top: -38px; font-size: 38px; z-index: 10;">Flex Container</span>
 				
 					<div style="position: relative; width: 200px; height: 200px; line-height: 200px; background: crimson;">
 						1
@@ -164,26 +168,26 @@
 					<article class="slide">
 						<h2>Flexbox Container Properties & Values</h2>
 						<pre class="language-css"><code>selector {
-						display: flex | inline-flex;
-						flex-direction: row | row-reverse | column | column-reverse;
-						flex-wrap: nowrap | wrap | wrap-reverse;
-						flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;
-						justify-content: flex-start | flex-end | center | space-between | space-around;
-						align-items: flex-start | flex-end | center | baseline | stretch;
-						align-content: flex-start | flex-end | center | space-between | space-around | stretch;
-						gap: &lt;length&gt;;
-						}</code></pre>
+  display: flex | inline-flex;
+  flex-direction: row | row-reverse | column | column-reverse;
+  flex-wrap: nowrap | wrap | wrap-reverse;
+  flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;
+  justify-content: flex-start | flex-end | center | space-between | space-around;
+  align-items: flex-start | flex-end | center | baseline | stretch;
+  align-content: flex-start | flex-end | center | space-between | space-around | stretch;
+  gap: &lt;length&gt;;
+}</code></pre>
 						</article>
 						<article class="slide">
 							<h2>Flexbox Item Properties & Values</h2>
-							<pre><code>selector {
-							order: &lt;integer>;
-							flex-grow: &lt;number&gt;; /* default 0 */
-							flex-shrink: &lt;number&gt;; /* default 1 */
-							flex-basis: &lt;length&gt; | auto; /* default auto */
-							flex: none | [ &lt;flex-grow&gt; &lt;flex-shrink&gt;? || &lt;flex-basis&gt; ]
-							align-self: auto | flex-start | flex-end | center | baseline | stretch;
-							}</code></pre>
+<pre class="language-css"><code>selector {
+  order: &lt;integer>;
+  flex-grow: &lt;number&gt;; /* default 0 */
+  flex-shrink: &lt;number&gt;; /* default 1 */
+  flex-basis: &lt;length&gt; | auto; /* default auto */
+  flex: none | [ &lt;flex-grow&gt; &lt;flex-shrink&gt;? || &lt;flex-basis&gt; ]
+  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+}</code></pre>
 							</article>
 							<article class="slide">
 								<h2>Flexbox References</h2>
@@ -372,10 +376,33 @@
 		</details>
 	</article>
 
-	<article class="slide">
-		<h2>Let's Define a Grid</h2>
-		<div class="livecode livecode-3p">
-			<pre class="markup"><code class="html">&lt;div class="grid1"&gt;
+	<article class="demo slide" id="livedemo">
+		<h1 class="text:40 color:#f06 p:30">Let's Define a Grid!</h1>
+		<textarea class="language-html">
+<div class="grid1">
+	<div class="grid1_item"><p>Item A</p></div>
+	<div class="grid1_item"><p>Item B</p></div>
+	<div class="grid1_item"><p>Item C</p></div>
+	<div class="grid1_item"><p>Item D</p></div>
+	<div class="grid1_item"><p>Item E</p></div>
+	<div class="grid1_item"><p>Item F</p></div>
+</div>
+		</textarea>
+		<textarea class="language-css">
+			.grid1 {
+				display: grid;
+				/* grid-template-columns: 1fr 1fr 1fr; */
+				/* grid-template-rows: 1fr 1fr; */
+			}
+			.grid1_item {
+				border: 1px solid grey;
+				padding: 1rem;
+			}
+		</textarea>
+		<details class="notes">There are numerous values we can use to define the size of our grids. There are those which are familiar, fixed units like pixels or ems and relative units like percentages or viewport units. Now, we also a new flexible unit known as fr or fractional unit, which I will cover in more detail later.</details>
+	</article>
+
+			<!-- <pre class="markup"><code class="html">&lt;div class="grid1"&gt;
 	&lt;div class="grid1__item"&gt;
 	&lt;p&gt;Item A&lt;/p&gt;
 	&lt;/div&gt;
@@ -394,19 +421,8 @@
 	&lt;div class="grid1__item"&gt;
 	&lt;p&gt;Item F&lt;/p&gt;
 	&lt;/div&gt;
-	&lt;/div&gt;</code></pre>
-			<div class="result grid1" style="font-size:75%;">
-				<div class="grid1__item" style="border:1px solid;"><p>Item A</p></div><div class="grid1__item" style="border:1px solid;"><p>Item B</p></div><div class="grid1__item" style="border:1px solid;"><p>Item C</p></div><div class="grid1__item" style="border:1px solid;"><p>Item D</p></div><div class="grid1__item" style="border:1px solid;"><p>Item E</p></div><div class="grid1__item" style="border:1px solid;"><p>Item F</p></div>
-			</div>
-			<div class="code"><style class="code-editor" contenteditable="true">.grid1 {
-	display: grid;
-	
-	
-	
-	}</style></div>
-		</div>
-		<details class="notes">There are numerous values we can use to define the size of our grids. There are those which are familiar, fixed units like pixels or ems and relative units like percentages or viewport units. Now, we also a new flexible unit known as fr or fractional unit, which I will cover in more detail later.</details>
-	</article>
+	&lt;/div&gt;</code></pre> -->
+			
 
 	<article class="slide">
 		<h2>Placing Items in the Grid</h2>
