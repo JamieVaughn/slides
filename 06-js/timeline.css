@@ -1,0 +1,155 @@
+ol.timeline {
+  position: relative;
+  margin: 30px 10vw;
+  padding-left: 0;
+  list-style: number;
+  list-style-position: inside;
+  /* After we hit the breakpoint we need to move the vertical line to the middle, so that we can attach our events 
+  */
+}
+ol.timeline::before, ol.timeline::after {
+  content: "";
+}
+ol.timeline::after {
+  display: table;
+  clear: both;
+}
+ol.timeline::before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: -60vh;
+  width: 3px;
+  transform: translateX(-50%);
+  background-color: #e7e6e0;
+}
+@media (min-width: 600px) {
+  ol.timeline::before {
+    left: 50%;
+    height: 1400px;
+  }
+}
+
+ol.timeline > li {
+  position: relative;
+  margin-left: 20px;
+  padding: 15px 15px 40px;
+  border: 1px solid #c8c7c3;
+  border-radius: 4px;
+  hyphens: auto;
+  hyphenate-limit-lines: 1;
+  hyphenate-limit-last: always;
+  text-align: justify;
+  font-size: 15px;
+  background-color: #edece7;
+}
+ol.timeline > li::marker {
+  font-size: 200%;
+  color: crimson;
+}
+ol.timeline > li time {
+  display: block;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  padding: 2px 5px;
+  border: 1px solid #c8c7c3;
+  border-radius: 3px;
+  color: crimson;
+  font-size: 15px;
+  font-weight: 500;
+}
+ol.timeline > li button {
+  appearance: none;
+  position: absolute;
+  top: 10px;
+  left: -21px;
+  margin: 0;
+  padding: 0;
+  width: 10px;
+  height: 10px;
+  border: 0;
+  border-radius: 100%;
+  transform: translateX(-50%);
+  background-color: #3489ce;
+  content: "";
+  outline: none;
+  transition: background-color ease-out 0.15s;
+  /* We use a double box-shaodw to create a moveable 'border' withouth the use of ::before or ::after. It is set to opacity: 0; so that we may animate from the current position to a new position.
+  */
+  box-shadow: 0 0 0 16px rgba(246, 245, 240, 0), 0 0 0 18px rgba(196, 196, 190, 0);
+}
+ol.timeline > li button:focus {
+  /* we ditch the background-color change and 
+     create something that will help people
+     see which element they have selected
+  */
+  transition: box-shadow ease-out 0.5s;
+  box-shadow: 0 0 0 4px #f6f5f0, 0 0 0 6px #4886cc;
+}
+ol.timeline > li button:hover {
+  background-color: #5da1d8;
+}
+ol.timeline > li button:active {
+  transition-duration: 0s;
+  /* This gives the same border as the focus state, except that here it has a blue background. This makes it stand out when the element is focused and then pressed (for example by use of the space bar).
+  */
+  box-shadow: 0 0 0 4px #b0d5e6, 0 0 0 6px #4886cc;
+}
+ol.timeline > li::after, ol.timeline > li::before {
+  position: absolute;
+  top: 10px;
+  left: -5px;
+  border: 6px solid transparent;
+  border-right-width: 4px;
+  border-right-color: #c8c7c3;
+  border-left-width: 0;
+  content: "";
+}
+ol.timeline > li::after {
+  top: 11px;
+  left: -4px;
+  border-width: 5px;
+  border-right-width: 4px;
+  border-right-color: #edece7;
+  border-left-width: 0;
+}
+ol.timeline > li + li {
+  margin-top: 20px;
+}
+@media (min-width: 600px) {
+  ol.timeline > li {
+    margin-left: 0;
+    width: calc(50% - 20px);
+  }
+  ol.timeline > li:nth-of-type(odd) {
+    float: left;
+    clear: left;
+  }
+  ol.timeline > li:nth-of-type(odd) button {
+    right: -21px;
+    left: auto;
+    transform: translateX(50%);
+  }
+  ol.timeline > li:nth-of-type(odd)::after, ol.timeline > li:nth-of-type(odd)::before {
+    left: auto;
+    right: -5px;
+    border-color: transparent;
+    border-left-width: 4px;
+    border-left-color: #c8c7c3;
+    border-right-width: 0;
+  }
+  ol.timeline > li:nth-of-type(odd)::after {
+    top: 11px;
+    right: -4px;
+    border-width: 5px;
+    border-left-width: 4px;
+    border-left-color: #edece7;
+    border-right-width: 0;
+  }
+  ol.timeline > li:nth-of-type(even) {
+    margin-top: 40px;
+    float: right;
+    clear: right;
+  }
+}
