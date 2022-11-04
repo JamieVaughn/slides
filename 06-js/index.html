@@ -71,58 +71,28 @@
 		</p>
 	</article>
 
-	<article class="slide" title="">
-	</article>
-
 	<article class="slide">
-	</article>
-</section>
-
-<section>
-	<header class="slide">
-		<h2></h2>
-		<h1></h1>
-	</header>
-
-	<article class="slide" id="data-insert">
-	</article>
-
-	<article class="slide">
-	</article>
-</section>
-
-<footer class="slide" title="The End">
-</footer>
-
-
-<!-- todo -->
-
-<section>
-	
-	
-
-	<section>
 		<h2>The Engines</h2>
 		<h4 class="fragment">Javascript Engines</h4>
 		<p class="fragment">V8, Spider Monkey, Webkit/Nitro, Chakra(deprecated)</p>
 		<h4 class="fragment">Render Engines</h4>
 		<p class="fragment">Blink, Webkit, Gecko</p>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Interpreters and Compilers</h2>
 		<p class="fragment">Interpreters</p>
 		<p class="fragment">Just in time Compilers (JIT) vs. Ahead of time Compliers (AOH)</p>
 		<p class="fragment">Low Level vs High Level Languages</p>
 		<p class="fragment">Source code, Byte Code, Machine Code, Binary Code <code>101011</code></p>
 		<img src="./img/Machine_code.png" style="max-height: 33vh"/>
-	 
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>A Bit of JS History</h2>
 		<p>Why all the baggage?</p>
 		<img style="width: 70%; height: 80vh;" src="./img/bad_parts_good_parts.jpg" alt="">
-	</section>
-	<section>
+	</article>
+
+	<article class="slide">
 		<h2>The Browser Wars</h2>
 		<ol class="timeline" style="overflow-y: scroll; max-height: 60vh;">
 			<li>Andreeson of Mosaic releases the img tag <time>1992</time></li>
@@ -146,21 +116,160 @@
 			<li style='margin-top: 50px;'>All new ES versions take their release year as their numeral: ES2016 <time>starting 2016</time></li>
 			<li><a href="https://blog.learncodeonline.in/whats-new-in-javascript-21-es12">ES2021 Released!</a> And the saga continues!<time>2021</time></li>
 		</ol>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>ECMAScript</h2>
 		<p><a href="https://www.ecma-international.org/technical-committees/">TC39</a></p>
-	</section>
+	</article>
+	
+</section>
+
+<header class="slide">
+	<h1>Javascript Basics</h1>
+	<h2>Variables, Primitives & Operators</h2>
+</header>
+
+<section>
+<header class="slide">
+	<h2>Javascript Basics</h2>
+	<h1>Primitives</h1>
+</header>
+
+<article class="slide">
+	<h2>Values and Types</h2> 
+		<ul>
+			<li>A <strong>value</strong> represents the most basic type of data </li>
+			<li>A <strong>type</strong> is a category of values</li>
+			<li>There are 7 possible primitive types in Javascript</li>
+			<li style="list-style: none;">(There's an 8th type, but it's not a primitive.)</li>
+		</ul>
+</article>
+<article class="slide">
+	<h2>There are 7 primitive types</h2>
+	<p>The Basic Data Types</p>
+	<ul style="columns: 2">
+		<li><code>undefined</code></li>
+		<li><code>Number</code></li>
+		<li><code>String</code></li>
+		<li><code>Boolean</code></li>
+		<li><code>null</code></li>
+		<li><code>BigInt</code></li>
+		<li><code>Symbol</code></li>
+	</ul>
+	<p>Use <code>typeof</code> operator to check types</p>
+	<pre style="width: fit-content"><code >typeof 'hello' // 'string'
+typeof 100 // 'number'
+typeof false // 'boolean'
+	</code></pre>
+</article>
+<article class="slide">
+	<h2>Null and Undefined</h2>
+	<div class="ga-col2-50">
+			<pre class="language-js"><code>null</code></pre>
+			<ul>
+				<li>explicitly assigning a variable to "nothing"</li>
+			</ul>
+	</div>
+	<div class="ga-col2-50">
+			<pre class="language-js"><code>undefined</code></pre>
+			<ul>
+				<li>For when a variable was not set</li>
+				<li>Also returned in a function with no explicit return value</li>
+			</ul>
+	</div>
+</article>
+<article class="slide">
+	<h2>Numbers</h2>
+	<ul>
+		<li>64 bit Floating point per the IEEE 754 spec</li>
+		<li>Due to 64 bit maximum size, they are imprecise</li>
+		<li>Let's see it in action: <pre class="language-js"><code>0.1 + 0.2 = ?</code></pre></li>
+		<li>Symbolic values:	<div class="ga-col2-33"> <pre class="language-js"><code>Infinity</code></pre> <pre class="language-js"><code>NaN</code></pre></div></li>
+	</ul>
+	<p><code>BigInt</code> provides arbitray precision & fixes decimal bug in Numbers. Post-fix with "n": <code>30903920193n</code></p>
+	<p><code>const biggestNumber = 9007199254740991n</code> (but not the biggest BigInt)</p>
+</article>
+<article class="slide">
+	<h2>NaN - Not a Number</h2>
+	<ul>
+		<li>When checking if value is a <code>NaN</code> literal use <pre class="language-js"><code>Number.isNaN()</code></pre> (returns true only if the argument passed is <code>NaN</code>)</li>
+		<li>When checking if value is simply "not a number," use <pre class="language-js"><code>isNaN()</code></pre> </li>
+		<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN">Reference</a></li>
+		<li>Examples:</li>
+		<pre class="language-js"><code>isNaN('hello') // true
+Number.isNaN('hello') // false
+Number.isNaN(NaN) // true</code></pre>
+		
+	</ul>
+</article>
+<article class="slide">
+	<h2>Booleans</h2>
+		<ul style="width: 300px">
+			<li style="list-style: none; display: flex; align-items: center; justify-content: space-between;">
+				<pre class="language-js"><code>true</code></pre> 
+				<span style="margin: 0 1rem;">or</span> 
+				<pre class="language-js"><code>false</code></pre>
+			</li>
+		</ul>
+		<p>Truthy or Falsey?</p>
+		<p>Let's see it in action:</p>
+	<ul style="width: 300px">
+		<pre class="language-js"><code>Boolean(null)</code></pre>
+		<pre class="language-js"><code>Boolean(undefined)</code></pre>
+		<pre class="language-js"><code>Boolean('0')</code></pre>
+		<pre class="language-js"><code>Boolean("")</code></pre>
+		<pre class="language-js"><code>Boolean('false')</code></pre>
+	</ul>
+</article>
+<article class="slide">
+	<h2>Strings</h2>
+		<pre class="language-js"><code class='large-code nosidescroll' style="font-size: 1rem;">var myStr = 'Hello World'
+'...'    // Single Quotes               
+"..."    // Double Quotes 
+'...' + '...'    // Concatenation              
+'Hello' + ' ' + 'World'    // 'Hello World'
+</code></pre>
+		<div class='flex' style="justify-content: space-between; flex-wrap: wrap;">
+			<p>Escape characters with <code class="large-code">\</code></p>
+			<div class='flex' style="width: 60%"> <span >Bracket Notation:</span> <pre style="width: 100%"><code class='large-code'>'Hello[0]' // 'H'</code></pre></div>
+			<div class='flex'> <span>Strings have a property: <code>.length</code> =></span> <pre style='width: 40%'><code class='large-code'>'Hello'.length // 5</code></pre></div>
+		</div>
+</article>
+<article class="slide">
+	<h2>Primitives Are Immutable</h2>
+		<pre class="language-js"><code class='large-code'>5 = 4 // Syntax Error
+var str = 'hello'
+str[0] = 'p'
+console.log(str) // 'hello'
+		</code></pre>
+		<p>You must reassign to the variable <br>to change a variable's value</p>
+</article>
+<article class="slide">
+	<h2>Primitive Wrappers</h2>
+	<p>Type Casting</p>
+	<ul style="list-style: none; width: 300px">
+		<li><pre class="language-js"><code class='large-code'>String()</code></pre></li>
+		<li><pre class="language-js"><code class='large-code'>Number()</code></pre></li>
+		<li><pre class="language-js"><code class='large-code'>Boolean()</code></pre></li>
+	</ul>
+</article>
+<article class="slide">
+	<h2>Type Coercion</h2>
+	<p>Types refer to the data types, such as primitives: string, boolean, etc</p>
+	<p>Javascript is a Dynamically typed language - variables may change their type</p>
+	<p>Coercion refers to the JS engine changing the data type during an operation</p>
+</article>
 </section>
 
 <section>
-	<section>
-		<h1>Basic Javascript</h1>
-		<p>Variables, Primitives & Operators</p>
-	</section>
-	<section>
+	<header class="slide">
+		<h2>Javascript Basics</h2>
+		<h1>Variables</h1>
+	</header>
+
+	<article class="slide">
 		<h2>Variables</h2>
-		<pre><code>var
+		<pre class="language-js"><code>var
 let
 const
 // single line comment
@@ -168,24 +277,23 @@ const
 comment */
 		</code></pre>
 		<p>Definition</p>
-		<p> A <strong>variable</strong> is a named container for a <strong>value</strong></p>
+		<p> A <strong>variable</strong> is a named container for a <strong>value</strong>, such as a primitive.</p>
 		<p>The <strong>name</strong> that refers to a variables is also called an <strong>identifier</strong></p>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Declaration</h2>
-		<pre><code>var; // Declaration
+		<pre class="language-js"><code>var; // Declaration
 var x; // Initialization;
 var y = 500; // Assignment
 var y = 'Hello!'; //Re-assignment
 		</code></pre>
 		<p>You can declare and assign separately</p>
 		<p>Initialize → Assign</p>
-		<pre><code>var z;
+		<pre class="language-js"><code>var z;
 z = true;
 		</code></pre>
-		
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Containers of a Value</h2>
 		<div class="flex" style="justify-content: space-around;">
 			<fieldset>
@@ -198,10 +306,11 @@ z = true;
 		</fieldset>
 		</div>
 	<p>The variables have names (<strong>identifiers</strong>) and can contain any Javascript <strong>value</strong>.</p>
-	</section>
-	<section>
+	</article>
+
+	<article class="slide">
 		<h2>Hoisting</h2>
-		<pre><code>{
+		<pre class="language-js"><code>{
 var j = 'foo' + i;
 var k = 'bar' + i;
 }
@@ -210,10 +319,10 @@ console.log(j) // foobaz
 console.log(k) // barbaz
 		</code></pre>
 		<p>Global <strong><code>var</code></strong> declarations are hoisted... moved to the top of the file. </p>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Scope</h2>
-		<pre><code>{
+		<pre class="language-js"><code>{
 let local = 'local';
 const local2 = 'local2';
 console.log(global1) // 'global'
@@ -232,10 +341,10 @@ console.log(local1) // ReferenceError: local1 is not defined
 		<p>Variables defined in a curly brace scope cannot be accessed outside of that scope, unless they are hoisted.</p>
 		<p>Variables defined above/outside of the scope can be accessed within a nested scope.</p>
 		<p>The root level (i.e. no curly braces) is the "global" scope.</p>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>The Comma operator</h2>
-		<pre><code>var i, j, k; 
+		<pre class="language-js"><code>var i, j, k; 
 // all initialized as undefined
 i = true;
 if(i) {
@@ -245,10 +354,11 @@ k = 'bar';
 }
 		</code></pre>
 		<p>Let's you initialize or declare multiple vars at once.</p>
-	</section>
-	<section>
+	</article>
+
+	<article class="slide">
 		<h2>Reserved Key Words (tokens)</h2>
-		<pre><code>null true false break do instanceof typeof
+		<pre class="language-js"><code>null true false break do instanceof typeof
 case else new var catch finally return void
 continue for switch while debugger function
 this with default if throw delete in try let 
@@ -256,148 +366,23 @@ class  extends super const export import yield
 </code></pre>
 <p>These can't be used as variable names: <a href="https://www.w3schools.com/js/js_reserved.asp">Full List</a></p>
 <p><a href="https://mothereff.in/js-variables">Variable names must start</a> with a letter, <code>_</code> or <code>$</code></p>
-	</section>
+	</article>
+	
 
 </section>
 
 <section>
-	<section>
-		<h1>Primitives</h1>
-	</section>
-	<section>
-		<h2>Values and Types</h2> 
-			<ul>
-				<li>A <strong>value</strong> represents the most basic type of data </li>
-				<li>A <strong>type</strong> is a category of values</li>
-				<li>There are 7 possible primitive types in Javascript</li>
-				<li style="list-style: none;">(There's an 8th type, but it's not a primitive.)</li>
-			</ul>
-	</section>
-	<section>
-		<h2>There are 7 primitive types</h2>
-		<p>The Basic Data Types</p>
-		<ul style="columns: 2">
-			<li><code>undefined</code></li>
-			<li><code>Number</code></li>
-			<li><code>String</code></li>
-			<li><code>Boolean</code></li>
-			<li><code>null</code></li>
-			<li><code>BigInt</code></li>
-			<li><code>Symbol</code></li>
-		</ul>
-		<p>Use <code>typeof</code> operator to check types</p>
-		<pre style="width: fit-content"><code >typeof 'hello' // 'string'
-typeof 100 // 'number'
-typeof false // 'boolean'
-		</code></pre>
-	</section>
-	<section>
-		<h2>Null and Undefined</h2>
-		<div class="ga-col2-50">
-				<pre><code>null</code></pre>
-				<ul>
-					<li>explicitly assigning a variable to "nothing"</li>
-				</ul>
-		</div>
-		<div class="ga-col2-50">
-				<pre><code>undefined</code></pre>
-				<ul>
-					<li>For when a variable was not set</li>
-					<li>Also returned in a function with no explicit return value</li>
-				</ul>
-		</div>
-	</section>
-	<section>
-		<h2>Numbers</h2>
-		<ul>
-			<li>64 bit Floating point per the IEEE 754 spec</li>
-			<li>Due to 64 bit maximum size, they are imprecise</li>
-			<li>Let's see it in action: <pre><code>0.1 + 0.2 = ?</code></pre></li>
-			<li>Symbolic values:	<div class="ga-col2-33"> <pre><code>Infinity</code></pre> <pre><code>NaN</code></pre></div></li>
-		</ul>
-		<p><code>BigInt</code> provides arbitray precision & fixes decimal bug in Numbers. Post-fix with "n": <code>30903920193n</code></p>
-		<p><code>const biggestNumber = 9007199254740991n</code> (but not the biggest BigInt)</p>
-	</section>
-	<section>
-		<h2>NaN - Not a Number</h2>
-		<ul>
-			<li>When checking if value is a <code>NaN</code> literal use <pre><code>Number.isNaN()</code></pre> (returns true only if the argument passed is <code>NaN</code>)</li>
-			<li>When checking if value is simply "not a number," use <pre><code>isNaN()</code></pre> </li>
-			<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN">Reference</a></li>
-			<li>Examples:</li>
-			<pre><code>isNaN('hello') // true
-Number.isNaN('hello') // false
-Number.isNaN(NaN) // true</code></pre>
-			
-		</ul>
-	</section>
-	<section>
-		<h2>Booleans</h2>
-			<ul style="width: 300px">
-				<li style="list-style: none; display: flex; align-items: center; justify-content: space-between;">
-					<pre><code>true</code></pre> 
-					<span style="margin: 0 1rem;">or</span> 
-					<pre><code>false</code></pre>
-				</li>
-			</ul>
-			<p>Truthy or Falsey?</p>
-			<p>Let's see it in action:</p>
-		<ul style="width: 300px">
-			<pre><code>Boolean(null)</code></pre>
-			<pre><code>Boolean(undefined)</code></pre>
-			<pre><code>Boolean('0')</code></pre>
-			<pre><code>Boolean("")</code></pre>
-			<pre><code>Boolean('false')</code></pre>
-		</ul>
-	</section>
-	<section>
-		<h2>Strings</h2>
-			<pre><code class='large-code nosidescroll' style="font-size: 1rem;">var myStr = 'Hello World'
-'...'    // Single Quotes               
-"..."    // Double Quotes 
-'...' + '...'    // Concatenation              
-'Hello' + ' ' + 'World'    // 'Hello World'
-</code></pre>
-			<div class='flex' style="justify-content: space-between; flex-wrap: wrap;">
-				<p>Escape characters with <code class="large-code">\</code></p>
-				<div class='flex' style="width: 60%"> <span >Bracket Notation:</span> <pre style="width: 100%"><code class='large-code'>'Hello[0]' // 'H'</code></pre></div>
-				<div class='flex'> <span>Strings have a property: <code>.length</code> =></span> <pre style='width: 40%'><code class='large-code'>'Hello'.length // 5</code></pre></div>
-			</div>
-	</section>
-	<section>
-		<h2>Primitives Are Immutable</h2>
-			<pre><code class='large-code'>5 = 4 // Syntax Error
-var str = 'hello'
-str[0] = 'p'
-console.log(str) // 'hello'
-			</code></pre>
-			<p>You must reassign to the variable <br>to change a variable's value</p>
-	</section>
-	<section>
-		<h2>Primitive Wrappers</h2>
-		<p>Type Casting</p>
-		<ul style="list-style: none; width: 300px">
-			<li><pre><code class='large-code'>String()</code></pre></li>
-			<li><pre><code class='large-code'>Number()</code></pre></li>
-			<li><pre><code class='large-code'>Boolean()</code></pre></li>
-		</ul>
-	</section>
-	<section>
-		<h2>Type Coercion</h2>
-		<p>Types refer to the data types, such as primitives: string, boolean, etc</p>
-		<p>Javascript is a Dynamically typed language - variables may change their type</p>
-		<p>Coercion refers to the JS engine changing the data type during an operation</p>
-	</section>
-</section>
-
-<section>
-	<section>
+	<header>
+		<h2>Javascript</h2>
+		<h1>Operators</h1>
+	</header>
+	<article class="slide">
 		<h2>Operators</h2>
 		<code style="font-size: 3rem;">+   -   *    /</code>
 		<p>Exponent: <code class="large-code"> **  </code></p>
 		<p>Remainder (aka Modulo): <code class="large-code"> % </code></p>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Incrementing & Decrementing</h2>
 		<div class="flex" style="justify-content: space-around; font-size: 3rem; width: 600px; margin: 0 auto;">
 			<p><code>++</code></p>
@@ -413,31 +398,42 @@ a--
 a-=1
 a*=2
 a%=11</code></pre>
-	</section>
-	
+	</article>
+
 </section>
 
 <section>
-	<h2>Challenges</h2>
-	<div class="flex">
-		<div style="margin-right: 1rem;">Given:</div>
-		<pre><code class='med-code'>var str1 = "or"
-var str2 = "man"</code></pre>
-		<span title="str2[0] + str2[1] + str1[1] + str1[0] + str1[0] + str2[2] + (str1 + str2).length">Create the string: <code>"maroon5"</code></span>
-	</div><hr>
-	<div class='flex' style='justify-content: space-between;'>
-	<span style="margin-right: 1rem;">Given: </span>
-		<pre><code class='med-code'>var str = "hello world"
-var bool = true</code></pre>
-		<span title="(typeof str)[0] + str[4] + str[3] + str[10] + str[5] + String(bool)[2] + String(bool)[0]">Create the string: <code>"sold out"</code></span>
-	</div><hr>
-	<div >
-		<p>Visit <a href="https://javascript.info/">https://javascript.info/</a> and open the console.</p>
-		<p>Select the <code>nav</code> element w/ <code>document.querySelector()</code> & save in a <code>var</code></p>
-		<p>Then use <code>.innerHTML</code> on the <code>var</code> to set it equal to the string:</p>
-		<p><code>'&lt;h1 class="frontpage-banner__title"&gt;Hello World&lt;/h1&gt;'</code></p>
-	</div>
+	<article class="slide">
+		<h2>Challenges</h2>
+		<div class="flex">
+			<div style="margin-right: 1rem;">Given:</div>
+			<pre class="language-js"><code class='med-code'>var str1 = "or"
+	var str2 = "man"</code></pre>
+			<span title="str2[0] + str2[1] + str1[1] + str1[0] + str1[0] + str2[2] + (str1 + str2).length">Create the string: <code>"maroon5"</code></span>
+		</div><hr>
+		<div class='flex' style='justify-content: space-between;'>
+		<span style="margin-right: 1rem;">Given: </span>
+			<pre class="language-js"><code class='med-code'>var str = "hello world"
+	var bool = true</code></pre>
+			<span title="(typeof str)[0] + str[4] + str[3] + str[10] + str[5] + String(bool)[2] + String(bool)[0]">Create the string: <code>"sold out"</code></span>
+		</div><hr>
+		<div >
+			<p>Visit <a href="https://javascript.info/">https://javascript.info/</a> and open the console.</p>
+			<p>Select the <code>nav</code> element w/ <code>document.querySelector()</code> & save in a <code>var</code></p>
+			<p>Then use <code>.innerHTML</code> on the <code>var</code> to set it equal to the string:</p>
+			<p><code>'&lt;h1 class="frontpage-banner__title"&gt;Hello World&lt;/h1&gt;'</code></p>
+		</div>
+	</article>
 </section>
+
+<footer class="slide" title="The End">
+</footer>
+
+
+<!-- todo -->
+
+
+
 
 <section>
 	<section>
@@ -446,7 +442,7 @@ var bool = true</code></pre>
 	</section>
 	<section>
 		<h2>Javascript Functions</h2>
-		<pre><code>function fn(a, b){
+		<pre class="language-js"><code>function fn(a, b){
 // do stuff
 }
 fn(1, true) // can be reused by invoking it</code></pre>
@@ -479,7 +475,7 @@ fn(1, true) // can be reused by invoking it</code></pre>
 	<section>
 		<h2>Function Declaration vs Expression</h2>
 		<p>Hoisting applies differently to these:</p>
-		<pre><code>fnDec() // works
+		<pre class="language-js"><code>fnDec() // works
 fnExp() // will be undefined... TypeError: fnExp is not a function
 
 function fnDec(d, e){ // Function Declaration
@@ -493,7 +489,7 @@ var fnExp = function(){ // Function Expression
 	</section>
 	<section>
 		<h2>Invoking a Function</h2>
-		<pre><code>function fn(a){
+		<pre class="language-js"><code>function fn(a){
 console.log(a) 
 }
 fn('hello') // Invocation of Function
@@ -501,7 +497,7 @@ fn() // If the argument list is empty, then 'a' is undefined</code></pre>
 	</section>
 	<section>
 		<h2>First Class Functions</h2>
-		<pre><code>function fn(args){
+		<pre class="language-js"><code>function fn(args){
 // do stuff
 }
 var func = function(){
@@ -511,7 +507,7 @@ fn(func) // Functions can be passed into other functions</code></pre>
 	</section>
 	<section>
 		<h2>The Return Statement</h2>
-		<pre><code>function fn(x, y){
+		<pre class="language-js"><code>function fn(x, y){
 let z = 5;
 return (x * y) / z;
 }</code></pre>
@@ -528,11 +524,11 @@ return (x * y) / z;
 		<h2>When to use pure vs impure functions?</h2>
 		<p>This will come up later when we get to code organization & architecture.</p>
 		<p>Immutability vs. Mutations</p>
-		<div><pre><code>function isRightTriangle(d, e, cf){ // Pure 
+		<div><pre class="language-js"><code>function isRightTriangle(d, e, cf){ // Pure 
 return d ** 2 + e ** 2 == f ** 2
 }</code></pre></div>
 <div>
-<code><pre>var globalVar = 'global'
+<code><pre class="language-js">var globalVar = 'global'
 function sideEffects(arg){ // Impure
 console.log(args)
 globalVar += arg
@@ -546,14 +542,14 @@ return globalVar
 			<li>Pure functions are referentially transparent</li>
 			<li>Functions with Side effects cannot be</li>
 		</ul>
-		<pre><code class="large-code">var g = 5
+		<pre class="language-js"><code class="large-code">var g = 5
 fn(g)
 fn(5)</code></pre>
 	</section>
 	<section>
 		<h2>ES6 Arrow Functions</h2>
 		<p>A.K.A. Lambda Functions</p>
-		<pre><code class="large-code">var fn = function(a) {
+		<pre class="language-js"><code class="large-code">var fn = function(a) {
 return a
 }
 var fn = (a) => { 
@@ -562,18 +558,18 @@ return a;
 	</section>
 	<section>
 		<h2>The Implicit Return Statement</h2>
-		<pre><code class="large-code">j => j ** 2</code></pre>
-<pre><code class="large-code">j => (
+		<pre class="language-js"><code class="large-code">j => j ** 2</code></pre>
+<pre class="language-js"><code class="large-code">j => (
 j ** 2
 )</code></pre>
 <p>Equivalent to:</p>
-<pre><code class="large-code">j => {
+<pre class="language-js"><code class="large-code">j => {
 return j ** 2
 }</code></pre>
 	</section>
 	<section>
 		<h2>Passing Parameters in Arrow Functions</h2>
-		<pre><code class="large-code">() => 100 ** 2
+		<pre class="language-js"><code class="large-code">() => 100 ** 2
 a => 100 ** a
 (a) => 100 ** a
 (a, b) => b ** a</code></pre>
@@ -582,22 +578,22 @@ a => 100 ** a
 		<h2>Naming Functions</h2>
 		<p>In Javascript, the naming convention used is called Camel Case</p>
 		<p>it looks like this:</p>
-		<pre><code class="large-code">function camelCaseNaming(){}</code></pre>
+		<pre class="language-js"><code class="large-code">function camelCaseNaming(){}</code></pre>
 		<p>Similar to Semantic HTML, it's best to name functions in a semantically helpful way</p>
 	</section>
 	<section>
 		<h2>There is also Kebab Case, Pascal Case, Snake Case</h2>
 		<p>Some libraries need to convert between these naming conventions</p>
 		<p>So being consistent is key</p>
-		<pre><code class="large-code">.kebab-case-naming {
+		<pre class="language-js"><code class="large-code">.kebab-case-naming {
 font-size: 2rem;
 }</code></pre>
-<pre><code class="large-code">function PascalCaseNaming(){}
+<pre class="language-js"><code class="large-code">function PascalCaseNaming(){}
 function snake_case_naming() {}</code></pre>
 	</section>
 	<section>
 		<h2>Function Scope</h2>
-		<pre><code>var z = 10, x = 2, y = 10;
+		<pre class="language-js"><code>var z = 10, x = 2, y = 10;
 function fn(x, y){
 let z = 5;
 return (x * y) / z;
@@ -611,13 +607,13 @@ fn(1) // NaN</code></pre>
 		<h2>IIFE</h2>
 		<h3>Immediately Invoked Function Expression</h3>
 		<p>These create a private scope</p>
-		<pre><code class="large-code">(function (parameters, arguments){
+		<pre class="language-js"><code class="large-code">(function (parameters, arguments){
 // do stuff
 }())</code></pre>
 	</section>
 	<section>
 		<h2>Closures</h2>
-		<pre><code class="large-code">var publicAPI = (function (a, b){
+		<pre class="language-js"><code class="large-code">var publicAPI = (function (a, b){
 let privateVar = a + 'our secret';
 return [
 true,
@@ -633,7 +629,7 @@ publicAPI.privateVar // ReferenceError</code></pre>
 		<h2>Callbacks & Anonymous Functions</h2>
 		<p>A callback is a function that is not invoked on the window load, but it is invoked by some kind of trigger (like an event) later on</p>
 		<p>Callbacks are sometimes called "Predicates".</p>
-		<pre><code class="large-code">// Using an anonymous function as a Callback
+		<pre class="language-js"><code class="large-code">// Using an anonymous function as a Callback
 var months = ['March', '', 'Jan', '', 'Feb']
 months.sort((a, b) => Boolean(b) - 1)
 // ['March', 'Jan', 'Feb', '', '']
@@ -654,7 +650,7 @@ months.sort(sortEmpties)</code></pre>
 	<section>
 		<h2>The Math Object and its Methods</h2>
 		<p>Can access more complicated math function like sin, cos, tan etc</p>
-		<pre><code class='large-code'>Math.PI
+		<pre class="language-js"><code class='large-code'>Math.PI
 Math.E
 Math.random()
 Math.abs()
@@ -697,12 +693,12 @@ Math.round()</code></pre>
 	</section>
 	<section>
 		<h2>Recall Javascripts Array-like Strings</h2>
-<pre><code>var str = 'Hello!'
+<pre class="language-js"><code>var str = 'Hello!'
 str.length = 3;
 str.length // 6;
 str[2] = 'l' // str is still 'Hello'</code></pre>
 <p>↑ But Strings are immutable, unlike Arrays</p>
-		<pre><code class='med-code'>var arr = ['H','e','l','l','o','!']
+		<pre class="language-js"><code class='med-code'>var arr = ['H','e','l','l','o','!']
 arr[0] // 'H'
 arr.length // 6
 arr.length = 3
@@ -716,7 +712,7 @@ console.log(arr) // ['H','e','l']</code></pre>
 			to discover what each of these do:
 		</p>
 		<code>Array.prototype</code>
-		<pre><code class='med-code'>.indexOf()
+		<pre class="language-js"><code class='med-code'>.indexOf()
 .concat()
 .push()
 .pop()
@@ -731,7 +727,7 @@ console.log(arr) // ['H','e','l']</code></pre>
 	</section>
 	<section>
 		<h2>Creating Array via Static Methods</h2>
-		<pre><code class='med-code'>Array.of(1, 2, 3) // [1, 2, 3]
+		<pre class="language-js"><code class='med-code'>Array.of(1, 2, 3) // [1, 2, 3]
 Array.from('string') // ["s", "t", "r", "i", "n", "g"]
 Array.from(document.querySelectorAll('div')) 
 // array of div nodes</code></pre>
@@ -739,7 +735,7 @@ Array.from(document.querySelectorAll('div'))
 	<section>
 		<h2>The Array Index</h2>
 		<p>Arrays are zero-indexed & the indices must be integers</p>
-		<pre><code class='med-code'>let arr = [1, 2, 3];
+		<pre class="language-js"><code class='med-code'>let arr = [1, 2, 3];
 arr[0] = 1; arr[2] = 3;
 console.log(arr[4]); // undefined
 arr[6] = 'ten';
@@ -748,7 +744,7 @@ console.log(arr)
 	</section>
 	<section>
 		<h2>The Array Length Property</h2>
-		<pre><code class='med-code'>let arr = [1, 2, 3]
+		<pre class="language-js"><code class='med-code'>let arr = [1, 2, 3]
 console.log(arr.length) // 3
 arr[arr.length] || arr[arr.length - 1]
 arr.length = 4; 
@@ -758,12 +754,12 @@ arr.length = 4;
 		<h2>Arrays</h2>
 		<p>Arrays are list-like objects which have built-in methods to perform list traversal and value mutation.</p>
 		<p>Arrays can hold hold any number of different values (Primitives or Objects)</p>
-		<pre><code class='med-code'>['a', 'man', 'a', 'plan', 'a', 'canal', 'panama']
+		<pre class="language-js"><code class='med-code'>['a', 'man', 'a', 'plan', 'a', 'canal', 'panama']
 [2, null, 'string', {key: 'value'}, ['nested', 'arrays']]</code></pre>
 	</section>
 	<section>
 		<h2>Creating Arrays</h2>
-		<pre><code class='med-code'>let array = [1, 2, 3]; // Array Literal
+		<pre class="language-js"><code class='med-code'>let array = [1, 2, 3]; // Array Literal
 let arr = new Array(1, 2, 3); // Array constructor
 let arr = new Array(3); // [undefined, undefined, undefined]</code></pre>
 	</section>
@@ -813,7 +809,7 @@ let arr = new Array(3); // [undefined, undefined, undefined]</code></pre>
 		<p>Bitwise or Binary <strong>Exclusive OR</strong>: Two inputs of opposite truthiness result in <code>1</code> and if they are the same truthiness they result in <code>0</code></p>
 		<p>It only operates on binary characters (zero/one or true/false). Also works with <code>null, undefined</code></p>
 		<p>Results can be unexpected if the inputs are strings, non-binary numbers or other data structures (i.e. arrays)</p>
-		<pre><code class="med-code">1 ^ 0 // 1
+		<pre class="language-js"><code class="med-code">1 ^ 0 // 1
 1 ^ 1 // 0
 true ^ null // 1
 
@@ -828,7 +824,7 @@ Boolean(foo) ^ Boolean(bar) // 1
 !!bar ^ !!bar // 0
 		</code></pre>
 		<p>Recommended to package it in a reusable function:</p>
-		<pre><code class="med-code">function XOR(a, b) {
+		<pre class="language-js"><code class="med-code">function XOR(a, b) {
 return Boolean(!!a ^ !!b)
 }</code></pre>
 		<p><code></code></p>
@@ -836,7 +832,7 @@ return Boolean(!!a ^ !!b)
 	</section>
 	<section>
 		<h2 style="margin-top: -12rem;">Equality Examples <small><a href="https://dorey.github.io/JavaScript-Equality-Table/unified/">Overlaid Table</a></small></h2>
-		<pre><code class="med-code">const num = 0;
+		<pre class="language-js"><code class="med-code">const num = 0;
 const big = 0n
 const str = '0'
 const bool = false
@@ -888,7 +884,7 @@ bool === big // false
 	</section>
 	<section>
 		<h2>If Else</h2>
-		<pre><code class='med-code'>var input = 0
+		<pre class="language-js"><code class='med-code'>var input = 0
 if (input < -1) {
 // do this
 } else if (input > 1) {
@@ -902,7 +898,7 @@ if (input < -1) {
 	<section>
 		<h2>Ternary Operator <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">MDN</a></sup></h2>
 		<p>A more concise way to express simple if/else conditions</p>
-		<pre><code class="med-code">var input = 0
+		<pre class="language-js"><code class="med-code">var input = 0
 let result;
 result = input ? 'input was truthy!' : 'input was falsey!'
 
@@ -1036,14 +1032,14 @@ console.log(globalVar);`">pure fn snippet</button>
 	</section>
 	<section>
 		<h2>Standard For Loop</h2>
-		<pre><code class="med-code">let arr = [1,2,3,4,5]
+		<pre class="language-js"><code class="med-code">let arr = [1,2,3,4,5]
 for(let i = 0; i &lt; arr.length; i++){
 console.log(arr[i])
 }</code></pre>
 	</section>
 	<section>
 		<h2>While Loops</h2>
-		<pre><code class="med-code">let arr = [1,2,3,4,5]
+		<pre class="language-js"><code class="med-code">let arr = [1,2,3,4,5]
 let i = 0;
 while(i < arr.length) {
 console.log(arr[i])
@@ -1058,7 +1054,7 @@ if(Player.clicks('Exit')) playing = false
 	</section>
 	<section>
 		<h2>Do While Loops</h2>
-		<pre><code class="med-code">let arr = [1,2,3,4,5]
+		<pre class="language-js"><code class="med-code">let arr = [1,2,3,4,5]
 let i = 0;
 do {
 i = i + 1;
@@ -1069,7 +1065,7 @@ result = result + i;
 		<h2>Recursion <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#recursion">MDN</a></sup></h2>
 		<p>An alternative way to implement a loop</p>
 		<p>The function repeatedly calls itself until the exit conditon (aka escape hatch) is met</p>
-		<pre><code class="med-code">function factorial(num) {
+		<pre class="language-js"><code class="med-code">function factorial(num) {
 return num === 0 ? 1 : factorial(num - 1)
 }</code></pre>
 	<p><a href="http://www.pythontutor.com/javascript.html#code=function%20fact%28n%29%20%7B%0A%20%20if%20%28n%20%3D%3D%200%29%20%7B%0A%20%20%20%20return%201%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20return%20n%20*%20fact%28n-1%29%3B%0A%20%20%7D%0A%7D%0A%0Afact%283%29%3B%0Afact%283%29%3B&mode=edit&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Visualize Factorial Fn</a></p>
@@ -1077,7 +1073,7 @@ return num === 0 ? 1 : factorial(num - 1)
 	
 	<section>
 		<h2>For Of Loops</h2>
-		<pre><code class="med-code">const array1 = ['a', 'b', 'c'];
+		<pre class="language-js"><code class="med-code">const array1 = ['a', 'b', 'c'];
 for (const element of array1) {
 console.log(element);
 }</code></pre>
@@ -1085,7 +1081,7 @@ console.log(element);
 	<section>
 		<h2>Looping Over Arrays</h2>
 		<p>Arrays have a built in method called <code>forEach()</code></p>
-		<pre><code class="med-code">let callback = i => console.log(i)
+		<pre class="language-js"><code class="med-code">let callback = i => console.log(i)
 array.forEach(callback)
 // Works on Nodelists too!
 document.querySelectorAll('div').forEach(callback)
@@ -1105,7 +1101,7 @@ arr.findIndex(i => i < 4) // returns the index of the first matching element
 		<h2>Advanced Array Methods</h2>
 		<p>These do not mutate the array. They create a copy.</p>
 		<p>All of them take a callback function to customize their behavior.</p>
-		<pre><code class='med-code'>.map()
+		<pre class="language-js"><code class='med-code'>.map()
 .flatMap()
 .filter()
 .reduce()
@@ -1116,7 +1112,7 @@ arr.findIndex(i => i < 4) // returns the index of the first matching element
 	<section>
 		<h2>Map</h2>
 		<p>Transforms an array and always returns an array of the same length</p>
-		<pre><code class='med-code'>let arr = [1,2,3]
+		<pre class="language-js"><code class='med-code'>let arr = [1,2,3]
 var squares = arr.map(i => i **2) // returns [1,4,9]
 console.log(arr) // [1,2,3]
 		</code></pre>
@@ -1124,7 +1120,7 @@ console.log(arr) // [1,2,3]
 	<section>
 		<h2>flatMap</h2>
 		<p>Works just like <code>.map()</code>, but also flattens the array by one level</p>
-		<pre><code class="med-code">var arr = [1, 2, 3, 4];
+		<pre class="language-js"><code class="med-code">var arr = [1, 2, 3, 4];
 arr.flatMap(x => [x, x * 2]); // [1, 2, 2, 4, 3, 6, 4, 8]
 
 var arr2 = [[1,2], [2,3], [3,4]]
@@ -1133,14 +1129,14 @@ arr2.flatMap(x => x) //  [1, 2, 2, 3, 3, 4]</code></pre>
 	<section>
 		<h2>Filter</h2>
 		<p>Removes elements from array when the callback does not return true</p>
-		<pre><code class='med-code'>[1,2,3,4].filter(i => i > 2) // [3,4]
+		<pre class="language-js"><code class='med-code'>[1,2,3,4].filter(i => i > 2) // [3,4]
 [[1 ,2],[3, 3],[4, 5]].filter(i => i[0] > 3) // [[4, 5]]</code></pre>
 	</section>
 	<section>
 		<h2>Reduce</h2>
 		<p>The callback processes all the elements in the array and reduces them down to one value called the accumulator.</p>
 		<p>Always returns a single output value. </p>
-		<pre><code class="med-code">[0, 1, 2, 3, 4].reduce((accumulator, currentValue, currentIndex, array) => {
+		<pre class="language-js"><code class="med-code">[0, 1, 2, 3, 4].reduce((accumulator, currentValue, currentIndex, array) => {
 return accumulator + currentValue
 }, 0)
 // .reduceRight starts from the end and works towards the start
@@ -1229,7 +1225,7 @@ key4: function(a, b) { console.log('method') }, // trailing commas
 	<section>
 		<h2>Accessing Object Values</h2>
 		<p>Dot Notation & Bracket Notation</p>
-		<pre><code class="med-code">let myAccess = "key"
+		<pre class="language-js"><code class="med-code">let myAccess = "key"
 obj.key // 'value'
 obj["key"] // value
 obj[myAccess] // value
@@ -1240,7 +1236,7 @@ obj.key4(a, b) // invokes key3 method</code></pre>
 	</section>
 	<section>
 		<h2>Checking for Properties</h2>
-		<pre><code class="med-code">obj && obj.key
+		<pre class="language-js"><code class="med-code">obj && obj.key
 obj && obj.key3 && obj.key3.key // && Operator as a 'Guard'
 obj?.key3?.key // Optional Chaining Operator
 obj.hasOwnProperty('key');
@@ -1248,12 +1244,12 @@ obj.hasOwnProperty('key');
 	</section>
 	<section>
 		<h2>The Object Constructor</h2>
-		<pre><code class="med-code">let obj = new Object // {}
+		<pre class="language-js"><code class="med-code">let obj = new Object // {}
 obj.key = 'value' // must populate keys manually</code></pre>
 	</section>
 	<section>
 		<h2>The <code>this</code> keyword <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN</a></sup> <sup>/</sup> <sup><a href="https://www.w3schools.com/js/js_this.asp">W3</a></sup></h2>
-		<pre><code class="med-code">const person = {
+		<pre class="language-js"><code class="med-code">const person = {
 name: 'Chris',
 greet: function() {
 alert('Hello ' + this.name + ', Welcome!');
@@ -1288,7 +1284,7 @@ me.greet() // 'Hello there!'</code></pre>
 		<h2>Merging Objects</h2>
 		<p><code>Object.assign()</code></p>
 		<p>This overwrites the target object and avoids inheritance</p>
-		<pre><code class='med-code'>const target = { a: 1, b: 2 };
+		<pre class="language-js"><code class='med-code'>const target = { a: 1, b: 2 };
 const source = { b: 4, c: 5 };
 const returnedTarget = Object.assign(target, source);
 console.log(target);// Object { a: 1, b: 4, c: 5 }
@@ -1306,7 +1302,7 @@ console.log(obj) // {key: 'value', test: 'same object in memory'}</code></pre>
 	<section>
 		<h2>Cloning an Object with <code>.assign()</code></h2>
 		<p>This will avoid the potential collisions due to <strong>passing by Reference</strong></p>
-		<pre><code class="med-code">const obj = {name: 'Jamie', isHuman: true};
+		<pre class="language-js"><code class="med-code">const obj = {name: 'Jamie', isHuman: true};
 const uniqueObj = Object.assign({}, obj)
 // now there are two separate objects in memory
 // each with the same properties</code></pre>
@@ -1323,7 +1319,7 @@ console.log(obj) // {prop: 1}</code></pre>
 	<section>
 		<h2>Protecting Objects</h2>
 		<p>Making an object read-only has some "gotchas"</p>
-		<pre><code class="med-code">const obj = {key: 'value'}
+		<pre class="language-js"><code class="med-code">const obj = {key: 'value'}
 obj.key = 3 // this works
 obj = {name: 'new'} // Throws Error
 Object.seal(obj)
@@ -1332,7 +1328,7 @@ Object.freeze(obj)</code></pre>
 	<section>
 		<code class="large-code">Object.seal()</code>
 		<p>Prevents deletion of properties</p>
-		<pre><code class="med-code">const obj = {prop: 2 };
+		<pre class="language-js"><code class="med-code">const obj = {prop: 2 };
 Object.seal(obj);
 // can mutate a sealed object's existing properties
 obj.prop = 3;
@@ -1346,7 +1342,7 @@ console.log(obj.prop, obj.greet);// 3, undefined</code></pre>
 	<section>
 		<code class="large-code">Object.freeze()</code>
 		<p>Prevents deletion and alteration of properties. But only on 1st level of nesting</p>
-		<pre><code class="med-code">const obj = {prop: 2, key: {greet: 'hello'}};
+		<pre class="language-js"><code class="med-code">const obj = {prop: 2, key: {greet: 'hello'}};
 Object.freeze(obj);
 // cannot mutate nor delete a frozen object
 obj.prop = 3;
@@ -1364,7 +1360,7 @@ console.log(obj)
 	<section>
 		<h2>Recursively Freezing an Object</h2>
 		<p>This is not a native JS function. You have to write it yourself. But here is an implementation we can use: <a href="https://github.com/substack/deep-freeze/blob/master/index.js">Github</a></p>
-		<pre><code class="med-code">function deepFreeze (o) {
+		<pre class="language-js"><code class="med-code">function deepFreeze (o) {
 Object.freeze(o);
 Object.getOwnPropertyNames(o).forEach(prop => {
 if (o.hasOwnProperty(prop) 
@@ -1381,7 +1377,7 @@ return o;
 	<section>
 		<h2>Looping in Objects</h2>
 		<p>The For...in Loop (Does not garauntee order)</p>
-		<pre><code class="med-code">const object = {a: 1, b: 2, c: 3};
+		<pre class="language-js"><code class="med-code">const object = {a: 1, b: 2, c: 3};
 for (const property in object) {
 console.log(`${property}: ${object[property]}`);
 }
@@ -1408,7 +1404,7 @@ Object.fromEntries([['a', 1],['b', 2],['c', 3]]) //{a: 1, b: 2, c: 3}</code></pr
 		<h2>Prototype Objects</h2>
 		<p>Everything is an inspectable object, except <code>null, undefined</code>. <br> <small>(<code>null</code> is kind of an object though, it's complicated)</small></p>
 		<p>Even the Primitives we've seen have methods on them, because they're Objects</p>
-		<pre><code class="med-code">String.prototype
+		<pre class="language-js"><code class="med-code">String.prototype
 Number.prototype
 Boolean.prototype
 Symbol.prototype
@@ -1420,7 +1416,7 @@ Function.prototype // no methods/properties of its own</code></pre>
 	<section>
 		<h2>Revisiting Symbol</h2>
 		<p><code>Symbol()</code></p>
-		<pre><code>let Sym = Symbol("Sym");
+		<pre class="language-js"><code>let Sym = Symbol("Sym");
 console.log(_Sym.description);</code></pre>
 		<ul>
 			<li>creates a unique identifier</li>
@@ -1430,13 +1426,13 @@ console.log(_Sym.description);</code></pre>
 	</section>
 	<section>
 		<h2>"Monkey Patching" Prototypes considered harmful<sup><a href="https://maxheiber.medium.com/safe-monkey-patching-with-es2015-symbol-e36fb01ab794">Medium</a></sup></h2>
-		<pre><code class="med-code">// Add useful toString Method to js objects:
+		<pre class="language-js"><code class="med-code">// Add useful toString Method to js objects:
 Object.prototype.toString = function() {
 return JSON.stringify(this)
 }</code></pre>
 <p>This can lead to naming collisions with other libraries</p>
 <p>This is what <code>Symbol</code> is for!! So use it if you must do this.</p>
-<pre><code class="med-code">// toString path with `Symbol`:
+<pre class="language-js"><code class="med-code">// toString path with `Symbol`:
 const toString = Symbol('toString')
 Object.prototype[toString] = function() {
 return JSON.stringify(this)
