@@ -426,28 +426,19 @@ a%=11</code></pre>
 	</article>
 </section>
 
-<footer class="slide" title="The End">
-</footer>
-
-
-<!-- todo -->
-
-
-
-
 <section>
-	<section>
-		<h1>Functions</h1>
-		<p>A re-usable batch of code</p>
-	</section>
-	<section>
+	<header class="slide">
+		<h2>Functions</h2>
+		<h1>A re-usable batch of code</h1>
+	</header>
+	<article class="slide">
 		<h2>Javascript Functions</h2>
 		<pre class="language-js"><code>function fn(a, b){
 // do stuff
 }
 fn(1, true) // can be reused by invoking it</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Vocab Preview</h2>
 		<ul style="columns: 2;">
 			<li>Function Block (Scope)</li>
@@ -461,8 +452,8 @@ fn(1, true) // can be reused by invoking it</code></pre>
 			<li>Method vs. Function</li>
 			<li>Hoisting</li>
 		</ul>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>More Definition on Functions</h2>
 		<ul>
 			<li>A <strong>function</strong> is fundamental building block in any Javascript app</li>
@@ -471,8 +462,8 @@ fn(1, true) // can be reused by invoking it</code></pre>
 			<li>Any amount of arbitrary code can be written within a function block as the procedure</li>
 			<li>The procedures might calculate a value, modify the DOM or communicate with a server, etc..</li>
 		</ul>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Function Declaration vs Expression</h2>
 		<p>Hoisting applies differently to these:</p>
 		<pre class="language-js"><code>fnDec() // works
@@ -486,16 +477,16 @@ var fnExp = function(){ // Function Expression
 }
 </code></pre>
 <p>During the parsing step, the JS Engine traverses .js files twice</p>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Invoking a Function</h2>
 		<pre class="language-js"><code>function fn(a){
 console.log(a) 
 }
 fn('hello') // Invocation of Function
 fn() // If the argument list is empty, then 'a' is undefined</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>First Class Functions</h2>
 		<pre class="language-js"><code>function fn(args){
 // do stuff
@@ -504,23 +495,23 @@ var func = function(){
 // do other stuff
 }
 fn(func) // Functions can be passed into other functions</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>The Return Statement</h2>
 		<pre class="language-js"><code>function fn(x, y){
 let z = 5;
 return (x * y) / z;
 }</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Pure Functions & Side Effects</h2>
 		<p>Does the return value of the function depend only on the parameters and/or internal state?</p>
 		<div class="flex" style="justify-content: space-around;">
 			<img style="width: 350px" src="./img/blackbox.jpeg" alt="">
 			<img style="width: 350px" src="./img/impure_blackbox.jpeg" alt="">
 		</div>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>When to use pure vs impure functions?</h2>
 		<p>This will come up later when we get to code organization & architecture.</p>
 		<p>Immutability vs. Mutations</p>
@@ -535,7 +526,7 @@ globalVar += arg
 return globalVar
 }</code></pre></div>
 	</section>
-	<section>
+	<article class="slide">
 		<h2>Referential Transparency</h2>
 		<ul>
 			<li>The return value of any expression can be substituted for the expression itself & the program will work exactly the same</li>
@@ -545,8 +536,8 @@ return globalVar
 		<pre class="language-js"><code class="large-code">var g = 5
 fn(g)
 fn(5)</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>ES6 Arrow Functions</h2>
 		<p>A.K.A. Lambda Functions</p>
 		<pre class="language-js"><code class="large-code">var fn = function(a) {
@@ -555,8 +546,8 @@ return a
 var fn = (a) => { 
 return a;
 }</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>The Implicit Return Statement</h2>
 		<pre class="language-js"><code class="large-code">j => j ** 2</code></pre>
 <pre class="language-js"><code class="large-code">j => (
@@ -566,22 +557,22 @@ j ** 2
 <pre class="language-js"><code class="large-code">j => {
 return j ** 2
 }</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Passing Parameters in Arrow Functions</h2>
 		<pre class="language-js"><code class="large-code">() => 100 ** 2
 a => 100 ** a
 (a) => 100 ** a
 (a, b) => b ** a</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Naming Functions</h2>
 		<p>In Javascript, the naming convention used is called Camel Case</p>
 		<p>it looks like this:</p>
 		<pre class="language-js"><code class="large-code">function camelCaseNaming(){}</code></pre>
 		<p>Similar to Semantic HTML, it's best to name functions in a semantically helpful way</p>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>There is also Kebab Case, Pascal Case, Snake Case</h2>
 		<p>Some libraries need to convert between these naming conventions</p>
 		<p>So being consistent is key</p>
@@ -590,8 +581,8 @@ font-size: 2rem;
 }</code></pre>
 <pre class="language-js"><code class="large-code">function PascalCaseNaming(){}
 function snake_case_naming() {}</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Function Scope</h2>
 		<pre class="language-js"><code>var z = 10, x = 2, y = 10;
 function fn(x, y){
@@ -602,16 +593,16 @@ console.log(z) // ReferenceError
 fn(1, 5) // 1
 fn(1) // NaN</code></pre>
 		<p>Take advantage of Function Scope by using an IIFE to create a "Closure"</p>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>IIFE</h2>
 		<h3>Immediately Invoked Function Expression</h3>
 		<p>These create a private scope</p>
 		<pre class="language-js"><code class="large-code">(function (parameters, arguments){
 // do stuff
 }())</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Closures</h2>
 		<pre class="language-js"><code class="large-code">var publicAPI = (function (a, b){
 let privateVar = a + 'our secret';
@@ -624,8 +615,8 @@ publicAPI[0] // true
 privateVar // ReferenceError
 privateVar[privateVar] // ReferenceError
 publicAPI.privateVar // ReferenceError</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Callbacks & Anonymous Functions</h2>
 		<p>A callback is a function that is not invoked on the window load, but it is invoked by some kind of trigger (like an event) later on</p>
 		<p>Callbacks are sometimes called "Predicates".</p>
@@ -639,15 +630,15 @@ function sortEmpties(a, b) {
 return Number(Boolean(b)) - 1
 }
 months.sort(sortEmpties)</code></pre>
-	</section>
-	<section>
+</article>
+	<article class="slide">
 		<h2>Functions vs. Methods</h2>
 		<p>A Method is simply a function that can be invoked using the dot-syntax A.K.A "Chaining"</p>
 		<p>Actually we've already seen this used. For example <code>console.log</code>`</p>
 		<p>The function <code>log()</code> is a method contained on the <code>console</code> object</p>
 		<small>This means that the log function is contained in a property on the <code>console</code> object (we'll learn more about objects later)</small>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>The Math Object and its Methods</h2>
 		<p>Can access more complicated math function like sin, cos, tan etc</p>
 		<pre class="language-js"><code class='large-code'>Math.PI
@@ -655,8 +646,8 @@ Math.E
 Math.random()
 Math.abs()
 Math.round()</code></pre>
-	</section>
-	<section>
+		</article>
+	<article class="slide">
 		<h2>Let's Look up some basic String Methods</h2>
 		<code>String.prototype</code>
 		<ul style="columns: 2">
@@ -673,8 +664,8 @@ Math.round()</code></pre>
 			<li><code>.includes()</code></li>
 		</ul>
 		<code class="fragment">console.log(String.prototype)</code>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Function Challenges</h2>
 		<p><small>Think about good names for the function and the parameters</small></p>
 		<p>Open VSCode & write a function that accepts as arguments...</p>
@@ -683,8 +674,19 @@ Math.round()</code></pre>
 			<li class="fragment">A radius & returns the area of that circle (hint: console.log(Math))</li>
 			<li class="fragment">A °F temperature & converts it to °C</li>
 		</ol>
-	</section>
+	</article>
 </section>
+
+<footer class="slide" title="The End">
+</footer>
+
+
+<!-- todo -->
+
+
+
+
+
 
 <section>
 	<section>
