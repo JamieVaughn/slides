@@ -677,23 +677,12 @@ Math.round()</code></pre>
 	</article>
 </section>
 
-<footer class="slide" title="The End">
-</footer>
-
-
-<!-- todo -->
-
-
-
-
-
-
 <section>
-	<section>
+	<header class="slide">
 		<h1>Arrays</h1>
 		<p>A list container for data primitives</p>
-	</section>
-	<section>
+	</header>
+	<article class="slide">
 		<h2>Recall Javascripts Array-like Strings</h2>
 <pre class="language-js"><code>var str = 'Hello!'
 str.length = 3;
@@ -705,8 +694,8 @@ arr[0] // 'H'
 arr.length // 6
 arr.length = 3
 console.log(arr) // ['H','e','l']</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Basic Array Methods <small><a href="https://javascript.info/array-methods">.info</a></small></h2>
 		<p>
 			Challenge use 
@@ -726,15 +715,15 @@ console.log(arr) // ['H','e','l']</code></pre>
 .splice()
 .includes()
 .isArray()</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Creating Array via Static Methods</h2>
 		<pre class="language-js"><code class='med-code'>Array.of(1, 2, 3) // [1, 2, 3]
 Array.from('string') // ["s", "t", "r", "i", "n", "g"]
 Array.from(document.querySelectorAll('div')) 
 // array of div nodes</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>The Array Index</h2>
 		<p>Arrays are zero-indexed & the indices must be integers</p>
 		<pre class="language-js"><code class='med-code'>let arr = [1, 2, 3];
@@ -743,33 +732,33 @@ console.log(arr[4]); // undefined
 arr[6] = 'ten';
 console.log(arr) 
 // [1, 2, 3, undefined, undefined, "ten"]</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>The Array Length Property</h2>
 		<pre class="language-js"><code class='med-code'>let arr = [1, 2, 3]
 console.log(arr.length) // 3
 arr[arr.length] || arr[arr.length - 1]
 arr.length = 4; 
 // [1, 2, 3, undefined]</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Arrays</h2>
 		<p>Arrays are list-like objects which have built-in methods to perform list traversal and value mutation.</p>
 		<p>Arrays can hold hold any number of different values (Primitives or Objects)</p>
 		<pre class="language-js"><code class='med-code'>['a', 'man', 'a', 'plan', 'a', 'canal', 'panama']
 [2, null, 'string', {key: 'value'}, ['nested', 'arrays']]</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Creating Arrays</h2>
 		<pre class="language-js"><code class='med-code'>let array = [1, 2, 3]; // Array Literal
 let arr = new Array(1, 2, 3); // Array constructor
 let arr = new Array(3); // [undefined, undefined, undefined]</code></pre>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Immutability vs Mutation in Arrays </h2>
 		<p><strong><a href="http://wjv.io/blog/posts/immutability.html">JS Immutability Toolkit</a></strong></p>
-	</section>
-	<section>
+	</article>
+	<article class="slide">
 		<h2>Array Challenge</h2>
 		<p>Open VSCode again & Refactor the Temp conversion function from earlier...</p>
 		<ol >
@@ -779,8 +768,21 @@ let arr = new Array(3); // [undefined, undefined, undefined]</code></pre>
 				<li>Return the invocation of the accessed function.</li>
 			</ul>
 		</ol>
-	</section>
+	</article>
 </section>
+
+<footer class="slide" title="The End">
+</footer>
+
+
+<!-- todo -->
+
+
+
+
+
+
+
 
 <section>
 	<h2>Time to combine arrays & functions</h2>
