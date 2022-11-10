@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="description" content="MCC Web Design & Development Slides" />
+    <meta name="author" content="Jamie Vaughn" />
+    <title>Template</title>
+    <!-- Inspire css -->
+    <link href="../lib/inspire.css" rel="stylesheet" />
+    <link href="../lib/theme.css" rel="stylesheet" />
+    <link href="../lib/talk.css" rel="stylesheet" />
+    <link href="../lib/utils.css" rel="stylesheet" />
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="../laser/laser.css" />
+    <script src="https://cdn.master.co/css"></script>
+  </head>
+  <body
+    class="language-markup"
+    data-prism-plugins="normalize-whitespace"
+    data-duration="30"
+  >
+    <header id="intro" class="slide">
+      <h1></h1>
+      <h2></h2>
+      <p class="attribution">MCC: Section #</p>
+    </header>
+
+    <section>
+      <header class="slide">
+        <h2>Advanced Javascript</h2>
+        <h1>ES6 & Beyond</h1>
+      </header>
+      <article class="slide">
+        <h2>ES6+ Features</h2>
+        <p>
+          Concise Index of them at
+          <a href="http://es6-features.org/">es6-features.org</a>
+        </p>
+        <p><a href="http://help.wtf/es6">ES6 help</a></p>
+        <p>
+          <a href="https://github.com/lukehoban/es6features#readme"
+            >ES6 README</a
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>ES6+ We've already Seen</h2>
+        <ul>
+          <li class="fragment"><code>let</code>, <code>const</code></li>
+          <li class="fragment">
+            Arrow Functions: <code>(x, y) => x + y</code>
+          </li>
+          <li class="fragment"><code>new Symbol</code>, <code>BigInt</code></li>
+          <li class="fragment">
+            Ternary Operator: <code> condition ? true : false</code>
+          </li>
+          <li class="fragment"><code>try{} catch(e){} finally{}</code></li>
+          <li class="fragment">Array Methods:</li>
+          <li class="fragment">
+            map, flatMap, filter, reduce, some, find, every, includes, etc.
+          </li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>New ES6+ Features</h2>
+        <ul>
+          <li class="fragment">Nullish Coalescing, Optional Chaining</li>
+          <li class="fragment">String Template Literals & Tagged Templates</li>
+          <li class="fragment">Default Parameters</li>
+          <li class="fragment">Destructuring & Param Context matching</li>
+          <li class="fragment">Rest & Spread operators</li>
+          <li class="fragment">Object Propery/Method Shorthand</li>
+          <li class="fragment">Computed Properties</li>
+          <li class="fragment">Map, WeakMap, Set, WeakSet</li>
+          <li class="fragment">Module Imports/Exports</li>
+          <li class="fragment">Classes, Generators</li>
+          <li class="fragment">non-ES6 Extra: Currying/Closures</li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Nullish Coalescer</h2>
+        <p><code>??</code></p>
+        <p>
+          Returns the second operand, only if the first is nullish:
+          <code>null</code>, <code>undefined</code>
+        </p>
+        <pre class="language-js"><code class="med-code">null ?? 42 // 42
+undefined ?? 42 // 42
+'' ?? 42 // ''
+0 ?? 42 // 0
+false ?? 42 // false</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Optional Chaining</h2>
+        <p><code>?.</code></p>
+        <pre
+          class="language-js"
+        ><code class="med-code">let obj = { key: { maybe: { nested: 1} } }
+obj.key.maybenot.nested // Throws an error
+obj.key.maybenot?.nested // Evaluates to `undefined`
+obj?.key?.maybenot?.nested // Chain multiple for full safety
+		</code></pre>
+      </article>
+      <article class="slide">
+        <h2>
+          🧵 String Template Literals
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals"
+              >MDN</a
+            ></sup
+          >
+        </h2>
+        <p>
+          <strong>Multiline Strings: </strong>uses backticks
+          <code>` `</code> (single or multi line)
+        </p>
+        <pre class="language-js"><code class="med-code">let myStr = `This is
+a fancy
+multiline string`
+		</code></pre>
+        <p>
+          <strong>String Interpolation:</strong> allows embeddable javascript
+          expressions with the <code>${ }</code> syntax
+        </p>
+        <pre class="language-js"><code class="med-code">let myVar = 'fancy'
+let myFn = () => typeof myVar
+let myStr = `This is
+a ${myVar}
+multiline ${myFn()}`
+		</code></pre>
+      </article>
+      <article class="slide">
+        <h2>
+          🏷️ Tagged Template Functions
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates"
+              >MDN</a
+            ></sup
+          >
+        </h2>
+        <p>
+          You can create a special function from a template string literal which
+          takes the template string as its parameters:
+        </p>
+        <pre
+          class="language-js"
+        ><code class="med-code">function myTag(string, person, job) {
+console.log(string, person, job)
+}
+let person = 'Jamie'
+let job = 'developer'
+myTag`That person's name is ${ person } and they are a ${ job }.`</code></pre>
+        <p>
+          It will provide as parameters the chunked string in an array, and the
+          other parameters separately.
+        </p>
+      </article>
+      <article class="slide">
+        <h2>Default Parameters</h2>
+        <p>
+          If no value or undefined is passed, then initialize with a default
+          value
+        </p>
+        <pre
+          class="language-js"
+        ><code class="med-code">function chatMsg(greeter, msg) {
+console.log(`${greeter}: ${msg}`)
+}
+function chatMsg2(greeter = 'Auto-greeter', msg = 'Hello') {
+console.log(`${greeter}: ${msg}`)
+}
+chatMsg("Joe", "What's up?") // "Joe: What's up?""
+chatMsg() // 'undefined: undefined'
+chatMsg2() // 'Auto-greeter: Hello'</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Hypothetical Use Case:</h2>
+        <p>
+          Use previous params or even functions in your default param expression
+        </p>
+        <pre
+          class="language-js"
+        ><code class="med-code">const randNum = () => Math.random().toString().slice(3, 5)
+function createUser(
+name,
+username = name+randNum(),
+pass, 
+isAdmin = false
+) {
+sendLoginData(user, pass);
+setPermissions(isAdmin);
+}
+createUser('Joe', undefined, 'h2jq9fn48', true);</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Destructuring</h2>
+        <code>let { 🍞, 🥬, 🍅, 🧅, 🥓, 🧀, 🥩, 🍞 } = 🍔</code>
+        <p>
+          If you think about it, a bacon cheeseburger is a data structure
+          because it's just a list of its own ingredients.
+        </p>
+        <p>
+          Arrays & Objects are essentially just lists, too. Destructuring lets
+          us unpack arrays or objects into their distinct consituent elements
+          and save them into variables on the parent scope.
+        </p>
+        <ul>
+          <li class="fragment">Array Destructuring</li>
+          <li class="fragment">Object Destructuring</li>
+          <li class="fragment">Parameter Context matching</li>
+        </ul>
+        <p>It's kinda magical <code>let { ✨, 🐴 } = 🦄</code></p>
+      </article>
+      <article class="slide">
+        <h2>Array Destructuring</h2>
+        <pre class="language-js"><code class="med-code">var list = [ 1, 2, 3 ]
+var [ a, , b ] = list
+
+// We can avoid needing a temp var when swapping
+[ b, a ] = [ a, b ]
+
+// can also use default assignment here
+let [d, e, f, g=7] = list </code></pre>
+      </article>
+      <article class="slide">
+        <h2>Object Destructuring</h2>
+        <pre
+          class="language-js"
+        ><code class="med-code">const obj = {p: 42, q: true};
+// moves the properties into global namespace
+const {p, q} = obj; 
+console.log(p, q); // 42, true
+
+// We can create new global var names (i.e. 'a' & 'b'):
+const {p: a, q: b} = obj 
+console.log(a, b); // 42, true</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Common Use Case</h2>
+        <p>
+          Destructuring Config Objects to extract just the properties you need.
+        </p>
+        <pre class="language-js"><code class="med-code">const user = {
+user: 'jdoe', 
+email: 'jdoe@home.com'
+fullName: {
+first: 'John',
+last: 'Doe'
+}
+};
+
+let { email, fullName: { first: name } } = user
+let myStr = `${name}'s email is ${email}`;
+
+console.log(myStr);  // "John's email is jdoe@home.com"</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Fail Safe Destructuring</h2>
+        <p>It won't throw an error for length mismatches</p>
+        <pre class="language-js"><code class="med-code">var list = [ 7, 42 ]
+var [ a = 1, b = 2, c = 3, d ] = list
+console.log(a, b, c, d) // 7, 42, 3, undefined</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Parameter Context Matching</h2>
+        <p>You can think of this as destructuring for parameters</p>
+        <p>
+          Handy when you need just a couple of values in an object/array
+          parameter.
+        </p>
+        <pre
+          class="language-js"
+        ><code class="med-code">function f ([ name, val ]) {
+console.log(name, val)
+}
+let arr = ['John', '#42']
+f(arr) // logs: 'John', '#42'
+
+function g ({ name: n, val: v }) {
+console.log(n, v)
+}
+let obj = {name: 'John', val: '#42'}
+g(arr) // logs: 'John', '#42'</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Using Destructuring With Default params</h2>
+        <p>✨ Combine these for super powers! ✨</p>
+        <pre
+          class="language-js"
+        ><code class="med-code">function f([x, y] = [1, 2], {z: z} = {z: 3}) { 
+return x + y + z
+}
+f()  // 6</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Rest & Spread Operators</h2>
+        <code>...</code>
+        <p>
+          <u>Rest</u>: to gather up <strong>the rest</strong> of the values into
+          an Array or Object
+        </p>
+        <p>
+          <u>Spread</u>: to <strong>spread out</strong> encapsulated values into
+          loose values.
+        </p>
+        <p>
+          <small
+            ><u>encapsulated</u> here means that they are in an object or an
+            array.</small
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>Rest</h2>
+        <p>Most often used for Function Parameters</p>
+        <pre
+          class="language-js"
+        ><code class="med-code">function addFirstTwo(a, b, ...manyMoreArgs) {
+return a + b
+}
+addFirstTwo([1,1,5,6,7]) // 2 </code></pre>
+      </article>
+      <article class="slide">
+        <h2>Object Spread</h2>
+        <pre
+          class="language-js"
+        ><code class="med-code">const names1 = {cat: 'Bob'}
+const names2 = {dog: 'Fred', alligator: 'Benedict'}
+const copy = { ...names2 } // Avoid pass by Reference trouble
+const newNames = { ...names1, ...names2 };</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Array Spread</h2>
+        <p>It's a bit like <code>.slice()</code></p>
+        <pre class="language-js"><code class="med-code">var arr = [1, 2, 3]
+var arr2 = [...arr] // copy of arr
+var arr3 = arr.slice() // also a copy of arr</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Object Property Shorthand</h2>
+        <pre class="language-js"><code class="med-code">let cat = 'Meow';
+let dog = 'Woof';
+let speak = (animal) => console.log(animal)
+
+let someObject = {
+cat,
+dog,
+speak
+}
+// It's quicker than typing {cat: cat, dog: dog, speak: speak}
+someObject.speak(someObject.cat) // 'Meow'</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Computed Properties</h2>
+        <pre
+          class="language-js"
+        ><code class="med-code">let makeKey = key => key;
+let key = 'key'
+let value = 'val';
+let obj = {};
+obj[key] = value;
+
+let computedObj = {
+[key]: value,
+[makeKey('string')]: value,
+[makeKey('name')]: 'Jamie'
+}</code></pre>
+      </article>
+      <article class="slide">
+        <h2 class="bumpup">
+          Map & WeakMap
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"
+              >MDN</a
+            ></sup
+          >
+        </h2>
+        <p>
+          Use Maps as a "clean" or "blank" object with a
+          <code>size</code> property.
+        </p>
+        <p>
+          They do not have prototype keys, which can help for looping or
+          diffing.
+        </p>
+        <p>Keys can be any value, not just Strings or Symbols.</p>
+        <pre class="language-js"><code class="med-code">const myMap = new Map()
+myMap.set('key', 'value')
+myMap.set(true, 'value')
+let func = key => null
+myMap.set(func, 100)
+myMap.has(func) // true
+let obj = {a: 'A'}
+myMap.set(obj, 'B')
+myMap.get(obj) // 'B'
+myMap.size // 3
+myMap.delete('key') // true
+myMap.clear() // deletes all
+
+// WeakMap has same API, 
+// except keys can only be objects or functions
+const myWeakMap = new WeakMap() </code></pre>
+        <p>
+          <code>WeakMap</code> may not be that useful. It's called "Weak"
+          because it allows garbage collection.
+        </p>
+      </article>
+      <article class="slide">
+        <h2>
+          Set & WeakSet
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set"
+              >MDN</a
+            ></sup
+          >
+        </h2>
+        <p>Sets may only contain one of any particular value.</p>
+        <p>
+          This makes them convenient as a way to remove duplicates in an array.
+        </p>
+        <pre
+          class="language-js"
+        ><code class="med-code">const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,5,3,4,5]
+const noDupes = [...new Set(numbers)] // [2,3,4,5,6]</code></pre>
+        <pre class="language-js"><code class="med-code">const mySet = new Set()
+mySet1.add(5)          
+mySet1.add('some text')            
+mySet1.add({a: 1, b: 2})
+mySet1.has(5) 
+mySet1.size  // 3
+mySet1.delete(5)     
+		</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Export & Import</h2>
+        <p>
+          Export is used when creating JavaScript modules to export functions,
+          objects, or primitive values from the module so they can be used by
+          other programs with the import statement.
+        </p>
+        <p>
+          Import is used to import bindings (i.e. functions, vars, etc) which
+          are exported by another module.
+        </p>
+        <p>This will come in handy with React/Frameworks</p>
+        <p>But we can also take advantage of this for own code organization.</p>
+      </article>
+      <article class="slide">
+        <h2>Export Syntax</h2>
+        <pre
+          class="language-js"
+        ><code class="med-code">export let name1, name2, …,;
+export const name1 = …, name2 = …, …;
+export function functionName(){...}
+export class ClassName {...}
+// Defaults
+export default expression;
+export default function (…) { … }</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Import Syntax</h2>
+        <pre
+          class="language-js"
+        ><code class="med-code">import defaultExport from "module-name";
+import * as name from "module-name";
+import { export1 } from "module-name";
+import { export1 as alias1 } from "module-name";
+import { export1 , export2 } from "module-name";</code></pre>
+      </article>
+    </section>
+
+    <section>
+      <header class="slide">
+        <h2></h2>
+        <h1></h1>
+      </header>
+
+      <article class="slide" title=""></article>
+
+      <article class="slide"></article>
+    </section>
+
+    <footer class="slide" title="The End"></footer>
+
+    <!-- todo -->
+    <section></section>
+
+    <section>
+      <section>
+        <h1>Code Organization Techniques</h1>
+        <p>Modules & Closures</p>
+      </section>
+      <section>
+        <h2>Modules 📦</h2>
+        <p>
+          Using <code>import</code> & <code>export</code> to modularize code &
+          organize it.
+        </p>
+        <pre
+          class="language-js"
+        ><code class="med-code">import myFunc from './utilities'
+
+function complexFunc(a, b, c) {
+let arr = [a, b, c]
+return arr.map(myFunc)
+}
+
+export default complexFunc</code></pre>
+      </section>
+      <section>
+        <h2>
+          Closures
+          <sup
+            ><a href="https://www.w3schools.com/js/js_function_closures.asp"
+              >W3</a
+            >,
+          </sup>
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
+              >MDN</a
+            ></sup
+          >
+        </h2>
+        <p>
+          Before Modules code encapsulation was accomplished with the
+          <a
+            href="https://www.codeproject.com/Articles/1164113/Module-and-Revealing-Module-Patterns-in-JavaScript"
+            >Revealing Module Pattern</a
+          >
+          using IIFEs
+        </p>
+      </section>
+      <section>
+        <h2>Closure Building Blocks</h2>
+        <ol>
+          <li>Scope (Global vs. Local)</li>
+          <li>Nested Functions</li>
+          <li>Currying: Returning an Inner Function</li>
+        </ol>
+        <pre class="language-js"><code class="med-code">// Local vs Global
+function fn() {
+let temp = 9 // what if this were var temp?
+}
+console.log(temp) // error
+// Nesting & Returning Functions 
+function gn() {
+let temp = 9
+return function() {
+temp * 2
+}
+}</code></pre>
+      </section>
+      <section>
+        <h2>Closures Illustration</h2>
+        <p>
+          <strong>Global variables are long-lived</strong>: until page is
+          discarded (navigate away, close)
+        </p>
+        <p>
+          <strong>Local variables are short-lived</strong>: Function invocation
+          creates them, <br />
+          Function Return destroys them (garbage collected)
+        </p>
+        <pre
+          class="language-js"
+        ><code class="med-code">for (var i = 1; i &lt;= 4; i++) {
+setTimeout(function() { 
+console.log(i); 
+}, 1000*i);     // 5 5 5 5
+}
+for (var i = 1; i &lt;= 5; i++) {
+setTimeout(function(x) { 
+return () =&gt; console.log(x) 
+}(i), 1000*i);
+// 1 2 3 4 5
+}</code></pre>
+      </section>
+      <section>
+        <h2>
+          Block Scope Fix with <code>let</code>, <code>const</code>,
+          <code>.forEach</code>
+        </h2>
+        <pre
+          class="language-js"
+        ><code class="med-code">for (let i = 1; i &lt;= 4; i++) {
+setTimeout(function() { 
+console.log(i); 
+}, 1000*i);     // 1 2 3 4
+}</code></pre>
+
+        <pre
+          class="language-js"
+        ><code class="med-code">[...Array(4).keys()].forEach(i =&gt; {
+setTimeout(function() { 
+console.log(i); 
+}, 1000*i); // 0 1 2 3
+})</code></pre>
+      </section>
+      <section>
+        <h2>Simple Curried Function</h2>
+        <pre
+          class="language-js"
+        ><code class="med-code">var fn = x =&gt; y =&gt; x + y;
+var n = fn(3)
+// Some indefinite amount of time may pass, then:
+n(4) // 7
+
+// Could also be invoked at once:
+fn(3)(4) // 7</code></pre>
+        <p>
+          Due to referential transparency, these are identical evaluations,
+          despite difference in time.
+        </p>
+      </section>
+      <section>
+        <h2>Parallel Closures</h2>
+        <p>
+          Curried Functions allow us to reuse code by creating
+          <strong>Parallel Closures</strong>.
+        </p>
+        <p>
+          Closures can create multiple instances of closed over variables that
+          are independent of each other.
+        </p>
+        <img src="img/parallel_closures.png" alt="" />
+      </section>
+      <section>
+        <h2>Closures & Modules Code Along</h2>
+      </section>
+    </section>
+
+    <section>
+      <section>
+        <h1>Intro to JS Classes</h1>
+        <h2><code>Class { }</code></h2>
+        <ul>
+          <li>Constructor/Super</li>
+          <li>Getters/Setters</li>
+          <li>Prototypal Inheritance</li>
+        </ul>
+      </section>
+      <section>
+        <h2>Object Oriented Patterns</h2>
+        <p>
+          ES6 classes are a simple sugar over the prototype-based OO pattern.
+          It's not <strong>true</strong> Classical Inheritance
+        </p>
+        <p>
+          Having a single convenient declarative form makes class patterns
+          easier to use, and encourages interoperability.
+        </p>
+        <p>
+          Classes support prototype-based inheritance, <code>super</code> calls,
+          instance/static methods and constructors.
+        </p>
+      </section>
+      <section>
+        <h2>Made Possible by Enhance Object Literals</h2>
+        <pre class="language-js"><code class="med-code">var obj = {
+// set a custom __proto__
+__proto__: theProtoObj, // the constructor
+// Methods
+toMyString() {
+// Super calls
+return "My " + super.toString();
+}
+}
+obj.toMyString() // 'My [object Object]'
+obj.toString() // '[object Object]'</code></pre>
+        <p>
+          Along with property shorthand & computed properties, these also bring
+          object literals and class declarations closer together, and allow
+          object-based design to benefit from some of the same conveniences
+        </p>
+      </section>
+      <section>
+        <h2>Not your Java's Inheritance</h2>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model"
+            >Classical vs Prototypal Inheritance</a
+          >
+        </p>
+        <p>
+          Classes in JS are essentiallly fancy, syntax sugar over Functions.
+        </p>
+        <p>
+          They lack the classical inheritance model like other OOP language
+          classes
+        </p>
+        <p>They use Prototypal Inheritance just like Objects.</p>
+      </section>
+      <section>
+        <h2>Typical Class Declaration</h2>
+        <pre class="language-js"><code class="med-code">class Vegetable {
+constructor(name){
+this.name = name
+}
+}
+const carrot = new Vegetable('carrot');
+console.log(carrot.name); // 'carrot'</code></pre>
+      </section>
+      <section>
+        <h2>Equivalent Function</h2>
+        <pre
+          class="language-js"
+        ><code class="med-code">function vegetable(name) {
+return {
+name
+}
+}
+const carrot = vegetable('carrot')
+console.log(carrot.name) // 'carrot'</code></pre>
+      </section>
+      <section>
+        <h2>Get and Set</h2>
+        <pre class="language-js"><code class="med-code">class TempConverter {
+constructor(F) {
+this.F = F;
+}
+get boilsWater() {
+return this.F &gt;= 212;
+}
+get C () {
+return (5 / 9) * (this.F - 32)
+}
+set C(degrees) {
+this.F = (degrees * 9.0) / 5 + 32;
+}
+} // can't use arrow function syntax for getters/setters because of lexical scoping</code></pre>
+      </section>
+      <section>
+        <h2>Class Example</h2>
+        <pre class="language-js"><code class="med-code">class Person {
+constructor(name, email, address) {
+this.name = name
+this.email = email
+this.address = address
+}
+getInfo() {
+return {
+Name: this.name, 
+Email: this.email, 
+Address: this.address
+}
+}
+}</code></pre>
+      </section>
+      <section>
+        <h2>Extending Classes</h2>
+        <pre
+          class="language-js"
+        ><code class="med-code">class Employee extends Person {
+constructor(job, address, ...args) {
+// super is a link w/ Parent Class
+super(...args) // calls parent w/ rest of args
+this.job = job
+this.address = address // Can overwrite parent properties
+// such as with the work address here
+}
+getInfo() { // Can overwrite methods too
+return {Name: this.name, Email: this.email, Address: this.address, 
+		 Job: this.job }
+}
+}
+</code></pre>
+      </section>
+      <section>
+        <h2>What is <code>super</code></h2>
+        <ul>
+          <li>
+            <code>super</code> maintains the connection between parent and child
+            classes
+          </li>
+          <li>super method is used to call parent's constructor.</li>
+          <li>
+            It is optional to use it - only if you need to use
+            properties/methods of your parent class in your derived class
+          </li>
+          <li>
+            You can create a class without a constructor, but it will use a
+            default one
+          </li>
+        </ul>
+        <pre
+          class="language-js"
+        ><code class="med-code">// default will inherit from Object
+constructor() {}
+
+// For the derived class, if you don't specify a constructor, it will use
+constructor(...args) {
+super(...args);
+}</code></pre>
+      </section>
+      <section>
+        <h2>Results</h2>
+        <pre
+          class="language-js"
+        ><code class="med-code">const joPerson = new Person(
+"Jo", "jo@home.com", "123 Home Ave"
+)
+const joEmployee = new Employee(
+"Developer", "321 Work Ave", "Jo", "jo@work.com"
+)
+console.table({
+emp: joEmployee.getInfo(), 
+per: joPerson.getInfo()
+})</code></pre>
+        <img src="img/employee.png" alt="" />
+      </section>
+      <section>
+        <h2>Instances</h2>
+        <p>For determining or asserting the chain of inheritance</p>
+        <p>Binary Operator: <code>instanceof()</code></p>
+        <pre
+          class="language-js"
+        ><code class="med-code">const joEmployee = new Employee(
+"Developer", "321 Work Ave", "Jo", "jo@work.com"
+)
+joEmployee instanceof Person // true
+
+// OR check the __proto__ property (references the parent)
+joEmployee.__proto__ // Person {constructor: ƒ, getInfo: ƒ}</code></pre>
+      </section>
+      <section>
+        <h2>Private methods/properties are in Stage 3</h2>
+        <p>
+          <a href="https://github.com/tc39/proposal-private-methods"
+            >TC39 Proposal</a
+          >
+        </p>
+        <p>So Classes can't yet fully substitute for Closures</p>
+      </section>
+      <section>
+        <h2>Prototypal Inheritance</h2>
+        <div class="flex" style="gap: 1rem">
+          <img src="img/prototype_chain.png" alt="" />
+          <div>
+            <strong>Steps to access inherited properties in JS:</strong>
+            <ol style="font-size: 2rem; line-height: 3.5rem">
+              <li>
+                Check if the key exists locally. If it does, return local value.
+              </li>
+              <li>
+                If there is no local key, check up the prototype chain
+                <br />(via the <code>__proto__</code> property).
+              </li>
+              <li>
+                Iterate up the prototype chain looking for the next object w/
+                the specified key
+              </li>
+              <li>
+                For the first object encountered in the prototype chain w/ the
+                key, return that key's value.
+              </li>
+              <li>
+                If the key is not found in entire prototype chain, return
+                undefined.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </section>
+      <section>
+        <h2>Compostion vs Inheritance</h2>
+        <div class="flex">
+          <ul style="flex-grow: 2">
+            <li>
+              The functional programming paradigm prefers composition over
+              inheritance
+            </li>
+            <li>
+              Composition means simply <strong>Composing Functions</strong>
+            </li>
+            <li>Composition is a more modular & flexible approach</li>
+            <li>With inheritance you often inherit more than needed</li>
+            <li>
+              In general, with deeply nested inheritance chains, you're gonna
+              have a bad time & end up overwriting a lot
+            </li>
+          </ul>
+          <a href="http://www.johndcook.com/blog/2011/07/19/you-wanted-banana/">
+            If you ask for
+            <br />a banana...
+            <img
+              src="http://www.johndcook.com/gorilla_holding_banana.jpg"
+              alt=""
+            />
+          </a>
+        </div>
+      </section>
+    </section>
+    <!-- end -->
+
+    <script src="../lib/inspire.js"></script>
+    <script src="../laser/laser.js"></script>
+  </body>
+</html>
