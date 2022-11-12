@@ -481,26 +481,11 @@ import { export1 , export2 } from "module-name";</code></pre>
 
     <section>
       <header class="slide">
-        <h2></h2>
-        <h1></h1>
+        <h2>Code Organization Techniques</h2>
+        <h1>Modules & Closures</h1>
       </header>
 
-      <article class="slide" title=""></article>
-
-      <article class="slide"></article>
-    </section>
-
-    <footer class="slide" title="The End"></footer>
-
-    <!-- todo -->
-    <section></section>
-
-    <section>
-      <section>
-        <h1>Code Organization Techniques</h1>
-        <p>Modules & Closures</p>
-      </section>
-      <section>
+      <article class="slide">
         <h2>Modules 📦</h2>
         <p>
           Using <code>import</code> & <code>export</code> to modularize code &
@@ -516,8 +501,8 @@ return arr.map(myFunc)
 }
 
 export default complexFunc</code></pre>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>
           Closures
           <sup
@@ -540,8 +525,8 @@ export default complexFunc</code></pre>
           >
           using IIFEs
         </p>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Closure Building Blocks</h2>
         <ol>
           <li>Scope (Global vs. Local)</li>
@@ -560,8 +545,8 @@ return function() {
 temp * 2
 }
 }</code></pre>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Closures Illustration</h2>
         <p>
           <strong>Global variables are long-lived</strong>: until page is
@@ -585,8 +570,8 @@ return () =&gt; console.log(x)
 }(i), 1000*i);
 // 1 2 3 4 5
 }</code></pre>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>
           Block Scope Fix with <code>let</code>, <code>const</code>,
           <code>.forEach</code>
@@ -606,8 +591,8 @@ setTimeout(function() {
 console.log(i); 
 }, 1000*i); // 0 1 2 3
 })</code></pre>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Simple Curried Function</h2>
         <pre
           class="language-js"
@@ -622,8 +607,8 @@ fn(3)(4) // 7</code></pre>
           Due to referential transparency, these are identical evaluations,
           despite difference in time.
         </p>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Parallel Closures</h2>
         <p>
           Curried Functions allow us to reuse code by creating
@@ -634,14 +619,14 @@ fn(3)(4) // 7</code></pre>
           are independent of each other.
         </p>
         <img src="img/parallel_closures.png" alt="" />
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Closures & Modules Code Along</h2>
-      </section>
+      </article>
     </section>
 
     <section>
-      <section>
+      <header class="slide">
         <h1>Intro to JS Classes</h1>
         <h2><code>Class { }</code></h2>
         <ul>
@@ -649,8 +634,8 @@ fn(3)(4) // 7</code></pre>
           <li>Getters/Setters</li>
           <li>Prototypal Inheritance</li>
         </ul>
-      </section>
-      <section>
+      </header>
+      <article class="slide">
         <h2>Object Oriented Patterns</h2>
         <p>
           ES6 classes are a simple sugar over the prototype-based OO pattern.
@@ -664,8 +649,8 @@ fn(3)(4) // 7</code></pre>
           Classes support prototype-based inheritance, <code>super</code> calls,
           instance/static methods and constructors.
         </p>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Made Possible by Enhance Object Literals</h2>
         <pre class="language-js"><code class="med-code">var obj = {
 // set a custom __proto__
@@ -683,8 +668,8 @@ obj.toString() // '[object Object]'</code></pre>
           object literals and class declarations closer together, and allow
           object-based design to benefit from some of the same conveniences
         </p>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Not your Java's Inheritance</h2>
         <p>
           <a
@@ -700,8 +685,8 @@ obj.toString() // '[object Object]'</code></pre>
           classes
         </p>
         <p>They use Prototypal Inheritance just like Objects.</p>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Typical Class Declaration</h2>
         <pre class="language-js"><code class="med-code">class Vegetable {
 constructor(name){
@@ -710,8 +695,8 @@ this.name = name
 }
 const carrot = new Vegetable('carrot');
 console.log(carrot.name); // 'carrot'</code></pre>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Equivalent Function</h2>
         <pre
           class="language-js"
@@ -722,8 +707,8 @@ name
 }
 const carrot = vegetable('carrot')
 console.log(carrot.name) // 'carrot'</code></pre>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Get and Set</h2>
         <pre class="language-js"><code class="med-code">class TempConverter {
 constructor(F) {
@@ -739,8 +724,8 @@ set C(degrees) {
 this.F = (degrees * 9.0) / 5 + 32;
 }
 } // can't use arrow function syntax for getters/setters because of lexical scoping</code></pre>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Class Example</h2>
         <pre class="language-js"><code class="med-code">class Person {
 constructor(name, email, address) {
@@ -756,8 +741,8 @@ Address: this.address
 }
 }
 }</code></pre>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Extending Classes</h2>
         <pre
           class="language-js"
@@ -775,8 +760,8 @@ return {Name: this.name, Email: this.email, Address: this.address,
 }
 }
 </code></pre>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>What is <code>super</code></h2>
         <ul>
           <li>
@@ -802,8 +787,8 @@ constructor() {}
 constructor(...args) {
 super(...args);
 }</code></pre>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Results</h2>
         <pre
           class="language-js"
@@ -818,8 +803,8 @@ emp: joEmployee.getInfo(),
 per: joPerson.getInfo()
 })</code></pre>
         <img src="img/employee.png" alt="" />
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Instances</h2>
         <p>For determining or asserting the chain of inheritance</p>
         <p>Binary Operator: <code>instanceof()</code></p>
@@ -832,8 +817,8 @@ joEmployee instanceof Person // true
 
 // OR check the __proto__ property (references the parent)
 joEmployee.__proto__ // Person {constructor: ƒ, getInfo: ƒ}</code></pre>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Private methods/properties are in Stage 3</h2>
         <p>
           <a href="https://github.com/tc39/proposal-private-methods"
@@ -841,8 +826,8 @@ joEmployee.__proto__ // Person {constructor: ƒ, getInfo: ƒ}</code></pre>
           >
         </p>
         <p>So Classes can't yet fully substitute for Closures</p>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Prototypal Inheritance</h2>
         <div class="flex" style="gap: 1rem">
           <img src="img/prototype_chain.png" alt="" />
@@ -871,8 +856,8 @@ joEmployee.__proto__ // Person {constructor: ƒ, getInfo: ƒ}</code></pre>
             </ol>
           </div>
         </div>
-      </section>
-      <section>
+      </article>
+      <article class="slide">
         <h2>Compostion vs Inheritance</h2>
         <div class="flex">
           <ul style="flex-grow: 2">
@@ -899,9 +884,10 @@ joEmployee.__proto__ // Person {constructor: ƒ, getInfo: ƒ}</code></pre>
             />
           </a>
         </div>
-      </section>
+      </article>
     </section>
-    <!-- end -->
+
+    <footer class="slide" title="The End">Thank you!</footer>
 
     <script src="../lib/inspire.js"></script>
     <script src="../laser/laser.js"></script>
