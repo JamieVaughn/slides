@@ -26,29 +26,26 @@
     data-duration="30"
   >
     <header id="intro" class="slide">
-      <h1></h1>
-      <h2></h2>
-      <p class="attribution">MCC: Section #</p>
+      <h1>Web Design & Development</h1>
+      <h2>SVG: Scalable Vector Graphics</h2>
+      <p class="attribution">MCC: Section 1</p>
     </header>
     <section>
       <header class="slide">
         <h2>SVG</h2>
-        <h1>Scalable Vector Graphics</h1>
+        <h1>Graphics from Geometries</h1>
       </header>
 
       <article class="slide">
         <h2>Raster vs. Vector</h2>
-        <p>
-          xml vector graphics format - styled with CSS & controlled with JS.
-        </p>
-        <div
-          style="display: flex; align-items: center; justify-content: center"
-        >
+        <p>SVG: An XML vector graphics format -</p>
+        <p>Styled with CSS & controlled with JS.</p>
+        <div class="d:flex jc:center ai:center mb:8">
           <p>Native element code:</p>
           <svg
             viewBox="0 0 24 24"
-            width="100"
-            height="100"
+            width="50"
+            height="50"
             stroke="gold"
             fill="transparent"
           >
@@ -56,6 +53,7 @@
             <line x1="12" y1="10" x2="12" y2="14"></line>
             <circle cx="12" cy="18" r="0.5"></circle>
           </svg>
+          <sup>← Inspect Element</sup>
         </div>
         <img src="img/bitmap_vs_svg.png" alt="" />
       </article>
@@ -63,17 +61,28 @@
       <article class="slide">
         <h2>Why SVG?</h2>
         <ul>
-          <li>More customizable than icon fonts (like font-awesome)</li>
           <li>
-            Full graphic not a font glyph (which is treated as mere text with
-            only text css rules)
+            More customizable than icon fonts (like
+            <a href="https://fontawesome.com/search">font-awesome</a>)
           </li>
-          <li>Full gamut of css rules apply</li>
-          <li>Has proper DOM integration for JS</li>
+          <li>
+            Full graphic not a font glyph
+            <ul>
+              <li>font glyphs are merely text w/ only font css rules</li>
+              <li>So for SVGs the full gamut of css rules apply</li>
+            </ul>
+          </li>
+          <li>Has full DOM integration for JS</li>
           <li>Better image fallback options</li>
-          <li>Can be animated</li>
-          <li>Easy Spriting options</li>
-          <li>But they are more complicated</li>
+          <li>
+            Can be animatedus
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL"
+              >SMIL</a
+            >
+          </li>
+          <li>Easy Spriting options with <code>&lt;use&gt;</code></li>
+          <li>But... they are more complicated than fonts or raster images</li>
         </ul>
       </article>
 
@@ -83,11 +92,16 @@
           <sup><a href="https://css-tricks.com/using-svg/">article</a></sup>
         </h2>
         <ul>
-          <li>Inline</li>
-          <li>As an img src</li>
-          <li>As an &lt;object&gt; (not common)</li>
+          <li>
+            Inline svg element as <code>&lt;svg&gt; ... &lt;/svg&gt;</code>
+          </li>
+          <li>As an <code>&lt;img src="svg_file_name.svg" /&gt;</code></li>
+          <li>As an <code>&lt;object&gt;</code> (not common)</li>
         </ul>
-        <p>displaying in an img tag (no dom) vs inline (dom element access)</p>
+        <p>
+          trade offs: displaying as img tag (no dom) vs inline (dom element
+          access)
+        </p>
       </article>
 
       <article class="slide">
@@ -99,15 +113,15 @@
           <a href="https://flaticon.com">flaticon.com</a>
         </span>
 
-        <div class="grid" style="margin-top: 2rem">
+        <div class="d:flex ai:center mt:16">
           <ul>
             <strong>Create w/ Vector Graphic Program:</strong>
-            <li>Inkscape <small>(free/open-source</small></li>
-            <li>Vector Magic <small>(freemium)</small></li>
-            <li>Adobe Illustrator <small>(paid)</small></li>
+            <li>Inkscape <sup class="font:20">(free/open-source)</sup></li>
+            <li>Vector Magic <sup class="font:20">(freemium)</sup></li>
+            <li>Adobe Illustrator <sup class="font:20">(paid)</sup></li>
           </ul>
           <ul style="margin-top: 2rem">
-            <strong>Optimizing/Minifying svg: </strong>
+            <strong>Optimizing/Minifying SVG: </strong>
             <li>
               <a href="https://jakearchibald.github.io/svgomg/">SVGOMG tool</a>
             </li>
@@ -126,7 +140,7 @@
             ></sup
           >
         </h2>
-        <div class="grid">
+        <div class="d:flex jc:center ai:center max-w:50%">
           <img
             src="https://media.slid.es/uploads/sarasoueidan/images/1191412/css-draw-menu.gif"
             alt=""
@@ -140,20 +154,21 @@
 
       <article class="slide">
         <h2>SVG Opening Tag</h2>
-        <p>only required attrs for opening tag:</p>
+        <p>The only required attrs for svg opening tag:</p>
         <pre><code class="large-code">&lt;svg 
 xmlns="https://www.w3.org/2000/svg" 
 viewBox="0 0 500 500"
 &gt;
 <!-- svg graphic elements here -->
 &lt;/svg&gt;</code></pre>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course"></a>Why <code>xmlns</code>? It's a signal for the html parser.</a></p>
       </article>
 
       <article class="slide">
         <h2>ViewBox</h2>
-        <div class="grid">
-          <img src="img/viewbox.png" alt="" />
-          <ul>
+        <div class="d:flex">
+          <img src="img/viewbox.png" alt="" class="flex-shrink:2 max-w:60%" />
+          <ul class="flex-grow:2">
             <li>The "viewport" window of the svg</li>
             <li>Origin is in upper left</li>
             <li><code>viewBox="min-x, min-y, width, height"</code></li>
@@ -161,13 +176,15 @@ viewBox="0 0 500 500"
               Viewbox will be mapped to the box model of the rendered svg image
               and sets the aspect ratio
             </li>
+            <li>
+              Use explicit width/height on svg tag for icons needing consistent
+              appearance
+            </li>
+            <li>Use css width/height on icons/container for responsive scaling</li>
           </ul>
         </div>
-        <p>
-          Use explicit width/height on svg tag for icons needing consistent
-          appearance
-        </p>
-        <p>Use css width/height on icons/container for responsive scaling</p>
+        
+        
       </article>
 
       <article class="slide">
@@ -193,33 +210,33 @@ viewBox="0 0 500 500"
             ></small
           >
         </h2>
-        <ul style="columns: 2">
-          <li>line</li>
-          <li>rect</li>
-          <li>circle</li>
-          <li>ellipse</li>
-          <li>polyline</li>
-          <li>polygon</li>
-          <li>path</li>
-          <li>text</li>
+        <ul class="columns:2 list-style:none">
+          <li><code>line</code></li>
+          <li><code>rect</code></li>
+          <li><code>circle</code></li>
+          <li><code>ellipse</code></li>
+          <li><code>polyline</code></li>
+          <li><code>polygon</code></li>
+          <li><code>path</code></li>
+          <li><code>text</code></li>
         </ul>
       </article>
 
       <article class="slide">
         <h2>Line</h2>
-        <pre><code class="large-code">&lt;line x1 y1 x2 y2 /&gt;</code></pre>
+        <pre><code class="large-code">&lt;line x1="0" y1="0" x2="2" y2="2" /&gt;</code></pre>
       </article>
       <article class="slide">
         <h2>Rect</h2>
-        <pre><code class="large-code">&lt;rect x y width height rx ry /&gt;</code></pre>
+        <pre><code class="large-code">&lt;rect x="5" y="5" width="50" height="50" rx="1" ry="1" /&gt;</code></pre>
       </article>
       <article class="slide">
         <h2>Circle</h2>
-        <pre><code class="large-code">&lt;circle cx cy r /&gt;</code></pre>
+        <pre><code class="large-code">&lt;circle cx="5" cy="5" r="2" /&gt;</code></pre>
       </article>
       <article class="slide">
         <h2>Ellipse</h2>
-        <pre><code class="large-code">&lt;ellipse cx cy rx ry /&gt;</code></pre>
+        <pre><code class="large-code">&lt;ellipse cx="5" cy="5" rx="3" ry="2" /&gt;</code></pre>
         <img
           style="width: 400px"
           src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fc%2Fc0%2FMoment_of_area_of_an_ellipse.svg%2F1200px-Moment_of_area_of_an_ellipse.svg.png&f=1&nofb=1"
@@ -256,36 +273,59 @@ viewBox="0 0 500 500"
       </article>
 
       <article class="slide">
-        <h2>Path Syntax</h2>
-        <!-- MoveTo: M, m
-    LineTo: L, l, H, h, V, v
-    Elliptical Arc Curve: A, a
-    ClosePath: Z, z
-    Cubic Bézier Curve: C, c, S, s
-    Quadratic Bézier Curve: Q, q, T, t
-    
-    This is easier to remember than it looks: M for moving, H/h for horizontal lines, V/v for vertical lines, A/a for arcs, L/l for lines in any direction, and so on. -->
+        <h2>Path Syntax: Deeper Dive</h2>
+        <ul>
+          <li>MoveTo: M, m</li>
+          <li>LineTo: L, l, H, h, V, v</li>
+          <li>Elliptical Arc Curve: A, a</li>
+          <li>ClosePath: Z, z</li>
+          <li>Cubic Bézier Curve: C, c, S, s</li>
+          <li>Quadratic Bézier Curve: Q, q, T, t</li>
+        </ul>
+        <ul>
+          <li><code>M 4 4</code>tells the browser to lift up its imaginary pen and move it to the point (4, 4).</li>
+          <li><code>h -16</code> means from the current pen location, draw a line extending 16px to the left.</li>
+        </ul>
+      </article>
 
+      <article class="slide">
+        <h2>Path Syntax is easier than it looks</h2>
+        <p>
+          This is easier to remember than it looks: 
+        </p>
+        <ul>
+          <li>M for moving</li>
+          <li>H/h for horizontal lines</li>
+          <li>V/v for vertical lines</li>
+          <li>A/a for arcs</li>
+          <li>L/l for lines in any direction</li>
+          <li>C/c is for Cubic Bezier Curves</li>
+          <ul>
+            <li>Cubic: think of three like x<sup>3</sup>: that's how many control points it uses</li>
+          </ul>
+          <li>Q/q is for Quadratic Bezier Curves</li>
+          <ul>
+            <li>Quadratic: think of four like x<sup>4</sup>: that's how many control points it uses</li>
+          </ul>
+        </ul>
         <p>
           <a href="https://css-tricks.com/svg-path-syntax-illustrated-guide/"
-            >Path Syntax</a
+            >Path Syntax Explained</a
           >
         </p>
-        <!-- M 4 4: Browser, please lift up your imaginary pen and move it to the point (4, 4).
-    h 16: From the location where you currently are, draw a line extending 16px to the right. -->
       </article>
 
       <article class="slide">
         <h2>Text in SVG</h2>
-        <pre><code class="large-code">&lt;text x y dx dy&gt;Example Text&lt;/text&gt;</code></pre>
+        <pre><code class="large-code">&lt;text x="0" y="0" dx="2" dy="2"&gt;Example Text&lt;/text&gt;</code></pre>
         <p>selectable and stylable unlike other image text</p>
-        <p>Uses fill not color</p>
+        <p>Uses the <code>fill</code> <code>color</code> attribute</p>
         <p><code>dx dy</code> are essentialy positional transformation attrs</p>
         <p>
           Text doesn't wrap nicely in svg though… can use tspan to position new
           lines
         </p>
-        <pre><code class="large-code">&lt;tspan x y&gt;New line of text&lt;/tspan&gt;</code></pre>
+        <pre><code class="large-code">&lt;tspan x="0" y="12"&gt;New line of text&lt;/tspan&gt;</code></pre>
       </article>
 
       <article class="slide">
@@ -317,10 +357,10 @@ viewBox="0 0 500 500"
       <article class="slide">
         <h2>Stroke Attributes</h2>
         <ul>
-          <li>stroke: color value</li>
-          <li>stroke-width: number</li>
+          <li><code>stroke: color value</code></li>
+          <li><code>stroke-width: number</code></li>
           <li>
-            stroke-linecap: butt, square, round
+            <code>stroke-linecap: butt, square, round</code>
             <sup
               ><a
                 href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap"
@@ -329,7 +369,7 @@ viewBox="0 0 500 500"
             >
           </li>
           <li>
-            stroke-linejoin: miter, round, bevel
+            <code>stroke-linejoin: miter, round,bevel </code>
             <sup
               ><a
                 href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin"
@@ -337,13 +377,12 @@ viewBox="0 0 500 500"
               ></sup
             >
           </li>
-          <li>stroke-miterlimit: number</li>
-          <li>stroke-opacity: 0-1</li>
+          <li><code>stroke-miterlimit: number</code></li>
+          <li><code>stroke-opacity: 0-1</code></li>
           <li>
-            stroke-dasharray="10,10" // length of dash, length of gap can be a
-            repeated pattern: "10, 10, 1, 1, 20, 50"
+            <code>stroke-dasharray="10,10" // length of dash, length of gap can be a repeated pattern: "10, 10, 1, 1, 20, 50"</code>
           </li>
-          <li>stroke-dashoffset="number"</li>
+          <li><code>stroke-dashoffset="number"</code></li>
           <li>
             <a href="https://css-tricks.com/svg-line-animation-works/"
               >You can animate lines using these dash properties</a
@@ -388,13 +427,13 @@ viewBox="0 0 500 500"
 
       <article class="slide">
         <h2>SVG accessibility</h2>
-        <pre><code><svg aria-labelledby="title-id" aria-describedby="desc-id"> <!-- must match the id"s below -->
-    <title id="title-id">Descriptive title for svg image</title>
-    <desc id="desc-id">Description of image (like an alt tag)</desc> 
-    <text role="presentation" role="hidden">Text that we don't want read by screen reader</text>
-    </svg>
+        <pre><code>&lt;svg aria-labelledby="title-id" aria-describedby="desc-id"&gt; <!-- must match the id"s below -->
+  &lt;title id="title-id">Descriptive title for svg image&lt;/title&gt;
+  &lt;desc id="desc-id">Description of image (like an alt tag)&lt;/desc>&gt;
+  &lt;text role="presentation" role="hidden">Text that we don't want read by screen reader&lt;/text&gt;
+&lt;/svg&gt;
         </code></pre>
-        <p>Add title and desc inside a &lt;use&gt; declaration as well</p>
+        <p>You can add <code>&lt;title&gt;</code> and <code>&lt;desc&gt;</code> inside a <code>&lt;use&gt;</code> declaration as well</p>
       </article>
 
       <article class="slide">
