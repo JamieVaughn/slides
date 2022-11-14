@@ -27,51 +27,20 @@
 </header>
 <section>
 	<header class="slide">
-		<h2></h2>
-		<h1></h1>
+		<h2>Regular Expression</h2>
+		<h1>in Javascript</h1>
 	</header>
-
-	<article class="slide" title="">
-	</article>
-
-	<article class="slide">
-	</article>
-</section>
-
-<section>
-	<header class="slide">
-		<h2></h2>
-		<h1></h1>
-	</header>
-
-	<article class="slide" id="data-insert">
-	</article>
-
-	<article class="slide">
-	</article>
-</section>
-
-<footer class="slide" title="The End">
-</footer>
-
-<script src="../lib/inspire.js"></script>
-<script src="../laser/laser.js"></script>
-</body>
-</html>
-
-
-<section>
-  <section>
+  <article class="slide">
     <h2>Regex in Javascript</h2>
     <p></p>
     <p>Regex was built into javascript as a native data type just like it was in PERL. Not all languages have built-in regex.</p>
     <p>Regular expression are used to perform pattern matching and search-and-replace functionality in text.</p>
-  </section>
-  <section>
+  </article>
+  <article class="slide">
     <h2>Regex is essentially a language unto itself</h2>
     <img src="https://imgs.xkcd.com/comics/regular_expressions.png" alt="XKCD Regex Comic">
-  </section>
-  <section>
+  </article>
+  <article class="slide">
     <h2>Tokens & Operations</h2>
     <p>Tokens: characters & special characters</p>
     <div style="display: flex; width: 100vw; line-height: 3.5rem">
@@ -101,8 +70,9 @@
     </div>
     <p></p>
     <p></p>
-  </section>
-  <section>
+  </article>
+
+  <article class="slide">
     <h2>Quantifiers Example</h2>
     <pre style="position: relative">
       <span class='snippet-btn' style="position: absolute; top: 1rem; right: 1rem;" data-clipboard-text='/(?<one>foo) (?<two>b(a)r)/.exec("foo bar")'>📋</span>
@@ -119,18 +89,19 @@
 /(?&lt;one&gt;foo) (?&lt;two&gt;b(a)r)/.exec("foo bar")
 // Non capturing Numbered Groups
 /(?:foo) (?:b(a)r)/.exec("foo bar")</code></pre>
-  </section>
-  <section>
-      <h2>Equivalent Quantifiers</h2>
-      <ul>
-        <li><code>/a?/</code> === <code>/a{0,1}/</code></li>
-        <li><code>/a*/</code> === <code>/a{0,}/</code></li>
-        <li><code>/a+/</code> === <code>/a{1,}/</code></li>
-      </ul>
-  </section>
-  <section>
-    <h2>Assertions</h2>
-    <pre><code class="med-code">// Start & End of entire string
+      </article>
+
+      <article class="slide">
+        <h2>Equivalent Quantifiers</h2>
+        <ul>
+          <li><code>/a?/</code> === <code>/a{0,1}/</code></li>
+          <li><code>/a*/</code> === <code>/a{0,}/</code></li>
+          <li><code>/a+/</code> === <code>/a{1,}/</code></li>
+        </ul>
+    </article>
+    <article class="slide">
+      <h2>Assertions</h2>
+      <pre><code class="med-code">// Start & End of entire string
 /^b/.exec('bobby') // match
 /^b\w+b$/.exec('bobby') // no match
 /^b\w+y$/.exec('bobby')// match
@@ -138,8 +109,8 @@
 // Word boundary (start and end of a word)
 /\boo|oo\b/.exec('good book') // no match
 /ood\b/.exec('good book') // match</code></pre>
-  </section>
-  <section>
+  </article>
+  <article class="slide">
     <h2>Groups</h2>
     <pre><code class="med-code">// Char sets
 /[almost ]+/.exec('I am lost') // matches " am lost"
@@ -149,19 +120,19 @@
 
 // Enumerator is like "OR"
 /bob|jane|kyle/.exec('bob') </code></pre>
-  </section>
-  <section>
+  </article>
+  <article class="slide">
     <h2>Backslash Escape Operators</h2>
     <pre><code class class="med-code">/a$/.test("a$") // false
 /a\$/.test("a$") // true
 /a\./.test("a.") // true</code></pre>
-  </section>
-  <section>
+  </article>
+  <article class="slide">
     <h2>Back References</h2>
     <pre><code class="med-code">/(b)o\1/.test("bob")
 /(r)(a)(c)e\3\2\1/.test("racecar")</code></pre>
-  </section>
-  <section>
+  </article>
+  <article class="slide">
     <h2>Creating a Regex in JS</h2>
     <pre><code class="med-code">let regex = new RegExp("pattern", "flags") //constructor way
 let regex2 = /pattern/flags // the Regex literal way
@@ -169,8 +140,9 @@ let regex2 = /pattern/flags // the Regex literal way
 // can also use a literal in the construtor
 let regex3 = new RegExp(/pattern/, "flags")</code></pre>
 <p>Use <code>new RexExp()</code> to create a dynamic Regex with user input</p>
-  </section>
-  <section>
+  </article>
+
+  <article class="slide">
     <h2>Built-in String Methods for Regex <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Using_regular_expressions_in_JavaScript">MDN</a></sup></h2>
     <p>Usage is inconsistent: <br><code>/w/gi.test('Hello World')</code> vs. <code>'hello'.search(/L/gi)</code></p>
     <pre><code class="med-code">// string.method(regex)
@@ -183,8 +155,9 @@ split()</code></pre>
 <pre><code class="med-code">// regex.method(string)
 test()
 exec()</code></pre>
-  </section>
-  <section>
+  </article>
+
+  <article class="slide">
     <h2>Regex Flags</h2>
     <p><code>/pattern/flags</code> i.e. <code>/[a-zA-Z]/g</code></p>
     <div class="grid flag-table" style='max-height: 500px; grid-template-columns: 100px 1fr 1fr; grid-template-rows: repeat(7, 1fr);'>
@@ -196,8 +169,9 @@ exec()</code></pre>
       <code>u</code> <p>"unicode"; treat a pattern as a sequence of unicode code points</p> <p>RegExp.prototype.unicode</p>
       <code>y</code> <p>Perform a "sticky" search that matches starting at the current position in the target string</p> <p>RegExp.prototype.sticky</p>
     </div>
-  </section>
-  <section>
+  </article>
+
+  <article class="slide">
     <h2>Regex Flag Example</h2>
     <pre><code class="med-code">/[a-z]/.test("ABCDEFG") //false
 /[a-z]/i.test("ABCDEFG") //true </code></pre>
@@ -214,8 +188,9 @@ groups: undefined
 
 str.match(/example/g) 
 // returns ['example', 'example']</code></pre>
-  </section>
-  <section>
+  </article>
+
+  <article class="slide">
     <h2>Positive/Negative Look Behind/Ahead <sup><a href="https://www.stefanjudis.com/today-i-learned/the-complicated-syntax-of-lookaheads-in-javascript-regular-expressions/">article</a></sup></h2>
     <p>More <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Assertions">Assertions</a></p>
     <pre><code class="med-code">
@@ -223,15 +198,16 @@ str.match(/example/g)
 /b(?!o)/.exec('bob') // Negative Look ahead
 /(?&lt;=ob)b/.exec("bob") // Positive Look behind
 /(?&lt;!ob)b/.exec("bob") // Negative Look behind</code></pre>
-  </section>
-  <section>
+  </article>
+
+  <article class="slide">
     <h2>Regex References</h2>
     <ul>
       <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp">RegExp Object</a></li>
       <li><a href="https://eloquentjavascript.net/09_regexp.html">Eloquent Javscript: Regex</a></li>
     </ul>
-  </section>
-  <section>
+  </article>
+  <article class="slide">
     <h2>Regex Tools</h2>
     <p><a href="https://github.com/aloisdg/awesome-regex">Awesome list of regex resources</a></p>
     <ul>
@@ -243,15 +219,17 @@ str.match(/example/g)
       <li><a href="https://www.regexpal.com/">RegexPal</a></li>
       <li>Fun list of regex based tools: <a href="https://www.dcode.fr/en">Dcode</a></li>
     </ul>
-  </section>
-  <section>
+  </article>
+
+  <article class="slide">
     <h2>Regex Practice</h2>
     <p>See if you can complete all the challenges in this interactive tutorial</p>
     <p><a href="https://regexone.com/">Regexone.com</a></p>
 
     <p><a href="https://padolsey.github.io/redoku/">REDOKU Game</a></p>
-  </section>
-  <section>
+  </article>
+
+  <article class="slide">
     <h2>HTML <code>pattern</code> Attribute <sup><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern">MDN</a></sup></h2>
     <p><a href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation">Client-side Validation</a></p>
     <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Constraint_validation">Constraint Validation</a></p>
@@ -265,5 +243,15 @@ str.match(/example/g)
 &lt;/label&gt;
 &lt;button&gt;Submit&lt;/button&gt;
 &lt;/form&gt;</code></pre>
-  </section>
+  </article>
+
 </section>
+
+<footer class="slide" title="The End">
+  Thank you!
+</footer>
+
+<script src="../lib/inspire.js"></script>
+<script src="../laser/laser.js"></script>
+</body>
+</html>
