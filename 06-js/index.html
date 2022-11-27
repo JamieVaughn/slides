@@ -177,7 +177,7 @@
 		<li><code>Symbol</code></li>
 	</ul>
 	<p>Use <code>typeof</code> operator to check types</p>
-	<pre style="width: fit-content"><code >typeof 'hello' // 'string'
+	<pre class="language-js"><code >typeof 'hello' // 'string'
 typeof 100 // 'number'
 typeof false // 'boolean'
 	</code></pre>
@@ -204,9 +204,10 @@ typeof false // 'boolean'
 		<li>64 bit Floating point per the IEEE 754 spec</li>
 		<li>Due to 64 bit maximum size, they are imprecise</li>
 		<li>Let's see it in action: <pre class="language-js"><code>0.1 + 0.2 = ?</code></pre></li>
-		<li>Symbolic values:	<div class="ga-col2-33"> <pre class="language-js"><code>Infinity</code></pre> <pre class="language-js"><code>NaN</code></pre></div></li>
+		<li>Symbolic values: <code>Infinity</code>, <code>NaN</code></li>
 	</ul>
-	<p><code>BigInt</code> provides arbitray precision & fixes decimal bug in Numbers. Post-fix with "n": <code>30903920193n</code></p>
+	<p><code>BigInt</code> provides arbitray precision & fixes decimal bug in Numbers.</p> 
+	<p>Just "post-fix" a number with <code>n</code> → <code>30903920193n</code></p>
 	<p><code>const biggestNumber = 9007199254740991n</code> (but not the biggest BigInt)</p>
 </article>
 <article class="slide">
@@ -257,25 +258,46 @@ Number.isNaN(NaN) // true</code></pre>
 	<h2>Primitives Are Immutable</h2>
 		<pre class="language-js"><code class='large-code'>5 = 4 // Syntax Error
 var str = 'hello'
-str[0] = 'p'
-console.log(str) // 'hello'
+console.log(str[0]) // 'h'
+str[0] = 'y' // unable to re-assign immutable value
+console.log(str, str[0]) // 'hello', 'h'
 		</code></pre>
-		<p>You must reassign to the variable <br>to change a variable's value</p>
+		<p style="text-align: center;">(You must reassign to the whole variable <br>to change a variable's value)</p>
 </article>
 <article class="slide">
 	<h2>Primitive Wrappers</h2>
 	<p>Type Casting</p>
+	<div class="flex" style="text-align: center">
 	<ul style="list-style: none; width: 300px">
 		<li><pre class="language-js"><code class='large-code'>String()</code></pre></li>
 		<li><pre class="language-js"><code class='large-code'>Number()</code></pre></li>
 		<li><pre class="language-js"><code class='large-code'>Boolean()</code></pre></li>
 	</ul>
+	<ul style="list-style: none; width: 300px">
+		<li><pre class="language-js"><code class='large-code'>String(true) // 'true'</code></pre></li>
+		<li><pre class="language-js"><code class='large-code'>Number('22') // 22</code></pre></li>
+		<li><pre class="language-js"><code class='large-code'>Boolean(0) // false</code></pre></li>
+	</ul>
+</div>
+
 </article>
 <article class="slide">
 	<h2>Type Coercion</h2>
-	<p>Types refer to the data types, such as primitives: string, boolean, etc</p>
-	<p>Javascript is a Dynamically typed language - variables may change their type</p>
-	<p>Coercion refers to the JS engine changing the data type during an operation</p>
+	<ul>
+		<li><strong>Types</strong> refer to the data types
+			<ul>
+				<li>such as primitives: <code>String</code>, <code>Boolean</code>, <code>Number</code>, etc</li>
+			</ul> 
+		</li>
+		<li><strong>Dynamically typed language</strong>: variables may change their type
+			<ul>
+				<li>Javascript is Dynamically typed</li>
+			</ul>
+		</li>
+		<li>
+			<strong>Coercion</strong>: the JS engine changing the data type during an operation
+		</li>
+	</ul>
 </article>
 </section>
 
@@ -301,19 +323,23 @@ comment */
 	<article class="slide">
 		<h2>Declaration</h2>
 		<pre class="language-js"><code>var; // Declaration
-var x; // Initialization;
-var y = 500; // Assignment
-var y = 'Hello!'; //Re-assignment
+var x; // + Initialization of an identifier;
+var y = 500; // + Assignment of a value
+y = 'Hello!'; // Re-assignment (overwrites)
 		</code></pre>
-		<p>You can declare and assign separately</p>
-		<p>Initialize → Assign</p>
+		<hr style="width: 100%">
+		<p>You can split a declaration in two separate expressions.</p>
+		<p>Initialize → then Assign:</p>
 		<pre class="language-js"><code>var z;
 z = true;
 		</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Containers of a Value</h2>
-		<div class="flex" style="justify-content: space-around;">
+		<pre class="language-js"><code>let x;
+const y = 'Hello!';
+</code></pre>
+		<div class="flex" style="justify-content: center; width: 400px">
 			<fieldset>
 				<legend style='color: #66D9EF; font-size: 3rem;'>x</legend>
 				<code>undefined</code>
@@ -325,34 +351,21 @@ z = true;
 		</div>
 	<p>The variables have names (<strong>identifiers</strong>) and can contain any Javascript <strong>value</strong>.</p>
 	</article>
-
 	<article class="slide">
-		<h2>Hoisting</h2>
-		<pre class="language-js"><code>{
-var j = 'foo' + i;
-var k = 'bar' + i;
-}
-var i = 'baz';
-console.log(j) // foobaz
-console.log(k) // barbaz
-		</code></pre>
-		<p>Global <strong><code>var</code></strong> declarations are hoisted... moved to the top of the file. </p>
-	</article>
-	<article class="slide">
-		<h2>Scope</h2>
-		<pre class="language-js"><code>{
-let local = 'local';
-const local2 = 'local2';
-console.log(global1) // 'global'
-console.log(deeply_nested) // ReferenceError: deeply_nested is not defined
+		<h2>Scope (aka Block Scope)</h2>
+		<pre class="language-js"><code>{ // Curly Braces Open a new Block Scope
+  let local = 'local';
+  const local2 = 'local2';
+  console.log(global1) // 'global'
+  console.log(deeply_nested) // ReferenceError: deeply_nested is not defined
+  {
+    let deeply_nested = 5
+    console.log(local) // 'local'
+  }
+} // And Curly Braces close a Block Scope
 {
-let deeply_nested = 5
-console.log(local) // 'local'
-}
-}
-{
-var global1 = 'global';
-console.log(local1) // ReferenceError: local1 is not defined
+  var global1 = 'global';
+  console.log(local1) // ReferenceError: local1 is not defined
 }
 		</code></pre>
 		<p>The area of influence... bounded by curly braces.</p>
@@ -361,55 +374,77 @@ console.log(local1) // ReferenceError: local1 is not defined
 		<p>The root level (i.e. no curly braces) is the "global" scope.</p>
 	</article>
 	<article class="slide">
+		<h2>Hoisting</h2>
+		<pre class="language-js"><code>{
+  var j = 'foo' + i;
+  var k = 'bar' + i;
+}
+var i = 'baz';
+console.log(j) // foobaz
+console.log(k) // barbaz
+		</code></pre>
+		<p>Global <strong><code>var</code></strong> declarations are hoisted... moved to the top of the file. </p>
+		<p><code>let</code> & <code>const</code> are not hoisted. They respect their block scope.</p>
+	</article>
+	<article class="slide">
 		<h2>The Comma operator</h2>
-		<pre class="language-js"><code>var i, j, k; 
-// all initialized as undefined
-i = true;
-if(i) {
-j = 'foo';
-} else {
-k = 'bar';
+		<p>Let's you initialize or declare multiple vars at once.</p>
+		<pre class="language-js"><code>var j, k, l; 
+// j, k, l all initialized as undefined
+let i = 'baz';
+{
+  j = 'foo';
+  let i = 'bar' // notice block scoping of 'i' here
+  console.log(j + i) // 'foobar'
+}
+{
+  k = 'bar';
+  l = 1
+  console.log(k + i + l) // 'barbaz1'
 }
 		</code></pre>
-		<p>Let's you initialize or declare multiple vars at once.</p>
 	</article>
 
 	<article class="slide">
 		<h2>Reserved Key Words (tokens)</h2>
+		<p>These can't be used as variable names: <a href="https://www.w3schools.com/js/js_reserved.asp">Full List</a></p>
 		<pre class="language-js"><code>null true false break do instanceof typeof
 case else new var catch finally return void
 continue for switch while debugger function
 this with default if throw delete in try let 
 class  extends super const export import yield
 </code></pre>
-<p>These can't be used as variable names: <a href="https://www.w3schools.com/js/js_reserved.asp">Full List</a></p>
 <p><a href="https://mothereff.in/js-variables">Variable names must start</a> with a letter, <code>_</code> or <code>$</code></p>
 	</article>
 	
-
 </section>
 
 <section>
-	<header>
-		<h2>Javascript</h2>
+	<header class="slide">
+		<h2>Javascript Basics</h2>
 		<h1>Operators</h1>
 	</header>
 	<article class="slide">
-		<h2>Operators</h2>
+		<h2>The Main Operators</h2>
 		<code style="font-size: 3rem;">+   -   *    /</code>
 		<p>Exponent: <code class="large-code"> **  </code></p>
 		<p>Remainder (aka Modulo): <code class="large-code"> % </code></p>
+		<pre class="language-js"><code>12 / 3 + 5 - 2 * 3 // 3 (remember PEMDAS?)
+10**2 // 100
+64**0.5 // 8
+20 % 6 // 2  (20/6 = 3.333 -> 0.333*6 = 2) 
+		</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Incrementing & Decrementing</h2>
-		<div class="flex" style="justify-content: space-around; font-size: 3rem; width: 600px; margin: 0 auto;">
-			<p><code>++</code></p>
-			<p><code>--</code></p>
-			<p><code>+=</code></p>
-			<p><code>-=</code></p>
-		</div>
+		<pre class="language-js flex" style="justify-content: space-around; font-size: 3rem; width: 600px; margin: 0 auto;">
+			<code>++</code>
+			<code>--</code>
+			<code>+=</code>
+			<code>-=</code>
+		</pre>
 
-		<pre style="width: 400px;"><code class='large-code'>var a = 3;
+		<pre class="language-js"><code class='large-code'>var a = 3;
 a++
 a+=6
 a--
@@ -423,24 +458,26 @@ a%=11</code></pre>
 <section>
 	<article class="slide">
 		<h2>Challenges</h2>
-		<div class="flex">
-			<div style="margin-right: 1rem;">Given:</div>
-			<pre class="language-js"><code class='med-code'>var str1 = "or"
-	var str2 = "man"</code></pre>
-			<span title="str2[0] + str2[1] + str1[1] + str1[0] + str1[0] + str2[2] + (str1 + str2).length">Create the string: <code>"maroon5"</code></span>
-		</div><hr>
-		<div class='flex' style='justify-content: space-between;'>
-		<span style="margin-right: 1rem;">Given: </span>
-			<pre class="language-js"><code class='med-code'>var str = "hello world"
-	var bool = true</code></pre>
-			<span title="(typeof str)[0] + str[4] + str[3] + str[10] + str[5] + String(bool)[2] + String(bool)[0]">Create the string: <code>"sold out"</code></span>
-		</div><hr>
-		<div >
+		<p>Time to practice in the JS console!</p>
+		<ol>
+			<li><span title="str2[0] + str2[1] + str1[1] + str1[0] + str1[0] + str2[2] + (str1 + str2).length">Create the string: <code>"maroon5"</code></span>
+				<pre class="language-js"><code class='med-code'>// Given:
+var str1 = "or"
+var str2 = "man"</code></pre>
+			</li>
+			<li style="margin-top: 2rem;"><span title="(typeof str)[0] + str[4] + str[3] + str[10] + str[5] + String(bool)[2] + String(bool)[0]">Create the string: <code>"sold out"</code></span>
+				<pre class="language-js"><code class='med-code'>// Given
+var str = "hello world"
+var bool = true</code></pre>
+			</li>
+		</ol>
+	</article>
+	<article class="slide">
+			<h2>JS DOM Bonus Challenge</h2>
 			<p>Visit <a href="https://javascript.info/">https://javascript.info/</a> and open the console.</p>
 			<p>Select the <code>nav</code> element w/ <code>document.querySelector()</code> & save in a <code>var</code></p>
 			<p>Then use <code>.innerHTML</code> on the <code>var</code> to set it equal to the string:</p>
 			<p><code>'&lt;h1 class="frontpage-banner__title"&gt;Hello World&lt;/h1&gt;'</code></p>
-		</div>
 	</article>
 </section>
 
