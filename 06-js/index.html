@@ -29,8 +29,8 @@
 </header>
 <section>
 	<header class="slide">
-		<h2>Javascript</h2>
-		<h1>Basic Syntax</h1>
+		<h2>A Short History of Javascript</h2>
+		<h1>How did JS get here?</h1>
 	</header>
 
 	<article class="slide">
@@ -40,7 +40,7 @@
 	<article class="slide">
 		<h2>A Primer On JS</h2>
 		<h4>What will we visit on our Journey?</h4>
-		<ol>
+		<ol class="delayed-children">
 			<li class="fragment">Syntax <- we'll start here</p>
 			<li class="fragment">Organization of Code</li>
 			<li class="fragment">Organization of Components</li>
@@ -53,9 +53,9 @@
 		<h2>Some resources to guide us</h2>
 		<p><a href="http://jargon.js.org/">Glossary of Jargon</a></p>
 		<p><a href="https://glossarytech.com/">Glossary Tech Extension</a></p>
-		<hr class="fragment" style="width: 33%; margin: 0 auto;">
-		<h4 class="fragment">E-Textbooks</h4>
-		<p style='height: 50vh'>
+		<hr style="width: 33%; margin: 0 auto;">
+		<h4 class="delayed">E-Textbooks</h4>
+		<p style='height: 50vh' class="delayed-children">
 			<a href="https://exploringjs.com/deep-js/toc.html">
 				<img class="fragment" src="img/deepjs_cover.jpg" alt="Deep Javascript book cover">
 			</a>
@@ -73,27 +73,46 @@
 
 	<article class="slide">
 		<h2>The Engines</h2>
-		<h4 class="fragment">Javascript Engines</h4>
-		<p class="fragment">V8, Spider Monkey, Webkit/Nitro, Chakra(deprecated)</p>
-		<h4 class="fragment">Render Engines</h4>
-		<p class="fragment">Blink, Webkit, Gecko</p>
+		<div class="delayed">
+			<h4 class="fragment">Javascript Engines</h4>
+			<p class="fragment">V8, Spider Monkey, Webkit/Nitro, Chakra(deprecated)</p>
+		</div>
+		<div class="delayed">
+			<h4 class="fragment">Render Engines</h4>
+			<p class="fragment">Blink, Webkit, Gecko</p>
+		</div>
 	</article>
 	<article class="slide">
 		<h2>Interpreters and Compilers</h2>
-		<p class="fragment">Interpreters</p>
-		<p class="fragment">Just in time Compilers (JIT) vs. Ahead of time Compliers (AOH)</p>
-		<p class="fragment">Low Level vs High Level Languages</p>
-		<p class="fragment">Source code, Byte Code, Machine Code, Binary Code <code>101011</code></p>
-		<img src="./img/Machine_code.png" style="max-height: 33vh"/>
+		<p class="delayed">Interpreted Languages</p>
+		<p class="delayed">Just in time Compilers (JIT) vs. Ahead of time Compliers (AOH)</p>
+		<p class="delayed">Low Level vs High Level Languages</p>
+		<div class="delayed" style="text-align: center;">
+			<p >Source code, Byte Code, Machine Code, Binary Code <code>101011</code></p>
+			<img src="./img/Machine_code.png" style="max-height: 33vh"/>
+		</div>
 	</article>
 	<article class="slide">
 		<h2>A Bit of JS History</h2>
-		<p>Why all the baggage?</p>
-		<img style="width: 70%; height: 80vh;" src="./img/bad_parts_good_parts.jpg" alt="">
+		<div class="delayed-children" style="text-align: center; padding: 4rem 20rem; background: right / cover no-repeat url(./img/bad_parts_good_parts.jpg)">
+			<p class="backdrop" >Why all the baggage?</p>
+			<p class="backdrop" style="margin-top: 8rem;">Created in 10 days</p>
+			<p class="backdrop">Half OOP (Java) & Half FP (Scheme)</p>
+			<p class="backdrop">Subject of Corporate Fighting</p>
+			<p class="backdrop">Advanced by contested comittee</p>
+		</div>
+		<!-- <img style="height: 80vh; object-fit: contain;" src="./img/bad_parts_good_parts.jpg" alt=""> -->
+		<style>
+			p.backdrop {
+				background: rgba(255, 255, 255, 0.75);
+				color: black;
+				padding: 2px 8px;
+			}
+		</style>
 	</article>
 
 	<article class="slide">
-		<h2>The Browser Wars</h2>
+		<h2>The Browser War Chronicles</h2>
 		<ol class="timeline" style="overflow-y: scroll; max-height: 60vh;">
 			<li>Andreeson of Mosaic releases the img tag <time>1992</time></li>
 			<li>The Netscape Rebellion <time>1994</time></li>
@@ -114,7 +133,8 @@
 			<li>ES4 Abandoned, ES3.1 patch proposal released as ES5 <time>2008</time></li>
 			<li>ES6 released and yearly release schedule adopted <time>2015</time></li>
 			<li style='margin-top: 50px;'>All new ES versions take their release year as their numeral: ES2016 <time>starting 2016</time></li>
-			<li><a href="https://blog.learncodeonline.in/whats-new-in-javascript-21-es12">ES2021 Released!</a> And the saga continues!<time>2021</time></li>
+			<li><a href="https://blog.learncodeonline.in/whats-new-in-javascript-21-es12">ES2021 Released!</a> <time>2021</time></li>
+			<li><a href="https://yagmurcetintas.com/journal/whats-new-in-es2022">ES2022 Released!</a> And the saga continues!<time>2022</time></li>
 		</ol>
 	</article>
 	<article class="slide">
@@ -124,7 +144,7 @@
 	
 </section>
 
-<header class="slide">
+<header class="slide intro">
 	<h1>Javascript Basics</h1>
 	<h2>Variables, Primitives & Operators</h2>
 </header>
@@ -213,7 +233,7 @@ Number.isNaN(NaN) // true</code></pre>
 		</ul>
 		<p>Truthy or Falsey?</p>
 		<p>Let's see it in action:</p>
-	<ul style="width: 300px">
+	<ul class="delayed-children">
 		<pre class="language-js"><code>Boolean(null)</code></pre>
 		<pre class="language-js"><code>Boolean(undefined)</code></pre>
 		<pre class="language-js"><code>Boolean('0')</code></pre>
@@ -223,17 +243,15 @@ Number.isNaN(NaN) // true</code></pre>
 </article>
 <article class="slide">
 	<h2>Strings</h2>
-		<pre class="language-js"><code class='large-code nosidescroll' style="font-size: 1rem;">var myStr = 'Hello World'
+		<pre class="language-js"><code>var myStr = 'Hello World'
 '...'    // Single Quotes               
 "..."    // Double Quotes 
-'...' + '...'    // Concatenation              
-'Hello' + ' ' + 'World'    // 'Hello World'
+"It's a string" // Use single or double quotes
+'It\'s a string' // Escape special characters with '\'
+'Hello' + ' ' + 'World'    // 'Hello World' (Concatenation)
+"Hello World"[0] // "H" (Bracket Notation)
+"Hello".length // 5 (All strings have a length property)
 </code></pre>
-		<div class='flex' style="justify-content: space-between; flex-wrap: wrap;">
-			<p>Escape characters with <code class="large-code">\</code></p>
-			<div class='flex' style="width: 60%"> <span >Bracket Notation:</span> <pre style="width: 100%"><code class='large-code'>'Hello[0]' // 'H'</code></pre></div>
-			<div class='flex'> <span>Strings have a property: <code>.length</code> =></span> <pre style='width: 40%'><code class='large-code'>'Hello'.length // 5</code></pre></div>
-		</div>
 </article>
 <article class="slide">
 	<h2>Primitives Are Immutable</h2>
