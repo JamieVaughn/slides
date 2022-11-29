@@ -101,6 +101,9 @@ code, textarea, pre {
 		padding: 0.5rem;
 		margin: 0.25rem;
 	}
+	pre.fit {
+		height: fit-content;
+	}
 
 	pre > code {
 		font-size: inherit;

@@ -489,7 +489,7 @@ var bool = true</code></pre>
 	<article class="slide">
 		<h2>Javascript Functions</h2>
 		<pre class="language-js"><code>function fn(a, b){
-// do stuff
+  // do stuff
 }
 fn(1, true) // can be reused by invoking it</code></pre>
 	</article>
@@ -525,10 +525,10 @@ fn(1, true) // can be reused by invoking it</code></pre>
 fnExp() // will be undefined... TypeError: fnExp is not a function
 
 function fnDec(d, e){ // Function Declaration
-//...
+  //...
 } 
 var fnExp = function(){ // Function Expression
-//...
+  //...
 }
 </code></pre>
 <p>During the parsing step, the JS Engine traverses .js files twice</p>
@@ -536,7 +536,7 @@ var fnExp = function(){ // Function Expression
 	<article class="slide">
 		<h2>Invoking a Function</h2>
 		<pre class="language-js"><code>function fn(a){
-console.log(a) 
+  console.log(a) 
 }
 fn('hello') // Invocation of Function
 fn() // If the argument list is empty, then 'a' is undefined</code></pre>
@@ -544,43 +544,49 @@ fn() // If the argument list is empty, then 'a' is undefined</code></pre>
 	<article class="slide">
 		<h2>First Class Functions</h2>
 		<pre class="language-js"><code>function fn(args){
-// do stuff
+  // do stuff
 }
 var func = function(){
-// do other stuff
+  // do other stuff
 }
 fn(func) // Functions can be passed into other functions</code></pre>
 	</article>
 	<article class="slide">
 		<h2>The Return Statement</h2>
 		<pre class="language-js"><code>function fn(x, y){
-let z = 5;
-return (x * y) / z;
+  let z = 5;
+  return (x * y) / z;
 }</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Pure Functions & Side Effects</h2>
 		<p>Does the return value of the function depend only on the parameters and/or internal state?</p>
 		<div class="flex" style="justify-content: space-around;">
-			<img style="width: 350px" src="./img/blackbox.jpeg" alt="">
-			<img style="width: 350px" src="./img/impure_blackbox.jpeg" alt="">
+			<img style="width: 350px" src="./img/blackbox.png" alt="">
+			<img style="width: 350px" src="./img/impure_blackbox.png" alt="">
 		</div>
 	</article>
 	<article class="slide">
 		<h2>When to use pure vs impure functions?</h2>
 		<p>This will come up later when we get to code organization & architecture.</p>
 		<p>Immutability vs. Mutations</p>
-		<div><pre class="language-js"><code>function isRightTriangle(d, e, cf){ // Pure 
-return d ** 2 + e ** 2 == f ** 2
-}</code></pre></div>
-<div>
-<code><pre class="language-js">var globalVar = 'global'
-function sideEffects(arg){ // Impure
-console.log(args)
-globalVar += arg
-return globalVar
-}</code></pre></div>
-	</section>
+		<div class="flex">
+		<pre class="language-js"><code>// Pure Fn
+function volumeOfCylinder(radius, height){
+  let areaOfCircle = 3.14 * radius ** 2
+  let volume = areaOfCircle * height 
+  return volume
+}</code></pre>
+<pre class="language-js"><code>let globalVar = 10
+// Impure Fn
+function sideEffects(arg){
+  console.log(globalVar)
+  globalVar += arg
+  return globalVar
+}</code></pre>
+</div>
+
+</article>
 	<article class="slide">
 		<h2>Referential Transparency</h2>
 		<ul>
@@ -596,21 +602,23 @@ fn(5)</code></pre>
 		<h2>ES6 Arrow Functions</h2>
 		<p>A.K.A. Lambda Functions</p>
 		<pre class="language-js"><code class="large-code">var fn = function(a) {
-return a
+  return a
 }
 var fn = (a) => { 
-return a;
+  return a;
 }</code></pre>
 	</article>
 	<article class="slide">
 		<h2>The Implicit Return Statement</h2>
-		<pre class="language-js"><code class="large-code">j => j ** 2</code></pre>
-<pre class="language-js"><code class="large-code">j => (
-j ** 2
+		<div class="flex">
+		<pre class="language-js"><code>j => j ** 2</code></pre>
+<pre class="language-js"><code>j => (
+  j ** 2
 )</code></pre>
+</div>
 <p>Equivalent to:</p>
 <pre class="language-js"><code class="large-code">j => {
-return j ** 2
+  return j ** 2
 }</code></pre>
 	</article>
 	<article class="slide">
@@ -631,22 +639,28 @@ a => 100 ** a
 		<h2>There is also Kebab Case, Pascal Case, Snake Case</h2>
 		<p>Some libraries need to convert between these naming conventions</p>
 		<p>So being consistent is key</p>
-		<pre class="language-js"><code class="large-code">.kebab-case-naming {
-font-size: 2rem;
+		<div class="flex">
+		<pre class="language-css"><code class="large-code">.kebab-case-naming {
+  /* Allowed in CSS, 
+	but not in JS */
+  font-size: 2rem;
 }</code></pre>
-<pre class="language-js"><code class="large-code">function PascalCaseNaming(){}
-function snake_case_naming() {}</code></pre>
+<pre class="language-js"><code class="large-code">// Allowed in JS
+function camelCaseNaming(){}
+function PascalCaseNaming(){}
+function snake_case_naming(){}</code></pre>
+</div>
 	</article>
 	<article class="slide">
 		<h2>Function Scope</h2>
 		<pre class="language-js"><code>var z = 10, x = 2, y = 10;
 function fn(x, y){
-let z = 5;
-return (x * y) / z;
+  let z = 5;
+	console.log(y)
+  return (x * y) / z;
 }
-console.log(z) // ReferenceError
-fn(1, 5) // 1
-fn(1) // NaN</code></pre>
+fn(1, 5) // returns 1 & logs 5
+fn(1) // returns NaN & logs undefined</code></pre>
 		<p>Take advantage of Function Scope by using an IIFE to create a "Closure"</p>
 	</article>
 	<article class="slide">
@@ -654,17 +668,17 @@ fn(1) // NaN</code></pre>
 		<h3>Immediately Invoked Function Expression</h3>
 		<p>These create a private scope</p>
 		<pre class="language-js"><code class="large-code">(function (parameters, arguments){
-// do stuff
+  // do stuff
 }())</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Closures</h2>
 		<pre class="language-js"><code class="large-code">var publicAPI = (function (a, b){
-let privateVar = a + 'our secret';
-return [
-true,
-a + b
-]
+  let privateVar = a + 'our secret';
+  return [
+    true,
+    a + b
+  ]
 }())
 publicAPI[0] // true
 privateVar // ReferenceError
@@ -682,31 +696,48 @@ months.sort((a, b) => Boolean(b) - 1)
 
 // Using a named function as a Callback
 function sortEmpties(a, b) {
-return Number(Boolean(b)) - 1
+  return Number(Boolean(b)) - 1
 }
 months.sort(sortEmpties)</code></pre>
 </article>
 	<article class="slide">
 		<h2>Functions vs. Methods</h2>
-		<p>A Method is simply a function that can be invoked using the dot-syntax A.K.A "Chaining"</p>
-		<p>Actually we've already seen this used. For example <code>console.log</code>`</p>
+		<h4>A Method is simply a function that can be invoked using the dot-syntax A.K.A "Chaining" </h4>
+		<p>We've already seen this used. For example:</p>
+			<ul>
+				<li><code>Math.random()</code></li>
+				<li><code>console.log</code></li>
+			</ul>
 		<p>The function <code>log()</code> is a method contained on the <code>console</code> object</p>
-		<small>This means that the log function is contained in a property on the <code>console</code> object (we'll learn more about objects later)</small>
+		<p>This means that the <code>log()</code> function exists as a property on the <code>console</code> object (more on objects later)</p>
 	</article>
 	<article class="slide">
-		<h2>The Math Object and its Methods</h2>
-		<p>Can access more complicated math function like sin, cos, tan etc</p>
+		<h2>The Math Object & its Methods<sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math">MDN</a></sup></h2>
+		<div class="flex" >
 		<pre class="language-js"><code class='large-code'>Math.PI
 Math.E
 Math.random()
 Math.abs()
-Math.round()</code></pre>
+Math.round()
+Math.sin()
+Math.cos()
+</code></pre>
+<pre class="language-js fit"><code>function isRightTriangle(d, e, f) { 
+  let min = Math.min(d, e, f)
+  let max = Math.max(d, e, f)
+  let mid = d + e + f - min - max
+  let leg1 = min ** 2
+  let leg2 = mid ** 2
+  let hypotenuse = max ** 2
+  return leg1 + leg2 == hypotenuse
+}
+</code></pre></div>
 		</article>
 	<article class="slide">
 		<h2>Let's Look up some basic String Methods</h2>
 		<code>String.prototype</code>
 		<ul style="columns: 2">
-			<li>.toLowerCase()</li>
+			<li><code>.toLowerCase()</code></li>
 			<li><code>.repeat()</code></li>
 			<li><code>.trim()</code></li>
 			<li><code>.indexOf()</code></li>
@@ -717,6 +748,7 @@ Math.round()</code></pre>
 			<li><code>.replace()</code></li>
 			<li><code>.charCodeAt()</code></li>
 			<li><code>.includes()</code></li>
+			<li><code>.slice()</code></li>
 		</ul>
 		<code class="fragment">console.log(String.prototype)</code>
 	</article>
@@ -726,16 +758,16 @@ Math.round()</code></pre>
 		<p>Open VSCode & write a function that accepts as arguments...</p>
 		<ol>
 			<li>A numerator and a denominator & logs the fraction & the remainder</li>
-			<li class="fragment">A radius & returns the area of that circle (hint: console.log(Math))</li>
-			<li class="fragment">A °F temperature & converts it to °C</li>
+			<li class="delayed">A radius & returns the area of that circle (hint: console.log(Math))</li>
+			<li class="delayed">A °F temperature & returns the value converted into °C</li>
 		</ol>
 	</article>
 </section>
 
 <section>
 	<header class="slide">
-		<h1>Arrays</h1>
-		<p>A list container for data primitives</p>
+		<h2>Arrays</h2>
+		<h1>List-like data structures</h1>
 	</header>
 	<article class="slide">
 		<h2>Recall Javascripts Array-like Strings</h2>
@@ -758,18 +790,20 @@ console.log(arr) // ['H','e','l']</code></pre>
 			to discover what each of these do:
 		</p>
 		<code>Array.prototype</code>
-		<pre class="language-js"><code class='med-code'>.indexOf()
-.concat()
+		<div class="flex" style="text-align: center">
+		<pre class="language-js"><code class='med-code'>.concat()
+.slice()
+.indexOf()
+.split()
+.includes()
+.isArray()</code></pre>
+<pre class="language-js"><code class='med-code'>.sort()
 .push()
 .pop()
 .shift()
 .unshift()
-.split()
-.slice()
-.sort()
-.splice()
-.includes()
-.isArray()</code></pre>
+.splice()</code></pre>
+</div>
 	</article>
 	<article class="slide">
 		<h2>Creating Array via Static Methods</h2>
@@ -782,36 +816,45 @@ Array.from(document.querySelectorAll('div'))
 		<h2>The Array Index</h2>
 		<p>Arrays are zero-indexed & the indices must be integers</p>
 		<pre class="language-js"><code class='med-code'>let arr = [1, 2, 3];
-arr[0] = 1; arr[2] = 3;
+arr[0] // 1 
+arr[2] // 3
+arr[2] = 0 // 0
 console.log(arr[4]); // undefined
 arr[6] = 'ten';
 console.log(arr) 
-// [1, 2, 3, undefined, undefined, "ten"]</code></pre>
+// [1, 2, 0, undefined, undefined, "ten"]</code></pre>
 	</article>
 	<article class="slide">
 		<h2>The Array Length Property</h2>
 		<pre class="language-js"><code class='med-code'>let arr = [1, 2, 3]
 console.log(arr.length) // 3
-arr[arr.length] || arr[arr.length - 1]
-arr.length = 4; 
-// [1, 2, 3, undefined]</code></pre>
+arr[arr.length] // undefined
+arr[arr.length - 1] // 3
+arr.length = 2; // [1, 2]</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Arrays</h2>
-		<p>Arrays are list-like objects which have built-in methods to perform list traversal and value mutation.</p>
-		<p>Arrays can hold hold any number of different values (Primitives or Objects)</p>
-		<pre class="language-js"><code class='med-code'>['a', 'man', 'a', 'plan', 'a', 'canal', 'panama']
-[2, null, 'string', {key: 'value'}, ['nested', 'arrays']]</code></pre>
+		<p>Arrays are list-like objects</p>
+		<p>They have built-in methods to perform list traversal and value mutation.</p>
+		<p>They can hold any number of different values (Primitives or Objects)</p>
+		<pre class="language-js"><code>['a', 'man', 'a', 'plan', 'a', 'canal', 'panama']</code></pre>
+		<pre class="language-js"><code>[
+  2, 
+  null, 
+  'string', 
+  {key: 'value'}, 
+  ['nested', 'arrays']
+]</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Creating Arrays</h2>
-		<pre class="language-js"><code class='med-code'>let array = [1, 2, 3]; // Array Literal
+		<pre class="language-js"><code class='med-code'>let array = [1, 2, 3]; // Array Literal (recommended)
 let arr = new Array(1, 2, 3); // Array constructor
 let arr = new Array(3); // [undefined, undefined, undefined]</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Immutability vs Mutation in Arrays </h2>
-		<p><strong><a href="http://wjv.io/blog/posts/immutability.html">JS Immutability Toolkit</a></strong></p>
+		<p><strong><a href="http://wjv.io/log/posts/immutability.html">JS Immutability Toolkit</a></strong></p>
 	</article>
 	<article class="slide">
 		<h2>Array Challenge</h2>
