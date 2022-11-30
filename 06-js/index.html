@@ -521,13 +521,13 @@ fn(1, true) // can be reused by invoking it</code></pre>
 	<article class="slide">
 		<h2>Function Declaration vs Expression</h2>
 		<p>Hoisting applies differently to these:</p>
-		<pre class="language-js"><code>fnDec() // works
-fnExp() // will be undefined... TypeError: fnExp is not a function
+		<pre class="language-js"><code>fnDeclaration() // works
+fnExpression() // will be undefined... TypeError: fnExpression is not a function
 
-function fnDec(d, e){ // Function Declaration
+function fnDeclaration(d, e){ // Function Declaration
   //...
 } 
-var fnExp = function(){ // Function Expression
+var fnExpression = function(){ // Function Expression
   //...
 }
 </code></pre>
@@ -660,7 +660,7 @@ function fn(x, y){
   return (x * y) / z;
 }
 fn(1, 5) // returns 1 & logs 5
-fn(1) // returns NaN & logs undefined</code></pre>
+fn(1) // logs undefined & returns NaN</code></pre>
 		<p>Take advantage of Function Scope by using an IIFE to create a "Closure"</p>
 	</article>
 	<article class="slide">
@@ -679,8 +679,9 @@ fn(1) // returns NaN & logs undefined</code></pre>
     true,
     a + b
   ]
-}())
+}(1, 2))
 publicAPI[0] // true
+publicAPI[1] // 3
 privateVar // ReferenceError
 privateVar[privateVar] // ReferenceError
 publicAPI.privateVar // ReferenceError</code></pre>
@@ -755,7 +756,7 @@ Math.cos()
 	<article class="slide">
 		<h2>Function Challenges</h2>
 		<p><small>Think about good names for the function and the parameters</small></p>
-		<p>Open VSCode & write a function that accepts as arguments...</p>
+		<p>Open VSCode (or console) & write a function that accepts as arguments...</p>
 		<ol>
 			<li>A numerator and a denominator & logs the fraction & the remainder</li>
 			<li class="delayed">A radius & returns the area of that circle (hint: console.log(Math))</li>
@@ -806,7 +807,7 @@ console.log(arr) // ['H','e','l']</code></pre>
 </div>
 	</article>
 	<article class="slide">
-		<h2>Creating Array via Static Methods</h2>
+		<h2>Creating Arrays via Static Methods</h2>
 		<pre class="language-js"><code class='med-code'>Array.of(1, 2, 3) // [1, 2, 3]
 Array.from('string') // ["s", "t", "r", "i", "n", "g"]
 Array.from(document.querySelectorAll('div')) 
@@ -860,7 +861,7 @@ let arr = new Array(3); // [undefined, undefined, undefined]</code></pre>
 		<h2>Array Challenge</h2>
 		<p>Open VSCode again & Refactor the Temp conversion function from earlier...</p>
 		<ol >
-			<li>so it can convert from F -> C or C -> F depending on a second argument which will be a number. </li>
+			<li>that converts a temperature from F -> C or C -> F depending on a 2nd argument <br>(that is either 0 or 1). </li>
 			<ul>
 				<li>Use that number to access one of two different functions in an array</li>
 				<li>Return the invocation of the accessed function.</li>
