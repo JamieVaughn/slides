@@ -760,7 +760,7 @@ Math.cos()
 		<ol>
 			<li>A numerator and a denominator & logs the fraction & the remainder</li>
 			<li class="delayed">A radius & returns the area of that circle (hint: console.log(Math))</li>
-			<li class="delayed" title="F = (C * 9/5) + 32">A °F temperature & returns the value converted into °C</li>
+			<li class="delayed" title="C = (F - 32) / 1.8">A °F temperature & returns the value converted into °C</li>
 		</ol>
 	</article>
 </section>
@@ -860,7 +860,7 @@ let arr = new Array(3); // [undefined, undefined, undefined]</code></pre>
 	<article class="slide">
 		<h2>Array Challenge</h2>
 		<p>Open VSCode again & Refactor the Temp conversion function from earlier...</p>
-		<ol >
+		<ol title="C = (F - 32) / 1.8 | F = C * 1.8 - 32">
 			<li>that converts a temperature from F -> C or C -> F depending on a 2nd argument <br>(that is either 0 or 1). </li>
 			<ul>
 				<li>Use that number to access one of two different functions in an array</li>
@@ -899,7 +899,7 @@ let arr = new Array(3); // [undefined, undefined, undefined]</code></pre>
 		<p>Bitwise or Binary <strong>Exclusive OR</strong>: Two inputs of opposite truthiness result in <code>1</code> and if they are the same truthiness they result in <code>0</code></p>
 		<p>It only operates on binary characters (zero/one or true/false). Also works with <code>null, undefined</code></p>
 		<p>Results can be unexpected if the inputs are strings, non-binary numbers or other data structures (i.e. arrays)</p>
-		<pre class="language-js"><code class="med-code">1 ^ 0 // 1
+		<pre class="language-js"><code>1 ^ 0 // 1
 1 ^ 1 // 0
 true ^ null // 1
 
@@ -914,21 +914,27 @@ Boolean(foo) ^ Boolean(bar) // 1
 !!bar ^ !!bar // 0
 		</code></pre>
 		<p>Recommended to package it in a reusable function:</p>
-		<pre class="language-js"><code class="med-code">function XOR(a, b) {
+		<pre class="language-js"><code>function XOR(a, b) {
 return Boolean(!!a ^ !!b)
 }</code></pre>
-		<p><code></code></p>
-		<p><code></code></p>
 	</article>
 	<article class="slide">
 		<h2 style="margin-top: -12rem;">Equality Examples <small><a href="https://dorey.github.io/JavaScript-Equality-Table/unified/">Overlaid Table</a></small></h2>
-		<pre class="language-js"><code class="med-code">const num = 0;
+		<div class="flex">
+		<pre class="language-js fit"><code class="med-code">const num = 0;
 const big = 0n
 const str = '0'
 const bool = false
 const nil = null
 const un = undefined
-// Loose Equality uses truthiness & attempts to coerce values
+
+// Strict Equality has the type constraint as well
+num === str // false
+big === num // false
+str === bool // false
+bool === big // false
+		</code></pre>
+		<pre class="language-js fit"><code>// Loose Equality uses truthiness & attempts to coerce values
 num == str // true
 big == num // true
 str == big // true
@@ -938,15 +944,8 @@ str == nil // false
 str == un // false
 num == nil // false
 bool == nil // false
-bool == un // false
-
-// Strict Equality has the type constraint as well
-num === str // false
-big === num // false
-str === bool // false
-bool === big // false
-
-		</code></pre>
+bool == un // false</code></pre>
+</div>
 	</article>
 	<article class="slide">
 		<h2>Equality Comparison Table</h2>
@@ -966,12 +965,13 @@ bool === big // false
 
 <section>
 	<header class="slide">
-		<video src="img/ifelseif.mov" id="ifelse-vid" loop onclick="togglePlay(this)"></video>
-		<div style="margin-top: 25rem; background: white; padding: 0 4rem 4rem;">
-			<h1>Control Flow</h1>
-			<p>Controlling code logically through branching paths of execution</p>
-		</div>
+			<h2>Control Flow</h2>
+			<h1>Controlling code logically through branching paths of execution</h1>
+
 	</header>
+	<article class="slide">
+		<video src="img/ifelseif.mov" id="ifelse-vid" loop onclick="togglePlay(this)"></video>
+	</article>
 	<article class="slide">
 		<h2>If Else</h2>
 		<pre class="language-js"><code class='med-code'>var input = 0
@@ -995,16 +995,16 @@ result = input ? 'input was truthy!' : 'input was falsey!'
 console.log(result) // 'input was falsey'
 		</code></pre>
 		<p>Try not to nest ternary operators, it can get hard to read.</p>
-		<pre class='wrong'><code class="med-code">var input = 0
+		<pre class='wrong language-js'><code class="med-code">var input = 0
 var condition = true
 input ? 'input was truthy!' : 
 condition ? 'condition was truthy' 
 					: 'input & condition were were falsey!'</code></pre>
 	</article>
 	<article class="slide">
-		<h2>Switch Statements</h2>
+		<h2 style="margin-top: -3rem;">Switch Statements</h2>
 		<div class="flex">
-			<pre style='width: 55%'><code class="med-code">var input = 'Hello'
+			<pre class="language-js fit"><code>var input = 'Hello'
 switch(typeof input){
 case 'number': 
 	//do this
@@ -1035,9 +1035,9 @@ default:
 		</div>
 	</article>
 	<article class="slide">
-		<h2>Try Catch</h2>
-		<div class="grid" style="grid-template-rows: 1fr 1fr 1fr; grid-template-columns: repeat(4, 1fr);">
-			<pre style="grid-column: 1 / span 3; grid-row: 1 / span 1;"><code class='med-code'>try {
+		<h2 style="margin-top: -5rem;">Try Catch</h2>
+		<div class="flex">
+			<pre class="language-js fit"><code>try {
 fetchDataFromServer(
 handleSuccessFn, 
 handleErrorFn
@@ -1046,22 +1046,21 @@ handleErrorFn
 console.log(e)
 redirectUserToHomeScreen()
 }</code></pre>
-<img style='grid-row: 1 / span 2; grid-column: 3 / span 2; margin-left: 10rem;' src="https://i.redd.it/cmhc4anews571.png" alt="">
+<img src="https://i.redd.it/cmhc4anews571.png" alt="">
 
 		</div>
 	</article>
 	<article class="slide">
-		<h2 style="margin-top: -15rem;">Throwing Errors</h2>
-		<p>Use the <code>throw</code> statement to halt code execution & issue a custom exception.</p>
-		<When>Only use in places it can be caught. When the exception occurs, control transfers to the <code>catch</code> block. The <code>finally</code> block always runs, error or not.</p>
-		<pre class="wrong"><code class="med-code">var authenticate = false
+		<h2>Throwing Errors</h2>
+		<div class="flex" style="gap: 2rem">
+			<pre class="wrong language-js fit"><code class="med-code">var authenticate = false
 if ( authenticate ) {
 console.log('success')
 userSignIn()
 } else {
 throw "Error: the input value was too large"
 }</code></pre>
-<pre class="correct"><code class='med-code'>var authenticate = false
+<pre class="correct language-js fit"><code class='med-code'>var authenticate = false
 try {
 if ( authenticate ) {
 userSignIn()
@@ -1075,6 +1074,12 @@ redirectUserToHomeScreen()
 resetForm()
 closeSession()
 }</code></pre>
+</div>
+<span style="width: 45vw;align-self: start">
+	<p>Use the <code>throw</code> statement to halt code execution & issue a custom exception.</p>
+	<p>Only use in places it can be caught. When the exception occurs, control transfers to the <code>catch</code> block. The <code>finally</code> block always runs, error or not.</p>
+</span>
+		
 </article>
 	
 	<article class="slide">
