@@ -1309,13 +1309,13 @@ arr.reduceRight((acc, cur) => acc.concat(cur), [])</code></pre>
 	</header>
 	<article class="slide">
 		<h2>Declaring Object Literals</h2>
-		<pre style='width: 100vw;'><code class="med-code">let obj = {
-key: 'value', // key (not index)
-"aka property": 2, // Use quotes for multi-word keys
-key2: [1, 2, 3], // holds any data type
-key3: { key: ' nested value' }, //even nested objects
-key4: function(a, b) { console.log('method') }, // trailing commas
-// ^ Functions on an object are called methods
+		<pre class="language-js"><code>let obj = {
+  key: 'value', // key (not index)
+  "aka property": 2, // Use quotes for multi-word keys
+  key2: [1, 2, 3], // holds any data type
+  key3: { key: ' nested value' }, //even nested objects
+  key4: function(a, b) { console.log('method') }, // trailing commas
+  // ^ Functions on an object are called methods
 }</code></pre>
 	</article>
 	<article class="slide">
@@ -1346,26 +1346,25 @@ obj.key = 'value' // must populate keys manually</code></pre>
 	<article class="slide">
 		<h2>The <code>this</code> keyword <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN</a></sup> <sup>/</sup> <sup><a href="https://www.w3schools.com/js/js_this.asp">W3</a></sup></h2>
 		<pre class="language-js"><code class="med-code">const person = {
-name: 'Chris',
-greet: function() {
-alert('Hello ' + this.name + ', Welcome!');
-},
-lambdaGreet1: () => { // `this` is undefined
-alert('Hello ' + this.name + ' Welcome!');
-},
-lambdaGreet2: () => {
-alert('Hello ' + person.name + ' Welcome!');
-}
+  name: 'Chris',
+  greet: function() {
+  alert('Hello ' + this.name + ', Welcome!');
+  },
+  lambdaGreet1: () => { // `this` is undefined
+    alert('Hello ' + this.name + ' Welcome!');
+  },
+  lambdaGreet2: () => {
+    alert('Hello ' + person.name + ' Welcome!');
+  }
 }</code></pre>
 <p><strong>Lexical Scoping:</strong> Arrow functions do not bind a value to <code>this</code>. They will take the <code>Window</code> value for <code>this</code>.</p>
 	</article>
 	<article class="slide">
 		<h2>Inheritance</h2>
 		<p><code>Object.create()</code></p>
-		<pre style="width: 100vw;"><code class="med-code">const person = {
-isHuman: true,
-greet:() => console.log(`Hello there!`);
-}
+		<pre class="language-js"><code>const person = {
+  isHuman: true,
+  greet:() => console.log(`Hello there!`);
 };
 const me = Object.create(person);
 me.name = "Scooby Doo"; 
@@ -1388,9 +1387,10 @@ console.log(returnedTarget);// Object { a: 1, b: 4, c: 5 }</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Pass by Reference vs Pass by Value</h2>
+		<a href="https://blog.penjee.com/passing-by-value-vs-by-reference-java-graphical/">illustration</a>
 		<p>Objects (& Functions, Arrays) are <strong>passed by Reference</strong></p>
 		<p>Primitives are <strong>passed by Value</strong></p>
-		<pre style="width: 85vw;"><code class="med-code">let obj = { key: 'value' }
+		<pre class="language-js"><code>let obj = { key: 'value' }
 let another = obj
 another.test = 'same object in memory'
 console.log(obj) // {key: 'value', test: 'same object in memory'}</code></pre>
@@ -1405,7 +1405,7 @@ const uniqueObj = Object.assign({}, obj)
 	</article>
 	<article class="slide">
 		<h2>Mutating Objects</h2>
-		<pre ><code class="med-code">let obj = { key: 'value' }
+		<pre class="language-js"><code>let obj = { key: 'value' }
 obj.prop = 1 // add a new key-value pair
 obj.key = 5 // change an existing value
 console.log(obj) // {key: 5, prop: 1}
@@ -1455,19 +1455,19 @@ console.log(obj)
 	</article>
 	<article class="slide">
 		<h2>Recursively Freezing an Object</h2>
-		<p>This is not a native JS function. You have to write it yourself. But here is an implementation we can use: <a href="https://github.com/substack/deep-freeze/blob/master/index.js">Github</a></p>
+		<p>This is not a native JS function. You have to write it yourself. But here is an implementation we can use: <a href="https://github.com/remix/simple-deep-freeze/blob/master/index.js">Github</a></p>
 		<pre class="language-js"><code class="med-code">function deepFreeze (o) {
-Object.freeze(o);
-Object.getOwnPropertyNames(o).forEach(prop => {
-if (o.hasOwnProperty(prop) 
-&& o[prop] !== null
-&& (typeof o[prop] === "object"
-|| typeof o[prop] === "function") 
-&& !Object.isFrozen(o[prop])) {
-deepFreeze(o[prop]);
-}
-});
-return o;
+  Object.freeze(o);
+  Object.getOwnPropertyNames(o).forEach(prop => {
+    if (o.hasOwnProperty(prop) 
+    && o[prop] !== null
+    && (typeof o[prop] === "object"
+    || typeof o[prop] === "function") 
+    && !Object.isFrozen(o[prop])) {
+      deepFreeze(o[prop]);
+    }
+  });
+  return o;
 };</code></pre>
 	</article>
 	<article class="slide">
@@ -1475,7 +1475,7 @@ return o;
 		<p>The For...in Loop (Does not garauntee order)</p>
 		<pre class="language-js"><code class="med-code">const object = {a: 1, b: 2, c: 3};
 for (const property in object) {
-console.log(`${property}: ${object[property]}`);
+  console.log(`${property}: ${object[property]}`);
 }
 // "a: 1"
 // "b: 2"
@@ -1484,7 +1484,7 @@ console.log(`${property}: ${object[property]}`);
 	<article class="slide">
 		<h2>Converting an Object to an Array</h2>
 		<p>Often it's easier to manipulate Objects as arrays (and then turn it back afterwards)</p>
-		<pre style="width: 90vw"><code class="med-code">const obj = {a: 1, b: 2, c: 3};
+		<pre class="language-js"><code>const obj = {a: 1, b: 2, c: 3};
 Object.entries(obj) // [['a', 1],['b', 2],['c', 3]]
 Object.keys(obj) // ['a', 'b', 'c']
 Object.values(obj) // [1, 2, 3]
@@ -1524,33 +1524,33 @@ console.log(_Sym.description);</code></pre>
 		<h2>"Monkey Patching" Prototypes considered harmful<sup><a href="https://maxheiber.medium.com/safe-monkey-patching-with-es2015-symbol-e36fb01ab794">Medium</a></sup></h2>
 		<pre class="language-js"><code class="med-code">// Add useful toString Method to js objects:
 Object.prototype.toString = function() {
-return JSON.stringify(this)
+  return JSON.stringify(this)
 }</code></pre>
 <p>This can lead to naming collisions with other libraries</p>
 <p>This is what <code>Symbol</code> is for!! So use it if you must do this.</p>
 <pre class="language-js"><code class="med-code">// toString path with `Symbol`:
 const toString = Symbol('toString')
 Object.prototype[toString] = function() {
-return JSON.stringify(this)
+  return JSON.stringify(this)
 }
 {a: 1, b: 2}[toString]() // "{\"a\":1,\"b\":2}"</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Safe Serialization on all <code>prototypes</code></h2>
 		<p>Using Symbol for safe global prototypal inheritance</p>
-		<pre style="width: fit-content"><code class="med-code">const serialize = Symbol('serialize');
+		<pre class="language-js" style="width: fit-content"><code>const serialize = Symbol('serialize');
 Boolean.prototype[serialize] = Number.prototype[serialize] = String.prototype[serialize] =
 function() { return JSON.stringify(this) }
 Function.prototype[serialize] = function() { return this.toString() }
 Array.prototype[serialize] = function() { 
 const values = this.map(item => item[serialize]()).join(', ')
-return '['+values+']'
+  return '['+values+']'
 };
 Object.prototype[serialize] = function() { 
-const properties = Object.entries( this ).map(
-entry => entry[0][serialize]() +': '+ entry[1][serialize]()
-)
-return '{'+properties+'}'
+  const properties = Object.entries( this ).map(
+    entry => entry[0][serialize]() +': '+ entry[1][serialize]()
+  )
+  return '{'+properties+'}'
 };
 RegExp.prototype[serialize] = function() { return '/'+this.source+'/'+this.flags }</code></pre>
 	</article>
@@ -1563,13 +1563,13 @@ RegExp.prototype[serialize] = function() { return '/'+this.source+'/'+this.flags
 	<hr>
 	<p><a href="https://jquery.com/">A word on jQuery (~234kb)</a></p>
 	<h4 style="text-align: center;">YAGNI</h4>
-	<ul style="display: flex;">
+	<div style="display: flex; list-style: none; gap: 8px">
 		<li><a href="http://youmightnotneedjquery.com/">1</a></li>
 		<li><a href="https://blog.garstasio.com/you-dont-need-jquery/">2</a></li>
 		<li> <a href="https://github.com/nefe/You-Dont-Need-jQuery">3</a></li>
 		<li><a href="https://github.com/you-dont-need-x/you-dont-need-jquery">4</a></li>
 		<li><a href="https://hackernoon.com/you-truly-dont-need-jquery-5f2132b32dd1">5</a></li>
-	</ul>
+	</div>
 </article>
 </section>
 
