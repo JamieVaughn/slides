@@ -47,3 +47,16 @@ addEventListener('mousemove', function(event){
   }
     
   });
+
+
+  // Clipboard
+
+  function copyToClipboard(e) {
+    const copy = e.currentTarget.dataset.clipboardText
+    const type = "text/plain";
+    const blob = new Blob([copy], { type });
+    const data = [new ClipboardItem({ [type]: blob })];
+    navigator.clipboard.write(data).then(e => console.log('success'), e => console.error(e))
+  }
+
+

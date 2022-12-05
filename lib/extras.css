@@ -146,3 +146,30 @@ kbd {
 	kbd + kbd {
 		margin-left: .1em;
 	}
+
+
+	.snippet-btn {
+		margin: 16px;
+		border-radius: 4px;
+		border-style: solid;
+		border-width: 2px;
+		cursor: copy;
+	}
+	.snippet-btn.primary:hover {
+		background-color: #00d1b2;
+		color: black;
+	}
+	.snippet-btn.info:hover {
+		background-color: #3e8ed0;
+		color: black;
+	}
+	.primary {
+		background-color: transparent;
+		border-color: #00d1b2;
+		color: #00d1b2;
+	}
+	.info {
+		background-color: transparent;
+			border-color: #3e8ed0;
+			color: #3e8ed0;
+	}

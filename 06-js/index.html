@@ -807,11 +807,16 @@ console.log(arr) // ['H','e','l']</code></pre>
 </div>
 	</article>
 	<article class="slide">
-		<h2>Creating Arrays via Static Methods</h2>
+		<h2>Creating Arrays</h2>
+		<pre class="language-js"><code class='med-code'>let array = [1, 2, 3]; // Array Literal (recommended)
+let arr = new Array(1, 2, 3); // Array constructor
+let arr = new Array(3); // [undefined, undefined, undefined]</code></pre>
+		<p>via Static Methods:</p>
 		<pre class="language-js"><code class='med-code'>Array.of(1, 2, 3) // [1, 2, 3]
 Array.from('string') // ["s", "t", "r", "i", "n", "g"]
 Array.from(document.querySelectorAll('div')) 
 // array of div nodes</code></pre>
+<p></p>
 	</article>
 	<article class="slide">
 		<h2>The Array Index</h2>
@@ -846,12 +851,6 @@ arr.length = 2; // [1, 2]</code></pre>
   {key: 'value'}, 
   ['nested', 'arrays']
 ]</code></pre>
-	</article>
-	<article class="slide">
-		<h2>Creating Arrays</h2>
-		<pre class="language-js"><code class='med-code'>let array = [1, 2, 3]; // Array Literal (recommended)
-let arr = new Array(1, 2, 3); // Array constructor
-let arr = new Array(3); // [undefined, undefined, undefined]</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Immutability vs Mutation in Arrays </h2>
@@ -988,7 +987,7 @@ if (input < -1) {
 	<article class="slide">
 		<h2>Ternary Operator <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">MDN</a></sup></h2>
 		<p>A more concise way to express simple if/else conditions</p>
-		<pre class="language-js"><code class="med-code">var input = 0
+		<pre class="correct language-js"><code class="med-code">var input = 0
 let result;
 result = input ? 'input was truthy!' : 'input was falsey!'
 
@@ -1038,13 +1037,10 @@ default:
 		<h2 style="margin-top: -5rem;">Try Catch</h2>
 		<div class="flex">
 			<pre class="language-js fit"><code>try {
-fetchDataFromServer(
-handleSuccessFn, 
-handleErrorFn
-)
+  fetchDataFromServer(success, error)
 } catch (e) {
-console.log(e)
-redirectUserToHomeScreen()
+  console.log(e)
+  redirectUserToHomeScreen()
 }</code></pre>
 <img src="https://i.redd.it/cmhc4anews571.png" alt="">
 
@@ -1055,24 +1051,24 @@ redirectUserToHomeScreen()
 		<div class="flex" style="gap: 2rem">
 			<pre class="wrong language-js fit"><code class="med-code">var authenticate = false
 if ( authenticate ) {
-console.log('success')
-userSignIn()
+  console.log('success')
+  userSignIn()
 } else {
-throw "Error: the input value was too large"
+  throw "Error: User authentication failed"
 }</code></pre>
 <pre class="correct language-js fit"><code class='med-code'>var authenticate = false
 try {
-if ( authenticate ) {
-userSignIn()
-} else {
-throw "Error: the input value was too large"
-}
+  if ( authenticate ) {
+    userSignIn()
+  } else {
+    throw "Error: User authentication failed"
+  }
 } catch (e) {
-console.log(e)
-redirectUserToHomeScreen()
+  console.log(e)
+  redirectUserToHomeScreen()
 } finally { // run clean up code here
-resetForm()
-closeSession()
+  resetForm()
+  closeSession()
 }</code></pre>
 </div>
 <span style="width: 45vw;align-self: start">
@@ -1088,7 +1084,7 @@ closeSession()
 		<p><a href="http://pythontutor.com/iframe-embed.html#code=var%20globalVar%20%3D%20'Hello'%0A%0Afunction%20greetFriend%20%28salutation,%20name%29%20%7B%0A%20%20salutation%20%2B%3D%20'%20'%20%2B%20name%0A%20%20return%20salutation%0A%7D%0A%0Aconsole.log%28greetFriend%28globalVar,%20'Jamie'%29%29%0Aconsole.log%28greetFriend%28globalVar,%20'Kermit'%29%29%0Aconsole.log%28greetFriend%28globalVar,%20'Pikachu'%29%29%0Aconsole.log%28globalVar%29&codeDivHeight=400&codeDivWidth=350&curInstr=17&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Example 2</a></p>
 		<p><a href="http://www.pythontutor.com/javascript.html#code=var%20globalVar%20%3D%20'Hello'%0A%0Afunction%20greetFriend%20%28name%29%20%7B%0A%20%20globalVar%20%2B%3D%20'%20'%20%2B%20name%0A%20%20return%20globalVar%0A%7D%0A%0Aconsole.log%28greetFriend%28'Jamie'%29%29%0Aconsole.log%28greetFriend%28'Kermit'%29%29%0Aconsole.log%28greetFriend%28'Pikachu'%29%29&curInstr=16&mode=display&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Visualize JS</a></p>
 		<p><a href="https://ui.dev/javascript-visualizer/">UI Viz</a></p>
-		<button class='snippet-btn button is-outlined is-primary' data-clipboard-text="`function test(a, b, c) {
+		<div class="flex"><button class='snippet-btn primary' onclick="copyToClipboard(event)" data-clipboard-text="`function test(a, b, c) {
 if(a) {
 c +=1;
 } else if(b) {
@@ -1101,7 +1097,7 @@ return c;
 }
 
 test(0, 2, 3);`">if/else snippet</button>
-<button class="snippet-btn button is-outlined is-info" data-clipboard-text="`var globalVar = 'Hello';
+<button class="snippet-btn info" onclick="copyToClipboard(event)" data-clipboard-text="`var globalVar = 'Hello';
 
 function greetFriend (salutation, name) {
 salutation += ' ' + name;
@@ -1112,6 +1108,7 @@ console.log(greetFriend(globalVar, 'Jamie'));
 console.log(greetFriend(globalVar, 'Kermit'));
 console.log(greetFriend(globalVar, 'Pikachu'));
 console.log(globalVar);`">pure fn snippet</button>
+</div>
 	</article>
 	<article class="slide">
 		<h2>Further MDN Reading</h2>
@@ -1129,7 +1126,7 @@ console.log(globalVar);`">pure fn snippet</button>
 		<h2>Standard For Loop</h2>
 		<pre class="language-js"><code class="med-code">let arr = [1,2,3,4,5]
 for(let i = 0; i &lt; arr.length; i++){
-console.log(arr[i])
+  console.log(arr[i])
 }</code></pre>
 	</article>
 	<article class="slide">
@@ -1137,14 +1134,14 @@ console.log(arr[i])
 		<pre class="language-js"><code class="med-code">let arr = [1,2,3,4,5]
 let i = 0;
 while(i < arr.length) {
-console.log(arr[i])
-i++
+  console.log(arr[i])
+  i++
 }
 
 let playing = true
 while(playing) {
-// game loop calculations
-if(Player.clicks('Exit')) playing = false
+  // game loop calculations
+  if(Player.clicks('Exit')) playing = false
 }</code></pre>
 </article>
 	<article class="slide">
@@ -1152,8 +1149,8 @@ if(Player.clicks('Exit')) playing = false
 		<pre class="language-js"><code class="med-code">let arr = [1,2,3,4,5]
 let i = 0;
 do {
-i = i + 1;
-result = result + i;
+  i = i + 1;
+  result = result + i;
 } while (i < arr.length);</code></pre>
 </article class="slide">
 	<article class="slide">
@@ -1161,7 +1158,7 @@ result = result + i;
 		<p>An alternative way to implement a loop</p>
 		<p>The function repeatedly calls itself until the exit conditon (aka escape hatch) is met</p>
 		<pre class="language-js"><code class="med-code">function factorial(num) {
-return num === 0 ? 1 : factorial(num - 1)
+  return num === 0 ? 1 : factorial(num - 1)
 }</code></pre>
 	<p><a href="http://www.pythontutor.com/javascript.html#code=function%20fact%28n%29%20%7B%0A%20%20if%20%28n%20%3D%3D%200%29%20%7B%0A%20%20%20%20return%201%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20return%20n%20*%20fact%28n-1%29%3B%0A%20%20%7D%0A%7D%0A%0Afact%283%29%3B%0Afact%283%29%3B&mode=edit&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Visualize Factorial Fn</a></p>
 	</article>
@@ -1170,7 +1167,7 @@ return num === 0 ? 1 : factorial(num - 1)
 		<h2>For Of Loops</h2>
 		<pre class="language-js"><code class="med-code">const array1 = ['a', 'b', 'c'];
 for (const element of array1) {
-console.log(element);
+  console.log(element);
 }</code></pre>
 	</article>
 	<article class="slide">
@@ -1185,12 +1182,14 @@ document.getElementsByTagName('div').forEach() // TypeError</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Other Array Methods<sup><a href="Javascript.info](https://javascript.info/array-methods)">info</a></sup></h2>
-		<pre style="width: 35vw;"><code class="med-code">let arr = [5, 4, 3, 2, 1, 0]
+		<pre class="language-js"><code>let arr = [5, 4, 3, 2, 1, 0]
 arr.find(i => i < 4) // return first matching element 
+
+// Chaining array methods
 arr.findIndex(i => i < 4) // returns the index of the first matching element 
-.some(i => i < 4) // returns true if condition is met at least once
-.every(i => i < 4) // returns true only if condition is met for all
-.includes(4) // returns true only if it contains the parameter</code></pre>
+   .some(i => i < 4) // returns true if condition is met at least once
+   .every(i => i < 4) // returns true only if condition is met for all
+   .includes(4) // returns true only if it contains the parameter</code></pre>
 		</article>
 	<article class="slide">
 		<h2>Advanced Array Methods</h2>
@@ -1231,9 +1230,11 @@ arr2.flatMap(x => x) //  [1, 2, 2, 3, 3, 4]</code></pre>
 		<h2><code>.reduce()</code></h2>
 		<p>The callback processes all the elements in the array and reduces them down to one value called the accumulator.</p>
 		<p>Always returns a single output value. </p>
-		<pre class="language-js"><code class="med-code">[0, 1, 2, 3, 4].reduce((accumulator, currentValue, currentIndex, array) => {
-return accumulator + currentValue
+		<pre class="language-js"><code class="med-code">let arr = [0, 1, 2, 3, 4]
+arr.reduce((accumulator, currentValue, currentIndex, array) => {
+  return accumulator + currentValue
 }, 0)
+
 // .reduceRight starts from the end and works towards the start
 arr.reduceRight((acc, cur) => acc.concat(cur), [])</code></pre>
 	</article>
@@ -1246,7 +1247,7 @@ arr.reduceRight((acc, cur) => acc.concat(cur), [])</code></pre>
 			<th>accumulator</th>
 			<th>currentValue</th>
 			<th>currentIndex</th>
-			<th>array</th>
+			<th style="width: 400px; text-align: center;">array</th>
 			<th>return value</th>
 			</tr>
 			</thead>
@@ -1288,7 +1289,7 @@ arr.reduceRight((acc, cur) => acc.concat(cur), [])</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Array Methods Challenge</h2>
-		<p><a href="https://github.com/JamieVaughn/code-along/tree/master/array-methods">Github Link</a></p>
+		<p><a href="https://github.com/JamieVaughn/code-along/blob/master/javascript/array-methods/starter.html">Github Link</a></p>
 		<h4>You will have to do some <em>"Read, Search Asking"</em> <br> about <code>.some(), .every()</code></h4>
 		<p>Bonus Practice: <a href="https://david-peter.de/cube-composer/">Array Methods Game</a></p>
 	</article>
@@ -1304,7 +1305,7 @@ arr.reduceRight((acc, cur) => acc.concat(cur), [])</code></pre>
 <section>
 	<header class="slide">
 		<h2>Objects</h2>
-		<p>Structured Data: A Collection of Key & Value pairs</p>
+		<h1>Structured Data: <br> A Collection of Key & Value pairs</h1>
 	</header>
 	<article class="slide">
 		<h2>Declaring Object Literals</h2>
