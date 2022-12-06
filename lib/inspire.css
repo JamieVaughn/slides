@@ -37,7 +37,6 @@ body {
 .slide .flex {
 	display: flex;
 	width: 100%;
-	max-height: 50%;
 	justify-content: space-evenly;
 	padding: 0.5rem 0;
 	margin: 1rem 0;
