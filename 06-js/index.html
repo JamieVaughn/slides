@@ -1158,7 +1158,7 @@ do {
 		<p>An alternative way to implement a loop</p>
 		<p>The function repeatedly calls itself until the exit conditon (aka escape hatch) is met</p>
 		<pre class="language-js"><code class="med-code">function factorial(num) {
-  return num === 0 ? 1 : factorial(num - 1)
+  return num === 0 ? 1 : num * factorial(num - 1)
 }</code></pre>
 	<p><a href="http://www.pythontutor.com/javascript.html#code=function%20fact%28n%29%20%7B%0A%20%20if%20%28n%20%3D%3D%200%29%20%7B%0A%20%20%20%20return%201%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20return%20n%20*%20fact%28n-1%29%3B%0A%20%20%7D%0A%7D%0A%0Afact%283%29%3B%0Afact%283%29%3B&mode=edit&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Visualize Factorial Fn</a></p>
 	</article>
@@ -1185,11 +1185,10 @@ document.getElementsByTagName('div').forEach() // TypeError</code></pre>
 		<pre class="language-js"><code>let arr = [5, 4, 3, 2, 1, 0]
 arr.find(i => i < 4) // return first matching element 
 
-// Chaining array methods
 arr.findIndex(i => i < 4) // returns the index of the first matching element 
-   .some(i => i < 4) // returns true if condition is met at least once
-   .every(i => i < 4) // returns true only if condition is met for all
-   .includes(4) // returns true only if it contains the parameter</code></pre>
+arr.some(i => i < 4) // returns true if condition is met at least once
+arr.every(i => i < 4) // returns true only if condition is met for all
+arr.includes(4) // returns true only if it contains the parameter</code></pre>
 		</article>
 	<article class="slide">
 		<h2>Advanced Array Methods</h2>
