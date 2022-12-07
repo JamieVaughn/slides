@@ -1,0 +1,140 @@
+1
+00:01.000 —> 00:05.000
+Spaghetti code is easy to avoid once you know how to think about your code as a system.
+
+2
+00:05.000 —> 00:07.000 align:start
+First, what exactly is spaghetti code and why is it a problem?
+
+3
+00:7.000 —> 00:11.000 align:middle
+An application can start to get really messy as you connect more and more parts together.
+
+4
+00:11.000 —> 00:14.000 align:middle
+And an app is ultimately all about connecting pieces of code to each other.
+
+5
+00:14.000 —> 00:18.000 align:middle
+But if you connect every piece to every other piece then
+
+6
+00:18.000 —> 00:21.000 align:middle
+suddenly you can't move anything around anymore.
+
+7
+00:21.000 —> 00:23.000 align:middle
+You will have lost all of your degrees of freedom.
+
+8
+00:23.000 —> 00:25.000 align:middle
+And now your code will be like a tangled mess of spaghetti that you can no longer unravel.
+
+9
+00:27.000 -> 00:31.000
+Let's step away from our javascript code and travel back to the era of the telegram for a moment.
+
+10
+00:31.000 —> 00:35.000 align:middle
+When there were only two telegraphs, things were pretty simple
+
+______
+11
+00:7.000 —> 00:11.000 align:middle
+They could just connect directly to each other and that was that.
+
+12
+00:7.000 —> 00:11.000 align:middle
+Two telegraphs means one connection. But let us add a third one.
+
+13
+00:7.000 —> 00:11.000 align:middle
+Since they all still must directly connect to each other, the number of connections climbs to three as well.
+
+14
+00:7.000 —> 00:11.000 align:middle
+But let us add another telegraph. Now we have 4 telegraphs.
+
+15
+00:7.000 —> 00:11.000 align:middle
+But now let's count up our connections. One, two, three, four, five, six! SIX connections!
+
+16
+00:7.000 —> 00:11.000 align:middle
+Having so many wires all over the place isn't good. See how quickly our connections can grow out of control and become a mess?
+
+17 
+00:7.000 —> 00:11.000 align:middle
+As we continue to add more telegraphs the problem becomes impossible to control.
+
+18
+00:7.000 —> 00:11.000 align:middle
+With 10 telegraphs, we rocket up to 45 connections.
+
+19 
+00:7.000 —> 00:11.000 align:middle
+Can you imagine what 11 telegraphs, or 15 or 20 or 1000 would look like?
+
+20
+00:7.000 —> 00:11.000 align:middle
+But let us add another telegraph. Now we have 4 telegraphs.
+
+21
+00:7.000 —> 00:11.000 align:middle
+Here's a table of what we've seen so far.
+
+22
+00:7.000 —> 00:11.000 align:middle
+As it turns out the number of connections is equal to n squared minus n quantity divided by two. Where n is the number of telegraphs
+
+23
+00:7.000 —> 00:11.000 align:middle
+So how many connections would a network of 2000 telegraphs have?
+
+24
+00:7.000 —> 00:11.000 align:middle
+That would be 1,999,000. Let's agree we don't want to deal with that.
+
+25
+00:7.000 —> 00:11.000 align:middle
+So how do we manage this problem in our code?
+
+26
+00:7.000 —> 00:11.000 align:middle
+You probably are thinking of a better solution already... What about using a central hub?
+
+27
+00:7.000 —> 00:11.000 align:middle
+Now every telegraph only connects to one the one hub, instead of the n number of other telegraphs!
+
+28
+00:7.000 —> 00:11.000 align:middle
+How does this relationship compare to the last one?
+
+29
+00:7.000 —> 00:11.000 align:middle
+With two telegraphs, we'll have 2 connections. For 3, 3 connections, four we'll have 4 conections. 10 will have 10 and 2000? will have 2000 connections.
+
+30
+00:7.000 —> 00:11.000 align:middle
+As you can see, the hub approach actually does worse with 1 telegraph, but after that point it does the same or better. Much better actually.
+
+31
+00:7.000 —> 00:11.000 align:middle
+On this graph we can see how the direct connection approach is exponential while our hub approach increases linearly.
+
+32
+00:7.000 —> 00:11.000 align:middle
+So in general, what we've learned is that the more connections there are the more complexity we have to deal with.
+
+33
+00:7.000 —> 00:11.000 align:middle
+So now that we know that we should minimize the number of our connections
+https://support.google.com/meet/answer/10619995#record-button
+34
+00:7.000 —> 00:11.000 align:middle
+And that how we architect our connections is the key to achieving That
+
+35
+00:7.000 —> 00:11.000 align:middle
+Let's take a look at how we can do that for software instead of telegraphs.
