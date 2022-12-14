@@ -88,3 +88,25 @@ width: fit-content;
 .col-3 {columns: 3}
 .col-4 {columns: 4}
 .col-6 {columns: 6}
+
+.hidden {
+  display: none;
+}
+
+.grid {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  align-items: start;
+  grid-auto-flow: dense;
+}
+.grid.center {
+  justify-items: center;
+  align-items: center;
+}
+.grid.col-2 {
+  grid-template-columns: 1fr 1fr;
+}
+.grid.col-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}

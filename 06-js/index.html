@@ -256,6 +256,7 @@ Number.isNaN(NaN) // true</code></pre>
 </article>
 <article class="slide">
 	<h2>Primitives Are Immutable</h2>
+	<p>Immutable vs. Mutable</p>
 		<pre class="language-js"><code class='large-code'>5 = 4 // Syntax Error
 var str = 'hello'
 console.log(str[0]) // 'h'
@@ -561,15 +562,15 @@ fn(func) // Functions can be passed into other functions</code></pre>
 	<article class="slide">
 		<h2>Pure Functions & Side Effects</h2>
 		<p>Does the return value of the function depend only on the parameters and/or internal state?</p>
-		<div class="flex" style="justify-content: space-around;">
-			<img style="width: 350px" src="./img/blackbox.png" alt="">
-			<img style="width: 350px" src="./img/impure_blackbox.png" alt="">
+		<div class="flex" style="justify-content: space-around; max-height: 50vh;">
+			<img src="./img/blackbox.png" alt="">
+			<img src="./img/impure_blackbox.png" alt="">
 		</div>
 	</article>
 	<article class="slide">
 		<h2>When to use pure vs impure functions?</h2>
 		<p>This will come up later when we get to code organization & architecture.</p>
-		<p>Immutability vs. Mutations</p>
+		<p>Non-Mutating vs. Mutating Operations</p>
 		<div class="flex">
 		<pre class="language-js"><code>// Pure Fn
 function volumeOfCylinder(radius, height){
@@ -775,7 +776,7 @@ Math.cos()
 <pre class="language-js"><code>var str = 'Hello!'
 str.length = 3;
 str.length // 6;
-str[2] = 'l' // str is still 'Hello'</code></pre>
+str[2] = 'a' // str is still 'Hello'</code></pre>
 <p>↑ But Strings are immutable, unlike Arrays</p>
 		<pre class="language-js"><code class='med-code'>var arr = ['H','e','l','l','o','!']
 arr[0] // 'H'
@@ -853,8 +854,8 @@ arr.length = 2; // [1, 2]</code></pre>
 ]</code></pre>
 	</article>
 	<article class="slide">
-		<h2>Immutability vs Mutation in Arrays </h2>
-		<p><strong><a href="http://wjv.io/log/posts/immutability.html">JS Immutability Toolkit</a></strong></p>
+		<h2>Non-Mutating vs Mutation in Arrays </h2>
+		<p><strong><a href="http://wjv.io/log/posts/immutability.html">JS Non-Mutating Toolkit</a></strong></p>
 	</article>
 	<article class="slide">
 		<h2>Array Challenge</h2>
@@ -892,7 +893,7 @@ arr.length = 2; // [1, 2]</code></pre>
 
 		</ul>
 	</section>
-	<article class="slide">
+	<article class="hidden">
 		<h2>The Missing <strong>XOR</strong></h2>
 		<p>Javascript does have a bitwise <strong>XOR</strong> which uses the <code>^</code> (caret) symbol.</p>
 		<p>Bitwise or Binary <strong>Exclusive OR</strong>: Two inputs of opposite truthiness result in <code>1</code> and if they are the same truthiness they result in <code>0</code></p>
@@ -1034,7 +1035,7 @@ default:
 		</div>
 	</article>
 	<article class="slide">
-		<h2 style="margin-top: -5rem;">Try Catch</h2>
+		<h2>Try Catch</h2>
 		<div class="flex">
 			<pre class="language-js fit"><code>try {
   fetchDataFromServer(success, error)
@@ -1042,21 +1043,25 @@ default:
   console.log(e)
   redirectUserToHomeScreen()
 }</code></pre>
-<img src="https://i.redd.it/cmhc4anews571.png" alt="">
+<img style="max-height: 70vh" src="https://i.redd.it/cmhc4anews571.png" alt="">
 
 		</div>
 	</article>
 	<article class="slide">
 		<h2>Throwing Errors</h2>
-		<div class="flex" style="gap: 2rem">
-			<pre class="wrong language-js fit"><code class="med-code">var authenticate = false
+		<div class="grid col-2" style="gap: 2rem">
+			<pre class="wrong language-js fit"><code class="med-code">let authenticate = false
 if ( authenticate ) {
   console.log('success')
   userSignIn()
 } else {
   throw "Error: User authentication failed"
 }</code></pre>
-<pre class="correct language-js fit"><code class='med-code'>var authenticate = false
+<span style="width: 45vw; align-self: start;">
+	<p>Use the <code>throw</code> statement to halt code execution & issue a custom exception.</p>
+	<p>Only use in places it can be caught. When the exception occurs, control transfers to the <code>catch</code> block. The <code>finally</code> block always runs, error or not.</p>
+</span>
+<pre class="correct language-js fit" style="grid-row: 1 / span 2"><code class='med-code'>let authenticate = false
 try {
   if ( authenticate ) {
     userSignIn()
@@ -1070,11 +1075,8 @@ try {
   resetForm()
   closeSession()
 }</code></pre>
+
 </div>
-<span style="width: 45vw;align-self: start">
-	<p>Use the <code>throw</code> statement to halt code execution & issue a custom exception.</p>
-	<p>Only use in places it can be caught. When the exception occurs, control transfers to the <code>catch</code> block. The <code>finally</code> block always runs, error or not.</p>
-</span>
 		
 </article>
 	
@@ -1295,13 +1297,6 @@ arr.reduceRight((acc, cur) => acc.concat(cur), [])</code></pre>
 </section>
 
 <section>
-	<article class="slide">
-		<h2>Calculator Code Along</h2>
-		<p><a href="https://github.com/JamieVaughn/code-along/tree/master/calculator">Github Repo Starter</a></p>
-	</article>
-</section>
-
-<section>
 	<header class="slide">
 		<h2>Objects</h2>
 		<h1>Structured Data: <br> A Collection of Key & Value pairs</h1>
@@ -1342,6 +1337,16 @@ obj.hasOwnProperty('key');
 		<pre class="language-js"><code class="med-code">let obj = new Object // {}
 obj.key = 'value' // must populate keys manually</code></pre>
 	</article>
+
+	<article class="slide">
+		<h1>Detour to DOM API</h1>
+		<p><a href="https://wjv.io/slides/07-dom">dom api</a></p>
+	</article>
+</section>
+	<section>
+		<header class="slide">
+			<h1>Advanced Objects</h1>
+		</header>
 	<article class="slide">
 		<h2>The <code>this</code> keyword <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN</a></sup> <sup>/</sup> <sup><a href="https://www.w3schools.com/js/js_this.asp">W3</a></sup></h2>
 		<pre class="language-js"><code class="med-code">const person = {
@@ -1396,6 +1401,7 @@ console.log(obj) // {key: 'value', test: 'same object in memory'}</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Cloning an Object with <code>.assign()</code></h2>
+		<p>Recall Mutating vs. Non-Mutating Operations (creating a copy)</p>
 		<p>This will avoid the potential collisions due to <strong>passing by Reference</strong></p>
 		<pre class="language-js"><code class="med-code">const obj = {name: 'Jamie', isHuman: true};
 const uniqueObj = Object.assign({}, obj)
@@ -1410,6 +1416,27 @@ obj.key = 5 // change an existing value
 console.log(obj) // {key: 5, prop: 1}
 delete obj.key // delete a key-value pair
 console.log(obj) // {prop: 1}</code></pre>
+	</article>
+	<article class="slide">
+		<h2>Looping in Objects</h2>
+		<p>The For...in Loop (Does not garauntee order)</p>
+		<pre class="language-js"><code class="med-code">const object = {a: 1, b: 2, c: 3};
+for (const property in object) {
+  console.log(`${property}: ${object[property]}`);
+}
+// "a: 1"
+// "b: 2"
+// "c: 3"</code></pre>
+	</article>
+	<article class="slide">
+		<h2>Converting an Object to an Array</h2>
+		<p>Often it's easier to manipulate Objects as arrays (and then turn it back afterwards)</p>
+		<pre class="language-js"><code>const obj = {a: 1, b: 2, c: 3};
+Object.entries(obj) // [['a', 1],['b', 2],['c', 3]]
+Object.keys(obj) // ['a', 'b', 'c']
+Object.values(obj) // [1, 2, 3]
+// Reverse the process:
+Object.fromEntries([['a', 1],['b', 2],['c', 3]]) //{a: 1, b: 2, c: 3}</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Protecting Objects</h2>
@@ -1470,27 +1497,6 @@ console.log(obj)
 };</code></pre>
 	</article>
 	<article class="slide">
-		<h2>Looping in Objects</h2>
-		<p>The For...in Loop (Does not garauntee order)</p>
-		<pre class="language-js"><code class="med-code">const object = {a: 1, b: 2, c: 3};
-for (const property in object) {
-  console.log(`${property}: ${object[property]}`);
-}
-// "a: 1"
-// "b: 2"
-// "c: 3"</code></pre>
-	</article>
-	<article class="slide">
-		<h2>Converting an Object to an Array</h2>
-		<p>Often it's easier to manipulate Objects as arrays (and then turn it back afterwards)</p>
-		<pre class="language-js"><code>const obj = {a: 1, b: 2, c: 3};
-Object.entries(obj) // [['a', 1],['b', 2],['c', 3]]
-Object.keys(obj) // ['a', 'b', 'c']
-Object.values(obj) // [1, 2, 3]
-// Reverse the process:
-Object.fromEntries([['a', 1],['b', 2],['c', 3]]) //{a: 1, b: 2, c: 3}</code></pre>
-	</article>
-	<article class="slide">
 		<h2>Prototypes</h2>
 		<p>We've been using Objects this whole time!</p>
 		<img src="img/always_has_been.jpg" alt="">
@@ -1534,7 +1540,7 @@ Object.prototype[toString] = function() {
 }
 {a: 1, b: 2}[toString]() // "{\"a\":1,\"b\":2}"</code></pre>
 	</article>
-	<article class="slide">
+	<article class="hidden">
 		<h2>Safe Serialization on all <code>prototypes</code></h2>
 		<p>Using Symbol for safe global prototypal inheritance</p>
 		<pre class="language-js" style="width: fit-content"><code>const serialize = Symbol('serialize');
@@ -1569,6 +1575,10 @@ RegExp.prototype[serialize] = function() { return '/'+this.source+'/'+this.flags
 		<li><a href="https://github.com/you-dont-need-x/you-dont-need-jquery">4</a></li>
 		<li><a href="https://hackernoon.com/you-truly-dont-need-jquery-5f2132b32dd1">5</a></li>
 	</div>
+</article>
+<article class="slide">
+	<h2>Calculator Code Along</h2>
+	<p><a href="https://github.com/JamieVaughn/code-along/tree/master/calculator">Github Repo Starter</a></p>
 </article>
 </section>
 
