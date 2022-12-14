@@ -393,13 +393,13 @@ element.style.transform = 'rotate(90deg)'
           class="language-js"
           style="width: 80vw"
         ><code>button.addEventListener('click', function(e) {
-	console.log(e.target)
-	const div = document.createElement('div')
-	const text = document.createTextNode(
-		'You typed: ' + e.target.value
-		)
-	div.appendChild(text)
-	e.target.appendChild(div);
+  console.log(e);
+  const div = document.createElement("div");
+  const text = document.createTextNode(
+    "You clicked @ " + new Date().toLocaleTimeString()
+  );
+  div.appendChild(text);
+  e.target.insertAdjacentElement("afterend", div);
 })</code></pre>
         <script>
           function tryitout(e) {
@@ -649,7 +649,20 @@ console.group
       </article>
 
       <article class="slide">
-        <h2>The Sources Panel</h2>
+        <h2>Using the Sources Panel tools:</h2>
+        <ul>
+          <li>Opening Sources Panel</li>
+          <li>Setting Breakpoints</li>
+          <li>Stepping through the code</li>
+          <li>Using the console at a breakpoint</li>
+          <li>Watching Variables</li>
+          <li>Deactivate Breakpoints & Resuming Script</li>
+          <li>Blackboxing libraries</li>
+        </ul>
+      </article>
+
+      <article class="slide">
+        <h2>The Sources Panel in Action!</h2>
         <p>
           Our special friend for inspecting code
           <strong>during runtime!</strong>
@@ -661,19 +674,6 @@ console.group
             Example Bug
           </a>
         </p>
-      </article>
-
-      <article class="slide">
-        <h2>Using the Sources Panel tools:</h2>
-        <ul>
-          <li>Opening Sources Panel</li>
-          <li>Setting Breakpoints</li>
-          <li>Stepping through the code</li>
-          <li>Using the console at a breakpoint</li>
-          <li>Watching Variables</li>
-          <li>Deactivate Breakpoints & Resuming Script</li>
-          <li>Blackboxing libraries</li>
-        </ul>
       </article>
     </section>
 
