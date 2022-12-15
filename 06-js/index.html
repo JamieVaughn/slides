@@ -890,9 +890,22 @@ arr.length = 2; // [1, 2]</code></pre>
 			<li style="list-style: none;"><code>==</code>Loose Equality, <code>!=</code>Loose InEquality, <code>===</code>Strict Equality, <code>!==</code>Strict InEquality</li>
 			<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#relational_operators">Relational Operators: </a></li>
 			<li style="list-style: none;"><code>></code>Greater Than, <code>>=</code>Greater or Equal to, <code><</code>Less Than, <code><=</code>Lesser or Equal to</li>
-
+			<li style="list-style: none;">Nullish Coalescer <code>??</code></li>
 		</ul>
-	</section>
+	</article>
+	<article class="slide">
+		<h2>Nullish Coalescer</h2>
+		<p><code>??</code></p>
+		<p>
+			Returns the second operand, only if the first is nullish:
+			<code>null</code>, <code>undefined</code>
+		</p>
+		<pre class="language-js"><code class="med-code">null ?? 42 // 42
+undefined ?? 42 // 42
+'' ?? 42 // ''
+0 ?? 42 // 0
+false ?? 42 // false</code></pre>
+	</article>
 	<article class="hidden">
 		<h2>The Missing <strong>XOR</strong></h2>
 		<p>Javascript does have a bitwise <strong>XOR</strong> which uses the <code>^</code> (caret) symbol.</p>
@@ -1328,9 +1341,22 @@ obj.key4(a, b) // invokes key3 method</code></pre>
 		<h2>Checking for Properties</h2>
 		<pre class="language-js"><code class="med-code">obj && obj.key
 obj && obj.key3 && obj.key3.key // && Operator as a 'Guard'
-obj?.key3?.key // Optional Chaining Operator
 obj.hasOwnProperty('key');
-'key' in obj;</code></pre>
+'key' in obj;
+
+// New in ES6:
+obj?.key3?.key // Optional Chaining Operator</code></pre>
+	</article>
+	<article class="slide">
+		<h2>Optional Chaining</h2>
+		<p><code>?.</code></p>
+		<pre
+			class="language-js"
+		><code class="med-code">let obj = { key: { maybe: { nested: 1} } }
+obj.key.maybenot.nested // Throws an error
+obj.key.maybenot?.nested // Evaluates to `undefined`
+obj?.key?.maybenot?.nested // Chain multiple for full safety
+</code></pre>
 	</article>
 	<article class="slide">
 		<h2>The Object Constructor</h2>
