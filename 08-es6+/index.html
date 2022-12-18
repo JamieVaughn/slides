@@ -710,7 +710,8 @@ fn(3)(4) // 7</code></pre>
       </article>
       <article class="slide">
         <h2>Javascript <code>Class</code> Keyword</h2>
-        <pre class="language-js"><code>class xyPoint {
+        <div class="flex">
+        <pre class="language-js"><code>class Point2D {
   constructor(x, y) {
     this.x = x;
     this.y = y;
@@ -718,16 +719,31 @@ fn(3)(4) // 7</code></pre>
   // ...define more variables and methods here
 }
 
-const instanceXYPoint = new xyPoint(1, 2)
+const instanceXYPoint = new Point2D(1, 2)
 instanceXYPoint.x // 1
 instanceXYPoint.y // 2
 </code></pre>
         <ul>
-          <li>Constructor/Super - <code>super</code></li>
-          <li>Getters/Setters -  <code>get</code>, <code>set</code></li>
-          <li>Private members with the hash symbol - <code>#</code></li>
+          <li>Constructor/Super <ul>
+            <li><code>constructor</code></li>
+            <li><code>super</code></li>
+            <li>Instantiating with the <code>new</code> keyword</li>
+          </ul></li>
+          <li>Getters/Setters 
+            <ul>
+              <li><code>get</code></li>
+              <li><code>set</code></li>
+            </ul>
+            </li>
+          <li>Private members with the hash symbol 
+            <ul>
+              <li><code>#</code></li>
+            </ul>
+            </li>
           <li>Prototypal Inheritance</li>
         </ul>
+      </div>
+
       </article>
       <article class="slide">
         <h2>Made Possible by Enhance Object Literals</h2>
@@ -794,7 +810,7 @@ console.log(carrot.name) // 'carrot'</code></pre>
   get C () {
     return (5 / 9) * (this.F - 32)
   }
-  set C(degrees) {
+  set C (degrees) {
     this.F = (degrees * 9.0) / 5 + 32;
   }
 } // can't use arrow function syntax for getters/setters because of lexical scoping</code></pre>
@@ -809,11 +825,11 @@ console.log(carrot.name) // 'carrot'</code></pre>
   }
   getInfo() {
     return {
-    Name: this.name, 
-    Email: this.email, 
-    Address: this.address
+      Name: this.name, 
+      Email: this.email, 
+      Address: this.address
+    }
   }
-}
 }</code></pre>
       </article>
       <article class="slide">
@@ -842,9 +858,9 @@ console.log(carrot.name) // 'carrot'</code></pre>
         <ul>
           <li>
             <code>super</code> maintains the connection between parent and child
-            classes
+            classes - It establishes the inheritance chain.
           </li>
-          <li>super method is used to call parent's constructor.</li>
+          <li><code>super</code> method is used to call parent's constructor & populates the class with all of it's parents properties & methods</li>
           <li>
             It is optional to use it - only if you need to use
             properties/methods of your parent class in your derived class
@@ -864,17 +880,23 @@ constructor(...args) {
       </article>
       <article class="slide">
         <h2>Results</h2>
+        <div class="flex" style="gap: 3rem;">
         <pre class="language-js"><code>const joPerson = new Person(
   "Jo", "jo@home.com", "123 Home Ave"
 )
 const joEmployee = new Employee(
   "Developer", "321 Work Ave", "Jo", "jo@work.com"
 )
-console.table({
+</code></pre>
+<div>
+  <pre class="language-js"><code>console.table({
   emp: joEmployee.getInfo(), 
   per: joPerson.getInfo()
-})</code></pre>
-        <img src="img/employee.png" alt="" />
+})
+  </code></pre>
+  <img src="img/employee.png" alt=""/>
+</div>
+      </div>
       </article>
       <article class="slide">
         <h2>Instances</h2>
@@ -891,6 +913,9 @@ joEmployee.__proto__ // Person {constructor: ƒ, getInfo: ƒ}</code></pre>
       <article class="slide">
         <h2>Private methods/properties <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields">MDN</a></sup></h2>
         <p>Private members on a class are fully protected and inaccessible, except within the class block scope</p>
+        <div class="flex">
+
+        
         <pre class="language-js"><code>class ClassWithPrivate {
   #privateField = 42;
   #privateMethod() {
@@ -900,30 +925,37 @@ joEmployee.__proto__ // Person {constructor: ƒ, getInfo: ƒ}</code></pre>
   logPrivateMethod() {
     console.log(this.#privateMethod())
   }
-}
+}</code></pre>
+<pre class="language-js"><code>const instance = new ClassWithPrivate()
 
-const instance = new ClassWithPrivate()
+// Public members can be access, called or deleted
 instance.logPrivateMethod() // works
 
+// Private members can't be accessed nor deleted
 instance.#privateField === 42 // Syntax Error
 instance.#privateMethod() // Syntax Error
 delete instance.#privateMethod() // Syntax Error</code></pre>
+</div>
       </article>
       <article class="slide">
         <h2>The <code>static</code> Keyword</h2>
+        <p>For running some procedural code once for a class & sharing it between instances</p>
         <pre class="language-js"><code>class ClassWithPrivateStatic {
-  static #privateStaticField;
-  static #privateStaticFieldWithInitializer = 42;
+  static field = 'some value'
+  static method () {
+    return 42;
+  }
 
-  static #privateStaticMethod() {
-    // …
+  static {
+    // …setup code to run once
   }
 }</code></pre>
+<p>Code in a <code>constructor</code> runs once per instance, while code in a <code>static</code> block runs once per class declaration.</p>
       </article>
       <article class="slide">
         <h2>Prototypal Inheritance</h2>
         <div class="flex" style="gap: 1rem">
-          <img src="img/prototype_chain.png" alt="" />
+          <img src="img/prototype_chain.png" alt="" style="max-height: 70vh;" />
           <div>
             <strong>Steps to access inherited properties in JS:</strong>
             <ol style="font-size: 2rem; line-height: 3.5rem">
@@ -952,8 +984,8 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
       </article>
       <article class="slide">
         <h2>Compostion vs Inheritance</h2>
-        <div class="flex">
-          <ul style="flex-grow: 2">
+        <div class="flex" style="align-items: center">
+          <ul>
             <li>
               The functional programming paradigm prefers composition over
               inheritance
@@ -968,9 +1000,8 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
               have a bad time & end up overwriting a lot
             </li>
           </ul>
-          <a href="http://www.johndcook.com/blog/2011/07/19/you-wanted-banana/">
-            If you ask for
-            <br />a banana...
+          <a href="http://www.johndcook.com/blog/2011/07/19/you-wanted-banana/" style="text-align: center;">
+            <div>If you ask for a banana...</div>
             <img
               src="http://www.johndcook.com/gorilla_holding_banana.jpg"
               alt=""
