@@ -882,15 +882,20 @@ arr.length = 2; // [1, 2]</code></pre>
 	<article class="slide">
 		<h2>Logical Operators</h2>
 		<ul>
-			<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#unary_operators">Unary Operators:</a></li>
-			<li style="list-style: none;"><code>!</code>Logical NOT, <code>!!</code>Double Bang!</li>
-			<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#binary_logical_operators">Binary Logical Operators:</a></li>
-			<li style="list-style: none;"><code>&&</code>Logical AND, <code>||</code>Logical OR, <code>??</code>Nullish Coalescer</li>
-			<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#equality_operators">Equality Operators</a></li>
-			<li style="list-style: none;"><code>==</code>Loose Equality, <code>!=</code>Loose InEquality, <code>===</code>Strict Equality, <code>!==</code>Strict InEquality</li>
-			<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#relational_operators">Relational Operators: </a></li>
-			<li style="list-style: none;"><code>></code>Greater Than, <code>>=</code>Greater or Equal to, <code><</code>Less Than, <code><=</code>Lesser or Equal to</li>
-			<li style="list-style: none;">Nullish Coalescer <code>??</code></li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#unary_operators">Unary Operators:</a>
+			<ul>
+				<li style="list-style: none;"><code>!</code>Logical NOT, <code>!!</code>Double Bang!</li>
+			</ul>
+			</li>
+			<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#binary_logical_operators">Binary Logical Operators:</a>
+			 <ul>
+				 <li style="list-style: none;"><code>&&</code>Logical AND, <code>||</code>Logical OR, <code>??</code>Nullish Coalescer</li>
+				 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#equality_operators">Equality Operators</a></li>
+				 <li style="list-style: none;"><code>==</code>Loose Equality, <code>!=</code>Loose InEquality, <code>===</code>Strict Equality, <code>!==</code>Strict InEquality</li>
+				 <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators#relational_operators">Relational Operators: </a></li>
+				 <li style="list-style: none;"><code>></code>Greater Than, <code>>=</code>Greater or Equal to, <code><</code>Less Than, <code><=</code>Lesser or Equal to</li>
+			 </ul>
+			</li>
 		</ul>
 	</article>
 	<article class="slide">
@@ -1339,13 +1344,25 @@ obj.key4(a, b) // invokes key3 method</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Checking for Properties</h2>
-		<pre class="language-js"><code class="med-code">obj && obj.key
-obj && obj.key3 && obj.key3.key // && Operator as a 'Guard'
-obj.hasOwnProperty('key');
-'key' in obj;
+		<div class="flex">
+			<p>The old "Guard"</p>
+			<p>New in ES6+</p>
+		</div>
+		<div class="flex">
+		<pre class="language-js"><code>// Logical And ('&&') as a 'Guard'
+obj && obj.key
+obj && obj.key3 && obj.key3.key 
 
-// New in ES6:
-obj?.key3?.key // Optional Chaining Operator</code></pre>
+// hasOwnProperty Method
+obj.hasOwnProperty('key') // true</code></pre>
+<pre class="language-js"><code>// Optional Chaining Operator
+obj?.key3?.key 
+
+// the 'in' keyword:
+'key' in obj // true
+'fake' in obj // false
+</code></pre>
+		</div>
 	</article>
 	<article class="slide">
 		<h2>Optional Chaining</h2>
