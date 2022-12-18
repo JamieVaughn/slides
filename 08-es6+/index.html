@@ -495,17 +495,42 @@ mySet1.delete(5)
     <section>
       <header class="slide">
         <h2>Code Organization Techniques</h2>
-        <h1>Modules & Closures</h1>
+        <h1>Modules, Closures & Classes</h1>
       </header>
 
       <article class="slide">
+        <h2>Code Encapsulation</h2>
+        <p>We'll learn about three ways to encapsulate our code</p>
+        <ul class="delayed-chidren">
+          <li><strong>Modules</strong>
+            <ul>
+              <li><small>based on files</small></li>
+            </ul>
+          </li>
+          <li><strong>Closures</strong>
+            <ul>
+              <li><small>based on functions</small></li>
+            </ul>
+          </li>
+          <li><strong>Classes</strong>
+            <ul>
+              <li><small>based on classes (new in es6+)</small></li>
+            </ul>
+          </li>
+        </ul>
+        <p style="padding: 0 10rem;">All of these let us wrap our code inside of a "black box" so we can expose only the parts of it that we deliberately intend to and we can keep the nitty gritty implementation details hidden & inaccessible inside. </p>
+      </article>
+
+      <article class="slide">
         <h2>Modules 📦</h2>
-        <p>
-          Using <code>import</code> & <code>export</code> to modularize code &
-          organize <u>into a unit defined by a file.</u>
-        </p>
-        <p>It wraps up parts of your code into easily resusable pieces</p>
-        <p>It makes those pieces of code easily composed together</p>
+        <p>Little packages for our code</p>
+        <ul class="delayed-children">
+          <li>Modules provide a new way to organize our code into manageable chunks.
+          <li>By using the <code>import</code> & <code>export</code> keywords, we can modularize code &
+            organize it <u>into a unit defined by a file.</u></li></li>
+          <li>Modules wrap up parts of your code into easily resusable pieces</li>
+          <li>Modules makes those pieces of code easily composed together</li>
+        </ul>
       </article>
       <article class="slide">
         <h2>A simple single file Module</h2>
@@ -520,17 +545,15 @@ export default module</code></pre>
       </article>
       <article class="slide">
         <h2>Export & Import</h2>
-        <p>
-          Export is used when creating JavaScript modules to export functions,
-          objects, or primitive values from the module so they can be used by
-          other programs with the import statement.
-        </p>
-        <p>
-          Import is used to import bindings (i.e. functions, vars, etc) which
-          are exported by another module.
-        </p>
-        <p>This will come in handy with React/Frameworks</p>
-        <p>But we can also take advantage of this for own code organization.</p>
+        <ul>
+          <li>Export is used when creating JavaScript modules to export functions,
+            objects, or primitive values from the module so they can be used by
+            other programs with the import statement.</li>
+          <li>Import is used to import bindings (i.e. functions, vars, etc) which
+            are exported by another module.</li>
+          <li>This will come in handy with React & other frameworks</li>
+          <li>But we can also take advantage of this for own code organization</li>
+        </ul>
       </article>
       <article class="slide">
         <h2>Export Syntax</h2>
@@ -565,8 +588,8 @@ import { export1 , export2 } from "module-name";</code></pre>
             ></sup
           >
         </h2>
-        <p>
-          Before Modules code encapsulation was accomplished with the
+        <p style="padding: 0 10rem">
+          Before Modules, code encapsulation was accomplished with the
           <a
             href="https://www.codeproject.com/Articles/1164113/Module-and-Revealing-Module-Patterns-in-JavaScript"
             >Revealing Module Pattern</a
@@ -667,19 +690,14 @@ fn(3)(4) // 7</code></pre>
 
     <section>
       <header class="slide">
+        <h2>Code Encapsulation</h2>
         <h1>Intro to JS Classes</h1>
-        <h2><code>Class { }</code></h2>
-        <ul>
-          <li>Constructor/Super</li>
-          <li>Getters/Setters</li>
-          <li>Prototypal Inheritance</li>
-        </ul>
       </header>
       <article class="slide">
         <h2>Object Oriented Patterns</h2>
         <p>
-          ES6 classes are a simple sugar over the prototype-based OO pattern.
-          It's not <strong>true</strong> Classical Inheritance
+          ES6 classes are a syntactic sugar over the prototype-based OO pattern.
+          It's not <strong>true</strong> Classical Inheritance that other languages have (like Java)
         </p>
         <p>
           Having a single convenient declarative form makes class patterns
@@ -687,8 +705,29 @@ fn(3)(4) // 7</code></pre>
         </p>
         <p>
           Classes support prototype-based inheritance, <code>super</code> calls,
-          instance/static methods and constructors.
+          instance/static methods, constructors and finally private identifiers.
         </p>
+      </article>
+      <article class="slide">
+        <h2>Javascript <code>Class</code> Keyword</h2>
+        <pre class="language-js"><code>class xyPoint {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+  // ...define more variables and methods here
+}
+
+const instanceXYPoint = new xyPoint(1, 2)
+instanceXYPoint.x // 1
+instanceXYPoint.y // 2
+</code></pre>
+        <ul>
+          <li>Constructor/Super - <code>super</code></li>
+          <li>Getters/Setters -  <code>get</code>, <code>set</code></li>
+          <li>Private members with the hash symbol - <code>#</code></li>
+          <li>Prototypal Inheritance</li>
+        </ul>
       </article>
       <article class="slide">
         <h2>Made Possible by Enhance Object Literals</h2>
@@ -716,9 +755,6 @@ obj.toString() // '[object Object]'</code></pre>
             href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model"
             >Classical vs Prototypal Inheritance</a
           >
-        </p>
-        <p>
-          Classes in JS are essentiallly fancy, syntax sugar over Functions.
         </p>
         <p>
           They lack the classical inheritance model like other OOP language
@@ -853,13 +889,36 @@ joEmployee instanceof Person // true
 joEmployee.__proto__ // Person {constructor: ƒ, getInfo: ƒ}</code></pre>
       </article>
       <article class="slide">
-        <h2>Private methods/properties are in Stage 3</h2>
-        <p>
-          <a href="https://github.com/tc39/proposal-private-methods"
-            >TC39 Proposal</a
-          >
-        </p>
-        <p>So Classes can't yet fully substitute for Closures</p>
+        <h2>Private methods/properties <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields">MDN</a></sup></h2>
+        <p>Private members on a class are fully protected and inaccessible, except within the class block scope</p>
+        <pre class="language-js"><code>class ClassWithPrivate {
+  #privateField = 42;
+  #privateMethod() {
+    console.log("can't access me directly")
+    return this.#privateField
+  }
+  logPrivateMethod() {
+    console.log(this.#privateMethod())
+  }
+}
+
+const instance = new ClassWithPrivate()
+instance.logPrivateMethod() // works
+
+instance.#privateField === 42 // Syntax Error
+instance.#privateMethod() // Syntax Error
+delete instance.#privateMethod() // Syntax Error</code></pre>
+      </article>
+      <article class="slide">
+        <h2>The <code>static</code> Keyword</h2>
+        <pre class="language-js"><code>class ClassWithPrivateStatic {
+  static #privateStaticField;
+  static #privateStaticFieldWithInitializer = 42;
+
+  static #privateStaticMethod() {
+    // …
+  }
+}</code></pre>
       </article>
       <article class="slide">
         <h2>Prototypal Inheritance</h2>
