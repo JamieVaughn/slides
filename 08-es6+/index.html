@@ -224,7 +224,9 @@ createUser('Jay', 'y9i7h3ndk', undefined, true)
           <li class="delayed">Object Destructuring</li>
           <li class="delayed">Parameter Context matching</li>
         </ul>
-        <p>It's kinda magical <code>let { ✨, 🐴 } = 🦄</code></p>
+        <p class="delayed">
+          It's kinda magical <code>let { ✨, 🐴 } = 🦄</code>
+        </p>
       </article>
       <article class="slide">
         <h2>Object Destructuring</h2>
@@ -325,11 +327,11 @@ f()  // 6</code></pre>
         <code>...</code>
         <p>
           <u>Rest</u>: to gather up <strong>the rest</strong> of the values into
-          an Array or Object
+          an Array or Object. Used in function parameters.
         </p>
         <p>
           <u>Spread</u>: to <strong>spread out</strong> encapsulated values into
-          loose values.
+          loose values. Used on arrays and objects.
         </p>
         <p>
           <small
@@ -340,7 +342,15 @@ f()  // 6</code></pre>
       </article>
       <article class="slide">
         <h2>Rest</h2>
-        <p>Most often used for Function Parameters</p>
+        <p>
+          Used in for function parameters to create a
+          <u>Variadic</u> function (a function that accepts a varying number of
+          parameters)
+        </p>
+        <p>
+          Function <u>Arity</u>: The number of parameters a function accepts
+          (see <code>Function.length</code>)
+        </p>
         <pre
           class="language-js"
         ><code>function addFirstTwo(a, b, ...manyMoreArgs) {
@@ -357,10 +367,13 @@ const newNames = { ...names1, ...names2 };</code></pre>
       </article>
       <article class="slide">
         <h2>Array Spread</h2>
-        <p>It's a bit like <code>.slice()</code></p>
         <pre class="language-js"><code>var arr = [1, 2, 3]
 var arr2 = [...arr] // copy of arr
 var arr3 = arr.slice() // also a copy of arr</code></pre>
+        <p>
+          It can be used to create a copy of an array, similar to
+          <code>.slice()</code>
+        </p>
       </article>
       <article class="slide">
         <h2>Object Property Shorthand</h2>
@@ -422,13 +435,19 @@ myMap.size // 3
 myMap.delete('key') // true
 myMap.clear() // deletes all
 
-// WeakMap has same API, 
+// The less common 'WeakMap has same API, 
 // except keys can only be objects or functions
 const myWeakMap = new WeakMap() </code></pre>
-        <p>
-          <code>WeakMap</code> may not be that useful. It's called "Weak"
-          because it allows garbage collection.
-        </p>
+        <aside>
+          <p>
+            They do not have prototype keys, which can help for looping or
+            diffing.
+          </p>
+          <p>
+            <code>WeakMap</code> may not be that useful. It's called "Weak"
+            because it allows garbage collection.
+          </p>
+        </aside>
       </article>
       <article class="slide">
         <h2>
