@@ -234,14 +234,14 @@ let { ✨, 🐴 } = 🦄</code></pre>
         <h2>Object Destructuring</h2>
         <code>const { 🍞, 🥬, 🍅, 🧅, 🥓, 🧀, 🥩, 🍞 } = 🍔</code>
           <pre class="language-js"><code>const burger = {
-  topbun: 'sourdough',
+  topBun: 'sourdough',
   condiment: 'ketchup',
   lettuce: 'iceberg',
   tomato: 'beefsteak',
   bacon: 2,
   cheese: 'cheddar',
   burger: 'angus',
-  bottombun: 'sourdough'
+  bottomBun: 'sourdough'
 }
 
 // destructure properties as needed into global namespace
@@ -274,13 +274,13 @@ let [d, e, f, g=7] = list </code></pre>
   }
 };
 
-let { email, fullName: { first: name } } = user
-let myStr = `${name}'s email is ${email}`;
+let { email, fullName: { first } } = user
+let myStr = `${first}'s email is ${email}`;
 
 console.log(myStr);  // "John's email is jdoe@home.com"</code></pre>
       </article>
       <article class="slide">
-        <h2>Default Values for Destructuring</h2>
+        <h2>Default Value Assignment for Destructuring</h2>
         <p>Available to use for either Objects or Arrays</p>
         <pre class="language-js"><code>var list = [ 7, 42 ]
 var [ a = 1, b = 2, c = 3, d ] = list
@@ -313,12 +313,18 @@ g(arr) // logs: 'John', '#42'</code></pre>
       <article class="slide">
         <h2>Using Destructuring With Default params</h2>
         <p>✨ Combine these for super powers! ✨</p>
-        <pre
-          class="language-js"
-        ><code>function f([x, y] = [1, 2], {z: z} = {z: 3}) { 
-  return x + y + z
+        <pre class="language-js"><code>function f([x = 1, y = 2]) {
+  return x + y
 }
-f()  // 6</code></pre>
+f([])  // 3
+f() // Type Error, won't work without the array
+
+function g({a, b = 2}) {
+  let ap = a ?? 0 // Nullish Coalescer can guard undefined
+  return ap + b
+}
+g({a: 4})  // 6
+g() // Type Error, won't work without the object</code></pre>
       </article>
       <article class="slide">
         <h2>Rest & Spread Operators</h2>
@@ -412,14 +418,15 @@ let myPets = {
         <h2>Computed Properties</h2>
         <pre class="language-js"><code>let makeKey = key => key;
 let key = 'key'
-let value = 'val';
+// Before was done one by one like this:
 let obj = {};
-obj[key] = value;
+obj[key] = 'value';
 
+// Now can be done in bulk:
 let computedObj = {
-  [key]: value,
-  [makeKey('string')]: value,
-  [makeKey('name')]: 'Jamie'
+  [key]: 'value',
+  [makeKey('string')]: 'value',
+  [makeKey('name')]: 'value'
 }</code></pre>
       </article>
       <article class="slide">
@@ -576,11 +583,13 @@ const myWeakSet = new WeakSet()
       </article>
       <article class="slide">
         <h2>A simple single file Module</h2>
-        <pre class="language-js"><code>import myFunc from './utilities'
+        <pre class="language-js"><code>import myArr from './data.js'
 
-function module(a, b, c) {
-  let arr = [a, b, c]
-  return arr.map(myFunc)
+const power = 3
+
+function module(arr) {
+  let biggerArr = myArr.concat(arr)
+  return biggerArr.map(item => item ** power)
 }
   
 export default module</code></pre>
@@ -609,11 +618,11 @@ export default function (…) { … }</code></pre>
       </article>
       <article class="slide">
         <h2>Import Syntax</h2>
-        <pre class="language-js"><code>import defaultExport from "module-name";
-import * as name from "module-name";
-import { export1 } from "module-name";
-import { export1 as alias1 } from "module-name";
-import { export1 , export2 } from "module-name";</code></pre>
+        <pre class="language-js"><code>import defaultExport from "module-name.js";
+import * as name from "module-name.js";
+import { export1 } from "module-name.js";
+import { export1 as alias1 } from "module-name.js";
+import { export1 , export2 } from "module-name.js";</code></pre>
       </article>
       <article class="slide">
         <h2>
