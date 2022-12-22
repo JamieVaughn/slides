@@ -225,20 +225,14 @@ createUser('Jay', 'y9i7h3ndk', undefined, true)
           <li class="delayed">Parameter Context matching</li>
         </ul>
         <p class="delayed">
-          It's kinda magical <code>let { ✨, 🐴 } = 🦄</code>
+          It's kinda magical 
         </p>
+        <pre class="language-js delayed"><code>// destructure the magic & the horse from a unicorn
+let { ✨, 🐴 } = 🦄</code></pre>
       </article>
       <article class="slide">
         <h2>Object Destructuring</h2>
-        <div class="flex">
-          <pre class="language-js"><code>const obj = {p: 42, q: true};
-// moves the properties into global namespace
-const {p, q} = obj; 
-console.log(p, q); // 42, true
-
-// We can create new global var names (i.e. 'a' & 'b'):
-const {p: a, q: b} = obj 
-console.log(a, b); // 42, true</code></pre>
+        <code>const { 🍞, 🥬, 🍅, 🧅, 🥓, 🧀, 🥩, 🍞 } = 🍔</code>
           <pre class="language-js"><code>const burger = {
   topbun: 'sourdough',
   condiment: 'ketchup',
@@ -250,11 +244,10 @@ console.log(a, b); // 42, true</code></pre>
   bottombun: 'sourdough'
 }
 
-let { 🍞, 🥬, 🍅, 🧅, 🥓, 🧀, 🥩, 🍞 } = 🍔
-let { tomato, bacon, cheese, burger } = burger 
-// just destructure the items needed
+// destructure properties as needed into global namespace
+// & provide alternate identifiers to avoid naming collisions
+const { tomato, bacon, cheese, burger: patty } = burger 
 </code></pre>
-        </div>
       </article>
       <article class="slide">
         <h2>Array Destructuring</h2>
@@ -287,11 +280,16 @@ let myStr = `${name}'s email is ${email}`;
 console.log(myStr);  // "John's email is jdoe@home.com"</code></pre>
       </article>
       <article class="slide">
-        <h2>Fail Safe Destructuring</h2>
-        <p>It won't throw an error for length mismatches</p>
+        <h2>Default Values for Destructuring</h2>
+        <p>Available to use for either Objects or Arrays</p>
         <pre class="language-js"><code>var list = [ 7, 42 ]
 var [ a = 1, b = 2, c = 3, d ] = list
 console.log(a, b, c, d) // 7, 42, 3, undefined</code></pre>
+<pre class="language-js"><code>const burger = { /* ...previous values... */}
+const { tomato, bacon, onion, pickles = 'dill' } = burger
+console.log(tomato, bacon, onion, pickles) 
+// ↳ 'beefsteak', 2, undefined, 'dill'
+</code></pre>
       </article>
       <article class="slide">
         <h2>Parameter Context Matching</h2>
@@ -376,18 +374,39 @@ var arr3 = arr.slice() // also a copy of arr</code></pre>
         </p>
       </article>
       <article class="slide">
-        <h2>Object Property Shorthand</h2>
-        <pre class="language-js"><code>let cat = 'Meow';
-let dog = 'Woof';
-let speak = (animal) => console.log(animal)
+        <h2>Object Property & Method Shorthand</h2>
+        <ol style="margin: 0 auto 0 4rem;"><strong>Method Shorthand uses Function Declaration but it:</strong>
+          <li>omits the colon & the <code>function</code> keyword</li>
+          <li>preserves the local value of<code>this</code></li>
+        </ol>
+        <div class="flex">
+        <pre class="language-js"><code>let shout = (pet) => console.log(pet.toUpperCase() + '!!!')
+let cat = 'meow';
+let dog = 'woof';
 
-let someObject = {
+let myPets = {
+  shout, // arrow functions written like properties
   cat,
   dog,
-  speak
+  speak (pet) { // function declaration shorthand
+    console.log(this[pet])
+  }
 }
-// It's quicker than typing {cat: cat, dog: dog, speak: speak}
-someObject.speak(someObject.cat) // 'Meow'</code></pre>
+
+myPets.speak(myPets.cat) // 'Meow'</code></pre>
+<pre class="language-js"><code>// It's a bit shorter...
+
+
+// than the old syntax:
+let myPets = {
+  shout: shout
+  cat: cat, 
+  dog: dog, 
+  speak: function (pet) {
+    console.log(this[pet])
+  }
+} </code></pre>
+</div>
       </article>
       <article class="slide">
         <h2>Computed Properties</h2>
@@ -404,25 +423,26 @@ let computedObj = {
 }</code></pre>
       </article>
       <article class="slide">
-        <h2 class="bumpup">
-          Map & WeakMap
-          <sup
-            ><a
-              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"
-              >MDN</a
-            ></sup
-          >
-        </h2>
-        <p>
-          Use Maps as a "clean" or "blank" object with a
-          <code>size</code> property.
-        </p>
-        <p>
-          They do not have prototype keys, which can help for looping or
-          diffing.
-        </p>
-        <p>Keys can be any value, not just Strings or Symbols.</p>
-        <pre class="language-js"><code>const myMap = new Map()
+        <div class="flex" style="align-items: center">
+          <h2 class="bumpup">
+            Map
+            <sup
+              ><a
+                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"
+                >MDN</a
+              ></sup
+            >
+          </h2>
+          <ul><strong>Use Maps over objects when:</strong>
+            <li>its properties will be changing frequently</li>
+            <li>you need the <code>size</code> property</li>
+            <li>you need the properties to preserve their order.</li>
+            <li>Keys can be any value, not just Strings or Symbols.</li>
+            <li>There are no prototype keys, which can simplify looping</li>
+          </ul>
+        </div>
+        <div class="flex">
+          <pre class="language-js"><code>const myMap = new Map()
 myMap.set('key', 'value')
 myMap.set(true, 'value')
 let func = key => null
@@ -434,24 +454,32 @@ myMap.get(obj) // 'B'
 myMap.size // 3
 myMap.delete('key') // true
 myMap.clear() // deletes all
+// initializing a Map with an array of entries (tuples):
+const initMap = new Map([ 
+  ['dog', 'woof'],
+  ['cat', 'meow'],
+]); </code></pre>
+          <pre class="language-js"><code>// Looping over a Map
+// ✅ Using forEach OR for ... of
+map1.forEach((value, key) => {
+  console.log(value, key); // woof dog, meow cat
+});
+for (const [key, value] of map1) {
+  console.log(key, value); // dog woof, cat meow
+}
 
-// The less common 'WeakMap has same API, 
-// except keys can only be objects or functions
-const myWeakMap = new WeakMap() </code></pre>
-        <aside>
-          <p>
-            They do not have prototype keys, which can help for looping or
-            diffing.
-          </p>
-          <p>
-            <code>WeakMap</code> may not be that useful. It's called "Weak"
-            because it allows garbage collection.
-          </p>
-        </aside>
+// ✅ Iterate over a Map's keys OR values
+for (const key of map1.keys()) {
+  console.log(key); // dog, cat
+}
+for (const value of map1.values()) {
+  console.log(value); // woof, meow
+}</code></pre>
+        </div>
       </article>
       <article class="slide">
         <h2>
-          Set & WeakSet
+          Set
           <sup
             ><a
               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set"
@@ -489,6 +517,20 @@ mySet1.delete(5)
           >
           for more on when to use each one
         </p>
+        <ul>
+          <li>Map has a less common twin: WeakMap</li>
+          <li>The less common <code>WeakMap</code> has same API, except keys can only be objects or functions:</li>
+          <li>Set has a less common twin: WeakSet</li>
+        </ul>
+        <pre class="language-js"><code>const myWeakMap = new WeakMap()
+const myWeakSet = new WeakSet()
+        </code></pre>
+        <details class="notes">
+          <p>
+            <code>WeakMap</code> may not be that useful. It's called "Weak"
+            because it allows garbage collection.
+          </p>
+        </details>
       </article>
     </section>
 
