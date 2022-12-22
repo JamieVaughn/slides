@@ -657,14 +657,16 @@ import { export1 , export2 } from "module-name.js";</code></pre>
         </ol>
         <pre class="language-js"><code>// Local vs Global
 function fn() {
-  let temp = 9 // what if this were var temp?
+  let base = 9
+  var power = 2 // even var is local to a function scope
 }
-console.log(temp) // error
+console.log(power, base) // Reference Error
 // Nesting & Returning Functions 
 function gn() {
   let temp = 9
+  var power = 2
   return function() {
-    temp * 2
+    temp * power
   }
 }</code></pre>
       </article>
@@ -681,14 +683,14 @@ function gn() {
         </p>
         <pre class="language-js"><code>for (var i = 1; i &lt;= 4; i++) {
   setTimeout(function() { 
-    console.log(i); 
-  }, 1000*i);     // 5 5 5 5
+    console.log(i)
+  }, 1000*i)     // 5 5 5 5
 }
-for (var i = 1; i &lt;= 5; i++) {
+for (var i = 1; i &lt;= 4; i++) {
   setTimeout(function(x) { 
     return () =&gt; console.log(x) 
-  }(i), 1000*i);
-// 1 2 3 4 5
+  }(i), 1000*i)
+// 1 2 3 4
 }</code></pre>
       </article>
       <article class="slide">
@@ -698,20 +700,21 @@ for (var i = 1; i &lt;= 5; i++) {
         </h2>
         <pre class="language-js"><code>for (let i = 1; i &lt;= 4; i++) {
   setTimeout(function() { 
-    console.log(i); 
-  }, 1000*i);     // 1 2 3 4
+    console.log(i)
+  }, 1000*i)     // 1 2 3 4
 }</code></pre>
 
         <pre class="language-js"><code>[...Array(4).keys()].forEach(i =&gt; {
   setTimeout(function() { 
-    console.log(i); 
-  }, 1000*i); // 0 1 2 3
+    console.log(i)
+  }, 1000*i) // 0 1 2 3
 })</code></pre>
       </article>
       <article class="slide">
         <h2>Simple Curried Function</h2>
-        <pre class="language-js"><code>var fn = x =&gt; y =&gt; x + y;
-var n = fn(3)
+        <pre class="language-js"><code>let fn = x =&gt; y =&gt; x + y
+// let fn = (x) =&gt; (y =&gt; x + y)
+let n = fn(3)
 // Some indefinite amount of time may pass, then:
 n(4) // 7
 
