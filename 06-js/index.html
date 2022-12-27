@@ -257,7 +257,7 @@ Number.isNaN(NaN) // true</code></pre>
 <article class="slide">
 	<h2>Primitives Are Immutable</h2>
 	<p>Immutable vs. Mutable</p>
-		<pre class="language-js"><code class='large-code'>5 = 4 // Syntax Error
+		<pre class="language-js"><code>5 = 4 // Syntax Error
 var str = 'hello'
 console.log(str[0]) // 'h'
 str[0] = 'y' // unable to re-assign immutable value
@@ -270,14 +270,14 @@ console.log(str, str[0]) // 'hello', 'h'
 	<p>Type Casting</p>
 	<div class="flex" style="text-align: center">
 	<ul style="list-style: none; width: 300px">
-		<li><pre class="language-js"><code class='large-code'>String()</code></pre></li>
-		<li><pre class="language-js"><code class='large-code'>Number()</code></pre></li>
-		<li><pre class="language-js"><code class='large-code'>Boolean()</code></pre></li>
+		<li><pre class="language-js"><code>String()</code></pre></li>
+		<li><pre class="language-js"><code>Number()</code></pre></li>
+		<li><pre class="language-js"><code>Boolean()</code></pre></li>
 	</ul>
 	<ul style="list-style: none; width: 300px">
-		<li><pre class="language-js"><code class='large-code'>String(true) // 'true'</code></pre></li>
-		<li><pre class="language-js"><code class='large-code'>Number('22') // 22</code></pre></li>
-		<li><pre class="language-js"><code class='large-code'>Boolean(0) // false</code></pre></li>
+		<li><pre class="language-js"><code>String(true) // 'true'</code></pre></li>
+		<li><pre class="language-js"><code>Number('22') // 22</code></pre></li>
+		<li><pre class="language-js"><code>Boolean(0) // false</code></pre></li>
 	</ul>
 </div>
 
@@ -428,8 +428,8 @@ class  extends super const export import yield
 	<article class="slide">
 		<h2>The Main Operators</h2>
 		<code style="font-size: 3rem;">+   -   *    /</code>
-		<p>Exponent: <code class="large-code"> **  </code></p>
-		<p>Remainder (aka Modulo): <code class="large-code"> % </code></p>
+		<p>Exponent: <code> **  </code></p>
+		<p>Remainder (aka Modulo): <code> % </code></p>
 		<pre class="language-js"><code>12 / 3 + 5 - 2 * 3 // 3 (remember PEMDAS?)
 10**2 // 100
 64**0.5 // 8
@@ -445,7 +445,7 @@ class  extends super const export import yield
 			<code>-=</code>
 		</pre>
 
-		<pre class="language-js"><code class='large-code'>var a = 3;
+		<pre class="language-js"><code>var a = 3;
 a++
 a+=6
 a--
@@ -462,12 +462,12 @@ a%=11</code></pre>
 		<p>Time to practice in the JS console!</p>
 		<ol>
 			<li><span title="str2[0] + str2[1] + str1[1] + str1[0] + str1[0] + str2[2] + (str1 + str2).length">Create the string: <code>"maroon5"</code></span>
-				<pre class="language-js"><code class='med-code'>// Given:
+				<pre class="language-js"><code>// Given:
 var str1 = "or"
 var str2 = "man"</code></pre>
 			</li>
 			<li style="margin-top: 2rem;"><span title="(typeof str)[0] + str[4] + str[3] + str[10] + str[5] + String(bool)[2] + String(bool)[0]">Create the string: <code>"sold out"</code></span>
-				<pre class="language-js"><code class='med-code'>// Given
+				<pre class="language-js"><code>// Given
 var str = "hello world"
 var bool = true</code></pre>
 			</li>
@@ -595,14 +595,14 @@ function sideEffects(arg){
 			<li>Pure functions are referentially transparent</li>
 			<li>Functions with Side effects cannot be</li>
 		</ul>
-		<pre class="language-js"><code class="large-code">var g = 5
+		<pre class="language-js"><code>var g = 5
 fn(g)
 fn(5)</code></pre>
 	</article>
 	<article class="slide">
 		<h2>ES6 Arrow Functions</h2>
 		<p>A.K.A. Lambda Functions</p>
-		<pre class="language-js"><code class="large-code">var fn = function(a) {
+		<pre class="language-js"><code>var fn = function(a) {
   return a
 }
 var fn = (a) => { 
@@ -618,13 +618,13 @@ var fn = (a) => {
 )</code></pre>
 </div>
 <p>Equivalent to:</p>
-<pre class="language-js"><code class="large-code">j => {
+<pre class="language-js"><code>j => {
   return j ** 2
 }</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Passing Parameters in Arrow Functions</h2>
-		<pre class="language-js"><code class="large-code">() => 100 ** 2
+		<pre class="language-js"><code>() => 100 ** 2
 a => 100 ** a
 (a) => 100 ** a
 (a, b) => b ** a</code></pre>
@@ -633,22 +633,23 @@ a => 100 ** a
 		<h2>Naming Functions</h2>
 		<p>In Javascript, the naming convention used is called Camel Case</p>
 		<p>it looks like this:</p>
-		<pre class="language-js"><code class="large-code">function camelCaseNaming(){}</code></pre>
+		<pre class="language-js"><code>function camelCaseNaming(){}</code></pre>
 		<p>Similar to Semantic HTML, it's best to name functions in a semantically helpful way</p>
 	</article>
 	<article class="slide">
-		<h2>There is also Kebab Case, Pascal Case, Snake Case</h2>
+		<h2>There is also Kebab Case, Title/Pascal Case, Snake Case</h2>
 		<p>Some libraries need to convert between these naming conventions</p>
 		<p>So being consistent is key</p>
 		<div class="flex">
-		<pre class="language-css"><code class="large-code">.kebab-case-naming {
+		<pre class="language-css"><code>.kebab-case-naming {
   /* Allowed in CSS, 
 	but not in JS */
   font-size: 2rem;
 }</code></pre>
-<pre class="language-js"><code class="large-code">// Allowed in JS
+<pre class="language-js"><code>// Allowed in JS
 function camelCaseNaming(){}
-function PascalCaseNaming(){}
+function TitleCaseNaming(){} 
+// ⤷ aka PascalCaseNaming
 function snake_case_naming(){}</code></pre>
 </div>
 	</article>
@@ -668,13 +669,19 @@ fn(1) // logs undefined & returns NaN</code></pre>
 		<h2>IIFE</h2>
 		<h3>Immediately Invoked Function Expression</h3>
 		<p>These create a private scope</p>
-		<pre class="language-js"><code class="large-code">(function (parameters, arguments){
-  // do stuff
-}())</code></pre>
+		<pre class="language-js"><code>(function (parameters){
+	// use the arguments you pass in
+  // to do stuff here
+})(arguments)
+
+// same effect, but w/ arrow function:
+(parameters => {
+  // do stuff w/ arguments here
+}(arguments))</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Closures</h2>
-		<pre class="language-js"><code class="large-code">var publicAPI = (function (a, b){
+		<pre class="language-js"><code>var publicAPI = (function (a, b){
   let privateVar = a + 'our secret';
   return [
     true,
@@ -691,7 +698,7 @@ publicAPI.privateVar // ReferenceError</code></pre>
 		<h2>Callbacks & Anonymous Functions</h2>
 		<p>A callback is a function that is not invoked on the window load, but it is invoked by some kind of trigger (like an event) later on</p>
 		<p>Callbacks are sometimes called "Predicates".</p>
-		<pre class="language-js"><code class="large-code">// Using an anonymous function as a Callback
+		<pre class="language-js"><code>// Using an anonymous function as a Callback
 var months = ['March', '', 'Jan', '', 'Feb']
 months.sort((a, b) => Boolean(b) - 1)
 // ['March', 'Jan', 'Feb', '', '']
@@ -716,7 +723,7 @@ months.sort(sortEmpties)</code></pre>
 	<article class="slide">
 		<h2>The Math Object & its Methods<sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math">MDN</a></sup></h2>
 		<div class="flex" >
-		<pre class="language-js"><code class='large-code'>Math.PI
+		<pre class="language-js"><code>Math.PI
 Math.E
 Math.random()
 Math.abs()
@@ -778,7 +785,7 @@ str.length = 3;
 str.length // 6;
 str[2] = 'a' // str is still 'Hello'</code></pre>
 <p>↑ But Strings are immutable, unlike Arrays</p>
-		<pre class="language-js"><code class='med-code'>var arr = ['H','e','l','l','o','!']
+		<pre class="language-js"><code>var arr = ['H','e','l','l','o','!']
 arr[0] // 'H'
 arr.length // 6
 arr.length = 3
@@ -793,13 +800,13 @@ console.log(arr) // ['H','e','l']</code></pre>
 		</p>
 		<code>Array.prototype</code>
 		<div class="flex" style="text-align: center">
-		<pre class="language-js"><code class='med-code'>.concat()
+		<pre class="language-js"><code>.concat()
 .slice()
 .indexOf()
 .split()
 .includes()
 .isArray()</code></pre>
-<pre class="language-js"><code class='med-code'>.sort()
+<pre class="language-js"><code>.sort()
 .push()
 .pop()
 .shift()
@@ -809,11 +816,11 @@ console.log(arr) // ['H','e','l']</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Creating Arrays</h2>
-		<pre class="language-js"><code class='med-code'>let array = [1, 2, 3]; // Array Literal (recommended)
+		<pre class="language-js"><code>let array = [1, 2, 3]; // Array Literal (recommended)
 let arr = new Array(1, 2, 3); // Array constructor
 let arr = new Array(3); // [undefined, undefined, undefined]</code></pre>
 		<p>via Static Methods:</p>
-		<pre class="language-js"><code class='med-code'>Array.of(1, 2, 3) // [1, 2, 3]
+		<pre class="language-js"><code>Array.of(1, 2, 3) // [1, 2, 3]
 Array.from('string') // ["s", "t", "r", "i", "n", "g"]
 Array.from(document.querySelectorAll('div')) 
 // array of div nodes</code></pre>
@@ -822,7 +829,7 @@ Array.from(document.querySelectorAll('div'))
 	<article class="slide">
 		<h2>The Array Index</h2>
 		<p>Arrays are zero-indexed & the indices must be integers</p>
-		<pre class="language-js"><code class='med-code'>let arr = [1, 2, 3];
+		<pre class="language-js"><code>let arr = [1, 2, 3];
 arr[0] // 1 
 arr[2] // 3
 arr[2] = 0 // 0
@@ -833,7 +840,7 @@ console.log(arr)
 	</article>
 	<article class="slide">
 		<h2>The Array Length Property</h2>
-		<pre class="language-js"><code class='med-code'>let arr = [1, 2, 3]
+		<pre class="language-js"><code>let arr = [1, 2, 3]
 console.log(arr.length) // 3
 arr[arr.length] // undefined
 arr[arr.length - 1] // 3
@@ -905,7 +912,7 @@ arr.length = 2; // [1, 2]</code></pre>
 			Returns the second operand, only if the first is nullish:
 			<code>null</code>, <code>undefined</code>
 		</p>
-		<pre class="language-js"><code class="med-code">null ?? 42 // 42
+		<pre class="language-js"><code>null ?? 42 // 42
 undefined ?? 42 // 42
 '' ?? 42 // ''
 0 ?? 42 // 0
@@ -939,7 +946,7 @@ return Boolean(!!a ^ !!b)
 	<article class="slide">
 		<h2 style="margin-top: -12rem;">Equality Examples <small><a href="https://dorey.github.io/JavaScript-Equality-Table/unified/">Overlaid Table</a></small></h2>
 		<div class="flex">
-		<pre class="language-js fit"><code class="med-code">const num = 0;
+		<pre class="language-js fit"><code>const num = 0;
 const big = 0n
 const str = '0'
 const bool = false
@@ -988,11 +995,11 @@ bool == un // false</code></pre>
 
 	</header>
 	<article class="slide">
-		<video src="img/ifelseif.mov" id="ifelse-vid" loop onclick="togglePlay(this)"></video>
+		<video src="img/ifelseif.mov" id="ifelse-vid" loop onclick="togglePlay(this)" style="height: 90vh;"></video>
 	</article>
 	<article class="slide">
 		<h2>If Else</h2>
-		<pre class="language-js"><code class='med-code'>var input = 0
+		<pre class="language-js"><code>var input = 0
 if (input < -1) {
 // do this
 } else if (input > 1) {
@@ -1006,22 +1013,37 @@ if (input < -1) {
 	<article class="slide">
 		<h2>Ternary Operator <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">MDN</a></sup></h2>
 		<p>A more concise way to express simple if/else conditions</p>
-		<pre class="correct language-js"><code class="med-code">var input = 0
+		<pre class="correct language-js"><code>var input = 0
 let result;
 result = input ? 'input was truthy!' : 'input was falsey!'
 
 console.log(result) // 'input was falsey'
 		</code></pre>
-		<p>Try not to nest ternary operators, it can get hard to read.</p>
-		<pre class='wrong language-js'><code class="med-code">var input = 0
+		<p>Try not to nest ternary operators... it works but it can get hard to read.</p>
+		<pre class='wrong language-js'><code>var input = 0
 var condition = true
 input ? 'input was truthy!' : 
 condition ? 'condition was truthy' 
 					: 'input & condition were were falsey!'</code></pre>
 	</article>
 	<article class="slide">
-		<h2 style="margin-top: -3rem;">Switch Statements</h2>
 		<div class="flex">
+			<di class="flex-col start">
+				<h2>Switch Statements</h2>
+				<ul style="list-style: none">
+					<li>
+		<p>The <code>break</code> statement is optional.</p>
+		
+					</li>
+					<br>
+					<li>Omitting <code>break</code> will lead to "cascading" of the execution path.</li>
+					<br>
+					<li>
+		<p>You could also use a <code>return</code> statement <br> instead of <code>break</code></p>
+		
+					</li>
+				</ul>
+			</di>
 			<pre class="language-js fit"><code>var input = 'Hello'
 switch(typeof input){
 case 'number': 
@@ -1037,30 +1059,20 @@ default:
 	// do another thing
 	break
 }</code></pre>
-		<ul style="width: 45%; list-style: none">
-			<li>
-<p>The <code>break</code> statement is optional.</p>
-
-			</li>
-			<br>
-			<li>Omitting <code>break</code> will lead to "cascading" of the execution path.</li>
-			<br>
-			<li>
-<p>You could also use a <code>return</code> statement instead of <code>break</code></p>
-
-			</li>
-		</ul>
 		</div>
 	</article>
 	<article class="slide">
-		<h2>Try Catch</h2>
 		<div class="flex">
+			<div class="flex-col start">
+				<h2>Try Catch</h2>
 			<pre class="language-js fit"><code>try {
   fetchDataFromServer(success, error)
 } catch (e) {
   console.log(e)
   redirectUserToHomeScreen()
 }</code></pre>
+</div>
+
 <img style="max-height: 70vh" src="https://i.redd.it/cmhc4anews571.png" alt="">
 
 		</div>
@@ -1068,7 +1080,7 @@ default:
 	<article class="slide">
 		<h2>Throwing Errors</h2>
 		<div class="grid col-2" style="gap: 2rem">
-			<pre class="wrong language-js fit"><code class="med-code">let authenticate = false
+			<pre class="wrong language-js fit"><code>let authenticate = false
 if ( authenticate ) {
   console.log('success')
   userSignIn()
@@ -1079,7 +1091,7 @@ if ( authenticate ) {
 	<p>Use the <code>throw</code> statement to halt code execution & issue a custom exception.</p>
 	<p>Only use in places it can be caught. When the exception occurs, control transfers to the <code>catch</code> block. The <code>finally</code> block always runs, error or not.</p>
 </span>
-<pre class="correct language-js fit" style="grid-row: 1 / span 2"><code class='med-code'>let authenticate = false
+<pre class="correct language-js fit" style="grid-row: 1 / span 2"><code>let authenticate = false
 try {
   if ( authenticate ) {
     userSignIn()
@@ -1100,11 +1112,13 @@ try {
 	
 	<article class="slide">
 		<h2>Code Execution Visualizer</h2>
-		<p><a href="http://pythontutor.com/iframe-embed.html#code=var%20globalVar%20%3D%20'Hello'%0A%0Afunction%20greetFriend%20%28name%29%20%7B%0A%20%20globalVar%20%2B%3D%20'%20'%20%2B%20name%0A%20%20return%20globalVar%0A%7D%0A%0Aconsole.log%28greetFriend%28'Jamie'%29%29%0Aconsole.log%28greetFriend%28'Kermit'%29%29%0Aconsole.log%28greetFriend%28'Pikachu'%29%29&codeDivHeight=400&codeDivWidth=350&curInstr=16&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Example 1</a></p>
-		<p><a href="http://pythontutor.com/iframe-embed.html#code=var%20globalVar%20%3D%20'Hello'%0A%0Afunction%20greetFriend%20%28salutation,%20name%29%20%7B%0A%20%20salutation%20%2B%3D%20'%20'%20%2B%20name%0A%20%20return%20salutation%0A%7D%0A%0Aconsole.log%28greetFriend%28globalVar,%20'Jamie'%29%29%0Aconsole.log%28greetFriend%28globalVar,%20'Kermit'%29%29%0Aconsole.log%28greetFriend%28globalVar,%20'Pikachu'%29%29%0Aconsole.log%28globalVar%29&codeDivHeight=400&codeDivWidth=350&curInstr=17&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Example 2</a></p>
-		<p><a href="http://www.pythontutor.com/javascript.html#code=var%20globalVar%20%3D%20'Hello'%0A%0Afunction%20greetFriend%20%28name%29%20%7B%0A%20%20globalVar%20%2B%3D%20'%20'%20%2B%20name%0A%20%20return%20globalVar%0A%7D%0A%0Aconsole.log%28greetFriend%28'Jamie'%29%29%0Aconsole.log%28greetFriend%28'Kermit'%29%29%0Aconsole.log%28greetFriend%28'Pikachu'%29%29&curInstr=16&mode=display&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Visualize JS</a></p>
-		<p><a href="https://ui.dev/javascript-visualizer/">UI Viz</a></p>
-		<div class="flex"><button class='snippet-btn primary' onclick="copyToClipboard(event)" data-clipboard-text="`function test(a, b, c) {
+		<div class="col-2">
+			<p class="m0"><a href="http://pythontutor.com/iframe-embed.html#code=var%20globalVar%20%3D%20'Hello'%0A%0Afunction%20greetFriend%20%28name%29%20%7B%0A%20%20globalVar%20%2B%3D%20'%20'%20%2B%20name%0A%20%20return%20globalVar%0A%7D%0A%0Aconsole.log%28greetFriend%28'Jamie'%29%29%0Aconsole.log%28greetFriend%28'Kermit'%29%29%0Aconsole.log%28greetFriend%28'Pikachu'%29%29&codeDivHeight=400&codeDivWidth=350&curInstr=16&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Example 1</a></p>
+			<p><a href="http://pythontutor.com/iframe-embed.html#code=var%20globalVar%20%3D%20'Hello'%0A%0Afunction%20greetFriend%20%28salutation,%20name%29%20%7B%0A%20%20salutation%20%2B%3D%20'%20'%20%2B%20name%0A%20%20return%20salutation%0A%7D%0A%0Aconsole.log%28greetFriend%28globalVar,%20'Jamie'%29%29%0Aconsole.log%28greetFriend%28globalVar,%20'Kermit'%29%29%0Aconsole.log%28greetFriend%28globalVar,%20'Pikachu'%29%29%0Aconsole.log%28globalVar%29&codeDivHeight=400&codeDivWidth=350&curInstr=17&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Example 2</a></p>
+			<p><a href="http://www.pythontutor.com/javascript.html#code=var%20globalVar%20%3D%20'Hello'%0A%0Afunction%20greetFriend%20%28name%29%20%7B%0A%20%20globalVar%20%2B%3D%20'%20'%20%2B%20name%0A%20%20return%20globalVar%0A%7D%0A%0Aconsole.log%28greetFriend%28'Jamie'%29%29%0Aconsole.log%28greetFriend%28'Kermit'%29%29%0Aconsole.log%28greetFriend%28'Pikachu'%29%29&curInstr=16&mode=display&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Visualize JS</a></p>
+			<p><a href="https://ui.dev/javascript-visualizer/">UI Viz</a></p>
+		</div>
+			<div class="flex"><button class='snippet-btn primary' onclick="copyToClipboard(event)" data-clipboard-text="`function test(a, b, c) {
 if(a) {
 c +=1;
 } else if(b) {
@@ -1144,14 +1158,14 @@ console.log(globalVar);`">pure fn snippet</button>
 	</header>
 	<article class="slide">
 		<h2>Standard For Loop</h2>
-		<pre class="language-js"><code class="med-code">let arr = [1,2,3,4,5]
+		<pre class="language-js"><code>let arr = [1,2,3,4,5]
 for(let i = 0; i &lt; arr.length; i++){
   console.log(arr[i])
 }</code></pre>
 	</article>
 	<article class="slide">
 		<h2>While Loops</h2>
-		<pre class="language-js"><code class="med-code">let arr = [1,2,3,4,5]
+		<pre class="language-js"><code>let arr = [1,2,3,4,5]
 let i = 0;
 while(i < arr.length) {
   console.log(arr[i])
@@ -1166,7 +1180,7 @@ while(playing) {
 </article>
 	<article class="slide">
 		<h2>Do While Loops</h2>
-		<pre class="language-js"><code class="med-code">let arr = [1,2,3,4,5]
+		<pre class="language-js"><code>let arr = [1,2,3,4,5]
 let i = 0;
 do {
   i = i + 1;
@@ -1177,7 +1191,7 @@ do {
 		<h2>Recursion <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#recursion">MDN</a></sup></h2>
 		<p>An alternative way to implement a loop</p>
 		<p>The function repeatedly calls itself until the exit conditon (aka escape hatch) is met</p>
-		<pre class="language-js"><code class="med-code">function factorial(num) {
+		<pre class="language-js"><code>function factorial(num) {
   return num === 0 ? 1 : num * factorial(num - 1)
 }</code></pre>
 	<p><a href="http://www.pythontutor.com/javascript.html#code=function%20fact%28n%29%20%7B%0A%20%20if%20%28n%20%3D%3D%200%29%20%7B%0A%20%20%20%20return%201%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20return%20n%20*%20fact%28n-1%29%3B%0A%20%20%7D%0A%7D%0A%0Afact%283%29%3B%0Afact%283%29%3B&mode=edit&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Visualize Factorial Fn</a></p>
@@ -1185,7 +1199,7 @@ do {
 	
 	<article class="slide">
 		<h2>For Of Loops</h2>
-		<pre class="language-js"><code class="med-code">const array1 = ['a', 'b', 'c'];
+		<pre class="language-js"><code>const array1 = ['a', 'b', 'c'];
 for (const element of array1) {
   console.log(element);
 }</code></pre>
@@ -1193,7 +1207,7 @@ for (const element of array1) {
 	<article class="slide">
 		<h2>Looping Over Arrays</h2>
 		<p>Arrays have a built in method called <code>forEach()</code></p>
-		<pre class="language-js"><code class="med-code">let callback = i => console.log(i)
+		<pre class="language-js"><code>let callback = i => console.log(i)
 array.forEach(callback)
 // Works on Nodelists too!
 document.querySelectorAll('div').forEach(callback)
@@ -1214,7 +1228,7 @@ arr.includes(4) // returns true only if it contains the parameter</code></pre>
 		<h2>Advanced Array Methods</h2>
 		<p>These do not mutate the array. They create a copy.</p>
 		<p>All of them take a callback function to customize their behavior.</p>
-		<pre class="language-js"><code class='med-code'>.map()
+		<pre class="language-js"><code>.map()
 .flatMap()
 .filter()
 .reduce()
@@ -1225,7 +1239,7 @@ arr.includes(4) // returns true only if it contains the parameter</code></pre>
 	<article class="slide">
 		<h2><code>.map()</code></h2>
 		<p>Transforms an array and always returns an array of the same length</p>
-		<pre class="language-js"><code class='med-code'>let arr = [1,2,3]
+		<pre class="language-js"><code>let arr = [1,2,3]
 var squares = arr.map(i => i **2) // returns [1,4,9]
 console.log(arr) // [1,2,3]
 		</code></pre>
@@ -1233,7 +1247,7 @@ console.log(arr) // [1,2,3]
 	<article class="slide">
 		<h2><code>.flatMap()</code></h2>
 		<p>Works just like <code>.map()</code>, but also flattens the array by one level</p>
-		<pre class="language-js"><code class="med-code">var arr = [1, 2, 3, 4];
+		<pre class="language-js"><code>var arr = [1, 2, 3, 4];
 arr.flatMap(x => [x, x * 2]); // [1, 2, 2, 4, 3, 6, 4, 8]
 
 var arr2 = [[1,2], [2,3], [3,4]]
@@ -1242,14 +1256,14 @@ arr2.flatMap(x => x) //  [1, 2, 2, 3, 3, 4]</code></pre>
 	<article class="slide">
 		<h2><code>.filter()</code></h2>
 		<p>Removes elements from array when the callback does not return true</p>
-		<pre class="language-js"><code class='med-code'>[1,2,3,4].filter(i => i > 2) // [3,4]
+		<pre class="language-js"><code>[1,2,3,4].filter(i => i > 2) // [3,4]
 [[1 ,2],[3, 3],[4, 5]].filter(i => i[0] > 3) // [[4, 5]]</code></pre>
 	</article>
 	<article class="slide">
 		<h2><code>.reduce()</code></h2>
 		<p>The callback processes all the elements in the array and reduces them down to one value called the accumulator.</p>
 		<p>Always returns a single output value. </p>
-		<pre class="language-js"><code class="med-code">let arr = [0, 1, 2, 3, 4]
+		<pre class="language-js"><code>let arr = [0, 1, 2, 3, 4]
 arr.reduce((accumulator, currentValue, currentIndex, array) => {
   return accumulator + currentValue
 }, 0)
@@ -1259,8 +1273,8 @@ arr.reduceRight((acc, cur) => acc.concat(cur), [])</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Reduce Step-by-step</h2>
-		<table class="table table-striped table-bordered">
-			<thead>
+		<table>
+			<thead style="color: black;">
 			<tr>
 			<th>callback</th>
 			<th>accumulator</th>
@@ -1270,7 +1284,7 @@ arr.reduceRight((acc, cur) => acc.concat(cur), [])</code></pre>
 			<th>return value</th>
 			</tr>
 			</thead>
-			<tbody>
+			<tbody class="center-tail">
 			<tr>
 			<td>first call</td>
 			<td>0</td>
@@ -1333,7 +1347,7 @@ arr.reduceRight((acc, cur) => acc.concat(cur), [])</code></pre>
 	<article class="slide">
 		<h2>Accessing Object Values</h2>
 		<p>Dot Notation & Bracket Notation</p>
-		<pre class="language-js"><code class="med-code">let myAccess = "key"
+		<pre class="language-js"><code>let myAccess = "key"
 obj.key // 'value'
 obj["key"] // value
 obj[myAccess] // value
@@ -1369,7 +1383,7 @@ obj?.key3?.key
 		<p><code>?.</code></p>
 		<pre
 			class="language-js"
-		><code class="med-code">let obj = { key: { maybe: { nested: 1} } }
+		><code>let obj = { key: { maybe: { nested: 1} } }
 obj.key.maybenot.nested // Throws an error
 obj.key.maybenot?.nested // Evaluates to `undefined`
 obj?.key?.maybenot?.nested // Chain multiple for full safety
@@ -1377,7 +1391,7 @@ obj?.key?.maybenot?.nested // Chain multiple for full safety
 	</article>
 	<article class="slide">
 		<h2>The Object Constructor</h2>
-		<pre class="language-js"><code class="med-code">let obj = new Object // {}
+		<pre class="language-js"><code>let obj = new Object // {}
 obj.key = 'value' // must populate keys manually</code></pre>
 	</article>
 
@@ -1392,7 +1406,7 @@ obj.key = 'value' // must populate keys manually</code></pre>
 		</header>
 	<article class="slide">
 		<h2>The <code>this</code> keyword <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN</a></sup> <sup>/</sup> <sup><a href="https://www.w3schools.com/js/js_this.asp">W3</a></sup></h2>
-		<pre class="language-js"><code class="med-code">const person = {
+		<pre class="language-js"><code>const person = {
   name: 'Chris',
   greet: function() {
   alert('Hello ' + this.name + ', Welcome!');
@@ -1426,7 +1440,7 @@ me.greet() // 'Hello there!'</code></pre>
 		<h2>Merging Objects</h2>
 		<p><code>Object.assign()</code></p>
 		<p>This overwrites the target object and avoids inheritance</p>
-		<pre class="language-js"><code class='med-code'>const target = { a: 1, b: 2 };
+		<pre class="language-js"><code>const target = { a: 1, b: 2 };
 const source = { b: 4, c: 5 };
 const returnedTarget = Object.assign(target, source);
 console.log(target);// Object { a: 1, b: 4, c: 5 }
@@ -1446,7 +1460,7 @@ console.log(obj) // {key: 'value', test: 'same object in memory'}</code></pre>
 		<h2>Cloning an Object with <code>.assign()</code></h2>
 		<p>Recall Mutating vs. Non-Mutating Operations (creating a copy)</p>
 		<p>This will avoid the potential collisions due to <strong>passing by Reference</strong></p>
-		<pre class="language-js"><code class="med-code">const obj = {name: 'Jamie', isHuman: true};
+		<pre class="language-js"><code>const obj = {name: 'Jamie', isHuman: true};
 const uniqueObj = Object.assign({}, obj)
 // now there are two separate objects in memory
 // each with the same properties</code></pre>
@@ -1463,7 +1477,7 @@ console.log(obj) // {prop: 1}</code></pre>
 	<article class="slide">
 		<h2>Looping in Objects</h2>
 		<p>The For...in Loop (Does not garauntee order)</p>
-		<pre class="language-js"><code class="med-code">const object = {a: 1, b: 2, c: 3};
+		<pre class="language-js"><code>const object = {a: 1, b: 2, c: 3};
 for (const property in object) {
   console.log(`${property}: ${object[property]}`);
 }
@@ -1484,16 +1498,16 @@ Object.fromEntries([['a', 1],['b', 2],['c', 3]]) //{a: 1, b: 2, c: 3}</code></pr
 	<article class="slide">
 		<h2>Protecting Objects</h2>
 		<p>Making an object read-only has some "gotchas"</p>
-		<pre class="language-js"><code class="med-code">const obj = {key: 'value'}
+		<pre class="language-js"><code>const obj = {key: 'value'}
 obj.key = 3 // this works
 obj = {name: 'new'} // Throws Error
 Object.seal(obj)
 Object.freeze(obj)</code></pre>
 	</article>
 	<article class="slide">
-		<code class="large-code">Object.seal()</code>
+		<code>Object.seal()</code>
 		<p>Prevents deletion of properties</p>
-		<pre class="language-js"><code class="med-code">const obj = {prop: 2 };
+		<pre class="language-js"><code>const obj = {prop: 2 };
 Object.seal(obj);
 // can mutate a sealed object's existing properties
 obj.prop = 3;
@@ -1505,9 +1519,9 @@ obj.greet = 'hello'
 console.log(obj.prop, obj.greet);// 3, undefined</code></pre>
 	</article>
 	<article class="slide">
-		<code class="large-code">Object.freeze()</code>
+		<code>Object.freeze()</code>
 		<p>Prevents deletion and alteration of properties. But only on 1st level of nesting</p>
-		<pre class="language-js"><code class="med-code">const obj = {prop: 2, key: {greet: 'hello'}};
+		<pre class="language-js"><code>const obj = {prop: 2, key: {greet: 'hello'}};
 Object.freeze(obj);
 // cannot mutate nor delete a frozen object
 obj.prop = 3;
@@ -1525,7 +1539,7 @@ console.log(obj)
 	<article class="slide">
 		<h2>Recursively Freezing an Object</h2>
 		<p>This is not a native JS function. You have to write it yourself. But here is an implementation we can use: <a href="https://github.com/remix/simple-deep-freeze/blob/master/index.js">Github</a></p>
-		<pre class="language-js"><code class="med-code">function deepFreeze (o) {
+		<pre class="language-js"><code>function deepFreeze (o) {
   Object.freeze(o);
   Object.getOwnPropertyNames(o).forEach(prop => {
     if (o.hasOwnProperty(prop) 
@@ -1548,7 +1562,7 @@ console.log(obj)
 		<h2>Prototype Objects</h2>
 		<p>Everything is an inspectable object, except <code>null, undefined</code>. <br> <small>(<code>null</code> is kind of an object though, it's complicated)</small></p>
 		<p>Even the Primitives we've seen have methods on them, because they're Objects</p>
-		<pre class="language-js"><code class="med-code">String.prototype
+		<pre class="language-js"><code>String.prototype
 Number.prototype
 Boolean.prototype
 Symbol.prototype
@@ -1570,13 +1584,13 @@ console.log(_Sym.description);</code></pre>
 	</article>
 	<article class="slide">
 		<h2>"Monkey Patching" Prototypes considered harmful<sup><a href="https://maxheiber.medium.com/safe-monkey-patching-with-es2015-symbol-e36fb01ab794">Medium</a></sup></h2>
-		<pre class="language-js"><code class="med-code">// Add useful toString Method to js objects:
+		<pre class="language-js"><code>// Add useful toString Method to js objects:
 Object.prototype.toString = function() {
   return JSON.stringify(this)
 }</code></pre>
 <p>This can lead to naming collisions with other libraries</p>
 <p>This is what <code>Symbol</code> is for!! So use it if you must do this.</p>
-<pre class="language-js"><code class="med-code">// toString path with `Symbol`:
+<pre class="language-js"><code>// toString path with `Symbol`:
 const toString = Symbol('toString')
 Object.prototype[toString] = function() {
   return JSON.stringify(this)

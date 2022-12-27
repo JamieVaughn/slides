@@ -40,6 +40,7 @@ body {
 	justify-content: space-evenly;
 	padding: 0.5rem 0;
 	margin: 1rem 0;
+	gap: 8px;
 }
 .slide .flex.tight {
 	margin: 0;
@@ -73,6 +74,10 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	gap: 8px;
+}
+.slide .flex-col.start {
+	justify-content: flex-start;
 }
 p {
 	margin: 0.5rem 0;

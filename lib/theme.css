@@ -53,6 +53,10 @@ h1, h2, h3, h4, h5, h6 {
 	text-align: center;
 }
 
+.m0 {
+	margin: 0;
+}
+
 a {
 	color: inherit;
 	text-decoration-color: hsla(0,0%,100%,.4);
@@ -278,15 +282,22 @@ blockquote {
 		padding-left: 0;
 	}
 
+	tbody.center-tail tr td:first-child {
+		text-align: left;
+	}
+	tbody.center-tail tr td {
+		text-align: center;
+	}
+
 	thead th {
 		vertical-align: top;
 		font-size: 75%;
-		background: var(--accent1);
+		background: var(--accent3);
 		padding: .3em .5em;
 	}
 
 	tbody tr > * {
-		border-top: 1px solid hsla(0, 0%, 100%, .15);
+		border-top: 2px solid hsla(0, 0%, 100%, .35);
 	}
 
 	td:first-child {
