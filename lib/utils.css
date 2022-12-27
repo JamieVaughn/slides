@@ -27,7 +27,7 @@ pre.correct::before {
 pre[data-before]::before {
   content: attr(data-before);
   position: absolute;
-  right: calc(100% - 1.5rem);
+  right: calc(100% - 5rem);
   top: 33%;
   transform: rotate(-90deg);
 }
