@@ -9,7 +9,7 @@
     />
     <meta name="description" content="MCC Web Design & Development Slides" />
     <meta name="author" content="Jamie Vaughn" />
-    <title>Template</title>
+    <title>MVC Slides</title>
     <!-- Inspire css -->
     <link href="../lib/inspire.css" rel="stylesheet" />
     <link href="../lib/theme.css" rel="stylesheet" />
@@ -19,6 +19,37 @@
     <!-- Custom css -->
     <link rel="stylesheet" href="../laser/laser.css" />
     <script src="https://cdn.master.co/css"></script>
+    <style>
+      /* d3 force graph */
+
+      circle {
+        fill: crimson;
+      }
+      line {
+        stroke: wheat;
+        stroke-width: 2px;
+        filter: drop-shadow(0 0 1px firebrick);
+      }
+      text {
+        text-anchor: middle;
+        font-family: "Helvetica Neue", Helvetica, sans-serif;
+        fill: #666;
+        font-size: 16px;
+      }
+      polyline {
+        stroke: silver;
+        stroke-width: 3;
+        stroke-linecap: round;
+      }
+      .ATL {
+        color: white;
+        position: absolute;
+        font-size: 3rem;
+        font-weight: bold !important;
+        right: 10%;
+        top: 10%;
+      }
+    </style>
   </head>
   <body
     class="language-markup"
@@ -35,25 +66,6 @@
         <h2>Design Patterns</h2>
         <h1>Patterns for Code Organization</h1>
       </header>
-      <article class="slide">
-        <h2>To understand JS Frameworks...</h2>
-        <p>
-          Before we dive into a framework like React, <br />let's explore how to
-          organize code and why...
-        </p>
-        <p>
-          also known as Design Patterns:
-          <a href="https://www.gofpatterns.com/">"Gang Of Four"</a> book
-        </p>
-        <ul style="columns: 2">
-          <li>Factory Method Pattern</li>
-          <li>Command Pattern</li>
-          <li>State Pattern</li>
-          <li>Strategy Pattern</li>
-          <li>Observer Pattern</li>
-          <li>Singleton Pattern</li>
-        </ul>
-      </article>
       <article class="slide">
         <h2>The Saga of the Dragon Clicker App</h2>
         <p>A story about being a programmer hired by a needy client</p>
@@ -148,7 +160,7 @@ dragon.addEventListener('click', function(e){
           <li>Remember our markdown syntax?</li>
           <li>Commit your changes to your forked repo</li>
           <li>
-            Open a <code>Pull Request</code> against the original
+            Open a <strong>Pull Request</strong> against the original
             <code>/reflections</code>
             repo
           </li>
@@ -158,10 +170,11 @@ dragon.addEventListener('click', function(e){
         <h2>The Client Called, Reqs have changed 😣</h2>
         <p>
           It's typical for reqs to change several times over the development
-          lifecycle. Learn to roll with it.
+          lifecycle. To survive as a developer we'll have to learn to roll with
+          it & be adaptive.
         </p>
         <p>All software development is an iterative process</p>
-        <p>(i.e. many steps - Mostly forward, some backward)</p>
+        <p>(i.e. many steps - Mostly forward, a few backward)</p>
         <ul>
           <strong>Common Reasons for Req changes:</strong>
           <li>Client's business needs change</li>
@@ -180,9 +193,10 @@ dragon.addEventListener('click', function(e){
           <li>Display the type of each dragon above it</li>
           <ul>
             <li>
-              For example: Fire, Water, Earth dragons etc... (they like
-              elemental dragons)
+              They like elemental dragons, so how about <u>Fire</u> &
+              <u>Water</u> dragons?
             </li>
+            <li>But feel free to be creative with the dragon types</li>
           </ul>
           <li>Use CSS to style the different dragon types distinctly</li>
           <li>Show the number of clicks next to each associated dragon</li>
@@ -196,17 +210,34 @@ dragon.addEventListener('click', function(e){
           But, that's more loose global variables... Would that continue to
           scale?
         </p>
-        <p class="delayed">What if we contained the variables in an object?</p>
-        <p class="delayed">
-          Is it too soon to consider some kind of templating function?
-        </p>
-        <p class="delayed">
-          To style the dragon types how about a CSS class like
-          <code>.fire</code>?
-        </p>
-        <p class="delayed">
-          How about using CSS <code>filter: hue-rotate();</code> perhaps?
-        </p>
+        <div class="flex">
+          <div>
+            <h3 class="delayed">Javascript</h3>
+            <ul>
+              <li class="delayed">
+                What if we contained the variables in an object?
+              </li>
+              <li class="delayed">
+                Is it too soon to consider some kind of re-usable setup
+                function?
+              </li>
+            </ul>
+            <p class="delayed"></p>
+            <p class="delayed"></p>
+          </div>
+          <div class="delayed">
+            <h3>Styling</h3>
+            <ul>
+              <li class="delayed">
+                To style the dragon types how about a CSS class like
+                <code>.fire</code>?
+              </li>
+              <li class="delayed">
+                How about using CSS <code>filter: hue-rotate();</code> perhaps?
+              </li>
+            </ul>
+          </div>
+        </div>
       </article>
       <article class="slide">
         <h2>Reflections</h2>
@@ -219,16 +250,94 @@ dragon.addEventListener('click', function(e){
             Can you share a technique of encapsulation or D.R.Y. coding you
             used?
           </li>
-          <li>D.R.Y. - Don't Repeat Yourself</li>
+          <li>Is your code D.R.Y. or W.E.T.?</li>
+          <ul>
+            <li>
+              <u>D</u>on't <u>R</u>epeat <u>Y</u>ourself <strong>vs.</strong>
+              <u>W</u>rite <u>E</u>verything <u>T</u>wice!
+            </li>
+          </ul>
           <li class="delayed">
-            Repeating code twice isn't so bad, but by three times?
+            Repeating code twice isn't always bad, but by three times is a sign
+            to refactor.
           </li>
           <ul>
             <li class="delayed">
-              Try using a Factory Pattern or some other duplication pattern
+              Try using a pattern to re-use code and/or functions
             </li>
           </ul>
         </ul>
+      </article>
+      <article class="slide">
+        <h2>As a precursor to JS Frameworks...</h2>
+        <p>
+          Before we dive into a framework like React, <br />let's explore
+          patterns for reusing and organizing code and how it helps us make
+          repeated tasks easier...
+        </p>
+        <p class="delayed">Introducing: Design Patterns!</p>
+        <strong class="delayed"
+          >From the
+          <a href="https://www.gofpatterns.com/">"Gang Of Four"</a>
+          book:</strong
+        >
+        <ul class="delayed" style="columns: 2">
+          <li>
+            <u style="text-decoration-color: crimson">Factory Method Pattern</u>
+          </li>
+          <li><u style="text-decoration-color: crimson">Command Pattern</u></li>
+          <li>State Pattern</li>
+          <li>Strategy Pattern</li>
+          <li>Observer Pattern</li>
+          <li>Singleton Pattern</li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Factory Method Pattern</h2>
+        <h3>a.k.a The Factory Function</h3>
+        <p>
+          It is a function that returns an object. So it's similar to a
+          constructor pattern, but without the <code>class</code>,
+          <code>this</code> or <code>new</code> keywords
+        </p>
+        <pre class="language-js"><code>factoryFunction(name, carMake, age) {
+          const canDrive = age > 16 ? true : false
+          return {
+            name,
+            carMake,
+            canDrive,
+            id: Math.random(),
+            timestamp: Date.now()
+          }
+        }
+        const bobby = factoryFunction('Bobby', 'Ford', 23)
+        </code></pre>
+      </article>
+      <article class="slide">
+        <h2>The Command Pattern</h2>
+        <h3>Event Dispatching with Enums</h3>
+        <p>
+          What's an Enum? It's one string value in a list of discrete string
+          values
+        </p>
+        <p>
+          For the command pattern we assign enums to the various actions that
+          our UI supports and so can be taken by the user
+        </p>
+        <p>
+          When a user clicks a button (or some other interaction) that
+          represents an action that will trigger a discrete, deterministic
+          change in our app's state.
+        </p>
+        <p>
+          Try to map one UI element to one dispatchable action to maintain
+          determinism.
+        </p>
+        <pre
+          class="language-js"
+        ><code>plusButton.addEventListener('click', () => increment())
+plus2Button.addEventListener('click', () => increment('add2'))
+        </code></pre>
       </article>
       <article class="slide">
         <p>The Client Called Again with new Reqs!! 😱</p>
@@ -236,17 +345,24 @@ dragon.addEventListener('click', function(e){
       <article class="slide">
         <h2>Dragon Arena 🏟️</h2>
         <ul>
-          <li>A topbar <code>nav</code> with a list of 5 dragon types</li>
           <li>
-            A separate area to display the 🐉's themselves (one shown at a time)
+            A topbar <code>nav</code> with a list of at least 5 dragon types
+            <ul>
+              <li>
+                They still enjoy elemental dragons like Fire, Water, Earth &
+                Air, but be creative with the rest!
+              </li>
+            </ul>
           </li>
+          <li>A separate area to display the 🐉's themselves</li>
           <li>
             The display area should show the 🐉's type, icon, and click count
           </li>
           <li>
             When the dragon type in the <code>nav</code> is clicked, a new 🐉 of
             the type that was clicked should be added to the display area (i.e.
-            so you could have two separate fire dragons)
+            so you could have two separate fire dragons sitting next to other
+            dragons)
           </li>
           <li>
             Click count must be unique to each 🐉 & increment when clicked
@@ -254,21 +370,22 @@ dragon.addEventListener('click', function(e){
         </ul>
       </article>
       <article class="slide">
-        <h2>Reminder on Closures</h2>
+        <h2>Reminder on Code Organization with Closures & Classes</h2>
+        <p>Here's a Closure example:</p>
         <pre class="language-js"><code>var nums = [1,2,3];
 for (var i = 0; i < nums.length; i++) {
-// This is the number we're on...
-var num = nums[i]
-// We're creating a DOM element for the number
-var elem = document.createElement('div');
-elem.textContent = num;
-// ... and when we click, alert the value of `num`
-elem.addEventListener('click', (function(numCopy) {
-return function() {
-		alert(numCopy);
-};
-})(num));
-document.body.appendChild(elem);
+  // This is the number we're on...
+  var num = nums[i]
+  // We're creating a DOM element for the number
+  var elem = document.createElement('div');
+  elem.textContent = num;
+  // ... and when we click, alert the value of `num`
+  elem.addEventListener('click', (function(numCopy) {
+    return function() {
+      console.log(numCopy);
+    };
+  })(num));
+  document.body.appendChild(elem);
 };</code></pre>
       </article>
       <article class="slide">
@@ -284,32 +401,45 @@ document.body.appendChild(elem);
           <li>
             Were you able to separate out any of your code into distinct chunks
             with singular jobs?
+            <ul>
+              <li>
+                ..using modules, factory functions, closures, classes or data
+                structures
+              </li>
+            </ul>
           </li>
-          <li>(..like modules, functions, data structures)</li>
         </ul>
       </article>
       <article class="slide">
         <h2>The Tools vs. The Blueprints</h2>
         <img class="delayed" style="width: 800px" src="img/tools.jpeg" alt="" />
-        <figure
-          class="delayed"
-          style="
-            position: absolute;
-            z-index: 1;
-            transform: translate(0%, -116%);
-          "
+        <div
+          class="flex"
+          style="position: absolute; bottom: 0; max-height: 75vh"
         >
-          <img src="img/gear_pump.png" alt="" />
-          <p style="position: absolute; bottom: -18%; background: white">
-            Subassemblies of Code that slot into an entire application
-          </p>
-        </figure>
-        <img
-          class="delayed"
-          style="position: absolute; z-index: 0; transform: translate(-60%, 0)"
-          src="img/wind_turbine.jpeg"
-          alt=""
-        />
+          <figure
+            class="delayed flex-col"
+            style="margin: 0; text-align: center"
+          >
+            <img
+              src="img/gear_pump.png"
+              alt=""
+              style="vertical-align: bottom"
+            />
+            <p
+              style="
+                background: white;
+                color: black;
+                margin: 0;
+                padding: 1rem;
+                max-width: 55vw;
+              "
+            >
+              Subassemblies of Code that slot into an entire application
+            </p>
+          </figure>
+          <img class="delayed" src="img/wind_turbine.jpeg" alt="" />
+        </div>
       </article>
       <article class="slide">
         <h2>Spaghetti Code</h2>
@@ -317,13 +447,14 @@ document.body.appendChild(elem);
           ... is when a codebase has <strong>many connections</strong> and
           <strong>no organization</strong>
         </p>
-        <div class="flex fragment">
+        <div class="flex delayed">
           <svg
-            onclick="addPhone(event)"
             class="nohub"
+            style="cursor: pointer"
             width="600"
             height="450"
             viewBox="200 150 200 160"
+            onclick="addPhone(event)"
           >
             <g class="nohub-links"></g>
             <g class="nohub-nodes"></g>
@@ -333,26 +464,32 @@ document.body.appendChild(elem);
             <p>Number of Connections: <span class="cxn-annotation">1</span></p>
           </div>
         </div>
-        <img
-          class="fragment j-stamp"
-          src="img/sad_spaghet.webp"
+        <figure
+          class="delayed tilt-stamp"
           style="
+            text-align: right;
+            transform: rotate(-15deg) translate(5%, 20%);
             border: none;
-            transform: rotate(-15deg) translate(-70%, 0);
+            width: 50vw;
             clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%, 50% 0);
           "
-          alt=""
-        />
+        >
+          <img src="img/sad_spaghet.webp" alt="" />
+          <p style="margin-right: 4rem">Sad Spaghetti</p>
+        </figure>
       </article>
       <article class="slide">
         <h2>More Connections is More Complexity</h2>
         <p>
-          By the point you have 45 phones you'll have a thousand connections!!!
+          At the point you have 45 phones, you'll have a thousand connections!!!
         </p>
         <div>
           <svg
-            style="border-left: 1px solid grey; border-bottom: 1px solid grey"
-            height="200"
+            style="
+              border-left: 3px solid silver;
+              border-bottom: 3px solid silver;
+            "
+            height="250"
             width="400"
             viewBox="5 0 200 102"
           >
@@ -371,7 +508,7 @@ document.body.appendChild(elem);
           configuration parameters
         </p>
         <p class="delayed">
-          Exponential relationships are scary and hard to manage!
+          Exponential relationships are scary & hard to manage!
         </p>
       </article>
       <article class="slide">
@@ -410,10 +547,11 @@ document.body.appendChild(elem);
         <p class="delayed">...like a <strong>Hub</strong>!</p>
         <div class="flex">
           <svg
-            class="hub fragment"
-            width="600"
-            height="450"
+            class="hub delayed"
+            width="500"
+            height="350"
             viewBox="200 150 200 160"
+            style="scale: 1.4"
           >
             <g class="hub-links"></g>
             <g class="hub-nodes"></g>
@@ -424,13 +562,7 @@ document.body.appendChild(elem);
             <p>Number of phones and connections scale linearly!</p>
           </div>
         </div>
-        <div
-          style="transform: translate(-36%, 40%) rotate(-15deg)"
-          class="ATL-container fragment j-stamp"
-        >
-          <img src="img/Atlanta_airport.jpg" alt="" />
-          <span class="ATL">ATL</span>
-        </div>
+        <img class="delayed tilt-stamp" src="img/Atlanta_airport.jpg" alt="" />
       </article>
       <article class="slide">
         <h2>The Benefit</h2>
@@ -445,7 +577,8 @@ document.body.appendChild(elem);
             Scalable - Code can accomodate large numbers of users and/or data
           </li>
           <li>
-            Extensible - Easy to add new features without disrupting old ones
+            Extensible - Easy to add new features without disrupting old
+            features
           </li>
           <li>
             Loosely Coupled - Easy to remove legacy features without disrupting
@@ -469,11 +602,11 @@ document.body.appendChild(elem);
       <article class="slide">
         <h2>*️⃣ Model View Controller</h2>
         <p>How to organize the responsibilites (or concerns) of our code</p>
-        <p>MVC/VM/P/*️⃣</p>
+        <p>MV - C / VM / P / *️⃣</p>
         <ul>
           <li>Controllers</li>
-          <li>Presenters</li>
           <li>View Models</li>
+          <li>Presenters</li>
           <li>
             *️⃣ (whatever you want to call it, all are very similar concepts)
           </li>
@@ -518,21 +651,14 @@ document.body.appendChild(elem);
         <h2>Code-along</h2>
         <p>Let's see how we can use an MVC pattern in a small app!</p>
         <p>We're going to code up a note-taking app</p>
-        <p>
+        <details class="notes">
           Check out the repo:
           <a href="https://github.com/JamieVaughn/note-taker">note-taker</a>
-        </p>
+        </details>
       </article>
       <article class="slide">
         <h2>Complete these Challenges:</h2>
-        <p>
-          Can you extend our MVC app with these new features?
-          <sup
-            ><a href="https://github.com/JamieVaughn/note-taker"
-              >note-taker</a
-            ></sup
-          >
-        </p>
+        <p>Can you extend our MVC note-taker app with these new features?</p>
         <ol>
           <li>☑️ Add a Delete feature</li>
           <li>☑️ Add a localStorage clear feature</li>
@@ -547,9 +673,11 @@ document.body.appendChild(elem);
         </ol>
       </article>
       <article class="slide">
-        <h2>Our Favorite Client called again 😑</h2>
-        <p>
-          They wants us to refactor Dragon Arena 🏟️ using <strong>MVC</strong>
+        <h2>Our Favorite Client called again</h2>
+        <h3 class="delayed">😑 (seriously?)</h3>
+        <p class="delayed">
+          They heard about this <strong>MVC</strong> thing & they want Dragon
+          Arena 🏟️ to use it
         </p>
       </article>
       <article class="slide">
@@ -574,8 +702,8 @@ document.body.appendChild(elem);
             through the controller
           </li>
           <li>
-            Use a <code>render</code> function that repaints the View after any
-            updates to the model
+            Define a <code>render</code> function to repaint the View & call it
+            after any updates to the model
           </li>
         </ul>
       </article>
@@ -583,7 +711,12 @@ document.body.appendChild(elem);
         <h2>"View is a Function of State"</h2>
         <img src="img/ui_state.png" alt="" /><br />
         <img src="img/function_of_state.png" class="delayed" alt="" />
-        <img src="img/state_view.png" class="fragment j-stamp" alt="" />
+        <img
+          src="img/state_view.png"
+          class="delayed tilt-stamp"
+          alt=""
+          style="width: 40vw"
+        />
       </article>
       <article class="slide">
         <h2>Remember Pure Functions and Side Effects?</h2>
@@ -608,7 +741,7 @@ document.body.appendChild(elem);
           </li>
           <li>
             A good rule of thumb is to think of the <em>Model</em> and the
-            <em>View</em> as the "edges"
+            <em>View</em> as the two "edges"
           </li>
         </ul>
       </article>
@@ -629,7 +762,10 @@ document.body.appendChild(elem);
           <li>The <em>Controller</em> can have:</li>
           <ul>
             <li>Pure functions that transmit messages between Model & View</li>
-            <li>Pure functions that handle calculations & business logic</li>
+            <li>
+              Pure functions that handle calculations, data transforms &
+              business logic
+            </li>
           </ul>
           <li>The <em>View</em> can have functions that:</li>
           <ul>
@@ -691,8 +827,9 @@ dragons = [
 
 dragonFactory(obj) // could go in Model or Controller
 }</code></pre>
-        <span style="transform: translate(-20%, 100%)" class="fragment j-stamp"
-          >a unique <code>id</code> distinguishes between duplicate types!</span
+        <span class="delayed tilt-stamp"
+          >← unique <code>id</code>s distinguish dragons with the same
+          type!</span
         >
       </article>
       <article class="slide">
@@ -727,14 +864,14 @@ dragonFactory(obj) // could go in Model or Controller
         <pre class="language-js"><code>const View = {
 node,
 initializeView1(),
-templateFactory(list),
+factoryFunction(list),
 render1()
 }
 
 const View2 = {
 node, 
 initializeView2(),
-templateFactory(dragon),
+factoryFunction(dragon),
 render2()
 }</code></pre>
       </article>
@@ -755,7 +892,7 @@ dispatch(type)
       </article>
       <article class="slide">
         <h2>Our MVC Blueprint - Let's Build it!!</h2>
-        <div class="flex" style="gap: 8px; align-items: stretch">
+        <div class="flex" style="gap: 6px; align-items: stretch">
           <pre class="language-js"><code>const Model = { 
 list: [],
 dragons: [
@@ -764,10 +901,10 @@ dragons: [
 ...],
 dragonFactory()
 }</code></pre>
-          <pre style="flex: 2 0 34%"><code>const View = {
+          <pre class="language-js"><code>const View = {
 node,
 init(),
-templateFactory(),
+factoryFunction(),
 render()
 }
 // Could have a
@@ -804,14 +941,13 @@ dispatch(type)
       <article class="slide">
         <p>The Client loves <strong>Dragon Arena 🏟️ Premium</strong></p>
         <p class="delayed">
-          <em
-            >But they're insisting one <em style="font-style: normal">f</em>inal
-            req change</em
-          >
+          <em>But they're insisting one final req change</em>
         </p>
         <div class="delayed">
-          <strong style="font-size: 4rem">🤦🏽‍♀️</strong>
-          <p>(last time, I promise)</p>
+          <strong
+            ><span style="font-size: 4rem">🤦🏽‍♀️</span> (this is a needy
+            client!)</strong
+          >
         </div>
       </article>
       <article class="slide">
