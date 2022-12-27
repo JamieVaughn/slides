@@ -1,129 +1,175 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="description" content="MCC Web Design & Development Slides">
-	<meta name="author" content="Jamie Vaughn">
-  <title>Template</title>
-  <!-- Inspire css -->
-	<link href="../lib/inspire.css" rel="stylesheet" />
-	<link href="../lib/theme.css" rel="stylesheet" />
-	<link href="../lib/talk.css" rel="stylesheet" />
-	<link href="../lib/utils.css" rel="stylesheet" />
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="description" content="MCC Web Design & Development Slides" />
+    <meta name="author" content="Jamie Vaughn" />
+    <title>Template</title>
+    <!-- Inspire css -->
+    <link href="../lib/inspire.css" rel="stylesheet" />
+    <link href="../lib/theme.css" rel="stylesheet" />
+    <link href="../lib/talk.css" rel="stylesheet" />
+    <link href="../lib/utils.css" rel="stylesheet" />
 
-  <!-- Custom css -->
-  <link rel="stylesheet" href="../laser/laser.css">
-</head>
-<body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
+    <!-- Custom css -->
+    <link rel="stylesheet" href="../laser/laser.css" />
+  </head>
+  <body
+    class="language-markup"
+    data-prism-plugins="normalize-whitespace"
+    data-duration="30"
+  >
+    <header id="intro" class="slide">
+      <h1>Web Design & Development</h1>
+      <h2>Images</h2>
+      <p class="attribution">MCC: Section 1</p>
+    </header>
+    <section>
+      <header class="slide">
+        <h3>Responsive & Performant Images</h3>
+        <h1>Beyond <code>alt</code> & <code>src</code></h1>
+      </header>
 
-<header id="intro" class="slide">
-  <h1>Web Design & Development</h1>
-  <h2>Images</h2>
-  <p class="attribution">MCC: Section 1</p>
-</header>
-<section>
-	<header class="slide">
-    <h3>Responsive & Performant Images</h3>
-		<h1>Beyond <code>alt</code> & <code>src</code></h1>
-	</header>
+      <article class="slide" title="">
+        <h2>The bulk of your page...</h2>
+        <img src="img/page-weight.svg" alt="" />
+      </article>
 
-	<article class="slide" title="">
-    <h2>The bulk of your page...</h2>
-    <img src="img/page-weight.svg" alt="">
-	</article>
+      <article class="slide">
+        <h4>When Images are wasteful</h4>
+        <img src="img/same_image.png" alt="" />
+      </article>
 
-	<article class="slide">
-    <h4>When Images are wasteful</h4>
-    <img src="img/same_image.png" alt="">
-	</article>
+      <article class="slide">
+        <h4>Different devices - Different images</h4>
+        <img src="img/lg_med_sm.png" alt="" />
+      </article>
 
-  <article class="slide">
-    <h4>Different devices - Different images</h4>
-    <img src="img/lg_med_sm.png" alt="">
-  </article>
-
-  <article class="slide">
-    <h2>Mobile Responsiveness</h2>
-    <ul>Creating different sized images for mobile UX 
-      <li>Less powerful CPUs</li>
-      <li>Save Data on their plan</li>
-      <li>Increase battery duration</li>
-      <li>Avoid flash of empty space</li>
-      <li>Reduce Load times</li>
-    </ul>
-  </article>
-  <article class="slide">
-    <h2>Image Formats</h2>
-    <ul>
-      <li>.PNG</li>
-      <li>.JPG/.JPEG</li>
-      <li>.GIF</li>
-      <li>.SVG (vector format)</li>
-      <li>.WEBP & .AVIF <sup><a href="https://fronius.me/articles/2020-10-14-comparing-image-formats-jpg-webp-avif.html">compare</a>, <a href="https://caniuse.com/?search=avif">support</a></sup></li>
-    </ul>
-    <p>Raster vs Vector</p>
-    <p>File compression schemes (lossy vs lossless)</p>
-    <p>Number of colors & alpha</p>
-  </article>
-  <article class="slide">
-    <h2>Using Width & Height</h2>
-    <p>To avoid a Cumulative Layout Shift (CLS)</p>
-    <p>Define a width and height on your &lt;img&gt;</p>
-    <p>CLS is an SEO metric for Google</p>
-  </article>
-  <article class="slide">
-    <h2>Pixel Density</h2>
-    <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag#a_pixel_is_not_a_pixel">A pixel is not a pixel</a></p>
-    <p>Hardware pixel vs CSS pixels</p>
-    <pre style="margin: 0 auto; min-width: 35vw;"><code>&lt;meta name="viewport" content="width=device-wdith, initial-scale=1.0"&gt;</code></pre>
-  </article>
-  <article class="slide">
-    <div class="flex">
-      <img src="img/size_density.png" alt="">
-      <ul style="list-style: none;">
-        <li><strong>sm:</strong> 480 - 600 for big phones & landscape mode</li>
-        <li><strong>md:</strong> 960</li>
-        <li><strong>lg:</strong> 1440</li>
-        <li><strong>xl:</strong> 1800</li>
-        <li><strong>original:</strong> 3600</li>
-      </ul>
-    </div>
-    <p>
-      <a href="https://squoosh.app/">
-        <img style="max-height: 100px; filter: drop-shadow(0 0 20px white) drop-shadow(0 0 10px white);" src="img/squoosh_logo.svg" alt="">
-      </a>
-    </p>
-  </article>
-  <article class="slide">
-    <h2>Factor in layout when resizing images.</h2>
-    <p>Here, the <strong>tablet</strong> (not desktop) needs the largest image.</p>
-    <img src="img/contigent_sizes.png" alt="">
-  </article>
-  <article class="slide">
-    <h2>Software for Resizing</h2>
-    <ul>
-      <li>Image Previewer (Mac)</li>
-      <li>Gimp</li>
-      <li>Squoosh</li>
-      <li><a href="https://imagemagick.org/">ImageMagick</a></li>
-      <li><a href="https://ffmpeg.org/about.html">ffmpeg</a></li>
-    </ul>
-  </article>
-  <article class="slide">
-    <h2>Advanced Image Attrs & Els</h2>
-    <div class="flex">
-      <p>Elements: <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture">picture</a>, <a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source">source</a></p>
-      <p>Attributes on <code>&lt;source&gt; & &lt;img&gt;</code></p>
-    </div>
-    <div class="flex most-height">
-    <pre class="language-js"><code>&lt;picture&gt;&lt;/picture&gt;
+      <article class="slide">
+        <h2>Mobile Responsiveness</h2>
+        <ul>
+          Creating different sized images for mobile UX
+          <li>Less powerful CPUs</li>
+          <li>Save Data on their plan</li>
+          <li>Increase battery duration</li>
+          <li>Avoid flash of empty space</li>
+          <li>Reduce Load times</li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Image Formats</h2>
+        <ul>
+          <li>.PNG</li>
+          <li>.JPG/.JPEG</li>
+          <li>.GIF</li>
+          <li>.SVG (vector format)</li>
+          <li>
+            .WEBP & .AVIF
+            <sup
+              ><a
+                href="https://fronius.me/articles/2020-10-14-comparing-image-formats-jpg-webp-avif.html"
+                >compare</a
+              >, <a href="https://caniuse.com/?search=avif">support</a></sup
+            >
+          </li>
+        </ul>
+        <p>Raster vs Vector</p>
+        <p>File compression schemes (lossy vs lossless)</p>
+        <p>Number of colors & alpha</p>
+      </article>
+      <article class="slide">
+        <h2>Using Width & Height</h2>
+        <p>To avoid a Cumulative Layout Shift (CLS)</p>
+        <p>Define a width and height on your &lt;img&gt;</p>
+        <p>CLS is an SEO metric for Google</p>
+      </article>
+      <article class="slide">
+        <h2>Pixel Density</h2>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag#a_pixel_is_not_a_pixel"
+            >A pixel is not a pixel</a
+          >
+        </p>
+        <p>Hardware pixel vs CSS pixels</p>
+        <pre
+          style="margin: 0 auto; min-width: 35vw"
+        ><code>&lt;meta name="viewport" content="width=device-wdith, initial-scale=1.0"&gt;</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Responsive Breakpoints</h2>
+        <div class="flex">
+          <img src="img/size_density.png" alt="" />
+          <ul style="list-style: none">
+            <li>
+              <strong>sm:</strong> 480 - 600px
+              <small>(lg phones & landscape mode)</small>
+            </li>
+            <li><strong>md:</strong> 960px</li>
+            <li><strong>lg:</strong> 1440px</li>
+            <li><strong>xl:</strong> 1800px</li>
+            <li><strong>original:</strong> 3600px</li>
+          </ul>
+        </div>
+        <p>
+          <a href="https://squoosh.app/">
+            <img
+              style="
+                max-height: 100px;
+                filter: drop-shadow(0 0 20px white) drop-shadow(0 0 10px white);
+              "
+              src="img/squoosh_logo.svg"
+              alt=""
+            />
+          </a>
+        </p>
+      </article>
+      <article class="slide">
+        <h2>Factor in layout when resizing images.</h2>
+        <p>
+          Here, the <strong>tablet</strong> (not desktop) needs the largest
+          image.
+        </p>
+        <img src="img/contigent_sizes.png" alt="" />
+      </article>
+      <article class="slide">
+        <h2>Software for Resizing</h2>
+        <ul>
+          <li>Image Previewer (Mac)</li>
+          <li>Gimp</li>
+          <li>Squoosh</li>
+          <li><a href="https://imagemagick.org/">ImageMagick</a></li>
+          <li><a href="https://ffmpeg.org/about.html">ffmpeg</a></li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Advanced Image Attrs & Els</h2>
+        <div class="flex">
+          <p>
+            Elements:
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture"
+              >picture</a
+            >,
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source"
+              >source</a
+            >
+          </p>
+          <p>Attributes on <code>&lt;source&gt; & &lt;img&gt;</code></p>
+        </div>
+        <div class="flex most-height">
+          <pre class="language-js"><code>&lt;picture&gt;&lt;/picture&gt;
 &lt;source&gt;&lt;/source&gt;
 &lt;figure&gt;&lt;/figure&gt;
 &lt;figcaption&gt;&lt;/figcaption&gt;
 </code></pre>
-  <pre class="language-js"><code>srcset="...w ...x"
+          <pre class="language-js"><code>srcset="...w ...x"
 
 media="(min-width: 600px)"
 type="image/png"
@@ -133,97 +179,187 @@ decoding="auto | sync | async"
 sizes=""
 srcset=""
 </code></pre>
-
-    </div>
-    <p><code>w</code> (width descriptor) & <code>x</code> (pixel density descriptor) are appended to items in srcset list</p>
-  </article>
-  <article class="slide">
-    <h2>The <code>&lt;picture&gt;</code> Element</h2>
-    <ul>
-      <li>For progressive enhancement & art direction</li>
-      <li>Its' just a wrapper around an <code>&lt;img></code> that allows fallbacks for media queries and responsiveness.</li>
-      <li>so don’t style the picture element with css, nor add classes for css selectors.</li>
-      <li>Only style the <code>&lt;figure&gt;</code> wrapper or the <code>&lt;img&gt;</code> itself</li>
-      <li>gives more detailed control over images to swap out than img element alone</li>
-    </ul>
-    <p><a href="http://responsiveimages.org/">Specification Committee</a></p>
-    <p><a href="https://scottjehl.github.io/picturefill/#examples">picture element fallbacks/polyfill for IE/Safari</a></p>
-  </article>
-  <article class="slide">
-    <h2>The <code>&lt;figure&gt;</code> & <code>&lt;figcaption&gt;</code> Elements</h2>
-    <pre><code><figure>
+        </div>
+        <p>
+          <code>w</code> (width descriptor) & <code>x</code> (pixel density
+          descriptor) are appended to items in srcset list
+        </p>
+      </article>
+      <article class="slide">
+        <h2>The <code>&lt;picture&gt;</code> Element</h2>
+        <ul>
+          <li>For progressive enhancement & art direction</li>
+          <li>
+            Its' just a wrapper around an <code>&lt;img></code> that allows
+            fallbacks for media queries and responsiveness.
+          </li>
+          <li>
+            so don’t style the picture element with css, nor add classes for css
+            selectors.
+          </li>
+          <li>
+            Only style the <code>&lt;figure&gt;</code> wrapper or the
+            <code>&lt;img&gt;</code> itself
+          </li>
+          <li>
+            gives more detailed control over images to swap out than img element
+            alone
+          </li>
+        </ul>
+        <p>
+          <a href="http://responsiveimages.org/">Specification Committee</a>
+        </p>
+        <p>
+          <a href="https://scottjehl.github.io/picturefill/#examples"
+            >picture element fallbacks/polyfill for IE/Safari</a
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>
+          The <code>&lt;figure&gt;</code> &
+          <code>&lt;figcaption&gt;</code> Elements
+        </h2>
+        <pre><code><figure>
 <img src="img/pic.jpg" alt="A picture of an image">
 <figcaption>A caption</figcaption>
 </figure>
 </code></pre>
-<p>Try positioning figcaptions over image with <code>position: absolute;</code> or with css grid!</p>
-  </article>
-  <article class="slide">
-    <h2>The <code>sizes</code> attribute <sup><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes">MDN</a></sup></h2>
-    <ul>
-      <li>Limits the max image size for the largest screens as viewport grows (even if the container is maxed out)</li>
-      <li>Can declare media queries in the image markup.</li>
-      <li>It can limit the image used</li>
-      <li>Without sizes attribute, browser assumes all images are `100vw`.</li>
-      <li>You can add a desktop media query (i.e. (min-width: 900px)) to cap the image width as seen from the browser.</li>
-      <li>This will help and leave the largest images for the high pixel density displays (4k etc)</li>
-    </ul>
-    <p><small>Good to have an automated workflow to do this, since with large image galleries there is a lot of sizes attrs to change if the styling changes.</small></p>
-    <p>
-  </article>
-  <article class="slide">
-    <h2>Srcset attribute <sup><a href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset">MDN</a></sup></h2>
-    <pre style="min-width: 75vw;"><code>&lt;img srcset="img1.jpg 1x, img1.5.jpg 1.5x, img2.jpg 2x" &gt;
+        <p>
+          Try positioning figcaptions over image with
+          <code>position: absolute;</code> or with css grid!
+        </p>
+      </article>
+      <article class="slide">
+        <h2>
+          The <code>sizes</code> attribute
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes"
+              >MDN</a
+            ></sup
+          >
+        </h2>
+        <ul>
+          <li>
+            Limits the max image size for the largest screens as viewport grows
+            (even if the container is maxed out)
+          </li>
+          <li>Can declare media queries in the image markup.</li>
+          <li>It can limit the image used</li>
+          <li>
+            Without sizes attribute, browser assumes all images are `100vw`.
+          </li>
+          <li>
+            You can add a desktop media query (i.e. (min-width: 900px)) to cap
+            the image width as seen from the browser.
+          </li>
+          <li>
+            This will help and leave the largest images for the high pixel
+            density displays (4k etc)
+          </li>
+        </ul>
+        <p>
+          <small
+            >Good to have an automated workflow to do this, since with large
+            image galleries there is a lot of sizes attrs to change if the
+            styling changes.</small
+          >
+        </p>
+        <p></p>
+      </article>
+
+      <article class="slide">
+        <h2>
+          Srcset attribute
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset"
+              >MDN</a
+            ></sup
+          >
+        </h2>
+        <pre
+          style="min-width: 75vw"
+        ><code>&lt;img srcset="img1.jpg 1x, img1.5.jpg 1.5x, img2.jpg 2x" &gt;
 
 &lt;img srcset="img1.jpg 200w, img1.5.jpg 400w, img2.jpg 800w" sizes="50vw"&gt;
 &lt;!-- sizes="(max-width: 400px) 200px, 
     (max-width: 600px) 400px, 
     (max-width: 600px) 800px" --&gt;
 </code></pre>
-  </article>
-  <article class="slide">
-    <h2>Optimizing Images</h2>
-    <ol>Steps:
-      <li>Optimize image format (save for web: webp or avif format)</li>
-      <li>use jpeg for photos (raster) and PNG for graphics (Computer generated)</li>
-      <li>Use SVG and icon fonts for logos and whenever possible</li>
-      <li>Use consistent naming convention for image files (img_small.jpg…img_medium.jpg or img-600.jpg … img-800.jpg)</li>
-    </ol>
-  </article>
-  <article class="slide">
-    <h2>Img on MDN</h2>
-    <p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>img</code></a></p>
-  </article>
-  <article class="slide">
-    <h2>Use Cases</h2>
-    <ul>
-      <li>Art Direction:</li>
-      <li style="list-style: none;">(Use cropped or seam-carved images for small devices)</li>
-      <li>Progressive Enhancement:</li>
-      <li style="list-style: none;">(use avif, then webp, then fallback to jpg)</li>
-    </ul>
-  </article>
-  <article class="slide">
-    <h2>Art Direction Tools</h2>
-    <ul>Choosing the important parts of the image for mobile viewports
-      <li>Cropping with standard image editor</li>
-      <li><a href="https://github.com/trekhleb/js-image-carver">About Seam Carving</a></li>
-      <li><a href="https://trekhleb.dev/js-image-carver/">Seam Carving Web Tool</a></li>
-    </ul>
-    <p>Make sure all the different images convey the same message. Don’t crop or carve at expense of UX.</p>
-  </article>
-  <article class="slide">
-    <h2>Progressive Enhancement Implemented</h2>
-    <pre><code>&lt;picture>
+      </article>
+      <article class="slide">
+        <h2>Optimizing Images</h2>
+        <ol>
+          Steps:
+          <li>Optimize image format (save for web: webp or avif format)</li>
+          <li>
+            use jpeg for photos (raster) and PNG for graphics (Computer
+            generated)
+          </li>
+          <li>Use SVG and icon fonts for logos and whenever possible</li>
+          <li>
+            Use consistent naming convention for image files
+            (img_small.jpg…img_medium.jpg or img-600.jpg … img-800.jpg)
+          </li>
+        </ol>
+      </article>
+      <article class="slide">
+        <h2>Img on MDN</h2>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"
+            ><code>img</code></a
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>Use Cases</h2>
+        <ul>
+          <li>Art Direction:</li>
+          <li style="list-style: none">
+            (Use cropped or seam-carved images for small devices)
+          </li>
+          <li>Progressive Enhancement:</li>
+          <li style="list-style: none">
+            (use avif, then webp, then fallback to jpg)
+          </li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Art Direction Tools</h2>
+        <ul>
+          Choosing the important parts of the image for mobile viewports
+          <li>Cropping with standard image editor</li>
+          <li>
+            <a href="https://github.com/trekhleb/js-image-carver"
+              >About Seam Carving</a
+            >
+          </li>
+          <li>
+            <a href="https://trekhleb.dev/js-image-carver/"
+              >Seam Carving Web Tool</a
+            >
+          </li>
+        </ul>
+        <p>
+          Make sure all the different images convey the same message. Don’t crop
+          or carve at expense of UX.
+        </p>
+      </article>
+      <article class="slide">
+        <h2>Progressive Enhancement Implemented</h2>
+        <pre><code>&lt;picture>
   &lt;source srcset="img/Pic.svg" type="image/svg+xml" />
   &lt;source srcset="img/Pic.avif" type="image/avif" />
   &lt;source srcset="img/Pic.webp" type="image/webp" />
   &lt;img src="img/Pic.jpg" alt="Pic Description" />
 &lt;/picture></code></pre>
-  </article>
-  <article class="slide">
-    <h2>Art Direction Implemented</h2>
-    <pre><code>&lt;picture>
+      </article>
+      <article class="slide">
+        <h2>Art Direction Implemented</h2>
+        <pre><code>&lt;picture>
   &lt;source srcset="large.png" media="(min-width: 800px">
   &lt;source srcset="medium.png" media="(min-width: 600px">
   // closeup.png is a cropped version:
@@ -231,27 +367,33 @@ srcset=""
   // fallback is small to be conservative w/ data transfer
   &lt;img src="small.jpg" alt="Cherry blossoms" />
 &lt;/picture></code></pre>
-  </article>
-  <article class="slide">
-    <h2>Lighthouse</h2>
-    <ul>
-      <li>Performing a Lighhouse Audit in Dev tools</li>
-      <li>Throttling web connection for emulating mobile devices/poor network</li>
-      <li><a href="https://developers.google.com/web/updates/2018/05/lighthouse">Getting more out of Lighthouse</a></li>
-    </ul>
-  </article>
+      </article>
+      <article class="slide">
+        <h2>Lighthouse</h2>
+        <ul>
+          <li>Performing a Lighhouse Audit in Dev tools</li>
+          <li>
+            Throttling web connection for emulating mobile devices/poor network
+          </li>
+          <li>
+            <a
+              href="https://developers.google.com/web/updates/2018/05/lighthouse"
+              >Getting more out of Lighthouse</a
+            >
+          </li>
+        </ul>
+      </article>
+    </section>
 
-</section>
+    <section>
+      <header class="slide">
+        <h3>Advanced Media</h3>
+        <h1>Video & Audio</h1>
+      </header>
 
-<section>
-	<header class="slide">
-    <h3>Advanced Media</h3>
-		<h1>Video & Audio</h1>
-	</header>
-
-	<article class="slide">
-    <h2>Video (& Audio)</h2>
-    <pre style="min-width: 40vw"><code><figure>
+      <article class="slide">
+        <h2>Video (& Audio)</h2>
+        <pre style="min-width: 40vw"><code><figure>
 <video poster="poster.png" width="400" preload="metadata" height="300">
 <track src="captions.vtt" label="captions" kind="captions" srclang="en" default />
 <source src="media/video.mp4" type="video/mp4" />
@@ -261,22 +403,33 @@ Sorry…. your browser does not support the video element.
 <figcaption>A nice video caption</figcaption>
 </figure>
 </code></pre>
-<p>Wrap these elements in figure  with figcaption (for accessibility) and use the source elements and provide some text as fallback if they’re not supported.</p>
-	</article>
+        <p>
+          Wrap these elements in figure with figcaption (for accessibility) and
+          use the source elements and provide some text as fallback if they’re
+          not supported.
+        </p>
+      </article>
 
-	<article class="slide">
-    <h2>Track Element</h2>
-    <pre><code>&lt;track label="English subtitles" kind="subtitles" srclang="en" src="subtitles-en.vtt" >
+      <article class="slide">
+        <h2>Track Element</h2>
+        <pre><code>&lt;track label="English subtitles" kind="subtitles" srclang="en" src="subtitles-en.vtt" >
 &lt;track label="Deutsch subtitles" kind="subtitles" srclang="de" src="subtitles-de.vtt" default>
 &lt;track label="English chapters" kind="chapters" srclang="en" src="chapters-en.vtt">
 </code></pre>
-	</article>
+      </article>
 
-  <article class="slide">
-    <p><code>web.vtt</code> File <small><a href="https://developer.mozilla.org/fr/docs/Web/API/WebVTT_API">MDN</a></small></p>
-    <p>Each entry associated with a time interval is called a "cue"</p>
-    <p>Cues can be given IDs</p>
-    <pre><code>1
+      <article class="slide">
+        <p>
+          <code>web.vtt</code> File
+          <small
+            ><a href="https://developer.mozilla.org/fr/docs/Web/API/WebVTT_API"
+              >MDN</a
+            ></small
+          >
+        </p>
+        <p>Each entry associated with a time interval is called a "cue"</p>
+        <p>Cues can be given IDs</p>
+        <pre><code>1
 00:01.000 —> 00:04.000
 You add captions between a time interval
 
@@ -288,85 +441,172 @@ You add captions between a time interval
 00:10.000 —> 00:14.000 align:middle
 &lt;v Speaker2>This improves video accessibility for folks with auditory issues.&lt;/v>
 </code></pre>
-  </article>
-  <article class="slide">
-    <h2>Styling Cues</h2>
-    <p>Use the <code>::cue</code> pseudo-element</p>
-    <pre class='language-css'><code>video::cue {
+      </article>
+      <article class="slide">
+        <h2>Styling Cues</h2>
+        <p>Use the <code>::cue</code> pseudo-element</p>
+        <pre class="language-css"><code>video::cue {
 color: white;
 background: black;
 font-size: 1.5rem;
 }</code></pre>
-  </article>
-  <article class="slide">
-    <h2>More video pseudo selectors</h2>
-    <pre class='language-sh'><code>
+      </article>
+      <article class="slide">
+        <h2>More video pseudo selectors</h2>
+        <pre class="language-sh"><code>
       :current
       :past
       :future
       :playing
       :paused
     </code></pre>
-  </article>
-  <article class="slide">
-    <h2>Example Challenge</h2>
-    <p><a href="https://jsbin.com/sodihux/1/edit?html,css,js,output">Syncing VTT files</a></p>
-    <p><a href="https://jsbin.com/bixoru/1/edit?html,css,js,output">Toggling Modes</a></p>
-    <p><a href="https://jsbin.com/balowuq/1/edit?html,css,js,output">Toggling Captions</a></p>
-    <p><a href="https://jsbin.com/rifekik/edit?html,css,js,output">Chapter Links</a></p>
-    <p><a href="https://jsbin.com/pulefe/1/edit?html,css,js,output">Chapter Thumbnail Links</a></p>
-    <p><a href="https://jsbin.com/zewemaj/edit?html,js,output">All together now</a></p>
-  </article>
-  <article class="slide">
-    <h2>Sound "Sprites"</h2>
-    <ul>Uses:
-      <li><code>addTextTrack</code></li>
-      <li><code>VTTCue</code></li>
-      <li><code>addCue</code></li>
-    </ul>
-    <p><a href="https://jsbin.com/lodiju/edit?html,js,output">Animals Sounds</a></p>
-    <p><a href="https://codepen.io/w3devcampus/pen/jOqyprY">Collision sounds</a></p>
-  </article>
-  <article class="slide">
-    <h2>Live Video Syncing</h2>
-    <p><a href="https://simpl.info/track/map/index.html">Google Maps</a></p>
-    <p><a href="https://jsbin.com/gucutiyoyu/2/edit?html,js,output">Update Wikipedia pg</a></p>
-  </article>
-  <article class="slide">
-    <h2>Web Audio Inspector Extension</h2>
-    <p><a href="https://chrome.google.com/webstore/detail/web-audio-inspector/cmhomipkklckpomafalojobppmmidlgl">Chrome Extension</a></p>
-  </article>
-  <article class="slide">
-    <h2>WebAudio API</h2>
-    <p><a href="https://jsbin.com/gaduqojeke/edit?html,js,output">Gain</a></p>
-    <p><a href="https://jsbin.com/jarimu/edit?html,js,output">Balance</a></p>
-    <p><a href="https://jsbin.com/belide/edit?html,js,console,output">Reverb</a></p>
-    <p><a href="https://jsbin.com/momixok/edit?html,js,console,output">Compressor</a></p>
-    <p><a href="https://webaudiodemos.appspot.com/Vocoder/index.html#">Example (only in Firefox)</a></p>
-    <p><a href="https://jsbin.com/tuvaxar/edit?html,js,output">Filters</a></p>
-    <p><a href="https://webaudioapi.com/samples/frequency-response/">WebAudio API Viz</a></p>
-    <p><a href="https://webaudioapi.com/samples/room-effects/">WebAudio API Effects</a></p>
-  </article>
-  <article class="slide">
-    <h2>Equalizer Demo</h2>
-    <p><a href="https://jsbin.com/loquwih/edit?html,css,js,output">For Audio</a></p>
-    <p><a href="https://jsbin.com/kukupot/edit?html,css,js,output">For Video</a></p>
-  </article>
-  <article class="slide">
-    <h2>Waveform Vizualizer</h2>
-    <p><a href="https://jsbin.com/sequtas/edit?html,css,js,output">Basic</a></p>
-    <p><a href="https://jsbin.com/sufatup/edit?html,js,output">Styled</a></p>
-    <p><a href="https://jsbin.com/qijujuz/edit?html,js,output">With equalizer</a></p>
-    <p><a href="https://jsbin.com/jafoboh/edit?js,console,output">video w/ equalizer</a></p>
-  </article>
+      </article>
+      <article class="slide">
+        <h2>Example Challenge</h2>
+        <p>
+          <a href="https://jsbin.com/sodihux/1/edit?html,css,js,output"
+            >Syncing VTT files</a
+          >
+        </p>
+        <p>
+          <a href="https://jsbin.com/bixoru/1/edit?html,css,js,output"
+            >Toggling Modes</a
+          >
+        </p>
+        <p>
+          <a href="https://jsbin.com/balowuq/1/edit?html,css,js,output"
+            >Toggling Captions</a
+          >
+        </p>
+        <p>
+          <a href="https://jsbin.com/rifekik/edit?html,css,js,output"
+            >Chapter Links</a
+          >
+        </p>
+        <p>
+          <a href="https://jsbin.com/pulefe/1/edit?html,css,js,output"
+            >Chapter Thumbnail Links</a
+          >
+        </p>
+        <p>
+          <a href="https://jsbin.com/zewemaj/edit?html,js,output"
+            >All together now</a
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>Sound "Sprites"</h2>
+        <ul>
+          Uses:
+          <li><code>addTextTrack</code></li>
+          <li><code>VTTCue</code></li>
+          <li><code>addCue</code></li>
+        </ul>
+        <p>
+          <a href="https://jsbin.com/lodiju/edit?html,js,output"
+            >Animals Sounds</a
+          >
+        </p>
+        <p>
+          <a href="https://codepen.io/w3devcampus/pen/jOqyprY"
+            >Collision sounds</a
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>Live Video Syncing</h2>
+        <p><a href="https://simpl.info/track/map/index.html">Google Maps</a></p>
+        <p>
+          <a href="https://jsbin.com/gucutiyoyu/2/edit?html,js,output"
+            >Update Wikipedia pg</a
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>Web Audio Inspector Extension</h2>
+        <p>
+          <a
+            href="https://chrome.google.com/webstore/detail/web-audio-inspector/cmhomipkklckpomafalojobppmmidlgl"
+            >Chrome Extension</a
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>WebAudio API</h2>
+        <p>
+          <a href="https://jsbin.com/gaduqojeke/edit?html,js,output">Gain</a>
+        </p>
+        <p>
+          <a href="https://jsbin.com/jarimu/edit?html,js,output">Balance</a>
+        </p>
+        <p>
+          <a href="https://jsbin.com/belide/edit?html,js,console,output"
+            >Reverb</a
+          >
+        </p>
+        <p>
+          <a href="https://jsbin.com/momixok/edit?html,js,console,output"
+            >Compressor</a
+          >
+        </p>
+        <p>
+          <a href="https://webaudiodemos.appspot.com/Vocoder/index.html#"
+            >Example (only in Firefox)</a
+          >
+        </p>
+        <p>
+          <a href="https://jsbin.com/tuvaxar/edit?html,js,output">Filters</a>
+        </p>
+        <p>
+          <a href="https://webaudioapi.com/samples/frequency-response/"
+            >WebAudio API Viz</a
+          >
+        </p>
+        <p>
+          <a href="https://webaudioapi.com/samples/room-effects/"
+            >WebAudio API Effects</a
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>Equalizer Demo</h2>
+        <p>
+          <a href="https://jsbin.com/loquwih/edit?html,css,js,output"
+            >For Audio</a
+          >
+        </p>
+        <p>
+          <a href="https://jsbin.com/kukupot/edit?html,css,js,output"
+            >For Video</a
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>Waveform Vizualizer</h2>
+        <p>
+          <a href="https://jsbin.com/sequtas/edit?html,css,js,output">Basic</a>
+        </p>
+        <p>
+          <a href="https://jsbin.com/sufatup/edit?html,js,output">Styled</a>
+        </p>
+        <p>
+          <a href="https://jsbin.com/qijujuz/edit?html,js,output"
+            >With equalizer</a
+          >
+        </p>
+        <p>
+          <a href="https://jsbin.com/jafoboh/edit?js,console,output"
+            >video w/ equalizer</a
+          >
+        </p>
+      </article>
+    </section>
 
-</section>
+    <footer class="slide" title="The End">
+      <h2>Thank you!</h2>
+    </footer>
 
-<footer class="slide" title="The End">
-  <h2>Thank you!</h2>
-</footer>
-
-<script src="../lib/inspire.js"></script>
-<script src="../laser/laser.js"></script>
-</body>
+    <script src="../lib/inspire.js"></script>
+    <script src="../laser/laser.js"></script>
+  </body>
 </html>

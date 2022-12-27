@@ -110,3 +110,14 @@ width: fit-content;
 .grid.col-3 {
   grid-template-columns: 1fr 1fr 1fr;
 }
+
+.slide .tilt-stamp {
+  position: absolute;
+  padding: 1rem;
+  color: crimson;
+  background: white;
+  border: 8px solid crimson;
+  border-radius: 1rem;
+  transform: rotate(-25deg);
+  box-shadow: 0 0 50px rgba(150, 50, 120, 0.85);
+}
