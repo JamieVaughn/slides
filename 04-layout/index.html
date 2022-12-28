@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <meta name="description" content="MCC Web Design & Development Slides">
 	<meta name="author" content="Jamie Vaughn">
-  <title>Template</title>
+  <title>CSS Layout</title>
   <!-- Inspire css -->
 	<link href="../lib/inspire.css" rel="stylesheet" />
 	<link href="../lib/theme.css" rel="stylesheet" />
@@ -16,6 +16,22 @@
    <!-- Custom css -->
 	 <link rel="stylesheet" href="../laser/laser.css">
 	 <script src="https://cdn.master.co/css"></script>
+	 <style>
+		.flex-demo > div {
+			height: 200px;
+			width: 200px;
+			line-height: 200px;
+		}
+
+		/* Live demo editor code */
+		.flexbox > div {
+			box-sizing: border-box;
+			border: 1px solid black;
+			text-align: center;
+			padding: 1em 0;
+			flex-basis: calc(100% / 3);
+		}
+	 </style>
 </head>
 <body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
 
@@ -32,25 +48,23 @@
 
 	<article class="slide">
 		<h2>Flexbox</h2>
-		<br>
-		<br>
-		<div style="position: relative; display: flex; justify-content: space-around; border: 5px solid orange; padding: 4rem;  color: white">
-			<span style="line-height: 38px; position: absolute; left: 0; top: -38px; font-size: 38px; z-index: 10;">Flex Container</span>
+		<div class="flex align justify flex-demo" style="width: 65vw; position: relative; border: 5px solid gold; padding: 4rem;  color: white; text-align: center;">
+			<h3 style="line-height: 38px; position: absolute; left: 0; top: -40px; font-size: 38px; z-index: 10;">Flex Container</h3>
 	
-			<div style="position: relative; width: 200px; height: 200px; line-height: 200px; background: limegreen;">
+			<div style="position: relative; background: seagreen;">
 				1
-				<span style="line-height: 38px; position: absolute; left: 0; bottom: 0; font-size: 38px; z-index: 10;">Flex Item</span>
+				<h3 class="m0" style="position: absolute; bottom: 0; ">Flex Item</h3>
 			</div>
-			<div style="width: 200px; height: 200px; line-height: 200px; background: gold;">2</div>
-			<div style="width: 200px; height: 200px; line-height: 200px; background: crimson;">3</div>
-			<div style="width: 200px; height: 200px; line-height: 200px; background: royalblue;">4</div>
+			<div style="background: goldenrod;">2</div>
+			<div style="background: crimson;">3</div>
+			<div style="background: royalblue;">4</div>
 		</div>
 		<details class="notes">Flexbox finally unlocks a powerful layout system that is suitable for whole page layouts!</details> 
 	</article>
 
 	<article class="slide">
 		<h2>Flexbox Axes ➡ single dimension</h2>
-		<div style="height: 30vh; display: flex;">
+		<div class="flex">
 			<div>
 				<img src="img/flex-direction-row.gif" alt="">
 				<p><a href="https://www.freecodecamp.org/news/flexbox-the-ultimate-css-flex-cheatsheet/">Flexbox Animated</a></p>
@@ -60,43 +74,38 @@
 	</article>
 	<article class="slide">
 		<h2>Flexbox ➡ Wrapping on single dimension</h2>
-	<div class="flex">
-		<figure>
-			<pre class="language-css"><code>
+	<div class="grid col-2" style="gap: 6rem;">
+			<pre class="language-css" style="align-self: end"><code>
 display: flex;
 flex-wrap: wrap;
 </code></pre>
-			<img data-src="img/daisy-h.svg">
-		</figure>
-		<figure>
-			<pre class="language-css"><code>
+			<pre class="language-css" style="align-self: end"><code>
 display: flex;
 flex-direction: column;
 flex-wrap: wrap;
 			</code></pre>
+			<img data-src="img/daisy-h.svg">
+
 			<img data-src="img/daisy-v.svg">
-		</figure>
 	</div>
 	<details class="notes">Flexbox is suited for laying out items in a single dimension. Where there isn't a relationship between the rows and columns. Think of it more like a long daisy chain of flex children.</details>
 	</article>
 
 	<article class="slide">
 		<h2>Flexbox ➡ Flex Flow Shortcut</h2>
-
-	<figure style="width:85%;">
-		<p>flex-flow: row wrap</p>
-		<p>flex-flow: column wrap-reverse</p>
-		<p>flex-flow: row nowrap</p>
-	</figure>
-
+		<p><code>flex-flow</code> is a combination shorthand for <code>flex-direction</code> & <code>flex-wrap</code></p>
+		<ul><strong>Examples:</strong>
+			<li><code>flex-flow: row wrap</code></li>
+			<li><code>flex-flow: column wrap-reverse</code></li>
+			<li><code>flex-flow: row nowrap</code></li>
+		</ul>
 	<details class="notes">Flexbox is suited for laying out items in a single dimension. Where there isn't a relationship
 	between the rows and columns. Think of it more like a long daisy chain of flex items.</details>
 	</article>
-	<article>
+	<article class="slide grid col-2" style="justify-items: center; align-items: center; grid-template-rows: repreat(4, 1fr)">
 		<h2>Flexbox Alignment</h2>
-		<div style="height: 30vh; display: flex;">
-				<ul  style="flex: 1 0 30%;">
-					<h6><small>justify-content ➡ Main Axis</small></h6>
+				<ul style="grid-row: 1 / span 2">
+					<h4><code>justify-content</code> ➡ <small>Main Axis</small></h4>
 					<li>flex-start (default)</li>
 					<li>flex-end</li>
 					<li>center</li>
@@ -104,52 +113,64 @@ flex-wrap: wrap;
 					<li>space-around</li>
 					<li>space-evenly</li>
 				</ul>
-			<img src="img/main_cross_axis.png" style="height: 80%;" alt="">
-			<ul  style="flex: 1 0 30%;">
-				<h3><small>align-items ➡ Cross Axis</small></h3>
+			<img src="img/main_cross_axis.png" style="max-height: 60vh; grid-row: 2 / span 3; grid-column: 1;" alt="">
+			<ul style="grid-row: 3 / span 2; grid-column: 2;">
+				<h3><code>align-items</code> ➡ <small>Cross Axis</small></h3>
 				<li>stretch (default)</li>
 				<li>center</li>
 				<li>flex-start</li>
 				<li>flex-end</li>
 				<li>baseline</li>
 			</ul>
-		</div>
 		
 		</article>
 		<article class="slide">
 			<h2>Adding a Gap</h2>
 			<pre><code>gap: &lt;length&gt;;</code></pre>
-			<div class="livecode livecode-2p" style="max-height: 30vh;">
-				<div class="result flexbox" style="font-size:75%;">
-					<div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item A</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item B</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item C</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item D</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item E</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item F</p></div>
-				</div>
-				<div class="code"><style class="code-editor" contenteditable="true">.flexbox {
-			display: flex;
-			flex-wrap: wrap;
-			gap: 0px;
-			}
-			</style></div>
-			</div>
-			</article>
+		</article>
+		<article class="demo slide" id="livedemo">
+			<h1 style="color: #444;">Adding a Gap</h1>
+
+			<textarea class="language-html">
+<div class="flexbox">
+	<div><p>Item A</p></div>
+	<div><p>Item B</p></div>
+	<div><p>Item C</p></div>
+	<div><p>Item D</p></div>
+	<div><p>Item E</p></div>
+	<div><p>Item F</p></div>
+</div>
+			</textarea>
+			<textarea class="language-css">
+				.flexbox {
+					font-size: 75%;
+					display: flex;
+					flex-wrap: wrap;
+					gap: 0px;
+				}
+			</textarea>
+		</article>
 			<article class="slide">
 				<h2>Flex Order <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order">MDN</a></small></h2>
-				<p >The <code>order</code> property can control where a flex-item will be in the flex-container... even though the order of the HTML doesn't change!</p>
+				<p>The <code>order</code> property can control where a flex-item will be in the flex-container... </p>
+				<p>even though the order of the HTML doesn't change!</p>
 				<pre class="language-css"><code>.flex-item {
   order: -1;
 }</code></pre>
-				<div style="position: relative; display: flex; justify-content: space-around; border: 5px solid orange; padding: 4rem;  color: white">
-					<span style="line-height: 38px; position: absolute; left: 0; top: -38px; font-size: 38px; z-index: 10;">Flex Container</span>
-				
-					<div style="position: relative; width: 200px; height: 200px; line-height: 200px; background: crimson;">
-						1
-						<span style="line-height: 38px; position: absolute; left: 0; bottom: 0; font-size: 38px; z-index: 10;">Flex Item</span>
-					</div>
-					<div style="width: 200px; height: 200px; line-height: 200px; background: royalblue;">2</div>
-					<div style="order: -1;width: 200px; height: 200px; line-height: 200px; background: seagreen;">3</div>
-					<div style="width: 200px; height: 200px; line-height: 200px; background: gold;">4</div>
+<div class="flex align justify flex-demo" style="width: 65vw; position: relative; border: 5px solid gold; padding: 4rem;  color: white; text-align: center;">
+	<h3 style="line-height: 38px; position: absolute; left: 0; top: -40px; font-size: 38px; z-index: 10;">Flex Container</h3>
+
+	  <div style="position: relative; background: crimson;">
+		  3
+		  <code class="m0" style="position: absolute; bottom: 0; left: 0; opacity: 0.85; margin: 0.5rem;">.flex-item</code>
+	  </div>
+	  <div style="background: seagreen;">1</div>
+	  <div style="background: goldenrod;">2</div>
+		<div style="background: royalblue;">4</div>
+	</div>
+</article>
+<article class="slide">
 				</div>
-				</article>
-				<article class="slide">
 					<h2>Let's Practice flexbox basics:</h2>
 					<p><a href="http://www.flexboxdefense.com/">Flexbox Tower Defense Game</a></p>
 				</article>
@@ -190,16 +211,21 @@ flex-wrap: wrap;
 }</code></pre>
 							</article>
 							<article class="slide">
-								<h2>Flexbox References</h2>
-								<p><a href="https://flexbox.malven.co/">Simple Flexbox Cheat Sheet</a></p>
-								<p><a href="https://yoksel.github.io/flex-cheatsheet/">In-Depth Flexbox Cheat Sheet</a></p>
-								<p><a href="https://the-echoplex.net/flexyboxes/">Flexbox Playground</a></p>
-								<p><a href="https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/">Interactive Guide to Flexbox</a></p>
-								<h2>Flexbox Layouts</h2>
-								<p><a href="https://www.flexboxpatterns.com/">Flexbox Patterns</a></p>
-								<p><a href="https://philipwalton.github.io/solved-by-flexbox/">Layouts Solved by Flexbox</a></p>
-								<p><a href="https://www.freecodecamp.org/news/learn-flexbox-build-5-layouts/">Page Layouts with Flexbox</a></p>
-								
+								<div class="flex justify" style="text-align: center">
+									<div>
+										<h2>Flexbox References</h2>
+										<p><a href="https://flexbox.malven.co/">Simple Flexbox Cheat Sheet</a></p>
+										<p><a href="https://yoksel.github.io/flex-cheatsheet/">In-Depth Flexbox Cheat Sheet</a></p>
+										<p><a href="https://the-echoplex.net/flexyboxes/">Flexbox Playground</a></p>
+										<p><a href="https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/">Interactive Guide to Flexbox</a></p>
+									</div>
+									<div>
+										<h2>Flexbox Layouts</h2>
+										<p><a href="https://www.flexboxpatterns.com/">Flexbox Patterns</a></p>
+										<p><a href="https://philipwalton.github.io/solved-by-flexbox/">Layouts Solved by Flexbox</a></p>
+										<p><a href="https://www.freecodecamp.org/news/learn-flexbox-build-5-layouts/">Page Layouts with Flexbox</a></p>
+									</div>
+								</div>
 								</article>
 								<article class="slide">
 									<h2>Let's Try it out on a:</h2>
@@ -207,8 +233,6 @@ flex-wrap: wrap;
 										<li>Media Object</li>
 										<li>Side Panel</li>
 									</ol>
-									<br>
-									<br>
 									<h2>Further Practice</h2>
 									<p><a href="https://flexboxfroggy.com/">Flexbox Froggies - No account needed!</a></p>
 									<p><a href="https://mastery.games/p/flexbox-zombies">Flexbox Zombies - free w/ account</a></p>

@@ -51,7 +51,7 @@
 
   <article class="slide">
     <h2>Minimum React Build Tool With Parcel</h2>
-    <pre><code class="med-code">npm install -g parcel-bundler
+    <pre class="language-sh"><code>npm install -g parcel-bundler
 mkdir <my-react-app-name> && cd <my-react-app-name>
 # insert whatever app name you want for the directory
 touch index.html && touch index.jsx && touch styles.css
@@ -67,35 +67,29 @@ parcel index.html
 
   <article class="slide">
     <h2>Minimum content for <code>index.html</code></h2>
-    <pre><code class="med-code" id='copy-index' data-clipboard-text="`<html>
-<head>
-<link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-<div id="app"></div>
-<script src="./index.jsx"></script>
-</body>
-</html>`">&lt;html>
-&lt;head>
-&lt;link rel="stylesheet" href="./styles.css">
-&lt;/head>
-&lt;body>
-&lt;div id="app">&lt;/div>
-&lt;script src="./index.jsx">&lt;/script>
-&lt;/body>
+    <pre class="language-html"><code id='copy-index' data-clipboard-text='&lt;html>&lt;head>&lt;link rel="stylesheet" href="./styles.css">&lt;/head>&lt;body>&lt;div id="app">&lt;/div>&lt;script src="./index.jsx">&lt;/script>&lt;/body>&lt;/html>' >
+&lt;html>
+  &lt;head>
+  &lt;link rel="stylesheet" href="./styles.css">
+  &lt;/head>
+  &lt;body>
+    &lt;div id="app">&lt;/div>
+    &lt;script src="./index.jsx">&lt;/script>
+  &lt;/body>
 &lt;/html></code></pre>
   </article>
   <article class="slide">
     <h2>Minimum Content for <code>index.jsx</code></h2>
-    <pre><code class="med-code" id="copy-react" data-clipboard-text="`import React from 'react';
+    <pre class="language-js"><code id="copy-react" data-clipboard-text="import React from 'react';
 import ReactDOM from 'react-dom';
 function App() {
-return &lt;h1>Your React app is running!</h1>;
+  return &lt;h1>Your React app is running!&lt;/h1>;
 }
-ReactDOM.render(&lt;App />, document.getElementById('app'));`">import React from 'react';
+ReactDOM.render(&lt;App />, document.getElementById('app'));"
+>import React from 'react';
 import ReactDOM from 'react-dom';
 function App() {
-return &lt;h1>Your React app is running!&lt;/h1>;
+  return &lt;h1>Your React app is running!&lt;/h1>;
 }
 ReactDOM.render(&lt;App />, document.getElementById('app'));</code></pre>
   </article>

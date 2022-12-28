@@ -113,7 +113,16 @@
 		<h2>JSX</h2>
 		<p>React's syntax for defining View templates</p>
 		<p><a href="https://babeljs.io/repl/">Transpiler</a></p>
-		<img src="img/jsx.png" alt="jsx example">
+		<pre class="language-js"><code>function App(props) {
+  return (
+    &lt;BrowserRouter>
+      &lt;Header />
+      &lt;Main />
+      &lt;Sidebar />
+      &lt;View />
+    &lt;/BrowserRouter>
+  )
+}</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Strength of Components</h2>
@@ -172,7 +181,16 @@
 		<h2>Composing Components</h2>
 		<div class="flex most-height">
 			<img src="img/Search_component.png" alt="Search component">
-			<img src="img/jsx.png" alt="jsx">
+			<pre class="language-js"><code>function App(props) {
+  return (
+    &lt;BrowserRouter>
+      &lt;Header />
+      &lt;Main />
+      &lt;Sidebar />
+      &lt;View />
+    &lt;/BrowserRouter>
+  )
+}</code></pre>
 		</div>
 	</article>
 	<article class="slide">
@@ -798,7 +816,7 @@ addEventListener('click', e => {
 			};
 			</code></pre>
 	</article>
-	<article class="slide">
+	<article class="hidden">
 		<h2>Comparing useEffect with Lifecycle Methods</h2>
 		<img src="img/useeffect_lifecycle.png" alt="">
 	</article>
