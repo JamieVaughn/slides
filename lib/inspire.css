@@ -48,6 +48,9 @@ body {
 .align {
 	align-items: center;
 }
+.justify {
+	justify-items: center;
+}
 .flex.hasEmoji {
 	margin: 2rem;
 	gap: 2rem;

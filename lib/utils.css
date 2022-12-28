@@ -54,6 +54,19 @@ width: fit-content;
   transform: rotate(-15deg);
 }
 
+.lightbox {
+  transform: scale(1.75);
+  position: fixed;
+  inset: 20% 50% 50%;
+}
+
+.slide .h-fit {
+  height: fit-content
+}
+.slide .w-fit {
+  width: fit-content
+}
+
 
 /* columns */
 .nolist {

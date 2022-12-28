@@ -220,10 +220,11 @@ let test1 = futureValue(5).then(
           class="language-js"
           data-before="Declarative"
         ><code>loadDataAsync(function (data) {
-// ... Ready to use the data 
-// ... no matter when it arrives
-data.filter(() => ...)
+  // Ready to use the data 
+  // no matter when it arrives
+  data.filter(() => ...)
 })
+// do other things in the meantime
 doSomeOtherThings()</code></pre>
         <ul style="justify-self: start; transform: translateY(-150px)">
           <li>Event-based Nature of user input</li>
@@ -234,9 +235,10 @@ doSomeOtherThings()</code></pre>
           class="language-js"
           data-before="Procedural"
         ><code>let tweets = loadDataSync(data)
-// ...Waiting for enough time to pass
-// Do something with the data
+// Wait for tweets to receive a value
+// Do something once the data arrives
 setTimeout(data.filter(...), delay)
+// other things must wait for tweets
 doSomeOtherThings()</code></pre>
       </article>
 
@@ -245,19 +247,16 @@ doSomeOtherThings()</code></pre>
         <h1>The Event Loop</h1>
       </header>
       <article class="slide">
-        <h2>Event Loop</h2>
-        <p>Tasks, task queue & the main thread</p>
-        <video src="img/event_loop.mp4" loop autoplay></video>
-        <a href="https://www.youtube.com/watch?v=cCOL7MC4Pl0"
-          >Image sourced from this video</a
-        >
-      </article>
-      <article class="slide">
-        <h2>Async/Sync</h2>
+        <h2>How to Async? Queues!</h2>
+        <div class="flex w-fit">
+          <img src="img/blocking.webp" alt="" />
+          <img src="img/nonblocking.webp" alt="" />
+        </div>
         <a
           href="https://medium.com/better-programming/is-javascript-synchronous-or-asynchronous-what-the-hell-is-a-promise-7aa9dd8f3bfb"
-          >medium</a
+          >Images sourced from this article</a
         >
+        <img src="img/queue.gif" alt="" class="delayed tilt-stamp" />
       </article>
       <article class="slide">
         <h2>Event Loop Video</h2>
@@ -267,30 +266,133 @@ doSomeOtherThings()</code></pre>
           >
         </p>
       </article>
+      <article class="slide">
+        <h2>Event Loop</h2>
+        <p>Tasks, task queue & the main thread</p>
+        <video src="img/event_loop.mp4" loop autoplay></video>
+        <a href="https://www.youtube.com/watch?v=cCOL7MC4Pl0"
+          >Image sourced from this video</a
+        >
+      </article>
+      <article class="slide">
+        <h2>Loupe Visualizer</h2>
+        <p>Here is the app from the video we just watched:</p>
+        <p>
+          <a
+            href="http://latentflip.com/loupe/?code=JC5vbignYnV0dG9uJywgJ2NsaWNrJywgZnVuY3Rpb24gb25DbGljaygpIHsKICAgIHNldFRpbWVvdXQoZnVuY3Rpb24gdGltZXIoKSB7CiAgICAgICAgY29uc29sZS5sb2coJ1lvdSBjbGlja2VkIHRoZSBidXR0b24hJyk7ICAgIAogICAgfSwgMjAwMCk7Cn0pOwoKY29uc29sZS5sb2coIkhpISIpOwoKc2V0VGltZW91dChmdW5jdGlvbiB0aW1lb3V0KCkgewogICAgY29uc29sZS5sb2coIkNsaWNrIHRoZSBidXR0b24hIik7Cn0sIDUwMDApOwoKY29uc29sZS5sb2coIldlbGNvbWUgdG8gbG91cGUuIik7!!!PGJ1dHRvbj5DbGljayBtZSE8L2J1dHRvbj4%3D"
+            >Experiment with Loupe!</a
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>
+          ES6: The new Microtask Queue
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide"
+              >MDN</a
+            >, </sup
+          ><sup
+            ><a href="https://javascript.info/microtask-queue">js.info</a></sup
+          >
+        </h2>
+        <p>Promises vs. setTimeout & long-running loops</p>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/HTML_DOM_API/Microtask_guide/In_depth"
+            >Microtasks In-depth</a
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>ES6: More Event Loops</h2>
+        <div class="flex">
+          <ol>
+            <li>
+              <strong>Main Thread:</strong> all the regular code you write,
+              <ul>
+                <li>handles dispatching user & browser events</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Render Loop:</strong>
+              <small><code>requestAnimationFrame()</code></small
+              ><sup
+                ><a
+                  href="https://developer.mozilla.org/en-US/docs/Web/API/window/requestAnimationFrame"
+                  >MDN</a
+                ></sup
+              >
+              <ul>
+                <li>layout, paint & composite the site's UI</li>
+              </ul>
+            </li>
+            <li>
+              <strong>Tasks: </strong>
+              <code>setTimeout()</code>,
+              <code>setInterval()</code>
+              <ul>
+                <li>event handler callbacks</li>
+              </ul>
+            </li>
+            <li>
+              <strong>MicroTasks:</strong> <code>Promise</code>,
+              <code>queueMicrotask()</code>
+              <ul>
+                <li>
+                  runs safely when there is no running code left on main thread
+                  or other queues
+                </li>
+              </ul>
+            </li>
+          </ol>
+          <img
+            style="width: 30vw"
+            src="img/Tri_Queues.png"
+            alt="triple event queues"
+          />
+        </div>
+      </article>
+      <article class="slide">
+        <h2>Javascript's Async Aparatus</h2>
+        <img
+          style="width: 50vw"
+          src="img/event_loop.png"
+          alt="event loop aparatus"
+        />
+      </article>
+      <article class="slide">
+        <h2>Event Loop, Tasks, Queues Spec</h2>
+        <p>
+          <a
+            href="https://html.spec.whatwg.org/multipage/webappapis.html#event-loops"
+            >Spec</a
+          >
+        </p>
+      </article>
 
       <article class="slide">
         <h2>Blocking or Non-Blocking?</h2>
         <pre
           class="language-js"
-        ><code data-line-numbers="3-5|8-10|13-15">function futureValue(x = 'test', iter = 1_000) {
-let promise = wait(x, iter)
-return promise;
+        ><code data-line-numbers="3-5|8-10|13-15">function futureValue(x = 'test', iter = 10_000) { // 100_000
+  let promise = wait(x, iter)
+  return promise;
 }
 function wait(value, iterations) {
-console.time(value) 
-return new Promise(function(resolve, reject) {
-  if(iterations < 0) {
-    return reject('error: failed @ ' + value)
-  }
-  let num
-  for(let i = 0; i <= iterations ** 2; i++) {
-    num = i ** 2
-    if(i === iterations ** 2) {
-      console.timeEnd(value)
-      return resolve(value) 
+  console.time(value) 
+  return new Promise(function(resolve, reject) {
+    if(iterations < 0) return reject('error: use positive number')
+    
+    let num
+    for(let i = 0; i &lt;= iterations ** 2; i++) {
+      num = i ** 2
+      if(i === iterations ** 2) {
+        console.timeEnd(value)
+        return resolve(value) 
+      }
     }
-  }
-})
+  })
 }
 let test = futureValue()</code></pre>
       </article>
@@ -299,28 +401,97 @@ let test = futureValue()</code></pre>
         <pre class="language-js"><code>console.log('begin the program')
 console.time('program')
 noBlocking(500, function (j, end) {
-if(end) {
-  console.log(`0 -> ${j}`)
-  console.timeEnd('program')
-}
+  if(end) {
+    console.log(`0 -> ${j}`)
+    console.timeEnd('program')
+  }
 })
 function noBlocking(n, callback){
-var i = 0
-function loop () {
-  if (i &lt; n) {
-    i++;
-    callback(i, false)
-    window.requestAnimationFrame(loop)
-  }
-  else callback(i, true)
-} 
-loop()
+  var i = 0
+  function loop () {
+    if (i &lt; n) {
+      i++;
+      callback(i, false)
+      window.requestAnimationFrame(loop)
+    }
+    else callback(i, true)
+  } 
+  loop()
 }</code></pre>
+      </article>
+
+      <article class="slide">
+        <h2>
+          Custom Events
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/Events/Creating_and_triggering_events"
+              >MDN</a
+            ></sup
+          >
+        </h2>
+        <pre class="language-js"><code>const myEvent = new Event('myevent', {
+  bubbles: true, // defaults to false
+  cancelable: true, // e.preventDefault()
+  composed: false // pierce shadowDOM?
+})
+
+const myCustomEvent = new CustomEvent("mycustomevent", {
+  detail: {
+    payload: [1,2,3,4] // Pass payload data here
+  }
+});
+document.dispatchEvent(myCustomEvent, e => console.log(e.detail))</code></pre>
       </article>
 
       <article class="slide">
         <h2>Async Animation Code Along</h2>
         <p>Animating a multi-step Spinner</p>
+      </article>
+      <header class="slide">
+        <h2>True Parallel Processing</h2>
+        <h1>Web Workers</h1>
+      </header>
+      <article class="slide">
+        <h2>
+          Web Workers
+          <sup
+            ><a href="https://developer.mozilla.org/en-US/docs/Web/API/Worker"
+              >MDN</a
+            ></sup
+          >
+        </h2>
+        <p>
+          True Multi-threading: A Full Javascript runtime in an isolated thread
+        </p>
+        <p>Has limitations on what it can access (i.e. No DOM Access)</p>
+        <p>
+          Supports simple Message Passing between itself and the main thread
+        </p>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers"
+            >Using the Web Worker API</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://medium.com/young-coder/a-simple-introduction-to-web-workers-in-javascript-b3504f9d9d1c"
+            >Article</a
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>Web Workers Aparatus</h2>
+        <p>No checkpoints, only <code>postMessage()</code></p>
+        <img style="width: 40vw" src="img/Web_worker.png" alt="" />
+      </article>
+      <article class="slide">
+        <h2>Code Along: Let's Launch a Rocket</h2>
+        <h3 style="font-size: 10rem">🚀</h3>
+        <p>
+          <a href="https://codepen.io/heliocrat/pen/mdmBZEo?editors=1010">.</a>
+        </p>
       </article>
     </section>
 
@@ -331,18 +502,25 @@ loop()
       </header>
 
       <article class="slide">
-        <h2>Our First Peak at Fetch</h2>
-        <p>
-          <code>fetch</code> is a Promise that accepts a URL, then makes an HTTP
-          request to that resource and asynchronously returns with a data
-          payload
-        </p>
+        <div class="flex align">
+          <div>
+            <h2>Our First Peak at Fetch</h2>
+            <ol style="padding-left: 25%">
+              <strong><code>fetch</code> is a Promise that:</strong>
+              <li>Accepts a URL as an argument</li>
+              <li>Makes an HTTP request to that resource</li>
+              <li>Asynchronously returns with a data payload</li>
+            </ol>
+          </div>
+          <img src="img/so_fetch.png" alt="" style="height: 250px" />
+        </div>
         <pre
           class="language-js"
         ><code>let f = fetch('https://jsonplaceholder.typicode.com/todos')
 // We call .then on it:
 f.then(response => response.json())
-// the .json() method is built into the fetch API, for formatting response data into JSON format
+/* the .json() method is built into the fetch API 
+   for formatting response data into JSON format */
 .then(data => console.log(data))</code></pre>
       </article>
 
