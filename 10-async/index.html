@@ -523,9 +523,45 @@ f.then(response => response.json())
    for formatting response data into JSON format */
 .then(data => console.log(data))</code></pre>
       </article>
+      <article class="slide">
+        <h2>Async Requests</h2>
+        <div class="flex">
+          <ul>
+            <li>Depicted as branching actions instead of via the Event Loop</li>
+            <li>
+              <a
+                href="https://medium.com/expedia-group-tech/profiling-react-server-side-rendering-to-free-the-node-js-event-loop-7f0fe455a901"
+                >Flame Charts</a
+              >
+            </li>
+            <li>
+              <a href="https://jsonplaceholder.typicode.com/">Typicode API</a>
+            </li>
+            <li>
+              <button class="primary" onclick="sendFetch()">
+                Send a Fetch Request!
+              </button>
+            </li>
+          </ul>
+          <img
+            src="img/HTTP_call.png"
+            alt=""
+            class="backdrop"
+            style="border-radius: 1rem"
+          />
+        </div>
+      </article>
 
       <article class="slide">
-        <h2>Primer on JSON</h2>
+        <h2>
+          Primer on JSON
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON"
+              >MDN</a
+            ></sup
+          >
+        </h2>
         <ul>
           <li>Javascript Object Notation (Counterpart to XML format)</li>
           <li>Universal data payload format for the Web</li>
@@ -547,6 +583,12 @@ f.then(response => response.json())
         <h2>The <code>JSON</code> object</h2>
         <pre class="language-js"><code>JSON.stringify()
 JSON.parse()</code></pre>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify"
+            >MDN</a
+          >
+        </p>
       </article>
 
       <article class="slide">
@@ -569,7 +611,12 @@ JSON.parse()</code></pre>
         </p>
         <br />
         <h4 class="m0">XML libraries</h4>
-        <ul class="col-2">
+        <ul class="col-3" style="text-align: center">
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/DOMParser"
+              >DOMParser</a
+            >
+          </li>
           <li>
             <a href="https://github.com/Leonidas-from-XIV/node-xml2js"
               >xml2js</a
@@ -585,16 +632,53 @@ JSON.parse()</code></pre>
           class="language-js"
         ><code>let f = fetch('https://jsonplaceholder.typicode.com/todos')
 // We call .then on it:
-f.then(response => response.json())
+f.then(response => {
+  console.log(response)
+  return response.json()
+})
 // the .json() method is built into the fetch API, 
 // for formatting response data into JSON format
 .then(data => console.log(data))
 // it's fine to chain from a new line like above
 </code></pre>
+        <button class="primary" onclick="sendFetch()">Fetch Todos</button>
       </article>
-
       <article class="slide">
-        <h2><code>Promise.all()</code></h2>
+        <h2>HTTP Status Codes</h2>
+        <p><a href="https://httpstatuses.com/">Codes</a></p>
+        <pre
+          class="language-js"
+        ><code>// let's experiment by adding a typo so there will be an error
+function request(url = 'https://jsonplaceholder.typicode.com/tods') {
+  return new Promise((resolve, reject) => {
+    fetch(url).then((res) => {
+      if (res.status == 200 && res.ok) {
+        console.log("Promise resolved")
+        return resolve(res);
+      }
+      console.log("Promise rejected")
+      reject(res);
+    }).catch(error => console.log("promise rejected: " + error))
+  })
+}</code></pre>
+        <button class="warn" onclick="reject()">Reject</button>
+      </article>
+      <article class="slide">
+        <h2>
+          Promise Methods for Multiple Promises
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all"
+              >MDN</a
+            ></sup
+          >
+        </h2>
+        <ul style="list-style: none; line-height: 4rem">
+          <li><code>Promise.all()</code></li>
+          <li><code>Promise.allSettled()</code></li>
+          <li><code>Promise.any()</code></li>
+          <li><code>Promise.race()</code></li>
+        </ul>
       </article>
       <article class="slide">
         <h2>Side Note: The Legacy XHR Syntax</h2>
@@ -608,17 +692,6 @@ f.then(response => response.json())
           <a
             href="https://gomakethings.com/why-i-still-use-xhr-instead-of-the-fetch-api/"
             >Go Make Things Site</a
-          >
-        </p>
-        <h3>Polyfills for Internet Explorer</h3>
-        <p>
-          <a href="https://unpkg.com/unfetch@4.1.0/polyfill/index.js"
-            >Fetch Polyfill</a
-          >
-        </p>
-        <p>
-          <a href="https://github.com/getify/native-promise-only"
-            >Promises Polyfill</a
           >
         </p>
       </article>
@@ -640,6 +713,164 @@ const dom = prot('jsonplaceholder.typicode.com/')
 const allTodos = dom('todos')
 const firstTodo = dom('todos/1')
 const allUsers = dom('users')</code></pre>
+      </article>
+      <header class="slide">
+        <h2>Writing to Servers</h2>
+        <h1>H<span style="letter-spacing: 8px">TT</span>P POST</h1>
+      </header>
+      <article class="slide">
+        <h2>HTTP POST</h2>
+        <p>So far we've seen HTTP GET. Which retrieves data from a server.</p>
+        <p>
+          Now let's see how to
+          <strong>send data to a server/database</strong> to be recorded.
+        </p>
+        <hr />
+        <strong>Supplying Request Options</strong>
+        <span>aka: <code>config</code></span>
+        <pre class="language-js"><code>fetch(url, config)
+.then(response => response.json())
+.then(confirmation => console.log(confirmation))</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Example <code>POST</code></h2>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch"
+            >Using Fetch Article</a
+          >
+        </p>
+        <pre class="language-js"><code>fetch(url, {
+  method: 'POST',
+  mode: 'cors',
+  cache: 'no-cache', 
+  credentials: 'same-origin', 
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  redirect: 'follow',
+  referrerPolicy: 'no-referrer',
+  body: JSON.stringify(data)
+})
+.then(res => console.log(res))</code></pre>
+      </article>
+      <article class="slide">
+        <h2>
+          The Options Object
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Request/Request"
+              >Request()</a
+            ></sup
+          >,
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers"
+              >Headers()</a
+            ></sup
+          >
+        </h2>
+        <ul>
+          <li><code>method</code>: GET, POST, PUT, DELETE, etc.</li>
+          <li><code>mode</code>: no-cors, cors, same-origin</li>
+          <li>
+            <code>cache</code>: default, no-cache, reload, force-cache,
+            only-if-cached
+          </li>
+          <li><code>credentials</code>: include, *same-origin, omit</li>
+          <li>
+            <code>headers</code>: { 'Content-Type': 'application/json' ||
+            'application/x-www-form-urlencoded' }
+          </li>
+          <li><code>redirect</code>: manual, follow, error</li>
+          <li>
+            <code>referrerPolicy</code>: no-referrer,
+            no-referrer-when-downgrade, origin, origin-when-cross-origin,
+            same-origin, strict-origin, strict-origin-when-cross-origin,
+            unsafe-url
+          </li>
+          <li>
+            <code>body</code>: anything that matches format specified in
+            <code>header['Content-Type']</code>
+          </li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>CORS</h2>
+        <p>
+          Cross Origin Resource Sharing
+          <sup
+            ><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS"
+              >MDN</a
+            ></sup
+          >
+        </p>
+        <p>
+          Blocks requests from other domains unless permission is explicitly
+          allowed on the server. For data protection/privacy purposes.
+        </p>
+        <strong>
+          Server Configuration: <code>Access-Control-Allow-Origin: *;</code> -
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Access-Control-Allow-Origin"
+            >MDN</a
+          >
+        </strong>
+        <ul class="col-2 m0">
+          <li>Access-Control-Allow-Origin</li>
+          <li>Access-Control-Allow-Credentials</li>
+          <li>Access-Control-Allow-Headers</li>
+          <li>Access-Control-Allow-Methods</li>
+          <li>Access-Control-Expose-Headers</li>
+          <li>Access-Control-Max-Age</li>
+          <li>Access-Control-Request-Headers</li>
+          <li>Access-Control-Request-Method</li>
+          <li>Origin</li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2><code>new URLSearchParams()</code> & <code>new URL()</code></h2>
+        <p>
+          Easily parse a url to extract
+          <strong>query string components</strong>
+          <small
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams"
+              >MDN</a
+            ></small
+          >
+        </p>
+        <pre
+          class="language-js"
+        ><code>let url = new URL('https://jsonplaceholder.typicode.com/todos?name=al&id=1')
+let searchParams = new URLSearchParams(url.search);
+let items = [...searchParams.entries()]
+// [["name", "al"], ["id", "1"]]
+
+let otherParams = new URLSearchParams('name=jo&id=2')
+let otherItems = [...otherParams.entries()]
+// [["name", "jo"], ["id", "2"]]</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Testing APIs with REST Clients</h2>
+        <p>
+          Rest Clients let you test HTTP API's prior to using htem in your app
+        </p>
+        <ol>
+          <li>
+            <a
+              href="https://marketplace.visualstudio.com/items?itemName=humao.rest-client"
+              >VSCode REST Client Extension</a
+            >
+          </li>
+          <li><a href="https://insomnia.rest/">Insomnia</a></li>
+          <li>
+            <a
+              href="https://blog.postman.com/postman-7-1-create-apis-directly-within-the-postman-app/"
+              >Postman</a
+            >
+          </li>
+        </ol>
       </article>
       <article class="slide">
         <h2>Code Along with Public APIs</h2>
@@ -663,6 +894,18 @@ const allUsers = dom('users')</code></pre>
           </li>
         </ul>
       </article>
+      <article class="slide">
+        <h2>Coding Challenge!</h2>
+        <p>Try to make a news story fetcher!</p>
+        <p>
+          Make it a news story display app similar to
+          <a href="https://news.ycombinator.com/news">Hacker News</a>
+        </p>
+        <p>
+          Use the API below to fetch the news stories that you will display:
+        </p>
+        <p><a href="https://github.com/HackerNews/API">News API</a></p>
+      </article>
     </section>
 
     <footer class="slide" title="The End">
@@ -671,5 +914,46 @@ const allUsers = dom('users')</code></pre>
 
     <script src="../lib/inspire.js"></script>
     <script src="../laser/laser.js"></script>
+    <script defer>
+      function sendFetch() {
+        return fetch("https://jsonplaceholder.typicode.com/todos")
+          .then((response) => {
+            console.log(response);
+            return response.json();
+          })
+          .then((json) => console.log(json))
+          .catch((err) => console.error(err));
+      }
+
+      function reject(
+        url = "https://jsonplaceholder.typicode.com/tods",
+        config
+      ) {
+        if (!config) config = {};
+
+        config = Object.assign(config, {
+          headers: {
+            "content-type": "application/json;charset=utf-8",
+          },
+        });
+        return new Promise(function (resolve, reject) {
+          fetch(url, config).then(
+            function (res) {
+              if (res.status == 200 && res.ok) {
+                console.log("Promise resolved");
+                resolve(res);
+                return;
+              }
+              console.log("Promise rejected");
+              reject(res);
+            },
+            function (rej) {
+              console.log("promise rejected");
+              reject(rej);
+            }
+          );
+        });
+      }
+    </script>
   </body>
 </html>

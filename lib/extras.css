@@ -170,8 +170,18 @@ kbd {
 	}
 	.info {
 		background-color: transparent;
-			border-color: #3e8ed0;
-			color: #3e8ed0;
+		border-color: #3e8ed0;
+		color: #3e8ed0;
+	}
+	.warn {
+		background-color: transparent;
+		border-color: goldenrod;
+		color: goldenrod;
+	}
+	.error {
+		background-color: transparent;
+		border-color: crimson;
+		color: crimson;
 	}
 
 	hr {
