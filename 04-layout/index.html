@@ -22,18 +22,34 @@
 			width: 200px;
 			line-height: 200px;
 		}
+		
 
 		/* Live demo editor code */
+		.flexbox {
+			border: 1px dashed darkgray;
+			font-size: 75%;
+		}
 		.flexbox > div {
 			box-sizing: border-box;
 			border: 1px solid black;
 			text-align: center;
 			padding: 1em 0;
+			color: white;
+			font-weight: bold;
 			flex-basis: calc(100% / 3);
 		}
+		.flexbox > div > p {
+			padding: 0.25rem 1rem;
+		}
+		.flexbox > div:nth-of-type(n){background: seagreen}
+		.flexbox > div:nth-of-type(2n){background: goldenrod}
+		.flexbox > div:nth-of-type(3n){background: crimson}
+		.flexbox > div:nth-of-type(4n){background: royalblue}
+		.flexbox > div:nth-of-type(5n){background: tomato}
+		.flexbox > div:nth-of-type(6n){background: rebeccapurple}
 	 </style>
 </head>
-<body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
+<body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30" spellcheck="false">
 
 <header id="intro" class="slide">
 	<h1>Web Design & Development</h1>
@@ -73,13 +89,13 @@
 		</div>
 	</article>
 	<article class="slide">
-		<h2>Flexbox ➡ Wrapping on single dimension</h2>
-	<div class="grid col-2" style="gap: 6rem;">
-			<pre class="language-css" style="align-self: end"><code>
+		<div class="grid col-2" style="justify-items: stretch; grid-template-rows: min-content min-content 1fr; gap: 1rem 3rem; max-height: 90vh;">
+			<h2 class="m0" style="grid-column: 1 / -1;">Flexbox ➡ Wrapping on single dimension</h2>
+			<pre class="language-css"><code>
 display: flex;
 flex-wrap: wrap;
 </code></pre>
-			<pre class="language-css" style="align-self: end"><code>
+			<pre class="language-css m0"><code>
 display: flex;
 flex-direction: column;
 flex-wrap: wrap;
@@ -106,30 +122,78 @@ flex-wrap: wrap;
 		<h2>Flexbox Alignment</h2>
 				<ul style="grid-row: 1 / span 2">
 					<h4><code>justify-content</code> ➡ <small>Main Axis</small></h4>
-					<li>flex-start (default)</li>
-					<li>flex-end</li>
-					<li>center</li>
-					<li>space-between</li>
-					<li>space-around</li>
-					<li>space-evenly</li>
+					<div class="col-2">
+						<li>flex-start (default)</li>
+						<li>flex-end</li>
+						<li>center</li>
+						<li>space-between</li>
+						<li>space-around</li>
+						<li>space-evenly</li>
+					</div>
 				</ul>
 			<img src="img/main_cross_axis.png" style="max-height: 60vh; grid-row: 2 / span 3; grid-column: 1;" alt="">
 			<ul style="grid-row: 3 / span 2; grid-column: 2;">
 				<h3><code>align-items</code> ➡ <small>Cross Axis</small></h3>
-				<li>stretch (default)</li>
-				<li>center</li>
-				<li>flex-start</li>
-				<li>flex-end</li>
-				<li>baseline</li>
+				<div class="col-2">
+					<li>stretch (default)</li>
+					<li>center</li>
+					<li>flex-start</li>
+					<li>flex-end</li>
+					<li>baseline</li>
+				</div>
 			</ul>
 		
+		</article>
+		<article class="demo slide" id="livedemo">
+			<h1 style="color: #444;">Align & Justify Sandbox</h1>
+
+			<textarea class="language-html">
+<div class="flexbox">
+	<div><p>Item A</p></div>
+	<div><p>Item B</p></div>
+	<div><p>Item C</p></div>
+	<div><p>Item D</p></div>
+</div>
+			</textarea>
+			<textarea class="language-css">
+				.flexbox > div {
+					flex-basis: auto;
+				}
+				.flexbox {
+					width: 100%;
+					/* height: 200px; */
+					display: flex;
+					justify-content: center;
+					align-items: center;
+				}
+				
+			</textarea>
 		</article>
 		<article class="slide">
 			<h2>Adding a Gap</h2>
 			<pre><code>gap: &lt;length&gt;;</code></pre>
 		</article>
+		<article class="slide">
+			<h2>Flex Order <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order">MDN</a></small></h2>
+			<p>The <code>order</code> property can control where a flex-item will be in the flex-container... </p>
+			<p>even though the order of the HTML doesn't change!</p>
+			<pre class="language-css"><code>.flex-item {
+order: -1;
+}</code></pre>
+<div class="flex align justify flex-demo" style="width: 65vw; position: relative; border: 5px solid gold; padding: 4rem;  color: white; text-align: center;">
+<h3 style="line-height: 38px; position: absolute; left: 0; top: -40px; font-size: 38px; z-index: 10;">Flex Container</h3>
+
+	<div style="position: relative; background: crimson;">
+		3
+		<code class="m0" style="position: absolute; bottom: 0; left: 0; opacity: 0.85; margin: 0.5rem;">.flex-item</code>
+	</div>
+	<div style="background: seagreen;">1</div>
+	<div style="background: goldenrod;">2</div>
+	<div style="background: royalblue;">4</div>
+</div>
+</article>
 		<article class="demo slide" id="livedemo">
-			<h1 style="color: #444;">Adding a Gap</h1>
+			<h1 style="color: #444;">Gap & Order Sandbox</h1>
 
 			<textarea class="language-html">
 <div class="flexbox">
@@ -143,45 +207,32 @@ flex-wrap: wrap;
 			</textarea>
 			<textarea class="language-css">
 				.flexbox {
-					font-size: 75%;
 					display: flex;
 					flex-wrap: wrap;
 					gap: 0px;
 				}
+				.flexbox > div:first-child {
+					order: 0;
+				}
+				.flexbox > div {
+					/* flex-basis: calc(100% / 3 - 10px); */
+				}
 			</textarea>
 		</article>
-			<article class="slide">
-				<h2>Flex Order <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order">MDN</a></small></h2>
-				<p>The <code>order</code> property can control where a flex-item will be in the flex-container... </p>
-				<p>even though the order of the HTML doesn't change!</p>
-				<pre class="language-css"><code>.flex-item {
-  order: -1;
-}</code></pre>
-<div class="flex align justify flex-demo" style="width: 65vw; position: relative; border: 5px solid gold; padding: 4rem;  color: white; text-align: center;">
-	<h3 style="line-height: 38px; position: absolute; left: 0; top: -40px; font-size: 38px; z-index: 10;">Flex Container</h3>
-
-	  <div style="position: relative; background: crimson;">
-		  3
-		  <code class="m0" style="position: absolute; bottom: 0; left: 0; opacity: 0.85; margin: 0.5rem;">.flex-item</code>
-	  </div>
-	  <div style="background: seagreen;">1</div>
-	  <div style="background: goldenrod;">2</div>
-		<div style="background: royalblue;">4</div>
-	</div>
-</article>
+			
 <article class="slide">
 				</div>
-					<h2>Let's Practice flexbox basics:</h2>
+					<h2>Let's Practice Flexbox Basics:</h2>
 					<p><a href="http://www.flexboxdefense.com/">Flexbox Tower Defense Game</a></p>
 				</article>
 				<article class="slide">
 					<h2>Extra Flexbox Rules</h2>
 					<p>These *may or may not* come in handy for you.</p>
 					<div class='flex-col' style="align-items: flex-start">
-						<p style="border: 1px solid grey;width: 100%;text-align: left; padding: 0 2rem; margin: 0;"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis">flex-basis</a> - sets a starting width;</p>
-						<p style="border: 1px solid grey;width: 100%;text-align: left; padding: 0 2rem; margin: 0;"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink">flex-grow</a> - proportion of available space to be allocated to this flex-item</p>
-						<p style="border: 1px solid grey;width: 100%;text-align: left; padding: 0 2rem; margin: 0;"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow">flex-shrink</a> - tells this flex-item to shrink as available space shrinks</p>
-						<p style="border: 1px solid grey;width: 100%;text-align: left; padding: 0 2rem; margin: 0;"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-self">align-self</a> - aligns this flex-item only</p>
+						<p style="border: 1px solid grey;width: 100%;text-align: left; padding: 0 2rem; margin: 0;"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis"><code>flex-basis</code></a> - sets a starting width;</p>
+						<p style="border: 1px solid grey;width: 100%;text-align: left; padding: 0 2rem; margin: 0;"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink"><code>flex-grow</code></a> - proportion of available space to be allocated to this flex-item</p>
+						<p style="border: 1px solid grey;width: 100%;text-align: left; padding: 0 2rem; margin: 0;"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow"><code>flex-shrink</code></a> - tells this flex-item to shrink as available space shrinks</p>
+						<p style="border: 1px solid grey;width: 100%;text-align: left; padding: 0 2rem; margin: 0;"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-self"><code>align-self</code></a> - aligns this flex-item only</p>
 					</div>
 					<p><a href="https://codepen.io/heliocrat/pen/KKWwKvv">Flex Codepen</a></p>
 					<p><a href="https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_Flexbox_layouts">Firefox Flexbox Inspector</a></p>
