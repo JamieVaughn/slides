@@ -24,6 +24,14 @@ pre.correct::before {
   font-size: 2rem;
   top: 0.2rem;
 }
+pre.equal::before {
+  content: '🟰';
+  position: absolute;
+  left: -4rem;
+  font-size: 4rem;
+  top: 2rem;
+  z-index: 10;
+}
 pre[data-before]::before {
   content: attr(data-before);
   position: absolute;

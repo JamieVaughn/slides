@@ -171,7 +171,18 @@ flex-wrap: wrap;
 		</article>
 		<article class="slide">
 			<h2>Adding a Gap</h2>
-			<pre><code>gap: &lt;length&gt;;</code></pre>
+			<code>gap: &lt;length&gt;;</code>
+			<div class="flex">
+			<pre class="language-css"><code>gap: 1rem;
+
+/* independently set 
+top & bottom gap 
+and left & right gap */
+gap: 1rem 2rem; 
+			</code></pre>
+			<img src="img/animated_flexbox_gap.gif" alt="">
+		</div>
+
 		</article>
 		<article class="slide">
 			<h2>Flex Order <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order">MDN</a></small></h2>
@@ -220,11 +231,10 @@ order: -1;
 			</textarea>
 		</article>
 			
-<article class="slide">
-				</div>
-					<h2>Let's Practice Flexbox Basics:</h2>
-					<p><a href="http://www.flexboxdefense.com/">Flexbox Tower Defense Game</a></p>
-				</article>
+		<article class="slide">
+			<h2>Let's Practice Flexbox Basics:</h2>
+			<p><a href="http://www.flexboxdefense.com/">Flexbox Tower Defense Game</a></p>
+		</article>
 				<article class="slide">
 					<h2>Extra Flexbox Rules</h2>
 					<p>These *may or may not* come in handy for you.</p>
@@ -234,6 +244,7 @@ order: -1;
 						<p style="border: 1px solid grey;width: 100%;text-align: left; padding: 0 2rem; margin: 0;"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow"><code>flex-shrink</code></a> - tells this flex-item to shrink as available space shrinks</p>
 						<p style="border: 1px solid grey;width: 100%;text-align: left; padding: 0 2rem; margin: 0;"><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-self"><code>align-self</code></a> - aligns this flex-item only</p>
 					</div>
+					<p><a href="https://www.youtube.com/watch?v=fm3dSg4cxRI">Deep dive video into the <code>flex</code> properties</a></p>
 					<p><a href="https://codepen.io/heliocrat/pen/KKWwKvv">Flex Codepen</a></p>
 					<p><a href="https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_Flexbox_layouts">Firefox Flexbox Inspector</a></p>
 					</article>
@@ -272,6 +283,7 @@ order: -1;
 									</div>
 									<div>
 										<h2>Flexbox Layouts</h2>
+										<p>Flexbox is ideal for <u>nav bars</u> or <u>footers</u>, but can be used for many other things including full page layouts!</p>
 										<p><a href="https://www.flexboxpatterns.com/">Flexbox Patterns</a></p>
 										<p><a href="https://philipwalton.github.io/solved-by-flexbox/">Layouts Solved by Flexbox</a></p>
 										<p><a href="https://www.freecodecamp.org/news/learn-flexbox-build-5-layouts/">Page Layouts with Flexbox</a></p>
@@ -279,9 +291,10 @@ order: -1;
 								</div>
 								</article>
 								<article class="slide">
-									<h2>Let's Try it out on a:</h2>
+									<h2>Let's Try it out on:</h2>
 									<ol>
 										<li>Media Object</li>
+										<li>Nav Bar (or Footer)</li>
 										<li>Side Panel</li>
 									</ol>
 									<h2>Further Practice</h2>
@@ -1074,6 +1087,7 @@ order: -1;
 			<img class="plain" style="margin:0;max-height:30vh;" data-src="img/flex.svg" alt="Display flex on grid items">
 			<figcaption>Make each grid-item into a flex-container. That's more like it</figcaption>
 		</figure>
+		<blockquote>I'm no longer thinking of grid vs flexbox as a 2D, 1D type of thing. I'm thinking more it's do I want ultimate control from the parent over its content, or do I need the content to have an influence over the way the layout is. <span>- Kevin Powell</span></blockquote>
 		<details class="notes">But if instead we apply <code>display: flex</code> on the grid item, we can now use flex alignment properties applied on the flex container to position the grid item's content accordingly.</details> 
 	</article>
 

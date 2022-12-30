@@ -207,9 +207,8 @@ ul > a {} // 🚫 won't match anything to the right </code></pre>
   <article class="slide">
     <h2>CSS Selectors Docs</h2>
     <ul>
-        <li>Psuedo-selectors & Psuedo-classes</li>
-        <li>Psuedo-elements (<code>::after</code> & <code>::before</code>)</li>
-        <li><code>:is()</code> & <code>:where()</code> selectors <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is">MDN</a>, <a href="https://kilianvalkhof.com/2021/css-html/css-nesting-specificity-and-you/">Article</a></li>
+        <li>Pseudo-selectors & Psuedo-classes</li>
+        <li>Pseudo-elements (<code>::after</code> & <code>::before</code>)</li>
         <li><a href="https://www.w3schools.com/cssref/css_selectors.asp">W3 Schools CSS Selectors List</a></li>
         <li><a href="https://guide.freecodecamp.org/css/tutorials/css-selectors-cheat-sheet/">FCC Selector Cheat Sheet</a></li>
         <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">MDN CSS Selectors List</a></li>
@@ -218,6 +217,44 @@ ul > a {} // 🚫 won't match anything to the right </code></pre>
     <pre class="language-css"><code>
 /* This is a comment in CSS
 They can be multi-line too */</code></pre>
+  </article>
+  <article class="slide">
+    <h2><code>:is</code> & <code>:where</code> Pseudo Selectors <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is">MDN</a>, <a href="https://kilianvalkhof.com/2021/css-html/css-nesting-specificity-and-you/">Article</a></sup></h2>
+    <p>These allow you to express more complex selector combinations in a shorter format</p>
+  <div class="flex">
+    <pre class="language-css"><code>
+/* Can use it anywhere in a selector */
+:is(header, .card, #hero) ul > li:hover {
+  background: #444;
+}</code></pre>
+<pre class="language-css equal"><code>
+header ul > li:hover, 
+.card ul > li:hover, 
+#hero ul > li:hover  {
+  background: #444;
+}</code></pre>
+</div>
+<div class="flex">
+<pre class="language-css"><code>/* :is() applies the highest specficity of the group */
+header :is(h1, a, img, .hero, #logo) {
+  color: dodgerblue;
+}
+/* items in :where() contribute zero specificity */ 
+header :where(h1, a, img, .hero, #logo) {
+  color: crimson;
+}
+</code></pre>
+<pre class="language-css equal"><code>
+header h1, 
+header a, 
+header img, 
+header .hero, 
+header #logo {
+  color: dodgerblue;
+}
+/* One typo above causes the whole rule to be ignored */
+</code></pre>
+</div>
   </article>
   <article class="slide">
     <!-- <h2>"CSS Selectors Explained" Tool</h2> -->
