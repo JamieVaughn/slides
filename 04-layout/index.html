@@ -377,59 +377,60 @@ gap: 1rem 2rem;
 		</textarea>
 	</article>
 
-	<article class="slide">
-		<h2>Layout technique: <code>float</code></h2>
-		<div class="livecode livecode-2p" style="max-height: 40vh;">
-			<div class="result float" style="font-size:75%;">
-				<div class="float__item" style="border:1px solid;padding:1em 0;">
-					<p>Item A</p>
-				</div>
-				<div class="float__item" style="border:1px solid;padding:1em 0;">
-					<p>Item B</p>
-				</div>
-				<div class="float__item" style="border:1px solid;padding:1em 0;">
-					<p>Item C</p>
-				</div>
-				<div class="float__item" style="border:1px solid;padding:1em 0;">
-					<p>Item D</p>
-				</div>
-				<div class="float__item" style="border:1px solid;padding:1em 0;">
-					<p>Item E</p>
-				</div>
-				<div class="float__item" style="border:1px solid;padding:1em 0;">
-					<p>Item F</p>
-				</div>
-			</div>
-			<div class="code"><style class="code-editor" contenteditable="true">.float__item {
-	float: left;
-	width: calc(100% / 3);
-	}</style></div>
-		</div>
-		<details class="notes">It's almost the same if you use <code>float</code>, because you also need to set a width on each item.</details> 
+	<article class="demo slide" id="livedemo">
+		<h1 style="color: #444;">Layout Technique: <br><small><code>float</code></small></h1>
+		<textarea class="language-html">
+<div class="float">
+	<div><p>Item A</p></div>
+	<div><p>Item B</p></div>
+	<div><p>Item C</p></div>
+	<div><p>Item D</p></div>
+	<div><p>Item E</p></div>
+	<div><p>Item F</p></div>
+</div>
+		</textarea>
+		<textarea class="language-css">
+			/* very similar to inline-block */
+			.float > div {
+				float: left;
+				/* change to 100% / 2 or 4 */
+				width: calc(100% / 3);
+			}
+		</textarea>
+	</article>
+
+	<article class="demo slide" id="livedemo">
+		<h1 style="color: #444;">Layout Technique: <br><small><code>flexbox</code></small></h1>
+		<textarea class="language-html">
+<div class="flexbox">
+	<div><p>Item A</p></div>
+	<div><p>Item B</p></div>
+	<div><p>Item C</p></div>
+	<div><p>Item D</p></div>
+	<div><p>Item E</p></div>
+	<div><p>Item F</p></div>
+</div>
+		</textarea>
+		<textarea class="language-css">
+			.flexbox {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			/*Flexbox requires `flex-basis` 
+			  to be one-third of the container.
+			  Again, the item properties 
+			  control the layout */
+			.flexbox > div {
+				/* change to 100% / 2 or 4 */
+				flex-basis: calc(100% / 3);
+				flex-grow: 0; /* default */
+				/*flex-grow: 1; */
+			}
+		</textarea>
 	</article>
 
 	<article class="slide">
-		<h2>Layout technique: <code>flex</code></h2>
-		<div class="livecode livecode-2p" style="max-height: 40vh;">
-			<div class="result flexbox" style="font-size:75%;">
-				<div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item A</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item B</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item C</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item D</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item E</p></div><div class="flexbox__item" style="border:1px solid;padding:1em 0;"><p>Item F</p></div>
-			</div>
-			<div class="code"><style class="code-editor" contenteditable="true">.flexbox {
-	display: flex;
-	flex-wrap: wrap;
-	}
-	
-	.flexbox__item {
-	flex: 1 1 calc(100% / 3);
-	}</style></div>
-		</div>
-		<details class="notes">
-			<p>For Flexbox, to ensure our items line up in three columns, we have to make sure the `flex-basis` is a third of the container. Again, the properties we are applying go on the item.</p>
-			<p>For all 3 techniques I just described, there isn't actually a grid. It just looks that way because we've forced the items to line up with each other.</p>
-		</details> 
-	</article>
-
-	<article class="slide">
+		<p>For all 3 previous techniques, there is no actual grid. It mimics a grid because we've forced the items to line up with each other.</p>
 		<blockquote>“Grid is the only layout technique that establishes a <strong class="highlight3">relationship</strong> between rows and columns of grid items.”<br><small>—<a href="https://rachelandrew.co.uk/">Rachel Andrew</a></small></blockquote>
 		<p>Unique among CSS Layout systems, the dimensions for rows and columns are defined on the parent container instead of inferred from the child items</p>
 		<details class="notes">
@@ -438,130 +439,111 @@ gap: 1rem 2rem;
 		</details> 
 	</article>
 
-	<article class="slide">
-		<h2>Properties on the Grid container</h2>
+	<header class="slide">
+		<h1>Properties on the Grid Container</h1>
 		<details class="notes">Let's look at the properties that are applied to the Grid container first, which will determine the size and structure of the grid we want to create.</details> 
-	</article>
+	</header>
 
 	<article class="slide">
 		<h2>CSS Grid basics</h2>
-		<div class="l-double">
-			<div class="delayed" style="width:100%;">
+		<div class="grid col-2" style="gap: 2rem;">
+			<div class="delayed">
 				<p>Define your grid container.</p>
 				<ul style="list-style: none;">
 					<li><code>display: grid</code></li>
 					<li><code>grid-template-columns </code></li>
 					<li><code>grid-template-rows</code></li>
 				</ul>
-				<img class="plain" style="max-height:50vh;" data-src="img/define-grid.svg" alt="Define a grid">
 			</div>
-			<div class="delayed" style="width:100%;">
+			<img class="delayed backdrop corners" style="grid-row: 2" src="img/define-grid.svg" alt="Define a grid">
+			<div class="delayed">
 				<p>Place grid items in the grid.</p>
 				<ul style="list-style: none;">
 					<li><code>grid-column </code></li>
 					<li><code>grid-row</code></li>
 					<li style='opacity: 0'>.</li>
 				</ul>
-				<img class="plain" style="max-height:50vh;" data-src="img/place-items.svg" alt="Place items in the grid">
 			</div>
+			<img class="delayed backdrop corners" style="grid-row: 2" src="img/place-items.svg" alt="Place items in the grid">
 		</div>
 		<details class="notes">The basic premise of how grid works involves two steps. You define the grid, then place items in it either by yourself, or let the browser do it for you.</details>
 	</article>
 
 	<article class="slide">
 		<h2>Defining the Grid</h2>
-		<div class="l-multiple">
-			<img class="plain" style="max-height: 30vh" alt="Parent-child relationship" src="img/grid-parent-child.svg">
+		<div class="flex" style="gap: 2rem;">
+			<img alt="Parent-child relationship" src="img/grid-parent-child.svg">
 			<div style="flex:1 0 56%;align-self:center;">
-				<pre style="font-size:50%;"><code class="css hljs">body {
-	display: grid;
-	grid-template-columns: 25% 25% 25% 25%;
-	grid-template-rows: 10vh 80vh 10vh;
-	}</code></pre>
-			<p style="font-size:75%;text-align:left;margin-left:1em;">The grid formatting context only applies to the direct child elements</p>
+				<p>The grid formatting context only applies to the direct child elements</p>
+				<pre class="language-css"><code>body {
+  display: grid;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 10vh 80vh 10vh;
+}</code></pre>
 			</div>
 		</div>
 		<details class="notes">
 			<p>A grid container is defined by setting the display to grid on an element. This creates a grid formatting context for its content, which are laid out into a grid. The grid formatting context only applies to child elements and does not extend to grandchild elements and beyond.</p>
 			<p>For example, applying <code>display: grid</code> to the body element, results in the 4 child elements, header, main, aside and footer, becoming grid items. However, the content within the main element are not grid items.</p>
+			<p>There are numerous values we can use to define the size of our grids. There are those which are familiar, fixed units like pixels or ems and relative units like percentages or viewport units. Now, we also a new flexible unit known as fr or fractional unit, which I will cover in more detail later.</p>
 		</details>
 	</article>
 
 	<article class="demo slide" id="livedemo">
-		<h1 class="text:40 color:#f06 p:30">Let's Define a Grid!</h1>
+		<h1 style="color: #444">Let's Define a Grid!</h1>
 		<textarea class="language-html">
-<div class="grid1">
-	<div class="grid1_item"><p>Item A</p></div>
-	<div class="grid1_item"><p>Item B</p></div>
-	<div class="grid1_item"><p>Item C</p></div>
-	<div class="grid1_item"><p>Item D</p></div>
-	<div class="grid1_item"><p>Item E</p></div>
-	<div class="grid1_item"><p>Item F</p></div>
+<div class="grid">
+	<div><p>Item A</p></div>
+	<div><p>Item B</p></div>
+	<div><p>Item C</p></div>
+	<div><p>Item D</p></div>
+	<div><p>Item E</p></div>
+	<div><p>Item F</p></div>
 </div>
 		</textarea>
 		<textarea class="language-css">
-			.grid1 {
+			.grid {
 				display: grid;
-				/* grid-template-columns: 1fr 1fr 1fr; */
-				/* grid-template-rows: 1fr 1fr; */
+				/*grid-template-columns: 1fr 1fr 1fr; */
+				/*grid-template-rows: 1fr 1fr; */
 			}
-			.grid1_item {
-				border: 1px solid grey;
-				padding: 1rem;
+			.grid > div {
+				/* no rules for grid items needed! */
+				/* but you can add some if you want: */
+				/*width: 100% */
 			}
 		</textarea>
-		<details class="notes">There are numerous values we can use to define the size of our grids. There are those which are familiar, fixed units like pixels or ems and relative units like percentages or viewport units. Now, we also a new flexible unit known as fr or fractional unit, which I will cover in more detail later.</details>
 	</article>
 
-			<!-- <pre class="markup"><code class="html">&lt;div class="grid1"&gt;
-	&lt;div class="grid1__item"&gt;
-	&lt;p&gt;Item A&lt;/p&gt;
-	&lt;/div&gt;
-	&lt;div class="grid1__item"&gt;
-	&lt;p&gt;Item B&lt;/p&gt;
-	&lt;/div&gt;
-	&lt;div class="grid1__item"&gt;
-	&lt;p&gt;Item C&lt;/p&gt;
-	&lt;/div&gt;
-	&lt;div class="grid1__item"&gt;
-	&lt;p&gt;Item D&lt;/p&gt;
-	&lt;/div&gt;
-	&lt;div class="grid1__item"&gt;
-	&lt;p&gt;Item E&lt;/p&gt;
-	&lt;/div&gt;
-	&lt;div class="grid1__item"&gt;
-	&lt;p&gt;Item F&lt;/p&gt;
-	&lt;/div&gt;
-	&lt;/div&gt;</code></pre> -->
-			
-
-	<article class="slide">
-		<h2>Placing Items in the Grid</h2>
-		<h3><small>& Explicit vs Implicit tracks</small></h3>
-		<div class="l-double" style="align-items:center;">
-			<img class="plain" data-src="img/implicit-grid.svg" alt="Implicit grid">
-			<div style="align-self:center;">
-				<pre style="font-size:50%;"><code class="css">.grid-container {
-	display: grid;
-	grid-template-columns: 150px 150px 150px; /* three columns  */
-	grid-template-rows: 150px 150px; /* two rows  */
-	}
-	
-	.item {
-	/* grid-column-start: 5; grid-column-end: 6;  */
-	grid-column: 5 / 6;
-	
-	/* grid-row-start: 2; grid-row-end: 3;  */
-	grid-row:  2 / 3; 
-	
-	/* you can use -1 to reference 
-	the last explicit grid track */
-	grid-row: 2 / -1;
-	}</code></pre>
-				<p style="font-size:75%;text-align:left;margin-left:1em;">The browser will create an implicit grid to hold items placed outside the grid.</p>
-			</div>
+	<article class="slide" style="justify-content: start;">
+		<div class="grid" style="grid-template-rows: 20vh 20vh 1fr; grid-template-columns: 1fr 150px 1fr;">
+		<h2 style="grid-column: 3; grid-row: 1 / 2; justify-self: center;">Placing Items in the Grid</h2>
+		<div style="grid-column:  3; grid-row: 2 / 3; align-items: center; width: 100%;" class="flex-col">
+			<p>Explicit vs Implicit tracks</p>
 			<p><a href="https://cssreference.io/css-grid/#grid-row">grid-row on CSSReference.io</a></p>
-				<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column">grid-column on MDN</a></p>
+			<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column">grid-column on MDN</a></p>
+		</div>
+			<img style="grid-column: 2 / 4; grid-row: 3; z-index: 2;" class="backdrop corners" src="img/implicit-grid.svg" alt="Implicit grid">
+			<pre style="grid-column: 1 / 3; grid-row: 1 / -1;" class="language-css"><code>.grid-container {
+  display: grid;
+  /* three columns  */
+  grid-template-columns: 150px 150px 150px; 
+  /* two rows  */
+  grid-template-rows: 150px 150px; 
+  /* The browser creates an implicit grid 
+  to hold itemsplaced outside of it. */
+}
+.item {
+  /* grid-column-start: 5; 
+  grid-column-end: 6;  */
+  grid-column: 5 / 6;
+  /* grid-row-start: 2; 
+  grid-row-end: 3;  */
+  grid-row:  2 / 3; 
+  /* you can use -1 to reference 
+  the last explicit grid track */
+  grid-row: 2 / -1;
+}</code></pre>
 		</div>
 		<details class="notes">
 			<p>One more thing I want to mention is the concept of an implicit grid. The explicit grid is the one we define using <code>grid-template-columns</code> and <code>grid-template-rows</code>. But there's nothing stopping us from placing an item outside the bounds of this grid. What happens then?</p>
