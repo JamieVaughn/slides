@@ -51,6 +51,10 @@ border-radius: 100px;
 padding: 2rem;
 width: fit-content;
 }
+.backdrop.corners{
+  padding: 1rem;
+  border-radius: 10px;
+}
 .stamped {
   position: absolute;
   top: 30%;
@@ -104,7 +108,7 @@ width: fit-content;
 .emolist li:nth-child(7n)::marker {
   content: '🌑';
 }
-[class*='col-'] > li {padding: 0 1rem;}
+[class*='col-'] > li, .emolist > li {padding: 0 1rem;}
 .col-2 {columns: 2}
 .col-3 {columns: 3}
 .col-4 {columns: 4}
@@ -112,6 +116,16 @@ width: fit-content;
 
 .hidden {
   display: none;
+}
+
+.highlight, .highlight1 {
+  color: var(--color1);
+}
+.highlight2 {
+  color: var(--color2);
+}
+.highlight3 {
+  color: var(--color3);
 }
 
 .grid {

@@ -22,31 +22,45 @@
 			width: 200px;
 			line-height: 200px;
 		}
+		* {
+			box-sizing: border-box;
+		}
 		
 
 		/* Live demo editor code */
-		.flexbox {
+		.flexbox, .demo-target > div {
 			border: 1px dashed darkgray;
 			font-size: 75%;
 		}
-		.flexbox > div {
+		.flexbox > div, .demo-target > div > div {
 			box-sizing: border-box;
 			border: 1px solid black;
 			text-align: center;
 			padding: 1em 0;
 			color: white;
 			font-weight: bold;
-			flex-basis: calc(100% / 3);
 		}
-		.flexbox > div > p {
+		.demo-target > div > div > p {
 			padding: 0.25rem 1rem;
 		}
-		.flexbox > div:nth-of-type(n){background: seagreen}
-		.flexbox > div:nth-of-type(2n){background: goldenrod}
-		.flexbox > div:nth-of-type(3n){background: crimson}
-		.flexbox > div:nth-of-type(4n){background: royalblue}
-		.flexbox > div:nth-of-type(5n){background: tomato}
-		.flexbox > div:nth-of-type(6n){background: rebeccapurple}
+		.demo-target > div > div:nth-of-type(n){background: seagreen}
+		.demo-target > div > div:nth-of-type(2n){background: goldenrod}
+		.demo-target > div > div:nth-of-type(3n){background: crimson}
+		.demo-target > div > div:nth-of-type(4n){background: royalblue}
+		.demo-target > div > div:nth-of-type(5n){background: tomato}
+		.demo-target > div > div:nth-of-type(6n){background: rebeccapurple}
+		/* Specific Example setup */
+		.flexbox > div {
+			flex-basis: calc(100% / 3);
+		}
+		.inlineblock {
+			font-size: 0;
+			letter-spacing: 0px;
+  		word-spacing: 0px;
+		}
+		.inlineblock > div {
+			display: inline-block;
+		}
 	 </style>
 </head>
 <body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30" spellcheck="false">
@@ -58,8 +72,8 @@
 </header>
 <section>
 	<header class="slide">
-		<h1>CSS Layouts</h1>
-		<h2>Flexbox</h2>
+		<h2>CSS Layouts</h2>
+		<h1>Flexbox</h1>
 	</header>
 
 	<article class="slide">
@@ -189,7 +203,7 @@ gap: 1rem 2rem;
 			<p>The <code>order</code> property can control where a flex-item will be in the flex-container... </p>
 			<p>even though the order of the HTML doesn't change!</p>
 			<pre class="language-css"><code>.flex-item {
-order: -1;
+  order: -1;
 }</code></pre>
 <div class="flex align justify flex-demo" style="width: 65vw; position: relative; border: 5px solid gold; padding: 4rem;  color: white; text-align: center;">
 <h3 style="line-height: 38px; position: absolute; left: 0; top: -40px; font-size: 38px; z-index: 10;">Flex Container</h3>
@@ -309,17 +323,17 @@ order: -1;
 
 <section>
 	<header class="slide">
-		<h1>CSS Layouts</h1>
-		<h2>Grid</h2>
+		<h2>CSS Layouts</h2>
+		<h1>Grid</h1>
 	</header>
 	<article class="slide">
 		<h2>What is CSS grid?</h2>
-		<p class="fragment">Defines a <strong>two-dimensional</strong> grid-based layout system, optimized for user interface design.</p>
+		<p class="delayed">Defines a <strong class="highlight3">two-dimensional</strong> grid-based layout system, optimized for user interface design and complex content layout.</p>
 		<details class="notes">Now, let's examine CSS grid. What is it? This is how it's described in the specification. The key word here is two-dimensional. Keep this in mind for the rest of the talk.</details> 
 	</article>
 	<article class="slide">
 		<h2>Basic terminology</h2>
-		<img style="height:30vh" class="plain" data-src="img/terminology.svg" alt="Grid terminology">
+		<img class="backdrop" src="img/terminology.svg" alt="Grid terminology">
 		<details class="notes">
 			<p>There are a number of terms I will constantly refer to throughout this talk, so let’s make sure everyone is on the same page. Grid lines are the horizontal and vertical lines that form the basis of the grid structure, and can be referred to by their numerical index, which starts from 1.</p>
 			<p>Each space between grid lines are known as grid tracks, which make up the rows and columns of the grid, and represent the spaces your items appear in.</p>
@@ -331,29 +345,36 @@ order: -1;
 	<article class="slide">
 		<h2>Flexbox and Grid</h2>
 		<p>Both Based on the container-child relationship</p>
-		<svg width="50%" viewBox="0 0 564 324"><g fill="none" fill-rule="evenodd" transform="translate(5.07 -3)"><rect width="558.051" height="273.508" x="-2.5" y="50.5" stroke="#000" stroke-width="5" stroke-linecap="round" stroke-linejoin="bevel" rx="3"/><rect width="252.547" height="145.828" x="56.727" y="139.039" stroke="#000" stroke-width="5" stroke-linecap="round" stroke-linejoin="bevel" rx="3"/><text fill="#000" font-size="50%"><tspan x=".132" y="37">Flex/Grid container</tspan></text><text fill="#000" font-size="50%"><tspan x="59.627" y="125.539">Flex/Grid item</tspan></text></g></svg>
+		<img src="img/containers.svg" class="backdrop corners" alt="">
 		<details class="notes">The first concept to wrap our heads around is the fact that Grid, like Flexbox, operates on the parent-child relationship, whereby, the display property is set on the parent element. This then affects the layout of all the immediate children of that element.</details> 
 	</article>
 	<article class="slide">
-		<blockquote>“Grid works from the <strong>container</strong> in, other layout methods start with the <strong>item</strong>”<br><small>—<a href="https://rachelandrew.co.uk/">Rachel Andrew</a></small></blockquote>
+		<h2>From the Creator of Grid</h2>
+		<blockquote>“Grid works from the <strong class="highlight3">container</strong> in, other layout methods start with the <strong class="highlight3">item</strong>”<br><small>—<a href="https://rachelandrew.co.uk/">Rachel Andrew</a></small></blockquote>
 		<p><a href="https://gridbyexample.com/">Grid By Example</a></p>
 		<details class="notes">
 			<p>My favourite way of explaining the CSS grid mental model comes from Rachel Andrew, who describes it as such: “Grid works from the container in. All other layout techniques start from the item first.”</p>
 			<p>Let’s illustrate this with some simple examples, which will also serve as the introduction to the most basic set up for using CSS grid.</p>
 		</details> 
 	</article>
-	<article class="slide">
-		<h2>Layout technique: <code>inline-block</code></h2>
-		<div class="livecode livecode-2p" style="max-height: 40vh;">
-			<div class="result inlineblock" >
-				<div class="inlineblock__item" style="border:1px solid;padding:1em 0;"><p>Item A</p></div><div class="inlineblock__item" style="border:1px solid;padding:1em 0;"><p>Item B</p></div><div class="inlineblock__item" style="border:1px solid;padding:1em 0;"><p>Item C</p></div><div class="inlineblock__item" style="border:1px solid;padding:1em 0;"><p>Item D</p></div><div class="inlineblock__item" style="border:1px solid;padding:1em 0;"><p>Item E</p></div><div class="inlineblock__item" style="border:1px solid;padding:1em 0;"><p>Item F</p></div>
-			</div>
-			<div class="code"><style class="code-editor" contenteditable="true">.inlineblock__item {
-	display: inline-block;
-	width: calc(100% / 3);
-	}</style></div>
-		</div>
-		<details class="notes">The setup here is 6 items we want to place into a 3-column grid. One approach for creating such a layout is by using the <code>inline-block</code> technique. For a three column grid, we set the display of the items to <code>inline-block</code> and give them all a width of a third of the container.</details> 
+	<article class="demo slide" id="livedemo">
+		<h1 style="color: #444;">Layout Technique: <br><small><code>inline-block</code></small></h1>
+		<textarea class="language-html">
+<div class="inlineblock">
+	<!-- inlineblock tags must 
+		be on one line, otherwise 
+		the spaces are rendered
+		as horizontal spacing -->
+	<div><p>Item A</p></div><div><p>Item B</p></div><div><p>Item C</p></div><div><p>Item D</p></div><div><p>Item E</p></div><div><p>Item F</p></div>
+</div>
+		</textarea>
+		<textarea class="language-css">
+			.inlineblock > div {
+				display: inline-block;
+				/* change to 100% / 2 or 4 */
+				width: calc(100% / 3);
+			}
+		</textarea>
 	</article>
 
 	<article class="slide">
@@ -409,7 +430,8 @@ order: -1;
 	</article>
 
 	<article class="slide">
-		<blockquote>“Grid is the only layout technique that establishes a <strong>relationship</strong> between rows and columns of grid items.”</blockquote>
+		<blockquote>“Grid is the only layout technique that establishes a <strong class="highlight3">relationship</strong> between rows and columns of grid items.”<br><small>—<a href="https://rachelandrew.co.uk/">Rachel Andrew</a></small></blockquote>
+		<p>Unique among CSS Layout systems, the dimensions for rows and columns are defined on the parent container instead of inferred from the child items</p>
 		<details class="notes">
 			<p>But for Grid, the dimensions for rows and columns are defined on the parent container instead. The grid is real.</p>
 			<p>Before CSS grid, we've always tried to size our elements as best we could, then crossed our fingers and hoped the browser would render them in the right place. But now with grid, we can control exactly where our elements should go.</p>
@@ -424,7 +446,7 @@ order: -1;
 	<article class="slide">
 		<h2>CSS Grid basics</h2>
 		<div class="l-double">
-			<div class="fragment" style="width:100%;">
+			<div class="delayed" style="width:100%;">
 				<p>Define your grid container.</p>
 				<ul style="list-style: none;">
 					<li><code>display: grid</code></li>
@@ -433,7 +455,7 @@ order: -1;
 				</ul>
 				<img class="plain" style="max-height:50vh;" data-src="img/define-grid.svg" alt="Define a grid">
 			</div>
-			<div class="fragment" style="width:100%;">
+			<div class="delayed" style="width:100%;">
 				<p>Place grid items in the grid.</p>
 				<ul style="list-style: none;">
 					<li><code>grid-column </code></li>
@@ -695,15 +717,15 @@ order: -1;
 		<p>Used with the <code class='slack-code'>repeat()</code> function.</p>
 		<div class="l-double">
 			<div >
-				<img class="plain" data-src="img/auto-fill.png" alt="Auto-fill">
+				<img class="plain" src="img/auto-fill.png" alt="Auto-fill">
 				<pre style="font-size:65%; width: 95%;"><code class="css">grid-template-columns: repeat(auto-fill, 100px);</code></pre>
 			</div>
 			<div >
-				<img class="plain" data-src="img/auto-fit.png" alt="Auto-fit">
+				<img class="plain" src="img/auto-fit.png" alt="Auto-fit">
 				<pre style="font-size:65%;"><code class="css">grid-template-rows: repeat(auto-fit, 100px);</code></pre>
 			</div>
 		</div>
-		<p class="fragment"><code>auto-fit</code> collapses empty tracks.</p>
+		<p class="delayed"><code>auto-fit</code> collapses empty tracks.</p>
 		<p><a href="https://codepen.io/heliocrat/full/MWpyeLy">Codepen Example</a></p>
 		<details class="notes">
 			<p>Show the codepen example with the grid inspector ON, so the implicit grid tracks are shown for auto-fill.</p>
@@ -938,7 +960,7 @@ order: -1;
 			<tr>
 				<td><code>justify-content</code></td>
 				<td>main/inline</td>
-				<td rowspan="2"><p style="width:65%;display:inline-block;">content within element<br>(effectively adjusts padding)</p><img class="plain" style="max-width:7em;vertical-align:top;" data-src="img/content.svg" alt="Content diagram"></td>
+				<td rowspan="2"><p style="width:65%;display:inline-block;">content within element<br>(effectively adjusts padding)</p><img class="plain" style="max-width:7em;vertical-align:top;" src="img/content.svg" alt="Content diagram"></td>
 				<td rowspan="2">block containers, flex containers and grid containers<br></td>
 			</tr>
 			<tr style="border-bottom:2px solid;">
@@ -948,7 +970,7 @@ order: -1;
 			<tr>
 				<td><code>justify-self</code></td>
 				<td>inline</td>
-				<td rowspan="2"><p style="width:65%;display:inline-block;">element within parent<br>(effectively adjusts margins)</p><img class="plain" style="max-width:7em;vertical-align:top;" data-src="img/self.svg" alt="Self diagram"></td>
+				<td rowspan="2"><p style="width:65%;display:inline-block;">element within parent<br>(effectively adjusts margins)</p><img class="plain" style="max-width:7em;vertical-align:top;" src="img/self.svg" alt="Self diagram"></td>
 				<td>block-level boxes, absolutely-positioned boxes and grid items<br></td>
 			</tr>
 			<tr style="border-bottom:2px solid;">
@@ -959,7 +981,7 @@ order: -1;
 			<tr>
 				<td><code>justify-items</code></td>
 				<td>inline</td>
-				<td rowspan="2"><p style="width:65%;display:inline-block;">items inside box<br>(controls child items)</p><img class="plain" style="max-width:7em;vertical-align:top;" data-src="img/items.svg" alt="Items diagram"></td>
+				<td rowspan="2"><p style="width:65%;display:inline-block;">items inside box<br>(controls child items)</p><img class="plain" style="max-width:7em;vertical-align:top;" src="img/items.svg" alt="Items diagram"></td>
 				<td>block containers and grid containers<br></td>
 			</tr>
 			<tr style="border-bottom:2px solid;">
@@ -1070,7 +1092,7 @@ order: -1;
 
 	<article class="slide">
 		<p>Self-alignment properties & Borders</p>
-		<figure class="fragment">
+		<figure class="delayed">
 			<img class="plain" style="margin:0;max-height:30vh;" data-src="img/fit.svg" alt="Self-alignment properties">
 			<figcaption>There's a couple of ways to align within a grid cell</figcaption>
 		</figure>
@@ -1083,7 +1105,7 @@ order: -1;
 
 	<article class="slide">
 		<p>Flexbox to the Rescue!</p>
-		<figure class="fragment">
+		<figure class="delayed">
 			<img class="plain" style="margin:0;max-height:30vh;" data-src="img/flex.svg" alt="Display flex on grid items">
 			<figcaption>Make each grid-item into a flex-container. That's more like it</figcaption>
 		</figure>
@@ -1292,7 +1314,7 @@ order: -1;
 				<img class="plain" style="max-height:75vh;margin:0;" data-src="img/tycho-nostyle.jpg" alt="Markup only">
 				<figcaption>Markup without any CSS</figcaption>
 			</figure>
-			<figure class="fragment">
+			<figure class="delayed">
 				<img class="plain" style="max-height:75vh;margin:0;" data-src="img/tycho-basic.jpg" alt="General styles">
 				<figcaption>Basic styles</figcaption>
 			</figure>
