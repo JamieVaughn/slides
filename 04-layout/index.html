@@ -510,7 +510,7 @@ gap: 1rem 2rem;
 			.grid > div {
 				/* no rules for grid items needed! */
 				/* but you can add some if you want: */
-				/*width: 100% */
+				/*width: 100%; */
 			}
 		</textarea>
 	</article>
@@ -614,101 +614,149 @@ gap: 1rem 2rem;
 
 	<article class="slide">
 		<h2>Let's Create a Grid-based Media Object</h2>
-		<img src="img/grid_media_object.png" alt="">
+		<img class="backdrop corners" src="img/grid_media_object.png" alt="">
 	 </article>
 
 	 <article class="slide">
 		<h2>Fluid Units</h2>
-		<p><code class='slack-code'>fr</code> represents a <strong>fraction</strong> of the <strong>free space</strong> in the grid container.</p>
-		<p><code class='slack-code'>min-content</code> gives the <strong>smallest</strong> width of the grid item content (wraps).</p>
-		<p><code class='slack-code'>max-content</code> gives the <strong>largest</strong> width of the grid item content (does not wrap).</p>
-		<div class="livecode serious livecode-2p">
-			<div class="result grid4" style="font-size:75%;">
-				<div class="grid4__item a" style="border:1px solid;padding:1em 0;">
-					<p>Item A</p>
-				</div>
-				<div class="grid4__item b" style="border:1px solid;padding:1em 0;">
-					<p>Item B</p>
-				</div>
-				<div class="grid4__item c" style="border:1px solid;padding:1em 0;">
-					<p>Item C has much longer content</p>
-				</div>
-			</div>
-			<div class="code"><style class="code-editor" contenteditable="true">.grid4 {
-	display: grid;
-	grid-template-columns: 150px 1fr 2fr;
-	}</style></div>
-		</div>
+		<ol>
+			<li><code>fr</code> represents a <strong class="highlight3">fraction</strong> of the <strong class="highlight3">free space</strong> in the grid container.</li>
+			<li><code>min-content</code> gives the <strong class="highlight3">smallest</strong> width of the grid item content (wraps).</li>
+			<li><code>max-content</code> gives the <strong class="highlight3">largest</strong> width of the grid item content (does not wrap).</li>
+		</ol>
+		<pre class="language-css"><code>.grid {
+  display: grid;
+  grid-template-columns: 100px 1fr min-content max-content;
+}
+		</code></pre>
 		<details class="notes">
 			<p>An <code>fr</code> unit represents a fraction of free space available. A common use case that <code>fr</code> units can solve is for responsive uniform grids that need to adjust to the width of the viewport.</p>
 			<p>For layout methods that revolve around the width of the grid item, multiple media queries are necessary because the width of each item has to be explicitly stated depending on the width of the viewport.</p>
 			<p>With the fr unit, we are essentially ceding control of the sizing of each grid item to the browser, allowing the browser to figure out how large each grid item should be based on the parameters we provide through some new functions that CSS grid introduces.</p>
 		</details> 
+	 </article>
+
+	 <article class="demo slide">
+		<h1>Fluid Units</h1>
+			<textarea class="language-html">
+				<div class="grid">
+				  <div><p>Item A</p></div>
+				  <div><p>Item B</p></div>
+				  <div>
+				    <p>Item C has much longer content</p>
+				  </div>
+				</div>
+			</textarea>
+			<textarea class="language-css">
+				.grid {
+					display: grid;
+					grid-template-columns: max-content 1fr min-content;
+					gap: 0;
+					height: 300px;
+					width: 100%;
+				}
+				.grid > div {
+					width: 100%;
+					height: 100%;
+				}
+			</textarea>
 	</article>
 
 	<article class="slide">
 		<h2>Fluid CSS grid</h2>
-		<pre style="font-size:65%;"><code class="css">.container {
-	display: grid;
-	grid-template-columns: repeat(3, 3fr 2fr);
-	/* grid-template-columns: repeat(6, min-content); */
-	/* grid-template-columns: repeat(6, max-content); */
-	}</code></pre>
-		<video autoplay loop class="video" style="width:70%;">
-			<source data-src="videos/fluid-grid.mp4" type="video/mp4" />
+		<pre class="language-css"><code>.container {
+  display: grid;
+  grid-template-columns: repeat(3, 3fr 2fr);
+  /* grid-template-columns: repeat(6, min-content); */
+  /* grid-template-columns: repeat(6, max-content); */
+}</code></pre>
+		<video autoplay loop class="video">
+			<source src="videos/fluid-grid.mp4" type="video/mp4" />
 			Sorry, your browser doesn't support embedded videos, 
 			but don't worry, you can <a href="videos/fluid-grid.mp4">download it</a>
 			and watch it with your favourite video player!
 		</video>
-		<details class="notes">Here, I'm telling the browser I want 3 sets of 2 columns in the ratio of 3 to 2. By using the <code>fr</code> unit, all the available space is divided up accordingly. The grid then grows and shrinks together with viewport because it will occupy all the free space available in the container.</details>
+		<details class="notes">Here, I'm telling the browser I want 3 sets of 2 columns in the ratio of 3 to 2. By using the <code>fr</code> unit, all the available space is divided up accordingly. The grid then grows and shrinks together with viewport because it will occupy all the free space available in the container.
+			One of the new functions CSS grid gives us is the <code>minmax()</code> function. And it allows us to do something we never could before, which is the define a range of values. Now I can tell the browser that I want my grid columns or rows to be between a value of x and y, and the browser can figure out exactly what that value should be.
+		</details>
 	</article>
 
-	<article class="slide">
-		<h2>The <code>minmax()</code> function <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/minmax()">MDN</a></sup></h2>
-		<p>Defines a size range for columns or rows in a grid.
-		<div class="livecode livecode-2p">
-			<div class="result grid5" style="font-size:75%;">
-				<div class="grid5__item a" style="border:1px solid;padding:1em 0;"><p>Item A</p></div><div class="grid5__item b" style="border:1px solid;padding:1em 0;"><p>Item B</p></div><div class="grid5__item c" style="border:1px solid;padding:1em 0;"><p>Item C</p></div>
+	<article class="demo slide">
+		<h1>The <code>minmax()</code> function <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/minmax()">MDN</a></sup>
+		<br><small>Defines a size range for columns or rows in a grid</small></h1>
+		<textarea class="language-html">
+			<div class="grid">
+				<div><p>Item A</p></div>
+				<div><p>Item B</p></div>
+				<div><p>Item C</p></div>
 			</div>
-			<div class="code"><style class="code-editor" contenteditable="true">.grid5 {
-	display: grid;
-	grid-template-columns: minmax(200px, 1fr) 300px 300px;
-	}</style></div>
-		</div>
-		<details class="notes">One of the new functions CSS grid gives us is the <code>minmax()</code> function. And it allows us to do something we never could before, which is the define a range of values. Now I can tell the browser that I want my grid columns or rows to be between a value of x and y, and the browser can figure out exactly what that value should be.</details> 
-	</section>
+		</textarea>
+		<textarea class="language-css">
+			.grid {
+				display: grid;
+				grid-template-columns: minmax(200px, 1fr) 45% 45%;
+				gap: 0;
+				height: 300px;
+				width: 100%;
+				overflow-x: scroll;
+			}
+			.grid > div {
+				width: 100%;
+				height: 100%;
+			}
+		</textarea>
+	</article>
 
-	<article class="slide">
-		<h2>The <code>repeat()</code> function <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat()">MDN</a></sup></h2>
-		<p>To specify a large number of columns or rows that follow a similar pattern</p>
-		<div class="livecode livecode-2p">
-			<div class="result grid6" style="font-size:75%;">
-				<div class="grid6__item" style="border:1px solid;padding:1em 0;"><p>Item</p></div><div class="grid6__item" style="border:1px solid;padding:1em 0;"><p>Item</p></div><div class="grid6__item" style="border:1px solid;padding:1em 0;"><p>Item</p></div><div class="grid6__item" style="border:1px solid;padding:1em 0;"><p>Item</p></div><div class="grid6__item" style="border:1px solid;padding:1em 0;"><p>Item</p></div><div class="grid6__item" style="border:1px solid;padding:1em 0;"><p>Item</p></div><div class="grid6__item" style="border:1px solid;padding:1em 0;"><p>Item</p></div><div class="grid6__item" style="border:1px solid;padding:1em 0;"><p>Item</p></div>
+	<article class="demo slide">
+		<h1>The <code>repeat()</code> function <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat()">MDN</a></sup>
+		<br>
+		<small>Specify many columns/rows that follow a pattern</small>
+		</h1>
+		<textarea class="language-html">
+			<div class="grid">
+				<div><p>Item</p></div>
+				<div><p>Item</p></div>
+				<div><p>Item</p></div>
+				<div><p>Item</p></div>
+				<div><p>Item</p></div>
+				<div><p>Item</p></div>
+				<div><p>Item</p></div>
+				<div><p>Item</p></div>
 			</div>
-			<div class="code"><style class="code-editor" contenteditable="true">.grid6 {
-	display: grid;
-	grid-template-columns: repeat(4, 75px 120px);
-	}</style></div>
-		</div>
-		<details class="notes">Also, if your design calls for a rather complex and large grid, you probably don't want to type out each track's width by hand. The <code>repeat()</code> function let's us repeat patterns of track sizes so we won't end up with ridiculously long lines of column or row sizes.</details>
+		</textarea>
+		<textarea class="language-css">
+			.grid {
+				display: grid;
+				grid-template-columns: repeat(4, 75px 150px);
+				gap: 0;
+				height: 300px;
+				width: 100%;
+				overflow-x: scroll;
+			}
+			.grid > div {
+				width: 100%;
+				height: 100%;
+			}
+		</textarea>
+		<details class="hidden">Also, if your design calls for a rather complex and large grid, you probably don't want to type out each track's width by hand. The <code>repeat()</code> function let's us repeat patterns of track sizes so we won't end up with ridiculously long lines of column or row sizes.</details>
 	</article>
 
 	<article class="slide">
 		<h2><code>auto-fill</code> vs. <code>auto-fit</code> <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat()#values">MDN</a></sup></h2>
 		<p>Allow browser to create a number of tracks depending on grid track sizes.</p>
 		<p>Used with the <code class='slack-code'>repeat()</code> function.</p>
-		<div class="l-double">
-			<div >
-				<img class="plain" src="img/auto-fill.png" alt="Auto-fill">
-				<pre style="font-size:65%; width: 95%;"><code class="css">grid-template-columns: repeat(auto-fill, 100px);</code></pre>
+		<div class="flex" style="text-align: center;">
+			<div>
+				<img width="90%" src="img/auto-fill.png" alt="Auto-fill">
+				<pre class="language-css"><code>grid-template-columns: repeat(auto-fill, 100px);</code></pre>
 			</div>
-			<div >
-				<img class="plain" src="img/auto-fit.png" alt="Auto-fit">
-				<pre style="font-size:65%;"><code class="css">grid-template-rows: repeat(auto-fit, 100px);</code></pre>
+			<div>
+				<img width="990%" src="img/auto-fit.png" alt="Auto-fit">
+				<pre class="language-css"><code class="css">grid-template-rows: repeat(auto-fit, 100px);</code></pre>
 			</div>
 		</div>
 		<p class="delayed"><code>auto-fit</code> collapses empty tracks.</p>
-		<p><a href="https://codepen.io/heliocrat/full/MWpyeLy">Codepen Example</a></p>
+		<p class="delayed"><a href="https://codepen.io/heliocrat/full/MWpyeLy">Codepen Example</a></p>
 		<details class="notes">
 			<p>Show the codepen example with the grid inspector ON, so the implicit grid tracks are shown for auto-fill.</p>
 			<p>The <code>repeat()</code> function also takes in the keywords of <code>auto-fit</code> and <code>auto-fill</code>, which are very similar.</p>
@@ -717,35 +765,36 @@ gap: 1rem 2rem;
 		</details>
 	</article>
 
-	<article class="slide">
-		<h2><code>auto-fill</code> versus <code>auto-fit</code></h2>
-		<div class="livecode livecode-2p">
-				<div class="result keyword" style="font-size:75%;">
-					<div class="keyword__item" style="border:1px solid;">
-						<p>A</p>
-					</div>
-					<div class="keyword__item" style="border:1px solid;">
-						<p>B</p>
-					</div>
-					<div class="keyword__item" style="border:1px solid;">
-						<p>C</p>
-					</div>
-					<div class="keyword__item" style="border:1px solid;">
-						<p>D</p>
-					</div>
-					<div class="keyword__item" style="border:1px solid;">
-						<p>E</p>
-					</div>
-					<div class="keyword__item" style="border:1px solid;">
-						<p>F</p>
-					</div>
-				</div>
-				<div class="code"><style class="code-editor" contenteditable="true">.keyword {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
-	}</style></div>
-		</div>
-		<details class="notes">
+	<article class="demo slide">
+		<h1 style="font-size: 175%;">
+			<code>auto-fill</code> versus <code>auto-fit</code>
+		</h1>
+		<textarea class="language-html">
+			<div class="grid">
+				<div><p>A</p></div>
+				<div><p>B</p></div>
+				<div><p>C</p></div>
+				<div><p>D</p></div>
+				<div><p>E</p></div>
+				<div><p>F</p></div>
+			</div>
+		</textarea>
+		<textarea class="language-css">
+			.grid {
+				display: grid;
+				grid-template-columns: 
+				  repeat(auto-fill, minmax(100px, 1fr));
+				gap: 0;
+				height: 300px;
+				width: 100%;
+				overflow-x: scroll;
+			}
+			.grid > div {
+				width: 100%;
+				height: 100%;
+			}
+		</textarea>
+		<details class="hidden">
 			<p>In this example, I have asked the browser to make me columns that are at least 2.5ems wide, but can grow if free space permits. With the keyword set to <code>auto-fill</code>, because the space can contain 8 2.5em columns, even though I didn't have enough grid items to fill up the last 2 columns, the columns are still there.</p>
 			<p>When I change it to <code>auto-fit</code>, the last 2 columns are collapsed and the columns that do contain grid items grow to fill up the empty space.</p>
 		</details>
@@ -753,18 +802,19 @@ gap: 1rem 2rem;
 
 	<article class="slide">
 		<h2>Responsive grid without media queries</h2>
-		 <pre style="font-size:65%;"><code class="css" style="font-size: 90%;">.container {
-	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(10em, 1fr)); /* auto-fit can work here too */
-	grid-gap: 10px;
-	}</code></pre>
-		<video autoplay loop class="video" style="width:70%;">
-			<source data-src="videos/responsive-grid.mp4" type="video/mp4" />
+		 <pre class="language-css"><code>.container {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(10em, 1fr));
+  /* auto-fit can work above too */
+}</code></pre>
+<p>No Media Queries with <a href="https://medium.com/samsung-internet-dev/common-responsive-layouts-with-css-grid-and-some-without-245a862f48df">CSS Grid</a> / <a href="https://css-tricks.com/how-to-make-a-media-query-less-card-component/">and Flexbox, too!</a></p>
+		<video autoplay loop class="video" height="50%">
+			<source src="videos/responsive-grid.mp4" type="video/mp4" />
 			Sorry, your browser doesn't support embedded videos, 
 			but don't worry, you can <a href="videos/responsive-grid.mp4">download it</a>
 			and watch it with your favourite video player!
 		</video>
-		<p>No Media Queries with <a href="https://medium.com/samsung-internet-dev/common-responsive-layouts-with-css-grid-and-some-without-245a862f48df">CSS Grid</a> / <a href="https://css-tricks.com/how-to-make-a-media-query-less-card-component/">and Flexbox, too!</a></p>
 		<details class="notes">
 			<p>For this example, I'm telling the browser that when the viewport size shrinks, I want to cap the shrink of each column at 10ems but if there's extra space, grow all my columns equally. By using auto-fill (or auto-fit), the browser will calculate how many columns fulfil my requirement. When the viewport size changes, the number of columns will decrease or increase until everything fits.</p>
 			<p>And because the maximum value is a flexible unit, if there is an excess of space, like 6ems worth, all the columns will grow equally to fill up that extra space. And not a single media query needed to be written.</p>
@@ -785,7 +835,8 @@ gap: 1rem 2rem;
 
 <section>
 	<header class="slide">
-		<h2>CSS Grid Template Areas</h2>
+		<h2>The Semantic Grid Syntax</h2>
+		<h1>CSS Grid Template Areas</h1>
 	</header>
 	<article class="slide">
 		<h2>A "Semantic" Grid (for DX)</h2>
@@ -797,10 +848,10 @@ gap: 1rem 2rem;
 		</details>
 	</article>
 	<article class="slide">
-		<h2>Responsively Position Semantic Areas</h2>
-		<div class="l-double" style="margin: 0 -7vw; max-height: 35vh;align-items:start;justify-items:center;">
-			<img class="plain" data-src="img/braun-mid.jpg" alt="Braun mid-width layout">
-			<img class="plain fragment"  data-src="img/braun-narrow.jpg" alt="Braun narrow layout">
+		<div class="grid col-2" style="max-height: 100vh; grid-template-rows: 250px 1fr; margin-left: 15%;">
+			<h2 style="grid-row: 1 / 2;">Responsively Position Semantic Areas</h2>
+			<img style="grid-row: 2 / 3;" src="img/braun-mid.jpg" alt="Braun mid-width layout">
+			<img class="delayed" style="grid-row: 1 / span 2;" src="img/braun-narrow.jpg" alt="Braun narrow layout">
 		</div>
 		<details class="notes">
 			<p>This is a real-world example of modifying the layout by just changing the grid itself. I've assigned each “section” its own named grid area. When the layout is too narrow for the original wide design, I don't change the sizing of the items, instead, I change the grid itself.</p>
@@ -810,39 +861,37 @@ gap: 1rem 2rem;
 
 	<article class="slide">
 		<h2>The Result</h2>
-		<div class="l-double" style="grid-template-columns: 1px 1fr 1fr;align-items: center;">
+		<div class="flex">
 			
-			<pre style="width:100%;font-size:40%;"><code class="css" style="max-height:75vh;">.article {
-	grid-gap: 0.5em;
-	grid-template-columns: 50% 50%;
-	grid-template-areas: "title title"
+			<pre class="language-css"><code>.article {
+  grid-gap: 0.5em;
+  grid-template-columns: 50% 50%;
+  grid-template-areas: "title title"
 							 "text text"
 							 "key key"
 							 "detail1 detail2"
 							 "detail3 detail4";
-	}
-	
-	@media screen and (min-aspect-ratio: 1/1) and (min-height: 22em) {
-	.article {
-	grid-template-columns: 18.75em 1fr 1fr 1fr;
-	grid-template-rows: calc((100vh - 3em) / 3) calc((100vh - 3em) / 3) calc((100vh - 3em) / 3);
-	grid-template-areas: "title detail1 key key"
+}
+@media screen and (min-aspect-ratio: 1/1) and (min-height: 22em) {
+  .article {
+    grid-template-columns: 18.75em 1fr 1fr 1fr;
+    grid-template-rows: calc((100vh - 3em) / 3) calc((100vh - 3em) / 3) calc((100vh - 3em) / 3);
+    grid-template-areas: "title detail1 key key"
 								 "text detail2 key key"
 								 "text detail3 detail4 braun";
-	}
-	}
-	
-	@media screen and (min-aspect-ratio: 8/5) and (min-height: 36em) {
-	.article {
-	grid-template-columns: 17.5em 1fr 3fr 1fr 1fr;
-	grid-template-rows: calc((100vh - 3em) / 3) calc((100vh - 3em) / 3) calc((100vh - 3em) / 3);
-	grid-template-areas: "title . key . ."
+  }
+}
+@media screen and (min-aspect-ratio: 8/5) and (min-height: 36em) {
+  .article {
+    grid-template-columns: 17.5em 1fr 3fr 1fr 1fr;
+    grid-template-rows: calc((100vh - 3em) / 3) calc((100vh - 3em) / 3) calc((100vh - 3em) / 3);
+    grid-template-areas: "title . key . ."
 								 "text detail1 key detail2 detail3"
 								 "text . . detail4 .";
-	}
-	}</code></pre>
-	<video autoplay loop>
-	<source data-src="videos/braun.mp4" type="video/mp4" />
+  }
+}</code></pre>
+	<video autoplay loop width="45%">
+	<source src="videos/braun.mp4" type="video/mp4" />
 	Sorry, your browser doesn't support embedded videos, 
 	but don't worry, you can <a href="videos/braun.mp4">download it</a>
 	and watch it with your favourite video player!

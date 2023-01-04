@@ -184,6 +184,16 @@ code ::selection, code::selection {
 		color: gold;
 		font-size: 150%;
 	}
+	.slide.demo h1 {
+		color: #444;
+	}
+	.slide.demo h1 small {
+		font-size: 55%;
+	}
+	.slide.demo h1 a {
+		text-decoration: underline;
+		text-decoration-color: #444;
+	}
 
 section > header.slide {
 	/* background: linear-gradient(to bottom right, var(--accent3), var(--accent2), var(--accent1), var(--accent2), var(--accent3)); */
