@@ -1629,15 +1629,15 @@ gap: 1rem 2rem;
         >
       </article>
 
-      <article class="slide">
-        <h2>Aligning your grid items</h2>
+      <header class="slide">
+        <h1>Aligning your grid items</h1>
         <details class="notes">
           Next up, alignment. Aligning stuff on a page is practically the most
           important part of building web layouts. And box alignment can
           sometimes trip people up. I know it can be hard to remember which
           property does what.
         </details>
-      </article>
+      </header>
 
       <article class="slide">
         <h2>
@@ -1648,6 +1648,8 @@ gap: 1rem 2rem;
             ></a
           ></sup>
         </h2>
+				<div class="flex-col" style="gap: 3rem;">
+
         <img
           src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Grid_Layout/inline_axis.png"
           alt=""
@@ -1656,6 +1658,8 @@ gap: 1rem 2rem;
           src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Grid_Layout/block_axis.png"
           alt=""
         />
+			</div>
+
       </article>
 
       <article class="slide">
@@ -1674,7 +1678,7 @@ gap: 1rem 2rem;
                 content within element<br />(effectively adjusts padding)
               </p>
               <img
-                class="plain"
+                class="backdrop corners"
                 style="max-width: 7em; vertical-align: top"
                 src="img/content.svg"
                 alt="Content diagram"
@@ -1696,7 +1700,7 @@ gap: 1rem 2rem;
                 element within parent<br />(effectively adjusts margins)
               </p>
               <img
-                class="plain"
+                class="backdrop corners"
                 style="max-width: 7em; vertical-align: top"
                 src="img/self.svg"
                 alt="Self diagram"
@@ -1721,7 +1725,7 @@ gap: 1rem 2rem;
                 items inside box<br />(controls child items)
               </p>
               <img
-                class="plain"
+                class="backdrop corners"
                 style="max-width: 7em; vertical-align: top"
                 src="img/items.svg"
                 alt="Items diagram"

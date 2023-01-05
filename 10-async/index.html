@@ -359,11 +359,11 @@ doSomeOtherThings()</code></pre>
         </div>
       </article>
       <article class="slide">
-        <h2>Javascript's Async Aparatus</h2>
+        <h2>Javascript's Async Apparatus</h2>
         <img
           style="width: 50vw"
           src="img/event_loop.png"
-          alt="event loop aparatus"
+          alt="event loop apparatus"
         />
       </article>
       <article class="slide">
@@ -511,7 +511,10 @@ document.dispatchEvent(myCustomEvent)</code></pre>
             <ol style="padding-left: 25%">
               <strong><code>fetch</code> is a Promise that:</strong>
               <li>Accepts a URL as an argument</li>
-              <li>Makes an HTTP request to that resource</li>
+              <li>
+                Makes an HTTP request to that resource
+                <small>(network request)</small>
+              </li>
               <li>Asynchronously returns with a data payload</li>
             </ol>
           </div>
@@ -530,13 +533,18 @@ f.then(response => response.json())
         <h2>Async Requests</h2>
         <div class="flex">
           <ul>
-            <li>Depicted as branching actions instead of via the Event Loop</li>
+            <li>These are a type of a Promise</li>
+            <li>
+              Another way to depict these is as branching actions (vs. via Event
+              Loop)
+            </li>
             <li>
               <a
                 href="https://medium.com/expedia-group-tech/profiling-react-server-side-rendering-to-free-the-node-js-event-loop-7f0fe455a901"
                 >Flame Charts</a
               >
             </li>
+            <li>Inspect these live using the Network tab in the Dev Tools!</li>
             <li>
               <a href="https://jsonplaceholder.typicode.com/">Typicode API</a>
             </li>
@@ -667,6 +675,21 @@ function request(url = 'https://jsonplaceholder.typicode.com/tods') {
         <button class="warn" onclick="reject()">Reject</button>
       </article>
       <article class="slide">
+        <h2>Writing A Curried Fetch Utility</h2>
+        <pre class="language-js"><code>const f = protocol => 
+        domain => 
+        path => 
+        fetch(protocol+domain+path).then(r => r.json()).then(d => console.log(d))
+
+const prot = f('https://')
+const dom = prot('jsonplaceholder.typicode.com/')
+// `dom` is a partially applied fetch call
+// that we can reuse for many purposes:
+const allTodos = dom('todos')
+const firstTodo = dom('todos/1')
+const allUsers = dom('users')</code></pre>
+      </article>
+      <article class="slide">
         <h2>
           Promise Methods for Multiple Promises
           <sup
@@ -676,12 +699,26 @@ function request(url = 'https://jsonplaceholder.typicode.com/tods') {
             ></sup
           >
         </h2>
-        <ul style="list-style: none; line-height: 4rem">
-          <li><code>Promise.all()</code></li>
-          <li><code>Promise.allSettled()</code></li>
-          <li><code>Promise.any()</code></li>
-          <li><code>Promise.race()</code></li>
-        </ul>
+        <p><a href="https://www.ditdot.hr/en/4-tips-better-asynchronous-javascript-code">Techniques for async code</a></p>
+        <div class="flex">
+          <ul style="list-style: none; line-height: 4rem">
+            <li><code>Promise.all()</code></li>
+            <li><code>Promise.allSettled()</code></li>
+            <li><code>Promise.any()</code></li>
+            <li><code>Promise.race()</code></li>
+          </ul>
+          <pre class="language-js"><code>const f = path => fetch(
+  `https://jsonplaceholder.typicode.com/${path}`
+)
+let p1 = f('users')
+let p2 = f('todos')
+let p3 = f('posts')
+Promise.all([p1, p2, p3]).then(resp => {
+    console.log(resp)
+  }
+)
+          </code></pre>
+        </div>
       </article>
       <article class="slide">
         <h2><code>new URLSearchParams()</code> & <code>new URL()</code></h2>
@@ -724,21 +761,72 @@ let otherItems = [...otherParams.entries()]
       <article class="slide">
         <h2><code>async</code> / <code>await</code></h2>
         <p>Another way to write promises</p>
+        <p>It's syntax sugar added to the language in ~2018</p>
+        <p><a href="https://nikgrozev.com/2017/10/01/async-await/">Explained with Diagrams & Examples</a></p>
       </article>
       <article class="slide">
-        <h2>Writing A Curried Fetch Utility</h2>
-        <pre class="language-js"><code>const f = protocol => 
-        domain => 
-        path => 
-        fetch(protocol+domain+path).then(r => r.json()).then(d => console.log(d))
-
-const prot = f('https://')
-const dom = prot('jsonplaceholder.typicode.com/')
-// `dom` is a partially applied fetch call
-// that we can reuse for many purposes:
-const allTodos = dom('todos')
-const firstTodo = dom('todos/1')
-const allUsers = dom('users')</code></pre>
+        <h2><code>async function(){}</code></h2>
+        <p><code>async</code> functions return an implicit Promise</p>
+        <p>
+          It's like calling new Promise() but no need to write it explicitly
+        </p>
+        <pre class="language-js"><code>const asyncFn = async () => {
+  setTimeout(() => console.log('async'), 3000)
+}</code></pre>
+        <p>
+          The resolve is implicit in the return statement, <br />whatever is
+          returned is implicitly wrapped in resolve().
+        </p>
+      </article>
+      <article class="slide">
+        <h2><code>await response</code></h2>
+        <p>
+          <code>await</code> keyword can only be used within an async function
+        </p>
+        <p>
+          <code>await</code> keyword is blocking for everything below it in the
+          current block scope
+        </p>
+        <p>
+          so use it only if the code below it depends on the result from the
+          await operation
+        </p>
+        <div class="flex">
+          <pre class="language-js"><code>const asyncFn = async () => {
+  const response = await fetch('/users')
+  const data = await response.json()
+  return data
+}</code></pre>
+          <pre class="language-js"><code>async function getAddress() {
+  let [street, city, state, zip] = 
+    await Promise.all([
+      fetchStreet()
+      fetchCity()
+      fetchState()
+      fetchZip()
+    ])
+  return `${street}, ${city}, ${state}, ${zip}`
+}
+</code></pre>
+        </div>
+      </article>
+      <article class="slide">
+        <h2>Catching Errors with <code>async</code>/<code>await</code></h2>
+        <p>
+          Since this syntax sugar omits .then & .catch we have to catch errors
+          using <code>try</code>/<code>catch</code>
+        </p>
+        <pre class="language-js"><code>const asyncFn = async () => {
+  try {
+    doSynchronousThings()
+    const data = await fetchData()
+    return data.map(item => item.processData())
+  } catch (err) {
+    // we catch all errors in this catch block that are encountered above
+    console.log(err)
+  }
+}
+        </code></pre>
       </article>
       <article class="slide">
         <h2>Coding Challenge!</h2>
@@ -792,7 +880,7 @@ const allUsers = dom('users')</code></pre>
 })
 .then(res => console.log(res))</code></pre>
       </article>
-      
+
       <article class="slide">
         <h2>The Other HTTP Verbs</h2>
         <p>
@@ -802,7 +890,10 @@ const allUsers = dom('users')</code></pre>
         </p>
         <ul>
           <strong>The main ones:</strong>
-          <li><code>GET</code>: requests a representation of the specified resource (read-only, non-mutating)</li>
+          <li>
+            <code>GET</code>: requests a representation of the specified
+            resource (read-only, non-mutating)
+          </li>
           <li>
             <code>POST</code>: submits an entity to the specified resource,
             often causing a change in state or side effects on the server
