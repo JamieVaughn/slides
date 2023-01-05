@@ -168,11 +168,12 @@ document.addEventListener('click', callback)</code></pre>
   })
 })</code></pre>
           <pre class="language-js"><code>Promise.resolve()
-.then(a)
-.then(b)
-.then(c)
-.then(d)
-.catch(console.error)</code></pre>
+  .then(a)
+  .then(b)
+  .then(c)
+  .then(d)
+  .catch(error => console.error(error))
+  .finally(() => console.log('done!'))</code></pre>
         </div>
       </article>
 
@@ -183,9 +184,13 @@ console.log('Second')
 console.log('Third')</code></pre>
         <p>What sequence do you expect these to execute in?</p>
         <pre class="language-js"><code>console.log('First')
-fetch('https://example.com')
-.then(() => console.log("Second"))
+fetch('https://randomuser.me/api/')
+  .then(() => console.log("Second"))
 console.log('Third')</code></pre>
+        <p>
+          Hint: <code>fetch</code> is a keyword for making network calls & it
+          automatically returns a <code>Promise</code>
+        </p>
       </article>
 
       <article class="slide">
@@ -375,44 +380,38 @@ doSomeOtherThings()</code></pre>
         <h2>Blocking or Non-Blocking?</h2>
         <pre
           class="language-js"
-        ><code data-line-numbers="3-5|8-10|13-15">function futureValue(x = 'test', iter = 10_000) { // 100_000
-  let promise = wait(x, iter)
-  return promise;
-}
-function wait(value, iterations) {
+        ><code data-line-numbers="3-5|8-10|13-15">function longProcedure(value = 'test', iterations = 10_000) { // 100_000
   console.time(value) 
-  return new Promise(function(resolve, reject) {
-    if(iterations < 0) return reject('error: use positive number')
-    
-    let num
-    for(let i = 0; i &lt;= iterations ** 2; i++) {
-      num = i ** 2
-      if(i === iterations ** 2) {
-        console.timeEnd(value)
-        return resolve(value) 
-      }
-    }
-  })
+  if(iterations &lt; 0) return console.error('error: use positive number')
+  
+  let num
+  for(let i = 0; i &lt;= iterations ** 2; i++) {
+    num += i ** 2
+  }
+  console.timeEnd(value)
+  return num
 }
-let test = futureValue()</code></pre>
+
+let test = longProcedure()</code></pre>
       </article>
       <article class="slide">
         <h2>Blocking or non Blocking?</h2>
         <pre class="language-js"><code>console.log('begin the program')
 console.time('program')
-noBlocking(500, function (j, end) {
+nonBlocking(500, function (j, end) {
   if(end) {
     console.log(`0 -> ${j}`)
     console.timeEnd('program')
   }
 })
-function noBlocking(n, callback){
+function nonBlocking(n, callback){
   var i = 0
   function loop () {
     if (i &lt; n) {
       i++;
       callback(i, false)
-      window.requestAnimationFrame(loop)
+      setTimeout(loop, 0)
+      // window.requestAnimationFrame(loop)
     }
     else callback(i, true)
   } 
@@ -433,15 +432,19 @@ function noBlocking(n, callback){
         <pre class="language-js"><code>const myEvent = new Event('myevent', {
   bubbles: true, // defaults to false
   cancelable: true, // e.preventDefault()
-  composed: false // pierce shadowDOM?
 })
 
-const myCustomEvent = new CustomEvent("mycustomevent", {
+const myCustomEvent = new CustomEvent('mycustomevent', {
   detail: {
     payload: [1,2,3,4] // Pass payload data here
   }
 });
-document.dispatchEvent(myCustomEvent, e => console.log(e.detail))</code></pre>
+
+document.addEventListener('mycustomevent', e => {
+  console.log('listening', e)
+})
+
+document.dispatchEvent(myCustomEvent)</code></pre>
       </article>
 
       <article class="slide">
@@ -681,6 +684,29 @@ function request(url = 'https://jsonplaceholder.typicode.com/tods') {
         </ul>
       </article>
       <article class="slide">
+        <h2><code>new URLSearchParams()</code> & <code>new URL()</code></h2>
+        <p>
+          Easily parse a url to extract
+          <strong>query string components</strong>
+          <small
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams"
+              >MDN</a
+            ></small
+          >
+        </p>
+        <pre
+          class="language-js"
+        ><code>let url = new URL('https://jsonplaceholder.typicode.com/todos?name=al&id=1')
+let searchParams = new URLSearchParams(url.search);
+let items = [...searchParams.entries()]
+// [["name", "al"], ["id", "1"]]
+
+let otherParams = new URLSearchParams('name=jo&id=2')
+let otherItems = [...otherParams.entries()]
+// [["name", "jo"], ["id", "2"]]</code></pre>
+      </article>
+      <article class="slide">
         <h2>Side Note: The Legacy XHR Syntax</h2>
         <p>
           <a
@@ -713,6 +739,18 @@ const dom = prot('jsonplaceholder.typicode.com/')
 const allTodos = dom('todos')
 const firstTodo = dom('todos/1')
 const allUsers = dom('users')</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Coding Challenge!</h2>
+        <p>Try to make a news story fetcher!</p>
+        <p>
+          Make it a news story display app similar to
+          <a href="https://news.ycombinator.com/news">Hacker News</a>
+        </p>
+        <p>
+          Use the API below to fetch the news stories that you will display:
+        </p>
+        <p><a href="https://github.com/HackerNews/API">News API</a></p>
       </article>
       <header class="slide">
         <h2>Writing to Servers</h2>
@@ -754,6 +792,31 @@ const allUsers = dom('users')</code></pre>
 })
 .then(res => console.log(res))</code></pre>
       </article>
+      
+      <article class="slide">
+        <h2>The Other HTTP Verbs</h2>
+        <p>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Methods"
+            >The Full List</a
+          >
+        </p>
+        <ul>
+          <strong>The main ones:</strong>
+          <li><code>GET</code>: requests a representation of the specified resource (read-only, non-mutating)</li>
+          <li>
+            <code>POST</code>: submits an entity to the specified resource,
+            often causing a change in state or side effects on the server
+          </li>
+          <li>
+            <code>PUT</code>: fully replaces target resource with the request
+            payload
+          </li>
+          <li>
+            <code>PATCH</code>: applies partial modifications to a resource
+          </li>
+          <li><code>DELETE</code>: deletes the specified resource.</li>
+        </ul>
+      </article>
       <article class="slide">
         <h2>
           The Options Object
@@ -771,7 +834,7 @@ const allUsers = dom('users')</code></pre>
           >
         </h2>
         <ul>
-          <li><code>method</code>: GET, POST, PUT, DELETE, etc.</li>
+          <li><code>method</code>: GET, POST, PUT, PATCH, DELETE, etc.</li>
           <li><code>mode</code>: no-cors, cors, same-origin</li>
           <li>
             <code>cache</code>: default, no-cache, reload, force-cache,
@@ -829,29 +892,6 @@ const allUsers = dom('users')</code></pre>
         </ul>
       </article>
       <article class="slide">
-        <h2><code>new URLSearchParams()</code> & <code>new URL()</code></h2>
-        <p>
-          Easily parse a url to extract
-          <strong>query string components</strong>
-          <small
-            ><a
-              href="https://developer.mozilla.org/en-US/docs/Web/API/URLSearchParams"
-              >MDN</a
-            ></small
-          >
-        </p>
-        <pre
-          class="language-js"
-        ><code>let url = new URL('https://jsonplaceholder.typicode.com/todos?name=al&id=1')
-let searchParams = new URLSearchParams(url.search);
-let items = [...searchParams.entries()]
-// [["name", "al"], ["id", "1"]]
-
-let otherParams = new URLSearchParams('name=jo&id=2')
-let otherItems = [...otherParams.entries()]
-// [["name", "jo"], ["id", "2"]]</code></pre>
-      </article>
-      <article class="slide">
         <h2>Testing APIs with REST Clients</h2>
         <p>
           Rest Clients let you test HTTP API's prior to using htem in your app
@@ -893,18 +933,6 @@ let otherItems = [...otherParams.entries()]
             portfolio
           </li>
         </ul>
-      </article>
-      <article class="slide">
-        <h2>Coding Challenge!</h2>
-        <p>Try to make a news story fetcher!</p>
-        <p>
-          Make it a news story display app similar to
-          <a href="https://news.ycombinator.com/news">Hacker News</a>
-        </p>
-        <p>
-          Use the API below to fetch the news stories that you will display:
-        </p>
-        <p><a href="https://github.com/HackerNews/API">News API</a></p>
       </article>
     </section>
 

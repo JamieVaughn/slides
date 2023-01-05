@@ -61,6 +61,34 @@
 		.inlineblock > div {
 			display: inline-block;
 		}
+		.grid.lines {
+			background-image: url(img/grid.svg);
+			position: relative;
+			--grid-side: 450px;
+			justify-content: start;
+			gap: 0;
+			width: 750px;
+			height: 300px;
+			overflow: visible;
+		}
+		.grid.lines > div {
+			width: calc(var(--grid-side) / 6);
+			height: calc(var(--grid-side) / 6);
+		}
+		.grid.lines > svg {
+			position: absolute; 
+			top: 0; 
+			left: 0;
+			width: var(--grid-side);
+			height: var(--grid-side);
+			overflow: visible;
+		}
+		.grid.lines svg rect {
+			fill: #aaaada40;
+			width: var(--grid-side);
+			height: var(--grid-side);
+			
+		}
 	 </style>
 </head>
 <body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30" spellcheck="false">
@@ -551,61 +579,43 @@ gap: 1rem 2rem;
 		</details>
 	</article>
 
-	<article class="slide">
-		<h2>Let's Use <code>grid-column</code> and <code>grid-row</code></h2>
-		<div class="livecode livecode-2p" style="position: relative;">
-			<svg width="438" height="438" style="position: absolute; top: 0; left: 0;">
-				<rect width="438" height="438" fill="#aaaada40"/>
-			</svg>
-			<div class="result grid7" style="font-size:75%; grid-gap: 1px; background-image: url(img/grid.svg);">
-				<div class="grid7__item" style="background-color:#54ffbd;border:1px solid;">
-					<p>(1) 🍏</p>
-				</div>
-				<div class="grid7__item" style="background-color:#54ffbd;border:1px solid;">
-					<p>(2) 🍊</p>
-				</div>
-				<div class="grid7__item" style="background-color:#54ffbd;border:1px solid;">
-					<p>(3) 🥥</p>
-				</div>
-				<div class="grid7__item" style="background-color:#54ffbd;border:1px solid;">
-					<p>(4) 🥑</p>
-				</div>
-				<div class="grid7__item" style="background-color:#54ffbd;border:1px solid;">
-					<p>(5) 🍇</p>
-				</div>
-				<div class="grid7__item" style="background-color:#54ffbd;border:1px solid;">
-					<p>(6) 🍌</p>
-				</div>
-				
+	<article class="demo slide">
+		<h1><code>grid-column</code> & <code>grid-row</code></h1>
+		<textarea class="language-html">
+			<div class="grid lines">
+				<div>(1)🍏</div>
+				<div>(2)🍊</div>
+				<div>(3)🥥</div>
+				<div>(4)🥑</div>
+				<div>(5)🍇</div>
+				<div>(6)🍌</div>
+				<svg><rect/></svg>
 			</div>
-			<div class="code"><style class="code-editor" contenteditable="true">.grid7 {
-	display: grid;
-	grid-template-columns: repeat(6, 2.5em);
-	grid-template-rows: repeat(6, 2.5em);
-	justify-content: start;
-	}
-	
-	.grid7__item:nth-child(1) {
-	grid-column: 4;
-	grid-row: 2;
-	}
-	
-	.grid7__item:nth-child(3) {
-	grid-column: 2;
-	grid-row: 5;
-	}
-	
-	.grid7__item:nth-child(4) {
-	grid-column: 5;
-	grid-row: 1;
-	}
-	
-	.grid7__item:nth-child(6) {
-	grid-column: 3;
-	grid-row: 3;
-	}</style></div>
-		</div>
-		<details class="notes">
+		</textarea>
+		<textarea class="language-css">
+			.grid {
+			  display: grid;
+			  grid-template-columns: repeat(6, 75px);
+			  grid-template-rows: repeat(6, 75px);
+			}
+			.grid > div:nth-child(1) {
+			  grid-column: 4;
+			  grid-row: 2;
+			}
+			.grid > div:nth-child(3) {
+			  grid-column: 2;
+			  grid-row: 5;
+			}
+			.grid > div:nth-child(4) {
+			  grid-column: 5;
+			  grid-row: 1;
+			}
+			.grid > div:nth-child(6) {
+			  grid-column: 3;
+			  grid-row: 3;
+			}
+		</textarea>
+		<details class="hidden">
 			<p>Let's see how this works. <code>grid-row</code> and <code>grid-column</code> are actually shorthand for their respective start and end properties.</p>
 			<p>By default, each grid item will take up 1 grid cell, so if I only put 1 value for the <code>grid-column</code> or <code>grid-row</code>, that will be the start position.</p>
 			<p>Of course, I can make the grid item span multiple rows or columns by specifying an end value as well.</p>
