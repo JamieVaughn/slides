@@ -726,9 +726,9 @@ let p2 = f('todos')
 let p3 = f('posts')
 Promise.all([p1, p2, p3]).then(resp => {
     console.log(resp)
+    return resp.map(p => p.json())
   }
-)
-          </code></pre>
+).then(data => console.log(data))</code></pre>
         </div>
       </article>
       <article class="slide">
@@ -783,7 +783,8 @@ let otherItems = [...otherParams.entries()]
         <h2><code>async function(){}</code></h2>
         <p><code>async</code> functions return an implicit Promise</p>
         <p>
-          It's like calling new Promise() but no need to write it explicitly
+          It's like calling <code>new Promise()</code> but no need to write it
+          explicitly
         </p>
         <pre class="language-js"><code>const asyncFn = async () => {
   setTimeout(() => console.log('async'), 3000)
@@ -931,12 +932,6 @@ let otherItems = [...otherParams.entries()]
               href="https://developer.mozilla.org/en-US/docs/Web/API/Request/Request"
               >Request()</a
             ></sup
-          >,
-          <sup
-            ><a
-              href="https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers"
-              >Headers()</a
-            ></sup
           >
         </h2>
         <ul>
@@ -963,6 +958,31 @@ let otherItems = [...otherParams.entries()]
             <code>header['Content-Type']</code>
           </li>
         </ul>
+      </article>
+      <article class="slide">
+        <h2>The Headers Field</h2>
+        <p>
+          <code>headers</code> contains an object that lets you configure you
+          request over the network
+        </p>
+        <ul>
+          <strong>It's used for many things:</strong>
+          <li>Holding Meta Data</li>
+          <li>Caching & Expiration</li>
+          <li>Authentication</li>
+          <li>Client Hinting</li>
+          <li>Conditional Sending</li>
+          <li>Data Encoding</li>
+          <li>Connection Management</li>
+          <li>Cookies, CORS & Security</li>
+          <li>... and more ...</li>
+        </ul>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers"
+            >HTTP Headers Keys</a
+          >
+        </p>
       </article>
       <article class="slide">
         <h2>CORS</h2>

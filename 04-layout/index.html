@@ -77,6 +77,21 @@
       .inlineblock > div {
         display: inline-block;
       }
+      .grid.reticle {
+        position: relative;
+        gap: 1px;
+        padding: 1px;
+      }
+      .grid.reticle > svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: visible;
+        stroke: silver;
+        stroke-width: 1px;
+      }
       .grid.lines {
         background-image: url(img/grid.svg);
         position: relative;
@@ -772,6 +787,12 @@ gap: 1rem 2rem;
           are defined on the parent container instead of inferred from the child
           items
         </p>
+        <blockquote>
+          I no longer think of grid versus flexbox as 2D versus 1D. It's a
+          question of should the container have control of the layout more than
+          its content, or should the content control the layout.
+          <small>- Kevin Powell</small>
+        </blockquote>
         <details class="notes">
           <p>
             But for Grid, the dimensions for rows and columns are defined on the
@@ -1648,18 +1669,16 @@ gap: 1rem 2rem;
             ></a
           ></sup>
         </h2>
-				<div class="flex-col" style="gap: 3rem;">
-
-        <img
-          src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Grid_Layout/inline_axis.png"
-          alt=""
-        />
-        <img
-          src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Grid_Layout/block_axis.png"
-          alt=""
-        />
-			</div>
-
+        <div class="flex-col" style="gap: 3rem">
+          <img
+            src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Grid_Layout/inline_axis.png"
+            alt=""
+          />
+          <img
+            src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Grid_Layout/block_axis.png"
+            alt=""
+          />
+        </div>
       </article>
 
       <article class="slide">
@@ -1764,54 +1783,47 @@ gap: 1rem 2rem;
         </details>
       </article>
 
-      <article class="slide">
-        <h2><code>justify/align-content</code></h2>
-        <p>content-distribution properties</p>
-        <div
-          class="livecode livecode-2p"
-          style="grid-template-columns: 60% calc(40% - 0.5em)"
+      <article class="demo slide">
+        <h1>
+          <code style="font-size: 75%">justify/align-content</code>
+          <br /><small>content-distribution propertiess</small>
+        </h1>
+        <textarea class="language-html">
+					<div class="grid">
+						<div><p>Item 1</p></div>
+						<div><p>Item 2</p></div>
+						<div><p>Item 3</p></div>
+						<div><p>Item 4</p></div>
+					</div>
+				</textarea
         >
-          <div class="result content" style="font-size: 75%">
-            <div style="border: 1px solid" class="content_itemA">A</div>
-            <div style="border: 1px solid" class="content_itemB">B</div>
-            <div style="border: 1px solid" class="content_itemC">C</div>
-            <div style="border: 1px solid" class="content_itemD">D</div>
-          </div>
-          <div class="code">
-            <style class="code-editor" contenteditable="true">
-              .content {
-                justify-content: normal;
-                align-content: normal;
-
-                display: grid;
-                grid-template-columns: repeat(3, 25%);
-                grid-template-rows: repeat(3, 20%);
-                grid-gap: 1em;
-                grid-template-areas:
-                  "a b b"
-                  "a b b"
-                  "c c d";
-              }
-
-              .content_itemA {
-                grid-area: a;
-              }
-
-              .content_itemB {
-                grid-area: b;
-              }
-
-              .content_itemC {
-                grid-area: c;
-              }
-
-              .content_itemD {
-                grid-area: d;
-              }
-            </style>
-          </div>
-        </div>
-        <details class="notes">
+        <textarea class="language-css">
+					.grid {
+						justify-content: normal;
+						align-content: normal;
+						/* adjust these ☝️ */
+						display: grid;
+						grid-template-columns: repeat(3, 25%);
+						grid-template-rows: repeat(3, 20%);
+						grid-gap: 0.05em;
+						grid-template-areas:
+							"a b b"
+							"a b b"
+							"c c d";
+						height: 500px;
+						width: 100%;
+					}
+					.grid > div {
+						height: 100%;
+						width: 100%;
+					}
+					.grid > div:nth-of-type(1) { grid-area: a; }
+					.grid > div:nth-of-type(2) { grid-area: b; }
+					.grid > div:nth-of-type(3) { grid-area: c; }
+					.grid > div:nth-of-type(4) { grid-area: d; }
+				</textarea
+        >
+        <details class="hidden">
           <p>
             The <code>justify-content</code> and
             <code>align-content</code> properties are known as
@@ -1838,118 +1850,111 @@ gap: 1rem 2rem;
         <table style="font-size: 75%">
           <tr>
             <th>Values</th>
-            <th><code>justify-content</code></th>
-            <th><code>align-content</code></th>
+            <th style="text-align: center"><code>center</code></th>
+            <th style="text-align: center"><code>start</code></th>
+            <th style="text-align: center"><code>end</code></th>
+            <th><code>space-around</code></th>
+            <th><code>space-between</code></th>
+            <th><code>space-evenly</code></th>
           </tr>
           <tr>
-            <td><code>center</code></td>
+            <td><code>justify-content</code></td>
             <td style="text-align: center">
               <img
-                class="plain"
-                style="max-height: 2.5em; margin: 0"
+                class="backdrop corners"
+                style="max-height: 4.5em"
                 data-src="img/jc-center.png"
                 alt="justify-content:center"
               />
             </td>
             <td style="text-align: center">
               <img
-                class="plain"
-                style="max-height: 2.5em; margin: 0"
-                data-src="img/ac-center.png"
-                alt="align-content:center"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><code>start</code></td>
-            <td style="text-align: center">
-              <img
-                class="plain"
-                style="max-height: 2.5em; margin: 0"
+                class="backdrop corners"
+                style="max-height: 4.5em"
                 data-src="img/jc-start.png"
                 alt="justify-content:start"
               />
             </td>
             <td style="text-align: center">
               <img
-                class="plain"
-                style="max-height: 2.5em; margin: 0"
-                data-src="img/ac-start.png"
-                alt="align-content:start"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><code>end</code></td>
-            <td style="text-align: center">
-              <img
-                class="plain"
-                style="max-height: 2.5em; margin: 0"
+                class="backdrop corners"
+                style="max-height: 4.5em"
                 data-src="img/jc-end.png"
                 alt="justify-content:end"
               />
             </td>
             <td style="text-align: center">
               <img
-                class="plain"
-                style="max-height: 2.5em; margin: 0"
-                data-src="img/ac-end.png"
-                alt="align-content:end"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><code>space-around</code></td>
-            <td style="text-align: center">
-              <img
-                class="plain"
-                style="max-height: 2.5em; margin: 0"
+                class="backdrop corners"
+                style="max-height: 4.5em"
                 data-src="img/jc-sa.png"
                 alt="justify-content:space-around"
               />
             </td>
             <td style="text-align: center">
               <img
-                class="plain"
-                style="max-height: 2.5em; margin: 0"
-                data-src="img/ac-sa.png"
-                alt="align-content:space-around"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><code>space-between</code></td>
-            <td style="text-align: center">
-              <img
-                class="plain"
-                style="max-height: 2.5em; margin: 0"
+                class="backdrop corners"
+                style="max-height: 4.5em"
                 data-src="img/jc-sb.png"
                 alt="justify-content:space-between"
               />
             </td>
             <td style="text-align: center">
               <img
-                class="plain"
-                style="max-height: 2.5em; margin: 0"
-                data-src="img/ac-sb.png"
-                alt="align-content:space-between"
-              />
-            </td>
-          </tr>
-          <tr>
-            <td><code>space-evenly</code></td>
-            <td style="text-align: center">
-              <img
-                class="plain"
-                style="max-height: 2.5em; margin: 0"
+                class="backdrop corners"
+                style="max-height: 4.5em"
                 data-src="img/jc-se.png"
                 alt="justify-content:space-evenly"
               />
             </td>
+          </tr>
+          <tr>
+            <td><code>align-content</code></td>
             <td style="text-align: center">
               <img
-                class="plain"
-                style="max-height: 2.5em; margin: 0"
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                data-src="img/ac-center.png"
+                alt="align-content:center"
+              />
+            </td>
+
+            <td style="text-align: center">
+              <img
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                data-src="img/ac-start.png"
+                alt="align-content:start"
+              />
+            </td>
+            <td style="text-align: center">
+              <img
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                data-src="img/ac-end.png"
+                alt="align-content:end"
+              />
+            </td>
+            <td style="text-align: center">
+              <img
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                data-src="img/ac-sa.png"
+                alt="align-content:space-around"
+              />
+            </td>
+            <td style="text-align: center">
+              <img
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                data-src="img/ac-sb.png"
+                alt="align-content:space-between"
+              />
+            </td>
+            <td style="text-align: center">
+              <img
+                class="backdrop corners"
+                style="max-height: 4.5em"
                 data-src="img/ac-se.png"
                 alt="align-content:space-evenly"
               />
@@ -1982,17 +1987,17 @@ gap: 1rem 2rem;
       </article>
 
       <article class="slide">
-        <p>Self-alignment properties & Borders</p>
-        <figure class="delayed">
+        <h2>The problem with self-alignment & borders</h2>
+        <figure>
+          <figcaption style="text-align: center">
+            With all the many ways to align within a grid cell, <br />the
+            borders don't always lay flush with their cell boundary.
+          </figcaption>
           <img
-            class="plain"
-            style="margin: 0; max-height: 30vh"
+            class="backdrop corners"
             data-src="img/fit.svg"
             alt="Self-alignment properties"
           />
-          <figcaption>
-            There's a couple of ways to align within a grid cell
-          </figcaption>
         </figure>
         <details class="notes">
           <p>
@@ -2013,24 +2018,17 @@ gap: 1rem 2rem;
       </article>
 
       <article class="slide">
-        <p>Flexbox to the Rescue!</p>
-        <figure class="delayed">
-          <img
-            class="plain"
-            style="margin: 0; max-height: 30vh"
-            data-src="img/flex.svg"
-            alt="Display flex on grid items"
-          />
+        <h2>Flexbox to the Rescue!</h2>
+        <figure>
           <figcaption>
             Make each grid-item into a flex-container. That's more like it
           </figcaption>
+          <img
+            class="plain"
+            data-src="img/flex.svg"
+            alt="Display flex on grid items"
+          />
         </figure>
-        <blockquote>
-          I'm no longer thinking of grid vs flexbox as a 2D, 1D type of thing.
-          I'm thinking more it's do I want ultimate control from the parent over
-          its content, or do I need the content to have an influence over the
-          way the layout is. <span>- Kevin Powell</span>
-        </blockquote>
         <details class="notes">
           But if instead we apply <code>display: flex</code> on the grid item,
           we can now use flex alignment properties applied on the flex container
@@ -2038,55 +2036,61 @@ gap: 1rem 2rem;
         </details>
       </article>
 
-      <article class="slide">
-        <h2><code>justify/align-self</code></h2>
-        <p>self-alignment properties</p>
-        <div class="livecode livecode-2p">
-          <div class="result self" style="font-size: 75%">
-            <div style="border: 1px solid" class="self_itemA">A</div>
-            <div style="border: 1px solid" class="self_itemB">B</div>
-            <div style="border: 1px solid" class="self_itemC">C</div>
-            <div style="border: 1px solid" class="self_itemD">D</div>
-          </div>
-          <div class="code">
-            <style class="code-editor" contenteditable="true">
-              .self {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                grid-gap: 1em;
-                grid-auto-rows: calc(25% - 1em);
-                grid-template-areas:
-                  "a a b b"
-                  "a a b b"
-                  "c c d d"
-                  "c c d d";
-              }
+      <article class="demo slide">
+        <h1>
+          <code style="font-size: 75%">justify/align-self</code> <br /><small
+            >self-alignment properties</small
+          >
+        </h1>
 
-              .self_itemA {
-                grid-area: a;
-              }
-
-              .self_itemB {
-                grid-area: b;
-                align-self: start;
-                /* justify-self: start; */
-              }
-
-              .self_itemC {
-                grid-area: c;
-                align-self: end;
-                /* justify-self: end; */
-              }
-
-              .self_itemD {
-                grid-area: d;
-                align-self: center;
-                /* justify-self: center; */
-              }
-            </style>
-          </div>
-        </div>
-        <details class="notes">
+        <textarea class="language-html">
+					<div class="grid reticle">
+						<div><p>Item 1</p></div>
+						<div><p>Item 2</p></div>
+						<div><p>Item 3</p></div>
+						<div><p>Item 4</p></div>
+						<svg>
+							<line x1="50%" y1="0" x2="50%" y2="100%" />
+							<line x1="0" y1="50%" x2="100%" y2="50%" />
+						</svg>
+					</div>
+				</textarea
+        >
+        <textarea class="language-css">
+					.grid {
+						display: grid;
+						grid-template-columns: repeat(4, 1fr);
+						grid-auto-rows: calc(25% - 1em);
+						grid-template-areas:
+							"a a b b"
+							"a a b b"
+							"c c d d"
+							"c c d d";
+						height: 500px;
+						width: 100%;
+					}
+					
+					.grid > div:nth-of-type(1) {
+						grid-area: a;
+					}
+					.grid > div:nth-of-type(2) {
+						grid-area: b;
+						align-self: start;
+						/* justify-self: start; */
+					}
+					.grid > div:nth-of-type(3) {
+						grid-area: c;
+						align-self: end;
+						/* justify-self: end; */
+					}
+					.grid > div:nth-of-type(4) {
+						grid-area: d;
+						align-self: center;
+						/* justify-self: center; */
+					}
+				</textarea
+        >
+        <details class="hidden">
           <p>
             The <code>justify-self</code> and <code>align-self</code> properties
             are known as <strong>self-alignment properties</strong>.
@@ -2105,55 +2109,50 @@ gap: 1rem 2rem;
         </details>
       </article>
 
-      <article class="slide">
-        <h2><code>justify/align-items</code></h2>
-        <p>defaults for justify/align-self</p>
-        <div
-          class="livecode livecode-2p"
-          style="grid-template-columns: 60% calc(40% - 0.5em)"
+      <article class="demo slide">
+        <h1>
+          <code style="font-size: 75%">justify/align-items</code> <br /><small
+            >defaults for justify/align-self</small
+          >
+        </h1>
+
+        <textarea class="language-html">
+					<div class="grid reticle">
+						<div><p>Item 1</p></div>
+						<div><p>Item 2</p></div>
+						<div><p>Item 3</p></div>
+						<div><p>Item 4</p></div>
+						<svg>
+							<line x1="50%" y1="0" x2="50%" y2="100%" />
+							<line x1="0" y1="50%" x2="100%" y2="50%" />
+						</svg>
+					</div>
+				</textarea
         >
-          <div class="result items" style="font-size: 75%">
-            <div style="border: 1px solid" class="items_itemA">A</div>
-            <div style="border: 1px solid" class="items_itemB">B</div>
-            <div style="border: 1px solid" class="items_itemC">C</div>
-            <div style="border: 1px solid" class="items_itemD">D</div>
-          </div>
-          <div class="code">
-            <style class="code-editor" contenteditable="true">
-              .items {
-                justify-items: normal;
-                align-items: normal;
-
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                grid-gap: 1em;
-                grid-auto-rows: calc(25% - 1em);
-                grid-template-areas:
-                  "a a b b"
-                  "a a b b"
-                  "c c d d"
-                  "c c d d";
-              }
-
-              .items_itemA {
-                grid-area: a;
-              }
-
-              .items_itemB {
-                grid-area: b;
-              }
-
-              .items_itemC {
-                grid-area: c;
-              }
-
-              .items_itemD {
-                grid-area: d;
-              }
-            </style>
-          </div>
-        </div>
-        <details class="notes">
+        <textarea class="language-css">
+					.grid {
+						justify-items: normal;
+						align-items: normal;
+						/* adjust these ☝️ */
+						display: grid;
+						grid-template-columns: repeat(4, 1fr);
+						grid-auto-rows: calc(25% - 1px);
+						grid-template-areas:
+							"a a b b"
+							"a a b b"
+							"c c d d"
+							"c c d d";
+						height: 500px;
+						width: 100%;
+					}
+					
+					.grid > div:nth-of-type(1) { grid-area: a; }
+					.grid > div:nth-of-type(2) { grid-area: b; }
+					.grid > div:nth-of-type(3) { grid-area: c; }
+					.grid > div:nth-of-type(4) { grid-area: d; }
+				</textarea
+        >
+        <details class="hidden">
           <p>
             Finally, we have the <code>align-items</code> and
             <code>justify-items</code> properties, which set the default
@@ -2181,11 +2180,12 @@ gap: 1rem 2rem;
       <article class="slide">
         <h2>Grid placement with Named Lines</h2>
         <pre
-          style="font-size: 50%"
-        ><code class="css">grid-template-columns: [first sidebar-start] 250px [sidebar-end content-start] 1fr [content-end last];
-	grid-template-rows: [first header-start] 100px [header-end content-start] 1fr [content-end footer-start] 100px [footer-end last];</code></pre>
+          class="language-css"
+          style="margin-bottom: 12px"
+        ><code>grid-template-columns: [first sidebar-start] 250px [sidebar-end content-start] 1fr [content-end last];
+grid-template-rows: [first header-start] 100px [header-end content-start] 1fr [content-end footer-start] 100px [footer-end last];</code></pre>
         <img
-          class="plain"
+          class="backdrop corners"
           style="margin: 0; max-height: 65vh"
           data-src="img/named-lines.svg"
           alt="Named lines"
@@ -2245,31 +2245,17 @@ gap: 1rem 2rem;
     </section>
 
     <section>
-      <article
-        class="slide"
-        data-background-image="img/overlap2.jpg"
-        data-transition="fade-in"
-      >
-        <h2
-          style="
-            padding: 0.25em;
-            background-color: rgba(0, 0, 0, 0.75);
-            display: inline-block;
-          "
-        >
-          Overlap
-        </h2>
+      <header class="slide">
+        <h1>Overlap</h1>
         <details class="notes">
           Another technique that makes a layout interesting is the use of
           overlap, because it breaks our expectation of regularity in a grid.
         </details>
-      </article>
+      </header>
 
-      <article
-        class="slide"
-        data-background-image="img/overlap.jpg"
-        data-transition="fade-in"
-      >
+      <article class="slide">
+        <h2>Bringing Back Classic Print Media Techniques</h2>
+        <img src="img/overlap.jpg" alt="" />
         <details class="notes">
           We don't usually see overlap on the web because it used to involve a
           lot of tricky positioning rules and negative margins, or just cheating
@@ -2279,38 +2265,36 @@ gap: 1rem 2rem;
       </article>
 
       <article class="slide">
-        <div
-          class="vidcode"
-          style="grid-template-columns: 0px 1fr 1fr; align-items: start"
-        >
-          <video autoplay loop style="align-self: start">
-            <source data-src="videos/overlap.mp4" type="video/mp4" />
-            Sorry, your browser doesn't support embedded videos, but don't
-            worry, you can <a href="videos/overlap.mp4">download it</a>
-            and watch it with your favourite video player!
-          </video>
-          <pre
-            style="font-size: 50%"
-          ><code class="css" style="max-height:none;">.container {
-	display: grid;
-	grid-template-columns: repeat(9, 1.25em);
-	grid-template-rows: repeat(6, 1.25em);
-	}
+        <div class="flex">
+          <div class="flex-col">
+            <h2>Overlapping Elements & Text</h2>
+            <video autoplay loop style="max-width: 50vw">
+              <source src="videos/overlap.mp4" type="video/mp4" />
+              Sorry, your browser doesn't support embedded videos, but don't
+              worry, you can <a href="videos/overlap.mp4">download it</a>
+              and watch it with your favourite video player!
+            </video>
+          </div>
+          <pre class="language-css"><code>.container {
+  display: grid;
+  grid-template-columns: repeat(9, 1.25em);
+  grid-template-rows: repeat(6, 1.25em);
+}
 	
-	h2 {
-	grid-row: 3 / 5;
-	grid-column: 1 / 10;
-	}
+h2 {
+  grid-row: 3 / 5;
+  grid-column: 1 / 10;
+}
 	
-	.container::before {
-	grid-row: 1 / 7;
-	grid-column: 1 / 7;
-	}
+.container::before {
+  grid-row: 1 / 7;
+  grid-column: 1 / 7;
+}
 	
-	.container::after {
-	grid-row: 1 / 7;
-	grid-column: 4 / 10;
-	}</code></pre>
+.container::after {
+  grid-row: 1 / 7;
+  grid-column: 4 / 10;
+}</code></pre>
         </div>
         <details class="notes">
           <p>
@@ -2355,15 +2339,8 @@ gap: 1rem 2rem;
       </article>
 
       <article class="slide">
-        <figure>
-          <img
-            class="plain"
-            style="max-height: 75vh; margin: 0"
-            data-src="img/tycho-sketch.jpg"
-            alt="Planning the grid"
-          />
-          <figcaption>Good ol' pencil and paper</figcaption>
-        </figure>
+        <h2>Plan it out with a sketch!</h2>
+        <img src="img/tycho-sketch.jpg" alt="Planning the grid" />
         <details class="notes">
           <p>
             One thing I noticed after I started building with CSS grid is that I
@@ -2381,24 +2358,14 @@ gap: 1rem 2rem;
       </article>
 
       <article class="slide">
-        <div class="l-double">
+        <div class="flex">
           <figure>
-            <img
-              class="plain"
-              style="max-height: 75vh; margin: 0"
-              data-src="img/tycho-nostyle.jpg"
-              alt="Markup only"
-            />
-            <figcaption>Markup without any CSS</figcaption>
+            <h2>Markup without any CSS</h2>
+            <img src="img/tycho-nostyle.jpg" alt="Markup only" />
           </figure>
           <figure class="delayed">
-            <img
-              class="plain"
-              style="max-height: 75vh; margin: 0"
-              data-src="img/tycho-basic.jpg"
-              alt="General styles"
-            />
-            <figcaption>Basic styles</figcaption>
+            <h2>Basic styles</h2>
+            <img src="img/tycho-basic.jpg" alt="General styles" />
           </figure>
         </div>
         <details class="notes">
@@ -2438,53 +2405,37 @@ gap: 1rem 2rem;
       </article>
 
       <article class="slide">
-        <div class="l-multiple">
-          <figure style="align-self: center">
-            <img
-              class="plain"
-              style="max-height: 75vh; margin: 0"
-              data-src="img/tycho-fallback.jpg"
-              alt="Fallback for browsers without grid"
-            />
-            <figcaption>Fallback layout</figcaption>
-          </figure>
-          <div style="flex: 0 0 55%; align-self: center">
-            <pre
-              style="font-size: 50%"
-            ><code class="css" style="max-height:85vh;">main {
-	max-width: 45em;
-	margin: 0 auto;
-	position: relative;
-	padding: 1em;
-	}
-	
-	_:-ms-input-placeholder, :root main {
-	display: block;
-	}
-	
-	h1 {
-	margin-bottom: 0.25em;
-	}
-	
-	h2 {
-	margin-bottom: 1em;
-	}
-	
-	.about {
-	margin-bottom: 1em;
-	}
-	
-	a {
-	margin-bottom: 2em;
-	}
-	
-	button {
-	padding: 1em 2em;
-	position: absolute;
-	right: 1em;
-	bottom: 1em;
-	}</code></pre>
-          </div>
+        <h2>Fallback layout</h2>
+        <div class="flex">
+          <img
+            style="max-height: 75vh"
+            src="img/tycho-fallback.jpg"
+            alt="Fallback for browsers without grid"
+          />
+          <pre class="language-css"><code>main {
+  max-width: 45em;
+  margin: 0 auto;
+  position: relative;
+  padding: 1em;
+}
+:placeholder, main {
+  display: block;
+}
+h1 {
+  margin-bottom: 0.25em;
+}
+h2, .about {
+  margin-bottom: 1em;
+}
+a {
+  margin-bottom: 2em;
+}
+button {
+  padding: 1em 2em;
+  position: absolute;
+  right: 1em;
+  bottom: 1em;
+}</code></pre>
         </div>
         <details class="notes">
           <p>
@@ -2508,108 +2459,44 @@ gap: 1rem 2rem;
       </article>
 
       <article class="slide">
-        <p>
+        <h2>
           <a
             href="https://css-tricks.com/css-grid-in-ie-css-grid-and-the-new-autoprefixer/"
             >CSS Grid in IE & <code>@supports</code></a
           >
-        </p>
-        <div class="l-multiple">
-          <div style="flex: 0 0 55%; align-self: center">
-            <pre
-              style="font-size: 30%"
-            ><code class="css" style="max-height:85vh;max-width:50vw;">@supports (display:grid) {
-	@media (min-width: 42em) and (min-height: 27em) {
+        </h2>
+        <pre class="language-css"><code>
+@supports (grid-column: 1) {
 	main {
-	max-width: none;
-	padding: 0;
-	display: grid;
-	grid-template-columns: 2fr minmax(10em, max-content) minmax(14em, max-content) minmax(1em, 1fr) fit-content(28em) calc(2em + 0.5vw);
-	grid-template-rows: 35vh 40vh 15vh 10vh;
+		padding: 0;
+		display: grid;
+		grid-template-columns: 2fr minmax(10em, max-content) minmax(14em, max-content) minmax(1em, 1fr) fit-content(28em) calc(2em + 0.5vw);
+		grid-template-rows: 35vh 40vh 15vh 10vh;
 	}
-	
 	h1 {
-	grid-column: 3 / 6;
-	grid-row: 1 / 2;
-	z-index: 2;
-	padding-left: 0.25em;
-	margin-bottom: initial;
+		grid-column: 3 / 6;
+		grid-row: 1 / 2;
 	}
-	
 	h2 {
-	grid-row: 1 / -1;
-	grid-column: 6 / 7;
-	writing-mode: vertical-rl;
-	margin-bottom: initial;
-	color: $text;
+		grid-row: 1 / -1;
+		grid-column: 6 / 7;
+		color: $text;
 	}
-	
-	hr {
-	grid-column: 5 / 6;
-	grid-row: 2;
-	height: 6px;
-	background-color: $text;
-	width: 20ch;
-	}
-	
 	.about {
-	grid-column: 5 / 6;
-	grid-row: 2;
-	align-self: end;
-	padding-bottom: 4vh;
-	margin-bottom: initial;
+		grid-column: 5 / 6;
+		grid-row: 2;
+		align-self: end;
 	}
-	
-	a {
-	grid-column: 5 / 6;
-	justify-self: end;
-	align-self: center;
-	margin-bottom: initial;
-	
-	&::before {
-	content: '';
-	display: block;
-	height: 4px;
-	background-color: $accent;
-	width: 4ch;
-	margin-bottom: 1em;
-	}
-	}
-	
 	img {
-	grid-column: 1 / 4;
-	grid-row: 1 / 4;
+		grid-column: 1 / 4;
+		grid-row: 1 / 4;
 	}
-	
-	.location {
-	grid-column: 3 / 4;
-	grid-row: 3 / 4;
-	z-index: 2;
-	background: $main;
-	text-align: center;
-	display: flex;
-	
-	p {
-	margin: auto;
-	}
-	}
-	
 	button {
-	grid-column: 2 / 3;
-	grid-row: 4 / 5;
-	position: initial;
-	padding: 0;
+		grid-column: 2 / 3;
+		grid-row: 4 / 5;
+		padding: 0;
 	}
-	}
-	
-	@media (min-width: 48em) {
-	hr {
-	opacity: 1;
-	}
-	}
-	}</code></pre>
-          </div>
-        </div>
+}</code></pre>
         <details class="notes">
           <p>
             Now comes the actual grid code. I chose to go with flexible units
@@ -2628,9 +2515,10 @@ gap: 1rem 2rem;
         </details>
       </article>
 
-      <article>
+      <article class="slide">
+        <h2>Different Layouts for Different Viewport sizes!</h2>
         <video autoplay loop>
-          <source data-src="videos/grid-tycho.mp4" type="video/mp4" />
+          <source src="videos/grid-tycho.mp4" type="video/mp4" />
           Sorry, your browser doesn't support embedded videos, but don't worry,
           you can <a href="videos/grid-tycho.mp4">download it</a>
           and watch it with your favourite video player!
@@ -2647,9 +2535,9 @@ gap: 1rem 2rem;
     <section>
       <article class="slide">
         <h2>Fallback with feature queries</h2>
-        <p>
-          A conditional group rule whose condition tests whether the user agent
-          supports CSS property: value pairs.
+        <p style="text-align: center">
+          A conditional group rule whose condition tests whether <br />the user
+          agent supports CSS property-value pairs.
         </p>
         <details class="notes">
           Some of you might have noticed that my grid code was wrapped within an
@@ -2661,15 +2549,15 @@ gap: 1rem 2rem;
 
       <article class="slide">
         <h2>Anatomy of a feature query</h2>
-        <pre><code style="max-height:none;" class="css">.selector {
-	/* Styles that are supported in old browsers */
-	}
+        <pre class="language-css"><code>.selector {
+  /* Styles that are supported in old browsers */
+}
 	
-	@supports (property:value) {
-	.selector {
-	/* Styles for browsers that support the specified property */
-	}
-	}</code></pre>
+@supports (property:value) {
+  .selector {
+    /* Styles for browsers that support the specified property */
+  }
+}</code></pre>
         <details class="notes">
           <p>
             And this is how a feature query looks like. The conditional checks
@@ -2695,15 +2583,7 @@ gap: 1rem 2rem;
 
       <article class="slide">
         <h2>Browser support for <code>@supports</code></h2>
-        <p
-          class="ciu_embed"
-          data-feature="css-featurequeries"
-          data-periods="future_1,current,past_1,past_2"
-        >
-          <a href="http://caniuse.com/#feat=css-featurequeries"
-            ><img class="plain" data-src="img/caniuse-feature-queries.jpg"
-          /></a>
-        </p>
+				<iframe src="//caniuse.bitsofco.de/embed/index.html?feat=css-featurequeries&amp;periods=future_1,current,past_1,past_2" frameborder="0" width="100%" height="390px"></iframe>
         <details class="notes">
           <p>
             Support for feature queries is really good, with coverage in over
@@ -2726,45 +2606,37 @@ gap: 1rem 2rem;
 
       <article class="slide">
         <div
-          class="vidcode"
-          style="
-            align-items: center;
-            max-height: 30vh;
-            grid-template-columns: 0px 1fr 1fr;
-          "
+          class="flex"
         >
           <video autoplay loop>
-            <source data-src="videos/ie11.mp4" type="video/mp4" />
+            <source src="videos/ie11.mp4" type="video/mp4" />
             Sorry, your browser doesn't support embedded videos, but don't
             worry, you can <a href="videos/ie11.mp4">download it</a>
             and watch it with your favourite video player!
           </video>
-          <pre
-            style="font-size: 50%"
-          ><code class="css" style="max-height:none;">header::before {
-	content: 'For legacy browsers, it renders a ./fallback.png';
-	display: inline-block;
-	background-color: rgba(253, 182, 182, 0.75);
-	font-size: initial;
-	max-width: 36em;
-	color: #000;
-	padding: 0.5em;
-	}
-	
-	header > * {
-	display: none;
-	}
-	
-	header {
-	background-color: $background;
-	background-image: url('./fallback.png');
-	background-size: contain;
-	background-repeat: no-repeat;
-	background-position: bottom;
-	overflow: hidden;
-	max-height: 60vh;
-	position: relative;
-	}</code></pre>
+          <pre class="language-css"
+          ><code>header::before {
+  content: 'For legacy browsers, it renders a ./fallback.png';
+  display: inline-block;
+  background-color: rgba(253, 182, 182, 0.75);
+  font-size: initial;
+  max-width: 36em;
+  color: #000;
+  padding: 0.5em;
+}
+header > * {
+  display: none;
+}
+header {
+  background-color: $background;
+  background-image: url('./fallback.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  overflow: hidden;
+  max-height: 60vh;
+  position: relative;
+}</code></pre>
         </div>
         <details class="notes">
           <p>
@@ -2782,34 +2654,25 @@ gap: 1rem 2rem;
 
       <article class="slide">
         <div
-          class="vidcode"
-          style="
-            align-items: center;
-            max-height: 30vh;
-            grid-template-columns: 0px 1fr 1fr;
-          "
+          class="flex"
         >
-          <video autoplay loop style="align-self: start">
-            <source data-src="videos/flexbox.mp4" type="video/mp4" />
+          <video autoplay loop>
+            <source src="videos/flexbox.mp4" type="video/mp4" />
             Sorry, your browser doesn't support embedded videos, but don't
             worry, you can <a href="videos/flexbox.mp4">download it</a>
             and watch it with your favourite video player!
           </video>
-          <pre
-            style="font-size: 50%"
-          ><code class="css" style="max-height:85vh;max-width:55vw;">@supports (display: flex) {
+          <pre class="language-css"
+          ><code>@supports (display: flex) {
 	header::before {
 	content: none;
 	}
-	
 	header {
 	background-image: none;
 	}
-	
 	.grid {
 	display: block;
 	}
-	
 	.title {
 	color: $txt-light;
 	display: flex;
@@ -2819,7 +2682,6 @@ gap: 1rem 2rem;
 	z-index: 1;
 	padding-right: 0.25em;
 	}
-	
 	.time {
 	color: $txt-dark;
 	display: flex;
@@ -2827,45 +2689,28 @@ gap: 1rem 2rem;
 	justify-content: center;
 	padding: 0 0.5em;
 	}
-	
 	.grid__item:nth-of-type(1) {
 	background-color: $blue;
 	width: 30vw;
 	}
-	
 	.grid__item:nth-of-type(2) {
 	background-color: $purple;
 	width: 45vw;
 	}
-	
 	.grid__item:nth-of-type(3) {
 	background-color: $yellow;
 	width: 60vw;
 	position: relative;
 	z-index: 2;
 	}
-	
 	.time {
 	width: calc(100% / 9);
 	float: left;
 	padding: 1em;
 	}
-	
 	.time:nth-child(8) {
 	position: relative;
-	
-	&::before {
-	display: block;
-	content: '';
-	height: 3.5em;
-	width: 3.5em;
-	border-radius: 50%;
-	position: absolute;
-	border: 0.2em solid $blue;
-	z-index: 1;
 	}
-	}
-	
 	.border {
 	width: 0.2em;
 	background-color: $red;
@@ -2887,22 +2732,19 @@ gap: 1rem 2rem;
 
       <article class="slide">
         <div
-          class="vidcode"
-          style="max-height: 30vh; grid-template-columns: 0px 1fr 1fr"
+          class="flex"
         >
           <video autoplay loop style="align-self: start">
-            <source data-src="videos/grid.mp4" type="video/mp4" />
+            <source src="videos/grid.mp4" type="video/mp4" />
             Sorry, your browser doesn't support embedded videos, but don't
             worry, you can <a href="videos/grid.mp4">download it</a>
             and watch it with your favourite video player!
           </video>
-          <pre
-            style="font-size: 50%"
-          ><code class="css" style="max-height:85vh;max-width:55vw;">@supports (display:grid) {
+          <pre class="language-css"
+          ><code>@supports (display:grid) {
 	.time {
 	grid-row: 7;
 	}
-	
 	.grid {
 	display: grid;
 	grid-template-columns: repeat(9, 1fr);
@@ -2910,38 +2752,32 @@ gap: 1rem 2rem;
 	grid-gap: 0.125em;
 	position: relative;
 	}
-	
 	@media screen and (min-width: 480px) {
 	.grid {
 	transform: rotate(-30deg) translateX(5vh);
 	grid-template-rows:  repeat(3, 2em) repeat(3, minmax(10vmin, 3em)) 2em 2em 50vh;
 	}
 	}
-	
 	@media screen and (min-width: 640px) {
 	.grid {
 	transform: rotate(-30deg) translateY(-15vh);
 	}
 	}
-	
 	.grid__item:nth-of-type(1) {
 	grid-row: 4;
 	grid-column: span 3;
 	width: auto;
 	}
-	
 	.grid__item:nth-of-type(2) {
 	grid-row: 5;
 	grid-column: span 5;
 	width: auto;
 	}
-	
 	.grid__item:nth-of-type(3) {
 	grid-row: 6;
 	grid-column: span 7;
 	width: auto;
 	}
-	
 	.border {
 	grid-row: 1 / -1;
 	grid-column: 8;
@@ -2950,89 +2786,29 @@ gap: 1rem 2rem;
 	border-left: 0.2em solid $red;
 	left: initial;
 	}
-	
 	.square1 {
 	grid-column: 2;
 	position: relative;
-	
-	&::before {
-	display: block;
-	content: '';
-	height: 1.25em;
-	width: 1.25em;
-	border: 0.2em solid $purple;
-	position: absolute;
-	right: 0;
 	}
-	}
-	
 	.square2 {
 	grid-column: 3;
 	grid-row: 2;
 	position: relative;
-	
-	&::before {
-	display: block;
-	content: '';
-	height: 0.5em;
-	width: 0.5em;
-	background-color: $green;
-	position: absolute;
-	right: 1em;
-	top: 1em;
 	}
-	}
-	
 	.circle {
 	grid-column: 2;
 	grid-row: 3;
 	position: relative;
-	
-	&::before {
-	display: block;
-	content: '';
-	border: 0.2em solid $yellow;
-	border-radius: 50%;
-	position: absolute;
-	height: 4em;
-	width: 4em;
-	top: calc(50% -  0.5em);
-	left: calc(50% - 2em);
 	}
-	}
-	
 	.square3 {
 	grid-column: 8;
 	grid-row: 6;
 	position: relative;
-	
-	&::before {
-	display: block;
-	content: '';
-	height: 0.75em;
-	width: 0.75em;
-	background-color: $yellow;
-	position: absolute;
-	right: 0;
-	top: 1em;
 	}
-	}
-	
 	.square4 {
 	grid-column: 6;
 	grid-row: 8;
 	position: relative;
-	
-	&::before {
-	display: block;
-	content: '';
-	height: 1.5em;
-	width: 1.5em;
-	position: absolute;
-	right: 0;
-	top: 100%;
-	border: 0.2em solid $green;
-	}
 	}
 	}</code></pre>
         </div>
@@ -3053,10 +2829,9 @@ gap: 1rem 2rem;
       </article>
 
       <article class="slide">
-        <div class="l-double">
+        <div class="flex">
           <figure>
             <img
-              class="plain"
               data-src="img/cssworkshop.jpg"
               alt="CSS layout workshop by Rachel Andrew"
             />
@@ -3070,7 +2845,6 @@ gap: 1rem 2rem;
           </figure>
           <figure>
             <img
-              class="plain"
               data-src="img/layoutlab.jpg"
               alt="Jen Simmons' experimental layout lab"
             />
