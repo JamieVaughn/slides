@@ -190,9 +190,10 @@ code ::selection, code::selection {
 	.slide.demo h1 small {
 		font-size: 55%;
 	}
-	.slide.demo h1 a {
+	.slide.demo h1 a, .slide.demo a {
 		text-decoration: underline;
 		text-decoration-color: #444;
+		cursor: pointer;
 	}
 
 section > header.slide {

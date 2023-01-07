@@ -875,6 +875,22 @@ let otherItems = [...otherParams.entries()]
 .then(confirmation => console.log(confirmation))</code></pre>
       </article>
       <article class="slide">
+        <h2>Minimum HTTP POST Config</h2>
+        <p>You need to declare at least the <code>method</code>, <code>headers</code> and <code>body</code></p>
+        <pre class="language-js"><code>fetch('https://jsonplaceholder.typicode.com/posts', {
+  method: 'POST',
+  headers: {
+    'Content-type': 'application/json',
+  },
+  body: JSON.stringify({
+    data: 'my data',
+    moreData: [1, 2, 3]
+  }),
+})
+  .then((response) => response.json())
+  .then((json) => console.log(json));</code></pre>
+      </article>
+      <article class="slide">
         <h2>Example <code>POST</code></h2>
         <p>
           <a
