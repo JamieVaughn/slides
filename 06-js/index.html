@@ -566,6 +566,12 @@ fn(func) // Functions can be passed into other functions</code></pre>
 			<img src="./img/blackbox.png" alt="">
 			<img src="./img/impure_blackbox.png" alt="">
 		</div>
+		<div class="tilt-stamp delayed">
+			<p style="text-align: center;">Think of pure funcs<br> like a black box</p>
+			<img src="img/function_fn.png" width="100%" alt="">
+			<p style="text-align: center;">no side effects</p>
+
+		</div>
 	</article>
 	<article class="slide">
 		<h2>When to use pure vs impure functions?</h2>
@@ -1561,7 +1567,7 @@ console.log(obj)
 	<article class="slide">
 		<h2>Prototype Objects</h2>
 		<p>Everything is an inspectable object, except <code>null, undefined</code>. <br> <small>(<code>null</code> is kind of an object though, it's complicated)</small></p>
-		<p>Even the Primitives we've seen have methods on them, because they're Objects</p>
+		<p>Even Primitives can access their prototype's methods, because they're implicitly wrapped by an Object - <a href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive" title='Primitives have no methods but still behave as if they do. When properties are accessed on primitives, JavaScript auto-boxes the value into a wrapper object and accesses the property on that object instead. For example, "foo".includes("f") implicitly creates a String wrapper object and calls String.prototype.includes() on that object. This auto-boxing behavior is not observable in JavaScript code but is a good mental model of various behaviors — for example, why "mutating" primitives does not work (because str.foo = 1 is not assigning to the property foo of str itself, but to an ephemeral wrapper object).'>autoboxing</a></p>
 		<pre class="language-js"><code>String.prototype
 Number.prototype
 Boolean.prototype
