@@ -959,8 +959,7 @@ let otherItems = [...otherParams.entries()]
           </li>
           <li><code>credentials</code>: include, *same-origin, omit</li>
           <li>
-            <code>headers</code>: { 'Content-Type': 'application/json' ||
-            'application/x-www-form-urlencoded' }
+            <code>headers</code>: <code>{ 'Content-Type': 'application/json' }</code><sup><a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types">See MIME types</a></sup>
           </li>
           <li><code>redirect</code>: manual, follow, error</li>
           <li>
@@ -979,7 +978,7 @@ let otherItems = [...otherParams.entries()]
         <h2>The Headers Field</h2>
         <p>
           <code>headers</code> contains an object that lets you configure you
-          request over the network
+            request over the network - <a href="https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers">Headers() constructor</a>
         </p>
         <ul>
           <strong>It's used for many things:</strong>
@@ -995,7 +994,7 @@ let otherItems = [...otherParams.entries()]
         </ul>
         <p>
           <a
-            href="https://developer.mozilla.org/en-US/docs/Web/API/Headers/Headers"
+            href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers"
             >HTTP Headers Keys</a
           >
         </p>
