@@ -973,7 +973,7 @@ for (var i = 0; i < nums.length; i++) {
     ...
   ],
 
-  dragonFactory(obj) {...} // could go in Model or Controller
+  dragonFactory(type) {...} // could go in Model or Controller
 }</code></pre>
         <span class="delayed tilt-stamp"
           >← unique <code>id</code>s distinguish dragons with the same
@@ -1014,14 +1014,14 @@ for (var i = 0; i < nums.length; i++) {
         <pre class="language-js"><code>const View1 = { // manages the nav view
   node,
   initializeView1(),
-  factoryFunction(list),
+  templateFactoryFn(list),
   renderView1()
 }
 
 const View2 = { // manages the display area view
   node, 
   initializeView2(),
-  factoryFunction(dragon),
+  templateFactoryFn(dragon),
   renderView2()
 }</code></pre>
       </article>
@@ -1032,8 +1032,8 @@ const View2 = { // manages the display area view
   increment(),
   getList(),
   getDragons(),
-  dispatchCommand(type) // often shortened to dispatch()
-  // dragonFactory(obj), // could be here or Model
+  dispatchCommand(action) // often shortened to dispatch()
+  // dragonFactory(type), // could be here or Model
   // hide
   // filter
   // delete
