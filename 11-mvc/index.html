@@ -437,8 +437,13 @@ dragon.addEventListener('click', function(e){
           constructor pattern, but without the <code>class</code>,
           <code>this</code> or <code>new</code> keywords
         </p>
-        <pre class="language-js"><code>factoryFunction(name, carMake, age) {
-const canDrive = age > 16 ? true : false
+        <div style="position: relative">
+          <pre
+            class="language-js"
+            style="position: relative"
+          ><code>factoryFunction(name, carMake, age) {
+  const canDrive = age > 16 ? true : false
+
   return {
     name,
     carMake,
@@ -449,6 +454,23 @@ const canDrive = age > 16 ? true : false
 }
 const bobby = factoryFunction('Bobby', 'Ford', 23)
         </code></pre>
+          <pre
+            class="delayed language-js"
+            style="position: absolute; top: -7%"
+          ><code>factoryFunction(name, carMake, age) {
+  const canDrive = age > 16 ? true : false
+  // You can return a frozen object too!
+  return Object.freeze({
+    name,
+    carMake,
+    canDrive,
+    id: Math.random(),
+    timestamp: Date.now()
+  })
+}
+const bobby = factoryFunction('Bobby', 'Ford', 23)
+                  </code></pre>
+        </div>
       </article>
       <article class="slide">
         <h2>The Command Pattern</h2>
@@ -515,21 +537,20 @@ plus2Button.addEventListener('click', () => increment('by2'))</code></pre>
       <article class="slide">
         <h2>Reminder on Code Organization with Closures & Classes</h2>
         <p>Here's a Closure example:</p>
-        <pre class="language-js"><code>var nums = [1,2,3];
-for (var i = 0; i < nums.length; i++) {
-  // This is the number we're on...
-  var num = nums[i]
-  // We're creating a DOM element for the number
-  var elem = document.createElement('div');
-  elem.textContent = num;
-  // ... and when we click, alert the value of `num`
-  elem.addEventListener('click', (function(numCopy) {
-    return function() {
-      console.log(numCopy);
-    };
-  })(num));
-  document.body.appendChild(elem);
-};</code></pre>
+        <pre class="language-js"><code>function updateClicks() {
+  // private API
+  let clicks = 0;
+  // public API
+  return function reportClicks() {
+    clicks += 1;
+    console.log(clicks);
+    return clicks;
+  };
+}
+
+// create two Closures with independent clicks
+const closure1 = updateClicks();
+const closure2 = updateClicks();</code></pre>
       </article>
       <article class="slide">
         <h2>Reflections</h2>
@@ -984,19 +1005,15 @@ for (var i = 0; i < nums.length; i++) {
         <h2>Our Dragon View(s?)</h2>
         <div class="flex">
           <div>
-            
-            <img
-              src="img/dragon_clicker_screencap.jpg"
-              alt=""
-            />
+            <img src="img/dragon_clicker_screencap.jpg" alt="" />
           </div>
           <div>
             <ol>
               <li>List of Dragon Types</li>
               <li>Display area for Dragon Cards</li>
             </ol>
-            <ul style="border-top: 2px solid silver;">
-              <br>
+            <ul style="border-top: 2px solid silver">
+              <br />
               <li>
                 They are different areas and they are rerendered by different
                 triggers
