@@ -42,6 +42,91 @@
     </ul>
 	</article>
 
+  <article class="slide">
+    <h2>Minified CSS</h2>
+    <p>Fewer kb sent over the network</p>
+    <div class="flex">
+    <pre class="language-css"><code>button {
+  font-size: 3rem;
+  text-transform: capitalize;
+}
+h1 {
+  font-size: 2rem;
+}
+nav {
+  padding: 1rem;
+}
+main.display {
+  display: flex;
+  flex-wrap: wrap; 
+  gap: 2rem;
+  justify-content: center;
+}</code></pre>
+    <span style="flex-shrink: 2; font-size: 3rem;  align-self: center">&rarr;</span>
+    <pre class="language-css" style="overflow-x: scroll; width: 45vw"><code>button {font-size: 3rem;text-transform: capitalize;}h1 {font-size: 2rem;}nav {padding: 1rem;}main.display {display: flex;flex-wrap: wrap;gap: 2rem;justify-content: center;}</code></pre>
+  </div>
+
+  </article>
+
+  <article class="slide"style="overflow: hidden">
+    <h2>Minified JS</h2>
+    <p>Fewer kb sent over the network</p>
+    <div class="flex" style="max-height: 50vh;">
+    <pre class="language-js" style="height: fit-content; overflow: visible;"><code>// Some long application code
+function palindromeChecker(str, ignoreSpaces){
+  if(typeof str !== 'string' && !str.length) {
+    return 'no string'
+  }
+  const string = ignoreSpaces ? 
+    str.replaceAll(/\s/g, '') : str
+  const len = Math.floor(string.length/2)
+  const firstHalf = '(\\w)'.repeat(len)
+  const secondHalf = Array
+  .from({length: len})
+  .reduceRight(
+    (acc, _, i) => acc.concat(`\\${i+1}`), 
+    string.length % 2 ? '\\w' : ''
+  )
+  const result = firstHalf.concat(secondHalf)
+  const regex = new RegExp(result, 'g')
+  return {
+    string, 
+    isPalindrome: regex.test(string)
+  }
+}</code></pre>
+<span style="flex-shrink: 2; font-size: 3rem; align-self: center">&rarr;</span>
+    <pre class="language-js" style="overflow-x: scroll; width: 45vw"><code>(function() {(function(n){var A=this||(0,eval)("this"),w=A.document,R=A.navigator,v=A.jQuery,H=A.JSON;v||"undefined"===typeof jQuery||(v=jQuery);
+(function(n){"function"===typeof define&&define.amd?define(["exports","require"],n):"object"===typeof exports&&"object"===typeof module?n(module.exports||exports):n(A.ko={})})(function(S,T){function K(a,c){return null===a||typeof a in W?a===c:!1}function X(b,c){var d;return function(){d||(d=a.a.setTimeout(function(){d=n;b()},c))}}function Y(b,c){var d;return function(){clearTimeout(d);
+d=a.a.setTimeout(b,c)}}function Z(a,c){c&&"change"!==c?"beforeChange"===c?this.pc(a):this.gb(a,c):this.qc(a)}function aa(a,c){null!==c&&c.s&&c.s()}function ba(a,c){var d=this.qd,e=d[r];e.ra||(this.Qb&&this.mb[c]?(d.uc(c,a,this.mb[c]),this.mb[c]=null,--this.Qb):e.I[c]||d.uc(c,a,e.J?{da:a}:d.$c(a)),a.Ja&&a.gd())}var a="undefined"!==typeof S?S:{};a.b=function(b,c){for(var d=b.split("."),e=a,f=0;f<d.length-1;f++)e=e[d[f]];e[d[d.length-1]]=c};a.L=function(a,c,d){a[c]=d};a.version="3.5.1";a.b("version",
+a.version);a.options={deferUpdates:!1,useOnlyNativeEvents:!1,foreachHidesDestroyed:!1};
+a.a=function(){function b(a,b){for(var c in a)f.call(a,c)&&b(c,a[c])}function c(a,b){if(b)for(var c in b)f.call(b,c)&&(a[c]=b[c]);
+return a}function d(a,b){a.__proto__=b;
+return a}function e(b,c,d,e){var l=b[c].match(q)||[];
+a.a.D(d.match(q),function(b){a.a.Na(l,b,e)});
+b[c]=l.join(" ")}var f=Object.prototype.hasOwnProperty,g={__proto__:[]}instanceof Array,h="function"===typeof Symbol,m={},k={};
+m[R&&/Firefox\/2/i.test(R.userAgent)?
+"KeyboardEvent":"UIEvents"]=["keyup","keydown","keypress"];
+m.MouseEvents="click dblclick mousedown mouseup mousemove mouseover mouseout mouseenter mouseleave".split(" ");
+b(m,function(a,b){if(b.length)for(var c=0,d=b.length;
+c<d;c++)k[b[c]]=a});var l={propertychange:!0},p=w&&function(){for(var a=3,b=w.createElement("div"),c=b.getElementsByTagName("i");
+b.innerHTML="\x3c!--[if gt IE "+ ++a+"]><i></i><![endif]--\x3e",c[0];);
+return 4<a?a:n}(),q=/\S+/g,t;return{Jc:["authenticity_token",/^__RequestVerificationToken(_.*)?$/],
+D:function(a,b,c){for(var d=0,e=a.length;
+d<e;d++)b.call(c,a[d],d,a)},A:"function"==typeof Array.prototype.indexOf?function(a,b){return Array.prototype.indexOf.call(a,b)}:function(a,b){for(var c=0,d=a.length;
+c<d;c++)if(a[c]===b)return c;return-1},Lb:function(a,b,c){for(var d=0,e=a.length;
+d<e;d++)if(b.call(c,a[d],d,a))return a[d];return n},Pa:function(b,c){var d=a.a.A(b,c);
+0<d?b.splice(d,1):0===d&&b.shift()},wc:function(b){var c=[];b&&a.a.D(b,function(b){0>a.a.A(c,b)&&c.push(b)});
+return c},Mb:function(a,b,c){var d=[];if(a)for(var e=0,l=a.length;
+e<l;e++)d.push(b.call(c,a[e],e));return d},jb:function(a,b,c){var d=[];
+if(a)for(var e=0,l=a.length;e<l;e++)b.call(c,a[e],e)&&d.push(a[e]);
+return d},Nb:function(a,b){if(b instanceof Array)a.push.apply(a,b);
+else for(var c=0,d=b.length;c<d;c++)a.push(b[c]);return a},Na:function(b,c,d){var e=a.a.A(a.a.bc(b),c);
+0>e?d&&b.push(c):d||b.splice(e,1)},Ba:g,extend:c,setPrototypeOf:d,Ab:g?d:c,P:b,Ga:function(a,b,c){if(!a)return a
+var d={},e;for(e in a)f.call(a,e)&&(d[e]=b.call(c,a[e],e,a));a.b("jqueryTmplTemplateEngine",a.$a)})()})})();})();</code></pre>
+    </div>
+
+  </article>
+
 	<article class="slide">
     <h2>Why?</h2>
     <p>This is all for produciton code deployment</p>
@@ -52,7 +137,7 @@
   <article class="slide">
     <h2>Minimum React Build Tool With Parcel</h2>
     <pre class="language-sh"><code>npm install -g parcel-bundler
-mkdir <my-react-app-name> && cd <my-react-app-name>
+mkdir &lt;my-react-app-name> && cd &lt;my-react-app-name>
 # insert whatever app name you want for the directory
 touch index.html && touch index.jsx && touch styles.css
 # Folder will look like this:
@@ -107,7 +192,7 @@ ReactDOM.render(&lt;App />, document.getElementById('app'));</code></pre>
 
   <article class="slide">
     <h2>Let's try out Parcel.js!</h2>
-    <p><a href="https://parceljs.org/getting_started.html">Get Started!</a></p>
+    <p><a href="https://parceljs.org/getting-started/webapp/">Get Started!</a></p>
   </article>
 
   <article class="slide">
@@ -119,12 +204,31 @@ ReactDOM.render(&lt;App />, document.getElementById('app'));</code></pre>
     </ul>
   </article>
 
+  <article class="slide">
+    <h2>Managing Project Packages</h2>
+    <p>Installing new packages</p>
+    <p><code>npm install react-query</code></p>
+    <p>Removing packages</p>
+    <p><code>npm uninstall react-query</code></p>
+    <p>Install package as dev dependency</p>
+    <p><code>npm install prettier -D</code> or <code>--save-Dev</code></p>
+  </article>
+
 </section>
 
 <section>
 	<header class="slide">
     <h1>Build Tooling</h1>
 	</header>
+
+  <article class="slide">
+    <h2>Older tooling</h2>
+    <ul>
+      <li>Webpack</li>
+      <li>Parcel</li>
+      <li>Create-React-App</li>
+    </ul>
+  </article>
 
   <article class="slide">
     <h2>Babel</h2>
@@ -134,18 +238,10 @@ ReactDOM.render(&lt;App />, document.getElementById('app'));</code></pre>
     <p>CSS & JS files are concatenated and bundled</p>
   </article>
 
-	<article class="slide" id="data-insert">
-    <h2>ESLint</h2>
-    <p><code>npm install eslint</code></p>
-	</article>
-
-	<article class="slide">
-    <h2>Prettier</h2>
-    <p><code>npm install prettier</code></p>
-	</article>
-
   <article class="slide">
     <h2>Vite.js</h2>
+    <img src="img/vite_logo.svg" height="33%" alt="">
+    <p><a href="https://vitejs.dev/guide/">Getting Started With Vite</a></p>
   </article>
 
   <article class="slide">
@@ -158,6 +254,29 @@ ReactDOM.render(&lt;App />, document.getElementById('app'));</code></pre>
     <p><code>npm run build</code></p>
   </article>
 
+  <article class="slide">
+    <h2>Modifying your <code>scripts</code> in <code>package.json</code></h2>
+    <pre class="language-json"><code>{
+  ...
+  "scripts": {
+    "dev": "vite dev",
+    "start": "vite dev",
+    "build": "vite build"
+    ...
+  },
+  ...
+}
+    </code></pre>
+  </article>
+
+  <article class="slide" id="data-insert">
+    <h2>ESLint</h2>
+    <p><code>npm install eslint</code></p>
+	</article>
+  <article class="slide">
+    <h2>Prettier</h2>
+    <p><code>npm install prettier</code></p>
+	</article>
   <article class="slide">
     <h2>Husky</h2>
     <p>Pre-commit hooks</p>
