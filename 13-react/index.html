@@ -87,7 +87,7 @@
 		<div class="flex">
 			<img src="img/predictability.png" alt="">
 			<ul>
-				<li>Handles Rendering wtih a Scheduler (Game Loop)</li>
+				<li>Handles Rendering with a Scheduler (Game Loop)</li>
 				<li>One way data flow (Flux Pattern)</li>
 				<li>Virtual DOM & DOM Diffing (Fiber)</li>
 				<li>Vanilla JS for Templating Logic (!DSL)</li>
@@ -98,9 +98,10 @@
 	<article class="slide">
 		<h2>Disadvantages</h2>
 		<ul>
+			<li>Multiple Syntax options</li>
+			<li>Heavy JS Bundle Size</li>
 			<li>Diverges from conventional MVC idea</li>
 			<li>Learning Curve w/ Build Tooling</li>
-			<li>Difficult Typescript Support</li>
 			<li>Overwhelming library ecosystem</li>
 		</ul>
 	</article>
@@ -112,7 +113,7 @@
 		<p><a href="https://babeljs.io/repl/">Transpiler</a></p>
 		<pre class="language-js"><code>function myTemplate() {
   return (
-    <&lt;main>
+    &lt;main>
       &lt;h1>My Title&lt;/h1>
       &lt;p>Lorem ipsum dolorem.&lt;/p>
       &lt;img src='image.png' />
@@ -125,7 +126,7 @@
 		<h2>JSX Events</h2>
 		<pre class="language-js"><code>function myButton() {
   return (
-    <&lt;button onClick={e => console.log(e)}>
+    &lt;button onClick={e => console.log(e)}>
       click me!
     &lt;/button>
   )
@@ -135,8 +136,8 @@
 		<h2>Special JSX Attributes</h2>
 		<pre class="language-js"><code>function myInput() {
   return (
-    <&lt;label htmlFor='my-input' className='input-label'>
-		  &lt;input id='my-input' onChange={e => console.log(e)}>
+    &lt;label htmlFor='my-input' className='input-label'>
+		  &lt;input id='my-input'>
     &lt;/label>
   )
 }</code></pre>
