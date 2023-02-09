@@ -105,29 +105,56 @@
 		</ul>
 	</article>
 
+	
+	<article class="slide">
+		<h2>JSX</h2>
+		<p>React's syntax for defining View templates</p>
+		<p><a href="https://babeljs.io/repl/">Transpiler</a></p>
+		<pre class="language-js"><code>function myTemplate() {
+  return (
+    <&lt;main>
+      &lt;h1>My Title&lt;/h1>
+      &lt;p>Lorem ipsum dolorem.&lt;/p>
+      &lt;img src='image.png' />
+      &lt;aside>sidebar&lt;/aside>
+    &lt;/main>
+  )
+}</code></pre>
+	</article>
+	<article class="slide">
+		<h2>JSX Events</h2>
+		<pre class="language-js"><code>function myButton() {
+  return (
+    <&lt;button onClick={e => console.log(e)}>
+      click me!
+    &lt;/button>
+  )
+}</code></pre>
+	</article>
+	<article class="slide">
+		<h2>Special JSX Attributes</h2>
+		<pre class="language-js"><code>function myInput() {
+  return (
+    <&lt;label htmlFor='my-input' className='input-label'>
+		  &lt;input id='my-input' onChange={e => console.log(e)}>
+    &lt;/label>
+  )
+}</code></pre>
+	</article>
+	<article class="slide">
+		<h2>Trying out React's JSX with a CDN</h2>
+		<p><a href="https://beta.reactjs.org/learn/installation">Using React in an HTML Page with Babel</a></p>
+		<p><a href="https://babeljs.io/repl/">Transpiler</a></p>
+	</article>
 	<article class='slide'>
 		<h2>Redefining Separation of Concerns</h2>
 		<img src="./img/seperate_by_component.png" height='600px' alt="directory tree">
 	</article>
 	<article class="slide">
-		<h2>JSX</h2>
-		<p>React's syntax for defining View templates</p>
-		<p><a href="https://babeljs.io/repl/">Transpiler</a></p>
-		<pre class="language-js"><code>function App(props) {
-  return (
-    &lt;BrowserRouter>
-      &lt;Header />
-      &lt;Main />
-      &lt;Sidebar />
-      &lt;View />
-    &lt;/BrowserRouter>
-  )
-}</code></pre>
-	</article>
-	<article class="slide">
 		<h2>Strength of Components</h2>
 		<img src="img/Build_one.png" height='600px' alt="component architecture">
 	</article>
+	
 	<article class='slide'>
 		<h2>Directory Structure Comparison</h2>
 		<div class='flex most-height'>
@@ -167,6 +194,21 @@
   )
 }</code></pre>
 		</div>
+	</article>
+
+	<article class="slide">
+		<h2>Composing Components in JSX</h2>
+		<p>Hiding/Organizing html syntax behind Component names</p>
+		<pre class="language-js"><code>function App(props) {
+  return (
+    &lt;BrowserRouter>
+      &lt;Header title={props.title} />
+      &lt;Main />
+      &lt;Sidebar user={props.username} />
+      &lt;View content={props.content} />
+    &lt;/BrowserRouter>
+  )
+}</code></pre>
 	</article>
 
 	<article class="slide">
