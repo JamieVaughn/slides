@@ -284,6 +284,22 @@ function ParentComponent() {
 
 	</article>
 
+	<article class="slide">
+		<h2>React Synthetic Events <sup><a href="https://reactjs.org/docs/events.html#gatsby-focus-wrapper">docs</a></sup></h2>
+		<p>Using events & event handlers in React is slightly different that conventional DOM Events</p>
+		<pre class="language-js"><code>
+function EventComponent(props) {
+  handleClick = (e) => {
+    console.log(e)
+  }
+  return (
+    &lt;div onClick={handleClick}>
+      Click Me!
+    &lt;/div>
+  )
+}	</code></pre>
+	</article>
+
 	<article class='slide'>
 		<h2>Organizing Components in React</h2>
 		<p>Directory Structure Comparison</p>
@@ -461,23 +477,6 @@ function ParentComponent() {
 		<p><a href="https://codepen.io/heliocrat/pen/RwpGLZb">Codepen</a></p>
 		<p><a href="https://reactjs.org/docs/rendering-elements.html">Docs on Rendering Simple Elements</a></p>
 	</article>
-	
-
-	<article class="slide">
-		<h2>React Synthetic Events <sup><a href="https://reactjs.org/docs/events.html#gatsby-focus-wrapper">docs</a></sup></h2>
-		<p>Using events & event handlers in React is slightly different that conventional DOM Events</p>
-		<pre class="language-js"><code>
-function EventComponent(props) {
-  handleClick = (e) => {
-    console.log(e)
-  }
-  return (
-    &lt;div onClick={handleClick}>
-      Click Me!
-    &lt;/div>
-  )
-}	</code></pre>
-	</article>
 
 </section>
 
@@ -532,21 +531,6 @@ function EventComponent(props) {
 	<article class="slide">
 		<h2>Let's make Something with State</h2>
 		<p>A Dice Rolling App!</p>
-	</article>
-
-	<article class="slide">
-		<h2>Prop Types</h2>
-		<p>Type checking tool that provides helpful errors & warnings during development when incorrect props are passed to a component</p>
-		<ul>
-			<li><a href="https://reactjs.org/docs/typechecking-with-proptypes.html#gatsby-focus-wrapper">Prop Types Options</a></li>
-			<li><a href="https://www.npmjs.com/package/prop-types">npm docs</a></li>
-			<li><code style='font-size: 80%;'>&lt;script src="https://unpkg.com/prop-types@15.6/prop-types.js">&lt;/script></code></li>
-		</ul>
-		<pre class="language-js"><code>import PropTypes from 'prop-types';
-
-MyComponent.propTypes = { 
-  handleClick: PropTypes.func.isRequired 
-}</code></pre>
 	</article>
 
 	<article class="slide">
@@ -715,16 +699,20 @@ addEventListener('click', e => {
 		<h2>Hooks Way vs Class Way</h2>
 		<p>The legacy way to create React Components uses <code>React.Component</code></p>
 		<div class="flex tight align">
-			<pre class="language-js"><code>const MyComponent = ({message = 'Hi'}) => (
-	&lt;div>A Class Component: {props.message}&lt;/div>
-)</code></pre>
+			<pre class="language-js"><code>const MyComponent = ({message = 'Hi'}) => {
+  return (
+    &lt;div>
+      Stateful Component: {props.message}
+    &lt;/div>
+  )
+}</code></pre>
 		<pre class="language-js"><code>class MyComponent extends React.Component {
   constructor(props) {
     super(props)
   }
   render() {
     return (
-      &lt;div>A Class Component: {this.props.message}&lt;/div>
+      &lt;div>Stateful Component: {this.props.message}&lt;/div>
     )
   }
 }</code></pre>
@@ -752,10 +740,6 @@ ReactDOM.render(
 	</article>
 	<article class="slide">
 		<h2>Stateful Class Components</h2>
-		<ul>
-			<li>The React Class Components used to be the only way to implement internal State <sup><a href="https://reactjs.org/docs/react-without-es6.html#declaring-default-props">React before ES6</a></sup></li>
-		  <li>But now we can have state in a function with the <code>useState</code> Hook.</li>
-		</ul>
 		<div class="flex most-height align" >
 			<pre class="language-js"><code>class MyComponent extends React.Component {
   constructor(props) {
@@ -768,10 +752,17 @@ ReactDOM.render(
     return &lt;div>First Name: {this.state.name}&lt;/div>
   }
 }</code></pre>
+<div class="flex flex-col">
+	<ul>
+		<li>The React Class Components was the only way to have internal State <sup><a href="https://reactjs.org/docs/react-without-es6.html#declaring-default-props">React before ES6</a></sup></li>
+		<li>But <code>useState</code> allows Stateful Components w/ functions</li>
+	</ul>
 <pre class="language-js"><code>const MyComponent = props => {
   const [name, setName] = React.useState('Bob')
   return &lt;div>First Name: {name}&lt;/div>
 }</code></pre>
+</div>
+
 		</div>
 	</article>
 
@@ -799,11 +790,6 @@ ReactDOM.render(
 	</article>
 
 	<article class="slide">
-		<h2>Hook/Class Refactoring Challenge</h2>
-		<p>Let's practice refactoring React Components!</p>
-		<p>Refactor a Hook component into a Class Component and Vice Versa!</p>
-	</article>
-	<article class="slide">
 		<h2>Syncing Data in React class components</h2>
 		<div class="flex full-height align">
 			<ul>
@@ -818,23 +804,47 @@ ReactDOM.render(
 			</ul>
 		<pre class="language-js"><code>class MyComponent extends React.Component {
   constructor(props) { super(props) }
-  componentDidMount() { // runs after added to DOM
-  }
-  componentDidUpdate() { // runs when updated
-  }
-  componentWillUnmount() { // runs before removal from DOM
-  }
-  componentDidCatch() { // runs if encountering an error
-  }
+  componentDidMount() { // runs after added to DOM }
+  componentDidUpdate() { // runs when updated }
+  componentWillUnmount() { // runs before removal from DOM }
+  componentDidCatch() { // runs if encountering an error }
   shouldComponentUpdate() { // run a check & return true or false
-    // if returns false, then render() will not run
+	// if returns false, then render() will not run
   }
   render() {
-    return &lt;div>Hello Lifecycle Methods!&lt;/div>
+	return &lt;div>Hello Lifecycle Methods!&lt;/div>
   }
 }
 		</code></pre>
 	</div>
+	</article>
+	<article class="slide">
+		<h2>useEffect Implementations</h2>
+		<pre class="language-js"><code>import React, { useState, useEffect } from 'react';
+const Counter = ({ someProps }) => {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+	console.log('componentDidMount - fires once at the beginning');
+	return () => {
+		console.log('componentWillUnmount - fires once at the end');
+	}
+  }, []);
+  useEffect(() => {
+	console.log('ComponentDidUpdate - fires every update (not recommended)')
+  })
+  useEffect(() => {
+	console.log('only fires when `count` changed');
+  }, [count]);
+  useEffect(() => {
+	console.log('only fires when `someProps` changed');
+  }, [someProps]);
+  return (
+	&lt;button onClick={() => { setCount(count + 1); }}>
+		Count: {count}
+	&lt;/button>
+  );
+};
+</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Lifecycle Method Equivalents</h2>
@@ -865,37 +875,14 @@ ReactDOM.render(
 			</ul>
 		</div>
 	</article>
-	<article class="slide">
-		<h2>useEffect Implementations</h2>
-		<pre class="language-js"><code>import React, { useState, useEffect } from 'react';
-			const Counter = ({ someProps }) => {
-				const [count, setCount] = useState(0);
-				useEffect(() => {
-					console.log('componentDidMount - fires once at the beginning');
-					return () => {
-						console.log('componentWillUnmount - fires once at the end');
-					}
-				}, []);
-				useEffect(() => {
-					console.log('ComponentDidUpdate - fires every update (not recommended)')
-				})
-				useEffect(() => {
-					console.log('only fires when `count` changed');
-				}, [count]);
-				useEffect(() => {
-					console.log('only fires when `someProps` changed');
-				}, [someProps]);
-				return (
-					&lt;button onClick={() => { setCount(count + 1); }}>
-						Count: {count}
-					&lt;/button>
-				);
-			};
-			</code></pre>
-	</article>
 	<article class="hidden">
 		<h2>Comparing useEffect with Lifecycle Methods</h2>
 		<img src="img/useeffect_lifecycle.png" alt="">
+	</article>
+	<article class="slide">
+		<h2>Hook/Class Refactoring Challenge</h2>
+		<p>Let's practice refactoring React Components!</p>
+		<p>Refactor a Hook component into a Class Component and Vice Versa!</p>
 	</article>
 	<article class="slide">
 		<h2>Code Along</h2>
@@ -907,6 +894,21 @@ ReactDOM.render(
 		<h3>React</h3>
 		<h1>Other APIs</h1>
 	</header>
+
+	<article class="slide">
+		<h2>Prop Types</h2>
+		<p>Type checking tool that provides helpful errors & warnings during development when incorrect props are passed to a component</p>
+		<ul>
+			<li><a href="https://reactjs.org/docs/typechecking-with-proptypes.html#gatsby-focus-wrapper">Prop Types Options</a></li>
+			<li><a href="https://www.npmjs.com/package/prop-types">npm docs</a></li>
+			<li><code style='font-size: 80%;'>&lt;script src="https://unpkg.com/prop-types@15.6/prop-types.js">&lt;/script></code></li>
+		</ul>
+		<pre class="language-js"><code>import PropTypes from 'prop-types';
+
+MyComponent.propTypes = { 
+  handleClick: PropTypes.func.isRequired 
+}</code></pre>
+	</article>
 
 	<article class="slide">
 		<h2>React Profiler</h2>
