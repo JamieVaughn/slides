@@ -29,8 +29,8 @@
 </header>
 <section>
 	<header class="slide">
-		<h3>React</h3>
-		<h1>Most Popular JS Framework</h1>
+		<h2>JS Frameworks</h2>
+		<h1>React JS</h1>
 	</header>
 	<article class="slide">
 		<h2>Why Frameworks?</h2>
@@ -106,6 +106,10 @@
 		</ul>
 	</article>
 
+	<header class="slide">
+		<h2>React JS</h2>
+		<h1>View Templating</h1>
+	</header>
 	
 	<article class="slide">
 		<h2>JSX</h2>
@@ -122,6 +126,37 @@
   )
 }</code></pre>
 	</article>
+	
+	<article class="slide">
+		<h2>Rules of JSX</h2>
+		<ol>
+			<li>Single root element</li>
+			<li>Special Attributes: <code>htmlFor</code>, <code>className</code>, </li>
+			<li>Camel Casing: <code>dataId</code> vs. <code>data-id</code></li>
+			<li>Close all tags: <code>&lt;img /></code></li>
+			<li>Curly Braces: Portal into Javascript-land</li>
+		</ol>
+		<pre class="language-js"><code>function myInput() {
+  const val = 'my name'
+  return (
+    &lt;label htmlFor='my-input' className='input-label'>
+      &lt;input value={val} id='my-input' /> // &lt;- All tags must close
+    &lt;/label>
+  )
+}</code></pre>
+	</article>
+	<article class="slide">
+		<h2>React Fragments <sup><a href="https://reactjs.org/docs/fragments.html">docs</a></sup></h2>
+		<p>Single root element without extra markup</p>
+		<pre class="language-jsx"><code>const MyComponent = () => {
+  return (
+    &lt;> // React JSX Fragment
+      &lt;div>hello&lt;/div>
+      &lt;div>world&lt;/div>
+    &lt;/>
+  )
+}</code></pre>
+	</article>
 	<article class="slide">
 		<h2>JSX Events</h2>
 		<pre class="language-js"><code>function myButton() {
@@ -133,20 +168,15 @@
 }</code></pre>
 	</article>
 	<article class="slide">
-		<h2>Special JSX Attributes</h2>
-		<pre class="language-js"><code>function myInput() {
-  return (
-    &lt;label htmlFor='my-input' className='input-label'>
-		  &lt;input id='my-input'>
-    &lt;/label>
-  )
-}</code></pre>
-	</article>
-	<article class="slide">
 		<h2>Trying out React's JSX with a CDN</h2>
 		<p><a href="https://beta.reactjs.org/learn/installation">Using React in an HTML Page with Babel</a></p>
 		<p><a href="https://babeljs.io/repl/">Transpiler</a></p>
 	</article>
+
+	<header class="slide">
+		<h2>React JS</h2>
+		<h1>The Component Model</h1>
+	</header>
 	<article class='slide'>
 		<h2>Redefining Separation of Concerns</h2>
 		<img src="./img/seperate_by_component.png" height='600px' alt="directory tree">
@@ -155,33 +185,28 @@
 		<h2>Strength of Components</h2>
 		<img src="img/Build_one.png" height='600px' alt="component architecture">
 	</article>
-	
-	<article class='slide'>
-		<h2>Directory Structure Comparison</h2>
-		<div class='flex most-height'>
-			<img src="./img/CompvsConc.png" height='500px' alt="directory tree">
-			<ul>
-				<li class='nolist'><strong>Components</strong></li>
-				<li>One component per folder (or file)</li>
-				<li>Colocates Component Specific JS </li>
-				<li>Colocates CSS for easy maintenance</li>
-				<li>Easy to match a bug in a component with the code that's causing it</li>
-				<li>Inline styles on components can improve Time to Paint</li>
-				<li>Compiler injects the inline styles, not the Dev</li>
 
-				<li class='nolist'><strong>Concerns</strong></li>
-				<li>All CSS is jumbled together (same with JS)</li>
-				<li>Hard to find code causing a bug based on View</li>
-			</ul>
-		</div>
-	</article>
 	<article class="slide">
-		<h2>React Project Directory</h2>
-		<img src="./img/reactModal.png" alt="CSS inheritence meme">
+		<h2>Customizing Components with Props</h2>
+		<p>Props let us customize our Functional/Presentationl Components</p>
+		<p><code>props</code> is an object for passing in parameters to React components.</p>
+		<p><a href="https://reactjs.org/docs/components-and-props.html">Components & Props</a></p>
+		<pre class="language-js"><code>
+function PresentationalComponent(props) {
+  // you can use dot syntax like `props.id`
+  // or you can destructure props to access keys
+  const {css, content, flag, id } = props 
+  return (
+    &lt;div className={`${css}`} dataId={id}>
+      {flag ? content : 'Default Content'} 
+    &lt;/div>
+  )
+}
+		</code></pre>
 	</article>
 
 	<article class="slide">
-		<h2>What does a React Component look like?</h2>
+		<h2>How does a React Component work?</h2>
 		<div class="flex most-height align">
 			<img src="img/comp_diagram.png" height='600px' alt="Component diagram">
 			<pre class="language-js"><code>function MyComponent (props) {
@@ -258,10 +283,40 @@ function ParentComponent() {
 }</code></pre>
 
 	</article>
+
+	<article class='slide'>
+		<h2>Organizing Components in React</h2>
+		<p>Directory Structure Comparison</p>
+		<div class='flex most-height'>
+			<img src="./img/CompvsConc.png" height='500px' alt="directory tree">
+			<ul>
+				<li class='nolist'><strong>Components</strong></li>
+				<li>One component per folder (or file)</li>
+				<li>Colocates Component Specific JS </li>
+				<li>Colocates CSS for easy maintenance</li>
+				<li>Easy to match a bug in a component with the code that's causing it</li>
+				<li>Inline styles on components can improve Time to Paint</li>
+				<li>Compiler injects the inline styles, not the Dev</li>
+
+				<li class='nolist'><strong>Concerns</strong></li>
+				<li>All CSS is jumbled together (same with JS)</li>
+				<li>Hard to find code causing a bug based on View</li>
+			</ul>
+		</div>
+	</article>
+	<article class="slide">
+		<h2>React Project Directory</h2>
+		<img src="./img/reactModal.png" alt="CSS inheritence meme">
+	</article>
 	<article class="slide">
 		<h2>Importing Component Files</h2>
 		<img src="img/full_react_file.png" height='600px' alt="Full react component file">
 	</article>
+
+	<header class="slide">
+		<h2>One way data flow</h2>
+		<h1>Diverging from MVC</h1>
+	</header>
 
 	<article class="slide">
 		<h2>Remember MVC?</h2>
@@ -289,6 +344,11 @@ function ParentComponent() {
 		<h2>Example Flux Diagram</h2>
 		<img src="img/example_forum_tree.png" height='600px' alt="">
 	</article>
+
+	<header class="slide">
+		<h2>React JS</h2>
+		<h1>The Virtual DOM</h1>
+	</header>
 
 	<article class="slide">
 		<h2>Back to the Future</h2>
@@ -365,8 +425,6 @@ function ParentComponent() {
 				<li></li>
 			</ul>
 			<li>Passive Effects Phase: runs useEffect hooks</li>
-			<li></li>
-			<li></li>
 		</ul>
 	</article>
 	<article class="slide">
@@ -403,35 +461,21 @@ function ParentComponent() {
 		<p><a href="https://codepen.io/heliocrat/pen/RwpGLZb">Codepen</a></p>
 		<p><a href="https://reactjs.org/docs/rendering-elements.html">Docs on Rendering Simple Elements</a></p>
 	</article>
-	<article class="slide">
-		<h2>Adding Props to our Component</h2>
-		<p>Props let us customize our Functional/Presentationl Components</p>
-		<p><a href="https://reactjs.org/docs/components-and-props.html">Components & Props</a></p>
-		<pre class="language-js"><code>
-function PresentationalComponent(props) {
-  return (
-    &lt;div className=`${props.css}` data-id={props.id}>
-      {props.flag ? props.content : 'Default Content'}
-    &lt;/div>
-  )
-}
-		</code></pre>
-	</article>
+	
 
 	<article class="slide">
-		<h2>Adding Events to our Component</h2>
-		<h3><a href="https://reactjs.org/docs/events.html#gatsby-focus-wrapper">Synthetic Events</a></h3>
+		<h2>React Synthetic Events <sup><a href="https://reactjs.org/docs/events.html#gatsby-focus-wrapper">docs</a></sup></h2>
 		<p>Using events & event handlers in React is slightly different that conventional DOM Events</p>
 		<pre class="language-js"><code>
 function EventComponent(props) {
-	handleClick = (e) => {
-		console.log(e)
-	}
-	return (
-		&lt;div onClick={handleClick}>
-			Click Me!
-		&lt;/div>
-	)
+  handleClick = (e) => {
+    console.log(e)
+  }
+  return (
+    &lt;div onClick={handleClick}>
+      Click Me!
+    &lt;/div>
+  )
 }	</code></pre>
 	</article>
 
@@ -463,8 +507,8 @@ function EventComponent(props) {
 	</article>
 
 	<article class="slide">
-		<h2>Managing Internal State</h2>
-		<p>With Hooks!</p>
+		<h2>A Stateful Component</h2>
+		<p>Managing Internal State with useState Hook</p>
 		<p>The most important thing is to never mutate state directly.</p>
 		<p>Mutate state with <a href="https://reactjs.org/docs/hooks-state.html"><code>useState(state)</code></a></p>
 		<pre class="language-js"><code>const MyComponent = props => {
@@ -490,20 +534,6 @@ function EventComponent(props) {
 		<p>A Dice Rolling App!</p>
 	</article>
 
-
-	<article class="slide">
-		<h2>React Fragments</h2>
-		<p><a href="https://reactjs.org/docs/fragments.html">fragments</a></p>
-		<pre class="language-jsx"><code>const MyComponent = () => {
-  return (
-    &lt;> // React JSX Fragment
-      &lt;div>hello&lt;/div>
-      &lt;div>world&lt;/div>
-    &lt;/>
-  )
-}</code></pre>
-	</article>
-
 	<article class="slide">
 		<h2>Prop Types</h2>
 		<p>Type checking tool that provides helpful errors & warnings during development when incorrect props are passed to a component</p>
@@ -522,99 +552,6 @@ MyComponent.propTypes = {
 	<article class="slide">
 		<h2>Let's Revisit Dragon Clicker with React!</h2>
 		<p><a href="https://github.com/JamieVaughn/react-clicker">React Dragon Clicker!</a></p>
-	</article>
-
-	<article class="slide">
-		<h2>Hooks Way vs Class Way</h2>
-		<p>The legacy way to create React Components uses <code>React.Component</code></p>
-		<div class="flex tight align">
-			<pre class="language-js"><code>const MyComponent = ({message = 'Hi'}) => (
-	&lt;div>A Class Component: {props.message}&lt;/div>
-)</code></pre>
-		<pre class="language-js"><code>class MyComponent extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-  render() {
-    return (
-      &lt;div>A Class Component: {this.props.message}&lt;/div>
-    )
-  }
-}</code></pre>
-		</div>
-		<div class="flex tight">
-			<h4 style='margin: 0'>Rendering Either Type to the DOM</h4>
-			<h4 style='margin: 0'>Providing Default Parameters</h4>
-		</div>
-		<script>
-			function findSlash(node, flag) {
-				let el = node.querySelector('code span:nth-child(5)')
-				el.innerText = flag ? 'message={"Hello"} /' : '/'
-			}
-		</script>
-		<div class="flex tight">
-			<pre class="language-js" onmouseenter="findSlash(this, true)" onmouseleave="findSlash(this)"><code>
-ReactDOM.render(
-  &lt;MyComponent />, document.getElementById('root')
-)</code></pre>
-<pre class="language-js"><code>MyComponent.defaultProps = {
-  message: 'Hi'
-}</code></pre>
-		</div>
-		
-	</article>
-	<article class="slide">
-		<h2>Stateful Components</h2>
-		<ul>
-			<li>The React Class Components used to be the only way to implement internal State <sup><a href="https://reactjs.org/docs/react-without-es6.html#declaring-default-props">React before ES6</a></sup></li>
-		  <li>But now we can have state in a function with the <code>useState</code> Hook.</li>
-		</ul>
-		<div class="flex most-height align" >
-			<pre class="language-js"><code>class MyComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      name: 'Bob'
-    }
-  }
-  render() {
-    return &lt;div>First Name: {this.state.name}&lt;/div>
-  }
-}</code></pre>
-<pre class="language-js"><code>const MyComponent = props => {
-  const [name, setName] = React.useState('Bob')
-  return &lt;div>First Name: {name}&lt;/div>
-}</code></pre>
-		</div>
-	</article>
-
-	<article class="slide">
-		<h2>Event Handling in Class Components</h2>
-		<p>The most important thing is to never mutate state directly. Mutate state with <code>this.setState()</code></p>
-		<pre class="language-js"><code>class MyComponent extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {name: 'Bob'}
-    this.changeName = this.changeName.bind(this);
-    this.addLastName = this.addLastName.bind(this);
-  }
-  changeName() { this.setState({name: 'Alice'}) }
-  addLastName() { this.setState(prev => ({name: prev + 'Smith'})) }
-  render() {
-    return (
-      &lt;p>{this.props.name}&lt;/p>
-      &lt;p>{this.state.name}&lt;/p>
-      &lt;button onClick={this.changeName}>Change Name&lt;/button>
-      &lt;button onClick={this.addLastName}>Add Last Name&lt;/button>
-    )
-  }
-}</code></pre>
-	</article>
-
-	<article class="slide">
-		<h2>Hook/Class Refactoring Challenge</h2>
-		<p>Let's practice refactoring React Components!</p>
-		<p>Refactor a Hook component into a Class Component and Vice Versa!</p>
 	</article>
 
 	<article class="slide">
@@ -768,6 +705,103 @@ addEventListener('click', e => {
   // do side effects
 })
 		</code></pre>
+	</article>
+
+	<header class="slide">
+		<h2>React JS</h2>
+		<h1>Class Component Syntax</h1>
+	</header>
+	<article class="slide">
+		<h2>Hooks Way vs Class Way</h2>
+		<p>The legacy way to create React Components uses <code>React.Component</code></p>
+		<div class="flex tight align">
+			<pre class="language-js"><code>const MyComponent = ({message = 'Hi'}) => (
+	&lt;div>A Class Component: {props.message}&lt;/div>
+)</code></pre>
+		<pre class="language-js"><code>class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    return (
+      &lt;div>A Class Component: {this.props.message}&lt;/div>
+    )
+  }
+}</code></pre>
+		</div>
+		<div class="flex tight">
+			<h4 style='margin: 0'>Rendering Either Type to the DOM</h4>
+			<h4 style='margin: 0'>Providing Default Parameters</h4>
+		</div>
+		<script>
+			function findSlash(node, flag) {
+				let el = node.querySelector('code span:nth-child(5)')
+				el.innerText = flag ? 'message={"Hello"} /' : '/'
+			}
+		</script>
+		<div class="flex tight">
+			<pre class="language-js" onmouseenter="findSlash(this, true)" onmouseleave="findSlash(this)"><code>
+ReactDOM.render(
+  &lt;MyComponent />, document.getElementById('root')
+)</code></pre>
+<pre class="language-js"><code>MyComponent.defaultProps = {
+  message: 'Hi'
+}</code></pre>
+		</div>
+		
+	</article>
+	<article class="slide">
+		<h2>Stateful Class Components</h2>
+		<ul>
+			<li>The React Class Components used to be the only way to implement internal State <sup><a href="https://reactjs.org/docs/react-without-es6.html#declaring-default-props">React before ES6</a></sup></li>
+		  <li>But now we can have state in a function with the <code>useState</code> Hook.</li>
+		</ul>
+		<div class="flex most-height align" >
+			<pre class="language-js"><code>class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      name: 'Bob'
+    }
+  }
+  render() {
+    return &lt;div>First Name: {this.state.name}&lt;/div>
+  }
+}</code></pre>
+<pre class="language-js"><code>const MyComponent = props => {
+  const [name, setName] = React.useState('Bob')
+  return &lt;div>First Name: {name}&lt;/div>
+}</code></pre>
+		</div>
+	</article>
+
+	<article class="slide">
+		<h2>Event Handling in Class Components</h2>
+		<p>The most important thing is to never mutate state directly. Mutate state with <code>this.setState()</code></p>
+		<pre class="language-js"><code>class MyComponent extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {name: 'Bob'}
+    this.changeName = this.changeName.bind(this);
+    this.addLastName = this.addLastName.bind(this);
+  }
+  changeName() { this.setState({name: 'Alice'}) }
+  addLastName() { this.setState(prev => ({name: prev + 'Smith'})) }
+  render() {
+    return (
+      &lt;p>{this.props.name}&lt;/p>
+      &lt;p>{this.state.name}&lt;/p>
+      &lt;button onClick={this.changeName}>Change Name&lt;/button>
+      &lt;button onClick={this.addLastName}>Add Last Name&lt;/button>
+    )
+  }
+}</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Hook/Class Refactoring Challenge</h2>
+		<p>Let's practice refactoring React Components!</p>
+		<p>Refactor a Hook component into a Class Component and Vice Versa!</p>
 	</article>
 	<article class="slide">
 		<h2>Syncing Data in React class components</h2>
