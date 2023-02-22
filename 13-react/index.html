@@ -539,59 +539,6 @@ function EventComponent(props) {
 	</article>
 
 	<article class="slide">
-		<h2>The <code>useRef</code> Hook <sup><a href="https://reactjs.org/docs/hooks-reference.html#useref">Docs</a></sup></h2>
-		<p>This gives you a direct reference to some value that persists between renders.</p>
-		<p>Most commonly used to hold references to DOM nodes</p>
-		<p>Must call the <code>current</code> property to retreive the value</p>
-		<pre class="language-js"><code>const MyComponent = props => {
-  let div = useRef(null)
-  let input = useRef(null)
-  return (
-    &lt;div onClick={() => console.log(div.current, input.current.value)}> 
-      &lt;div type="text" ref={div}>Hello&lt;/div>
-      &lt;input type='text' ref={input} />
-    &lt;/div>
-  );
-}</code></pre>
-	</article>
-
-	<article class="slide">
-		<h2>Forms in React</h2>
-		<p>Controlled vs. Uncontrolled Forms</p>
-		<div class="flex">
-			<ul>
-				<li style='list-style: none;'><strong>Controlled Forms (recommended):</strong></li>
-				<li>React tracks form state</li>
-				<li>Utilizes Flux Pattern</li>
-				<li>Uses <code>onChange</code> event handler and re-renders with every input</li>
-				<li>Better javascript validation control</li>
-				<li>Can be tedious for large forms</li>
-			</ul>
-			<ul>
-				<li style='list-style: none;'>Uncontrolled Forms (fallback):</li>
-				<li>DOM tracks form state</li>
-				<li>Form state is held implicitly in DOM state</li>
-				<li>Need to use either <code>useRef</code> Hook or the Synthetic Event to retreive DOM state</li>
-			</ul>
-		</div>
-	</article>
-	<article class="slide">
-		<h2>More on <code>useRef</code></h2>
-		<p>Be careful not to mutate the ref since it is not tracked by the virtual Dom</p>
-		<p>The values of refs persist (specifically the current property) throughout render cycles, <strong>but do not trigger a re-render.</strong></p>
-		<p><code>useRef</code> can also be used to hold external variables or instance variables</p>
-		<p><code>useRef</code> will be more useful in combination with <code>useEffect</code></p>
-		<p><a href="https://reactjs.org/docs/hooks-faq.html#is-there-something-like-instance-variables">Example</a> / <a href="https://blog.logrocket.com/usestate-vs-useref/">Article</a></p>
-	</article>
-
-	<article class="slide">
-		<h2>Let's Code some Forms in React!</h2>
-		<p>Controlled Form</p>
-		<p>Uncontrolled Form</p>
-		<p><a href="https://felixgerschau.com/react-hooks-form-validation-typescript/">React Hooks form validation patterns</a></p>
-	</article>
-
-	<article class="slide">
 		<h2>Lifting State Up</h2>
 		<p>We can't share state between siblings or up to parents with <code>useState</code></p>
 		<p>So we have to "Lift State Up" - Declare the state higher in the Component Tree so it can be passed down the tree</p>
@@ -689,6 +636,64 @@ addEventListener('click', e => {
   // do side effects
 })
 		</code></pre>
+	</article>
+
+	<header class="slide">
+		<h2>React JS</h2>
+		<h1>useRef Hook</h1>
+	</header>
+
+	<article class="slide">
+		<h2>The <code>useRef</code> Hook <sup><a href="https://reactjs.org/docs/hooks-reference.html#useref">Docs</a></sup></h2>
+		<p>This gives you a direct reference to some value that persists between renders.</p>
+		<p>Most commonly used to hold references to DOM nodes</p>
+		<p>Must call the <code>current</code> property to retreive the value</p>
+		<pre class="language-js"><code>const MyComponent = props => {
+  let div = useRef(null)
+  let input = useRef(null)
+  return (
+    &lt;div onClick={() => console.log(div.current, input.current.value)}> 
+      &lt;div type="text" ref={div}>Hello&lt;/div>
+      &lt;input type='text' ref={input} />
+    &lt;/div>
+  );
+}</code></pre>
+	</article>
+
+	<article class="slide">
+		<h2>Forms in React</h2>
+		<p>Controlled vs. Uncontrolled Forms</p>
+		<div class="flex">
+			<ul>
+				<li style='list-style: none;'><strong>Controlled Forms (recommended):</strong></li>
+				<li>React tracks form state</li>
+				<li>Utilizes Flux Pattern</li>
+				<li>Uses <code>onChange</code> event handler and re-renders with every input</li>
+				<li>Better javascript validation control</li>
+				<li>Can be tedious for large forms</li>
+			</ul>
+			<ul>
+				<li style='list-style: none;'>Uncontrolled Forms (fallback):</li>
+				<li>DOM tracks form state</li>
+				<li>Form state is held implicitly in DOM state</li>
+				<li>Need to use either <code>useRef</code> Hook or the Synthetic Event to retreive DOM state</li>
+			</ul>
+		</div>
+	</article>
+	<article class="slide">
+		<h2>More on <code>useRef</code></h2>
+		<p>Be careful not to mutate the ref since it is not tracked by the virtual Dom</p>
+		<p>The values of refs persist (specifically the current property) throughout render cycles, <strong>but do not trigger a re-render.</strong></p>
+		<p><code>useRef</code> can also be used to hold external variables or instance variables</p>
+		<p><code>useRef</code> will be more useful in combination with <code>useEffect</code></p>
+		<p><a href="https://reactjs.org/docs/hooks-faq.html#is-there-something-like-instance-variables">Example</a> / <a href="https://blog.logrocket.com/usestate-vs-useref/">Article</a></p>
+	</article>
+
+	<article class="slide">
+		<h2>Let's Code some Forms in React!</h2>
+		<p>Controlled Form</p>
+		<p>Uncontrolled Form</p>
+		<p><a href="https://felixgerschau.com/react-hooks-form-validation-typescript/">React Hooks form validation patterns</a></p>
 	</article>
 
 	<header class="slide">
