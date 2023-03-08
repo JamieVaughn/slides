@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
+    <meta name="description" content="MCC Web Design & Development Slides" />
+    <meta name="author" content="Jamie Vaughn" />
+    <title>Node & The Terminal</title>
+    <!-- Inspire css -->
+    <link href="../lib/inspire.css" rel="stylesheet" />
+    <link href="../lib/theme.css" rel="stylesheet" />
+    <link href="../lib/talk.css" rel="stylesheet" />
+    <link href="../lib/utils.css" rel="stylesheet" />
+
+    <!-- Custom css -->
+    <link rel="stylesheet" href="../laser/laser.css" />
+  </head>
+  <body class="language-markup" data-prism-plugins="normalize-whitespace">
+    <header id="intro" class="slide">
+      <h1>Web Design & Development</h1>
+      <h2>React</h2>
+      <p class="attribution">MCC: Section 3</p>
+    </header>
+
+    <section id='part-4'>
+      <header class="slide">
+        <h3>App Tooling</h3>
+        <h1>Syntactically Awesome Style Sheets</h1>
+      </header>
+    
+      <article class="slide">
+        <h2>What is SASS?</h2>
+      </article>
+    
+      <article class='slide'>
+        <h1>SASS</h1>
+        <p>Syntactically Awesome Style Sheets</p>
+      </article>
+      <article class='slide'>
+        <h2>Sass</h2>
+        <ul>
+          <li>A more concise way to write CSS</li>
+          <li>Originally developed by Ruby developers</li>
+          <li>Deprecated packages: `ruby-sass`, `compass`</li>
+          <li>Now there's a C++ compiler/transpiler called `libsass`</li>
+          <li>The npm <a href="https://www.npmjs.com/package/sass">sass<code></code></a> package is a node.js binding for `libsass`</li>
+        </ul>
+      </article>
+      <article class='slide'>
+        <h2><code>sass</code> and libsass docs</h2>
+        <ul>
+          <li><a href="https://sass-lang.com/">Sass-lang docs</a></li>
+          <li><a href="https://github.com/sass/sass"><code>sass packgage github</code></a></li>
+          <li><a href="https://github.com/sass/libsass"><code>libsass package github</code></a></li>
+        </ul>
+      </article>
+      <article class='slide'>
+        <h2>CSS Preprocessors (Compilers)</h2>
+        <ul>
+          <li>There are various flavors</li>
+          <li>They all transpile a special syntax down to CSS</li>
+          <li><a href="https://htmlmag.com/article/an-introduction-to-css-preprocessors-sass-less-stylus">Intro to Preprocessors</a></li>
+          <li><a href="https://csspre.com/compare/">Preprocessor Comparison</a></li>
+          <li><a href="https://devhints.io/sass">Cheatsheet</a></li>
+        </ul>
+      </article>
+      <article class='slide'>
+        <h2>Sassmeister</h2>
+        <p><a href="https://www.sassmeister.com/">A Convenient Online Sass Tool</a></p>
+      </article>
+      <article class='slide'>
+        <h2><code>.sass</code> vs <code>.scss</code></h2>
+        <ul>
+          <li>SCSS Stands for "Sassy CSS"</li>
+          <li>Altered the Sass syntax enough to make SCSS a superset of CSS</li>
+          <li>With SCSS, valid CSS is also valid SCSS</li>
+          <li><a href="http://www.thesassway.com/editorial/sass-vs-scss-which-syntax-is-better">Sass vs SCSS</a></li>
+        </ul>
+      </article>
+      <article class='slide'>
+        <h2>SCSS variables</h2>
+        <p>Variable <code>map</code> and <code>map.get(key)</code></p>
+        <pre class='language-scss'><code class="med-code">$primary-color: #333;
+    $colors: ("primary": $primary-color, "secondary": #454545)
+    body {
+    color: $primary-color;
+    width: 300px / 960px * 100%;
+    background: map-get($colors, "secondary")
+    }
+        </code></pre>
+      </article>
+      <article class='slide'>
+        <h2>Nesting</h2>
+        <ul>
+          <li>nest css selectors</li>
+          <li>with/without `&` operator</li>
+          <li>nest css hyphenated rules:</li>
+        </ul>
+        <pre class='language-scss'><code class="med-code">header {
+    .title {
+    &.bold{
+        font-weight: bold
+    }
+    }
+    }
+    /* and nesting hyphenated rules */
+    font: {
+    size: 1px;
+    weight: bold;
+    family: 'Signika', sans-serif
+    }</code></pre>
+      </article>
+      <article class='slide'>
+        <h2>Mixins</h2>
+        <ul>
+          <li>@mixin and @include (like variables for larger chunks of css)</li>
+          <li>mixins can take args:</li>
+        </ul>
+        <pre class='language-scss'><code class="med-code">@mixin flagProps($val){
+    opacity: ($val)
+    letter-spacing: 2*$val
+    }
+    @include flagProps(1)
+    @include flagProps(0)</code></pre>
+      </article>
+      <article class='slide'>
+        <h2>More Mixin Use cases</h2>
+        <p>You can spread args too</p>
+        <pre class='language-scss'><code class="med-code">@mixin flagProps($vals...){
+    border: $vals;
+    }
+    @include flagProps(1px, solid, crimson){
+    border: $props;
+    }</code></pre>
+      </article>
+      <article class='slide'>
+        <h2>Extends</h2>
+        <p>Great for a success or error message use case</p>
+        <pre class='language-scss'><code class="med-code">.msg {
+    font-size: 2rem;
+    line-height: 2rem;
+    }
+    .error {
+    @extend .msg
+    color: crimson
+    }</code></pre>
+      </article>
+      <article class='slide'>
+        <h2>Other Utilities</h2>
+        <pre class='language-scss'><code class="med-code">@if @else
+    @for
+    @each
+    @while
+    @function fn(){@return thing}</code></pre>
+      </article>
+      <article class='slide'>
+        <h2>If Else</h2>
+        <pre class='language-scss'><code class="med-code">@if $background == 'black' {
+    color: white;
+    }
+    @else {
+    color: black;
+    }</code></pre>
+      </article>
+      <article class='slide'>
+        <h2>For Loop</h2>
+        <pre class='language-scss'><code class="med-code">@for $i from 1 through 8 {
+    [data-id-#{$i}] {
+    margin-left: 2px * $i;
+    }
+    }</code></pre>
+      </article>
+      <article class='slide'>
+        <h2>Example <code>@function</code></h2>
+        <pre class='language-scss'><code class="med-code">@use "sass:list"
+    @function remove-where($list, $condition) {
+    $new-list: ();
+    $separator: list.separator($list)
+    @each $element in $list {
+    @if not meta.call($condition, $element) {
+        $new-list: list.append($new-list, $element, $separator: $separator);
+    }
+    }
+    @return $new-list
+    }</code></pre>
+      </article>
+      <article class='slide'>
+        <h2>Color Operations</h2>
+        <ul>
+          <li>darken()</li>
+          <li>saturate()</li>
+          <li>adjust-hue()</li>
+          <li><a href="https://thoughtbot.com/blog/controlling-color-with-sass-color-functions">And more...</a></li>
+        </ul>
+        <pre><code class="med-code">lighten($color, 20%)</code></pre>
+      </article>
+      <article class='slide'>
+        <h2>SCSS Partials & Modules</h2>
+        <ul>
+          <li>Partials let us break up the css code into modules and import them as needed</li>
+          <li>Common use case is to put your vars and functions in partials</li>
+        </ul>
+        <pre><code class="med-code">@import _filename.scss</code></pre>
+      </article>
+      <article class='slide'>
+        <h2>Using Sass</h2>
+        <p>open new terminal cmd+T/ctrl+T to leave the watcher in the background</p>
+        <pre class='language-bash'><code class="med-code">npm install sass -g # install node sass globally
+    sass # it runs!!
+    sass scss/style.scss -o css # output dir: /css input file: /css/style.scss
+    sass scss -o css # output dir: /css input: /scss (all .scss files there)
+    sass scss -o css --output-style expanded ( or compressed)
+    sass scss -o css -w # watch flag so we can continue to work</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Sass</h2>
+        <p>Let's install the npm package <code>sass</code>, and try out SASS!</p>
+        <p><a href="https://www.npmjs.com/package/sass">sass</a></p>
+      </article>
+      <article class='slide'>
+        <h2>The package.json file</h2>
+        <ul>
+          <li>setting up npm scripts in the package.json file</li>
+          <li>Run `npm init` and answer the form questions</li>
+          <li>Then modify your "scripts" rule to be:</li>
+        </ul>
+        <pre class='language-json'><code class="med-code">"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "sass": "sass scss -o css --output-style compressed && sass",
+    "watch:sass": "sass scss -o css --output-style compressed -w"
+    }</code></pre>
+      </article>
+      <article class='slide'>
+        <h2>Trade-offs between using SCSS and native CSS</h2>
+        <div class="flex">
+          <ul>Pros
+            <li>Syntax Help: Nesting (for now)</li>
+            <li>Extra utils: functions, loops, mixins</li>
+            <li>Code Organization?</li>
+          </ul>
+          <ul>Cons
+            <li>Slight learning curve for new developers</li>
+            <li>Extra Build Step</li>
+            <li>SCSS logic is not available at runtime, unlike CSS var()/calc()</li>
+          </ul>
+        </div>
+      </article>
+      <article class='slide'>
+        <h2>CSS Spec Continues to Grow</h2>
+        <ul>
+          <li>May not need to rely on conveniences of SCSS anymore</li>
+          <li>CSS spec gains more of these utilities each year</li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter">CSS filters</a></li>
+          <li>CSS custom properties: <code>var()</code></li>
+          <li>CSS functions: <code>calc()</code>, <code>clamp()</code> etc.</li>
+          <li>New CSS selectors: <code>:is()</code>, <code>:where()</code>, <code>:has()</code></li>
+          <li><a href="https://drafts.csswg.org/css-nesting/#nest-selector">CSS Nesting Proposal</a></li>
+        </ul>
+      </article>
+      <article class='slide'>
+        <h2>VSCode extension</h2>
+        <p>live sass compiler extension</p>
+      </article>
+    
+    </section>
+
+    <footer class="slide" title="The End">
+      <h2>Thank you!</h2>
+    </footer>
+
+    <script src="../lib/inspire.js"></script>
+    <script src="../laser/laser.js"></script>
+  </body>
+</html>
