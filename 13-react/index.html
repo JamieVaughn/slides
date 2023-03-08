@@ -1008,6 +1008,19 @@ MyComponent.propTypes = {
 		<h1>Advanced Hooks</h1>
 	</header>
 	<article class="slide">
+		<h2>Lookup Challenge</h2>
+		<ul class="col-2">
+			<li><code>useContext</code></li>
+			<li><code>useReducer</code></li>
+			<li><code>useMemo</code></li>
+			<li><code>useCallback</code></li>
+			<li><code>useLayoutEffect</code></li>
+			<li><code>useImperativeHandle</code></li>
+			<li><code>useDebugValue</code></li>
+			<li><code>useTransition</code></li>
+		</ul>
+	</article>
+	<article class="slide">
 		<h2>The Context API <sup><a href="https://reactwithhooks.netlify.app/docs/hooks-reference.html#usecontext">hooks</a>, <sup><a href="https://reactjs.org/docs/context.html">docs</a></sup></h2>
 		<p>Share data without passing props</p>
 		<ol>
@@ -1184,6 +1197,22 @@ function MyComponent() {
 			<li><code>useImperativeHandle</code></li>
 			<li><code>useDebugValue</code></li>
 		</ul>
+	</article>
+	<article class="slide">
+		<h2>Suspense</h2>
+		<p>Provides off-the-shelf async fallback handling</p>
+		<p><a href="https://beta.reactjs.org/reference/react/Suspense">React Docs</a></p>
+		<pre><code>export const ArtistPage = ({ artist }) => {
+	return (
+		&lt;>
+		&lt;h1>{artist.name}&lt;/h1>
+		&lt;Suspense fallback={'Loading...'}>
+		&lt;Albums artistId={artist.id} />
+		&lt;/Suspense>
+		&lt;/>
+	);
+}
+</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Redux Hooks</h2>
