@@ -470,6 +470,71 @@ function EventComponent(props) {
 		<p>This means that calling setState() in your root <App> component, with no other changes altering the behavior, will cause React to re-render every single component in the component tree.</p>
 	</article>
 
+	<header class="slide">
+		<h2>React JS</h2>
+		<h1>Layouts & the App Shell</h1>
+	</header>
+
+	<article class="slide">
+		<h2>The App Shell</h2>
+		<strong>It is the part of the UI that persists when navigating around the app.</strong>
+		<p>An application shell architecture makes the most sense for apps and sites with relatively unchanging navigation but changing content.</p>
+		<p>Structure your app for a clear distinction between the page shell (the persistent UI) and the dynamic content.</p>
+		<p><a href="https://developers.google.com/web/fundamentals/architecture/app-shell">App Shell Model</a></p>
+	</article>
+
+	<article class="slide">
+		<h2>Containment Pattern</h2>
+		<p>Containment refers to the pattern where multiple separate components can be passed as props so that they can be arranged in the layout in a particular way.</p>
+		<p><a href="https://reactjs.org/docs/composition-vs-inheritance.html#containment">Using the containment pattern with multiple components as children</a></p>
+	</article>
+
+	<article class="slide">
+		<h2>Children Props</h2>
+		<code><code>&ltdiv>{props.children}&lt;/div></code></code>
+		<p>The <code>children</code> prop is passed in automatically if you nest any jsx as a child of your component</p>
+		<div class="flex">
+
+		<pre class="language-js"><code>function WrapperComponent (props) {
+return (
+    &lt;main>
+	    &lt;nav>A Nav Bar&lt;/nav>
+	      {props.children}
+      &lt;footer>a footer&lt;/footer>
+    &lt;/main>
+  )
+}</code></pre>
+		<pre class="language-js"><code>function MyComponent () {
+  return (
+    &lt;MyComponent>
+      &lt;div>
+      This content passes 
+      through to MyComponent
+      &lt;/div>
+    &lt;/MyComponent>
+)</code></pre>
+</div>
+	</article>
+
+	<article class="slide">
+		<h2>Prop Drilling</h2>
+		<p>We can pass state down the Component Tree with a concept called Prop Drilling</p>
+		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js"><code>&lt;App img={img} user={user} /></code></pre><span>↴</span></div>
+		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js" style='margin-left: 20%'><code>&lt;Main img={img} user={user} /></code></pre><span>↴</span></div>
+		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js" style='margin-left: 35%'><code>&lt;User img={img} user={user} /></code></pre><span>↴</span></div>
+		<div class='flex' style='margin: 0;'><pre class="language-js" style='margin-left: 60%'><code>&lt;Avatar img={img} /></code></pre><span></span></div>
+	</article>
+
+	<article class="slide">
+		<h2>Building with Vite.js</h2>
+		<p><a href="https://vitejs.dev/">Vite Docs</a></p>
+	</article>
+
+	<article class="slide">
+		<h2>Let's Build a Layout with Vite.js</h2>
+		<p><a href="https://vitejs.dev/guide/#browser-support">Get Started with Vite!</a></p>
+	</article>
+
 	<article class="slide">
 		<h2>Let's make a Simple React Site</h2>
 		<p>Webpages with React!</a></p>
@@ -546,15 +611,6 @@ function EventComponent(props) {
 	</article>
 
 	<article class="slide">
-		<h2>Prop Drilling</h2>
-		<p>We can pass state down the Component Tree with a concept called Prop Drilling</p>
-		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js"><code>&lt;App img={img} user={user} /></code></pre><span>↴</span></div>
-		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js" style='margin-left: 20%'><code>&lt;Main img={img} user={user} /></code></pre><span>↴</span></div>
-		<div class='flex' style='margin: 0; align-items: flex-end;'><pre class="language-js" style='margin-left: 35%'><code>&lt;User img={img} user={user} /></code></pre><span>↴</span></div>
-		<div class='flex' style='margin: 0;'><pre class="language-js" style='margin-left: 60%'><code>&lt;Avatar img={img} /></code></pre><span></span></div>
-	</article>
-
-	<article class="slide">
 		<h2>Thinking in React <sup><a href="https://reactjs.org/docs/thinking-in-react.html">Docs</a></sup></h2>
 		<p>Using Component Architecture to Build Apps</p>
 		<ul>
@@ -587,6 +643,12 @@ function EventComponent(props) {
     </ol>
     <p>Challenge: Type out the React Pseudo Code Component Tree</p>
   </article>
+
+	<article class='slide'>
+		<h2>Take Home Challenge!</h2>
+		<p>Try out the "Tutorial Fade" technique on this:</p>
+		<p><a href="https://reactjs.org/tutorial/tutorial.html">React Tic Tac Toe Tutorial</a></p>
+	</article>
 
 	<article class="slide">
 		<h2>The <code>useEffect</code> Hook</h2>
@@ -890,116 +952,9 @@ ReactDOM.render(
 	</article>
 	<article class="slide">
 		<h2>Code Along</h2>
-		<p>Let's try out useEffect in a small App!</p>
+		<p>Let's try out <code>useEffect</code> in a small App!</p>
 		<p>(and we'll see how it compares to Lifecycle Methods)</p>
 	</article>
-
-	<header class='slide'>
-		<h3>React</h3>
-		<h1>Other APIs</h1>
-	</header>
-
-	<article class="slide">
-		<h2>Prop Types</h2>
-		<p>Type checking tool that provides helpful errors & warnings during development when incorrect props are passed to a component</p>
-		<ul>
-			<li><a href="https://reactjs.org/docs/typechecking-with-proptypes.html#gatsby-focus-wrapper">Prop Types Options</a></li>
-			<li><a href="https://www.npmjs.com/package/prop-types">npm docs</a></li>
-			<li><code style='font-size: 80%;'>&lt;script src="https://unpkg.com/prop-types@15.6/prop-types.js">&lt;/script></code></li>
-		</ul>
-		<pre class="language-js"><code>import PropTypes from 'prop-types';
-
-MyComponent.propTypes = { 
-  handleClick: PropTypes.func.isRequired 
-}</code></pre>
-	</article>
-
-	<article class="slide">
-		<h2>React Profiler</h2>
-		<p><a href="https://reactjs.org/docs/profiler.html">Profiler API</a></p>
-	</article>
-
-	<article class="slide">
-		<h2>React Developer Tools</h2>
-		<p><a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">Browser Extension</a></p>
-	</article>
-
-	<!-- <article class="slide">
-		<h2>Render Props</h2>
-		<p>A render prop is a prop that renders a View... in other words: it's a component that is passed as a prop.</p>
-		<p><a href="https://reactjs.org/docs/render-props.html">Using Render Props</a></p>
-	</article> -->
-
-	<article class="slide">
-		<h2>Strict Mode</h2>
-		<p>Strict Mode is a wrapping component that is used in development to help catch issues/bugs.</p>
-		<p><a href="https://reactjs.org/docs/strict-mode.html">Using Strict Mode</a></p>
-	</article>
-
-	<article class='slide'>
-		<h2>VS Code Snippets</h2>
-		<p>Let's take advantage of VS Code's Snippets feature, so we can type out React components faster!</p>
-		<p><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets">Docs</a></p>
-		<p><kbd>File/Code</kbd>><kbd>Preferences</kbd>><kbd>User Snippets</kbd> (then select language)</p>
-		<pre class="language-json"><code>"Print to console Test": {
-  "prefix": "log",
-  "body": [
-    "console.log('Hello ${1:name}!!!');",
-    "$2"
-  ],
-  "description": "Log output to console"
-}</code></pre>
-	</article>
-
-	<article class="slide">
-		<h2>Children Props</h2>
-		<code><code>&ltdiv>{props.children}&lt;/div></code></code>
-		<p>The <code>children</code> prop is passed in automatically if you nest any jsx asa child of your component</p>
-		<pre class="language-js"><code>function MyComponent (props) {
-  return (
-			&lt;main>
-				&lt;nav>A Nav Bar&lt;/nav>
-			  {props.children}
-				&lt;footer>a footer&lt;/footer>
-			&lt;/main>
-	 )</code></pre>
-		<pre class="language-js"><code>return (
-   &lt;MyComponent>
-			&lt;div>This child element gets passed through into MyComponent&lt;/div>
-	 &lt;/MyComponent>
-)</code></pre>
-	</article>
-
-	<article class="slide">
-		<h2>Containment Pattern</h2>
-		<p>Containment refers to the pattern where multiple separate components can be passed as props so that they can be arranged in the layout in a particular way.</p>
-		<p><a href="https://reactjs.org/docs/composition-vs-inheritance.html#containment">Using the containment pattern with multiple components as children</a></p>
-	</article>
-
-	<article class="slide">
-		<h2>The App Shell</h2>
-		<strong>It is the part of the UI that persists when navigating around the app.</strong>
-		<p>An application shell architecture makes the most sense for apps and sites with relatively unchanging navigation but changing content.</p>
-		<p>Structure your app for a clear distinction between the page shell (the persistent UI) and the dynamic content.</p>
-		<p><a href="https://developers.google.com/web/fundamentals/architecture/app-shell">App Shell Model</a></p>
-	</article>
-
-	<article class="slide">
-		<h2>Building with Vite.js</h2>
-		<p><a href="https://vitejs.dev/">Vite Docs</a></p>
-	</article>
-
-	<article class="slide">
-		<h2>Let's Build a Layout with Vite.js</h2>
-		<p><a href="https://vitejs.dev/guide/#browser-support">Get Started with Vite!</a></p>
-	</article>
-
-	<article class='slide'>
-		<h2>Take Home Challenge!</h2>
-		<p>Try out the "Tutorial Fade" technique on this:</p>
-		<p><a href="https://reactjs.org/tutorial/tutorial.html">React Tic Tac Toe Tutorial</a></p>
-	</article>
-
 </section>
 
 <section>
@@ -1198,129 +1153,193 @@ function MyComponent() {
 			<li><code>useDebugValue</code></li>
 		</ul>
 	</article>
-	<article class="slide">
-		<h2>Suspense</h2>
-		<p>Provides off-the-shelf async fallback handling</p>
-		<p><a href="https://beta.reactjs.org/reference/react/Suspense">React Docs</a></p>
-		<pre><code>export const ArtistPage = ({ artist }) => {
-	return (
-		&lt;>
-		&lt;h1>{artist.name}&lt;/h1>
-		&lt;Suspense fallback={'Loading...'}>
-		&lt;Albums artistId={artist.id} />
-		&lt;/Suspense>
-		&lt;/>
-	);
-}
-</code></pre>
-	</article>
-	<article class="slide">
-		<h2>Redux Hooks</h2>
-		<p><a href="https://react-redux.js.org/api/hooks#using-hooks-in-a-react-redux-app">Docs</a></p>
-		<ul>
-			<li><code>useSelector</code></li>
-			<li><code>useDispatch</code></li>
-			<li><code>useStore</code></li>
-			<li><code>useActions</code></li>
-		</ul>
-	</article>
-	<article class="slide">
-		<h2>Custom Hooks!</h2>
-		<p>We can go beyond the basic, built-in React Hooks with <a href="https://reactjs.org/docs/hooks-custom.html#extracting-a-custom-hook">our own custom hooks utilities!</a></p>
-		<ul>
-			<li>Makes for super easy code reuse & modular utilities</li>
-			<li>Easily separates concerns for easy one-concern-per-file architecture</li>
-			<li>Can handle Sync or Async effects easily!</li>
-		</ul>
-	</article>
-	<article class="slide">
-		<h2>Hooks Links</h2>
-		<div class="flex">
+
+		<article class="slide">
+			<h2>Redux Hooks</h2>
+			<p><a href="https://react-redux.js.org/api/hooks#using-hooks-in-a-react-redux-app">Docs</a></p>
+			<ul>
+				<li><code>useSelector</code></li>
+				<li><code>useDispatch</code></li>
+				<li><code>useStore</code></li>
+				<li><code>useActions</code></li>
+			</ul>
+		</article>
+		<article class="slide">
+			<h2>Custom Hooks!</h2>
+			<p>We can go beyond the basic, built-in React Hooks with <a href="https://reactjs.org/docs/hooks-custom.html#extracting-a-custom-hook">our own custom hooks utilities!</a></p>
+			<ul>
+				<li>Makes for super easy code reuse & modular utilities</li>
+				<li>Easily separates concerns for easy one-concern-per-file architecture</li>
+				<li>Can handle Sync or Async effects easily!</li>
+			</ul>
+		</article>
+		<article class="slide">
+			<h2>Hooks Links</h2>
+			<div class="flex">
+			<div>
+			<strong>Hooks Learning Guides</strong>
+			<ul>
+				<li><a href="https://react-hooks-cheatsheet.com/">Hooks cheat sheet</a></li>
+				<li><a href="https://reactwithhooks.netlify.app/">React Docs with Hooks</a></li>
+				<li><a href="https://wattenberger.com/blog/react-hooks">Thinking in React Hooks</a></li>
+				<li><a href="https://www.youtube.com/watch?v=TNhaISOUy6Q">Hooks Overview video</a></li>
+			</ul>
+		</div>
 		<div>
-		<strong>Hooks Learning Guides</strong>
-		<ul>
-			<li><a href="https://react-hooks-cheatsheet.com/">Hooks cheat sheet</a></li>
-			<li><a href="https://reactwithhooks.netlify.app/">React Docs with Hooks</a></li>
-			<li><a href="https://wattenberger.com/blog/react-hooks">Thinking in React Hooks</a></li>
-			<li><a href="https://www.youtube.com/watch?v=TNhaISOUy6Q">Hooks Overview video</a></li>
-		</ul>
+			<strong>Hooks Catalogs</strong>
+			<ul>
+				<li><a href="https://usehooks.com/">useHooks.com</a></li>
+				<li><a href="https://antonioru.github.io/beautiful-react-hooks/">Beautiful Hooks</a></li>
+				<li><a href="https://nikgraf.github.io/react-hooks/">Collection of Hooks</a></li>
+			</ul>
+		</div>
 	</div>
-	<div>
-		<strong>Hooks Catalogs</strong>
-		<ul>
-			<li><a href="https://usehooks.com/">useHooks.com</a></li>
-			<li><a href="https://antonioru.github.io/beautiful-react-hooks/">Beautiful Hooks</a></li>
-			<li><a href="https://nikgraf.github.io/react-hooks/">Collection of Hooks</a></li>
-		</ul>
-	</div>
-</div>
-	</article>
-	<article class="slide">
-		<h2>useMousePosition</h2>
-		<pre class="language-js"><code>export default function useMousePosition () {
-  const [position, setPosition] = useState({ x: 0, y: 0 })
+		</article>
+		<article class="slide">
+			<h2>useMousePosition</h2>
+			<pre class="language-js"><code>export default function useMousePosition () {
+		const [position, setPosition] = useState({ x: 0, y: 0 })
+	
+		useEffect(() => {
+			const setFromEvent = e => setPosition({ x: e.clientX, y: e.clientY })
+			window.addEventListener('mousemove', setFromEvent)
+	
+			return () => {
+					window.removeEventListener('mousemove', setFromEvent)
+			}
+		}, [])
+	
+		return position
+	}</code></pre>
+		</article>
+		<article class="slide">
+			<h2>useBoundingClientRect</h2>
+			<pre class="language-js"><code>import { useState, useRef, useLayoutEffect } from "react";
+	
+	export const useMeasure = deps => {
+		const [rect, setRect] = useState({});
+		const myRef = useRef();
+	
+		useLayoutEffect(() => {
+			setRect(myRef.current.getBoundingClientRect());
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+		}, deps);
+	
+		return [rect, myRef];
+	};</code></pre>
+		</article>
+		<article class="slide">
+			<h2>useOutsideClick</h2>
+			<pre class="language-js"><code>const useOutsideClick = (ref, callback) => {
+		const handleClick = e => {
+			if (ref.current && !ref.current.contains(e.target)) {
+			callback()
+			}
+		}
+	
+		useEffect(() => {
+			document.addEventListener('click', handleClick)
+	
+			return () => {
+				document.removeEventListener('click', handleClick)
+			}
+		})
+	}</code></pre>
+		</article>
+		
+		<article class="slide">
+			<h2>Let's Create our own Hooks!</h2>
+			<ul>
+				<li><code>useFetch</code></li>
+				<li><code>useInterval</code></li>
+				<li><code>useLocalStorage</code></li>
+				<li><code>usePreviousValue</code></li>
+			</ul>
+		</article>
+	</section>
 
-  useEffect(() => {
-    const setFromEvent = e => setPosition({ x: e.clientX, y: e.clientY })
-    window.addEventListener('mousemove', setFromEvent)
+	<section>
+		<header class='slide'>
+			<h3>React</h3>
+			<h1>Other Tools</h1>
+		</header>
+	
+		<article class="slide">
+			<h2>React Developer Tools</h2>
+			<p><a href="https://chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi">Browser Extension</a></p>
+		</article>
+	
+		<article class="slide">
+			<h2>Prop Types</h2>
+			<p>Type checking tool that provides helpful errors & warnings during development when incorrect props are passed to a component</p>
+			<ul>
+				<li><a href="https://reactjs.org/docs/typechecking-with-proptypes.html#gatsby-focus-wrapper">Prop Types Options</a></li>
+				<li><a href="https://www.npmjs.com/package/prop-types">npm docs</a></li>
+				<li><code style='font-size: 80%;'>&lt;script src="https://unpkg.com/prop-types@15.6/prop-types.js">&lt;/script></code></li>
+			</ul>
+			<pre class="language-js"><code>import PropTypes from 'prop-types';
+	
+	MyComponent.propTypes = { 
+		handleClick: PropTypes.func.isRequired 
+	}</code></pre>
+		</article>
+	
+		<article class="slide">
+			<h2>React Profiler</h2>
+			<p><a href="https://reactjs.org/docs/profiler.html">Profiler API</a></p>
+		</article>
+	
+		<article class="slide">
+			<h2>Error Boundaries</h2>
+			<p><a href="https://reactjs.org/docs/error-boundaries.html">React Docs</a></p>
+			<p><a href="https://github.com/JoschuaSchneider/use-error-boundary">useErrorBoundary</a></p>
+		</article>
 
-    return () => {
-        window.removeEventListener('mousemove', setFromEvent)
-    }
-  }, [])
-
-  return position
-}</code></pre>
-	</article>
-	<article class="slide">
-		<h2>useBoundingClientRect</h2>
-		<pre class="language-js"><code>import { useState, useRef, useLayoutEffect } from "react";
-
-export const useMeasure = deps => {
-  const [rect, setRect] = useState({});
-  const myRef = useRef();
-
-  useLayoutEffect(() => {
-    setRect(myRef.current.getBoundingClientRect());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, deps);
-
-  return [rect, myRef];
-};</code></pre>
-	</article>
-	<article class="slide">
-		<h2>useOutsideClick</h2>
-		<pre class="language-js"><code>const useOutsideClick = (ref, callback) => {
-  const handleClick = e => {
-    if (ref.current && !ref.current.contains(e.target)) {
-    callback()
-    }
-  }
-
-  useEffect(() => {
-    document.addEventListener('click', handleClick)
-
-    return () => {
-      document.removeEventListener('click', handleClick)
-    }
-  })
-}</code></pre>
-	</article>
-	<article class="slide">
-		<h2>Error Boundaries</h2>
-		<p><a href="https://reactjs.org/docs/error-boundaries.html">React Docs</a></p>
-		<p><a href="https://github.com/JoschuaSchneider/use-error-boundary">useErrorBoundary</a></p>
-	</article>
-	<article class="slide">
-		<h2>Let's Create our own Hooks!</h2>
-		<ul>
-			<li><code>useFetch</code></li>
-			<li><code>useInterval</code></li>
-			<li><code>useLocalStorage</code></li>
-			<li><code>usePreviousValue</code></li>
-		</ul>
-	</article>
-</section>
+		<article class="slide">
+			<h2>Suspense</h2>
+			<p>Provides off-the-shelf async fallback handling</p>
+			<p><a href="https://beta.reactjs.org/reference/react/Suspense">React Docs</a></p>
+			<pre><code>export const ArtistPage = ({ artist }) => {
+		return (
+			&lt;>
+			&lt;h1>{artist.name}&lt;/h1>
+			&lt;Suspense fallback={'Loading...'}>
+			&lt;Albums artistId={artist.id} />
+			&lt;/Suspense>
+			&lt;/>
+		);
+	}
+	</code></pre>
+		</article>
+	
+		<!-- <article class="slide">
+			<h2>Render Props</h2>
+			<p>A render prop is a prop that renders a View... in other words: it's a component that is passed as a prop.</p>
+			<p><a href="https://reactjs.org/docs/render-props.html">Using Render Props</a></p>
+		</article> -->
+	
+		<article class="slide">
+			<h2>Strict Mode</h2>
+			<p>Strict Mode is a wrapping component that is used in development to help catch issues/bugs.</p>
+			<p><a href="https://reactjs.org/docs/strict-mode.html">Using Strict Mode</a></p>
+		</article>
+	
+		<article class='slide'>
+			<h2>VS Code Snippets</h2>
+			<p>Let's take advantage of VS Code's Snippets feature, so we can type out React components faster!</p>
+			<p><a href="https://code.visualstudio.com/docs/editor/userdefinedsnippets">Docs</a></p>
+			<p><kbd>File/Code</kbd>><kbd>Preferences</kbd>><kbd>User Snippets</kbd> (then select language)</p>
+			<pre class="language-json"><code>"Print to console Test": {
+		"prefix": "log",
+		"body": [
+			"console.log('Hello ${1:name}!!!');",
+			"$2"
+		],
+		"description": "Log output to console"
+	}</code></pre>
+		</article>
+	
+	</section>
 
 <footer class="slide" title="The End">
 	<h2>Thanks!</h2>
