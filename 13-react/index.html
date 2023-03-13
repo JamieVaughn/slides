@@ -1130,18 +1130,33 @@ function MyComponent() {
 		<p>Just like useEffect, but runs after the virtualDOM updates are committed to the real DOM.</p>
 		<p>Primarily if you need to read some implicit state from the DOM for some purpose</p>
 		<p>Use cases: animations, reading properties of DOM elements, procedural changes with vanilla js to DOM nodes</p>
+		<pre class="language-js"><code>useLayoutEffect(() => {
+	const { height } = ref.current.getBoundingClientRect();
+	setTooltipHeight(height);
+}, []);</code></pre>
 	</article>
 	<article class="slide">
 		<h2>useImperativeHandle</h2>
 		<p><code>useImperativeHandle</code>: run imperative code on a useRef Element before it is passed down as a prop</p>
 		<p>Imperative Code is basically synonymous with Procedural code.</p>
 		<p>Use cases: customize DOM node implicit state in forwarded Refs</p>
+		<pre class="language-js"><code>const inputRef = useRef()
+	useImperativeHandle(inputRef, () => {
+	return {
+		focus() {
+			inputRef.current.focus();
+		},
+		scrollIntoView() {
+			inputRef.current.scrollIntoView();
+		},
+	};
+}, []);</code></pre>
 	</article>
 	<article class="slide">
 		<h2>useDebugValue</h2>
 		<p><code>useDebugValue</code>: This is for help debugging/labeling custom Hooks with the React Dev Tools</p>
-		<p>Only to be invoked inside another custom Hook</p>
-		<p>Let's you see identify your custom Hooks in React Dev Tools</p>
+		<p>Call useDebugValue at the top level of a custom Hook to display a readable debug value for React DevTools.</p>
+		<pre class="language-js"><code>useDebugValue(name, name => name.toLowerCase());</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Usage</h2>
