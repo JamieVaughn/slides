@@ -1087,13 +1087,11 @@ function MyComponent() {
 	</header>
 	<article class="slide">
 		<h2>useMemo</h2>
-		<p>Memoize a components returned jsx (i.e. its <strong>View</strong> template output)</p>
-		<p>Memoize means it caches the vDOM result of the component call so it can use the cached version without re-executing it if the parameters didn't change.</p>
-		<pre class="language-js"><code>const MyOutputComponent = React.memo(props => {
-  const renders = useRef(0)
-	console.log('renders', renders.current++)
-  return &lt;output>{props.num}&lt;/output>
-})</code></pre>
+		<p>Memoize a functions returned output</p>
+		<p>Memoize means it caches the calculated result of the function call so it can use that cached version without re-execution if the parameters didn't change.</p>
+		<pre class="language-js"><code>const visibleTodos = useMemo(() => {
+  cpuIntensiveFunction(todos, tab)
+}, [todos, tab])</code></pre>
 	</article>
 	<article class="slide">
 		<h2>useCallback</h2>
@@ -1170,16 +1168,6 @@ function MyComponent() {
 		</ul>
 	</article>
 
-		<article class="slide">
-			<h2>Redux Hooks</h2>
-			<p><a href="https://react-redux.js.org/api/hooks#using-hooks-in-a-react-redux-app">Docs</a></p>
-			<ul>
-				<li><code>useSelector</code></li>
-				<li><code>useDispatch</code></li>
-				<li><code>useStore</code></li>
-				<li><code>useActions</code></li>
-			</ul>
-		</article>
 		<article class="slide">
 			<h2>Custom Hooks!</h2>
 			<p>We can go beyond the basic, built-in React Hooks with <a href="https://reactjs.org/docs/hooks-custom.html#extracting-a-custom-hook">our own custom hooks utilities!</a></p>
@@ -1326,6 +1314,17 @@ function MyComponent() {
 		);
 	}
 	</code></pre>
+		</article>
+
+		<article class="slide">
+			<h2>React.memo()</h2>
+			<p>Similar to the <code>useMemo()</code> hook but for entire components to memoize a components returned jsx</p>
+			<p>Memoize means it caches the vDOM result of the component call so it can use the cached version without re-executing it if the parameters didn't change.</p>
+			<pre class="language-js"><code>const MyOutputComponent = React.memo(props => {
+		const renders = useRef(0)
+		console.log('renders', renders.current++)
+		return &lt;output>{props.num}&lt;/output>
+	})</code></pre>
 		</article>
 	
 		<!-- <article class="slide">
