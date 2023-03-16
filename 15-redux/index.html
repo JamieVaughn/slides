@@ -179,6 +179,53 @@
     </div>
   </article>
   <article class="slide">
+    <h2>Actions</h2>
+    <p>The custom events emitted by user actions in the UI.</p>
+    <div class="flex">
+      <img src="img/wood-shape-match-.jpg" alt="">
+      <pre class="language-js"><code>
+const clickAction = {
+  type: 'clickAction' // type is the only *required* key on an action
+}
+const editAction = {
+  type: 'editAction',
+  payload: 'The new text from the form'
+}
+const sideEffectAction = {
+  type: 'sideEffectAction',
+  payload: () => {
+    // someCallbackFunction
+    // that does some side effects
+  }
+}
+</code></pre>
+    </div>
+  </article>
+  <article class="slide">
+		<h2>Reducers</h2>
+    <p>The receiver/listener for actions that handles the resulting state mutation.</p>
+    <div class="flex">
+      <img src="img/Wooden-Shape-Match.webp" alt="">
+		<pre class="language-js"><code>function reducer (state, action) {
+ switch(action.type) {
+  case 'delete': 
+    return handleDelete(action.id)
+  case 'add':
+    return ([...state, action.todo])
+  case 'complete': 
+    return handleComplete(action.id)
+  case 'edit':
+    return handleEdit(action.id, action.text)
+  case 'reset':
+    return []
+  default:
+    return state
+ }
+}</code></pre>
+</div>
+
+	</article>
+  <article class="slide" class="hidden">
     <h2>Add Any Actions Easily</h2>
     <p>Pass an "enum" (string) to trigger any arbitrary app logic. Mold the action & reducer logic in a flexible way.</p>
     <div class="flex">
