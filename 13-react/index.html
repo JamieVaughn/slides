@@ -1139,7 +1139,7 @@ function MyComponent() {
 		<p>Imperative Code is basically synonymous with Procedural code.</p>
 		<p>Use cases: customize DOM node implicit state in forwarded Refs</p>
 		<pre class="language-js"><code>const inputRef = useRef()
-	useImperativeHandle(inputRef, () => {
+useImperativeHandle(inputRef, () => {
 	return {
 		focus() {
 			inputRef.current.focus();
@@ -1202,53 +1202,50 @@ function MyComponent() {
 		<article class="slide">
 			<h2>useMousePosition</h2>
 			<pre class="language-js"><code>export default function useMousePosition () {
-		const [position, setPosition] = useState({ x: 0, y: 0 })
-	
-		useEffect(() => {
-			const setFromEvent = e => setPosition({ x: e.clientX, y: e.clientY })
-			window.addEventListener('mousemove', setFromEvent)
-	
-			return () => {
-					window.removeEventListener('mousemove', setFromEvent)
-			}
-		}, [])
-	
-		return position
-	}</code></pre>
+	const [position, setPosition] = useState({ x: 0, y: 0 })
+
+	useEffect(() => {
+		const setFromEvent = e => setPosition({ x: e.clientX, y: e.clientY })
+		window.addEventListener('mousemove', setFromEvent)
+
+		return () => {
+				window.removeEventListener('mousemove', setFromEvent)
+		}
+	}, [])
+
+	return position
+}</code></pre>
 		</article>
 		<article class="slide">
 			<h2>useBoundingClientRect</h2>
-			<pre class="language-js"><code>import { useState, useRef, useLayoutEffect } from "react";
-	
-	export const useMeasure = deps => {
-		const [rect, setRect] = useState({});
-		const myRef = useRef();
-	
-		useLayoutEffect(() => {
-			setRect(myRef.current.getBoundingClientRect());
-			// eslint-disable-next-line react-hooks/exhaustive-deps
-		}, deps);
-	
-		return [rect, myRef];
-	};</code></pre>
+			<pre class="language-js"><code>const useMeasure = deps => {
+	const [rect, setRect] = useState({});
+	const myRef = useRef();
+
+	useLayoutEffect(() => {
+		setRect(myRef.current.getBoundingClientRect());
+	}, deps);
+
+	return [rect, myRef];
+};</code></pre>
 		</article>
 		<article class="slide">
 			<h2>useOutsideClick</h2>
 			<pre class="language-js"><code>const useOutsideClick = (ref, callback) => {
-		const handleClick = e => {
-			if (ref.current && !ref.current.contains(e.target)) {
-			callback()
-			}
+	const handleClick = e => {
+		if (ref.current && !ref.current.contains(e.target)) {
+		callback()
 		}
-	
-		useEffect(() => {
-			document.addEventListener('click', handleClick)
-	
-			return () => {
-				document.removeEventListener('click', handleClick)
-			}
-		})
-	}</code></pre>
+	}
+
+	useEffect(() => {
+		document.addEventListener('click', handleClick)
+
+		return () => {
+			document.removeEventListener('click', handleClick)
+		}
+	})
+}</code></pre>
 		</article>
 		
 		<article class="slide">

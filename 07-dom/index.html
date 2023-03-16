@@ -420,6 +420,17 @@ element.style.transform = 'rotate(90deg)'
       <article class="slide">
         <h2>Visualizing Events</h2>
         <p><a href="https://domevents.dev/">DomEvents.dev</a></p>
+        <p>
+          When you click a dom element, the browser walks the DOM tree from the
+          HTML root down to the clicked element capturing intermediate elments
+          along the way
+        </p>
+        <p>When the traversal reaches the clicked element, it fires the event handler and then bubbles back up the tree to the HTML root firing all other event handlers it encounters along the path it previously traversed.</p>
+        <p>
+          <a href="https://www.youtube.com/watch?v=F1anRyL37lE"
+            >Wes Bos on Event Capturing & Bubbling</a
+          >
+        </p>
       </article>
 
       <article class="slide">
@@ -511,7 +522,11 @@ element.style.transform = 'rotate(90deg)'
 
       <article class="slide">
         <h2>How to unstuck yourself</h2>
-        <p><a href="img/Unstuck_Javascript_Cheat_Sheet.pdf">Advice on debuggin steps - EBook</a></p>
+        <p>
+          <a href="img/Unstuck_Javascript_Cheat_Sheet.pdf"
+            >Advice on debuggin steps - EBook</a
+          >
+        </p>
       </article>
 
       <article class="slide">
