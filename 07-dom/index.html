@@ -427,10 +427,29 @@ element.style.transform = 'rotate(90deg)'
         </p>
         <p>When the traversal reaches the clicked element, it fires the event handler and then bubbles back up the tree to the HTML root firing all other event handlers it encounters along the path it previously traversed.</p>
         <p>
+          <p>If you want you can set the optional <code>{capture: true}</code> to have it trigger handlers on the traversal downwards, instead of upwards.</p>
           <a href="https://www.youtube.com/watch?v=F1anRyL37lE"
             >Wes Bos on Event Capturing & Bubbling</a
           >
         </p>
+      </article>
+
+      <article class="slide">
+        <h2>Event Listeners Options</h2>
+        <ul>
+          <li><code>{ capture: true }</code></li>
+          <li><code>{ once: true }</code></li>
+          <li><code>e.stopPropagation()</code></li>
+        </ul>
+        <pre class="language-js"><code>div.addEventListener('click', e => {
+    e.stopPropagation() // stops bubbling at this element
+    // handle event
+  },
+  {
+    capture: true, // fires handlers on traversal down
+    once: true // only runs handler once
+  }
+)}</code></pre>
       </article>
 
       <article class="slide">
