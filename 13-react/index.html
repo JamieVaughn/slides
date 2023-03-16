@@ -1300,16 +1300,16 @@ useImperativeHandle(inputRef, () => {
 			<h2>Suspense</h2>
 			<p>Provides off-the-shelf async fallback handling</p>
 			<p><a href="https://beta.reactjs.org/reference/react/Suspense">React Docs</a></p>
-			<pre><code>export const ArtistPage = ({ artist }) => {
-		return (
-			&lt;>
-			&lt;h1>{artist.name}&lt;/h1>
-			&lt;Suspense fallback={'Loading...'}>
-			&lt;Albums artistId={artist.id} />
-			&lt;/Suspense>
-			&lt;/>
-		);
-	}
+			<pre class="language-js"><code>export const ProfilePage = ({ user }) => {
+	return (
+    &lt;>
+      &lt;h1>{user.name}&lt;/h1>
+      &lt;Suspense fallback={'Loading...'}>
+	      &lt;Activity userId={user.id} />
+      &lt;/Suspense>
+    &lt;/>
+	);
+}
 	</code></pre>
 		</article>
 
