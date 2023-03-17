@@ -1472,6 +1472,25 @@ console.log(obj) // {key: 'value', test: 'same object in memory'}</code></pre>
 const uniqueObj = Object.assign({}, obj)
 // now there are two separate objects in memory
 // each with the same properties</code></pre>
+<p>Note: this creates a <strong>shallow</strong> copy (omits deeply nested properties)</p>
+	</article>
+	<article class="slide">
+		<h2>Creating Deep Copies of Objects <sup><a href="https://developer.mozilla.org/en-US/docs/Web/API/structuredClone">MDN</a></sup></h2>
+		<p>for deep copies of objects use <code>structuredClone()</code></p>
+		<pre class="language-js"><code>const myObj = {
+  num: 5,
+	nested: [1, 2, 3]
+}
+const shallowClone = Object.assign({}, myObj)
+const deepClone = structuredClone(myObj)
+
+deepClone.push(4)
+console.log(deepClone.nested) // [1, 2, 3, 4]
+console.log(myObj.nested) // [1, 2, 3]
+
+shallowClone.nested.push(4) // mutates the original object
+console.log(myObj.nested) // [1, 2, 3, 4]
+		</code></pre>
 	</article>
 	<article class="slide">
 		<h2>Mutating Objects</h2>
