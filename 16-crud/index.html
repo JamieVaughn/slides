@@ -37,22 +37,89 @@
         <h1>CRUD App</h1>
       </header>
 
-      <article class="slide" title=""></article>
+      <article class="slide">
+        <h2>Planning our CRUD App</h2>
+        <div class="flex">
+          <strong>Component Tree Plan</strong>
+          <strong>Tech Stack Plan</strong>
+        </div>
+        <div class="flex">
+          <img src="img/CRUD_APP.png" alt="">
+          <ul>
+            <li>React & Vite.js</li>
+            <li>CSS library: Bulma</li>
+            <li>Redux Toolkit</li>
+            <li>Supabase</li>
+            <ul>
+              <li>Authentication</li>
+              <li>PostGres database</li>
+              <li>Database Design Plan?</li>
+            </ul>
+          </ul>
+        </div>
+      </article>
 
       <article class="slide"></article>
+
+      <article class="slide">
+        <h2>API tokens & secrets</h2>
+        <p>
+          <a
+            href="https://www.freecodecamp.org/news/how-to-securely-store-api-keys-4ff3ea19ebda/"
+            >Don't push your secrets or tokens to Github</a
+          >
+        </p>
+        <p>
+          Use <code>.env</code> files and then <code>.gitignore</code> those
+          files so they stay only on your local computer
+        </p>
+        <p>
+          Import the secrets/tokens into your project securely (usually with
+          <code>dotenv</code> pkg or for Vite.js using
+          <code>import.meta.env.VITE_SECRET_NAME</code>
+        </p>
+      </article>
     </section>
 
     <section>
       <header class="slide">
-        <h2></h2>
-        <h1></h1>
+        <h2>Building on your own</h2>
+        <h1>Where to go from here...</h1>
       </header>
 
-      <article class="slide" id="data-insert"></article>
+      <article class="slide">
+        <h2>Project Ideas</h2>
+        <ul>
+          <li>(re)Design your own personal portfolio website</li>
+          <li>
+            Build out an existing product/site your own way: soundcloud.com,
+            goodreads.com, Slack chat, etc.. )
+          </li>
+          <li>Build a browser extension that makes your life simpler</li>
+          <li>
+            Design some sort of framework to build projects on top of (like our
+            MVC but better!)
+          </li>
+          <li>Build a web scraper to collect data from a certain site.</li>
+          <li>
+            Create a Reddit or Discord bot! See
+            <a href="https://reddit.com/r/RequestABot">/r/RequestABot</a> for
+            ideas, and look at
+            <a href="https://reddit.com/r/botwatch">/r/botwatch</a> for help and
+            inspiration.
+          </li>
+          <li>
+            If you're more inspired by hardware projects, then get a Raspberry
+            Pi, set up Arch Linux, make it accessible over the web via SSH,
+            connect up sensors to measure temperature, light, etc. & display the
+            output.
+          </li>
+        </ul>
+      </article>
 
       <article class="slide"></article>
 
-    <article class="demo slide">
+      <article class="demo slide">
         <h1>Live Preview</h1>
         <textarea class="language-html">
 <div class="preview">
@@ -63,13 +130,15 @@
 	<div><p>Item E</p></div>
 	<div><p>Item F</p></div>
 </div>
-		 </textarea>
-      <textarea class="language-css">
+		 </textarea
+        >
+        <textarea class="language-css">
         .preview > div {
           padding: 1rem;
         }
-      </textarea>
-    </article>
+      </textarea
+        >
+      </article>
     </section>
 
     <footer class="slide" title="The End"></footer>
