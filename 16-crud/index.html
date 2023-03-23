@@ -44,22 +44,71 @@
           <strong>Tech Stack Plan</strong>
         </div>
         <div class="flex">
-          <img src="img/CRUD_APP.png" alt="">
+          <img src="img/CRUD_APP.png" alt="" />
           <ul>
             <li>React & Vite.js</li>
             <li>CSS library: Bulma</li>
-            <li>Redux Toolkit</li>
+            <li>React Router & Redux Toolkit</li>
             <li>Supabase</li>
             <ul>
               <li>Authentication</li>
-              <li>PostGres database</li>
-              <li>Database Design Plan?</li>
+              <li>PostGres Database</li>
+              <li>File Uploads</li>
             </ul>
           </ul>
         </div>
       </article>
 
-      <article class="slide"></article>
+      <article class="slide">
+        <h2>Let's see the Prototype/Mock</h2>
+        <p><a href="https://bookmarks-app-9ea49.web.app/signup">Post-a-link App</a></p>
+      </article>
+
+      <article class="slide">
+        <h2>User Stories</h2>
+        <p><a href="dillinger.io">Markup Editor</a></p>
+      </article>
+
+      <article class="slide">
+        <h2>Supabase</h2>
+        <p><a href="https://supabase.com/">Docs</a></p>
+        <ul>
+          <li>Free, Open Source Software (FOSS)</li>
+          <li>Postgres SQL Database & SQL Editor</li>
+          <li>Row level Security</li>
+          <li>Authentication & S3 file Storage</li>
+        </ul>
+      </article>
+
+      <article class="slide">
+        <h2>PostGres Database</h2>
+        <p>
+          <a
+            href="https://www.prisma.io/dataguide/postgresql/benefits-of-postgresql"
+            >Benefits of using Postgres</a
+          >
+        </p>
+        <p>
+          Plus we can practive some SQL with it which will be a great skill to
+          have in the future that complements fronted development skills really
+          well.
+        </p>
+      </article>
+
+      <article class="slide">
+        <h2>Kinds of Databases</h2>
+        <ol>
+          <li>Relational (SQL: Postgres, MySQL, SQLite)</li>
+          <li>NoSQL</li>
+          <ul>
+            <li>Document (JSON: Firebase, MongoDB)</li>
+            <li>Graph (Neo4j, ArangoDB)</li>
+            <li>Columnar (RedShift, Cassandra, ClickHouse)</li>
+            <li>Key-Value Store (DynamoDB, Couchbase, Redis)</li>
+            <li>Time Series (Prometheus, InfluxDB, TimescaleDB)</li>
+          </ul>
+        </ol>
+      </article>
 
       <article class="slide">
         <h2>API tokens & secrets</h2>
@@ -70,13 +119,55 @@
           >
         </p>
         <p>
-          Use <code>.env</code> files and then <code>.gitignore</code> those
-          files so they stay only on your local computer
+          Create a <code>.env</code> file in your project root & then
+          <code>.gitignore</code> those files so they stay only on your local
+          computer
         </p>
         <p>
           Import the secrets/tokens into your project securely (usually with
           <code>dotenv</code> pkg or for Vite.js using
           <code>import.meta.env.VITE_SECRET_NAME</code>
+        </p>
+      </article>
+      <article class="slide">
+        <h2>Deploying</h2>
+        <ol>
+          <li>
+            in your Github repo, go into the Settings tab, and click on "Pages"
+          </li>
+          <li>
+            Under "Build and deployment", set your branch to your
+            main/master/central branch, and set the folder to "/docs" instead of
+            "/(root)"
+          </li>
+          <li>
+            Update your Vite project's <code>vite.config.js</code> to look like
+            the following:
+            <pre class="language-js"><code>import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+  plugins: [react()],
+  base: "/YOUR-REPO-NAME",
+  build: {
+    outDir: 'docs'
+  }
+})</code></pre>
+          </li>
+          <li>Build your project by running <code>npm run build</code></li>
+          <li>
+            Git add your files and push them up to Github (make sure you are on
+            the branch specified in your Github Pages settings)
+          </li>
+          <li>Wait a few moments for Github to run its checks and deploy!</li>
+        </ol>
+      </article>
+      <article class="slide">
+        <h2>Netlify Cloud Functions</h2>
+        <p>
+          <a href="https://docs.netlify.com/functions/overview/"
+            >Serverless Functions Overview</a
+          >
         </p>
       </article>
     </section>
@@ -93,7 +184,7 @@
           <li>(re)Design your own personal portfolio website</li>
           <li>
             Build out an existing product/site your own way: soundcloud.com,
-            goodreads.com, Slack chat, etc.. )
+            goodreads.com, Slack chat, etc..
           </li>
           <li>Build a browser extension that makes your life simpler</li>
           <li>
@@ -116,32 +207,12 @@
           </li>
         </ul>
       </article>
-
-      <article class="slide"></article>
-
-      <article class="demo slide">
-        <h1>Live Preview</h1>
-        <textarea class="language-html">
-<div class="preview">
-	<div><p>Item A</p></div>
-	<div><p>Item B</p></div>
-	<div><p>Item C</p></div>
-	<div><p>Item D</p></div>
-	<div><p>Item E</p></div>
-	<div><p>Item F</p></div>
-</div>
-		 </textarea
-        >
-        <textarea class="language-css">
-        .preview > div {
-          padding: 1rem;
-        }
-      </textarea
-        >
-      </article>
     </section>
 
-    <footer class="slide" title="The End"></footer>
+    <footer class="slide" title="The End">
+      <h2>That's all folks!</h2>
+      <p>Congratulations on completing this course</p>
+    </footer>
 
     <script src="../lib/inspire.js"></script>
     <script src="../laser/laser.js"></script>
