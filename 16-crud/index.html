@@ -44,15 +44,19 @@
           <strong>Tech Stack Plan</strong>
         </div>
         <div class="flex">
-          <img src="img/CRUD_APP.png" alt="" />
+          <img src="img/crud_app_tree.jpg" alt="" />
           <ul>
-            <li>React & Vite.js</li>
+            <li>Vite.js</li>
             <li>CSS library: Bulma</li>
-            <li>React Router & Redux Toolkit</li>
-            <li>Supabase</li>
+            <li>React with:</li>
             <ul>
-              <li>Authentication</li>
+              <li>React Router</li>
+              <li>Redux Toolkit</li>
+            </ul>
+            <li>Supabase:</li>
+            <ul>
               <li>PostGres Database</li>
+              <li>User Authentication</li>
               <li>File Uploads</li>
             </ul>
           </ul>
@@ -70,7 +74,66 @@
 
       <article class="slide">
         <h2>User Stories</h2>
-        <p><a href="dillinger.io">Markup Editor</a></p>
+        <sup
+          style="
+            cursor: pointer;
+            color: white;
+            position: absolute;
+            bottom: 3%;
+            right: 3%;
+          "
+          class="reset ×"
+        >
+          🧹</sup
+        >
+        <ol class="user-stories">
+          <li><input type="checkbox" /> Setup Supabase</li>
+          <li>
+            <input type="checkbox" /> Setup Vite React project and its
+            directories
+          </li>
+          <li>
+            <input type="checkbox" /> Setup Nav component w/ links to each page
+            (stub out each page)
+          </li>
+          <li><input type="checkbox" /> Add Signup and Signin components</li>
+          <li>
+            <input type="checkbox" /> Setup Supabase user authentication flow
+          </li>
+          <li><input type="checkbox" /> Setup React Router</li>
+          <li><input type="checkbox" /> Add user Profile component</li>
+          <li><input type="checkbox" /> Protect auth'd routes behind signin</li>
+          <li><input type="checkbox" /> Add Dashboard component</li>
+          <li>
+            <input type="checkbox" /> Add PostList component & PostSummary
+            component
+          </li>
+          <li><input type="checkbox" /> Add PostDetail component</li>
+          <li><input type="checkbox" /> Add createPost component</li>
+          <li>
+            <input type="checkbox" /> Setup React Toolkit for state management
+          </li>
+        </ol>
+        <script async defer>
+          function updateTask (e, index) {
+            const store = JSON.parse(localStorage.getItem("tasks"));
+            store[index] = e.target.checked;
+            const updatedTask = JSON.stringify(store);
+            localStorage.setItem("tasks", updatedTask);
+          }
+          const tasks = Array.from(document.querySelectorAll(".user-stories > li >input"));
+          tasks.forEach((task, index) => task.addEventListener("click", (e) => updateTask(e, index)));
+          if (!localStorage.getItem("tasks")) {
+            localStorage.setItem("tasks", "[]");
+          } else {
+            const curState = JSON.parse(localStorage.getItem("tasks"));
+            tasks.forEach((task, index) => task.checked = curState[index] ? true : false);
+          }
+          document.querySelector('.reset.×').addEventListener('click', e => {
+            localStorage.setItem("tasks", '[]')
+            tasks.forEach((task, index) => task.checked = false);
+          })
+        </script>
       </article>
 
       <article class="slide">
@@ -173,7 +236,11 @@ export default defineConfig({
             >Netlify Functions Docs</a
           >
         </p>
-        <p><a href="https://supabase.com/docs/guides/functions">Supabase Edge Functions</a></p>
+        <p>
+          <a href="https://supabase.com/docs/guides/functions"
+            >Supabase Edge Functions</a
+          >
+        </p>
       </article>
     </section>
 
