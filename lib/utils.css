@@ -9,22 +9,24 @@
 pre {
   position: relative;
 }
-pre.wrong::before {
-  content: '🚫';
-  position: absolute;
-  left: -2.1rem;
-  font-size: 2rem;
-  top: 0.2rem;
 
-}
-pre.correct::before {
-  content: '✅';
+:is(.wrong, .correct)::before {
   position: absolute;
   left: -2.1rem;
   font-size: 2rem;
   top: 0.2rem;
 }
-pre.equal::before {
+:is(.wrong, .correct).over::before {
+  left: 0.5rem;
+  top: 0.05rem;
+}
+.wrong::before {
+  content: '🚫';
+}
+.correct::before {
+  content: '✅';
+}
+.equal::before {
   content: '🟰';
   position: absolute;
   left: -4rem;
@@ -32,7 +34,7 @@ pre.equal::before {
   top: 2rem;
   z-index: 10;
 }
-pre[data-before]::before {
+[data-before]::before {
   content: attr(data-before);
   position: absolute;
   right: calc(100% - 5rem);

@@ -17,6 +17,11 @@
 	 <link rel="stylesheet" href="../laser/laser.css">
    <link rel="stylesheet" href="./css/styles.css">
    <script src="https://cdn.master.co/css"></script>
+   <style>
+    * {
+      box-sizing: border-box;
+    }
+   </style>
 </head>
 <body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
 
@@ -76,13 +81,13 @@
   property4: value;
 }</code></pre>
       <pre class="language-css"><code>a {
-  color: #c929af;
+  color: navy;
   font-size: 24px;
   padding: 8px;
   background-color: gold;
 }</code></pre>
     </div>
-    <p><a style="color: #c929af; font-size: 24px; padding: 8px; background-color: gold;" href="./">Example &lt;a&gt; tag</a></p>
+    <p><a style="color: navy; font-size: 24px; padding: 8px; background-color: gold;" href="./">Example &lt;a&gt; tag</a></p>
     <ul>
         <li>The <strong>selector</strong> identifies which HTML element(s) the style rule will be applied to</li>
         <li>The <strong>curly braces</strong> contain the property-value pairs, each separated by a semi-colon</li>
@@ -318,11 +323,7 @@ header #logo {
 
   <artile class="slide">
     <h2>CSS Length Units</h2>
-    <div class=" d:flex t:center">
-        <fieldset class="d:flex ai:center jc:center">
-            <legend>Percent</legend>
-            <code>%</code>
-        </fieldset> 
+    <div class="d:flex t:center">
         <fieldset>
             <legend>Fonts</legend>
             <code>ch</code>
@@ -331,12 +332,14 @@ header #logo {
             <code>rem</code>
         </fieldset>
         <fieldset>
-            <legend>Viewport</legend>
-            <code>vh</code>
-            <code>vw</code>
-            <code>vmin</code>
-            <code>vmax</code>
-        </fieldset>
+          <legend>Viewport</legend>
+          <code>vh</code>
+          <code>vw</code>
+          <code>vmin</code>
+          <code>vmax</code>
+      </fieldset>
+      <!-- </div>
+      <div class="d:flex t:center"> -->
         <fieldset>
             <legend>Absolute</legend>
             <code>px</code>
@@ -346,6 +349,10 @@ header #logo {
             <code>pc</code>
             <code>pt</code>
         </fieldset>
+        <fieldset class="d:flex ai:center jc:center">
+          <legend>Percent</legend>
+          <code>%</code>
+      </fieldset> 
     </div>
     <p class="t:center">CSS Lengths represent a distance within the browser viewport.</p>
     <p>They can be assigned to some css properties as a value.</p>
@@ -385,29 +392,81 @@ header #logo {
 
 <article class="slide">
     <h2>CSS Specificity & the Cascade </h2>
-    <small>
-        <a href="img/css-specificity-wars.png">Star Wars Specificity</a> - 
-        <a href='https://stuffandnonsense.co.uk/archives/css_specificity_wars.html'>(ref)</a>
+    
+    <style>
+      .specificity > span { 
+        background-color: #ffffff25;
+        height: 100%;
+        width: 100%;
+        text-align: center;
+       }
+       .specificity > div {
+        /* white-space: nowrap; */
+        background-color: transparent;
+        width: 100%;
+       }
+       .specificity span :not(pre) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       }
+       .specificity .numeral code {
+        display: inline-block;
+       }
+    </style>
+    <div class="specificity grid" 
+    style="gap: 2px; grid-template-columns: 1fr repeat(5, 100px);">
+      <!-- header row -->
+      <div style="text-align: center; margin-top: 1rem;">
+          <a href="img/css-specificity-wars.png">Star Wars Specificity</a> -
+          <a href='https://stuffandnonsense.co.uk/archives/css_specificity_wars.html'>(ref)</a>
+      </div>
+      <span><strong>Inline Styles</strong></span>
+      <span><strong>IDs</strong></span>
+      <span><strong>Classes, <br/>attributes, <br/>pseudo-classes</strong></span>
+      <span><strong>Elements,<br>pseudo-elements</strong></span>
+      <span><strong></strong></span>
+      <!-- second row -->
+      <div style="text-align: center; margin-top: 1rem;">
         <a href="https://polypane.app/css-specificity-calculator/#selector=main%20%3Ais(h1%2C%20h2%2C%20h3)">Calculator</a>
-    </small>
-    <div class="pt:12 d:grid grid-template-columns:repeat(4,1fr) ai:start jc:center t:center">
-        <div class="d:flex ai:center flex-direction:column jc:center">
-            <div class="ga-box">0 - <span class="f:24">∞</span></div>
-            <p>Inline styles</p>
-        </div>
-        <div class="d:flex ai:center flex-direction:column jc:center">
-            <div class="ga-box lh:1.5">0 - 1</div>
-            <p>IDs</p>
-        </div>
-        <div class="d:flex ai:center flex-direction:column jc:center">
-            <div class="ga-box">0 - <span class="f:24">∞</span></div>
-            <p>Classes, attributes, pseudo-classes</p>
-        </div>
-        <div class="d:flex ai:center flex-direction:column jc:center">
-            <div class="ga-box">0 - <span class="f:24">∞</span></div>
-            <p>Elements,<br>pseudo-elements</p>
-        </div>
-    </div>
+      </div>
+      <span><pre class="numeral"><code></code><code style="font-size: 30px;">∞</code></pre></span>
+      <span><pre class="numeral"><code style="line-height: 45px;">0 or 1</code></pre></span>
+      <span><pre class="numeral"><code style="line-height: 45px;">10n</code></pre></span>
+      <span><pre class="numeral"><code style="line-height: 45px;">1n</code></pre></span>
+      <span style="display: flex; align-items: center; justify-content: center;">total</span>
+      <!-- third row -->
+      <div>
+        <pre class="language-css"><code>#myID .class3 div {
+  background: blue;
+}</code></pre></div>
+      <span>0</span>
+      <span>1</span>
+      <span>1</span>
+      <span>1</span>
+      <span> = 111</span>
+      <!-- forth row -->
+      <div>
+        <pre class="language-css"><code>.class1 .class2 p {
+  background: green;
+}</code></pre></div>
+      <span>0</span>
+      <span>0</span>
+      <span>2</span>
+      <span>1</span>
+      <span> = 21</span>
+      <!-- fifth row -->
+      <div>
+        <pre class="language-css"><code>main ul li {
+  background: red;
+}</code></pre></div>
+      <span>0</span>
+      <span>0</span>
+      <span>0</span>
+      <span>3</span>
+      <span> = 3</span>
+
+    <!-- </div>
     <div class="d:flex">
         <div class="d:flex flex-direction:column ai:center">
             <pre class="language-css"><code>#myID .class3 div {
@@ -428,7 +487,7 @@ header #logo {
 }</code></pre>
           <p>0, 0, 0, 1</p>
         </div>
-    </div>
+    </div> -->
   </article>
 
   <article class="slide">
@@ -468,18 +527,44 @@ header #logo {
 
     <article class="slide">
         <h2>Colors In CSS</h2>
-        <ul style="background: white; color: black; border: 1px solid #777; border-radius: 16px; padding: 16px; display:flex; justify-content: space-between; margin: 0; list-style: none; text-align: center;">
-            <li>Named Color <span style="color: purple">purple</span></li>
-            <li>Hex Color <span style="color: #f94">#f94</span> or <span style="color: #ff9f4f">#ff9f4f</span></li>
-            <li>RGB() color <span style="color: rgb(24, 118, 196); white-space: nowrap; font-size: 2.1rem">rgb(24, 118, 196)</span></li>
-            <li>HSL() color <span style="color: hsl(150, 90%, 40%); white-space: nowrap; font-size: 2.1rem">hsl(150, 90%, 40%)</span></li>
-        </ul>
-        <p>Transparency in Hex, RGB & HSL: <b>Alpha Channel</b></p>
-        <p style="padding: 1rem; border-radius: 16px; background: white; display: flex; gap: 3rem; justify-content: space-between; font-size: 2.1rem">
-            <span style="color: #ff9f4f75">#ff9f4f99 </span>
-            <span style="color: rgba(24, 118, 196, 0.5)"> rgba(24, 118, 196, 0.5) </span>
-            <span style="color: hsla(150,90%,40%,0.5)"> hsla(150, 90%, 40%, 0.5) </span>
-        </p>
+        <table class="color:white background:#ffffff25" onclick="(function(){console.log(event.target)})(event)">
+          <tr class="text-align:center">
+            <th></th>
+            <th class="text-align:center">Named</th>
+            <th class="text-align:center">OKLCH</th>
+            <th class="text-align:center">Hex</th>
+            <th class="text-align:center">RGB</th>
+            <th class="text-align:center">HSL</th>
+          </tr>
+          <tr>
+            <td>Standard</td>
+            <td>
+              <span style="color: crimson">crimson</span>
+            </td>
+            <td>
+              <span style="color: oklch(70% 0.1 173)">oklch(70% 0.1 173)</span>
+            </td>
+            <td>
+              <span style="color: #f94">#f94</span> or <span style="color: #ff9f4f">#ff9f4f</span>
+            </td>
+            <td>
+              <span style="color: rgb(24, 118, 196); white-space: nowrap; font-size: 2.1rem">rgb(24, 118, 196)</span>
+            </td>
+            <td>
+              <span style="color: hsl(150, 90%, 40%); white-space: nowrap; font-size: 2.1rem">hsl(150, 90%, 40%)</span>
+            </td>
+          </tr>
+          <tr >
+            <td class="m">with &rarr; <br /> Alpha Channel (Transparency)<td>
+            <span>n/a</span> <!-- weird bug where an extra td is rendered, so omitting the <td> and just using span here -->
+            <td> 
+              <span style="color: rgba(82, 179, 152, 0.5)" data-color="oklch(70% 0.1 173 0.5)">oklch(70% 0.1 173 / 0.5)</span>
+            </td>
+            <td class="m"><span style="color: #ff9f4f75">#ff9f4f99 </span></td>
+            <td class="m"><span style="color: rgba(24, 118, 196, 0.5)"> rgba(24, 118, 196, 0.5) </span></td>
+            <td class="m"><span style="color: hsla(150,90%,40%,0.5)"> hsla(150, 90%, 40%, 0.5) </span></td>
+          </tr>
+        </table>
         <div class="flex border:1|solid|white">
             <p><a href="https://www.w3schools.com/cssref/css_colors.asp">W3 CSS colors</a></p>
             <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">MDN Color</a></p>
@@ -491,6 +576,10 @@ header #logo {
     <article class="slide">
         <h2>Color Space & Color Gamut</h2>
         <div class="d:flex ai:center gap:32">
+          <div class="d:flex flex-direction:column">
+            <h4>OKLCH Scale</h4>
+            <a style="text-align: center" href="https://oklch.com/">Docs</a>
+          </div>
             <div class="d:flex flex-direction:column">
                 <h4>RGB Scale (w/ hex values)</h4>
                 <img style="max-height: 55vh" src="img/hex_color.png" alt="hex code color breakdown">
@@ -732,17 +821,26 @@ they are available to the other files */
             </code></pre>
                 </div>
             </div>
-            <p>But the number of separate files increases, so does the page load speed... it's best to keep it under 6</p>
+            <p>But the number of separate files increases, so does the page load speed... it's best to keep it under 7</p>
         </article>
 
         <article class="slide">
             <h2>Affordances in User Interfaces</h2>
-            <div style='display: flex'>
-                <img style="max-width: 33%" src="img/design_of_everyday_things.jpeg" alt="">
-                <img style="max-width: 33%" src="img/push_pull.jpeg" alt="">
-                <img style="max-width: 33%" src="img/turn.jpg" alt="">
-            </div>
             <p><a href="https://en.wikipedia.org/wiki/Ethnography">Ethnography</a> & User Research</p>
+            <div style='text-align: center; width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;'>
+              <span>
+                <img src="img/design_of_everyday_things.jpeg" alt="">
+              </span>
+              <span style="position: relative" class="correct over">
+                <img src="img/push_pull.jpeg" alt="">
+              </span>
+              <span style="position: relative" class="wrong over" title="Ambiguous">
+                <img src="img/turn.jpg" alt="">
+              </span>
+              <div></div>
+              <div>Inuitive, Clear, Obvious</div>
+              <div>Ambiguous, Overloaded Uses</div>
+            </div>
         </article>
         <article class="slide">
             <h2>CSS Transitions & Animations</h2>
