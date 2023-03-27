@@ -74,6 +74,7 @@
 
       <article class="slide">
         <h2>User Stories</h2>
+        <p>Let's setup each of the following things:</p>
         <sup
           style="
             cursor: pointer;
@@ -86,53 +87,63 @@
         >
           🧹</sup
         >
-        <ol class="user-stories">
-          <li><input type="checkbox" /> Setup Supabase</li>
+        <ol class="user-stories col-2 margin:4px">
+          <li><input type="checkbox" /> Supabase Account & DB</li>
+          <li><input type="checkbox" /> Vite/React project & directories</li>
           <li>
-            <input type="checkbox" /> Setup Vite React project and its
-            directories
+            <input type="checkbox" /> Navbar component w/ links to each page
           </li>
+          <li><input type="checkbox" /> Stub out page for each Route</li>
+          <li><input type="checkbox" /> React Router/Routes/Route</li>
+          <li><input type="checkbox" /> Signup & Signin components</li>
+          <li><input type="checkbox" /> User Account component</li>
+          <li><input type="checkbox" /> Dashboard component</li>
+          <li><input type="checkbox" /> PostList component</li>
+          <li><input type="checkbox" /> PostSummary component</li>
+          <li><input type="checkbox" /> PostDetail component</li>
+          <li><input type="checkbox" /> CreatePost component</li>
+          <li><input type="checkbox" /> Supabase user authentication flow</li>
           <li>
-            <input type="checkbox" /> Setup Nav component w/ links to each page
-            (stub out each page)
+            <input type="checkbox" /> React Toolkit store & slices for state
+            management
           </li>
-          <li><input type="checkbox" /> Add Signup and Signin components</li>
-          <li>
-            <input type="checkbox" /> Setup Supabase user authentication flow
-          </li>
-          <li><input type="checkbox" /> Setup React Router</li>
-          <li><input type="checkbox" /> Add user Profile component</li>
           <li><input type="checkbox" /> Protect auth'd routes behind signin</li>
-          <li><input type="checkbox" /> Add Dashboard component</li>
-          <li>
-            <input type="checkbox" /> Add PostList component & PostSummary
-            component
-          </li>
-          <li><input type="checkbox" /> Add PostDetail component</li>
-          <li><input type="checkbox" /> Add createPost component</li>
-          <li>
-            <input type="checkbox" /> Setup React Toolkit for state management
-          </li>
+          <li><input type="checkbox" /> Add loading SVG</li>
+          <li><input type="checkbox" /> Build & Deploy app to github pages!</li>
+          <li><input type="checkbox" /> Test live site!</li>
         </ol>
+        <style>
+          .user-stories > li > input {
+            scale: 2;
+            margin: 0 4px 6px 0;
+            vertical-align: middle;
+          }
+        </style>
         <script async defer>
-          function updateTask (e, index) {
-            const store = JSON.parse(localStorage.getItem("tasks"));
+          function updateTask(e, index) {
+            const store = JSON.parse(localStorage.getItem("userstories"));
             store[index] = e.target.checked;
             const updatedTask = JSON.stringify(store);
-            localStorage.setItem("tasks", updatedTask);
+            localStorage.setItem("userstories", updatedTask);
           }
-          const tasks = Array.from(document.querySelectorAll(".user-stories > li >input"));
-          tasks.forEach((task, index) => task.addEventListener("click", (e) => updateTask(e, index)));
-          if (!localStorage.getItem("tasks")) {
-            localStorage.setItem("tasks", "[]");
+          const tasks = Array.from(
+            document.querySelectorAll(".user-stories > li >input")
+          );
+          tasks.forEach((task, index) =>
+            task.addEventListener("click", (e) => updateTask(e, index))
+          );
+          if (!localStorage.getItem("userstories")) {
+            localStorage.setItem("userstories", "[]");
           } else {
-            const curState = JSON.parse(localStorage.getItem("tasks"));
-            tasks.forEach((task, index) => task.checked = curState[index] ? true : false);
+            const curState = JSON.parse(localStorage.getItem("userstories"));
+            tasks.forEach(
+              (task, index) => (task.checked = curState[index] ? true : false)
+            );
           }
-          document.querySelector('.reset.×').addEventListener('click', e => {
-            localStorage.setItem("tasks", '[]')
-            tasks.forEach((task, index) => task.checked = false);
-          })
+          document.querySelector(".reset.×").addEventListener("click", (e) => {
+            localStorage.setItem("userstories", "[]");
+            tasks.forEach((task, index) => (task.checked = false));
+          });
         </script>
       </article>
 
@@ -178,6 +189,50 @@
       </article>
 
       <article class="slide">
+        <h2>Using Bulma</h2>
+        <p>
+          We'll globally import Bulma CSS framework to get nice CSS
+          automatically.
+        </p>
+        <p>
+          Just add this import to the top of your global
+          <code>index.css</code> file:
+        </p>
+        <code
+          >@import
+          "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";</code
+        >
+        <p>
+          <a href="https://bulma.io/documentation/overview/start/"
+            >Bulma Docs</a
+          >
+        </p>
+      </article>
+
+      <article class="slide">
+        <h2>Install JS Dependencies</h2>
+        <p>You can install multiple packages at once to save time:</p>
+        <code
+          >npm install react-router-dom react-redux @reduxjs/toolkit
+          @supabase/supabase-js</code
+        >
+      </article>
+
+      <article class="slide">
+        <h2>Using Simple-Icons Library via cdn</h2>
+        <code
+          >&lt;img height="32" width="32" src="https://cdn.simpleicons.org/[ICON
+          SLUG]/[COLOR]" /></code
+        >
+        <p>
+          <a href="https://github.com/simple-icons/simple-icons"
+            >Simple Icons docs</a
+          >
+        </p>
+        <p><a href="https://simpleicons.org/">Icon Gallery</a></p>
+      </article>
+
+      <article class="slide">
         <h2>API tokens & secrets</h2>
         <p>
           <a
@@ -192,8 +247,13 @@
         </p>
         <p>
           Import the secrets/tokens into your project securely (usually with
-          <code>dotenv</code> pkg or for Vite.js using
+          <code>dotenv</code> pkg) or for Vite.js using
           <code>import.meta.env.VITE_SECRET_NAME</code>
+        </p>
+        <p>
+          <a href="https://vitejs.dev/guide/env-and-mode.html"
+            >Vite Env Vars Docs</a
+          >
         </p>
       </article>
       <article class="slide">
@@ -250,8 +310,43 @@ export default defineConfig({
         <h1>Where to go from here...</h1>
       </header>
 
+      <articles class="slide">
+        <h2>Don't Stop! Keep Going!</h2>
+        <p>
+          Now that you've got Frontend Development under your belt, pick another
+          speciality to pair with it!
+        </p>
+        <ul>
+          <li>Backend Dev & API development</li>
+          <li>Cyber Security</li>
+          <li>Salesforce Development</li>
+          <li>
+            Amazon Certs for Dev ops engineering (setting up
+            servers/infrastructure
+          </li>
+          <li>Figma Designing for webapps</li>
+        </ul>
+      </articles>
+
+      <articles class="slide">
+        <h2>Learn Another Framework</h2>
+        <ul>
+          <li>React's Meta Frameworks:</li>
+          <ul>
+            <li>Next.js</li>
+            <li>Remix</li>
+          </ul>
+          <li>Svelte (w/ Sveltekit)</li>
+          <li>Solidjs (w/ SolidStart)</li>
+          <li>Qwik (w/ QwikCity)</li>
+          <li>Astro.js</li>
+          <li>Vue (w/ Nuxt.js)</li>
+          <li>Angular</li>
+        </ul>
+      </articles>
+
       <article class="slide">
-        <h2>Project Ideas</h2>
+        <h2>Project Ideas to keep improving on Frontend:</h2>
         <ul>
           <li>(re)Design your own personal portfolio website</li>
           <li>
