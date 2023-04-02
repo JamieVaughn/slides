@@ -413,9 +413,12 @@ header #logo {
        .specificity .numeral code {
         display: inline-block;
        }
+       .specificity {
+        width: 100%;
+       }
     </style>
     <div class="specificity grid" 
-    style="gap: 2px; grid-template-columns: 1fr repeat(5, 100px);">
+    style="gap: 2px; grid-template-columns: 3fr repeat(5, 1fr);">
       <!-- header row -->
       <div style="text-align: center; margin-top: 1rem;">
           <a href="img/css-specificity-wars.png">Star Wars Specificity</a> -
@@ -431,7 +434,7 @@ header #logo {
         <a href="https://polypane.app/css-specificity-calculator/#selector=main%20%3Ais(h1%2C%20h2%2C%20h3)">Calculator</a>
       </div>
       <span><pre class="numeral"><code></code><code style="font-size: 30px;">∞</code></pre></span>
-      <span><pre class="numeral"><code style="line-height: 45px;">0 or 1</code></pre></span>
+      <span><pre class="numeral"><code style="line-height: 45px;">0|1</code></pre></span>
       <span><pre class="numeral"><code style="line-height: 45px;">10n</code></pre></span>
       <span><pre class="numeral"><code style="line-height: 45px;">1n</code></pre></span>
       <span style="display: flex; align-items: center; justify-content: center;">total</span>
