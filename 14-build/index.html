@@ -269,6 +269,40 @@ ReactDOM.render(&lt;App />, document.getElementById('app'));</code></pre>
     </code></pre>
   </article>
 
+  <article class="slide">
+    <h2>Deploying Vite to Github Pages</h2>
+    <ol>
+      <li>
+        in your Github repo, go into the Settings tab, and click on "Pages"
+      </li>
+      <li>
+        Under "Build and deployment", set your branch to your
+        main/master/central branch, and set the folder to "/docs" instead of
+        "/(root)"
+      </li>
+      <li>
+        Update your Vite project's <code>vite.config.js</code> to look like
+        the following:
+        <pre class="language-js"><code>import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
+
+export default defineConfig({
+plugins: [react()],
+base: "/YOUR-REPO-NAME",
+build: {
+outDir: 'docs'
+}
+})</code></pre>
+      </li>
+      <li>Build your project by running <code>npm run build</code></li>
+      <li>
+        Git add your files and push them up to Github (make sure you are on
+        the branch specified in your Github Pages settings)
+      </li>
+      <li>Wait a few moments for Github to run its checks and deploy!</li>
+    </ol>
+  </article>
+
   <article class="slide" id="data-insert">
     <h2>ESLint</h2>
     <p><code>npm install eslint</code></p>
