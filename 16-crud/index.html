@@ -47,7 +47,7 @@
           <img src="img/crud_app_tree_diagram.jpg" alt="" />
           <ul>
             <li>Vite.js</li>
-            <li>CSS library: Bulma</li>
+            <li>CSS framework: MVP.css</li>
             <li>React with:</li>
             <ul>
               <li>React Router</li>
@@ -57,7 +57,7 @@
             <ul>
               <li>PostGres Database</li>
               <li>User Authentication</li>
-              <li>File Uploads</li>
+              <!-- <li>File Uploads</li> -->
             </ul>
           </ul>
         </div>
@@ -69,10 +69,31 @@
           <a href="https://supabase-bookmarks.vercel.app/"
             >Bookmarks App (2023)</a
           >
+        </p>
+        <p>
           <a href="https://bookmarks-app-9ea49.web.app/signup"
             >Post-a-link App (2022)</a
           >
         </p>
+      </article>
+
+      <article class="slide">
+        <h2>Signin/Signup Page</h2>
+        <img onclick="(()=>event.target.requestFullscreen())(event)" src="img/sign_in_up.svg" alt="">
+      </article>
+      <article class="slide">
+        <h2>Post List & Details</h2>
+        <div class="flex">
+          <img onclick="(()=>event.target.requestFullscreen())(event)" src="img/post_list.svg" alt="">
+          <img onclick="(()=>event.target.requestFullscreen())(event)" src="img/post_details.svg" alt="">
+        </div>
+      </article>
+      <article class="slide">
+        <h2>The Input Forms: Account & Create Post</h2>
+        <div class="flex">
+          <img onclick="(()=>event.target.requestFullscreen())(event)" src="img/create_post.svg" alt="">
+          <img onclick="(()=>event.target.requestFullscreen())(event)" src="img/account.svg" alt="">
+        </div>
       </article>
 
       <article class="slide">
@@ -192,41 +213,45 @@
       </article>
 
       <article class="slide">
-        <h2>Using Bulma</h2>
+        <h2>Using MVP.css</h2>
         <p>
-          We'll globally import Bulma CSS framework to get nice CSS
-          automatically.
+          We'll globally import MVP.css framework to get nice styles
+          effortlessly.
         </p>
         <p>
           Just add this import to the top of your global
           <code>index.css</code> file:
         </p>
-        <code
-          >@import
-          "https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css";</code
-        >
+        <code class="language-css">@import "https://unpkg.com/mvp.css@1.12/mvp.css";</code>
+        <p>OR add a link tag in your <code>index.html</code> file:</p>
+        <pre><code>&lt;link rel="stylesheet" href="https://unpkg.com/mvp.css@1.12/mvp.css"></code></pre>
         <p>
-          <a href="https://bulma.io/documentation/overview/start/"
-            >Bulma Docs</a
+          <a href="https://andybrewer.github.io/mvp/#docs"
+            >MVP.css Docs</a
           >
         </p>
       </article>
 
       <article class="slide">
         <h2>Install JS Dependencies</h2>
-        <p>You can install multiple packages at once to save time:</p>
-        <code
-          >npm install react-router-dom react-redux @reduxjs/toolkit
-          @supabase/supabase-js</code
-        >
+        <p>There are four npm packages we'll need:</p>
+        <ol>
+          <li><code>react-router-dom</code></li>
+          <li><code>react-redux</code></li>
+          <li><code>@reduxjs/toolkit</code></li>
+          <li><code>@supabase/supabase-js</code></li>
+        </ol>
+        <p>You can conveniently install multiple packages at once:</p>
+        <pre class="language-bash"><code
+          >npm install react-router-dom react-redux @reduxjs/toolkit @supabase/supabase-js</code
+        ></pre>
       </article>
 
       <article class="slide">
         <h2>Using Simple-Icons Library via cdn</h2>
-        <code
-          >&lt;img height="32" width="32" src="https://cdn.simpleicons.org/[ICON
-          SLUG]/[COLOR]" /></code
-        >
+        <pre class="language-html"><code
+          >&lt;img height="32" width="32" src="https://cdn.simpleicons.org/[ICON_NAME]" /></code
+        ></pre>
         <p>
           <a href="https://github.com/simple-icons/simple-icons"
             >Simple Icons docs</a
@@ -260,27 +285,25 @@
         </p>
       </article>
       <article class="slide">
-        <h2>Deploying Vite to Vercel Hosting</h2>
-        <ol>
-          <li>
-            Why can't we deploy our CRUD app to github pages? Because of the env
-            vars
-          </li>
-          <li>
-            <ul>In your Vite project:
+        <h2>Deploying Vite to Vercel, Part 1</h2>
+        <p>Why can't we deploy our CRUD app to github pages? Because it doesn't support env
+          vars</p>
+        <ol>In your Vite project:
+          
           <li>
             Update your Vite project's <code>vite.config.js</code> to the
-            default configuration. It should look like this:
+            default configuration. <details><summary>It should look like this:</summary>
             <pre class="language-js"><code>import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-})</code></pre>
+})</code></pre></details>
           </li>
           <li>
             Add a file called <code>vercel.json</code> to the root of your
-            project directort. It should have this content inside:
+            project directort. <details>
+              <summary>It should have this content inside:</summary>
             <pre class="language-json"><code>{
   "rewrites": [
     { 
@@ -288,42 +311,42 @@ export default defineConfig({
       "destination": "/" 
     }
   ]
-}</code></pre>
+}</code></pre></details>
           </li>
           <li>Push these changes up to your remote project repo in Github.com</li>
-        </ul>
-      </li>
-
-          <li>
-            <ul>
-              At Supabase.com:
-              <li>
-                In the Supabse console, go to <kbd>Authentication</kbd> >
-                <kbd>URL</kbd> in the sidebar & change the site url to the url
-                given in the Vercel project console.
-              </li>
-              <li>
-                Add <code>https://**vercel.app/*/*</code> to the
-                <kbd>Redirect URLs</kbd> panel
-              </li>
-            </ul>
-          </li>
-          <li>
-            <ul>At Vercel.com
-          <li>
-            Create an account in Vercel and start a new project. Link it to your
-            Github project repo.
-          </li>
-          <li>
-            Add your environment variables (<code>VITE_SITE_URL</code>,
-            <code>VITE_ANON_KEY</code>) to the <kbd>Settings</kbd> >
-            <kbd>Environment Variables</kbd> section in Vercel
-          </li>
-          <li>Click <kbd>Deploy Site</kbd> in your Vercel Dashboard</li>
-        </ul>
       </li>
         </ol>
       </article>
+      <article class="slide">
+        <h2>Deploying Vite to Vercel, Part 2</h2>
+        <p>Configuring Supabase & Vercel Consoles</p>
+          <ol><strong class="highlight">At Vercel.com</strong>
+              <li>
+                Create an account in Vercel and start a new project. Link it to your
+                Github project repo.
+              </li>
+              <li>Copy & Save the site name & site url that's assigned to your new project. You'll need this to configure Supabase later.</li>
+              <li>
+                Add your environment variables (<code>VITE_SITE_URL</code>,
+                <code>VITE_ANON_KEY</code>) to the <kbd>Settings</kbd> >
+                <kbd>Environment Variables</kbd> section in Vercel
+              </li>
+            </ul>
+            <strong class="highlight">At Supabase.com:</strong>
+            <li>
+              In the Supabse console, go to <kbd>Authentication</kbd> >
+              <kbd>URL</kbd> in the sidebar & change the site url to the url
+              given in the Vercel project console.
+            </li>
+            <li>
+              Add <code>https://**vercel.app/*/*</code> to the
+              <kbd>Redirect URLs</kbd> panel
+            </li>
+            <strong class="highlight">Back at Vercel.com</strong>
+            <li>In your Vercel.com Console: Click <kbd>Deploy Site</kbd></li>
+          </ol>
+      </article>
+
       <article class="slide">
         <h2>Serverless Cloud Functions</h2>
         <p>
