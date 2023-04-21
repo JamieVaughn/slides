@@ -1,0 +1,31 @@
+<section>
+  <section>
+    <h1>Testing in Javascript</h1>
+  </section>
+  <section>
+    <h2>Test Driven Development with Jest</h2>
+    <p>(J)avascript T(est)ing = Jest</p>
+    <p><a href="https://jestjs.io/docs/en/getting-started">Jest Docs</a></p>
+    <p><a href="https://css-tricks.com/front-end-testing-is-for-everyone/">Frontend Testing for Everyone</a></p>
+  </section>
+  <section>
+    <h2>Installation</h2>
+    <pre><code class="med-code">npm init
+npm install --save-dev Jest</code></pre>
+  </section>
+  <section>
+    <h2>First Test</h2>
+
+    <pre><code class="med-code">// index.js
+function sum = (a, b) => a + b
+module.exports = sum</code></pre>
+    <pre><code class="med-code">// index.test.js`
+test('two plus two is four', () => {
+expect(2 + 2).toBe(4);
+});</code></pre>
+  </section>
+  <section>
+    <h2>Mocking Functions or APIs</h2>
+    <p><a href="https://jestjs.io/docs/mock-functions">Docs</a></p>
+  </section>
+</section>
