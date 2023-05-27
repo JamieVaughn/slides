@@ -71,8 +71,18 @@ width: fit-content;
 .lightbox {
   transform: scale(1.75);
   position: fixed;
-  inset: 20% 50% 50%;
+  translate: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.85);
 }
+[onclick*='lightbox'] {
+  cursor: pointer;
+}
+[onclick*='lightbox']:hover {
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.85);
+
+}
+
 
 .slide .h-fit {
   height: fit-content
