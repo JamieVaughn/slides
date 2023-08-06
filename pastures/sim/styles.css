@@ -1,0 +1,36 @@
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 180px);
+  grid-template-rows: repeat(4, 180px);
+  grid-gap: 4px;
+  padding: 1rem;
+}
+div.flex {
+  display: flex;
+  gap: 1rem;
+}
+/* .flex svg {
+  border-bottom: 1px solid gray;
+  border-left: 1px solid gray;
+} */
+.paddock {
+  height: 180px;
+  width: 180px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 3rem;
+  box-sizing: border-box;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 3rem;
+}
+.paddock:hover {
+  border: 2px solid crimson;
+}
+.fold {
+  height: 150px;
+  padding: 1rem;
+  background: lightgrey;
+}

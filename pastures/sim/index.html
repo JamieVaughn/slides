@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World</title>
+    <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <!-- Don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script>
+      function calcGrowth(cap, n, boost = 1) {
+        // the 'boost' in the numerator can be changed to 2 then 3 with research to boost growth
+        return boost / (1 / (1 - n / cap) + Math.exp(-n))
+      }
+    </script>
+    <script type="text/babel">
+//       import {
+//   Sparklines,
+//   SparklinesLine,
+//   SparklinesReferenceLine,
+//   SparklinesSpots,
+// } from 'react-sparklines'
+
+const Sparklines = () => <span>Sparklines</span>
+const SparklinesLine = () => <span>line</span>
+const SparklinesReferenceLine = () => <span>ref line</span>
+const SparklinesSpots = () => <span>spot</span>
+    
+    function useInterval(callback, delay) {
+  const savedCallback = React.useRef()
+
+  // Remember the latest callback.
+  React.useEffect(() => {
+    savedCallback.current = callback
+  }, [callback])
+
+  // Set up the interval.
+  React.useEffect(() => {
+    function tick() {
+      savedCallback.current()
+    }
+    if (delay !== null) {
+      let id = setInterval(tick, delay)
+      return () => clearInterval(id)
+    }
+  }, [delay])
+}
+
+const data = {
+  herd: [],
+  graze: [],
+  condition: [],
+}
+
+const grass = pct => ({
+  // background: `radial-gradient( sienna ${-pct}px, seagreen ${-pct + 100}px)`,
+  background: `linear-gradient( sienna ${100 - pct}%, seagreen ${100 - pct}%)`,
+})
+
+const renderSheep = num => {
+  console.log(num, Array(7).fill('🐑').join(''))
+  return num > 0 ? Array(num).fill('🐑').join('') : ''
+}
+
+function Paddocks(props) {
+  const [sheep, setSheep] = React.useState({num: 10, condition: 0})
+  const [cash, setCash] = React.useState(300)
+  const [fold, setFold] = React.useState({
+    id: 'fold',
+    burden: 0,
+    hay: 10,
+  })
+  const [pads, setPads] = React.useState({
+    pad1: {
+      id: 1,
+      burden: 1,
+      parasite: 0,
+      graze: 100,
+    },
+    pad2: {
+      id: 2,
+      burden: 0,
+      parasite: 0,
+      graze: 100,
+    },
+    pad3: {
+      id: 3,
+      burden: 0,
+      parasite: 0,
+      graze: 100,
+    },
+    pad4: {
+      id: 4,
+      burden: 0,
+      parasite: 0,
+      graze: 100,
+    },
+    pad5: {
+      id: 5,
+      burden: 0,
+      parasite: 0,
+      graze: 100,
+    },
+  })
+
+  const rotate = id => {
+    const writePads = Object.entries(pads).map(p => [
+      p[0],
+      {...p[1], burden: 0},
+    ])
+    const newPads = Object.fromEntries(writePads)
+    newPads[`pad${id}`].burden = 1
+    setPads(newPads)
+    setFold({...fold, burden: 0})
+  }
+  const enFold = () => {
+    const writePads = Object.entries(pads).map(p => [
+      p[0],
+      {...p[1], burden: 0},
+    ])
+    const newPads = Object.fromEntries(writePads)
+    setPads(newPads)
+    setFold({...fold, burden: 1})
+  }
+
+  const handleHerd = dif => {
+    setSheep(prev => ({...sheep, num: sheep.num + dif}))
+    if (dif < 0) setCash(cash + 180 * -1 * dif)
+  }
+  const handleHay = () => {
+    setFold(prev => ({...prev, hay: prev.hay + 1}))
+    setCash(prev => prev - 30)
+  }
+  const handleLand = () => {
+    setCash(cash - 1000)
+    setPads({
+      ...pads,
+      [`pad${pads.length + 1}`]: {
+        id: pads.length + 1,
+        burden: 0,
+        parasite: 0,
+        graze: 100,
+      },
+    })
+  }
+
+  React.useEffect(() => {
+    if (fold.burden && props.count % 30 === 0) {
+      setFold(prev => ({...fold, hay: prev.hay - 1}))
+    }
+    const writePads = Object.entries(pads).map(p => {
+      const net = p[1].burden * (sheep.num / 10)
+      setSheep(prev => ({...sheep, condition: prev.condition + net}))
+      return p[1].burden
+        ? [
+            p[0],
+            {
+              ...p[1],
+              parasite: p[1].parasite + 0.1,
+              graze: p[1].graze - net,
+            },
+          ]
+        : [
+            p[0],
+            {
+              ...p[1],
+              parasite: p[1].parasite > 0 ? p[1].parasite - 0.1 : 0,
+              graze:
+                p[1].graze >= 100
+                  ? 100
+                  : p[1].graze + calcGrowth(100, p[1].graze, 3),
+            },
+          ]
+    })
+    const newPads = Object.fromEntries(writePads)
+    setPads(newPads)
+    data.herd.push(
+      sheep.num *
+        [fold, ...Object.values(pads)].reduce((a, c) => a + c.burden, 0),
+    )
+    data.condition.push(sheep.condition)
+    data.graze.push(Object.values(pads).reduce((a, c) => a + c.graze, 0))
+    // data.parasite.push(pads.)
+    if (sheep.condition > 100) {
+      setSheep(prev => ({num: prev.num + 1, condition: prev.condition - 100}))
+    }
+  }, [props.count])
+  return (
+    <>
+      <div className="flex">
+        <h2>Paddocks</h2>
+        <h5>cash: ${cash}</h5>
+        <h6>
+          elapsed time: <span>{props.count}</span>
+        </h6>
+      </div>
+      <div className="flex" style={{justifyContent: 'space-evenly'}}>
+        <span>Sheep</span>
+        <span>Condition</span>
+        <span>Graze</span>
+      </div>
+      <div className="flex">
+        <Sparklines
+          data={data.herd}
+          style={{background: '#00bdcc'}}
+          limit={100}
+          margin={10}
+          height={40}
+        >
+          <SparklinesLine style={{stroke: 'white', fill: 'none'}} />
+          <SparklinesSpots style={{fill: 'crimson'}} />
+          <SparklinesReferenceLine
+            style={{
+              stroke: 'white',
+              strokeOpacity: 0.75,
+              strokeDasharray: '2, 2',
+            }}
+          />
+        </Sparklines>
+        {/* <Sparklines data={data.herd} limit={100} width={100} height={20}>
+          <SparklinesLine color="blue" />
+        </Sparklines> */}
+        <Sparklines
+          data={data.condition}
+          style={{background: 'rebeccapurple'}}
+          limit={100}
+          margin={10}
+          height={40}
+        >
+          <SparklinesLine style={{stroke: 'white', fill: 'none'}} />
+          <SparklinesSpots style={{fill: 'crimson'}} />
+          <SparklinesReferenceLine
+            style={{
+              stroke: 'white',
+              strokeOpacity: 0.75,
+              strokeDasharray: '2, 2',
+            }}
+          />
+        </Sparklines>
+        {/* <Sparklines data={data.condition} limit={100} width={100} height={20}>
+          <SparklinesLine color="rebeccapurple" />
+        </Sparklines> */}
+        <Sparklines
+          data={data.graze}
+          style={{background: 'seagreen'}}
+          limit={100}
+          margin={10}
+          height={40}
+        >
+          <SparklinesLine style={{stroke: 'white', fill: 'none'}} />
+          <SparklinesSpots style={{fill: 'crimson'}} />
+          <SparklinesReferenceLine
+            style={{
+              stroke: 'white',
+              strokeOpacity: 0.75,
+              strokeDasharray: '2, 2',
+            }}
+          />
+        </Sparklines>
+        {/* <Sparklines data={data.graze} limit={100} width={100} height={20}>
+          <SparklinesLine color="seagreen" />
+        </Sparklines> */}
+      </div>
+      <br />
+      {/* <button onClick={() => handleHerd(1)}>Add Sheep</button> */}
+      <button onClick={() => handleHerd(-1)}>Sell Sheep</button>
+      <button onClick={() => handleHay()} disabled={cash < 30}>
+        Buy Hay ($30)
+      </button>
+      <button onClick={() => handleLand()} disabled={cash < 1000}>
+        Add Paddock ($1000)
+      </button>
+      <div className="flex">
+        <div className="grid">
+          <div onClick={() => enFold('fold')} className="fold">
+            {'🌾'.repeat(fold.hay > 0 ? fold.hay : 0)}
+            {renderSheep(fold.burden ? sheep.num : 0)}
+          </div>
+          {Object.values(pads).map(pad => (
+            <div
+              onClick={() => rotate(pad.id)}
+              key={pad.id}
+              style={grass(pad.graze)}
+              className="paddock"
+            >
+              {renderSheep(pad.burden ? sheep.num : 0)}
+            </div>
+          ))}
+        </div>
+        <output>
+          <pre>{JSON.stringify(sheep, null, 1)}</pre>
+          <pre>{JSON.stringify(pads, null, 1)}</pre>
+        </output>
+      </div>
+    </>
+  )
+}
+
+function Counter() {
+  let [count, setCount] = React.useState(0)
+  let [rate, setRate] = React.useState(1)
+
+  useInterval(() => {
+    // Your custom logic here
+    setCount(count + 1)
+  }, 1000 / rate)
+
+  const handleRate = () => {
+    if (rate === 3) {
+      setRate(1)
+    } else {
+      setRate(prev => prev + 0.25)
+    }
+  }
+
+  return (
+    <>
+      <button onClick={handleRate}>Playback Speed: {rate}</button>
+      <Paddocks count={count} />
+    </>
+  )
+}
+
+
+      function MyApp() {
+        return <Counter />
+      }
+
+      const container = document.getElementById('root');
+      const root = ReactDOM.createRoot(container);
+      root.render(<MyApp />);
+
+    </script>
+    <!--
+      Note: this page is a great way to try React but it's not suitable for production.
+      It slowly compiles JSX with Babel in the browser and uses a large development build of React.
+
+      Read this page for starting a new React project with JSX:
+      https://react.dev/learn/start-a-new-react-project
+
+      Read this page for adding React with JSX to an existing project:
+      https://react.dev/learn/add-react-to-an-existing-project
+    -->
+  </body>
+</html>
