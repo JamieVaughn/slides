@@ -727,10 +727,10 @@ fn(3)(4) // 7</code></pre>
       </article>
       <article class="slide">
         <h2>The same curried function written 4 ways</h2>
-        <pre class="language-js"><code>const add = x => y => x + y
+        <pre class="language-js"><code>const add = x =&gt; y =&gt; x + y
 
-const add = x => { 
-    return y => {
+const add = x =&gt; { 
+    return y =&gt; {
         return x + y
     }
 }
