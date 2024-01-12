@@ -726,6 +726,27 @@ fn(3)(4) // 7</code></pre>
         </p>
       </article>
       <article class="slide">
+        <h2>The same curried function written 4 ways</h2>
+        <pre class="language-js"><code>const add = x => y => x + y
+
+const add = x => { 
+    return y => {
+        return x + y
+    }
+}
+
+function add(x) {
+    return function(y) {
+      return x + y
+  }
+}
+
+// calling add:
+const partial = add(1) // return a function with 1 in its closure
+const continuation = partial(2) // returns 3, because it added 1 from above with 2
+</code></pre>
+      </article>
+      <article class="slide">
         <h2>Parallel Closures</h2>
         <p>
           Curried Functions allow us to reuse code by creating
