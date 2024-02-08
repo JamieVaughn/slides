@@ -985,6 +985,44 @@ joEmployee instanceof Person // true
 // OR check the __proto__ property (references the parent)
 joEmployee.__proto__ // Person {constructor: ƒ, getInfo: ƒ}</code></pre>
       </article>
+
+      <article class="slide">
+        <h2>Class vs Object differences</h2>
+        <p>
+          Classes and objects from the essential part of Object-oriented programming, where a class can be considered as a construct that encapsulates a group of variables and methods; whereas, an object acts as member or instance of that class.
+        </p>
+        <table>
+          <thead>
+          <tr>
+            <th style="color: black;">Class</th>
+            <th style="color: black;">Object</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>A class is a blueprint from which you can create the instance, i.e., objects.</td>
+            <td>An object is the instance of the class, which helps programmers to use variables and methods from inside the class.</td>
+          </tr>
+          <tr>
+            <td>A class is used to bind data & methods into a single unit.</td>
+            <td>Object acts like a variable/instance of the class.</td>
+          </tr>
+          <tr>
+            <td>Classes have logical existence (exist in code).</td>
+            <td>Objects have a tangible existence (exist in memory).</td>
+          </tr>
+          <tr>
+            <td>A class doesn't take any memory spaces when a programmer creates one.</td>
+            <td>An object takes memory when a programmer creates one.</td>
+          </tr>
+          <tr>
+            <td>The class has to be declared only once.</td>
+            <td>Objects can be declared several times depending on the requirement.</td>
+          </tr>
+        </tbody>
+        </table>
+      </article>
+
       <article class="slide">
         <h2>Private methods/properties <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields">MDN</a></sup></h2>
         <p>Private members on a class are fully protected and inaccessible, except within the class block scope</p>
