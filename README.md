@@ -1,5 +1,5 @@
 # Slides
-https://slides.monroecc.dev
+https://monroecc.dev/slides
 
 
 ## Utilities
