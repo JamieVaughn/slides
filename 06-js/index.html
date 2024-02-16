@@ -1523,6 +1523,38 @@ Object.values(obj) // [1, 2, 3]
 Object.fromEntries([['a', 1],['b', 2],['c', 3]]) //{a: 1, b: 2, c: 3}</code></pre>
 	</article>
 	<article class="slide">
+		<h2>Group By Method</h2>
+		<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy">`Object.groupBy`</a></p>
+		<div class="flex align">
+		<pre class="language-js"><code>const inventory = [
+  { name: "spinach", type: "vegetable", quantity: 5 },
+  { name: "bananas", type: "fruit", quantity: 0 },
+  { name: "almond", type: "nut", quantity: 23 },
+  { name: "cherries", type: "fruit", quantity: 5 },
+  { name: "pistachio", type: "nut", quantity: 22 },
+]
+
+// call it w an array & a callback fn that returns a string
+const result = Object.groupBy(inventory,({ type }) => type)
+
+console.log(result)</code></pre>
+		<span>&rarr;</span>
+		<pre class="language-js"><code>{ // returns:
+  vegetable: [
+    { name: 'spinach', type: 'vegetable', quantity: 5 },
+  ],
+  fruit: [
+    { name: "bananas", type: "fruit", quantity: 0 },
+    { name: "cherries", type: "fruit", quantity: 5 }
+],
+  nut: [
+    { name: "almond", type: "nut", quantity: 23 },
+    { name: "pistachio", type: "nut", quantity: 22 }
+  ]
+}</code></pre>
+	</div>
+	</article>
+	<article class="slide">
 		<h2>Protecting Objects</h2>
 		<p>Making an object read-only has some "gotchas"</p>
 		<pre class="language-js"><code>const obj = {key: 'value'}
