@@ -51,7 +51,7 @@ pre {
 background: white;
 border-radius: 100px;
 padding: 2rem;
-width: fit-content;
+color: black;
 }
 .backdrop.corners{
   padding: 1rem;
