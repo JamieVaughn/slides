@@ -114,6 +114,7 @@
 	<article class="slide">
 		<h2>JSX</h2>
 		<p>React's syntax for defining View templates</p>
+		<p><a href="https://react.dev/learn/writing-markup-with-jsx">Docs</a></p>
 		<p><a href="https://babeljs.io/repl/">Transpiler</a></p>
 		<pre class="language-js"><code>function myTemplate() {
   return (
@@ -146,7 +147,7 @@
 }</code></pre>
 	</article>
 	<article class="slide">
-		<h2>React Fragments <sup><a href="https://reactjs.org/docs/fragments.html">docs</a></sup></h2>
+		<h2>React Fragments <sup><a href="https://react.dev/reference/react/Fragment">docs</a></sup></h2>
 		<p>Single root element without extra markup</p>
 		<pre class="language-jsx"><code>const MyComponent = () => {
   return (
@@ -169,7 +170,7 @@
 	</article>
 	<article class="slide">
 		<h2>Trying out React's JSX with a CDN</h2>
-		<p><a href="https://beta.reactjs.org/learn/installation">Using React in an HTML Page with Babel</a></p>
+		<p><a href="https://react.dev/learn/installation#try-react">Using React in an HTML Page with Babel</a></p>
 		<p><a href="https://babeljs.io/repl/">Transpiler</a></p>
 	</article>
 
@@ -285,7 +286,7 @@ function ParentComponent() {
 	</article>
 
 	<article class="slide">
-		<h2>React Synthetic Events <sup><a href="https://reactjs.org/docs/events.html#gatsby-focus-wrapper">docs</a></sup></h2>
+		<h2>React Synthetic Events <sup><a href="https://react.dev/reference/react-dom/components/common#react-event-object">docs</a></sup></h2>
 		<p>Using events & event handlers in React is slightly different that conventional DOM Events</p>
 		<pre class="language-js"><code>
 function EventComponent(props) {
@@ -553,7 +554,7 @@ return (
 
 	<article class="slide">
 		<h2>React Hooks</h2>
-		<p><a href="https://reactjs.org/docs/hooks-reference.html">Available Hooks</a></p>
+		<p><a href="https://react.dev/reference/react/hooks">Available Hooks</a></p>
 		<strong>What can they do for us?</strong>
 		<ul>
 			<li>Manage State</li>
@@ -574,7 +575,7 @@ return (
 		<h2>A Stateful Component</h2>
 		<p>Managing Internal State with useState Hook</p>
 		<p>The most important thing is to never mutate state directly.</p>
-		<p>Mutate state with <a href="https://reactjs.org/docs/hooks-state.html"><code>useState(state)</code></a></p>
+		<p>Mutate state with <a href="https://react.dev/reference/react/useState"><code>useState(state)</code></a></p>
 		<pre class="language-js"><code>const MyComponent = props => {
   const [clicks, setClicks] = React.useState(0)
 	// clicks += 1  ⇦don't mutate or reassign directly
@@ -589,7 +590,7 @@ return (
 
 	<article class="slide">
 		<h2>Rules of Hooks</h2>
-		<p><a href="https://reactjs.org/docs/hooks-rules.html">Reactjs.org</a></p>
+		<p><a href="https://react.dev/reference/rules/rules-of-hooks">Reactjs.org</a></p>
 		<p><a href="https://reactjs.org/docs/hooks-faq.html">Hooks FAQ</a></p>
 	</article>
 
@@ -611,7 +612,7 @@ return (
 	</article>
 
 	<article class="slide">
-		<h2>Thinking in React <sup><a href="https://reactjs.org/docs/thinking-in-react.html">Docs</a></sup></h2>
+		<h2>Thinking in React <sup><a href="https://react.dev/learn/thinking-in-react">Docs</a></sup></h2>
 		<p>Using Component Architecture to Build Apps</p>
 		<ul>
 			<li>Build a component Hierarchy from a Mock</li>
@@ -647,7 +648,7 @@ return (
 	<article class='slide'>
 		<h2>Take Home Challenge!</h2>
 		<p>Try out the "Tutorial Fade" technique on this:</p>
-		<p><a href="https://reactjs.org/tutorial/tutorial.html">React Tic Tac Toe Tutorial</a></p>
+		<p><a href="https://react.dev/learn/tutorial-tic-tac-toe">React Tic Tac Toe Tutorial</a></p>
 	</article>
 
 	<article class="slide">
@@ -706,7 +707,7 @@ addEventListener('click', e => {
 	</header>
 
 	<article class="slide">
-		<h2>The <code>useRef</code> Hook <sup><a href="https://reactjs.org/docs/hooks-reference.html#useref">Docs</a></sup></h2>
+		<h2>The <code>useRef</code> Hook <sup><a href="https://react.dev/reference/react/useRef">Docs</a></sup></h2>
 		<p>This gives you a direct reference to some value that persists between renders.</p>
 		<p>Most commonly used to hold references to DOM nodes</p>
 		<p>Must call the <code>current</code> property to retreive the value</p>
@@ -821,7 +822,7 @@ ReactDOM.render(
 }</code></pre>
 <div class="flex flex-col">
 	<ul>
-		<li>The React Class Components was the only way to have internal State <sup><a href="https://reactjs.org/docs/react-without-es6.html#declaring-default-props">React before ES6</a></sup></li>
+		<li>The React Class Components was the only way to have internal State <sup><a href="https://react.dev/reference/react/Component#props">React before ES6</a></sup></li>
 		<li>But <code>useState</code> allows Stateful Components w/ functions</li>
 	</ul>
 <pre class="language-js"><code>const MyComponent = props => {
@@ -976,7 +977,7 @@ ReactDOM.render(
 		</ul>
 	</article>
 	<article class="slide">
-		<h2>The Context API <sup><a href="https://reactwithhooks.netlify.app/docs/hooks-reference.html#usecontext">hooks</a>, <sup><a href="https://reactjs.org/docs/context.html">docs</a></sup></h2>
+		<h2>The Context API <sup><a href="https://reactwithhooks.netlify.app/docs/hooks-reference.html#usecontext">hooks</a>, <sup><a href="https://react.dev/reference/react/useContext">docs</a></sup></h2>
 		<p>Share data without passing props</p>
 		<ol>
 			<li>create a Context</li>
@@ -1026,7 +1027,7 @@ function ChildComponent() { // look! no props!
 		<p></p>
 	</article>
 	<article class="slide">
-		<h2>useReducer <sup><a href="https://reactwithhooks.netlify.app/docs/hooks-reference.html#usereducer">hooks</a></sup>, <sup><a href="https://reactjs.org/docs/hooks-reference.html#usereducer">docs</a></sup></h2>
+		<h2>useReducer <sup><a href="https://reactwithhooks.netlify.app/docs/hooks-reference.html#usereducer">hooks</a></sup>, <sup><a href="https://react.dev/reference/react/useReducer">docs</a></sup></h2>
 		<ul>
 			<li>Create an action reducer function & its dispatcher with less boilerplate</li>
 			<li>It's a more systematic way to manage state updates following the Flux architecture.</li>
@@ -1170,7 +1171,7 @@ useImperativeHandle(inputRef, () => {
 
 		<article class="slide">
 			<h2>Custom Hooks!</h2>
-			<p>We can go beyond the basic, built-in React Hooks with <a href="https://reactjs.org/docs/hooks-custom.html#extracting-a-custom-hook">our own custom hooks utilities!</a></p>
+			<p>We can go beyond the basic, built-in React Hooks with <a href="https://react.dev/learn/reusing-logic-with-custom-hooks">our own custom hooks utilities!</a></p>
 			<ul>
 				<li>Makes for super easy code reuse & modular utilities</li>
 				<li>Easily separates concerns for easy one-concern-per-file architecture</li>
@@ -1288,20 +1289,20 @@ useImperativeHandle(inputRef, () => {
 		<article class="slide">
 			<h2>React Profiler</h2>
 			<p><a href="https://reactjs.org/blog/2018/09/10/introducing-the-react-profiler.html">Introducing the Profiler</a></p>
-			<p><a href="https://reactjs.org/docs/profiler.html">Profiler API</a></p>
+			<p><a href="https://react.dev/reference/react/Profiler">Profiler API</a></p>
 			<p><a href="https://www.youtube.com/watch?v=iTrCNz1gRt0">Debugging Performance with React Profiler</a></p>
 		</article>
 	
 		<article class="slide">
 			<h2>Error Boundaries</h2>
-			<p><a href="https://reactjs.org/docs/error-boundaries.html">React Docs</a></p>
+			<p><a href="https://react.dev/reference/react/Component#catching-rendering-errors-with-an-error-boundary">React Docs</a></p>
 			<p><a href="https://github.com/JoschuaSchneider/use-error-boundary">useErrorBoundary</a></p>
 		</article>
 
 		<article class="slide">
 			<h2>Suspense</h2>
 			<p>Provides off-the-shelf async fallback handling</p>
-			<p><a href="https://beta.reactjs.org/reference/react/Suspense">React Docs</a></p>
+			<p><a href="https://react.dev/reference/react/Suspense">React Docs</a></p>
 			<pre class="language-js"><code>export const ProfilePage = ({ user }) => {
 	return (
     &lt;>
@@ -1329,13 +1330,13 @@ useImperativeHandle(inputRef, () => {
 		<!-- <article class="slide">
 			<h2>Render Props</h2>
 			<p>A render prop is a prop that renders a View... in other words: it's a component that is passed as a prop.</p>
-			<p><a href="https://reactjs.org/docs/render-props.html">Using Render Props</a></p>
+			<p><a href="https://react.dev/reference/react/cloneElement#passing-data-with-a-render-prop">Using Render Props</a></p>
 		</article> -->
 	
 		<article class="slide">
 			<h2>Strict Mode</h2>
 			<p>Strict Mode is a wrapping component that is used in development to help catch issues/bugs.</p>
-			<p><a href="https://reactjs.org/docs/strict-mode.html">Using Strict Mode</a></p>
+			<p><a href="https://react.dev/reference/react/StrictMode">Using Strict Mode</a></p>
 		</article>
 	
 		<article class='slide'>
