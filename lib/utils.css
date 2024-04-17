@@ -69,18 +69,21 @@ color: black;
 }
 
 .lightbox {
-  transform: scale(1.75);
-  position: fixed;
-  translate: translate(-50%, -50%);
+  position: absolute;
+  height: 100vh;
+  width: 100vw;
+  object-fit: cover;
   background-color: white;
   box-shadow: 0 0 50px rgba(255, 255, 255, 0.85);
+}
+.lightbox.upscale {
+  transform: scale(1.75);
 }
 [onclick*='lightbox'] {
   cursor: pointer;
 }
 [onclick*='lightbox']:hover {
   box-shadow: 0 0 50px rgba(255, 255, 255, 0.85);
-
 }
 
 

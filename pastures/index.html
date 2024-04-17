@@ -18,6 +18,7 @@
 
     <!-- Custom css -->
     <link rel="stylesheet" href="../laser/laser.css" />
+    <script src="../lib/utils.js"></script>
     <script src="https://cdn.master.co/css"></script>
   </head>
   <body
@@ -214,11 +215,11 @@
       <article class="slide">
         <h3 style="margin: 0">Agrivoltaics</h3>
         <p>Agriculture or Grazing underneath solar panels!</p>
-        <div style="display: grid; gap: 4px; grid-template-columns: 1fr 1fr; max-width: 100vw;">
-          <img src="img/solar_tall_grass.jpeg" />
-          <img src="img/solar_short_grass.jpeg" />
-          <img src="img/solar_fencing.jpg" />
-          <img src="img/solar_energizer.jpg" />
+        <div style="display: grid; gap: 4px; grid-template-columns: 1fr 1fr; justify-items: end; max-height: 80vh;">
+          <img onclick="lightbox(event)" src="img/solar_tall_grass.jpeg" />
+          <img onclick="lightbox(event)" style="justify-self: start;" src="img/solar_short_grass.jpeg" />
+          <img onclick="lightbox(event)" src="img/solar_fencing.jpg" />
+          <img onclick="lightbox(event)" style="justify-self: start;" src="img/solar_energizer.jpg" />
         </div>
       </article>
 

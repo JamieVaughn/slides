@@ -2,7 +2,15 @@
 https://monroecc.dev/class/slides
 
 
-## Utilities
+## CSS Utilities
+
+```
+<link href="/lib/inspire.css" rel="stylesheet" />
+<link href="/lib/theme.css" rel="stylesheet" />
+<link href="/lib/talk.css" rel="stylesheet" />
+<link href="/lib/utils.css" rel="stylesheet" />
+<link rel="stylesheet" href="/laser/laser.css" />
+```
 
 ```
 .delayed
@@ -13,5 +21,13 @@ https://monroecc.dev/class/slides
 .correct
 .wrong
 .equal
-onclick="lightbox(event)"
+```
+## JS Utilities
+
+```
+<script src="/lib/utils.js"></script>
+````
+
+```
+<img onclick="lightbox(event)" />
 ```
