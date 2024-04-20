@@ -1186,7 +1186,7 @@ let i = 0;
 do {
   i = i + 1;
   result = result + i;
-} while (i < arr.length);</code></pre>
+} while (i &lt; arr.length);</code></pre>
 </article class="slide">
 	<article class="slide">
 		<h2>Recursion <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#recursion">MDN</a></sup></h2>
@@ -1197,13 +1197,24 @@ do {
 }</code></pre>
 	<p><a href="http://www.pythontutor.com/javascript.html#code=function%20fact%28n%29%20%7B%0A%20%20if%20%28n%20%3D%3D%200%29%20%7B%0A%20%20%20%20return%201%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20return%20n%20*%20fact%28n-1%29%3B%0A%20%20%7D%0A%7D%0A%0Afact%283%29%3B%0Afact%283%29%3B&mode=edit&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Visualize Factorial Fn</a></p>
 	</article>
-	
-	<article class="slide">
-		<h2>For Of Loops</h2>
-		<pre class="language-js"><code>const array1 = ['a', 'b', 'c'];
-for (const element of array1) {
-  console.log(element);
-}</code></pre>
+		<article class="slide">
+		<h2>For Of Loops & For In Loops</h2>
+		<div class="flex" style="text-align: center;">
+			<strong>For Of</strong>
+			<strong>For In</strong>
+		</div>
+		<div class="flex">
+			<pre class="language-js"><code>const array1 = ['4', '5', '6'];
+for (const value of array1) {
+  console.log(value);
+} // prints 4, 5, 6</code></pre>
+			<pre class="language-js"><code>const obj = { a: 4, b: 5, c: 6 };
+for (const key in obj) {
+  console.log(`obj.${key} = ${obj[key]}`);
+} // prints 'a', 'b', 'c'</code></pre>
+		</div>
+		<p><code>for … in</code>: gets key, property or index (put a <strong>key</strong> IN a lock or think "in" for index)</p>
+		<p><code>for … of</code>: gets value (think .value<strong>Of</strong>, a method that gets the value of something)</p>
 	</article>
 	<article class="slide">
 		<h2>Looping Over Arrays</h2>
@@ -1218,11 +1229,11 @@ document.getElementsByTagName('div').forEach() // TypeError</code></pre>
 	<article class="slide">
 		<h2>Other Array Methods<sup><a href="Javascript.info](https://javascript.info/array-methods)">info</a></sup></h2>
 		<pre class="language-js"><code>let arr = [5, 4, 3, 2, 1, 0]
-arr.find(i => i < 4) // return first matching element 
+arr.find(i => i &lt; 4) // return first matching element 
 
-arr.findIndex(i => i < 4) // returns the index of the first matching element 
-arr.some(i => i < 4) // returns true if condition is met at least once
-arr.every(i => i < 4) // returns true only if condition is met for all
+arr.findIndex(i => i &lt; 4) // returns the index of the first matching element 
+arr.some(i => i &lt; 4) // returns true if condition is met at least once
+arr.every(i => i &lt; 4) // returns true only if condition is met for all
 arr.includes(4) // returns true only if it contains the parameter</code></pre>
 		</article>
 	<article class="slide">
