@@ -316,9 +316,74 @@ const reducer = (state, action) => {
   <article class="slide">
     <h2>Code Along</h2>
     <p>Let's try out Redux in a simple Counter App!</p>
-    <hr>
-    <p>Let's use Redux in our Todo App!!</p>
   </article>  
+
+  <article class="slide">
+    <h2>Let's use Redux in our Todo App!!</h2>
+    <p>Todo User Stories: let's do the following things:</p>
+    <sup
+      style="
+        cursor: pointer;
+        color: white;
+        position: absolute;
+        bottom: 3%;
+        right: 3%;
+      "
+      class="reset ×"
+    >🧹</sup>
+    <ol class="user-stories col-2 margin:4px">
+      <li><input type="checkbox" /> Create a article with class of card and with id of 'container'</li>
+      <li>
+        <input type="checkbox" /> Create a h1 with id='heading' that will be at the top of the page
+      </li>
+      <li><input type="checkbox" /> Create an text input element with class of 'todo-input', which is wrapped in a form element</li>
+      <li><input type="checkbox" /> Add a tooltip to the text input using the title attribute. "Please fill out this field"</li>
+      <li><input type="checkbox" /> Create a empty state text element with class of 'empty-state'</li>
+      <li><input type="checkbox" /> At the bottom of the '.card' element we want a footer that contains 3 children. </li>
+      <li><input type="checkbox" /> Inside the footer add a text element with a total, a text element with a remaining count, and a clear all button element.</li>
+      <li><input type="checkbox" /> When a submit event occurs, add a new todo item (React component) under the text input that displays the text that was entered.</li>
+      <li><input type="checkbox" /> Create a 'TodoList' component that will wrap the todo items</li>
+      <li><input type="checkbox" /> The todo item component should have a checkbox input with a title tooltip of ' mark done' and when it is clicked it styles the todo text's color/strikethrough</li>
+      <li><input type="checkbox" /> The todo component should have a button with an X symbol that has title attr of 'Delete', when its clicked it removes the todo item</li>
+      <li><input type="checkbox" /> At the bottom of each todo item should be a createAt timestamp </li>
+      <li><input type="checkbox" /> Handle click on the clear all button to make it remove all todos from state</li>
+      <li><input type="checkbox" /> For remaining field, show a number that is equal to the number of todos that are unchecked</li>
+      <li><input type="checkbox" /> For total field, show a number that is equal to the number of todos that are not deleted</li>
+    </ol>
+    <style>
+      .user-stories > li > input {
+        scale: 2;
+        margin: 0 4px 6px 0;
+        vertical-align: middle;
+      }
+    </style>
+    <script async defer>
+      function updateTask(e, index) {
+        const store = JSON.parse(localStorage.getItem("userstories"));
+        store[index] = e.target.checked;
+        const updatedTask = JSON.stringify(store);
+        localStorage.setItem("userstories", updatedTask);
+      }
+      const tasks = Array.from(
+        document.querySelectorAll(".user-stories > li >input")
+      );
+      tasks.forEach((task, index) =>
+        task.addEventListener("click", (e) => updateTask(e, index))
+      );
+      if (!localStorage.getItem("userstories")) {
+        localStorage.setItem("userstories", "[]");
+      } else {
+        const curState = JSON.parse(localStorage.getItem("userstories"));
+        tasks.forEach(
+          (task, index) => (task.checked = curState[index] ? true : false)
+        );
+      }
+      document.querySelector(".reset.×").addEventListener("click", (e) => {
+        localStorage.setItem("userstories", "[]");
+        tasks.forEach((task, index) => (task.checked = false));
+      });
+    </script>
+  </article>
 
   <article class="slide">
     <h2>Redux Toolkit</h2>
