@@ -281,9 +281,8 @@ flex-wrap: wrap;
         </ul>
       </article>
       <article class="demo slide" id="livedemo">
-        <h1>Align & Justify Sandbox</h1>
-
         <textarea class="language-html">
+<h1>Align & Justify Sandbox</h1>
 <div class="flexbox">
 	<div><p>Item A</p></div>
 	<div><p>Item B</p></div>
@@ -382,9 +381,8 @@ gap: 1rem 2rem;
         </div>
       </article>
       <article class="demo slide" id="livedemo">
-        <h1>Gap & Order Sandbox</h1>
-
         <textarea class="language-html">
+<h1>Gap & Order Sandbox</h1>
 <div class="flexbox">
 	<div><p>Item A</p></div>
 	<div><p>Item B</p></div>
@@ -687,19 +685,23 @@ gap: 1rem 2rem;
         </details>
       </article>
       <article class="demo slide" id="livedemo">
-        <h1>
-          Layout Technique: <br /><small><code>inline-block</code></small>
-        </h1>
         <textarea class="language-html">
+          <h1>
+            Layout Technique: <small><code>inline-block</code></small>
+          </h1>
 <div class="inlineblock">
 	<!-- inlineblock tags must 
 		be on one line, otherwise 
 		the spaces are rendered
 		as horizontal spacing -->
-	<div><p>Item A</p></div><div><p>Item B</p></div><div><p>Item C</p></div><div><p>Item D</p></div><div><p>Item E</p></div><div><p>Item F</p></div>
+	<div><p>Item A</p></div>
+  <div><p>Item B</p></div>
+  <div><p>Item C</p></div>
+  <div><p>Item D</p></div>
+  <div><p>Item E</p></div>
+  <div><p>Item F</p></div>
 </div>
-		</textarea
-        >
+		</textarea>
         <textarea class="language-css">
 			.inlineblock > div {
 				display: inline-block;
@@ -711,10 +713,11 @@ gap: 1rem 2rem;
       </article>
 
       <article class="demo slide" id="livedemo">
-        <h1>
-          Layout Technique: <br /><small><code>float</code></small>
-        </h1>
+        
         <textarea class="language-html">
+          <h1>
+            Layout Technique: <small><code>float</code></small>
+          </h1>
 <div class="float">
 	<div><p>Item A</p></div>
 	<div><p>Item B</p></div>
@@ -737,10 +740,10 @@ gap: 1rem 2rem;
       </article>
 
       <article class="demo slide" id="livedemo">
-        <h1>
-          Layout Technique: <br /><small><code>flexbox</code></small>
-        </h1>
         <textarea class="language-html">
+          <h1>
+            Layout Technique: <small><code>flexbox</code></small>
+          </h1>
 <div class="flexbox">
 	<div><p>Item A</p></div>
 	<div><p>Item B</p></div>
@@ -899,8 +902,8 @@ gap: 1rem 2rem;
       </article>
 
       <article class="demo slide" id="livedemo">
-        <h1>Let's Define a Grid!</h1>
         <textarea class="language-html">
+          <h1>Let's Define a Grid!</h1>
 <div class="grid">
 	<div><p>Item A</p></div>
 	<div><p>Item B</p></div>
@@ -1008,8 +1011,8 @@ gap: 1rem 2rem;
       </article>
 
       <article class="demo slide">
-        <h1><code>grid-column</code> & <code>grid-row</code></h1>
         <textarea class="language-html">
+<h1><code>grid-column</code> <span>&</span> <code>grid-row</code></h1>
 			<div class="grid lines">
 				<div>(1)🍏</div>
 				<div>(2)🍊</div>
@@ -1024,8 +1027,8 @@ gap: 1rem 2rem;
         <textarea class="language-css">
 			.grid {
 			  display: grid;
-			  grid-template-columns: repeat(6, 75px);
-			  grid-template-rows: repeat(6, 75px);
+			  grid-template-columns: repeat(6, 70px);
+			  grid-template-rows: repeat(6, 70px);
 			}
 			.grid > div:nth-child(1) {
 			  grid-column: 4;
@@ -1115,8 +1118,8 @@ gap: 1rem 2rem;
       </article>
 
       <article class="demo slide">
-        <h1>Fluid Units</h1>
         <textarea class="language-html">
+        <h1>Fluid Units</h1>
 				<div class="grid">
 				  <div><p>Item A</p></div>
 				  <div><p>Item B</p></div>
@@ -1171,18 +1174,12 @@ gap: 1rem 2rem;
       </article>
 
       <article class="demo slide">
-        <h1>
-          The <code>minmax()</code> function
-          <sup
-            ><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/minmax()"
-              >MDN</a
-            ></sup
-          >
-          <br /><small
-            >Defines a size range for columns or rows in a grid</small
-          >
-        </h1>
         <textarea class="language-html">
+          <span>
+            The <code>minmax()</code> function
+            <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/minmax()">MDN</a></sup>
+            <small>Defines a size range for columns or rows in a grid</small>
+          </span>
 			<div class="grid">
 				<div><p>Item A</p></div>
 				<div><p>Item B</p></div>
@@ -1208,17 +1205,13 @@ gap: 1rem 2rem;
       </article>
 
       <article class="demo slide">
-        <h1>
-          The <code>repeat()</code> function
-          <sup
-            ><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat()"
-              >MDN</a
-            ></sup
-          >
-          <br />
-          <small>Specify many columns/rows that follow a pattern</small>
-        </h1>
+        
         <textarea class="language-html">
+          <span>
+            The <code>repeat()</code> function
+            <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat()">MDN</a></sup>
+            <small>Specify many columns/rows that follow a pattern</small>
+          </span>
 			<div class="grid">
 				<div><p>Item</p></div>
 				<div><p>Item</p></div>
@@ -1314,10 +1307,10 @@ gap: 1rem 2rem;
       </article>
 
       <article class="demo slide">
-        <h1 style="font-size: 175%">
-          <code>auto-fill</code> versus <code>auto-fit</code>
-        </h1>
         <textarea class="language-html">
+          <span style="font-size: 125%">
+            <code>auto-fill</code> versus <code>auto-fit</code>
+          </span>
 			<div class="grid">
 				<div><p>A</p></div>
 				<div><p>B</p></div>
@@ -1618,8 +1611,8 @@ gap: 1rem 2rem;
         <img alt="Parent-child relationship" src="img/grid-parent-child.svg" />
       </article>
       <article class="demo slide">
-        <h1>Using Grid Template Areas</h1>
         <textarea class="language-html">
+        <span>Using Grid Template Areas</span>
 			<div class="grid">
 				<div class="header"><p>Header</p></div>
 				<div class="footer"><p>Footer</p></div>
@@ -1784,11 +1777,10 @@ gap: 1rem 2rem;
       </article>
 
       <article class="demo slide">
-        <h1>
-          <code style="font-size: 75%">justify/align-content</code>
-          <br /><small>content-distribution propertiess</small>
-        </h1>
         <textarea class="language-html">
+          <span>
+            <code style="font-size: 75%">justify/align-content</code>: <small>content-distribution propertiess</small>
+          </span>
 					<div class="grid">
 						<div><p>Item 1</p></div>
 						<div><p>Item 2</p></div>
@@ -2037,13 +2029,10 @@ gap: 1rem 2rem;
       </article>
 
       <article class="demo slide">
-        <h1>
-          <code style="font-size: 75%">justify/align-self</code> <br /><small
-            >self-alignment properties</small
-          >
-        </h1>
-
         <textarea class="language-html">
+          <span>
+            <code style="font-size: 75%">justify/align-self</code><small>: self-alignment properties</small>
+          </span>
 					<div class="grid reticle">
 						<div><p>Item 1</p></div>
 						<div><p>Item 2</p></div>
@@ -2110,13 +2099,10 @@ gap: 1rem 2rem;
       </article>
 
       <article class="demo slide">
-        <h1>
-          <code style="font-size: 75%">justify/align-items</code> <br /><small
-            >defaults for justify/align-self</small
-          >
-        </h1>
-
         <textarea class="language-html">
+          <span>
+            <code style="font-size: 75%">justify/align-items</code><small>: defaults for justify/align-self</small>
+          </span>
 					<div class="grid reticle">
 						<div><p>Item 1</p></div>
 						<div><p>Item 2</p></div>
@@ -2971,7 +2957,7 @@ header {
 <details class="notes">This is the list of stand-alone demos and sites I've referenced all throughout this talk. If you're interested in the source code, my demos are all hosted on GitHub, which is the last link on the list.</details> 
 </article> -->
 
-    <script src="../lib/inspire.js"></script>
+    <script src="../inspire/inspire.mjs" type="module"></script>
     <script src="../laser/laser.js"></script>
   </body>
 </html>
