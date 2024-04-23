@@ -1,0 +1,170 @@
+.stack {
+  position: absolute;
+  z-index: 9;
+  bottom: 10%;
+}
+.rotate {
+  transform: rotate(-15deg);
+}
+pre {
+  position: relative;
+}
+
+:is(.wrong, .correct)::before {
+  position: absolute;
+  left: -2.1rem;
+  font-size: 2rem;
+  top: 0.2rem;
+}
+:is(.wrong, .correct).over::before {
+  left: 0.5rem;
+  top: 0.05rem;
+}
+.wrong::before {
+  content: '🚫';
+}
+.correct::before {
+  content: '✅';
+}
+.equal::before {
+  content: '🟰';
+  position: absolute;
+  left: -4rem;
+  font-size: 4rem;
+  top: 2rem;
+  z-index: 10;
+}
+[data-before]::before {
+  content: attr(data-before);
+  position: absolute;
+  right: calc(100% - 5rem);
+  top: 33%;
+  transform: rotate(-90deg);
+}
+.back-lit {
+  filter: drop-shadow(0 0 14px #fff)
+}
+.back-dark {
+  filter: drop-shadow(0 0 14px #000)
+}
+.backdrop {
+background: white;
+border-radius: 100px;
+padding: 2rem;
+color: black;
+}
+.backdrop.corners{
+  padding: 1rem;
+  border-radius: 10px;
+}
+.stamped {
+  position: absolute;
+  top: 30%;
+  border-radius: 1rem;
+  padding: 1rem;
+}
+.tilt {
+  background: var(--dark1);
+  transform: rotate(-15deg);
+}
+
+.lightbox {
+  transform: scale(1.75);
+  position: fixed;
+  translate: translate(-50%, -50%);
+  background-color: white;
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.85);
+}
+[onclick*='lightbox'] {
+  cursor: pointer;
+}
+[onclick*='lightbox']:hover {
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.85);
+
+}
+
+
+.slide .h-fit {
+  height: fit-content
+}
+.slide .w-fit {
+  width: fit-content
+}
+
+
+/* columns */
+.nolist {
+	list-style: none;
+}
+.emolist li::marker {
+  font-size: 1rem;
+}
+.emolist li:nth-child(1n)::marker {
+  content: '🔴';
+}
+.emolist li:nth-child(2n)::marker {
+  content: '🟠';
+}
+.emolist li:nth-child(3n)::marker {
+  content: '🟡';
+}
+.emolist li:nth-child(4n)::marker {
+  content: '🟢';
+}
+.emolist li:nth-child(5n)::marker {
+  content: '🔵';
+}
+.emolist li:nth-child(6n)::marker {
+  content: '🟣';
+}
+.emolist li:nth-child(7n)::marker {
+  content: '🌑';
+}
+[class*='col-'] > li, .emolist > li {padding: 0 1rem;}
+.col-2 {columns: 2}
+.col-3 {columns: 3}
+.col-4 {columns: 4}
+.col-6 {columns: 6}
+
+.hidden {
+  display: none;
+}
+
+.highlight, .highlight1 {
+  color: var(--color1);
+}
+.highlight2 {
+  color: var(--color2);
+}
+.highlight3 {
+  color: var(--color3);
+}
+
+.grid {
+  display: grid;
+  gap: 8px;
+  justify-items: start;
+  align-items: start;
+  grid-auto-flow: dense;
+}
+.grid.center {
+  justify-items: center;
+  align-items: center;
+}
+.grid.col-2 {
+  grid-template-columns: 1fr 1fr;
+}
+.grid.col-3 {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.slide .tilt-stamp {
+  position: absolute;
+  padding: 1rem;
+  color: crimson;
+  background: white;
+  border: 8px solid crimson;
+  border-radius: 1rem;
+  transform: rotate(-25deg);
+  box-shadow: 0 0 50px rgba(150, 50, 120, 0.85);
+}
