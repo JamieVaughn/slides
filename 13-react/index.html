@@ -341,20 +341,31 @@ function EventComponent(props) {
 	</article>
 	<article class="slide">
 		<h2>The Problem with MVC</h2>
-		<p>Difficult to Predict as it scales</p>
+		<p>Difficult to Predict as it scales. Can you tell if there’s an infinite loop here? Not easily.</p>
 		<img src="img/mvc_tangle.png" height='600px' alt="">
 	</article>
 	<article class="slide">
 		<h2>A Simpler Model</h2>
+		<p style="text-wrap: balance; text-align: center;">Avoid those circular dependencies with the "Flux Architecture" pattern, which enforces one way data flow from root to leaves of the tree</p>
 		<img src="img/generic_system.png" height='600px' alt="">
 	</article>
 
 	<article class="slide">
 		<h2>Flux Architecture</h2>
+		<p>Add in the dispatcher. Think "traffic controller" similar to MVP's hub concept</p>
 		<img src="img/flux1.png" alt="">
+		<details class="notes">
+			<p>The dispatcher is a good constraint to have, it is a gaurantee for all devs, it gaurantees that if you know where your action starts and what chagnes in you data layer you can deterministically know all the downstream effects. It doesn’t allow anything that can cascade propagates on down that crazy graph with all the arrows. It goes in one direction and resolves the consequences once with no back propagation and then you're done, until the next single render flow frame begins. Once you finish calculating the single layer you’re done. No knock-on effects to calculate.</p>
+			<p>And if you imagine this flux architecture with more stores and more views, it still all collapses down to the same model, because backward cascades are not possible. With MVC you can’t garauntee that there are no back-ward propagating effects, which is why its hard to know if there are infinite loops (or perpetual update cycle … cyclic dependency graph) because the arrows go in both directions.</p>
+		</details>
 	</article>
 	<article class="slide">
 		<h2>Flux Architecture</h2>
+		<ol>
+			<li>Explicit data flow, not derived data</li>
+			<li>Isolate data from view state</li>
+			<li>Avoid cascading circular effects by preventing nested updates</li>
+		</ol>
 		<img src="img/flux2.png" alt="">
 	</article>
 	<article class="slide">
@@ -602,6 +613,7 @@ return (
 	<article class="slide">
 		<h2>Let's make Something with State</h2>
 		<p>A Dice Rolling App!</p>
+		<img src="img/dice_sprite.png" alt="dice">
 	</article>
 
 	<article class="slide">
