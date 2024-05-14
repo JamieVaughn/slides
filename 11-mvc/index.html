@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="MCC Web Design & Development Slides" />
     <meta name="author" content="Jamie Vaughn" />
     <title>MVC Slides</title>
@@ -21,7 +21,6 @@
     <script src="https://cdn.master.co/css"></script>
     <style>
       /* d3 force graph */
-
       circle {
         fill: crimson;
       }
@@ -51,11 +50,11 @@
       }
     </style>
   </head>
+
   <body
-    class="language-markup"
-    data-prism-plugins="normalize-whitespace"
-    data-duration="30"
-  >
+        class="language-markup"
+        data-prism-plugins="normalize-whitespace"
+        data-duration="30">
     <header id="intro" class="slide">
       <h1>Javascript Design Patterns</h1>
       <h2>MVC</h2>
@@ -75,9 +74,8 @@
         <h2>Your Hired!!</h2>
         <p>I'm your new project manager at our new Dev Agency</p>
         <img
-          src="img/ctrl-alt-logo.png"
-          style="background: white; padding: 1rem; border-radius: 1rem"
-        />
+             src="img/ctrl-alt-logo.png"
+             style="background: white; padding: 1rem; border-radius: 1rem" />
         <p>It's called "Control Alt Develop"</p>
         <ul>
           <li>
@@ -273,11 +271,9 @@ dragon.addEventListener('click', function(e){
           repeated tasks easier...
         </p>
         <p class="delayed">Introducing: Design Patterns!</p>
-        <strong class="delayed"
-          >Some Examples from the
+        <strong class="delayed">Some Examples from the
           <a href="https://www.gofpatterns.com/">"Gang Of Four"</a>
-          book:</strong
-        >
+          book:</strong>
         <ul class="delayed" style="columns: 2">
           <li>
             <u style="text-decoration-color: crimson">Factory Method Pattern</u>
@@ -292,9 +288,7 @@ dragon.addEventListener('click', function(e){
       <article class="slide">
         <h2>Design Patterns</h2>
         <p>
-          <a href="https://www.dofactory.com/javascript/design-patterns/"
-            >GoF Patterns for Javascript Developers</a
-          >
+          <a href="https://www.dofactory.com/javascript/design-patterns/">GoF Patterns for Javascript Developers</a>
         </p>
         <ul style="list-style: none">
           <li>
@@ -439,9 +433,8 @@ dragon.addEventListener('click', function(e){
         </p>
         <div style="position: relative">
           <pre
-            class="language-js"
-            style="position: relative"
-          ><code>factoryFunction(name, carMake, age) {
+               class="language-js"
+               style="position: relative"><code>factoryFunction(name, carMake, age) {
   const canDrive = age > 16 ? true : false
 
   return {
@@ -455,9 +448,8 @@ dragon.addEventListener('click', function(e){
 const bobby = factoryFunction('Bobby', 'Ford', 23)
         </code></pre>
           <pre
-            class="delayed language-js"
-            style="position: absolute; top: -7%"
-          ><code>factoryFunction(name, carMake, age) {
+               class="delayed language-js"
+               style="position: absolute; top: -7%"><code>factoryFunction(name, carMake, age) {
   const canDrive = age > 16 ? true : false
   // You can return a frozen object too!
   return Object.freeze({
@@ -578,27 +570,23 @@ const closure2 = updateClicks();</code></pre>
         <h2>The Tools vs. The Blueprints</h2>
         <img class="delayed" style="width: 800px" src="img/tools.jpeg" alt="" />
         <div
-          class="flex"
-          style="position: absolute; bottom: 0; max-height: 75vh"
-        >
+             class="flex"
+             style="position: absolute; bottom: 0; max-height: 75vh">
           <figure
-            class="delayed flex-col"
-            style="margin: 0; text-align: center"
-          >
+                  class="delayed flex-col"
+                  style="margin: 0; text-align: center">
             <img
-              src="img/gear_pump.png"
-              alt=""
-              style="vertical-align: bottom"
-            />
+                 src="img/gear_pump.png"
+                 alt=""
+                 style="vertical-align: bottom" />
             <p
-              style="
+               style="
                 background: white;
                 color: black;
                 margin: 0;
                 padding: 1rem;
                 max-width: 55vw;
-              "
-            >
+              ">
               Subassemblies of Code that slot into an entire application
             </p>
           </figure>
@@ -608,18 +596,17 @@ const closure2 = updateClicks();</code></pre>
       <article class="slide">
         <h2>Spaghetti Code</h2>
         <p class="delayed">
-          ... is when a codebase has <strong>many connections</strong> and
+          ...is when a codebase has <strong>many connections</strong> and
           <strong>no organization</strong>
         </p>
         <div class="flex delayed">
           <svg
-            class="nohub"
-            style="cursor: pointer"
-            width="600"
-            height="450"
-            viewBox="200 150 200 160"
-            onclick="addPhone(event)"
-          >
+               class="nohub"
+               style="cursor: pointer"
+               width="600"
+               height="450"
+               viewBox="200 150 200 160"
+               onclick="addPhone(event)">
             <g class="nohub-links"></g>
             <g class="nohub-nodes"></g>
           </svg>
@@ -629,15 +616,14 @@ const closure2 = updateClicks();</code></pre>
           </div>
         </div>
         <figure
-          class="delayed tilt-stamp"
-          style="
+                class="delayed tilt-stamp"
+                style="
             text-align: right;
             transform: rotate(-15deg) translate(5%, 20%);
             border: none;
             width: 50vw;
             clip-path: polygon(50% 0, 100% 0, 100% 100%, 50% 100%, 50% 0);
-          "
-        >
+          ">
           <img src="img/sad_spaghet.webp" alt="" />
           <p style="margin-right: 4rem">Sad Spaghetti</p>
         </figure>
@@ -649,18 +635,16 @@ const closure2 = updateClicks();</code></pre>
         </p>
         <div>
           <svg
-            style="
+               style="
               border-left: 3px solid silver;
               border-bottom: 3px solid silver;
             "
-            height="250"
-            width="400"
-            viewBox="5 0 200 102"
-          >
+               height="250"
+               width="400"
+               viewBox="5 0 200 102">
             <polyline
-              fill="none"
-              points="0,100 10,100 20,99 30,97 40,94 50,90 60,85 70,79 80,72 90,64 100,55 110,45 120,34 130,22 140,9 150,-5"
-            />
+                      fill="none"
+                      points="0,100 10,100 20,99 30,97 40,94 50,90 60,85 70,79 80,72 90,64 100,55 110,45 120,34 130,22 140,9 150,-5" />
             <circle cx="30" cy="97" r="4" />
             <circle cx="60" cy="85" r="4" />
             <circle cx="90" cy="64" r="4" />
@@ -716,12 +700,11 @@ const closure2 = updateClicks();</code></pre>
         <p class="delayed">...like a <strong>Hub</strong>!</p>
         <div class="flex">
           <svg
-            class="hub delayed"
-            width="500"
-            height="350"
-            viewBox="200 150 200 160"
-            style="scale: 1.4"
-          >
+               class="hub delayed"
+               width="500"
+               height="350"
+               viewBox="200 150 200 160"
+               style="scale: 1.4">
             <g class="hub-links"></g>
             <g class="hub-nodes"></g>
           </svg>
@@ -881,11 +864,10 @@ const closure2 = updateClicks();</code></pre>
         <img src="img/ui_state.png" alt="" /><br />
         <img src="img/function_of_state.png" class="delayed" alt="" />
         <img
-          src="img/state_view.png"
-          class="delayed tilt-stamp"
-          alt=""
-          style="width: 40vw"
-        />
+             src="img/state_view.png"
+             class="delayed tilt-stamp"
+             alt=""
+             style="width: 40vw" />
       </article>
       <article class="slide">
         <h2>Remember Pure Functions and Side Effects?</h2>
@@ -966,10 +948,8 @@ const closure2 = updateClicks();</code></pre>
           <li class="delayed">
             ⤷ View <br />
             4.
-            <strong
-              >The <code>increment()</code> or
-              <code>getDragons()</code> functions?</strong
-            >
+            <strong>The <code>increment()</code> or
+              <code>getDragons()</code> functions?</strong>
           </li>
           <li class="delayed">
             ⤷ Controller <br />
@@ -996,10 +976,8 @@ const closure2 = updateClicks();</code></pre>
 
   dragonFactory(type) {...} // could go in Model or Controller
 }</code></pre>
-        <span class="delayed tilt-stamp"
-          >← unique <code>id</code>s distinguish dragons with the same
-          type!</span
-        >
+        <span class="delayed tilt-stamp">← unique <code>id</code>s distinguish dragons with the same
+          type!</span>
       </article>
       <article class="slide">
         <h2>Our Dragon View(s?)</h2>
@@ -1113,10 +1091,8 @@ const View2 = { // manages the display area view
           <em>But they're insisting on one final req change</em>
         </p>
         <div class="delayed">
-          <strong
-            ><span style="font-size: 4rem">🤦🏽‍♀️</span> (this is a needy
-            client!)</strong
-          >
+          <strong><span style="font-size: 4rem">🤦🏽‍♀️</span> (this is a needy
+            client!)</strong>
         </div>
       </article>
       <article class="slide">
@@ -1147,9 +1123,7 @@ const View2 = { // manages the display area view
           <li>
             Add a separate Admin view
             <a
-              href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#result"
-              >modal</a
-            >
+               href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog#result">modal</a>
             that displays on ctrl+clicking a dragon
           </li>
           <li>
@@ -1194,7 +1168,7 @@ const View2 = { // manages the display area view
     <script src="https://cdn.jsdelivr.net/npm/d3@7.0.0/dist/d3.min.js"></script>
     <script defer>
       var width = 600,
-        height = 450;
+        height = 450
 
       var hubNodes = [
         { name: "📡" },
@@ -1213,7 +1187,7 @@ const View2 = { // manages the display area view
         { name: "📞" },
         { name: "📞" },
         { name: "📞" },
-      ];
+      ]
       var noHubNodes = [
         { id: 0, name: "📞" },
         { id: 1, name: "📞" },
@@ -1224,103 +1198,104 @@ const View2 = { // manages the display area view
         // {name: '📞'},
         // {name: '📞'},
         // {name: '📞'},
-      ];
+      ]
 
-      let phones = 2;
-      let nodeAnnotation = document.querySelector(".node-annotation");
-      let cxnAnnotation = document.querySelector(".cxn-annotation");
+      let phones = 2
+      let nodeAnnotation = document.querySelector( ".node-annotation" )
+      let cxnAnnotation = document.querySelector( ".cxn-annotation" )
 
-      function addPhone(e) {
-        console.log("phone");
-        phones++;
-        noHubNodes = Array.from({ length: phones }).map((i, id) => ({
+      function addPhone( e ) {
+        console.log( "phone" )
+        phones++
+        noHubNodes = Array.from( { length: phones } ).map( ( i, id ) => ( {
           id,
           name: "📞",
-        }));
-        noHubLinks = [];
-        noHubNodes.forEach((node) => {
-          noHubNodes.forEach((n) => {
-            if (node !== n) noHubLinks.push({ source: node, target: n });
-          });
-        });
-        nodeAnnotation.innerText = noHubNodes.length;
+        } ) )
+        noHubLinks = []
+        noHubNodes.forEach( ( node ) => {
+          noHubNodes.forEach( ( n ) => {
+            if ( node !== n ) noHubLinks.push( { source: node, target: n } )
+          } )
+        } )
+        nodeAnnotation.innerText = noHubNodes.length
         cxnAnnotation.innerText =
-          (noHubNodes.length * (noHubNodes.length - 1)) / 2;
-        simulation(noHubNodes, noHubLinks);
+          ( noHubNodes.length * ( noHubNodes.length - 1 ) ) / 2
+        simulation( noHubNodes, noHubLinks )
       }
 
-      var noHubLinks = [];
-      var hubLinks = [];
+      var noHubLinks = []
+      var hubLinks = []
 
-      noHubNodes.forEach((node) => {
-        noHubNodes.forEach((n) => noHubLinks.push({ source: node, target: n }));
-      });
+      noHubNodes.forEach( ( node ) => {
+        noHubNodes.forEach( ( n ) => noHubLinks.push( { source: node, target: n } ) )
+      } )
 
-      hubNodes.forEach((node) => {
-        hubLinks.push({ source: node, target: hubNodes[0] });
-      });
+      hubNodes.forEach( ( node ) => {
+        hubLinks.push( { source: node, target: hubNodes[0] } )
+      } )
 
-      var simulation = (nodes, links, flag) => {
-        d3.forceSimulation(nodes)
-          .force("charge", d3.forceManyBody().strength(-100))
-          .force("center", d3.forceCenter(width / 2, height / 2))
-          .force("link", d3.forceLink().links(links))
-          .on("tick", flag == "hub" ? tickHub : tickNoHub);
-      };
-
-      function updateLinks(className, links) {
-        d3.select(className)
-          .selectAll("line")
-          .data(links)
-          .join("line")
-          .attr("x1", function (d) {
-            return d.source.x;
-          })
-          .attr("y1", function (d) {
-            return d.source.y;
-          })
-          .attr("x2", function (d) {
-            return d.target.x;
-          })
-          .attr("y2", function (d) {
-            return d.target.y;
-          });
+      var simulation = ( nodes, links, flag ) => {
+        d3.forceSimulation( nodes )
+          .force( "charge", d3.forceManyBody().strength( -100 ) )
+          .force( "center", d3.forceCenter( width / 2, height / 2 ) )
+          .force( "link", d3.forceLink().links( links ) )
+          .on( "tick", flag == "hub" ? tickHub : tickNoHub )
       }
 
-      function updateNodes(className, nodes) {
-        d3.select(className)
-          .selectAll("text")
-          .data(nodes)
-          .join("text")
-          .text(function (d) {
-            return d.name;
-          })
-          .attr("x", function (d) {
-            return d.x;
-          })
-          .attr("y", function (d) {
-            return d.y;
-          })
-          .attr("dy", function (d) {
-            return 5;
-          });
+      function updateLinks( className, links ) {
+        d3.select( className )
+          .selectAll( "line" )
+          .data( links )
+          .join( "line" )
+          .attr( "x1", function ( d ) {
+            return d.source.x
+          } )
+          .attr( "y1", function ( d ) {
+            return d.source.y
+          } )
+          .attr( "x2", function ( d ) {
+            return d.target.x
+          } )
+          .attr( "y2", function ( d ) {
+            return d.target.y
+          } )
+      }
+
+      function updateNodes( className, nodes ) {
+        d3.select( className )
+          .selectAll( "text" )
+          .data( nodes )
+          .join( "text" )
+          .text( function ( d ) {
+            return d.name
+          } )
+          .attr( "x", function ( d ) {
+            return d.x
+          } )
+          .attr( "y", function ( d ) {
+            return d.y
+          } )
+          .attr( "dy", function ( d ) {
+            return 5
+          } )
       }
 
       function tickHub() {
-        updateLinks(".hub-links", hubLinks);
-        updateNodes(".hub-nodes", hubNodes);
+        updateLinks( ".hub-links", hubLinks )
+        updateNodes( ".hub-nodes", hubNodes )
       }
       function tickNoHub() {
-        updateLinks(".nohub-links", noHubLinks);
-        updateNodes(".nohub-nodes", noHubNodes);
+        updateLinks( ".nohub-links", noHubLinks )
+        updateNodes( ".nohub-nodes", noHubNodes )
       }
 
-      simulation(noHubNodes, noHubLinks);
-      simulation(hubNodes, hubLinks, "hub");
+      simulation( noHubNodes, noHubLinks )
+      simulation( hubNodes, hubLinks, "hub" );
     </script>
     <script defer async>
-      document.querySelector("#current-year").innerText =
+      document.querySelector( "#current-year" ).innerText =
         "/" + new Date().getFullYear();
     </script>
   </body>
+
 </html>
