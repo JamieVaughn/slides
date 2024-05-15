@@ -1,104 +1,111 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="description" content="MCC Web Design & Development Slides">
-	<meta name="author" content="Jamie Vaughn">
-  <title>Node & The Terminal</title>
-  <!-- Inspire css -->
-	<link href="../lib/inspire.css" rel="stylesheet" />
-	<link href="../lib/theme.css" rel="stylesheet" />
-	<link href="../lib/talk.css" rel="stylesheet" />
-	<link href="../lib/utils.css" rel="stylesheet" />
 
-  <!-- Custom css -->
-  <link rel="stylesheet" href="../laser/laser.css">
-</head>
-<body class="language-markup" data-prism-plugins="normalize-whitespace">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="MCC Web Design & Development Slides">
+    <meta name="author" content="Jamie Vaughn">
+    <title>Node & The Terminal</title>
+    <!-- Inspire css -->
+    <link href="../lib/inspire.css" rel="stylesheet" />
+    <link href="../lib/theme.css" rel="stylesheet" />
+    <link href="../lib/talk.css" rel="stylesheet" />
+    <link href="../lib/utils.css" rel="stylesheet" />
 
-<header id="intro" class="slide">
-  <h1>
-		Web Design & Development
-	</h1>
-	<h2>
-		React
-	</h2>
-	<p class="attribution">MCC: Section 3</p>
-</header>
+    <!-- Custom css -->
+    <link rel="stylesheet" href="../laser/laser.css">
+  </head>
 
-<section id="part-1">
-  <header class="slide">
-    <h3>App Tooling</h3>
-    <h1>The Terminal & Bash</h1>
-  </header>
+  <body class="language-markup" data-prism-plugins="normalize-whitespace">
 
-  <article class="slide">
-    <h2>The Terminal</h2>
-    <p>Simply a text-based file-system explorer</p>
-    <p><strong>BASH</strong> -  Born Again Shell</p>
-    <p>Originates from the Unix Operating System</p>
-    <p>Available on Mac/Linux</p>
-    <p>Windows can download Git-SCM to install it</p>
-  </article>
+    <header id="intro" class="slide">
+      <h1>
+        Web Design & Development
+      </h1>
+      <h2>
+        React
+      </h2>
+      <p class="attribution">MCC: Section 3</p>
+    </header>
 
-  <article class="slide">
-    <h2>Beginner BASH commands</h2>
-    <ul class='col-2 nolist'>
-      <li><code>pwd</code> - print working directory</li>
-      <li><code>cd</code> - change directory</li>
-      <li><code>ls</code> - list contents</li>
-      <li><code>cat</code> - concatenate content</li>
-      <li><code>mkdir</code> - make directory</li>
-      <li><code>touch</code> -  create file</li>
-      <li><code>mv</code> - move file</li>
-      <li><code>rm</code> - remove file</li>
-      <li><code>vim</code> - open file in code editor</li>
-      <li><code>curl</code> - request resource w/ HTTP</li>
-    </ul>
-  </article>
+    <section id="part-1">
+      <header class="slide">
+        <h3>App Tooling</h3>
+        <h1>The Terminal & Bash</h1>
+      </header>
 
-  <article class="slide">
-    <h2>Let's Set Up a Web Project</h2>
-    <p>Only using the Terminal</p>
-  </article>
+      <article class="slide">
+        <h2>The Terminal</h2>
+        <p>Simply a text-based file-system explorer</p>
+        <p><strong>BASH</strong> - Born Again Shell</p>
+        <p>Originates from the Unix Operating System</p>
+        <p>Available on Mac/Linux</p>
+        <p>Windows can download Git-SCM to install it</p>
+      </article>
 
-  <article class="slide">
-    <h2>More Practice with BASH</h2>
-    <p><a href="https://replit.com/talk/learn/LEARN-BASH/143430">Explore the BASH Dungeon</a></p>
-  </article>
-</section>
+      <article class="slide">
+        <h2>Beginner BASH commands</h2>
+        <ul class='col-2 nolist'>
+          <li><code>pwd</code> - print working directory</li>
+          <li><code>cd</code> - change directory</li>
+          <li><code>ls</code> - list contents</li>
+          <li><code>cat</code> - concatenate content</li>
+          <li><code>mkdir</code> - make directory</li>
+          <li><code>touch</code> - create file</li>
+          <li><code>mv</code> - move file</li>
+          <li><code>rm</code> - remove file</li>
+          <li><code>vim</code> - open file in code editor</li>
+          <li><code>curl</code> - request resource w/ HTTP</li>
+        </ul>
+      </article>
 
-<section id='part-2'>
-	<header class="slide">
-    <h3>App Tooling</h3>
-    <h1>Node & The Terminal</h1>
-	</header>
+      <article class="slide">
+        <h2>Let's Set Up a Web Project</h2>
+        <p>Only using the Terminal</p>
+      </article>
 
-	<article class="slide" >
-    <h2>Node.js</h2>
-    <p>Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine that can run in a server environment.</p>
-    <p>Asynchronous nature means no dead-locking a serverside/database process.</p>
-    <p>The <a href="https://github.com/nodejs/TSC/blob/main/TSC-Charter.md">TSC</a> (technical steering committee) ratifies changes that make it into each new version.</p>
-    <div class='flex align'><p>Download Node.js:</p> <a href="https://nodejs.org/en/download/"><img height='200px' src="img/nodejs.svg" alt="Node.js logo"></a></div>
-	</article>
+      <article class="slide">
+        <h2>More Practice with BASH</h2>
+        <p><a href="https://replit.com/talk/learn/LEARN-BASH/143430">Explore the BASH Dungeon</a></p>
+      </article>
+    </section>
 
-  <article class="slide">
-    <h2>Running Node</h2>
-    <p>Write a javascript file as you normally would.</p>
-    <pre class='language-js'><code>// index.js
+    <section id='part-2'>
+      <header class="slide">
+        <h3>App Tooling</h3>
+        <h1>Node & The Terminal</h1>
+      </header>
+
+      <article class="slide">
+        <h2>Node.js</h2>
+        <p>Node.js is a JavaScript runtime built on Chrome's V8 JavaScript engine that can run in a server environment.
+        </p>
+        <p>Asynchronous nature means no dead-locking a serverside/database process.</p>
+        <p>The <a href="https://github.com/nodejs/TSC/blob/main/TSC-Charter.md">TSC</a> (technical steering committee)
+          ratifies changes that make it into each new version.</p>
+        <div class='flex align'>
+          <p>Download Node.js:</p> <a href="https://nodejs.org/en/download/"><img height='200px' src="img/nodejs.svg"
+                 alt="Node.js logo"></a>
+        </div>
+      </article>
+
+      <article class="slide">
+        <h2>Running Node</h2>
+        <p>Write a javascript file as you normally would.</p>
+        <pre class='language-js'><code>// index.js
 let myVar = 'Hello World!'
 console.log(myVar)
     </code></pre>
-    <p>Then in your terminal, execute the file with this command:</p>
-    <code>node index.js</code>
-  </article>
+        <p>Then in your terminal, execute the file with this command:</p>
+        <code>node index.js</code>
+      </article>
 
-	<article class="slide">
-    <h2>Node Server</h2>
-    <p><a href="https://nodejs.org/en/docs/">Node API Docs</a></p>
-    <pre class='language-js'><code>const http = require('http');
+      <article class="slide">
+        <h2>Node Server</h2>
+        <p><a href="https://nodejs.org/en/docs/">Node API Docs</a></p>
+        <pre class='language-js'><code>const http = require('http');
 
 const hostname = '127.0.0.1';
 const port = 3000;
@@ -112,139 +119,144 @@ const server = http.createServer((req, res) => {
 server.listen(port, hostname, () => {
   console.log(`Server running at http://${hostname}:${port}/`);
 });</code></pre>
-	</article>
+      </article>
 
+      <article class="slide">
+        <h2>Node for Frontend Tooling</h2>
+        <ul>
+          <li>
+            <p>Assists us with running a development server</p>
+          </li>
+          <li>
+            <p>Can enable hot-reloading of code</p>
+          </li>
+          <li>
+            <p>Helps us install third-party packages</p>
+          </li>
+          <li>
+            <p>Runs automated tests, linting, formatting on our code</p>
+          </li>
+        </ul>
+      </article>
 
+      <article class="slide">
+        <h2>Node Package Manager</h2>
+        <p>Search for any javascript package on <a href="https://www.npmjs.com/">npmjs.org</a></p>
+        <p>Install it with <code>npm install</code></p>
+        <p>Then you will find it in <code>/node_modules</code></p>
+        <p><a href="https://docs.npmjs.com/">NPM Docs</a></p>
+      </article>
 
-  <article class="slide">
-    <h2>Node for Frontend Tooling</h2>
-    <ul>
-      <li><p>Assists us with running a development server</p></li>
-      <li><p>Can enable hot-reloading of code</p></li>
-      <li><p>Helps us install third-party packages</p></li>
-      <li><p>Runs automated tests, linting, formatting on our code</p></li>
-    </ul>
-  </article>
+      <article class='slide'>
+        <h2>The package.json file</h2>
+        <ul>
+          <li>Keeps track of you project dependencies: Prod vs Dev</li>
+          <li>Run `npm init` and answer the form questions</li>
+          <li>Defining npm scripts in the package.json file</li>
+        </ul>
+      </article>
 
-  <article class="slide">
-    <h2>Node Package Manager</h2>
-    <p>Search for any javascript package on <a href="https://www.npmjs.com/">npmjs.org</a></p>
-    <p>Install it with <code>npm install</code></p>
-    <p>Then you will find it in <code>/node_modules</code></p>
-    <p><a href="https://docs.npmjs.com/">NPM Docs</a></p>
-  </article>
+      <article class="slide">
+        <h2>Using Knockout</h2>
+        <p><a href="https://www.npmjs.com/package/knockout">Knockout MVVM</a></p>
+        <p><code>npm install knockout</code></p>
+        <p><a href="https://codepen.io/heliocrat/pen/GRmzzKo?editors=1010">Knockout Clicker</a></p>
+      </article>
 
-  <article class='slide'>
-    <h2>The package.json file</h2>
-    <ul>
-      <li>Keeps track of you project dependencies: Prod vs Dev</li>
-      <li>Run `npm init` and answer the form questions</li>
-      <li>Defining npm scripts in the package.json file</li>
-    </ul>
-    </article>
+      <article class="slide">
+        <h2>Observables</h2>
+        <p>✨ How to run code automatically when something changes ✨</p>
+        <p><a href="https://knockoutjs.com/documentation/introduction.html">Knockout Docs</a></p>
+      </article>
 
-  <!-- <article class="slide">
-    <h2>Let's Create a Node Server with Nodemon</h2>
-    <code>npm install --save-dev nodemon</code>
-    <p><a href="https://nodemon.io/">nodemon.io</a></p>
-  </article> -->
+      <article class="slide">
+        <h2>Code-Along: Simple Dragon clicker with Knockout!</h2>
+      </article>
+    </section>
 
-  <article class="slide">
-    <h2>Using Knockout</h2>
-    <p><a href="https://www.npmjs.com/package/knockout">Knockout MVVM</a></p>
-    <p><code>npm install knockout</code></p>
-    <p><a href="https://codepen.io/heliocrat/pen/GRmzzKo?editors=1010">Knockout Clicker</a></p>
-  </article>
+    <section id='part-3'>
+      <header class='slide'>
+        <h3>App Tooling</h3>
+        <h1>Git Commands</h1>
+      </header>
+      <article class="slide">
+        <h2>Git Version Control</h2>
+        <p>These commands will accomplish the same things as the Github GUI</p>
+        <p>But they are more efficient</p>
+        <p>And we have the opportunity for more powerful, customized commands in the terminal</p>
+      </article>
+      <article class="slide">
+        <h2>Local, Remote & Origin</h2>
+        <div class='flex'>
+          <a href="http://jlord.us/git-it/challenges/remote_control.html"><img class='backdrop'
+                 src="http://jlord.us/git-it/assets/imgs/remotes.png" alt=""></a>
+          <a href="http://jlord.us/git-it/challenges/forks_and_clones.html"><img class='backdrop'
+                 src="http://jlord.us/git-it/assets/imgs/clone.png" alt=""></a>
+        </div>
+      </article>
+      <article class="slide">
+        <h2>Staging, Committing, Pushing & Pulling</h2>
+        <img height='350' src="img/git_workflow.png" alt="">
+      </article>
+      <article class="slide">
+        <h2>Branching</h2>
+        <a href="http://jlord.us/git-it/challenges/branches_arent_just_for_birds.html">
+          <img class='backdrop' height='350' src="http://jlord.us/git-it/assets/imgs/branches.png" alt="">
+        </a>
+      </article>
+      <article class="slide">
+        <h2>Basic Git commands</h2>
+        <ul class='col-2 nolist'>
+          <li><code>git clone</code> - copies a remote repo</li>
+          <li><code>git pull</code> - pulls down latest changes</li>
+          <li><code>git add .</code> - Stages all changes</li>
+          <li><code>git revert</code> - unstages staged changes</li>
+          <li><code>git commit -m "Commit message"</code> - Commits changes locally</li>
+          <li><code>git push</code> - Pushes local commits to remote</li>
+          <li><code>git branch</code> - displays branches</li>
+          <ul>
+            <li>flags: <code>-d &lt;branchname></code> to delete a branch</li>
+          </ul>
+          <li><code>git checkout &lt;branchname></code> - Checks out branch</li>
+          <li><code>git checkout -b &lt;branchname></code> - Creates & checks out new branch</li>
+          <li><code>git fetch</code> - Fetches remote to view dif</li>
+          <li><code>git merge &lt;branchname></code> - Merges in branch to current</li>
+          <li><code>git diff</code> - Shows changes in red/green</li>
+          <li><code>git log</code> - Shows the git history</li>
+          <ul>
+            <li>flags: <br><code>--graph --decorate --oneline</code></li>
+          </ul>
+          <li><code>git reset --hard HEAD</code> - Resets your local branch to the HEAD of remote</li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Guided Git Tutorial</h2>
+        <p><a href="https://gitimmersion.com/index.html">Git Immersion</a></p>
+      </article>
+      <article class="slide">
+        <h2>Interactive Git</h2>
+        <p><a href="https://learngitbranching.js.org/">Learn Git</a></p>
+      </article>
+      <article class="slide">
+        <h2>Resources</h2>
+        <ul>
+          <li><a href="https://docs.github.com/en/get-started/quickstart/set-up-git">Github Docs</a></li>
+          <li><a href="https://dangitgit.com/">DangitGit.com</a></li>
+          <li><a href="http://jlord.us/git-it/index.html">Git-It</a></li>
+          <li><a href="https://rogerdudler.github.io/git-guide/">Git Guide</a></li>
+          <li><a
+               href="https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/">Freecodecamp</a>
+          </li>
+        </ul>
+      </article>
+    </section>
 
-  <article class="slide">
-    <h2>Observables</h2>
-    <p>✨ How to run code automatically when something changes ✨</p>
-    <p><a href="https://knockoutjs.com/documentation/introduction.html">Knockout Docs</a></p>
-  </article>
+    <footer class="slide" title="The End">
+      <h2>Thank you!</h2>
+    </footer>
 
-  <article class="slide">
-    <h2>Code-Along: Simple Dragon clicker with Knockout!</h2>
-  </article>
-</section>
+    <script src="../lib/inspire.js"></script>
+    <script src="../laser/laser.js"></script>
+  </body>
 
-<section id='part-3'>
-  <header class='slide'>
-    <h3>App Tooling</h3>
-    <h1>Git Commands</h1>
-  </header>
-  <article class="slide">
-    <h2>Git Version Control</h2>
-    <p>These commands will accomplish the same things as the Github GUI</p>
-    <p>But they are more efficient</p>
-    <p>And we have the opportunity for more powerful, customized commands in the terminal</p>
-  </article>
-  <article class="slide">
-    <h2>Local, Remote & Origin</h2>
-    <div class='flex'>
-      <a href="http://jlord.us/git-it/challenges/remote_control.html"><img class='backdrop' src="http://jlord.us/git-it/assets/imgs/remotes.png" alt=""></a>
-      <a href="http://jlord.us/git-it/challenges/forks_and_clones.html"><img class='backdrop' src="http://jlord.us/git-it/assets/imgs/clone.png" alt=""></a>
-    </div>
-  </article>
-  <article class="slide">
-    <h2>Staging, Committing, Pushing & Pulling</h2>
-    <img height='350' src="img/git_workflow.png" alt="">
-  </article>
-  <article class="slide">
-    <h2>Branching</h2>
-    <a href="http://jlord.us/git-it/challenges/branches_arent_just_for_birds.html">
-      <img class='backdrop' height='350' src="http://jlord.us/git-it/assets/imgs/branches.png" alt="">
-    </a>
-  </article>
-  <article class="slide">
-    <h2>Basic Git commands</h2>
-    <ul class='col-2 nolist'>
-      <li><code>git clone</code> - copies a remote repo</li>
-      <li><code>git pull</code> - pulls down latest changes</li>
-      <li><code>git add .</code> - Stages all changes</li>
-      <li><code>git revert</code> - unstages staged changes</li>
-      <li><code>git commit -m "Commit message"</code> - Commits changes locally</li>
-      <li><code>git push</code> - Pushes local commits to remote</li>
-      <li><code>git branch</code> - displays branches</li>
-      <ul>
-        <li>flags: <code>-d &lt;branchname></code> to delete a branch</li>
-      </ul>
-      <li><code>git checkout &lt;branchname></code> - Checks out branch</li>
-      <li><code>git checkout -b &lt;branchname></code> - Creates & checks out new branch</li>
-      <li><code>git fetch</code> - Fetches remote to view dif</li>
-      <li><code>git merge &lt;branchname></code> - Merges in branch to current</li>
-      <li><code>git diff</code> - Shows changes in red/green</li>
-      <li><code>git log</code> - Shows the git history</li>
-      <ul>
-        <li>flags: <br><code>--graph --decorate --oneline</code></li>
-      </ul>
-      <li><code>git reset --hard HEAD</code> - Resets your local branch to the HEAD of remote</li>
-    </ul>
-  </article>
-  <article class="slide">
-    <h2>Guided Git Tutorial</h2>
-    <p><a href="https://gitimmersion.com/index.html">Git Immersion</a></p>
-  </article>
-  <article class="slide">
-    <h2>Interactive Git</h2>
-    <p><a href="https://learngitbranching.js.org/">Learn Git</a></p>
-  </article>
-  <article class="slide">
-    <h2>Resources</h2>
-    <ul>
-      <li><a href="https://docs.github.com/en/get-started/quickstart/set-up-git">Github Docs</a></li>
-      <li><a href="https://dangitgit.com/">DangitGit.com</a></li>
-      <li><a href="http://jlord.us/git-it/index.html">Git-It</a></li>
-      <li><a href="https://rogerdudler.github.io/git-guide/">Git Guide</a></li>
-      <li><a href="https://www.freecodecamp.org/news/learn-the-basics-of-git-in-under-10-minutes-da548267cc91/">Freecodecamp</a></li>
-    </ul>
-  </article>
-</section>
-
-<footer class="slide" title="The End">
-  <h2>Thank you!</h2>
-</footer>
-
-<script src="../lib/inspire.js"></script>
-<script src="../laser/laser.js"></script>
-</body>
 </html>
