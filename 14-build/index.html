@@ -1,52 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="description" content="MCC Web Design & Development Slides">
-	<meta name="author" content="Jamie Vaughn">
-  <title>Build Tools & Bundling</title>
-  <!-- Inspire css -->
-	<link href="../lib/inspire.css" rel="stylesheet" />
-	<link href="../lib/theme.css" rel="stylesheet" />
-	<link href="../lib/talk.css" rel="stylesheet" />
-	<link href="../lib/utils.css" rel="stylesheet" />
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="MCC Web Design & Development Slides">
+    <meta name="author" content="Jamie Vaughn">
+    <title>Build Tools & Bundling</title>
+    <!-- Inspire css -->
+    <link href="../lib/inspire.css" rel="stylesheet" />
+    <link href="../lib/theme.css" rel="stylesheet" />
+    <link href="../lib/talk.css" rel="stylesheet" />
+    <link href="../lib/utils.css" rel="stylesheet" />
 
-  <!-- Custom css -->
-  <link rel="stylesheet" href="../laser/laser.css">
-</head>
-<body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
+    <!-- Custom css -->
+    <link rel="stylesheet" href="../laser/laser.css">
+  </head>
 
-<header id="intro" class="slide">
-  <h1>
-		Web Design & Development
-	</h1>
-	<h2>
-		Build Tools
-	</h2>
-	<p class="attribution">MCC: Section 3</p>
-</header>
-<section>
-	<header class="slide">
-    <h1>Javascript Bundling Tools</h1>
-	</header>
+  <body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
 
-	<article class="slide" title="">
-    <h2>What is Bundling</h2>
-    <ul>
-      <li>Concatenating Files to reduce number of network requests</li>
-      <li>Minifying code to shorten files</li>
-      <li>Transpiling Code to ECMAScript spec</li>
-      <li>Optimizing, Tree Shaking</li>
-    </ul>
-	</article>
+    <header id="intro" class="slide">
+      <h1>
+        Web Design & Development
+      </h1>
+      <h2>
+        Build Tools
+      </h2>
+      <p class="attribution">MCC: Section 3</p>
+    </header>
+    <section>
+      <header class="slide">
+        <h1>Javascript Bundling Tools</h1>
+      </header>
 
-  <article class="slide">
-    <h2>Minified CSS</h2>
-    <p>Fewer kb sent over the network</p>
-    <div class="flex">
-    <pre class="language-css"><code>button {
+      <article class="slide" title="">
+        <h2>What is Bundling</h2>
+        <ul>
+          <li>Concatenating Files to reduce number of network requests</li>
+          <li>Minifying code to shorten files</li>
+          <li>Transpiling Code to ECMAScript spec</li>
+          <li>Optimizing, Tree Shaking</li>
+        </ul>
+      </article>
+
+      <article class="slide">
+        <h2>Minified CSS</h2>
+        <p>Fewer kb sent over the network</p>
+        <div class="flex">
+          <pre class="language-css"><code>button {
   font-size: 3rem;
   text-transform: capitalize;
 }
@@ -62,17 +63,18 @@ main.display {
   gap: 2rem;
   justify-content: center;
 }</code></pre>
-    <span style="flex-shrink: 2; font-size: 3rem;  align-self: center">&rarr;</span>
-    <pre class="language-css" style="overflow-x: scroll; width: 45vw"><code>button {font-size: 3rem;text-transform: capitalize;}h1 {font-size: 2rem;}nav {padding: 1rem;}main.display {display: flex;flex-wrap: wrap;gap: 2rem;justify-content: center;}</code></pre>
-  </div>
+          <span style="flex-shrink: 2; font-size: 3rem;  align-self: center">&rarr;</span>
+          <pre class="language-css"
+               style="overflow-x: scroll; width: 45vw"><code>button {font-size: 3rem;text-transform: capitalize;}h1 {font-size: 2rem;}nav {padding: 1rem;}main.display {display: flex;flex-wrap: wrap;gap: 2rem;justify-content: center;}</code></pre>
+        </div>
 
-  </article>
+      </article>
 
-  <article class="slide"style="overflow: hidden">
-    <h2>Minified JS</h2>
-    <p>Fewer kb sent over the network</p>
-    <div class="flex" style="max-height: 50vh;">
-    <pre class="language-js" style="height: fit-content; overflow: visible;"><code>// Some long application code
+      <article class="slide" style="overflow: hidden">
+        <h2>Minified JS</h2>
+        <p>Fewer kb sent over the network</p>
+        <div class="flex" style="max-height: 50vh;">
+          <pre class="language-js" style="height: fit-content; overflow: visible;"><code>// Some long application code
 function palindromeChecker(str, ignoreSpaces){
   if(typeof str !== 'string' && !str.length) {
     return 'no string'
@@ -94,8 +96,9 @@ function palindromeChecker(str, ignoreSpaces){
     isPalindrome: regex.test(string)
   }
 }</code></pre>
-<span style="flex-shrink: 2; font-size: 3rem; align-self: center">&rarr;</span>
-    <pre class="language-js" style="overflow-x: scroll; width: 45vw"><code>(function() {(function(n){var A=this||(0,eval)("this"),w=A.document,R=A.navigator,v=A.jQuery,H=A.JSON;v||"undefined"===typeof jQuery||(v=jQuery);
+          <span style="flex-shrink: 2; font-size: 3rem; align-self: center">&rarr;</span>
+          <pre class="language-js"
+               style="overflow-x: scroll; width: 45vw"><code>(function() {(function(n){var A=this||(0,eval)("this"),w=A.document,R=A.navigator,v=A.jQuery,H=A.JSON;v||"undefined"===typeof jQuery||(v=jQuery);
 (function(n){"function"===typeof define&&define.amd?define(["exports","require"],n):"object"===typeof exports&&"object"===typeof module?n(module.exports||exports):n(A.ko={})})(function(S,T){function K(a,c){return null===a||typeof a in W?a===c:!1}function X(b,c){var d;return function(){d||(d=a.a.setTimeout(function(){d=n;b()},c))}}function Y(b,c){var d;return function(){clearTimeout(d);
 d=a.a.setTimeout(b,c)}}function Z(a,c){c&&"change"!==c?"beforeChange"===c?this.pc(a):this.gb(a,c):this.qc(a)}function aa(a,c){null!==c&&c.s&&c.s()}function ba(a,c){var d=this.qd,e=d[r];e.ra||(this.Qb&&this.mb[c]?(d.uc(c,a,this.mb[c]),this.mb[c]=null,--this.Qb):e.I[c]||d.uc(c,a,e.J?{da:a}:d.$c(a)),a.Ja&&a.gd())}var a="undefined"!==typeof S?S:{};a.b=function(b,c){for(var d=b.split("."),e=a,f=0;f<d.length-1;f++)e=e[d[f]];e[d[d.length-1]]=c};a.L=function(a,c,d){a[c]=d};a.version="3.5.1";a.b("version",
 a.version);a.options={deferUpdates:!1,useOnlyNativeEvents:!1,foreachHidesDestroyed:!1};
@@ -123,20 +126,20 @@ return d},Nb:function(a,b){if(b instanceof Array)a.push.apply(a,b);
 else for(var c=0,d=b.length;c<d;c++)a.push(b[c]);return a},Na:function(b,c,d){var e=a.a.A(a.a.bc(b),c);
 0>e?d&&b.push(c):d||b.splice(e,1)},Ba:g,extend:c,setPrototypeOf:d,Ab:g?d:c,P:b,Ga:function(a,b,c){if(!a)return a
 var d={},e;for(e in a)f.call(a,e)&&(d[e]=b.call(c,a[e],e,a));a.b("jqueryTmplTemplateEngine",a.$a)})()})})();})();</code></pre>
-    </div>
+        </div>
 
-  </article>
+      </article>
 
-	<article class="slide">
-    <h2>Why?</h2>
-    <p>This is all for produciton code deployment</p>
-    <p>We want every minor optimization done for us to improve load speeds.</p>
-    <p>But it's tedious, so we get a script to do it for us.</p>
-	</article>
+      <article class="slide">
+        <h2>Why?</h2>
+        <p>This is all for produciton code deployment</p>
+        <p>We want every minor optimization done for us to improve load speeds.</p>
+        <p>But it's tedious, so we get a script to do it for us.</p>
+      </article>
 
-  <article class="slide">
-    <h2>Minimum React Build Tool With Parcel</h2>
-    <pre class="language-sh"><code>npm install -g parcel-bundler
+      <article class="slide">
+        <h2>Minimum React Build Tool With Parcel</h2>
+        <pre class="language-sh"><code>npm install -g parcel-bundler
 mkdir &lt;my-react-app-name> && cd &lt;my-react-app-name>
 # insert whatever app name you want for the directory
 touch index.html && touch index.jsx && touch styles.css
@@ -148,11 +151,11 @@ touch index.html && touch index.jsx && touch styles.css
 # Paste in content for these two files from next slide
 parcel index.html
 # Then visit the served page (http://localhost:1234)</code></pre>
-  </article>
+      </article>
 
-  <article class="slide">
-    <h2>Minimum content for <code>index.html</code></h2>
-    <pre class="language-html"><code id='copy-index' data-clipboard-text='&lt;html>&lt;head>&lt;link rel="stylesheet" href="./styles.css">&lt;/head>&lt;body>&lt;div id="app">&lt;/div>&lt;script src="./index.jsx">&lt;/script>&lt;/body>&lt;/html>' >
+      <article class="slide">
+        <h2>Minimum content for <code>index.html</code></h2>
+        <pre class="language-html"><code id='copy-index' data-clipboard-text='&lt;html>&lt;head>&lt;link rel="stylesheet" href="./styles.css">&lt;/head>&lt;body>&lt;div id="app">&lt;/div>&lt;script src="./index.jsx">&lt;/script>&lt;/body>&lt;/html>' >
 &lt;html>
   &lt;head>
   &lt;link rel="stylesheet" href="./styles.css">
@@ -162,10 +165,10 @@ parcel index.html
     &lt;script src="./index.jsx">&lt;/script>
   &lt;/body>
 &lt;/html></code></pre>
-  </article>
-  <article class="slide">
-    <h2>Minimum Content for <code>index.jsx</code></h2>
-    <pre class="language-js"><code id="copy-react" data-clipboard-text="import React from 'react';
+      </article>
+      <article class="slide">
+        <h2>Minimum Content for <code>index.jsx</code></h2>
+        <pre class="language-js"><code id="copy-react" data-clipboard-text="import React from 'react';
 import ReactDOM from 'react-dom';
 function App() {
   return &lt;h1>Your React app is running!&lt;/h1>;
@@ -177,86 +180,87 @@ function App() {
   return &lt;h1>Your React app is running!&lt;/h1>;
 }
 ReactDOM.render(&lt;App />, document.getElementById('app'));</code></pre>
-  </article>
+      </article>
 
-  <article class="slide">
-    <h2>Parcel Bundler <sup><a href="https://parceljs.org/">Docs</a></sup></h2>
-    <ul>
-      <li>Parcel builds the react app into a production ready <code>/dist</code> folder including required <code>node_modules</code></li>
-      <li>It creates a <code>package.json</code> to keep track of package versions</li>
-      <li>It does the JSX transpiling like Babel does</li>
-      <li>It handles <code>import</code>/<code>export</code> statements</li>
-      <li>It enables hot-reloading for fast development</li>
-    </ul>
-  </article>
+      <article class="slide">
+        <h2>Parcel Bundler <sup><a href="https://parceljs.org/">Docs</a></sup></h2>
+        <ul>
+          <li>Parcel builds the react app into a production ready <code>/dist</code> folder including required
+            <code>node_modules</code></li>
+          <li>It creates a <code>package.json</code> to keep track of package versions</li>
+          <li>It does the JSX transpiling like Babel does</li>
+          <li>It handles <code>import</code>/<code>export</code> statements</li>
+          <li>It enables hot-reloading for fast development</li>
+        </ul>
+      </article>
 
-  <article class="slide">
-    <h2>Let's try out Parcel.js!</h2>
-    <p><a href="https://parceljs.org/getting-started/webapp/">Get Started!</a></p>
-  </article>
+      <article class="slide">
+        <h2>Let's try out Parcel.js!</h2>
+        <p><a href="https://parceljs.org/getting-started/webapp/">Get Started!</a></p>
+      </article>
 
-  <article class="slide">
-    <h2>Package.json</h2>
-    <p>Keep track of your production dependencies & your development dependencies</p>
-    <ul>
-      <li>prod dependencies = packages that will be installed in the production build output</li>
-      <li>dev dependencies = packages that are installed during dev server, but not in production output</li>
-    </ul>
-  </article>
+      <article class="slide">
+        <h2>Package.json</h2>
+        <p>Keep track of your production dependencies & your development dependencies</p>
+        <ul>
+          <li>prod dependencies = packages that will be installed in the production build output</li>
+          <li>dev dependencies = packages that are installed during dev server, but not in production output</li>
+        </ul>
+      </article>
 
-  <article class="slide">
-    <h2>Managing Project Packages</h2>
-    <p>Installing new packages</p>
-    <p><code>npm install react-query</code></p>
-    <p>Removing packages</p>
-    <p><code>npm uninstall react-query</code></p>
-    <p>Install package as dev dependency</p>
-    <p><code>npm install prettier -D</code> or <code>--save-Dev</code></p>
-  </article>
+      <article class="slide">
+        <h2>Managing Project Packages</h2>
+        <p>Installing new packages</p>
+        <p><code>npm install react-query</code></p>
+        <p>Removing packages</p>
+        <p><code>npm uninstall react-query</code></p>
+        <p>Install package as dev dependency</p>
+        <p><code>npm install prettier -D</code> or <code>--save-Dev</code></p>
+      </article>
 
-</section>
+    </section>
 
-<section>
-	<header class="slide">
-    <h1>Build Tooling</h1>
-	</header>
+    <section>
+      <header class="slide">
+        <h1>Build Tooling</h1>
+      </header>
 
-  <article class="slide">
-    <h2>Older tooling</h2>
-    <ul>
-      <li>Webpack</li>
-      <li>Parcel</li>
-      <li>Create-React-App</li>
-    </ul>
-  </article>
+      <article class="slide">
+        <h2>Older tooling</h2>
+        <ul>
+          <li>Webpack</li>
+          <li>Parcel</li>
+          <li>Create-React-App</li>
+        </ul>
+      </article>
 
-  <article class="slide">
-    <h2>Babel</h2>
-    <p>For code transpiling</p>
-    <p>JSX transformed to Javascript</p>
-    <p>ES2023 transformed to ES5 (or whatever you configure)</p>
-    <p>CSS & JS files are concatenated and bundled</p>
-  </article>
+      <article class="slide">
+        <h2>Babel</h2>
+        <p>For code transpiling</p>
+        <p>JSX transformed to Javascript</p>
+        <p>ES2023 transformed to ES5 (or whatever you configure)</p>
+        <p>CSS & JS files are concatenated and bundled</p>
+      </article>
 
-  <article class="slide">
-    <h2>Vite.js</h2>
-    <img src="img/vite_logo.svg" height="33%" alt="">
-    <p><a href="https://vitejs.dev/guide/">Getting Started With Vite</a></p>
-  </article>
+      <article class="slide">
+        <h2>Vite.js</h2>
+        <img src="img/vite_logo.svg" height="33%" alt="">
+        <p><a href="https://vitejs.dev/guide/">Getting Started With Vite</a></p>
+      </article>
 
-  <article class="slide">
-    <h2>Starting your dev server</h2>
-    <p><code>npm run dev</code> or <code>npm start</code></p>
-  </article>
+      <article class="slide">
+        <h2>Starting your dev server</h2>
+        <p><code>npm run dev</code> or <code>npm start</code></p>
+      </article>
 
-  <article class="slide">
-    <h2>Building your production application</h2>
-    <p><code>npm run build</code></p>
-  </article>
+      <article class="slide">
+        <h2>Building your production application</h2>
+        <p><code>npm run build</code></p>
+      </article>
 
-  <article class="slide">
-    <h2>Modifying your <code>scripts</code> in <code>package.json</code></h2>
-    <pre class="language-json"><code>{
+      <article class="slide">
+        <h2>Modifying your <code>scripts</code> in <code>package.json</code></h2>
+        <pre class="language-json"><code>{
   ...
   "scripts": {
     "dev": "vite dev",
@@ -267,23 +271,23 @@ ReactDOM.render(&lt;App />, document.getElementById('app'));</code></pre>
   ...
 }
     </code></pre>
-  </article>
+      </article>
 
-  <article class="slide">
-    <h2>Deploying Vite to Github Pages</h2>
-    <ol>
-      <li>
-        in your Github repo, go into the Settings tab, and click on "Pages"
-      </li>
-      <li>
-        Under "Build and deployment", set your branch to your
-        main/master/central branch, and set the folder to "/docs" instead of
-        "/(root)"
-      </li>
-      <li>
-        Update your Vite project's <code>vite.config.js</code> to look like
-        the following:
-        <pre class="language-js"><code>import { defineConfig } from 'vite'
+      <article class="slide">
+        <h2>Deploying Vite to Github Pages</h2>
+        <ol>
+          <li>
+            in your Github repo, go into the Settings tab, and click on "Pages"
+          </li>
+          <li>
+            Under "Build and deployment", set your branch to your
+            main/master/central branch, and set the folder to "/docs" instead of
+            "/(root)"
+          </li>
+          <li>
+            Update your Vite project's <code>vite.config.js</code> to look like
+            the following:
+            <pre class="language-js"><code>import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
 export default defineConfig({
@@ -293,35 +297,36 @@ build: {
 outDir: 'docs'
 }
 })</code></pre>
-      </li>
-      <li>Build your project by running <code>npm run build</code></li>
-      <li>
-        Git add your files and push them up to Github (make sure you are on
-        the branch specified in your Github Pages settings)
-      </li>
-      <li>Wait a few moments for Github to run its checks and deploy!</li>
-    </ol>
-  </article>
+          </li>
+          <li>Build your project by running <code>npm run build</code></li>
+          <li>
+            Git add your files and push them up to Github (make sure you are on
+            the branch specified in your Github Pages settings)
+          </li>
+          <li>Wait a few moments for Github to run its checks and deploy!</li>
+        </ol>
+      </article>
 
-  <article class="slide" id="data-insert">
-    <h2>ESLint</h2>
-    <p><code>npm install eslint</code></p>
-	</article>
-  <article class="slide">
-    <h2>Prettier</h2>
-    <p><code>npm install prettier</code></p>
-	</article>
-  <article class="slide">
-    <h2>Husky</h2>
-    <p>Pre-commit hooks</p>
-  </article>
-</section>
+      <article class="slide" id="data-insert">
+        <h2>ESLint</h2>
+        <p><code>npm install eslint</code></p>
+      </article>
+      <article class="slide">
+        <h2>Prettier</h2>
+        <p><code>npm install prettier</code></p>
+      </article>
+      <article class="slide">
+        <h2>Husky</h2>
+        <p>Pre-commit hooks</p>
+      </article>
+    </section>
 
-<footer class="slide" title="The End">
-  Thank you!
-</footer>
+    <footer class="slide" title="The End">
+      Thank you!
+    </footer>
 
-<script src="../lib/inspire.js"></script>
-<script src="../laser/laser.js"></script>
-</body>
+    <script src="../lib/inspire.js"></script>
+    <script src="../laser/laser.js"></script>
+  </body>
+
 </html>
