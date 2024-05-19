@@ -1,189 +1,207 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="description" content="MCC Web Design & Development Slides">
-	<meta name="author" content="Jamie Vaughn">
-  <title>Redux</title>
-  <!-- Inspire css -->
-	<link href="../lib/inspire.css" rel="stylesheet" />
-	<link href="../lib/theme.css" rel="stylesheet" />
-	<link href="../lib/talk.css" rel="stylesheet" />
-	<link href="../lib/utils.css" rel="stylesheet" />
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="MCC Web Design & Development Slides">
+    <meta name="author" content="Jamie Vaughn">
+    <title>Redux</title>
+    <!-- Inspire css -->
+    <link href="../lib/inspire.css" rel="stylesheet" />
+    <link href="../lib/theme.css" rel="stylesheet" />
+    <link href="../lib/talk.css" rel="stylesheet" />
+    <link href="../lib/utils.css" rel="stylesheet" />
 
-  <!-- Custom css -->
-  <link rel="stylesheet" href="../laser/laser.css">
-</head>
-<body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
+    <!-- Custom css -->
+    <link rel="stylesheet" href="../laser/laser.css">
+  </head>
 
-<header id="intro" class="slide">
-  <h1>
-    Web Design & Development
-  </h1>
-  <h2>
-    Redux
-  </h2>
-  <p class="attribution">MCC: Section 3</p>
-</header>
-<section>    
-  <header class="slide">
-    <h2>Redux</h2>
-		<h1>The Leading <strong>State Managment</strong> Library for React Apps</h1>
-  </header>
+  <body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
 
-	<article class="slide" title="">
-    <h2>Why do we need Redux?</h2>
-    <p>Web Apps are getting more complex: <strong><a href="https://redux.js.org/understanding/thinking-in-redux/motivation">The motivation</a></strong></p>
-    <blockquote>As the requirements for JavaScript single-page applications have become increasingly complicated, our code must manage more state than ever before. This state can include server responses and cached data, as well as locally created data that has not yet been persisted to the server. UI state is also increasing in complexity, as we need to manage active routes, selected tabs, spinners, pagination controls, and so on.</blockquote>
-    <blockquote>Managing this ever-changing state is hard. If a model can update another model, then a view can update a model, which updates another model, and this, in turn, might cause another view to update. At some point, you no longer understand what happens in your app as you have lost control over the when, why, and how of its state. When a system is opaque and non-deterministic, it's hard to reproduce bugs or add new features.</blockquote>
-	</article>
+    <header id="intro" class="slide">
+      <h1>
+        Web Design & Development
+      </h1>
+      <h2>
+        Redux
+      </h2>
+      <p class="attribution">MCC: Section 3</p>
+    </header>
+    <section>
+      <header class="slide">
+        <h2>Redux</h2>
+        <h1>The Leading <strong>State Managment</strong> Library for React Apps</h1>
+      </header>
 
-  <article class="slide">
-    <h2>Mutation & Asynchronicity</h2>
-    <p><strong>This complexity is difficult to handle as we're mixing two concepts that are very hard for the human mind to reason about: mutation and asynchronicity.</strong></p>
-    <ul>
-      <li>What if we could make mutations seem like immutable copy-on-updates?</li>
-      <li>What if we could make asynchronous operations seem like synchronous ones?</li>
-    </ul>
-  </article>
+      <article class="slide" title="">
+        <h2>Why do we need Redux?</h2>
+        <p>Web Apps are getting more complex: <strong><a
+               href="https://redux.js.org/understanding/thinking-in-redux/motivation">The motivation</a></strong></p>
+        <blockquote>As the requirements for JavaScript single-page applications have become increasingly complicated,
+          our code must manage more state than ever before. This state can include server responses and cached data, as
+          well as locally created data that has not yet been persisted to the server. UI state is also increasing in
+          complexity, as we need to manage active routes, selected tabs, spinners, pagination controls, and so on.
+        </blockquote>
+        <blockquote>Managing this ever-changing state is hard. If a model can update another model, then a view can
+          update a model, which updates another model, and this, in turn, might cause another view to update. At some
+          point, you no longer understand what happens in your app as you have lost control over the when, why, and how
+          of its state. When a system is opaque and non-deterministic, it's hard to reproduce bugs or add new features.
+        </blockquote>
+      </article>
 
-  <article class="slide">
-    <h2>State Accessible from Anywhere</h2>
-    <div class="flex">
-      <img src="img/global_state.png" alt="">
-      <p>We could have the state stored in a global container, which would allow components to access state from any position in the component tree. But this can cause problems because any component can access any part of the state. transient stateful bugs, because there’s no rules for accessing or writing to the global state.</p>
-    </div>
-  </article>
-
-	<article class="slide">
-    <h2>Is the Context API really state management?</h2>
-    <p><a href="https://blog.isquaredsoftware.com/2021/01/context-redux-differences/">Article on the differences</a></p>
-    <blockquote>Context is more like hidden props than abstracted state. - Mark Erikson</blockquote>
-    <blockquote>Context is how state (that exists somewhere already) is shared with other components.
-      <br>Context has little to do with state management. - David Khourshid</blockquote>
-    <p>Context API is specific to the React API. Redux is more of a design pattern and since it is a separate library that can be used in any app.</p>
-    <p>Both Context & Redux allow us to avoid prop drilling, but the similarities pretty much end there.</p>
-	</article>
-  <article class="slide">
-    <h2>Context vs. Redux</h2>
-    <di class="flex align most-height">
-      <ul style="flex-shrink: 1.1">
-        <li class='nolist'><strong>Context</strong></li>
-        <li>Does not create a store. You have to give it one.</li>
-        <li>Reads the Provider value</li>
-        <li>Passes down a single value. Distinguishing bewteen different state requires separate Contexts.</li>
-        <li>Limited support in React Dev Tools</li>
-        <li>Difficult to skip updates of consuming component</li>
-        <li>Doesn't handle side effects or async</li>
-      </ul>
-      <ul>
-        <li class='nolist'><strong>Redux</strong></li>
-        <li>Stores/manages singleton object</li>
-        <li>Reads singleton object</li>
-        <li>Mutates state with dispatch/action/reducer pattern</li>
-        <li>Extensive custom Redux Dev Tools support</li>
-        <li>Accomodates middleware for side effects & async ops</li>
-        <li>Offers component subscriptions to subset of the store</li>
-        <li>Only rerenders the component that is affected by the store update, not the whole component tree.</li>
-      </ul>
-    </di>
-  </article>
-  <article class="slide">
-    <h2>useContext + useReducer</h2>
-    <ul>
-      <li>Using these in combination can start to approach a state management system</li>
-      <li>But still rerenders the whole Provider sub-tree</li>
-      <li>Still lacks natural way to handle async side effects</li>
-    </ul>
-  </article>
-  <article class="slide">
-    <h2>Summary</h2>
-    <ul>
-      <li>Context:
+      <article class="slide">
+        <h2>Mutation & Asynchronicity</h2>
+        <p><strong>This complexity is difficult to handle as we're mixing two concepts that are very hard for the human
+            mind to reason about: mutation and asynchronicity.</strong></p>
         <ul>
-          <li>Passing down a value to nested components without prop-drilling</li>
+          <li>What if we could make mutations seem like immutable copy-on-updates?</li>
+          <li>What if we could make asynchronous operations seem like synchronous ones?</li>
         </ul>
-      </li>
-      <li>useReducer
+      </article>
+
+      <article class="slide">
+        <h2>State Accessible from Anywhere</h2>
+        <div class="flex">
+          <img src="img/global_state.png" alt="">
+          <p>We could have the state stored in a global container, which would allow components to access state from any
+            position in the component tree. But this can cause problems because any component can access any part of the
+            state. transient stateful bugs, because there’s no rules for accessing or writing to the global state.</p>
+        </div>
+      </article>
+
+      <article class="slide">
+        <h2>Is the Context API really state management?</h2>
+        <p><a href="https://blog.isquaredsoftware.com/2021/01/context-redux-differences/">Article on the differences</a>
+        </p>
+        <blockquote>Context is more like hidden props than abstracted state. - Mark Erikson</blockquote>
+        <blockquote>Context is how state (that exists somewhere already) is shared with other components.
+          <br>Context has little to do with state management. - David Khourshid
+        </blockquote>
+        <p>Context API is specific to the React API. Redux is more of a design pattern and since it is a separate
+          library that can be used in any app.</p>
+        <p>Both Context & Redux allow us to avoid prop drilling, but the similarities pretty much end there.</p>
+      </article>
+      <article class="slide">
+        <h2>Context vs. Redux</h2>
+        <di class="flex align most-height">
+          <ul style="flex-shrink: 1.1">
+            <li class='nolist'><strong>Context</strong></li>
+            <li>Does not create a store. You have to give it one.</li>
+            <li>Reads the Provider value</li>
+            <li>Passes down a single value. Distinguishing bewteen different state requires separate Contexts.</li>
+            <li>Limited support in React Dev Tools</li>
+            <li>Difficult to skip updates of consuming component</li>
+            <li>Doesn't handle side effects or async</li>
+          </ul>
+          <ul>
+            <li class='nolist'><strong>Redux</strong></li>
+            <li>Stores/manages singleton object</li>
+            <li>Reads singleton object</li>
+            <li>Mutates state with dispatch/action/reducer pattern</li>
+            <li>Extensive custom Redux Dev Tools support</li>
+            <li>Accomodates middleware for side effects & async ops</li>
+            <li>Offers component subscriptions to subset of the store</li>
+            <li>Only rerenders the component that is affected by the store update, not the whole component tree.</li>
+          </ul>
+        </di>
+      </article>
+      <article class="slide">
+        <h2>useContext + useReducer</h2>
         <ul>
-          <li>Moderately complex React component state management using a reducer function</li>
+          <li>Using these in combination can start to approach a state management system</li>
+          <li>But still rerenders the whole Provider sub-tree</li>
+          <li>Still lacks natural way to handle async side effects</li>
         </ul>
-      </li>
-      <li>Context & useReducer
+      </article>
+      <article class="slide">
+        <h2>Summary</h2>
         <ul>
-          <li>Moderately complex React component state management using a reducer function, and passing that state value down to nested components without prop-drilling</li>
+          <li>Context:
+            <ul>
+              <li>Passing down a value to nested components without prop-drilling</li>
+            </ul>
+          </li>
+          <li>useReducer
+            <ul>
+              <li>Moderately complex React component state management using a reducer function</li>
+            </ul>
+          </li>
+          <li>Context & useReducer
+            <ul>
+              <li>Moderately complex React component state management using a reducer function, and passing that state
+                value down to nested components without prop-drilling</li>
+            </ul>
+          </li>
+          <li>Redux
+            <ul>
+              <li>Sophisticated state management layer (independent of UI) using reducer functions</li>
+              <li>Fantastic app date/error traceability over time</li>
+            </ul>
+          </li>
         </ul>
-      </li>
-      <li>Redux
+      </article>
+
+      <article class="slide">
+        <h2>Flux Architecture & Redux</h2>
+        <p>Store - View - Dispatcher/Reducer</p>
+        <div class="flex">
+          <img src="img/flux_pattern.png" alt="">
+          <img src="https://redux.js.org/assets/images/one-way-data-flow-04fe46332c1ccb3497ecb04b94e55b97.png" alt="">
+        </div>
+      </article>
+
+      <article class="slide">
+        <h2>Three Principles</h2>
+        <p><a href="https://redux.js.org/understanding/thinking-in-redux/three-principles">Redux can be summarized as
+            three fundamental principles:</a></p>
         <ul>
-          <li>Sophisticated state management layer (independent of UI) using reducer functions</li>
-          <li>Fantastic app date/error traceability over time</li>
+          <li>Single Source of Truth: <ul class='nolist'>
+              <li><strong>A single store</strong> where Redux application state lives</li>
+            </ul>
+          </li>
+          <li>State is read-only:
+            <ul class='nolist'>
+              <li><strong>read-only store</strong> which is read with <code>store.getState()</code></li>
+              <li><strong>UI emits actions</strong> using <code>store.dispatch(action)</code></li>
+            </ul>
+          </li>
+          <li>Dispatched actions update Store via pure functions:
+            <ul class='nolist'>
+              <li><strong>use pure reducers</strong></li>
+            </ul>
+          </li>
         </ul>
-      </li>
-    </ul>
-  </article>
+      </article>
 
-  <article class="slide">
-    <h2>Flux Architecture & Redux</h2>
-    <p>Store - View - Dispatcher/Reducer</p>
-    <div class="flex">
-      <img src="img/flux_pattern.png" alt="">
-      <img src="https://redux.js.org/assets/images/one-way-data-flow-04fe46332c1ccb3497ecb04b94e55b97.png" alt="">
-    </div>
-  </article>
+      <article class="slide">
+        <h2>Redux Schematic</h2>
+        <p>The Synchronous Update Cycle</p>
+        <img src="img/Redux.png" alt="">
+      </article>
 
-  <article class="slide">
-    <h2>Three Principles</h2>
-    <p><a href="https://redux.js.org/understanding/thinking-in-redux/three-principles">Redux can be summarized as three fundamental principles:</a></p>
-    <ul>
-      <li>Single Source of Truth: <ul class='nolist'>
-          <li><strong>A single store</strong> where Redux application state lives</li>
-        </ul> 
-      </li>
-      <li>State is read-only: 
-        <ul class='nolist'>
-          <li><strong>read-only store</strong> which is read with <code>store.getState()</code></li>
-          <li><strong>UI emits actions</strong> using <code>store.dispatch(action)</code></li>
-        </ul> 
-      </li>
-      <li>Dispatched actions update Store via pure functions: 
-        <ul class='nolist'>
-          <li><strong>use pure reducers</strong></li>
-        </ul>
-      </li>
-    </ul>
-  </article>
-
-  <article class="slide">
-    <h2>Redux Schematic</h2>
-    <p>The Synchronous Update Cycle</p>
-    <img src="img/Redux.png" alt="">
-  </article>
-
-  <article class="slide">
-    <h2>Action -> Dispatch -> Reducer</h2>
-    <div class="flex" style='width: 90%'>
-      <span>Define the App's <br>Actions</span>
-      <p style='text-align: right;'>Define the Reducer logic <br>to Handle the Actions</p>
-    </div>
-    <div class="flex">
-      <img src="img/wood-shape-match-.jpg" alt="">
-      <pre class="language-sh"><code>redux
+      <article class="slide">
+        <h2>Action -> Dispatch -> Reducer</h2>
+        <div class="flex" style='width: 90%'>
+          <span>Define the App's <br>Actions</span>
+          <p style='text-align: right;'>Define the Reducer logic <br>to Handle the Actions</p>
+        </div>
+        <div class="flex">
+          <img src="img/wood-shape-match-.jpg" alt="">
+          <pre class="language-sh"><code>redux
   ⌙ actions.js
   ⌙ reducers.js
   ⌙ store.js
       </code></pre>
-      <img src="img/Wooden-Shape-Match.webp" alt="">
-    </div>
-  </article>
-  <article class="slide">
-    <h2>Actions</h2>
-    <p>The custom events emitted by user actions in the UI.</p>
-    <div class="flex">
-      <img src="img/wood-shape-match-.jpg" alt="">
-      <pre class="language-js"><code>
+          <img src="img/Wooden-Shape-Match.webp" alt="">
+        </div>
+      </article>
+      <article class="slide">
+        <h2>Actions</h2>
+        <p>The custom events emitted by user actions in the UI.</p>
+        <div class="flex">
+          <img src="img/wood-shape-match-.jpg" alt="">
+          <pre class="language-js"><code>
 const clickAction = {
   type: 'clickAction' // type is the only *required* key on an action
 }
@@ -199,14 +217,14 @@ const sideEffectAction = {
   }
 }
 </code></pre>
-    </div>
-  </article>
-  <article class="slide">
-		<h2>Reducers</h2>
-    <p>The receiver/listener for actions that handles the resulting state mutation.</p>
-    <div class="flex">
-      <img src="img/Wooden-Shape-Match.webp" alt="">
-		<pre class="language-js"><code>function reducer (state, action) {
+        </div>
+      </article>
+      <article class="slide">
+        <h2>Reducers</h2>
+        <p>The receiver/listener for actions that handles the resulting state mutation.</p>
+        <div class="flex">
+          <img src="img/Wooden-Shape-Match.webp" alt="">
+          <pre class="language-js"><code>function reducer (state, action) {
  switch(action.type) {
   case 'delete': 
     return handleDelete(action.id)
@@ -222,39 +240,44 @@ const sideEffectAction = {
     return state
  }
 }</code></pre>
-</div>
+        </div>
 
-	</article>
-  <article class="hidden">
-    <h2>Add Any Actions Easily</h2>
-    <p>Pass an "enum" (string) to trigger any arbitrary app logic. Mold the action & reducer logic in a flexible way.</p>
-    <div class="flex">
-      <img src="img/boy_carving.avif" alt="">
-      <img src="img/cat_carving.jpg" alt="">
-    </div>
-  </article>
-  <article class="slide">
-    <h2>Data type: Enums</h2>
-    <p>Javascript doesn't have these natively, but we try to imitate them with actions.</p>
-    <p>Typescript does have them though: <a href="https://www.typescriptlang.org/docs/handbook/enums.html#string-enums">String Enums</a></p>
-  </article>
+      </article>
+      <article class="hidden">
+        <h2>Add Any Actions Easily</h2>
+        <p>Pass an "enum" (string) to trigger any arbitrary app logic. Mold the action & reducer logic in a flexible
+          way.</p>
+        <div class="flex">
+          <img src="img/boy_carving.avif" alt="">
+          <img src="img/cat_carving.jpg" alt="">
+        </div>
+      </article>
+      <article class="slide">
+        <h2>Data type: Enums</h2>
+        <p>Javascript doesn't have these natively, but we try to imitate them with actions.</p>
+        <p>Typescript does have them though: <a
+             href="https://www.typescriptlang.org/docs/handbook/enums.html#string-enums">String Enums</a></p>
+      </article>
 
-  <article class="slide">
-    <h2>Action Creators</h2>
-    <p>These are functions that return our action objects with the type property and any necessary payload data populated.</p>
-    <p>Action Creators follow the <strong>Factory Function</strong> Design Pattern... The are functions that return objects!</p>
-    <p>These are used to minimize the redundancy of typing the action object & type, minimize mistakes and automate passing payloads in.</p>
-    <pre class="language-ts"><code>const addTodo = text => {
+      <article class="slide">
+        <h2>Action Creators</h2>
+        <p>These are functions that return our action objects with the type property and any necessary payload data
+          populated.</p>
+        <p>Action Creators follow the <strong>Factory Function</strong> Design Pattern... The are functions that return
+          objects!</p>
+        <p>These are used to minimize the redundancy of typing the action object & type, minimize mistakes and automate
+          passing payloads in.</p>
+        <pre class="language-ts"><code>const addTodo = text => {
   return {
     type: 'todos/todoAdded',
     payload: text
   }
 }</code></pre>
-  </article>
+      </article>
 
-  <article class="slide">
-    <h2>Store & Actions & Reducers</h2>
-    <pre class="language-js"><code>const store = { count: 0 }
+      <article class="slide">
+        <h2>Store & Actions & Reducers</h2>
+        <pre class="language-js"><code>const store = { count: 0 }
 
 const action = {
   type: 'increment', // type is required
@@ -272,171 +295,198 @@ const reducer = (state, action) => {
   }
 }
     </code></pre>
-  </article>
-  <article class="slide">
-    <h2>Declarative State Updates</h2>
-    <p>Reducers provide a declarative way to update state</p>
-    <p>We simply return an object which describes what we want the new state to look like.</p>
-    <p>Then Redux handles how to procedurally accomplish that behind the scenes with a diffing/merging policy.</p>
-    <h3>So, while React handles <strong>declarative VIEW</strong> updates; Redux handles <strong>declarative STATE</strong> updates!!</h3>
-  </article>
-  <articles class="slide">
-    <h2>When to use Redux</h2>
-    <p>It's a trade-off between short term and long term productivity</p>
-    <ol>
-      <li>You have large amounts of application state that are needed in many places in the app</li>
-      <li>The app state is updated frequently over time</li>
-      <li>The logic to update that state may be complex</li>
-      <li>The app has a medium or large-sized codebase, and might be worked on by many people</li>
-    </ol>
-  </articles>
-  <article class="slide">
-    <h2>Redux Core-team Recommendations</h2>
-    <p><a href="https://redux.js.org/style-guide/style-guide#use-redux-toolkit-for-writing-redux-logic">Redux Style Guide</a></p>
-  </article>
-  <article class="slide">
-    <h2>Redux Dev Tools</h2>
-    <p><a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">Download the extension here</a></p>
-  </article>
-  <article class="slide">
-    <h2>React-Redux Library</h2>
-    <p><a href="https://react-redux.js.org/introduction/getting-started">Docs</a></p>
-    <p>React Redux is the official React UI bindings layer for Redux. It lets your React components read data from a Redux store, and dispatch actions to the store to update state.</p>
-  </article>
-  <article class="slide">
-    <h2>Redux Hooks</h2>
-    <p><a href="https://react-redux.js.org/api/hooks#using-hooks-in-a-react-redux-app">Docs</a></p>
-    <ul>
-      <li><code>useSelector</code></li>
-      <li><code>useDispatch</code></li>
-      <li><code>useStore</code></li>
-      <li><code>useActions</code></li>
-    </ul>
-  </article>
-  <article class="slide">
-    <h2>Code Along</h2>
-    <p>Let's try out Redux in a simple Counter App!</p>
-  </article>  
+      </article>
+      <article class="slide">
+        <h2>Declarative State Updates</h2>
+        <p>Reducers provide a declarative way to update state</p>
+        <p>We simply return an object which describes what we want the new state to look like.</p>
+        <p>Then Redux handles how to procedurally accomplish that behind the scenes with a diffing/merging policy.</p>
+        <h3>So, while React handles <strong>declarative VIEW</strong> updates; Redux handles <strong>declarative
+            STATE</strong> updates!!</h3>
+      </article>
+      <articles class="slide">
+        <h2>When to use Redux</h2>
+        <p>It's a trade-off between short term and long term productivity</p>
+        <ol>
+          <li>You have large amounts of application state that are needed in many places in the app</li>
+          <li>The app state is updated frequently over time</li>
+          <li>The logic to update that state may be complex</li>
+          <li>The app has a medium or large-sized codebase, and might be worked on by many people</li>
+        </ol>
+      </articles>
+      <article class="slide">
+        <h2>Redux Core-team Recommendations</h2>
+        <p><a href="https://redux.js.org/style-guide/style-guide#use-redux-toolkit-for-writing-redux-logic">Redux Style
+            Guide</a></p>
+      </article>
+      <article class="slide">
+        <h2>Redux Dev Tools</h2>
+        <p><a href="https://chrome.google.com/webstore/detail/redux-devtools/lmhkpmbekcpmknklioeibfkpmmfibljd">Download
+            the extension here</a></p>
+      </article>
+      <article class="slide">
+        <h2>React-Redux Library</h2>
+        <p><a href="https://react-redux.js.org/introduction/getting-started">Docs</a></p>
+        <p>React Redux is the official React UI bindings layer for Redux. It lets your React components read data from a
+          Redux store, and dispatch actions to the store to update state.</p>
+      </article>
+      <article class="slide">
+        <h2>Redux Hooks</h2>
+        <p><a href="https://react-redux.js.org/api/hooks#using-hooks-in-a-react-redux-app">Docs</a></p>
+        <ul>
+          <li><code>useSelector</code></li>
+          <li><code>useDispatch</code></li>
+          <li><code>useStore</code></li>
+          <li><code>useActions</code></li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Code Along</h2>
+        <p>Let's try out Redux in a simple Counter App!</p>
+      </article>
 
-  <article class="slide">
-    <h2>Let's use Redux in our Todo App!!</h2>
-    <p>Todo User Stories: let's do the following things:</p>
-    <sup
-      style="
+      <article class="slide">
+        <h2>Let's use Redux in our Todo App!!</h2>
+        <p>Todo User Stories: let's do the following things:</p>
+        <sup
+             style="
         cursor: pointer;
         color: white;
         position: absolute;
         bottom: 3%;
         right: 3%;
       "
-      class="reset ×"
-    >🧹</sup>
-    <ol class="user-stories col-2 margin:4px">
-      <li><input type="checkbox" /> Create a article with class of card and with id of 'container'</li>
-      <li>
-        <input type="checkbox" /> Create a h1 with id='heading' that will be at the top of the page
-      </li>
-      <li><input type="checkbox" /> Create an text input element with class of 'todo-input', which is wrapped in a form element</li>
-      <li><input type="checkbox" /> Add a tooltip to the text input using the title attribute. "Please fill out this field"</li>
-      <li><input type="checkbox" /> Create a empty state text element with class of 'empty-state'</li>
-      <li><input type="checkbox" /> At the bottom of the '.card' element we want a footer that contains 3 children. </li>
-      <li><input type="checkbox" /> Inside the footer add a text element with a total, a text element with a remaining count, and a clear all button element.</li>
-      <li><input type="checkbox" /> When a submit event occurs, add a new todo item (React component) under the text input that displays the text that was entered.</li>
-      <li><input type="checkbox" /> Create a 'TodoList' component that will wrap the todo items</li>
-      <li><input type="checkbox" /> The todo item component should have a checkbox input with a title tooltip of ' mark done' and when it is clicked it styles the todo text's color/strikethrough</li>
-      <li><input type="checkbox" /> The todo component should have a button with an X symbol that has title attr of 'Delete', when its clicked it removes the todo item</li>
-      <li><input type="checkbox" /> At the bottom of each todo item should be a createAt timestamp </li>
-      <li><input type="checkbox" /> Handle click on the clear all button to make it remove all todos from state</li>
-      <li><input type="checkbox" /> For remaining field, show a number that is equal to the number of todos that are unchecked</li>
-      <li><input type="checkbox" /> For total field, show a number that is equal to the number of todos that are not deleted</li>
-    </ol>
-    <style>
-      .user-stories > li > input {
-        scale: 2;
-        margin: 0 4px 6px 0;
-        vertical-align: middle;
-      }
-    </style>
-    <script async defer>
-      function updateTask(e, index) {
-        const store = JSON.parse(localStorage.getItem("userstories"));
-        store[index] = e.target.checked;
-        const updatedTask = JSON.stringify(store);
-        localStorage.setItem("userstories", updatedTask);
-      }
-      const tasks = Array.from(
-        document.querySelectorAll(".user-stories > li >input")
-      );
-      tasks.forEach((task, index) =>
-        task.addEventListener("click", (e) => updateTask(e, index))
-      );
-      if (!localStorage.getItem("userstories")) {
-        localStorage.setItem("userstories", "[]");
-      } else {
-        const curState = JSON.parse(localStorage.getItem("userstories"));
-        tasks.forEach(
-          (task, index) => (task.checked = curState[index] ? true : false)
-        );
-      }
-      document.querySelector(".reset.×").addEventListener("click", (e) => {
-        localStorage.setItem("userstories", "[]");
-        tasks.forEach((task, index) => (task.checked = false));
-      });
-    </script>
-  </article>
+             class="reset ×">🧹</sup>
+        <ol class="user-stories col-2 margin:4px">
+          <li><input type="checkbox" /> Create a article with class of card and with id of 'container'</li>
+          <li>
+            <input type="checkbox" /> Create a h1 with id='heading' that will be at the top of the page
+          </li>
+          <li><input type="checkbox" /> Create an text input element with class of 'todo-input', which is wrapped in a
+            form element</li>
+          <li><input type="checkbox" /> Add a tooltip to the text input using the title attribute. "Please fill out this
+            field"</li>
+          <li><input type="checkbox" /> Create a empty state text element with class of 'empty-state'</li>
+          <li><input type="checkbox" /> At the bottom of the '.card' element we want a footer that contains 3 children.
+          </li>
+          <li><input type="checkbox" /> Inside the footer add a text element with a total, a text element with a
+            remaining count, and a clear all button element.</li>
+          <li><input type="checkbox" /> When a submit event occurs, add a new todo item (React component) under the text
+            input that displays the text that was entered.</li>
+          <li><input type="checkbox" /> Create a 'TodoList' component that will wrap the todo items</li>
+          <li><input type="checkbox" /> The todo item component should have a checkbox input with a title tooltip of '
+            mark done' and when it is clicked it styles the todo text's color/strikethrough</li>
+          <li><input type="checkbox" /> The todo component should have a button with an X symbol that has title attr of
+            'Delete', when its clicked it removes the todo item</li>
+          <li><input type="checkbox" /> At the bottom of each todo item should be a createAt timestamp </li>
+          <li><input type="checkbox" /> Handle click on the clear all button to make it remove all todos from state</li>
+          <li><input type="checkbox" /> For remaining field, show a number that is equal to the number of todos that are
+            unchecked</li>
+          <li><input type="checkbox" /> For total field, show a number that is equal to the number of todos that are not
+            deleted</li>
+        </ol>
+        <style>
+          .user-stories>li>input {
+            scale: 2;
+            margin: 0 4px 6px 0;
+            vertical-align: middle;
+          }
+        </style>
+        <script async defer>
+          function updateTask( e, index ) {
+            const store = JSON.parse( localStorage.getItem( "userstories" ) )
+            store[index] = e.target.checked
+            const updatedTask = JSON.stringify( store )
+            localStorage.setItem( "userstories", updatedTask )
+          }
+          const tasks = Array.from(
+            document.querySelectorAll( ".user-stories > li >input" )
+          )
+          tasks.forEach( ( task, index ) =>
+            task.addEventListener( "click", ( e ) => updateTask( e, index ) )
+          )
+          if ( !localStorage.getItem( "userstories" ) ) {
+            localStorage.setItem( "userstories", "[]" )
+          } else {
+            const curState = JSON.parse( localStorage.getItem( "userstories" ) )
+            tasks.forEach(
+              ( task, index ) => ( task.checked = curState[index] ? true : false )
+            )
+          }
+          document.querySelector( ".reset.×" ).addEventListener( "click", ( e ) => {
+            localStorage.setItem( "userstories", "[]" )
+            tasks.forEach( ( task, index ) => ( task.checked = false ) )
+          } );
+        </script>
+      </article>
 
-  <article class="slide">
-    <h2>Redux Toolkit</h2>
-    <p>The new & improved way to Redux!</p>
-    <p>Simpler, less boilerplate & with nice new features!</p>
-  </article>
-  <article class="slide">
-    <h2>Redux Toolkit <sup><a href="https://redux-toolkit.js.org/">Docs</a></sup></h2>
-    <ul>
-      <li><code>configureStore()</code>: simplifies <code>createStore</code> with good default configuration. Combines slice reducers, adds Redux middleware, uses redux-thunk & Redux DevTools by default.</li>
-      <li><code>createReducer()</code>: supplies a lookup table of action types to case reducer functions, instead of switch statements. Uses the <code>immer</code> library underneath.</li>
-      <li><code>createAction()</code>: generates an action creator function for the given action type string.</li>
-      <li><code>createSlice()</code>: accepts an object of reducer functions, a slice name, and an initial state value, and automatically generates a slice reducer with corresponding action creators and action types.</li>
-      <li><code>createAsyncThunk</code>: accepts an action type string and a function that returns a promise, and generates a thunk that dispatches <code>pending/fulfilled/rejected</code> action types based on that promise</li>
-      <li><code>createEntityAdapter</code>: generates a set of resusable reducers and selectors to manage normalized data in the store</li>
-    </ul>
-  </article>
-  <article class="slide">
-    <h2>RTK Quick Start</h2>
-    <p><a href="https://redux-toolkit.js.org/tutorials/quick-start">Docs</a></p>
-    <pre class="language-sh"><code>npm install @reduxjs/toolkit
+      <article class="slide">
+        <h2>Redux Toolkit</h2>
+        <p>The new & improved way to Redux!</p>
+        <p>Simpler, less boilerplate & with nice new features!</p>
+      </article>
+      <article class="slide">
+        <h2>Redux Toolkit <sup><a href="https://redux-toolkit.js.org/">Docs</a></sup></h2>
+        <ul>
+          <li><code>configureStore()</code>: simplifies <code>createStore</code> with good default configuration.
+            Combines slice reducers, adds Redux middleware, uses redux-thunk & Redux DevTools by default.</li>
+          <li><code>createReducer()</code>: supplies a lookup table of action types to case reducer functions, instead
+            of switch statements. Uses the <code>immer</code> library underneath.</li>
+          <li><code>createAction()</code>: generates an action creator function for the given action type string.</li>
+          <li><code>createSlice()</code>: accepts an object of reducer functions, a slice name, and an initial state
+            value, and automatically generates a slice reducer with corresponding action creators and action types.</li>
+          <li><code>createAsyncThunk</code>: accepts an action type string and a function that returns a promise, and
+            generates a thunk that dispatches <code>pending/fulfilled/rejected</code> action types based on that promise
+          </li>
+          <li><code>createEntityAdapter</code>: generates a set of resusable reducers and selectors to manage normalized
+            data in the store</li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>RTK Quick Start</h2>
+        <p><a href="https://redux-toolkit.js.org/tutorials/quick-start">Docs</a></p>
+        <pre class="language-sh"><code>npm install @reduxjs/toolkit
 npm install react-redux
     </code></pre>
-    <ol>
-      <li>Create a store using RTK configureStore function & pass in reducer(s)</li>
-      <ul class='nolist'>
-        <li><pre class="language-js"><code>import { configureStore } from '@reduxjs/toolkit'
+        <ol>
+          <li>Create a store using RTK configureStore function & pass in reducer(s)</li>
+          <ul class='nolist'>
+            <li>
+              <pre class="language-js"><code>import { configureStore } from '@reduxjs/toolkit'
 import reducer from '../features/slice.js'
-const store = configureStore({ reducer: { featureName: reducer } })</code></pre></li>
-      </ul>
-      <li>import Redux store into App entry point file (root component file)</li>
-      <li>Wrap the root React component with <code>&lt;Provider store={store}> &lt;App /> &lt/Provider></code></li>
-      <li>Start writing your "slice" file:
+const store = configureStore({ reducer: { featureName: reducer } })</code></pre>
+            </li>
+          </ul>
+          <li>import Redux store into App entry point file (root component file)</li>
+          <li>Wrap the root React component with <code>&lt;Provider store={store}> &lt;App /> &lt/Provider></code></li>
+          <li>Start writing your "slice" file:
+            <ul>
+              <li><code>import { createSlice } from '@reduxjs/toolkit'</code></li>
+              <li>Write you slice: <code>export const slice = createSlice({ ... })</code></li>
+              <li>Add a <code>name</code>, <code>initialState</code> and <code>reducers</code> to your slice</li>
+              <li>From <code>slice.js</code>, export your <code>slice.actions</code> and default export your
+                <code>slice.reducer</code></li>
+              <li>Optional: From <code>slice.js</code>, export any <code>selectors</code> you might need to get values
+                from the store.</li>
+            </ul>
+        </ol>
+      </article>
+
+      <article class="slide">
+        <h2>Slices <sup><a
+               href="https://redux.js.org/tutorials/essentials/part-2-app-structure#redux-slices">docs</a></sup></h2>
         <ul>
-          <li><code>import { createSlice } from '@reduxjs/toolkit'</code></li>
-          <li>Write you slice: <code>export const slice = createSlice({ ... })</code></li>
-          <li>Add a <code>name</code>, <code>initialState</code> and <code>reducers</code> to your slice</li>
-          <li>From <code>slice.js</code>, export your <code>slice.actions</code> and default export your <code>slice.reducer</code></li>
-          <li>Optional: From <code>slice.js</code>, export any <code>selectors</code> you might need to get values from the store.</li>
+          <li><a
+               href="https://redux.js.org/tutorials/essentials/part-2-app-structure#creating-slice-reducers-and-actions">Creating
+              Slices & Actions</a></p>
+          </li>
+          <li>A "slice" is a collection of Redux reducer logic and actions for a single feature in your app, typically
+            defined together in a single file</li>
+          <li>The name comes from splitting up the root Redux state object into multiple "slices" of state</li>
+          <li>For example, in a blogging app, our store setup might look like:</li>
         </ul>
-    </ol>
-  </article>
-  
-  <article class="slide">
-    <h2>Slices <sup><a href="https://redux.js.org/tutorials/essentials/part-2-app-structure#redux-slices">docs</a></sup></h2>
-    <ul>
-      <li><a href="https://redux.js.org/tutorials/essentials/part-2-app-structure#creating-slice-reducers-and-actions">Creating Slices & Actions</a></p></li>
-      <li>A "slice" is a collection of Redux reducer logic and actions for a single feature in your app, typically defined together in a single file</li>
-      <li>The name comes from splitting up the root Redux state object into multiple "slices" of state</li>
-      <li>For example, in a blogging app, our store setup might look like:</li>
-    </ul>
-    <div class="flex align">
-    <pre class="language-js"><code>import { configureStore } from '@reduxjs/toolkit'
+        <div class="flex align">
+          <pre class="language-js"><code>import { configureStore } from '@reduxjs/toolkit'
 import usersReducer from '../features/users/usersSlice'
 import postsReducer from '../features/posts/postsSlice'
 export default configureStore({
@@ -445,19 +495,22 @@ export default configureStore({
     posts: postsReducer,
   }
 })</code></pre>
-<ul>
-  <li><code>state.users</code> and <code>state.posts</code> are each a separate "slice" of the Redux state.</li>
-  <li>Since usersReducer is responsible for updating the state.users slice, we refer to it as a "slice reducer" function.</li>
-</ul>
-    </div>
-  </article>
-  <article class="slide">
-    <h2>More Resources on <code>createSlice</code></h2>
-    <div class="flex">
-      <p><a href="https://www.softkraft.co/how-to-setup-slices-with-redux-toolkit/">Walkthrough Article</a></p>
-      <p>← <a href="https://github.com/softkraftco/redux-tutorial-how-to-setup-redux/tree/master/src/store"> Source code for the article</a></p>
-    </div>
-    <pre class="language-js"><code>import { createSlice } from "@reduxjs/toolkit";
+          <ul>
+            <li><code>state.users</code> and <code>state.posts</code> are each a separate "slice" of the Redux state.
+            </li>
+            <li>Since usersReducer is responsible for updating the state.users slice, we refer to it as a "slice
+              reducer" function.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="slide">
+        <h2>More Resources on <code>createSlice</code></h2>
+        <div class="flex">
+          <p><a href="https://www.softkraft.co/how-to-setup-slices-with-redux-toolkit/">Walkthrough Article</a></p>
+          <p>← <a href="https://github.com/softkraftco/redux-tutorial-how-to-setup-redux/tree/master/src/store"> Source
+              code for the article</a></p>
+        </div>
+        <pre class="language-js"><code>import { createSlice } from "@reduxjs/toolkit";
 
       export const counterSlice = createSlice({
         name: 'counter',
@@ -475,26 +528,32 @@ export default configureStore({
       export const selectCount = state => state.counter.count
       
       export default counterSlice.reducer</code></pre>
-  </article>
-  <article class="slide">
-    <h2>Immer <sup><a href="https://immerjs.github.io/immer/">Docs</a></sup></h2>
-    <ul>
-      <li>Redux Toolkit's createSlice function uses a library called Immer so you can write immutable updates easier!</li>
-      <li>Executes immutable, compliant state updates with assignment operations!!</li>
-      <li class='nolist'><blockquote>But weren't we suppossed to avoid assignments!?</blockquote></li>
-      <li>Correct, with Immer.js the reducer still uses immutable code in the end. lets us write mutable looking code, and it intercepts that code and translates it into code that transacts with our Redux store immutably. </li>
-      <li>Immer treats mutable code as a "Draft". It uses Proxies to wrap your reducer logic a "draft" copy. </li>
-      <li>Immer tracks all your state mutations, then infers & converts those changes into the equivalent safely immutably update. Immer is only used in createSlice and createReducer, though</li>
-    </ul>
-  </article>
-  <article class="slide">
-    <h2>Immer Library <sup><a href="https://immerjs.github.io/immer/">docs</a></sup></h2>
-      <div class="flex">
-        <strong>Normal</strong>
-        <strong>Immer "Draft"</strong>
-      </div>
-      <div class="flex most-height">
-        <pre class="language-js"><code>function handwrittenReducer(state, action) {
+      </article>
+      <article class="slide">
+        <h2>Immer <sup><a href="https://immerjs.github.io/immer/">Docs</a></sup></h2>
+        <ul>
+          <li>Redux Toolkit's createSlice function uses a library called Immer so you can write immutable updates
+            easier!</li>
+          <li>Executes immutable, compliant state updates with assignment operations!!</li>
+          <li class='nolist'>
+            <blockquote>But weren't we suppossed to avoid assignments!?</blockquote>
+          </li>
+          <li>Correct, with Immer.js the reducer still uses immutable code in the end. lets us write mutable looking
+            code, and it intercepts that code and translates it into code that transacts with our Redux store immutably.
+          </li>
+          <li>Immer treats mutable code as a "Draft". It uses Proxies to wrap your reducer logic a "draft" copy. </li>
+          <li>Immer tracks all your state mutations, then infers & converts those changes into the equivalent safely
+            immutably update. Immer is only used in createSlice and createReducer, though</li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Immer Library <sup><a href="https://immerjs.github.io/immer/">docs</a></sup></h2>
+        <div class="flex">
+          <strong>Normal</strong>
+          <strong>Immer "Draft"</strong>
+        </div>
+        <div class="flex most-height">
+          <pre class="language-js"><code>function handwrittenReducer(state, action) {
   return {
     ...state,
     first: {
@@ -509,209 +568,223 @@ export default configureStore({
   }
  }
 }</code></pre>
-        <pre class="language-js"><code>function reducerWithImmer(state, action) {
+          <pre class="language-js"><code>function reducerWithImmer(state, action) {
   state.first.second[action.someId].fourth = action.someValue
 }</code></pre>
-      </div>
-      
-  </article>
+        </div>
 
-  <article class="slide">
-    <h2>Selectors & <code>useSelector</code><sup><a href="https://redux.js.org/tutorials/essentials/part-1-overview-concepts#selectors">docs</a></sup></h2>
-    <p>Selectors are functions that know how to extract specific pieces of state from the store. This can help avoid repeating logic as different parts of the app need to read the same data:</p>
-      <pre class="language-js"><code>const selectUsername = state => state.username
+      </article>
+
+      <article class="slide">
+        <h2>Selectors & <code>useSelector</code><sup><a
+               href="https://redux.js.org/tutorials/essentials/part-1-overview-concepts#selectors">docs</a></sup></h2>
+        <p>Selectors are functions that know how to extract specific pieces of state from the store. This can help avoid
+          repeating logic as different parts of the app need to read the same data:</p>
+        <pre class="language-js"><code>const selectUsername = state => state.username
 const currentUser = selectUsername(store.getState())
 console.log(currentUser)</code></pre>
-<p>We can <code>import useSelector from 'react-redux'</code> for a ready built Selector function</p>
-  </article>
-  <article class="slide">
-    <h2><code>useDispatch</code></h2>
-    <p>Get access to the dispatch function easily with this hook!</p>
-    <pre class="language-js"><code>import {useDispatch} from 'react-redux
+        <p>We can <code>import useSelector from 'react-redux'</code> for a ready built Selector function</p>
+      </article>
+      <article class="slide">
+        <h2><code>useDispatch</code></h2>
+        <p>Get access to the dispatch function easily with this hook!</p>
+        <pre class="language-js"><code>import {useDispatch} from 'react-redux
 function MyComponent() {
   const dispatch = useDispatch()
   return (
     &lt;div onClick={dispatch(action)}>&lt;div>
   )
 }</code></pre>
-  </article>
+      </article>
 
-  <articles class="slide">
-    <h2>RTK Quick Start Counter Example</h2>
-    <p><a href="https://redux-toolkit.js.org/tutorials/quick-start">Let's Read the Docs!!</a></p>
-  </articles>
+      <articles class="slide">
+        <h2>RTK Quick Start Counter Example</h2>
+        <p><a href="https://redux-toolkit.js.org/tutorials/quick-start">Let's Read the Docs!!</a></p>
+      </articles>
 
-  <article class="slide">
-    <h2>Beginner, Intermediate & Advanced Examples</h2>
-    <p><a href="https://github.com/reduxjs/redux-toolkit/tree/e85eb17b39/docs/tutorials">RTK Example Projects</a></p>
-    <p>Review the basics with the Counter example (Beginner)</p>
-    <p>Challenge yourself by recreating the Todos Example (Intermediate)</p>
-  </article>
+      <article class="slide">
+        <h2>Beginner, Intermediate & Advanced Examples</h2>
+        <p><a href="https://github.com/reduxjs/redux-toolkit/tree/e85eb17b39/docs/tutorials">RTK Example Projects</a>
+        </p>
+        <p>Review the basics with the Counter example (Beginner)</p>
+        <p>Challenge yourself by recreating the Todos Example (Intermediate)</p>
+      </article>
 
-  <article class="slide">
-    <h2>Todo Take Home Challenge!</h2>
-    <h3>Try adding these new features on your own:</h3>
-    <ul>
-      <li>Click "!" icon to prioritize a todo</li>
-      <li>Or make the "!" a select input to set multiple priority levels</li>
-      <li>Tags to categorize todos (w/ color scheme)</li>
-      <li>Filter by tags & priority</li>
-      <li>Sort by alpha, priority etc</li>
-      <li>Recycle bin to recover deleted todos</li>
-      <li>Timestamps: date created & date completed</li>
-      <li>Add an initial fetch call to populate inital todos</li>
-      <li>use title attr to add descriptor tooltips for each feature</li>
-    </ul>
-  </article>
-  <article class="slide">
-    <h2>Everything's a List!</h2>
-    <p><small>(Ok, maybe not everything...)</small></p>
-    <ul style="columns: 2">
-      <li>Shopping Cart</li>
-      <li>Music/video Playlist</li>
-      <li>Photo Gallery</li>
-      <li>Code Bug Tracker</li>
-      <li>Chat Window</li>
-      <li>Forum</li>
-      <li>Blog post site</li>
-      <li>News Aggregator Site</li>
-      <li>Email Inbox</li>
-      <li>Search results page</li>
-    </ul>
-  </article>
-  <article class="slide">
-    <h2>Refactoring</h2>
-    <p>Is it a change that is:</p>
-    <ol>
-      <li>Fundamental to the business logic</li>
-      <li>... Or merely cosmetic</li>
-    </ol>
-    <p>Depending on which it is... where should the refactor need to happen?</p>
-    <ol>
-      <li>JSX/View Template</li>
-      <li>Reducer or Hook Logic (Controller)</li>
-      <li>Store (Model)</li>
-    </ol>
-    <p>Is there an implementation that's already there that is similar? If so use that as a starting point and make your code conform to the style of that implementation to keep the codebase consistent.</p>
-  </article>
-  
-</section>
+      <article class="slide">
+        <h2>Todo Take Home Challenge!</h2>
+        <h3>Try adding these new features on your own:</h3>
+        <ul>
+          <li>Click "!" icon to prioritize a todo</li>
+          <li>Or make the "!" a select input to set multiple priority levels</li>
+          <li>Tags to categorize todos (w/ color scheme)</li>
+          <li>Filter by tags & priority</li>
+          <li>Sort by alpha, priority etc</li>
+          <li>Recycle bin to recover deleted todos</li>
+          <li>Timestamps: date created & date completed</li>
+          <li>Add an initial fetch call to populate inital todos</li>
+          <li>use title attr to add descriptor tooltips for each feature</li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Everything's a List!</h2>
+        <p><small>(Ok, maybe not everything...)</small></p>
+        <ul style="columns: 2">
+          <li>Shopping Cart</li>
+          <li>Music/video Playlist</li>
+          <li>Photo Gallery</li>
+          <li>Code Bug Tracker</li>
+          <li>Chat Window</li>
+          <li>Forum</li>
+          <li>Blog post site</li>
+          <li>News Aggregator Site</li>
+          <li>Email Inbox</li>
+          <li>Search results page</li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Refactoring</h2>
+        <p>Is it a change that is:</p>
+        <ol>
+          <li>Fundamental to the business logic</li>
+          <li>... Or merely cosmetic</li>
+        </ol>
+        <p>Depending on which it is... where should the refactor need to happen?</p>
+        <ol>
+          <li>JSX/View Template</li>
+          <li>Reducer or Hook Logic (Controller)</li>
+          <li>Store (Model)</li>
+        </ol>
+        <p>Is there an implementation that's already there that is similar? If so use that as a starting point and make
+          your code conform to the style of that implementation to keep the codebase consistent.</p>
+      </article>
 
-<section>
-	<header class="slide">
-    <h2>Async Redux</h2>
-		<h1>Thunks: Chunking Actions into parts</h1>
-	</header>
+    </section>
 
-  <article class="slide">
-    <h2>Async Side Effects are tricky</h2>
-    <p>So far we've seen how to use Redux with synchronous side effects.</p>
-    <p>But what if we want our side effect to update a database? or use a Promise?</p>
-    <p>We'll need a way for our Reducer function to do asynchronous operations, and still update the Store correctly and re-render our components correctly. Despite the time lags.</p>
-    <div class="flex">
-      <pre class="language-ts"><code>dispatch({type, payload})</code></pre>
-      <div>
-        <pre class="language-ts">
+    <section>
+      <header class="slide">
+        <h2>Async Redux</h2>
+        <h1>Thunks: Chunking Actions into parts</h1>
+      </header>
+
+      <article class="slide">
+        <h2>Async Side Effects are tricky</h2>
+        <p>So far we've seen how to use Redux with synchronous side effects.</p>
+        <p>But what if we want our side effect to update a database? or use a Promise?</p>
+        <p>We'll need a way for our Reducer function to do asynchronous operations, and still update the Store correctly
+          and re-render our components correctly. Despite the time lags.</p>
+        <div class="flex">
+          <pre class="language-ts"><code>dispatch({type, payload})</code></pre>
+          <div>
+            <pre class="language-ts">
         <code>dispatch( update({type, paylod}).then(res => { ... }) )
         dispatch( async ({type, payload}) => { ... } )</code>
       </pre>
-      </div>
-    </div>
-  </article>
+          </div>
+        </div>
+      </article>
 
-  <article class="slide">
-    <h2>Async Redux</h2>
-    <p>Redux with database side effects</p>
-    <img src="img/Thunks.png" alt="">
-  </article>
+      <article class="slide">
+        <h2>Async Redux</h2>
+        <p>Redux with database side effects</p>
+        <img src="img/Thunks.png" alt="">
+      </article>
 
-	<article class="slide">
-    <h2>Thunks</h2>
-    <p><a href="https://en.wikipedia.org/wiki/Thunk">What's a Thunk?</a></p>
-    <p>A specific kind of curried Redux function that can contain asynchronous logic</p>
-    <ul>
-      <li>Async Pattern: "thunk" is a fancy word for a pattern to handle asynchronous logic</li>
-      <li>Thunks are just functions that return another function (Remember Currying?)</li>
-      <ul>
-        <li>An inside thunk function, which gets dispatch and getState as arguments</li>
-        <li>The outside creator function, which creates and returns the thunk function</li>
-      </ul>
-      <li>Because Thunks are curried they let us call the returned function at a later time.</li>
-    </ul>
-	</article>
-  <article class="slide">
-    <h2>In Simple terms</h2>
-    <p>Lets the store accept a <strong>function</strong> as a dispatched "action".</p>
-    <p>Lets your logic that talks to the store  ahead of time (separate from your components) without knowing what the store is doing with regard to other actions. </p>
-    <hr>
-    <p>Breaks up an action into multiple stages: dispatch a <strong>pending</strong> action, then send off a fetch request or promise and then it can dispatch a <strong>fulfilled</strong> (success) or <strong>rejected</strong> (failed) action depending on how the promise resolved.</p>
-  </article>
-  <article class="slide">
-    <h2>Decomposing Async Actions</h2>
-    <p>Thunks let us decompose one async user interaction into two (or more) more granular redux actions, so they can be handled separately (and therefore at different times).</p>
-    <img src="img/thunk_dispatch_diagram.png" alt="">
-  </article>
-  <article class="slide">
-    <h2>Thunk Example</h2>
-    <ul>
-      <li>It can be dispatched like a regular action: <code>dispatch(incrementAsync(10))</code></li>
-      <li>Async code can then be executed and other actions can be dispatched in the meantime</li>
-    </ul>
-    <pre class="language-ts"><code>// This will call the thunk with the `dispatch` function as the first argument.
+      <article class="slide">
+        <h2>Thunks</h2>
+        <p><a href="https://en.wikipedia.org/wiki/Thunk">What's a Thunk?</a></p>
+        <p>A specific kind of curried Redux function that can contain asynchronous logic</p>
+        <ul>
+          <li>Async Pattern: "thunk" is a fancy word for a pattern to handle asynchronous logic</li>
+          <li>Thunks are just functions that return another function (Remember Currying?)</li>
+          <ul>
+            <li>An inside thunk function, which gets dispatch and getState as arguments</li>
+            <li>The outside creator function, which creates and returns the thunk function</li>
+          </ul>
+          <li>Because Thunks are curried they let us call the returned function at a later time.</li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>In Simple terms</h2>
+        <p>Lets the store accept a <strong>function</strong> as a dispatched "action".</p>
+        <p>Lets your logic that talks to the store ahead of time (separate from your components) without knowing what
+          the store is doing with regard to other actions. </p>
+        <hr>
+        <p>Breaks up an action into multiple stages: dispatch a <strong>pending</strong> action, then send off a fetch
+          request or promise and then it can dispatch a <strong>fulfilled</strong> (success) or
+          <strong>rejected</strong> (failed) action depending on how the promise resolved.</p>
+      </article>
+      <article class="slide">
+        <h2>Decomposing Async Actions</h2>
+        <p>Thunks let us decompose one async user interaction into two (or more) more granular redux actions, so they
+          can be handled separately (and therefore at different times).</p>
+        <img src="img/thunk_dispatch_diagram.png" alt="">
+      </article>
+      <article class="slide">
+        <h2>Thunk Example</h2>
+        <ul>
+          <li>It can be dispatched like a regular action: <code>dispatch(incrementAsync(10))</code></li>
+          <li>Async code can then be executed and other actions can be dispatched in the meantime</li>
+        </ul>
+        <pre class="language-ts"><code>// This will call the thunk with the `dispatch` function as the first argument.
 export const incrementAsync = amount => dispatch => {
   setTimeout(() => {
     dispatch(incrementByAmount(amount))
   }, 1000)
 }
 store.dispatch(incrementAsync(5))</code></pre>
-  </article>
-  <article class="slide">
-    <h2><code>createAsyncThunk()</code></h2>
-    <p>Defining thunk actions uses <code>createAsyncThunk</code></p>
-    <p>If we want to combine our regular reducers with our async reducers we need <code>extraReducers</code>field on <code>createSlice</code></p>
-    <p><a href="https://redux-toolkit.js.org/api/createAsyncThunk">RTK Docs</a></p>
-  </article>
+      </article>
+      <article class="slide">
+        <h2><code>createAsyncThunk()</code></h2>
+        <p>Defining thunk actions uses <code>createAsyncThunk</code></p>
+        <p>If we want to combine our regular reducers with our async reducers we need <code>extraReducers</code>field on
+          <code>createSlice</code></p>
+        <p><a href="https://redux-toolkit.js.org/api/createAsyncThunk">RTK Docs</a></p>
+      </article>
 
-  <articles class="slide">
-    <h2>Should I put all state in Redux?</h2>
-    <p>The answer is <strong>NO!</strong></p>
-    <ul>
-      <li>Global state that is needed across the app should go in the Redux store</li>
-      <li>Local State that's only needed in one place should be kept in component state (<code>useState</code>)</li>
-    </ul>
-    <h3>Hueristics for where to put state:</h3>
-    <ol>
-      <li>Do other parts of the application care about this data?</li>
-      <li>Do you need to be able to create further derived data based on this original data?</li>
-      <li>Is the same data being used to drive multiple components?</li>
-      <li>Is there value to you in being able to restore this state to a given point in time (ie, time travel debugging)?</li>
-      <li>Do you want to cache the data (ie, use what's in state if it's already there instead of re-requesting it)?</li>
-      <li>Do you want to keep this data consistent while hot-reloading UI components (which may lose their internal state when swapped)?</li>
-    </ol>
-  </articles>
+      <articles class="slide">
+        <h2>Should I put all state in Redux?</h2>
+        <p>The answer is <strong>NO!</strong></p>
+        <ul>
+          <li>Global state that is needed across the app should go in the Redux store</li>
+          <li>Local State that's only needed in one place should be kept in component state (<code>useState</code>)</li>
+        </ul>
+        <h3>Hueristics for where to put state:</h3>
+        <ol>
+          <li>Do other parts of the application care about this data?</li>
+          <li>Do you need to be able to create further derived data based on this original data?</li>
+          <li>Is the same data being used to drive multiple components?</li>
+          <li>Is there value to you in being able to restore this state to a given point in time (ie, time travel
+            debugging)?</li>
+          <li>Do you want to cache the data (ie, use what's in state if it's already there instead of re-requesting it)?
+          </li>
+          <li>Do you want to keep this data consistent while hot-reloading UI components (which may lose their internal
+            state when swapped)?</li>
+        </ol>
+      </articles>
 
-  <article class="slide">
-    <h2>RTK Query</h2>
-    <p><a href="https://redux-toolkit.js.org/rtk-query/overview">RTK Query overview</a></p>
-  </article>
+      <article class="slide">
+        <h2>RTK Query</h2>
+        <p><a href="https://redux-toolkit.js.org/rtk-query/overview">RTK Query overview</a></p>
+      </article>
 
-  <article class="slide">
-    <h2>Resources & Review</h2>
-    <ul>
-      <li><a href="https://redux.js.org/tutorials/essentials/part-2-app-structure#what-youve-learned">What we've learned</a> </li>
-      <li><a href="https://redux.js.org/introduction/learning-resources">Further Redux Resources</a></li>
-      <!-- <li></li>
+      <article class="slide">
+        <h2>Resources & Review</h2>
+        <ul>
+          <li><a href="https://redux.js.org/tutorials/essentials/part-2-app-structure#what-youve-learned">What we've
+              learned</a> </li>
+          <li><a href="https://redux.js.org/introduction/learning-resources">Further Redux Resources</a></li>
+          <!-- <li></li>
       <li></li> -->
-    </ul>
-  </article>
-  
-</section>
+        </ul>
+      </article>
 
-<footer class="slide" title="The End">
-  <h2>Thanks!</h2>
-</footer>
+    </section>
 
-<script src="../lib/inspire.js"></script>
-<script src="../laser/laser.js"></script>
-</body>
+    <footer class="slide" title="The End">
+      <h2>Thanks!</h2>
+    </footer>
+
+    <script src="../lib/inspire.js"></script>
+    <script src="../laser/laser.js"></script>
+  </body>
 </html>
