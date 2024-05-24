@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="MCC Web Design & Development Slides" />
     <meta name="author" content="Jamie Vaughn" />
     <title>Template</title>
@@ -20,11 +20,11 @@
     <link rel="stylesheet" href="../laser/laser.css" />
     <script src="https://cdn.master.co/css"></script>
   </head>
+
   <body
-    class="language-markup"
-    data-prism-plugins="normalize-whitespace"
-    data-duration="30"
-  >
+        class="language-markup"
+        data-prism-plugins="normalize-whitespace"
+        data-duration="30">
     <header id="intro" class="slide">
       <h1>ECMAScript Version 2015+</h1>
       <h2>ES6 & Beyond</h2>
@@ -110,20 +110,14 @@
         </p>
         <p><a href="http://help.wtf/es6">ES6 help</a></p>
         <p>
-          <a href="https://github.com/lukehoban/es6features#readme"
-            >ES6 README</a
-          >
+          <a href="https://github.com/lukehoban/es6features#readme">ES6 README</a>
         </p>
       </article>
       <article class="slide">
         <h2>
           🧵 String Template Literals
-          <sup
-            ><a
-              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals"
-              >MDN</a
-            ></sup
-          >
+          <sup><a
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">MDN</a></sup>
         </h2>
         <p>
           <strong>Multiline Strings: </strong>uses backticks
@@ -147,12 +141,8 @@ multiline ${myFn()}`
       <article class="slide">
         <h2>
           🏷️ Tagged Template Functions
-          <sup
-            ><a
-              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates"
-              >MDN</a
-            ></sup
-          >
+          <sup><a
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals#tagged_templates">MDN</a></sup>
         </h2>
         <p>
           You can create a special function from a template string literal which
@@ -191,8 +181,7 @@ chatMsg2() // 'Auto-greeter: Hello'</code></pre>
           Use previous params or even functions in your default param expression
         </p>
         <pre
-          class="language-js"
-        ><code>const randNum = () => Math.random().toString().slice(3, 5)
+             class="language-js"><code>const randNum = () => Math.random().toString().slice(3, 5)
 function createUser(
   name,
   password, 
@@ -224,7 +213,7 @@ createUser('Jay', 'y9i7h3ndk', undefined, true)
           <li class="delayed">Parameter Context matching</li>
         </ul>
         <p class="delayed">
-          It's kinda magical 
+          It's kinda magical
         </p>
         <pre class="language-js delayed"><code>// destructure the magic & the horse from a unicorn
 let { ✨, 🐴 } = 🦄</code></pre>
@@ -232,7 +221,7 @@ let { ✨, 🐴 } = 🦄</code></pre>
       <article class="slide">
         <h2>Object Destructuring</h2>
         <code>const { 🍞, 🥬, 🍅, 🧅, 🥓, 🧀, 🥩, 🍞 } = 🍔</code>
-          <pre class="language-js"><code>const burger = {
+        <pre class="language-js"><code>const burger = {
   topBun: 'sourdough',
   condiment: 'ketchup',
   lettuce: 'iceberg',
@@ -284,7 +273,7 @@ console.log(myStr);  // "John's email is jdoe@home.com"</code></pre>
         <pre class="language-js"><code>var list = [ 7, 42 ]
 var [ a = 1, b = 2, c = 3, d ] = list
 console.log(a, b, c, d) // 7, 42, 3, undefined</code></pre>
-<pre class="language-js"><code>const burger = { /* ...previous values... */}
+        <pre class="language-js"><code>const burger = { /* ...previous values... */}
 const { tomato, bacon, onion, pickles = 'dill' } = burger
 console.log(tomato, bacon, onion, pickles) 
 // ↳ 'beefsteak', 2, undefined, 'dill'
@@ -337,10 +326,8 @@ g() // Type Error, won't work without the object</code></pre>
           loose values. Used on arrays and objects.
         </p>
         <p>
-          <small
-            ><u>encapsulated</u> here means that the values are contained in an
-            object or an array.</small
-          >
+          <small><u>encapsulated</u> here means that the values are contained in an
+            object or an array.</small>
         </p>
       </article>
       <article class="slide">
@@ -355,8 +342,7 @@ g() // Type Error, won't work without the object</code></pre>
           (see <code>Function.length</code>)
         </p>
         <pre
-          class="language-js"
-        ><code>function addFirstTwo(a, b, ...manyMoreArgs) {
+             class="language-js"><code>function addFirstTwo(a, b, ...manyMoreArgs) {
   return a + b
 }
 addFirstTwo([1,1,5,6,7]) // 2 </code></pre>
@@ -385,7 +371,7 @@ var arr3 = arr.slice() // also a copy of arr</code></pre>
           <li>preserves the local value of<code>this</code></li>
         </ol>
         <div class="flex">
-        <pre class="language-js"><code>let shout = (pet) => console.log(pet.toUpperCase() + '!!!')
+          <pre class="language-js"><code>let shout = (pet) => console.log(pet.toUpperCase() + '!!!')
 let cat = 'meow';
 let dog = 'woof';
 
@@ -399,7 +385,7 @@ let myPets = {
 }
 
 myPets.speak(myPets.cat) // 'Meow'</code></pre>
-<pre class="language-js"><code>// It's a bit shorter...
+          <pre class="language-js"><code>// It's a bit shorter...
 
 
 // than the old syntax:
@@ -411,7 +397,7 @@ let myPets = {
     console.log(this[pet])
   }
 } </code></pre>
-</div>
+        </div>
       </article>
       <article class="slide">
         <h2>Computed Properties</h2>
@@ -432,12 +418,8 @@ let computedObj = {
         <div class="flex" style="align-items: center">
           <h2 class="bumpup">
             Map
-            <sup
-              ><a
-                href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map"
-                >MDN</a
-              ></sup
-            >
+            <sup><a
+                 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">MDN</a></sup>
           </h2>
           <ul><strong>Use Maps over objects when:</strong>
             <li>its properties will be changing frequently</li>
@@ -486,20 +468,15 @@ for (const value of map1.values()) {
       <article class="slide">
         <h2>
           Set
-          <sup
-            ><a
-              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set"
-              >MDN</a
-            ></sup
-          >
+          <sup><a
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Set">MDN</a></sup>
         </h2>
         <p>Sets may only contain one of any particular value.</p>
         <p>
           This makes them convenient as a way to remove duplicates in an array.
         </p>
         <pre
-          class="language-js"
-        ><code>const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,5,3,4,5]
+             class="language-js"><code>const numbers = [2,3,4,4,2,3,3,4,4,5,5,6,6,5,3,4,5]
 const noDupes = [...new Set(numbers)] // [2,3,4,5,6]</code></pre>
         <pre class="language-js"><code>const mySet = new Set()
 mySet1.add(5)          
@@ -518,9 +495,7 @@ mySet1.delete(5)
         <p>
           Refer to this
           <a
-            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Keyed_collections"
-            >article</a
-          >
+             href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Keyed_collections">article</a>
           for more on when to use each one
         </p>
         <ul>
@@ -566,7 +541,9 @@ const myWeakSet = new WeakSet()
             </ul>
           </li>
         </ul>
-        <p style="padding: 0 10rem;">All of these let us wrap our code inside of a "black box" so we can expose only the parts of it that we deliberately intend to and we can keep the nitty gritty implementation details hidden & inaccessible inside. </p>
+        <p style="padding: 0 10rem;">All of these let us wrap our code inside of a "black box" so we can expose only the
+          parts of it that we deliberately intend to and we can keep the nitty gritty implementation details hidden &
+          inaccessible inside. </p>
       </article>
 
       <article class="slide">
@@ -575,7 +552,8 @@ const myWeakSet = new WeakSet()
         <ul class="delayed-children">
           <li>Modules provide a new way to organize our code into manageable chunks.
           <li>By using the <code>import</code> & <code>export</code> keywords, we can modularize code &
-            organize it <u>into a unit defined by a file.</u></li></li>
+            organize it <u>into a unit defined by a file.</u></li>
+          </li>
           <li>Modules wrap up parts of your code into easily resusable pieces</li>
           <li>Modules makes those pieces of code easily composed together</li>
         </ul>
@@ -626,24 +604,16 @@ import { export1 , export2 } from "module-name.js";</code></pre>
       <article class="slide">
         <h2>
           Closures
-          <sup
-            ><a href="https://www.w3schools.com/js/js_function_closures.asp"
-              >W3</a
-            >,
+          <sup><a href="https://www.w3schools.com/js/js_function_closures.asp">W3</a>,
           </sup>
-          <sup
-            ><a
-              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures"
-              >MDN</a
-            ></sup
-          >
+          <sup><a
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">MDN</a></sup>
         </h2>
         <p style="padding: 0 10rem">
           Before Modules, code encapsulation was accomplished with the
           <a
-            href="https://www.codeproject.com/Articles/1164113/Module-and-Revealing-Module-Patterns-in-JavaScript"
-            >Revealing Module Pattern</a
-          >
+             href="https://www.codeproject.com/Articles/1164113/Module-and-Revealing-Module-Patterns-in-JavaScript">Revealing
+            Module Pattern</a>
           using IIFEs
         </p>
       </article>
@@ -785,7 +755,7 @@ const continuation = partial(2) // returns 3, because it added 1 from above with
       <article class="slide">
         <h2>Javascript <code>Class</code> Keyword</h2>
         <div class="flex">
-        <pre class="language-js"><code>class Point2D {
+          <pre class="language-js"><code>class Point2D {
   constructor(x, y) {
     this.x = x;
     this.y = y;
@@ -797,26 +767,27 @@ const instanceXYPoint = new Point2D(1, 2)
 instanceXYPoint.x // 1
 instanceXYPoint.y // 2
 </code></pre>
-        <ul>
-          <li>Constructor/Super <ul>
-            <li><code>constructor</code></li>
-            <li><code>super</code></li>
-            <li>Instantiating with the <code>new</code> keyword</li>
-          </ul></li>
-          <li>Getters/Setters 
-            <ul>
-              <li><code>get</code></li>
-              <li><code>set</code></li>
-            </ul>
+          <ul>
+            <li>Constructor/Super <ul>
+                <li><code>constructor</code></li>
+                <li><code>super</code></li>
+                <li>Instantiating with the <code>new</code> keyword</li>
+              </ul>
             </li>
-          <li>Private members with the hash symbol 
-            <ul>
-              <li><code>#</code></li>
-            </ul>
+            <li>Getters/Setters
+              <ul>
+                <li><code>get</code></li>
+                <li><code>set</code></li>
+              </ul>
             </li>
-          <li>Prototypal Inheritance</li>
-        </ul>
-      </div>
+            <li>Private members with the hash symbol
+              <ul>
+                <li><code>#</code></li>
+              </ul>
+            </li>
+            <li>Prototypal Inheritance</li>
+          </ul>
+        </div>
 
       </article>
       <article class="slide">
@@ -842,9 +813,8 @@ obj.toString() // '[object Object]'</code></pre>
         <h2>Not your Java's Inheritance</h2>
         <p>
           <a
-            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model"
-            >Classical vs Prototypal Inheritance</a
-          >
+             href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model">Classical
+            vs Prototypal Inheritance</a>
         </p>
         <p>
           They lack the classical inheritance model like other OOP language
@@ -934,7 +904,8 @@ console.log(carrot.name) // 'carrot'</code></pre>
             <code>super</code> maintains the connection between parent and child
             classes - It establishes the inheritance chain.
           </li>
-          <li><code>super</code> method is used to call parent's constructor & populates the class with all of it's parents properties & methods</li>
+          <li><code>super</code> method is used to call parent's constructor & populates the class with all of it's
+            parents properties & methods</li>
           <li>
             It is optional to use it - only if you need to use
             properties/methods of your parent class in your derived class
@@ -955,22 +926,22 @@ constructor(...args) {
       <article class="slide">
         <h2>Results</h2>
         <div class="flex" style="gap: 3rem;">
-        <pre class="language-js"><code>const joPerson = new Person(
+          <pre class="language-js"><code>const joPerson = new Person(
   "Jo", "jo@home.com", "123 Home Ave"
 )
 const joEmployee = new Employee(
   "Developer", "321 Work Ave", "Jo", "jo@work.com"
 )
 </code></pre>
-<div>
-  <pre class="language-js"><code>console.table({
+          <div>
+            <pre class="language-js"><code>console.table({
   emp: joEmployee.getInfo(), 
   per: joPerson.getInfo()
 })
   </code></pre>
-  <img src="img/employee.png" alt=""/>
-</div>
-      </div>
+            <img src="img/employee.png" alt="" />
+          </div>
+        </div>
       </article>
       <article class="slide">
         <h2>Instances</h2>
@@ -988,47 +959,52 @@ joEmployee.__proto__ // Person {constructor: ƒ, getInfo: ƒ}</code></pre>
       <article class="slide">
         <h2>Class vs Object differences</h2>
         <p>
-          Classes and objects from the essential part of Object-oriented programming, where a class can be considered as a construct that encapsulates a group of variables and methods; whereas, an object acts as member or instance of that class.
+          Classes and objects from the essential part of Object-oriented programming, where a class can be considered as
+          a construct that encapsulates a group of variables and methods; whereas, an object acts as member or instance
+          of that class.
         </p>
         <table>
           <thead>
-          <tr>
-            <th style="color: black;">Class</th>
-            <th style="color: black;">Object</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>A class is a blueprint from which you can create the instance, i.e., objects.</td>
-            <td>An object is the instance of the class, which helps programmers to use variables and methods from inside the class.</td>
-          </tr>
-          <tr>
-            <td>A class is used to bind data & methods into a single unit.</td>
-            <td>Object acts like a variable/instance of the class.</td>
-          </tr>
-          <tr>
-            <td>Classes have logical existence (exist in code).</td>
-            <td>Objects have a tangible existence (exist in memory).</td>
-          </tr>
-          <tr>
-            <td>A class doesn't take any memory spaces when a programmer creates one.</td>
-            <td>An object takes memory when a programmer creates one.</td>
-          </tr>
-          <tr>
-            <td>The class has to be declared only once.</td>
-            <td>Objects can be declared several times depending on the requirement.</td>
-          </tr>
-        </tbody>
+            <tr>
+              <th style="color: black;">Class</th>
+              <th style="color: black;">Object</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>A class is a blueprint from which you can create the instance, i.e., objects.</td>
+              <td>An object is the instance of the class, which helps programmers to use variables and methods from
+                inside the class.</td>
+            </tr>
+            <tr>
+              <td>A class is used to bind data & methods into a single unit.</td>
+              <td>Object acts like a variable/instance of the class.</td>
+            </tr>
+            <tr>
+              <td>Classes have logical existence (exist in code).</td>
+              <td>Objects have a tangible existence (exist in memory).</td>
+            </tr>
+            <tr>
+              <td>A class doesn't take any memory spaces when a programmer creates one.</td>
+              <td>An object takes memory when a programmer creates one.</td>
+            </tr>
+            <tr>
+              <td>The class has to be declared only once.</td>
+              <td>Objects can be declared several times depending on the requirement.</td>
+            </tr>
+          </tbody>
         </table>
       </article>
 
       <article class="slide">
-        <h2>Private methods/properties <sup><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields">MDN</a></sup></h2>
+        <h2>Private methods/properties <sup><a
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields">MDN</a></sup>
+        </h2>
         <p>Private members on a class are fully protected and inaccessible, except within the class block scope</p>
         <div class="flex">
 
-        
-        <pre class="language-js"><code>class ClassWithPrivate {
+
+          <pre class="language-js"><code>class ClassWithPrivate {
   #privateField = 42;
   #privateMethod() {
     console.log("can't access me directly")
@@ -1038,7 +1014,7 @@ joEmployee.__proto__ // Person {constructor: ƒ, getInfo: ƒ}</code></pre>
     console.log(this.#privateMethod())
   }
 }</code></pre>
-<pre class="language-js"><code>const instance = new ClassWithPrivate()
+          <pre class="language-js"><code>const instance = new ClassWithPrivate()
 
 // Public members can be access, called or deleted
 instance.logPrivateMethod() // works
@@ -1047,7 +1023,7 @@ instance.logPrivateMethod() // works
 instance.#privateField === 42 // Syntax Error
 instance.#privateMethod() // Syntax Error
 delete instance.#privateMethod() // Syntax Error</code></pre>
-</div>
+        </div>
       </article>
       <article class="slide">
         <h2>The <code>static</code> Keyword</h2>
@@ -1062,7 +1038,8 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
     // …setup code to run once
   }
 }</code></pre>
-<p>Code in a <code>constructor</code> runs once per instance, while code in a <code>static</code> block runs once per class declaration.</p>
+        <p>Code in a <code>constructor</code> runs once per instance, while code in a <code>static</code> block runs
+          once per class declaration.</p>
       </article>
       <article class="slide">
         <h2>Prototypal Inheritance</h2>
@@ -1115,9 +1092,8 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
           <a href="http://www.johndcook.com/blog/2011/07/19/you-wanted-banana/" style="text-align: center;">
             <div>If you ask for a banana...</div>
             <img
-              src="http://www.johndcook.com/gorilla_holding_banana.jpg"
-              alt=""
-            />
+                 src="http://www.johndcook.com/gorilla_holding_banana.jpg"
+                 alt="" />
           </a>
         </div>
       </article>
@@ -1130,7 +1106,8 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
       </header>
       <article class="slide">
         <h2>Iterators & Generators</h2>
-        <p><a href="https://felixgerschau.com/javascript-iterators-and-generators-explained/">Generators Explained Article</a></p>
+        <p><a href="https://felixgerschau.com/javascript-iterators-and-generators-explained/">Generators Explained
+            Article</a></p>
       </article>
     </section>
 
@@ -1139,4 +1116,5 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
     <script src="../lib/inspire.js"></script>
     <script src="../laser/laser.js"></script>
   </body>
+
 </html>
