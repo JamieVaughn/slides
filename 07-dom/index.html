@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="MCC Web Design & Development Slides" />
     <meta name="author" content="Jamie Vaughn" />
     <title>The Browser DOM</title>
@@ -20,11 +20,11 @@
     <link rel="stylesheet" href="../laser/laser.css" />
     <script src="https://cdn.master.co/css"></script>
   </head>
+
   <body
-    class="language-markup"
-    data-prism-plugins="normalize-whitespace"
-    data-duration="30"
-  >
+        class="language-markup"
+        data-prism-plugins="normalize-whitespace"
+        data-duration="30">
     <header id="intro" class="slide">
       <h1>The DOM API</h1>
       <h2>
@@ -41,12 +41,8 @@
       <article class="slide">
         <h2>THE DOM API vs JS</h2>
         <p>
-          <em
-            >The DOM API Looks like JS, but it's separate. Yet it inter<em
-              style="font-style: normal"
-              >f</em
-            >aces with JS.</em
-          >
+          <em>The DOM API Looks like JS, but it's separate. Yet it inter<em
+                style="font-style: normal">f</em>aces with JS.</em>
         </p>
         <p class="delayed">
           DOM represents the built-in objects, methods & properties that
@@ -73,17 +69,11 @@
         </p>
         <p><a href="https://www.w3.org/TR/?tag=dom">The DOM Standards</a></p>
         <p>
-          <a href="https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/"
-            >DOM level 3 Spec</a
-          >
+          <a href="https://www.w3.org/TR/2004/REC-DOM-Level-3-Core-20040407/">DOM level 3 Spec</a>
         </p>
         <p>
           <a href="https://dom.spec.whatwg.org/">Living DOM Standard</a>
-          <sup
-            ><a href="https://dom.spec.whatwg.org/review-drafts/2020-06/"
-              >Draft Spec</a
-            ></sup
-          >
+          <sup><a href="https://dom.spec.whatwg.org/review-drafts/2020-06/">Draft Spec</a></sup>
         </p>
       </article>
 
@@ -119,55 +109,38 @@
           <li class="delayed"><code>window.scrollTo()</code></li>
         </ul>
         <p class="fragment">
-          <a href="https://www.w3schools.com/jsref/obj_window.asp"
-            >More comprehesive list at w3 schools</a
-          >
+          <a href="https://www.w3schools.com/jsref/obj_window.asp">More comprehesive list at w3 schools</a>
         </p>
       </article>
 
       <article class="slide">
         <h2>
           The DOM Base Classes
-          <sup
-            ><a
-              href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#dom_interfaces"
-              >DOM Interfaces</a
-            ></sup
-          >
+          <sup><a
+               href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#dom_interfaces">DOM
+              Interfaces</a></sup>
         </h2>
         <img src="img/Node_hierarchy.png" alt="" />
         <ul>
           <li>
             <a
-              href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget"
-              >EventTarget</a
-            >
+               href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget</a>
           </li>
           <li>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node"
-              >Node</a
-            >
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">Node</a>
           </li>
           <li>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element"
-              >Element</a
-            >
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a>
           </li>
           <li>
             <a
-              href="https://developer.mozilla.org/en-US/docs/Web/API/SVGElement"
-              >SVGElement</a
-            >
+               href="https://developer.mozilla.org/en-US/docs/Web/API/SVGElement">SVGElement</a>
           </li>
           <li>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Text"
-              >Text</a
-            >
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Text">Text</a>
           </li>
           <li>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Comment"
-              >Comment</a
-            >
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Comment">Comment</a>
           </li>
         </ul>
       </article>
@@ -198,12 +171,10 @@
                 <ul style="list-style: inside">
                   <li style="list-style: none">
                     <span
-                      style="
+                          style="
                         display: inline-block;
                         transform: translateY(-10px) scaleX(-1);
-                      "
-                      >⤴</span
-                    >
+                      ">⤴</span>
                     returns #text nodes
                   </li>
                 </ul>
@@ -237,9 +208,7 @@
           <li>They can use full CSS selector syntax</li>
           <li>
             They return "array-like"
-            <a href="https://www.w3schools.com/js/js_htmldom_nodelist.asp"
-              >Node Lists</a
-            >
+            <a href="https://www.w3schools.com/js/js_htmldom_nodelist.asp">Node Lists</a>
           </li>
           <li>But Node Lists are static</li>
         </ul>
@@ -251,13 +220,10 @@ docuemnt.querySelectorAll('header > nav .logo')</code></pre>
         <h2>Old ways of DOM Access</h2>
         <p>
           The legacy methods that return
-          <a href="https://www.w3schools.com/js/js_htmldom_collections.asp"
-            >HTML Collections</a
-          >
+          <a href="https://www.w3schools.com/js/js_htmldom_collections.asp">HTML Collections</a>
         </p>
         <pre
-          class="language-js"
-        ><code>document.getElementById('myId') // This one still comes in handy
+             class="language-js"><code>document.getElementById('myId') // This one still comes in handy
 document.getElementsByClassName('myClass')            
 document.getElementsByTagName('div')            
 document.getElementsByName('myElementName')</code></pre>
@@ -300,16 +266,11 @@ document.getElementsByName('myElementName')</code></pre>
       <article class="slide">
         <h2>
           Creating & Adding DOM Nodes
-          <sup
-            ><a href="https://www.w3schools.com/js/js_htmldom_nodes.asp"
-              >w3</a
-            ></sup
-          >
+          <sup><a href="https://www.w3schools.com/js/js_htmldom_nodes.asp">w3</a></sup>
         </h2>
 
         <pre
-          class="language-js"
-        ><code>let label = document.createElement('label');
+             class="language-js"><code>let label = document.createElement('label');
 let input = document.createElement('input');
 label.append(input);
 label.setAttribute('for', 'form');
@@ -330,9 +291,7 @@ document.body.append(fragment);</code></pre>
         <h2>The DOM Style Object</h2>
         <p><code>element.style</code></p>
         <p>
-          <a href="https://www.w3schools.com/jsref/dom_obj_style.asp"
-            >w3.org docs</a
-          >
+          <a href="https://www.w3schools.com/jsref/dom_obj_style.asp">w3.org docs</a>
         </p>
         <pre class="language-js"><code>element.style.display = 'inline'
 element.style.color = 'crimson'
@@ -344,37 +303,26 @@ element.style.transform = 'rotate(90deg)'
       <article class="slide">
         <h2>
           Events
-          <sup
-            ><a href="https://www.w3schools.com/js/js_htmldom_events.asp"
-              >w3</a
-            ></sup
-          >
+          <sup><a href="https://www.w3schools.com/js/js_htmldom_events.asp">w3</a></sup>
         </h2>
         <p>The event source model & functional programming</p>
         <p>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/Events"
-            >List of DOM Events</a
-          >
+          <a href="https://developer.mozilla.org/en-US/docs/Web/Events">List of DOM Events</a>
         </p>
         <p>Three event types we will work with to start off:</p>
         <ul>
           <li>
             <a
-              href="https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event"
-              ><code>click</code></a
-            >
+               href="https://developer.mozilla.org/en-US/docs/Web/API/Element/click_event"><code>click</code></a>
           </li>
           <li>
             <a
-              href="https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event"
-              ><code>keydown</code>, <code>keyup</code></a
-            >
+               href="https://developer.mozilla.org/en-US/docs/Web/API/Element/keydown_event"><code>keydown</code>,
+              <code>keyup</code></a>
           </li>
           <li>
             <a
-              href="https://developer.mozilla.org/en-US/docs/Web/API/Element/submit_event"
-              ><code>submit</code></a
-            >
+               href="https://developer.mozilla.org/en-US/docs/Web/API/Element/submit_event"><code>submit</code></a>
           </li>
         </ul>
       </article>
@@ -382,17 +330,15 @@ element.style.transform = 'rotate(90deg)'
       <article class="slide">
         <h2>Listening to Events</h2>
         <pre
-          class="language-js"
-        ><code>document.addEventListener('submit', callback)</code></pre>
+             class="language-js"><code>document.addEventListener('submit', callback)</code></pre>
         <p>
           Then we need to <strong>handle</strong> that event with our callback
           function that we define
         </p>
         <p>For Example:</p>
         <pre
-          class="language-js"
-          style="width: 80vw"
-        ><code>button.addEventListener('click', function(e) {
+             class="language-js"
+             style="width: 80vw"><code>button.addEventListener('click', function(e) {
   console.log(e);
   const div = document.createElement("div");
   const text = document.createTextNode(
@@ -402,14 +348,14 @@ element.style.transform = 'rotate(90deg)'
   e.target.insertAdjacentElement("afterend", div);
 })</code></pre>
         <script>
-          function tryitout(e) {
-            console.log(e);
-            const div = document.createElement("div");
+          function tryitout( e ) {
+            console.log( e )
+            const div = document.createElement( "div" )
             const text = document.createTextNode(
               "You clicked @ " + new Date().toLocaleTimeString()
-            );
-            div.appendChild(text);
-            e.target.insertAdjacentElement("afterend", div);
+            )
+            div.appendChild( text )
+            e.target.insertAdjacentElement( "afterend", div )
           }
         </script>
         <button class="snippet-btn info" onclick="tryitout(event)">
@@ -425,12 +371,12 @@ element.style.transform = 'rotate(90deg)'
           HTML root down to the clicked element capturing intermediate elments
           along the way
         </p>
-        <p>When the traversal reaches the clicked element, it fires the event handler and then bubbles back up the tree to the HTML root firing all other event handlers it encounters along the path it previously traversed.</p>
+        <p>When the traversal reaches the clicked element, it fires the event handler and then bubbles back up the tree
+          to the HTML root firing all other event handlers it encounters along the path it previously traversed.</p>
         <p>
-          <p>If you want you can set the optional <code>{capture: true}</code> to have it trigger handlers on the traversal downwards, instead of upwards.</p>
-          <a href="https://www.youtube.com/watch?v=F1anRyL37lE"
-            >Wes Bos on Event Capturing & Bubbling</a
-          >
+        <p>If you want you can set the optional <code>{capture: true}</code> to have it trigger handlers on the
+          traversal downwards, instead of upwards.</p>
+        <a href="https://www.youtube.com/watch?v=F1anRyL37lE">Wes Bos on Event Capturing & Bubbling</a>
         </p>
       </article>
 
@@ -456,9 +402,7 @@ element.style.transform = 'rotate(90deg)'
         <h2>Code Along</h2>
         <p>
           Let's make
-          <a href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life"
-            >Conway's Game of Life</a
-          >
+          <a href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life">Conway's Game of Life</a>
         </p>
       </article>
 
@@ -468,10 +412,8 @@ element.style.transform = 'rotate(90deg)'
         <ol>
           <strong>Use the DOM API to create a simple contact form:</strong>
           <a
-            href="https://github.com/JamieVaughn/code-along/blob/master/DOMAPI/requirements.md"
-            target="_blank"
-            >Requirements</a
-          >
+             href="https://github.com/JamieVaughn/code-along/blob/master/DOMAPI/requirements.md"
+             target="_blank">Requirements</a>
           <li>
             It should have a <code>&lt;header&gt;</code> with a title of
             "Contact Me"
@@ -501,7 +443,8 @@ element.style.transform = 'rotate(90deg)'
       </article>
       <article class="slide">
         <h2>The Elevator Saga Coding Game</h2>
-        <p>The elevator saga coding game is a fun way to practice using the Event paradigm while solving fun game challenges.</p>
+        <p>The elevator saga coding game is a fun way to practice using the Event paradigm while solving fun game
+          challenges.</p>
         <p><a href="https://play.elevatorsaga.com/">Try to beat it here!</a></p>
         <p>(Don't forget to click on the Documentation links and practice reading docs to learn how something works)</p>
       </article>
@@ -522,39 +465,30 @@ element.style.transform = 'rotate(90deg)'
         <p>
           <a href="https://rubberduckdebugging.com/">"Rubber Duck Debugging"</a>
           in
-          <a href="https://blog.codinghorror.com/rubber-duck-problem-solving/"
-            >Action</a
-          >
+          <a href="https://blog.codinghorror.com/rubber-duck-problem-solving/">Action</a>
         </p>
         <p>
-          <a href="https://dev.to/flippedcoding/how-to-write-pseudo-code-2jfe"
-            >A form of Pseudo Code</a
-          >
+          <a href="https://dev.to/flippedcoding/how-to-write-pseudo-code-2jfe">A form of Pseudo Code</a>
         </p>
         <div>
           <a
-            href="https://en.wikipedia.org/wiki/Rubber_duck_debugging"
-            style="position: relative"
-          >
+             href="https://en.wikipedia.org/wiki/Rubber_duck_debugging"
+             style="position: relative">
             <img
-              style="height: 65vh; width: 100%"
-              src="img/rubberduck_comic.png"
-            />
+                 style="height: 65vh; width: 100%"
+                 src="img/rubberduck_comic.png" />
           </a>
         </div>
         <p>
-          <a href="http://www.catb.org/~esr/faqs/smart-questions.html"
-            >More on "Read, Search, Ask" - asking effective questions</a
-          >
+          <a href="http://www.catb.org/~esr/faqs/smart-questions.html">More on "Read, Search, Ask" - asking effective
+            questions</a>
         </p>
       </article>
 
       <article class="slide">
         <h2>How to unstuck yourself</h2>
         <p>
-          <a href="img/Unstuck_Javascript_Cheat_Sheet.pdf"
-            >Advice on debuggin steps - EBook</a
-          >
+          <a href="img/Unstuck_Javascript_Cheat_Sheet.pdf">Advice on debuggin steps - EBook</a>
         </p>
       </article>
 
@@ -567,29 +501,27 @@ element.style.transform = 'rotate(90deg)'
       <article class="slide">
         <div style="overflow: hidden; position: relative">
           <img
-            src="img/take_this.gif"
-            style="
+               src="img/take_this.gif"
+               style="
               width: 100%;
               max-height: 500%;
               aspect-ratio: 3 / 4;
               clip-path: polygon(1% 1%, 99% 1%, 99% 40%, 1% 40%);
-            "
-          />
+            " />
           <div class="delayed-children">
             <img
-              class="spin-in"
-              style="
+                 class="spin-in"
+                 style="
                 position: absolute;
                 top: 30%;
                 left: 32%;
                 transform: rotate(14deg);
               "
-              width="150px"
-              src="img/dev_tools_sword.png"
-            />
+                 width="150px"
+                 src="img/dev_tools_sword.png" />
             <span
-              class="delayed"
-              style="
+                  class="delayed"
+                  style="
                 position: absolute;
                 top: 36.5%;
                 left: 35.6%;
@@ -597,9 +529,7 @@ element.style.transform = 'rotate(90deg)'
                 font-weight: bold;
                 font-size: 1.5rem;
                 transform: rotate(-32deg);
-              "
-              >Dev Tools</span
-            >
+              ">Dev Tools</span>
           </div>
         </div>
       </article>
@@ -612,10 +542,9 @@ element.style.transform = 'rotate(90deg)'
         </p>
         <div class="flex delayed" style="align-items: center">
           <img
-            src="img/Babe_Ruth_512.jpg"
-            alt="Babe Ruth Portrait Photo"
-            style="aspect-ratio: 3 / 4; height: 300px; flex: 0 2 25%"
-          />
+               src="img/Babe_Ruth_512.jpg"
+               alt="Babe Ruth Portrait Photo"
+               style="aspect-ratio: 3 / 4; height: 300px; flex: 0 2 25%" />
           <blockquote style="flex: 2 0 50%">
             <p>“Every strike brings me closer to the next home run.”</p>
             <p>― Babe Ruth</p>
@@ -628,16 +557,15 @@ element.style.transform = 'rotate(90deg)'
         <h2>The Dev Tools</h2>
         <div class="flex">
           <img
-            src="img/slow_motion.jpg"
-            alt=""
-            style="
+               src="img/slow_motion.jpg"
+               alt=""
+               style="
               position: absolute;
               top: 0;
               right: 0;
               margin-top: -3rem;
               min-height: 125vh;
-            "
-          />
+            " />
           <ul style="list-style: none; padding-right: 600px; text-align: right">
             <li>
               It's like a slow motion camera for your code, <br />so you can see
@@ -648,9 +576,7 @@ element.style.transform = 'rotate(90deg)'
               <code>console.log(console)</code>
             </li>
             <li>
-              <a href="https://developer.chrome.com/docs/devtools/"
-                >The Dev Tools Overview</a
-              >
+              <a href="https://developer.chrome.com/docs/devtools/">The Dev Tools Overview</a>
             </li>
             <li>The Dev Tools is written in just javascript as well!</li>
           </ul>
@@ -660,11 +586,7 @@ element.style.transform = 'rotate(90deg)'
       <article class="slide">
         <h2>
           Console Methods
-          <sup
-            ><a href="https://developer.mozilla.org/en-US/docs/Web/API/console"
-              >MDN</a
-            ></sup
-          >
+          <sup><a href="https://developer.mozilla.org/en-US/docs/Web/API/console">MDN</a></sup>
         </h2>
         <div class="flex">
           <pre class="language-js"><code>console.log
@@ -704,8 +626,7 @@ console.group
         </p>
         <p>
           <a
-            href="https://googlechrome.github.io/devtools-samples/debug-js/get-started"
-          >
+             href="https://googlechrome.github.io/devtools-samples/debug-js/get-started">
             Example Bug
           </a>
         </p>
@@ -717,4 +638,5 @@ console.group
     <script src="../lib/inspire.js"></script>
     <script src="../laser/laser.js"></script>
   </body>
+
 </html>
