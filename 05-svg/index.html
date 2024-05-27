@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="MCC Web Design & Development Slides" />
     <meta name="author" content="Jamie Vaughn" />
     <title>Template</title>
@@ -22,11 +22,11 @@
 
     <script src="../inspire_/inspire.mjs" type="module"></script>
   </head>
+
   <body
-    class="language-markup"
-    data-prism-plugins="normalize-whitespace"
-    data-duration="30"
-  >
+        class="language-markup"
+        data-prism-plugins="normalize-whitespace"
+        data-duration="30">
     <header id="intro" class="slide">
       <h1>Web Design & Development</h1>
       <h2>SVG: Scalable Vector Graphics</h2>
@@ -45,12 +45,11 @@
         <div class="d:flex jc:center ai:center mb:8">
           <p>Native element code:</p>
           <svg
-            viewBox="0 0 24 24"
-            width="50"
-            height="50"
-            stroke="gold"
-            fill="transparent"
-          >
+               viewBox="0 0 24 24"
+               width="50"
+               height="50"
+               stroke="gold"
+               fill="transparent">
             <polygon points="12 2, 22 22, 2 22"></polygon>
             <line x1="12" y1="10" x2="12" y2="14"></line>
             <circle cx="12" cy="18" r="0.5"></circle>
@@ -79,9 +78,7 @@
           <li>
             Can be animatedus
             <a
-              href="https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL"
-              >SMIL</a
-            >
+               href="https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL">SMIL</a>
           </li>
           <li>Easy Spriting options with <code>&lt;use&gt;</code></li>
           <li>But... they are more complicated than fonts or raster images</li>
@@ -108,8 +105,7 @@
 
       <article class="slide">
         <h2>Finding SVG Icons</h2>
-        <span
-          >Download: <a href="https://icomoon.io">icomoon.io</a>,
+        <span>Download: <a href="https://icomoon.io">icomoon.io</a>,
           <a href="https://thenounproject.com">thenounproject.com</a>,
           <a href="https://iconmonstr.com">iconmonstr.com</a>,
           <a href="https://flaticon.com">flaticon.com</a>
@@ -135,22 +131,16 @@
       <article class="slide">
         <h2>
           CSS vs. SVG Graphics
-          <sup
-            ><a
-              href="https://www.sarasoueidan.com/blog/building-a-circular-navigation-with-svg/"
-              >Article</a
-            ></sup
-          >
+          <sup><a
+               href="https://www.sarasoueidan.com/blog/building-a-circular-navigation-with-svg/">Article</a></sup>
         </h2>
         <div class="d:flex jc:center ai:center max-w:50%">
           <img
-            src="https://media.slid.es/uploads/sarasoueidan/images/1191412/css-draw-menu.gif"
-            alt=""
-          />
+               src="https://media.slid.es/uploads/sarasoueidan/images/1191412/css-draw-menu.gif"
+               alt="" />
           <img
-            src="https://d33wubrfki0l68.cloudfront.net/f4105f8487910e2832fb9fe6e7503dd6053a9d32/419f8/images/svg-menu-icons-alignment.svg"
-            alt=""
-          />
+               src="https://d33wubrfki0l68.cloudfront.net/f4105f8487910e2832fb9fe6e7503dd6053a9d32/419f8/images/svg-menu-icons-alignment.svg"
+               alt="" />
         </div>
       </article>
 
@@ -163,7 +153,8 @@ viewBox="0 0 500 500"
 &gt;
 <!-- svg graphic elements here -->
 &lt;/svg&gt;</code></pre>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course"></a>Why <code>xmlns</code>? It's a signal for the html parser.</a></p>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course"></a>Why
+          <code>xmlns</code>? It's a signal for the html parser.</a></p>
       </article>
 
       <article class="slide">
@@ -185,8 +176,8 @@ viewBox="0 0 500 500"
             <li>Use css width/height on icons/container for responsive scaling</li>
           </ul>
         </div>
-        
-        
+
+
       </article>
 
       <article class="slide">
@@ -205,12 +196,8 @@ viewBox="0 0 500 500"
       <article class="slide">
         <h2>
           SVG Shape Elements
-          <small
-            ><a
-              href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes"
-              >MDN</a
-            ></small
-          >
+          <small><a
+               href="https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Basic_Shapes">MDN</a></small>
         </h2>
         <ul class="columns:2 list-style:none">
           <li><code>line</code></li>
@@ -223,7 +210,7 @@ viewBox="0 0 500 500"
           <li><code>text</code></li>
         </ul>
       </article>
-      
+
       <article class="slide">
         <h2>Line</h2>
         <pre><code class="large-code">&lt;line x1="0" y1="0" x2="2" y2="2" /&gt;</code></pre>
@@ -240,10 +227,9 @@ viewBox="0 0 500 500"
         <h2>Ellipse</h2>
         <pre><code class="large-code">&lt;ellipse cx="5" cy="5" rx="3" ry="2" /&gt;</code></pre>
         <img
-          style="width: 400px"
-          src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fc%2Fc0%2FMoment_of_area_of_an_ellipse.svg%2F1200px-Moment_of_area_of_an_ellipse.svg.png&f=1&nofb=1"
-          alt=""
-        />
+             style="width: 400px"
+             src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fc%2Fc0%2FMoment_of_area_of_an_ellipse.svg%2F1200px-Moment_of_area_of_an_ellipse.svg.png&f=1&nofb=1"
+             alt="" />
       </article>
 
       <article class="slide">
@@ -293,7 +279,7 @@ viewBox="0 0 500 500"
       <article class="slide">
         <h2>Path Syntax is easier than it looks</h2>
         <p>
-          This is easier to remember than it looks: 
+          This is easier to remember than it looks:
         </p>
         <ul>
           <li>M for moving</li>
@@ -311,9 +297,7 @@ viewBox="0 0 500 500"
           </ul>
         </ul>
         <p>
-          <a href="https://css-tricks.com/svg-path-syntax-illustrated-guide/"
-            >Path Syntax Explained</a
-          >
+          <a href="https://css-tricks.com/svg-path-syntax-illustrated-guide/">Path Syntax Explained</a>
         </p>
       </article>
 
@@ -350,9 +334,7 @@ viewBox="0 0 500 500"
         <p>Use <code>transform-origin</code> to change the axis of rotation</p>
         <p>(set it to the x+width/2, y+height/2 coords)</p>
         <p>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute"
-            >MDN List</a
-          >
+          <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute">MDN List</a>
         </p>
       </article>
 
@@ -363,21 +345,13 @@ viewBox="0 0 500 500"
           <li><code>stroke-width: number</code></li>
           <li>
             <code>stroke-linecap: butt, square, round</code>
-            <sup
-              ><a
-                href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap"
-                >MDN</a
-              ></sup
-            >
+            <sup><a
+                 href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linecap">MDN</a></sup>
           </li>
           <li>
             <code>stroke-linejoin: miter, round,bevel </code>
-            <sup
-              ><a
-                href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin"
-                >MDN</a
-              ></sup
-            >
+            <sup><a
+                 href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/stroke-linejoin">MDN</a></sup>
           </li>
           <li><code>stroke-miterlimit: number</code></li>
           <li><code>stroke-opacity: 0-1</code></li>
@@ -386,9 +360,8 @@ viewBox="0 0 500 500"
           </li>
           <li><code>stroke-dashoffset="number"</code></li>
           <li>
-            <a href="https://css-tricks.com/svg-line-animation-works/"
-              >You can animate lines using these dash properties</a
-            >
+            <a href="https://css-tricks.com/svg-line-animation-works/">You can animate lines using these dash
+              properties</a>
           </li>
         </ul>
       </article>
@@ -415,23 +388,17 @@ viewBox="0 0 500 500"
       <article class="slide">
         <h2>Let's Animate our Name with SVG!</h2>
         <p>
-          <a href="https://danmarshall.github.io/google-font-to-svg-path/"
-            >With this Text to SVG Tool</a
-          >
+          <a href="https://danmarshall.github.io/google-font-to-svg-path/">With this Text to SVG Tool</a>
         </p>
         <p><a href="https://codepen.io/heliocrat/pen/XWMEzmY">Like This</a></p>
       </article>
       <article class="slide">
         <h2>Comprehensive References</h2>
         <p>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element"
-            >MDN SVG Elements list</a
-          >
+          <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element">MDN SVG Elements list</a>
         </p>
         <p>
-          <a href="https://www.w3docs.com/learn-html/svg-reference.html"
-            >W3docs svg elements</a
-          >
+          <a href="https://www.w3docs.com/learn-html/svg-reference.html">W3docs svg elements</a>
         </p>
       </article>
 
@@ -440,9 +407,7 @@ viewBox="0 0 500 500"
         <p><a href="https://codepen.io/lbebber/pen/KwGEQv">Squiggly Text</a></p>
         <p>
           <a
-            href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element#filter_primitive_elements"
-            >MDN List</a
-          >
+             href="https://developer.mozilla.org/en-US/docs/Web/SVG/Element#filter_primitive_elements">MDN List</a>
         </p>
       </article>
 
@@ -454,7 +419,8 @@ viewBox="0 0 500 500"
   &lt;text role="presentation" role="hidden">Text that we don't want read by screen reader&lt;/text&gt;
 &lt;/svg&gt;
         </code></pre>
-        <p>You can add <code>&lt;title&gt;</code> and <code>&lt;desc&gt;</code> inside a <code>&lt;use&gt;</code> declaration as well</p>
+        <p>You can add <code>&lt;title&gt;</code> and <code>&lt;desc&gt;</code> inside a <code>&lt;use&gt;</code>
+          declaration as well</p>
       </article>
 
       <article class="slide">
@@ -472,9 +438,7 @@ viewBox="0 0 500 500"
         <h2>Let's Make some SVG Spinners</h2>
         <p>
           <a
-            href="https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL"
-            >Animate SVG with SMIL</a
-          >
+             href="https://developer.mozilla.org/en-US/docs/Web/SVG/SVG_animation_with_SMIL">Animate SVG with SMIL</a>
         </p>
       </article>
     </section>
@@ -498,7 +462,7 @@ viewBox="0 0 500 500"
     </div>
   </div>
      </textarea>
-      <textarea class="language-css">
+        <textarea class="language-css">
         .preview > div {
           padding: 1rem;
           border: 1px solid silver;
@@ -508,9 +472,10 @@ viewBox="0 0 500 500"
           stroke-width: 5px;
         }
       </textarea>
-    </article>
+      </article>
     </section>
 
     <script src="../laser/laser.js"></script>
   </body>
+
 </html>
