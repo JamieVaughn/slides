@@ -1,190 +1,195 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <meta name="description" content="MCC Web Design & Development Slides">
-	<meta name="author" content="Jamie Vaughn">
-  <title>CSS: The Style of Web pages</title>
-  <!-- Inspire css -->
-	<link href="../lib/inspire.css" rel="stylesheet" />
-	<link href="../lib/theme.css" rel="stylesheet" />
-	<link href="../lib/talk.css" rel="stylesheet" />
-	<link href="../lib/utils.css" rel="stylesheet" />
 
-   <!-- Custom css -->
-	 <link rel="stylesheet" href="../laser/laser.css">
-   <link rel="stylesheet" href="./css/styles.css">
-   <script src="https://cdn.master.co/css"></script>
-   <style>
-    * {
-      box-sizing: border-box;
-    }
-   </style>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="MCC Web Design & Development Slides">
+    <meta name="author" content="Jamie Vaughn">
+    <title>CSS: The Style of Web pages</title>
+    <!-- Inspire css -->
+    <link href="../lib/inspire.css" rel="stylesheet" />
+    <link href="../lib/theme.css" rel="stylesheet" />
+    <link href="../lib/talk.css" rel="stylesheet" />
+    <link href="../lib/utils.css" rel="stylesheet" />
 
-  <script src="../inspire_/inspire.mjs" type="module"></script>
-</head>
-<body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
+    <!-- Custom css -->
+    <link rel="stylesheet" href="../laser/laser.css">
+    <link rel="stylesheet" href="./css/styles.css">
+    <script src="https://cdn.master.co/css"></script>
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+
+    <script src="../inspire_/inspire.mjs" type="module"></script>
+  </head>
+
+  <body class="language-markup" data-prism-plugins="normalize-whitespace" data-duration="30">
 
 
-<!-- Part 1 CSS Basics -->
+    <!-- Part 1 CSS Basics -->
 
-<header id="intro" class="slide">
-	<h1>Web Design & Development</h1>
-  <h2>CSS</h2>
-  <p class="attribution">MCC: Section 1</p>
-</header>
-<section>
-	<header class="slide">
-		<h2>Cascading Style Sheets</h2>
-		<h1>CSS</h1>
-	</header>
+    <header id="intro" class="slide">
+      <h1>Web Design & Development</h1>
+      <h2>CSS</h2>
+      <p class="attribution">MCC: Section 1</p>
+    </header>
+    <section>
+      <header class="slide">
+        <h2>Cascading Style Sheets</h2>
+        <h1>CSS</h1>
+      </header>
 
-	<article class="slide" title="">
-    <h1>Cascading Style Sheets (CSS)</h1>
-    <p><a href="https://web.dev/learn/css/">Learn CSS</a></p>
-    <ol type="1">
-        <li>Tells the browser how to <strong>display</strong> a certain element</li>
-        <li>Offers lots of power & versatility: <a href="http://www.csszengarden.com/">CSS Zen Garden</a></li>
-        <li>Follows the general ruleset:</li>
-        <li style='list-style: none'>
-            <ol  type="a">
-                <li>Select the HTML element to be styled</li>
-                <li>Specify the properties of the element to be styled</li>
-                <li>Give the values we want each property to have</li>
+      <article class="slide" title="">
+        <h1>Cascading Style Sheets (CSS)</h1>
+        <p><a href="https://web.dev/learn/css/">Learn CSS</a></p>
+        <ol type="1">
+          <li>Tells the browser how to <strong>display</strong> a certain element</li>
+          <li>Offers lots of power & versatility: <a href="http://www.csszengarden.com/">CSS Zen Garden</a></li>
+          <li>Follows the general ruleset:</li>
+          <li style='list-style: none'>
+            <ol type="a">
+              <li>Select the HTML element to be styled</li>
+              <li>Specify the properties of the element to be styled</li>
+              <li>Give the values we want each property to have</li>
             </ol>
-        </li>
-    </ol>
-    <div class="flex jc:center; ai:center;">
-<pre class="language-css"><code>p {
+          </li>
+        </ol>
+        <div class="flex jc:center; ai:center;">
+          <pre class="language-css"><code>p {
     color: orange
     font-size: 16px;
 }</code></pre>
-        <img src="./img/Selector.png" style="height: 200px;"/>
-    </div>
-        
-    
-    <details class="notes">
-        Not a programming language like Javascript, nor a mark-up language like HTML<br>
-        Nothing quite like it<br>
-        You can think of it like a Style Configuration File<br>
-        Easy to get started using & understand but very hard to master
-    </details>
-	</article>
+          <img src="./img/Selector.png" style="height: 200px;" />
+        </div>
 
-  <article class="slide">
-    <h2>Structure of a CSS rule</h2>
-    <div class="flex align">
-      <pre class="language-css"><code>selector {
+
+        <details class="notes">
+          Not a programming language like Javascript, nor a mark-up language like HTML<br>
+          Nothing quite like it<br>
+          You can think of it like a Style Configuration File<br>
+          Easy to get started using & understand but very hard to master
+        </details>
+      </article>
+
+      <article class="slide">
+        <h2>Structure of a CSS rule</h2>
+        <div class="flex align">
+          <pre class="language-css"><code>selector {
   property1: value;
   property2: value;
   property3: value;
   property4: value;
 }</code></pre>
-      <pre class="language-css"><code>a {
+          <pre class="language-css"><code>a {
   color: navy;
   font-size: 24px;
   padding: 8px;
   background-color: gold;
 }</code></pre>
-    </div>
-    <p><a style="color: navy; font-size: 24px; padding: 8px; background-color: gold;" href="./">Example &lt;a&gt; tag</a></p>
-    <ul>
-        <li>The <strong>selector</strong> identifies which HTML element(s) the style rule will be applied to</li>
-        <li>The <strong>curly braces</strong> contain the property-value pairs, each separated by a semi-colon</li>
-        <li>The <strong>property</strong> indicates the style to be changed</li>
-        <li>The <strong>value</strong> is what the properties are set to for that element</li>
-    </ul>
-  </article>
+        </div>
+        <p><a style="color: navy; font-size: 24px; padding: 8px; background-color: gold;" href="./">Example &lt;a&gt;
+            tag</a></p>
+        <ul>
+          <li>The <strong>selector</strong> identifies which HTML element(s) the style rule will be applied to</li>
+          <li>The <strong>curly braces</strong> contain the property-value pairs, each separated by a semi-colon</li>
+          <li>The <strong>property</strong> indicates the style to be changed</li>
+          <li>The <strong>value</strong> is what the properties are set to for that element</li>
+        </ul>
+      </article>
 
-  <article class="slide">
-    <h2>Styles: Inline, Internal & External</h2>
-    <p><strong>Head vs Body:</strong> <br> <code>&lt;body&gt;</code> is for content & <code>&lt;head&gt;</code> is for metadata</p>
-    <div class="flex gap:8">
-    <pre><code>&lt;body&gt;
+      <article class="slide">
+        <h2>Styles: Inline, Internal & External</h2>
+        <p><strong>Head vs Body:</strong> <br> <code>&lt;body&gt;</code> is for content & <code>&lt;head&gt;</code> is
+          for metadata</p>
+        <div class="flex gap:8">
+          <pre><code>&lt;body&gt;
 &lt;div style="color: white;"&gt;&lt;/div&gt;
 &lt;body&gt;</code></pre>
-    <pre><code>&lt;head&gt;
+          <pre><code>&lt;head&gt;
 &lt;style&gt;
 selector {
 property1: value;
 }
 &lt;/style&gt;
 &lt;/head&gt;</code></pre>
-<pre><code>&lt;head&gt;
+          <pre><code>&lt;head&gt;
 &lt;link href='css/styles.css'&gt;
 &lt;/head&gt;</code></pre>
-</div>
-<p><a href="https://stackblitz.com/edit/web-platform-9zmgk7?file=index.html,styles.css">Examples in editor</a></p>
-</article>
+        </div>
+        <p><a href="https://stackblitz.com/edit/web-platform-9zmgk7?file=index.html,styles.css">Examples in editor</a>
+        </p>
+      </article>
 
-  <article class="slide">
-    <h2>Basic Types of CSS selectors</h2>
-    <ul>
-        <li><strong>Element</strong>: matches all the elements of that name on the page 
-        </li>
-        <div class="d:flex gap:10 ai:stretch jc:center">
-          <code>&lt;p&gt;text&lt;/p&gt;</code>
-          <span class="mt:12">←</span>
-          <pre class="language-css d:flex jc:center"><code>p {}</code></pre>
-        </div>
-        <li><strong>Class</strong>: matches all elements with the specified class, e.g.
-        </li>
-        <div class="d:flex gap:10 ai:center jc:center">
-          <code>&lt;div class="example"&gt;</code>
-          <span class="mt:8">←</span>
-          <pre class="language-css d:flex jc:center w:2xs"><code>.example {}</code></pre>
-        </div>
-        <li><strong>ID</strong>: matches the element with the specified id, e.g. 
-        </li>
-        <div class="d:flex gap:10 ai:center jc:center">
-          <code>&lt;div id="example"&gt;</code>
-          <span class="mt:8">←</span>
-          <pre class="language-css d:flex jc:center w:2xs"><code>#example {}</code></pre>
-        </div>
-    </ul>
-  </article>
-  <article class="slide">
-    <h2>More Types of CSS selectors</h2>
-    <ul class="flex gap:32 list-style:none">
-        <li><strong>Attribute</strong>: matches all the elements with provided attribute 
+      <article class="slide">
+        <h2>Basic Types of CSS selectors</h2>
+        <ul>
+          <li><strong>Element</strong>: matches all the elements of that name on the page
+          </li>
+          <div class="d:flex gap:10 ai:stretch jc:center">
+            <code>&lt;p&gt;text&lt;/p&gt;</code>
+            <span class="mt:12">←</span>
+            <pre class="language-css d:flex jc:center"><code>p {}</code></pre>
+          </div>
+          <li><strong>Class</strong>: matches all elements with the specified class, e.g.
+          </li>
+          <div class="d:flex gap:10 ai:center jc:center">
+            <code>&lt;div class="example"&gt;</code>
+            <span class="mt:8">←</span>
+            <pre class="language-css d:flex jc:center w:2xs"><code>.example {}</code></pre>
+          </div>
+          <li><strong>ID</strong>: matches the element with the specified id, e.g.
+          </li>
+          <div class="d:flex gap:10 ai:center jc:center">
+            <code>&lt;div id="example"&gt;</code>
+            <span class="mt:8">←</span>
+            <pre class="language-css d:flex jc:center w:2xs"><code>#example {}</code></pre>
+          </div>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>More Types of CSS selectors</h2>
+        <ul class="flex gap:32 list-style:none">
+          <li><strong>Attribute</strong>: matches all the elements with provided attribute
             <br>e.g. <code>&lt;video controls&gt;</code> or <br>
             <code>&lt;a href="https://wjv.io"&gt;</code>
             <pre class="language-css">
                 <code>[controls] {}
 [href="https://wjv.io"] {}</code>
             </pre>
-        </li>
-        <li><strong>Combination</strong>: matches all the elements with the specified combination of selectors, 
+          </li>
+          <li><strong>Combination</strong>: matches all the elements with the specified combination of selectors,
             <br>e.g. <code
-                class="ga-nowrap">&lt;div class="wrapper"&gt;</code>
+                  class="ga-nowrap">&lt;div class="wrapper"&gt;</code>
             <br>
             <pre class="language-css"><code>div.wrapper {}</code></pre>
             <em>notice there is no space between this combination selector</em>
-        </li>
-    </ul>
-  </article>
-  <article class="slide">
-    <h2>Even More Types of CSS selectors</h2>
-    <div class="flex align">
-        <div>
+          </li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Even More Types of CSS selectors</h2>
+        <div class="flex align">
+          <div>
             <div class="f:28 position:relative">
-                <strong>Nested:</strong> matches the nested 
-                <strong>descendant</strong> element with the specified 
-                <strong>ancestor</strong>
-                <span class="position:absolute bottom:0 right:0">↱</span>
+              <strong>Nested:</strong> matches the nested
+              <strong>descendant</strong> element with the specified
+              <strong>ancestor</strong>
+              <span class="position:absolute bottom:0 right:0">↱</span>
             </div>
             <div class="tight-code nmt">
-                <pre class="language-css"><code>
+              <pre class="language-css"><code>
 ul li {}
 ul a {}
 ul > li {}
 ul > li > a {} // only matches first link
 ul > a {} // 🚫 won't match anything to the right </code></pre>
             </div>
-        </div>
-        <pre><code>&lt;ul&gt;
+          </div>
+          <pre><code>&lt;ul&gt;
   &lt;h1&gt;Title&lt;/h1&gt;
   &lt;li&gt;
     &lt;a href="/link"&gt;Link&lt;/a&gt;
@@ -197,52 +202,55 @@ ul > a {} // 🚫 won't match anything to the right </code></pre>
   &lt;li&gt;item&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
 
-    </div>
-    <br>
-    <p>
+        </div>
+        <br>
+        <p>
         <div class="f:28 position:relative">
-            <strong>Sibling Selectors:</strong> 
-            matches subsequent sibling or siblings (no back-traversal)
-            <div class="position:absolute top:-10 right:-40 transform:scaleY(-1)">↴</div>
+          <strong>Sibling Selectors:</strong>
+          matches subsequent sibling or siblings (no back-traversal)
+          <div class="position:absolute top:-10 right:-40 transform:scaleY(-1)">↴</div>
         </div>
         <div class="tight-code">
-            <pre class="language-css"><code>h1 + li {} // selects first subsequent li element after h1</code></pre>
-            <pre class="language-css"><code>h1 ~ li {} // selects all subsequent li elements after h1</code></pre>
+          <pre class="language-css"><code>h1 + li {} // selects first subsequent li element after h1</code></pre>
+          <pre class="language-css"><code>h1 ~ li {} // selects all subsequent li elements after h1</code></pre>
         </div>
-    </p>
-  </article>
-  <article class="slide">
-    <h2>CSS Selectors Docs</h2>
-    <ul>
-        <li>Pseudo-selectors & Psuedo-classes</li>
-        <li>Pseudo-elements (<code>::after</code> & <code>::before</code>)</li>
-        <li><a href="https://www.w3schools.com/cssref/css_selectors.asp">W3 Schools CSS Selectors List</a></li>
-        <li><a href="https://guide.freecodecamp.org/css/tutorials/css-selectors-cheat-sheet/">FCC Selector Cheat Sheet</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">MDN CSS Selectors List</a></li>
-        <li style="list-style: none;"> Side note: CSS comments use <code>/* ... */</code> </li>
-    </ul>
-    <pre class="language-css"><code>
+        </p>
+      </article>
+      <article class="slide">
+        <h2>CSS Selectors Docs</h2>
+        <ul>
+          <li>Pseudo-selectors & Psuedo-classes</li>
+          <li>Pseudo-elements (<code>::after</code> & <code>::before</code>)</li>
+          <li><a href="https://www.w3schools.com/cssref/css_selectors.asp">W3 Schools CSS Selectors List</a></li>
+          <li><a href="https://guide.freecodecamp.org/css/tutorials/css-selectors-cheat-sheet/">FCC Selector Cheat
+              Sheet</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Selectors">MDN CSS Selectors List</a></li>
+          <li style="list-style: none;"> Side note: CSS comments use <code>/* ... */</code> </li>
+        </ul>
+        <pre class="language-css"><code>
 /* This is a comment in CSS
 They can be multi-line too */</code></pre>
-  </article>
-  <article class="slide">
-    <h2><code>:is</code> & <code>:where</code> Pseudo Selectors <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is">MDN</a>, <a href="https://kilianvalkhof.com/2021/css-html/css-nesting-specificity-and-you/">Article</a></sup></h2>
-    <p>These allow you to express more complex selector combinations in a shorter format</p>
-  <div class="flex">
-    <pre class="language-css"><code>
+      </article>
+      <article class="slide">
+        <h2><code>:is</code> & <code>:where</code> Pseudo Selectors <sup><a
+               href="https://developer.mozilla.org/en-US/docs/Web/CSS/:is">MDN</a>, <a
+               href="https://kilianvalkhof.com/2021/css-html/css-nesting-specificity-and-you/">Article</a></sup></h2>
+        <p>These allow you to express more complex selector combinations in a shorter format</p>
+        <div class="flex">
+          <pre class="language-css"><code>
 /* Can use it anywhere in a selector */
 :is(header, .card, #hero) ul > li:hover {
   background: #444;
 }</code></pre>
-<pre class="language-css equal"><code>
+          <pre class="language-css equal"><code>
 header ul > li:hover, 
 .card ul > li:hover, 
 #hero ul > li:hover  {
   background: #444;
 }</code></pre>
-</div>
-<div class="flex">
-<pre class="language-css"><code>/* :is() applies the highest specficity of the group */
+        </div>
+        <div class="flex">
+          <pre class="language-css"><code>/* :is() applies the highest specficity of the group */
 header :is(h1, a, img, .hero, #logo) {
   color: dodgerblue;
 }
@@ -251,7 +259,7 @@ header :where(h1, a, img, .hero, #logo) {
   color: crimson;
 }
 </code></pre>
-<pre class="language-css equal"><code>
+          <pre class="language-css equal"><code>
 header h1, 
 header a, 
 header img, 
@@ -261,88 +269,91 @@ header #logo {
 }
 /* One typo above causes the whole rule to be ignored */
 </code></pre>
-</div>
-  </article>
-  <article class="slide">
-    <!-- <h2>"CSS Selectors Explained" Tool</h2> -->
-    <small style="color:gold; font-weight: bold;"><a href="https://kittygiraudel.github.io/selectors-explained">✨ CSS Selectors Explained Tool ✨</a></small>
-    <iframe src="https://kittygiraudel.github.io/selectors-explained" 
-    frameborder="0"
-     class="w:full overflow-y:none h:full"></iframe>
-  </article>
+        </div>
+      </article>
+      <article class="slide">
+        <!-- <h2>"CSS Selectors Explained" Tool</h2> -->
+        <small style="color:gold; font-weight: bold;"><a href="https://kittygiraudel.github.io/selectors-explained">✨
+            CSS Selectors Explained Tool ✨</a></small>
+        <iframe src="https://kittygiraudel.github.io/selectors-explained"
+                frameborder="0"
+                class="w:full overflow-y:none h:full"></iframe>
+      </article>
 
-  <article class="slide">
-    <h2>CSS Selector Challenge</h2>
-    <p>Have some fun practicing your css selectors with this game: </p>
-    <p><a href="https://flukeout.github.io/">CSS Diner</a></p>
-  </article>
+      <article class="slide">
+        <h2>CSS Selector Challenge</h2>
+        <p>Have some fun practicing your css selectors with this game: </p>
+        <p><a href="https://flukeout.github.io/">CSS Diner</a></p>
+      </article>
 
-  <article class="slide">
-    <h2>CSS Properties <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference">Common Ones (~39+)</a></small></h2>
-    <h3>Let's Practice reading docs!</h3>
-    <ul class="horiz-flex-list col-2 gap:16">
-        <li><a href="https://cssreference.io/">CSSReference.io</a></li>
-        <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">MDN</a></li>
-        <li><a href="https://htmldog.com/references/css/properties/#foodC2">By Category</a></li>
-        <li><a href="https://www.w3.org/Style/CSS/all-properties.en.html">W3 complete list</a></li>
-    </ul>
-    <ul style="columns: 4; list-style: none; margin-left: 0;">
-        <li><code>background</code></li>
-        <li><code>border</code></li>
-        <li><code>border-radius</code></li>
-        <li><code>box-sizing</code></li>
-        <li><code>clip-path</code></li>
-        <li><code>color</code></li>
-        <li><code>cursor</code></li>
-        <li><code>display</code></li>
-        <li><code>filter</code></li>
-        <li><code>font-family</code></li>
-        <li><code>font-size</code></li>
-        <li><code>font-style</code></li>
-        <li><code>font-weight</code></li>
-        <li style="white-space: nowrap;"><code>height</code> (min/max)</li>
-        <li><code>left/right</code></li> 
-        <li><code>letter-spacing</code></li>
-        <li><code>line-height</code></li>
-        <li><code>list-style</code></li>
-        <li><code>margin</code></li>
-        <li><code>opacity</code></li>
-        <li><code>overflow</code></li>
-        <li><code>padding</code></li>
-        <li><code>position</code></li>
-        <li><code>text-align</code></li>
-        <li><code>text-decoration</code></li>
-        <li><code>text-indent</code></li>
-        <li><code>text-transform</code></li>
-        <li><code>top/bottom</code></li>
-        <li><code>transform</code></li>
-        <li><code>visibility</code></li>
-        <li style="white-space: nowrap;"><code>width</code> (min/max)</li>
-        <li><code>z-index</code></li>
-        <li><code>word-spacing</code></li>
-    </ul>
-  </article>
+      <article class="slide">
+        <h2>CSS Properties <small><a
+               href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Properties_Reference">Common Ones
+              (~39+)</a></small></h2>
+        <h3>Let's Practice reading docs!</h3>
+        <ul class="horiz-flex-list col-2 gap:16">
+          <li><a href="https://cssreference.io/">CSSReference.io</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Reference">MDN</a></li>
+          <li><a href="https://htmldog.com/references/css/properties/#foodC2">By Category</a></li>
+          <li><a href="https://www.w3.org/Style/CSS/all-properties.en.html">W3 complete list</a></li>
+        </ul>
+        <ul style="columns: 4; list-style: none; margin-left: 0;">
+          <li><code>background</code></li>
+          <li><code>border</code></li>
+          <li><code>border-radius</code></li>
+          <li><code>box-sizing</code></li>
+          <li><code>clip-path</code></li>
+          <li><code>color</code></li>
+          <li><code>cursor</code></li>
+          <li><code>display</code></li>
+          <li><code>filter</code></li>
+          <li><code>font-family</code></li>
+          <li><code>font-size</code></li>
+          <li><code>font-style</code></li>
+          <li><code>font-weight</code></li>
+          <li style="white-space: nowrap;"><code>height</code> (min/max)</li>
+          <li><code>left/right</code></li>
+          <li><code>letter-spacing</code></li>
+          <li><code>line-height</code></li>
+          <li><code>list-style</code></li>
+          <li><code>margin</code></li>
+          <li><code>opacity</code></li>
+          <li><code>overflow</code></li>
+          <li><code>padding</code></li>
+          <li><code>position</code></li>
+          <li><code>text-align</code></li>
+          <li><code>text-decoration</code></li>
+          <li><code>text-indent</code></li>
+          <li><code>text-transform</code></li>
+          <li><code>top/bottom</code></li>
+          <li><code>transform</code></li>
+          <li><code>visibility</code></li>
+          <li style="white-space: nowrap;"><code>width</code> (min/max)</li>
+          <li><code>z-index</code></li>
+          <li><code>word-spacing</code></li>
+        </ul>
+      </article>
 
-  <artile class="slide">
-    <h2>CSS Length Units</h2>
-    <div class="d:flex t:center">
-        <fieldset>
+      <artile class="slide">
+        <h2>CSS Length Units</h2>
+        <div class="d:flex t:center">
+          <fieldset>
             <legend>Fonts</legend>
             <code>ch</code>
             <code>em</code>
             <code>ex</code>
             <code>rem</code>
-        </fieldset>
-        <fieldset>
-          <legend>Viewport</legend>
-          <code>vh</code>
-          <code>vw</code>
-          <code>vmin</code>
-          <code>vmax</code>
-      </fieldset>
-      <!-- </div>
+          </fieldset>
+          <fieldset>
+            <legend>Viewport</legend>
+            <code>vh</code>
+            <code>vw</code>
+            <code>vmin</code>
+            <code>vmax</code>
+          </fieldset>
+          <!-- </div>
       <div class="d:flex t:center"> -->
-        <fieldset>
+          <fieldset>
             <legend>Absolute</legend>
             <code>px</code>
             <code>cm</code>
@@ -350,134 +361,159 @@ header #logo {
             <code>in</code>
             <code>pc</code>
             <code>pt</code>
-        </fieldset>
-        <fieldset class="d:flex ai:center jc:center">
-          <legend>Percent</legend>
-          <code>%</code>
-      </fieldset> 
-    </div>
-    <p class="t:center">CSS Lengths represent a distance within the browser viewport.</p>
-    <p>They can be assigned to some css properties as a value.</p>
-    <pre class="language-css"><code>.example {
+          </fieldset>
+          <fieldset class="d:flex ai:center jc:center">
+            <legend>Percent</legend>
+            <code>%</code>
+          </fieldset>
+        </div>
+        <p class="t:center">CSS Lengths represent a distance within the browser viewport.</p>
+        <p>They can be assigned to some css properties as a value.</p>
+        <pre class="language-css"><code>.example {
   padding: 20px 2rem 10% 5vmin;
 }</code></pre>
-    <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">MDN on CSS Lengths</a></p>
-</artile>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/length">MDN on CSS Lengths</a></p>
+      </artile>
 
-<article class="slide">
-    <h2 style="margin: 0">The Box Model <sup><a href="https://web.dev/learn/css/box-model/">web.dev</a></sup></h2>
-    <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing">box-sizing</a></small><br>
-    <a href="https://codepen.io/heliocrat/full/GRregGN"><img style="width: auto; max-height: 50vh;" src="img/css-box-model.png" alt="Box model Diagram"></a>
-    <p style="margin: 0; font-size: 2rem;">Let's inspect it in the dev tools! - It's under Elements > Computed</p>
-</article>
+      <article class="slide">
+        <h2 style="margin: 0">The Box Model <sup><a href="https://web.dev/learn/css/box-model/">web.dev</a></sup></h2>
+        <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing">box-sizing</a></small><br>
+        <a href="https://codepen.io/heliocrat/full/GRregGN"><img style="width: auto; max-height: 50vh;"
+               src="img/css-box-model.png" alt="Box model Diagram"></a>
+        <p style="margin: 0; font-size: 2rem;">Let's inspect it in the dev tools! - It's under Elements > Computed</p>
+      </article>
 
-<article class="slide">
-  <h2>The so called "Margin Collapse"</h2>
-  <p>Margin Collapse is what we call it when two adjacent box models both have margin between themselves. In this case the margins don't add up, they overlap (or "collapse"), so only the larger of the two margins determines the distance between the two box model edges. </p>
-  <li><a href="https://cssprinciples.com/2/margin-collapsing-mysteries/">Visually Unravel the Margin Collapse Mysteries</a></li>
-</article>
+      <article class="slide">
+        <h2>The so called "Margin Collapse"</h2>
+        <p>Margin Collapse is what we call it when two adjacent box models both have margin between themselves. In this
+          case the margins don't add up, they overlap (or "collapse"), so only the larger of the two margins determines
+          the distance between the two box model edges. </p>
+        <li><a href="https://cssprinciples.com/2/margin-collapsing-mysteries/">Visually Unravel the Margin Collapse
+            Mysteries</a></li>
+      </article>
 
-<article class="slide">
-    <h2>CSS Validator</h2>
-    <p><a href="https://jigsaw.w3.org/css-validator/">Validate your css</a> ... just like we did with html!</p>
-  </article>
+      <article class="slide">
+        <h2>CSS Validator</h2>
+        <p><a href="https://jigsaw.w3.org/css-validator/">Validate your css</a> ... just like we did with html!</p>
+      </article>
 
-<article class="slide">
-    <h2>CSS Resets & the Useragent</h2>
-    <p><small>
-        <a href="https://codepen.io/heliocrat/full/yLgwKKa">Demo</a>
-    </small></p>
-    <ul>
-        <li><a href="https://meyerweb.com/eric/tools/css/reset/">Reset</a>, <a href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">CDN</a></li>
-        <li><a href="https://necolas.github.io/normalize.css/">Normalize</a>, <a href="https://cdn.jsdelivr.net/npm/normalize.css/normalize.css">CDN</a> </li>
-        <li><a href="https://csstools.github.io/sanitize.css/">Sanitize</a>, <a href="https://cdn.jsdelivr.net/npm/sanitize.css/sanitize.css">CDN</a></li>
-        <li><a href="https://getbootstrap.com/docs/4.0/content/reboot/">Reboot</a>, <a href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap-reboot.css">CDN</a></li>
-        <li> <a href="https://css-tricks.com/reboot-resets-reasoning/">The Why</a> </li>
-        <li> <a href="https://bitsofco.de/a-look-at-css-resets-in-2018/">More Discussion</a> </li>
-        <li> <a href="https://www.webfx.com/blog/web-design/a-comprehensive-guide-to-css-resets/">Exhaustive history of the CSS reset</a> </li>
-    </ul>
-</article>
+      <article class="slide">
+        <h2>CSS Resets & the Useragent</h2>
+        <p><small>
+            <a href="https://codepen.io/heliocrat/full/yLgwKKa">Demo</a>
+          </small></p>
+        <ul>
+          <li><a href="https://meyerweb.com/eric/tools/css/reset/">Reset</a>, <a
+               href="https://cdn.jsdelivr.net/npm/reset-css@5.0.1/reset.css">CDN</a></li>
+          <li><a href="https://necolas.github.io/normalize.css/">Normalize</a>, <a
+               href="https://cdn.jsdelivr.net/npm/normalize.css/normalize.css">CDN</a> </li>
+          <li><a href="https://csstools.github.io/sanitize.css/">Sanitize</a>, <a
+               href="https://cdn.jsdelivr.net/npm/sanitize.css/sanitize.css">CDN</a></li>
+          <li><a href="https://getbootstrap.com/docs/4.0/content/reboot/">Reboot</a>, <a
+               href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap-reboot.css">CDN</a></li>
+          <li> <a href="https://css-tricks.com/reboot-resets-reasoning/">The Why</a> </li>
+          <li> <a href="https://bitsofco.de/a-look-at-css-resets-in-2018/">More Discussion</a> </li>
+          <li> <a href="https://www.webfx.com/blog/web-design/a-comprehensive-guide-to-css-resets/">Exhaustive history
+              of the CSS reset</a> </li>
+        </ul>
+      </article>
 
-<article class="slide">
-    <h2>CSS Specificity & the Cascade </h2>
-    
-    <style>
-      .specificity > span { 
-        background-color: #ffffff25;
-        height: 100%;
-        width: 100%;
-        text-align: center;
-       }
-       .specificity > div {
-        /* white-space: nowrap; */
-        background-color: transparent;
-        width: 100%;
-       }
-       .specificity span :not(pre) {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-       }
-       .specificity .numeral code {
-        display: inline-block;
-       }
-       .specificity {
-        width: 100%;
-       }
-    </style>
-    <div class="specificity grid" 
-    style="gap: 2px; grid-template-columns: 3fr repeat(5, 1fr);">
-      <!-- header row -->
-      <div style="text-align: center; margin-top: 1rem;">
-          <a href="img/css-specificity-wars.png">Star Wars Specificity</a> -
-          <a href='https://stuffandnonsense.co.uk/archives/css_specificity_wars.html'>(ref)</a>
-      </div>
-      <span><strong>Inline Styles</strong></span>
-      <span><strong>IDs</strong></span>
-      <span><strong>Classes, <br/>attributes, <br/>pseudo-classes</strong></span>
-      <span><strong>Elements,<br>pseudo-elements</strong></span>
-      <span><strong></strong></span>
-      <!-- second row -->
-      <div style="text-align: center; margin-top: 1rem;">
-        <a href="https://polypane.app/css-specificity-calculator/#selector=main%20%3Ais(h1%2C%20h2%2C%20h3)">Calculator</a>
-      </div>
-      <span><pre class="numeral"><code></code><code style="font-size: 30px;">∞</code></pre></span>
-      <span><pre class="numeral"><code style="line-height: 45px;">0 or 1</code></pre></span>
-      <span><pre class="numeral"><code style="line-height: 45px;">10n</code></pre></span>
-      <span><pre class="numeral"><code style="line-height: 45px;">1n</code></pre></span>
-      <span style="display: flex; align-items: center; justify-content: center;">total</span>
-      <!-- third row -->
-      <div>
-        <pre class="language-css"><code>#myID .class3 div {
+      <article class="slide">
+        <h2>CSS Specificity & the Cascade </h2>
+
+        <style>
+          .specificity>span {
+            background-color: #ffffff25;
+            height: 100%;
+            width: 100%;
+            text-align: center;
+          }
+
+          .specificity>div {
+            /* white-space: nowrap; */
+            background-color: transparent;
+            width: 100%;
+          }
+
+          .specificity span :not(pre) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+
+          .specificity .numeral code {
+            display: inline-block;
+          }
+
+          .specificity {
+            width: 100%;
+          }
+        </style>
+        <div class="specificity grid"
+             style="gap: 2px; grid-template-columns: 3fr repeat(5, 1fr);">
+          <!-- header row -->
+          <div style="text-align: center; margin-top: 1rem;">
+            <a href="img/css-specificity-wars.png">Star Wars Specificity</a> -
+            <a href='https://stuffandnonsense.co.uk/archives/css_specificity_wars.html'>(ref)</a>
+          </div>
+          <span><strong>Inline Styles</strong></span>
+          <span><strong>IDs</strong></span>
+          <span><strong>Classes, <br />attributes, <br />pseudo-classes</strong></span>
+          <span><strong>Elements,<br>pseudo-elements</strong></span>
+          <span><strong></strong></span>
+          <!-- second row -->
+          <div style="text-align: center; margin-top: 1rem;">
+            <a
+               href="https://polypane.app/css-specificity-calculator/#selector=main%20%3Ais(h1%2C%20h2%2C%20h3)">Calculator</a>
+          </div>
+          <span>
+            <pre class="numeral"><code></code><code style="font-size: 30px;">∞</code></pre>
+          </span>
+          <span>
+            <pre class="numeral"><code style="line-height: 45px;">0 or 1</code></pre>
+          </span>
+          <span>
+            <pre class="numeral"><code style="line-height: 45px;">10n</code></pre>
+          </span>
+          <span>
+            <pre class="numeral"><code style="line-height: 45px;">1n</code></pre>
+          </span>
+          <span style="display: flex; align-items: center; justify-content: center;">total</span>
+          <!-- third row -->
+          <div>
+            <pre class="language-css"><code>#myID .class3 div {
   background: blue;
-}</code></pre></div>
-      <span>0</span>
-      <span>1</span>
-      <span>1</span>
-      <span>1</span>
-      <span> = 111</span>
-      <!-- forth row -->
-      <div>
-        <pre class="language-css"><code>.class1 .class2 p {
+}</code></pre>
+          </div>
+          <span>0</span>
+          <span>1</span>
+          <span>1</span>
+          <span>1</span>
+          <span> = 111</span>
+          <!-- forth row -->
+          <div>
+            <pre class="language-css"><code>.class1 .class2 p {
   background: green;
-}</code></pre></div>
-      <span>0</span>
-      <span>0</span>
-      <span>2</span>
-      <span>1</span>
-      <span> = 21</span>
-      <!-- fifth row -->
-      <div>
-        <pre class="language-css"><code>main ul li {
+}</code></pre>
+          </div>
+          <span>0</span>
+          <span>0</span>
+          <span>2</span>
+          <span>1</span>
+          <span> = 21</span>
+          <!-- fifth row -->
+          <div>
+            <pre class="language-css"><code>main ul li {
   background: red;
-}</code></pre></div>
-      <span>0</span>
-      <span>0</span>
-      <span>0</span>
-      <span>3</span>
-      <span> = 3</span>
+}</code></pre>
+          </div>
+          <span>0</span>
+          <span>0</span>
+          <span>0</span>
+          <span>3</span>
+          <span> = 3</span>
 
-    <!-- </div>
+          <!-- </div>
     <div class="d:flex">
         <div class="d:flex flex-direction:column ai:center">
             <pre class="language-css"><code>#myID .class3 div {
@@ -499,44 +535,56 @@ header #logo {
           <p>0, 0, 0, 1</p>
         </div>
     </div> -->
-  </article>
+      </article>
 
-  <article class="slide">
-    <h2>One of the most complicated parts about CSS is specificity</h2>
-    <ul>
-        <li><p>Elements, classes and ids have increasing degrees of specificity</p></li>
-        <li><p>Combining Selectors increases specificity</p></li>
-        <li><p>Highest specificity wins. Order also matters. <code>!important</code> doesn't change specificity, but it does take precedence over all.</p></li>
-        <li><p>In general, you want to choose selectors with smallest possible specificity, so you do have to fight it later</p></li>
-    </ul>
-    <br>
-    <p>Let's practice with this quiz:</p>
-    <a href="https://wattenberger.com/blog/css-cascade">Wattenberger Specificity Quiz game</a>
-  </article>
+      <article class="slide">
+        <h2>One of the most complicated parts about CSS is specificity</h2>
+        <ul>
+          <li>
+            <p>Elements, classes and ids have increasing degrees of specificity</p>
+          </li>
+          <li>
+            <p>Combining Selectors increases specificity</p>
+          </li>
+          <li>
+            <p>Highest specificity wins. Order also matters. <code>!important</code> doesn't change specificity, but it
+              does take precedence over all.</p>
+          </li>
+          <li>
+            <p>In general, you want to choose selectors with smallest possible specificity, so you do have to fight it
+              later</p>
+          </li>
+        </ul>
+        <br>
+        <p>Let's practice with this quiz:</p>
+        <a href="https://wattenberger.com/blog/css-cascade">Wattenberger Specificity Quiz game</a>
+      </article>
 
-    <article class="slide">
+      <article class="slide">
         <h2>Let's use what we've learned!</h2>
         <p>As a way of extending our resume & contact form projects...</p>
         <strong>We'll start adding some basic CSS to our Resume & Contact Form</strong>
-    </article>
-</section>
+      </article>
+    </section>
 
-<!-- Part 2 Design Systems -->
+    <!-- Part 2 Design Systems -->
 
-<section>
-	<header class="slide">
-		<h2>Elements of Web Design</h2>
-		<h1>Design Systems, <br>Pattern Libraries & <br>Style Guides</h1>
-	</header>
+    <section>
+      <header class="slide">
+        <h2>Elements of Web Design</h2>
+        <h1>Design Systems, <br>Pattern Libraries & <br>Style Guides</h1>
+      </header>
 
-    <article class="slide">
+      <article class="slide">
         <h2>What's a Design System?</h2>
         <p><small>Also called a pattern library (and sometimes a style guide)</small></p>
-        <p>A consistent & modular library of reusable themes, components, motifs & rules for coherently styling & assembling web pages.</p>
-        <p><a href="https://designsystem.digital.gov/">US Gov Design System</a> - <a href="https://designsystem.digital.gov/utilities/color/">Color System Example</a></p>
-    </article>
+        <p>A consistent & modular library of reusable themes, components, motifs & rules for coherently styling &
+          assembling web pages.</p>
+        <p><a href="https://designsystem.digital.gov/">US Gov Design System</a> - <a
+             href="https://designsystem.digital.gov/utilities/color/">Color System Example</a></p>
+      </article>
 
-    <article class="slide">
+      <article class="slide">
         <h2>Colors In CSS</h2>
         <table class="color:white background:#ffffff25" onclick="(function(){console.log(event.target)})(event)">
           <tr class="text-align:center">
@@ -565,11 +613,14 @@ header #logo {
               <span style="color: hsl(150, 90%, 40%); white-space: nowrap; font-size: 2.1rem">hsl(150, 90%, 40%)</span>
             </td>
           </tr>
-          <tr >
-            <td class="m">with &rarr; <br /> Alpha Channel (Transparency)<td>
-            <span>n/a</span> <!-- weird bug where an extra td is rendered, so omitting the <td> and just using span here -->
-            <td> 
-              <span style="color: rgba(82, 179, 152, 0.5)" data-color="oklch(70% 0.1 173 0.5)">oklch(70% 0.1 173 / 0.5)</span>
+          <tr>
+            <td class="m">with &rarr; <br /> Alpha Channel (Transparency)
+            <td>
+              <span>n/a</span>
+              <!-- weird bug where an extra td is rendered, so omitting the <td> and just using span here -->
+            <td>
+              <span style="color: rgba(82, 179, 152, 0.5)" data-color="oklch(70% 0.1 173 0.5)">oklch(70% 0.1 173 /
+                0.5)</span>
             </td>
             <td class="m"><span style="color: #ff9f4f75">#ff9f4f99 </span></td>
             <td class="m"><span style="color: rgba(24, 118, 196, 0.5)"> rgba(24, 118, 196, 0.5) </span></td>
@@ -577,175 +628,188 @@ header #logo {
           </tr>
         </table>
         <div class="flex border:1|solid|white">
-            <p><a href="https://www.w3schools.com/cssref/css_colors.asp">W3 CSS colors</a></p>
-            <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">MDN Color</a></p>
-            <p><a href="https://colours.neilorangepeel.com/">Colors.Neil</a></p>
+          <p><a href="https://www.w3schools.com/cssref/css_colors.asp">W3 CSS colors</a></p>
+          <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/color">MDN Color</a></p>
+          <p><a href="https://colours.neilorangepeel.com/">Colors.Neil</a></p>
         </div>
         <p>Check out the Color Picker in the Elements Inspector</p>
-    </article>
+      </article>
 
-    <article class="slide">
+      <article class="slide">
         <h2>Color Space & Color Gamut</h2>
         <div class="d:flex ai:center gap:32">
           <div class="d:flex flex-direction:column">
             <h4>OKLCH Scale</h4>
             <a style="text-align: center" href="https://oklch.com/">Docs</a>
           </div>
-            <div class="d:flex flex-direction:column">
-                <h4>RGB Scale (w/ hex values)</h4>
-                <img style="max-height: 55vh" src="img/hex_color.png" alt="hex code color breakdown">
-            </div>
-            <div class="d:flex jc:center flex-direction:column">
-                <p>HSL( <span style="font-size: 2rem;">360, 100%, 100%</span> )</p>
-                <img style="max-height: 175px;" src="img/HSL_color_solid_cylinder_saturation_gray.png" alt="hsl color cylinder">
-            </div>
-            <ul class="t:right list-style:none">
-                <h4>Color Tools <br>& Diagrams</h4>
-                <li><a href="https://en.wikipedia.org/wiki/CIELAB_color_space">CIELAB</a></li>
-                <li><a href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space#/media/File:CIE1931xy_gamut_comparison.svg">CIE Color Space</a></li>
-                <li><a href="https://coolors.co/">Coolors</a></li>
-                <li><a href="https://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF">Paletton</a></li>
-                <li><a href="https://mycolor.space/">Color Theme Tool</a></li>
-                <li><a href="https://tallys.github.io/color-theory/">Color Guide for Devs</a></li>
-            </ul>
+          <div class="d:flex flex-direction:column">
+            <h4>RGB Scale (w/ hex values)</h4>
+            <img style="max-height: 55vh" src="img/hex_color.png" alt="hex code color breakdown">
+          </div>
+          <div class="d:flex jc:center flex-direction:column">
+            <p>HSL( <span style="font-size: 2rem;">360, 100%, 100%</span> )</p>
+            <img style="max-height: 175px;" src="img/HSL_color_solid_cylinder_saturation_gray.png"
+                 alt="hsl color cylinder">
+          </div>
+          <ul class="t:right list-style:none">
+            <h4>Color Tools <br>& Diagrams</h4>
+            <li><a href="https://en.wikipedia.org/wiki/CIELAB_color_space">CIELAB</a></li>
+            <li><a
+                 href="https://en.wikipedia.org/wiki/ProPhoto_RGB_color_space#/media/File:CIE1931xy_gamut_comparison.svg">CIE
+                Color Space</a></li>
+            <li><a href="https://coolors.co/">Coolors</a></li>
+            <li><a href="https://paletton.com/#uid=1000u0kllllaFw0g0qFqFg0w0aF">Paletton</a></li>
+            <li><a href="https://mycolor.space/">Color Theme Tool</a></li>
+            <li><a href="https://tallys.github.io/color-theory/">Color Guide for Devs</a></li>
+          </ul>
         </div>
-    </article>
+      </article>
 
-	<article class="slide">
+      <article class="slide">
         <img style="max-height: 100%" src="img/typography-hierarchy.jpg" alt="">
-	</article>
+      </article>
 
-    <article class="slide">
+      <article class="slide">
         <h2>Typography in CSS</h2>
         <p>Typographcial hierarchy can guide the user through your page in a controlled way.</p>
         <p>It can set your page a part and make it distinct</p>
         <p>It is usually a central component to a company or product Brand</p>
         <h4>Think about Component Spacing, as well </h4>
         <ul>
-            <li><a href="https://www.designsystems.com/iconography-guide/">Read more about Icons</a></li>
-            <li>Use existing icon libraries <a href="https://teenyicons.com/">(like this one)</a> to save time</li>
-            <li><a href="https://www.designsystems.com/space-grids-and-layouts/">Read more about spacing.</a></li>
+          <li><a href="https://www.designsystems.com/iconography-guide/">Read more about Icons</a></li>
+          <li>Use existing icon libraries <a href="https://teenyicons.com/">(like this one)</a> to save time</li>
+          <li><a href="https://www.designsystems.com/space-grids-and-layouts/">Read more about spacing.</a></li>
         </ul>
-    </article>
+      </article>
 
-    <article class="slide">
+      <article class="slide">
         <h2><a href="https://fonts.google.com/">Google Fonts</a> is easiest to start with</h2>
-        <p>Simply find a font and put it into the href of a <br> <code>&lt;link href="" rel="stylesheet" /&gt;</code> tag similar to a css file</p>
-        <strong>Font Tip:</strong> A quick, easy way to distinguish your site is using two fonts: 
+        <p>Simply find a font and put it into the href of a <br> <code>&lt;link href="" rel="stylesheet" /&gt;</code>
+          tag similar to a css file</p>
+        <strong>Font Tip:</strong> A quick, easy way to distinguish your site is using two fonts:
         <ul>
-            <li>one for headings & titles</li>
-            <li>one for body & copy text</li>
+          <li>one for headings & titles</li>
+          <li>one for body & copy text</li>
         </ul>
         <p><a href="https://www.colorsandfonts.com/">Colors & Fonts Tool</a></p>
-    </article>
+      </article>
 
-    <article class="slide">
-      <h2>Design Tokens</h2>
-      <p>Atomic, composable tokens like the Tailwind.css approach</p>
-      <ul>
-        <li>colors</li>
-        <li>spacing/scales</li>
-        <li>typography</li>
-        <li>fonts</li>
-        <li>borders/shadows</li>
-        <li>animations</li>
-        <li>media queries</li>
-      </ul>
-    </article>
+      <article class="slide">
+        <h2>Design Tokens</h2>
+        <p>Atomic, composable tokens like the Tailwind.css approach</p>
+        <ul>
+          <li>colors</li>
+          <li>spacing/scales</li>
+          <li>typography</li>
+          <li>fonts</li>
+          <li>borders/shadows</li>
+          <li>animations</li>
+          <li>media queries</li>
+        </ul>
+      </article>
 
-    <article class="slide">
-      <h2>Design System Elements</h2>
-      <ul>
-        <li>Buttons</li>
-        <li>Code Blocks</li>
-        <li>Blockquotes</li>
-        <li>Tables</li>
-        <li>Cards</li>
-        <li>Forms & inputs</li>
-        <li>etc...</li>
-      </ul>
-    </article>
+      <article class="slide">
+        <h2>Design System Elements</h2>
+        <ul>
+          <li>Buttons</li>
+          <li>Code Blocks</li>
+          <li>Blockquotes</li>
+          <li>Tables</li>
+          <li>Cards</li>
+          <li>Forms & inputs</li>
+          <li>etc...</li>
+        </ul>
+      </article>
 
-    <article class="slide">
+      <article class="slide">
         <h2>Examples of Design Systems / Pattern Libraries</h2>
         <ul>
-            <li><a href="https://ux.mailchimp.com/patterns/typography">Mail Chimp</a></li>
-            <li><a href="https://www.carbondesignsystem.com/guidelines/typography/overview/">IBM</a></li>
-            <li><a href="https://polaris.shopify.com/design/typography#navigation">Shopify</a></li>
-            <li><a href="https://airbnb.design/building-a-visual-language/">AirBnB</a></li>
-            <li><a href="https://druids.datadoghq.com/">DataDog (DRUIDS)</a> - <a href="https://www.datadoghq.com/blog/engineering/druids-the-design-system-that-powers-datadog/">About DRUIDS</a></li>
+          <li><a href="https://ux.mailchimp.com/patterns/typography">Mail Chimp</a></li>
+          <li><a href="https://www.carbondesignsystem.com/guidelines/typography/overview/">IBM</a></li>
+          <li><a href="https://polaris.shopify.com/design/typography#navigation">Shopify</a></li>
+          <li><a href="https://airbnb.design/building-a-visual-language/">AirBnB</a></li>
+          <li><a href="https://druids.datadoghq.com/">DataDog (DRUIDS)</a> - <a
+               href="https://www.datadoghq.com/blog/engineering/druids-the-design-system-that-powers-datadog/">About
+              DRUIDS</a></li>
         </ul>
-    </article>
+      </article>
 
-    <article class="slide">
+      <article class="slide">
         <div class="how-it-could-work">
-            <img style="grid-column: 2; grid-row: 1 / 6;" src="img/buttons.png" alt="buttons">
-            <img style="grid-column: 1; grid-row: 3; width: 100%;" src="img/Montserrat.png" alt="">
-            <img style="grid-column: 1; grid-row: 4;" src="img/example_pallete.png" alt="">
-            <img style="grid-column: 1; grid-row: 5;" src="img/colors.png" alt="colors">
-            <h2 style="grid-column: 1; grid-row: 1;">How it Could look:</h2>
-            <a style="grid-column: 1; grid-row: 2;" href="https://codyhouse.co/demo/style-guide-template/index.html"><h4>Fleshed out example pattern library</h4></a>
+          <img style="grid-column: 2; grid-row: 1 / 6;" src="img/buttons.png" alt="buttons">
+          <img style="grid-column: 1; grid-row: 3; width: 100%;" src="img/Montserrat.png" alt="">
+          <img style="grid-column: 1; grid-row: 4;" src="img/example_pallete.png" alt="">
+          <img style="grid-column: 1; grid-row: 5;" src="img/colors.png" alt="colors">
+          <h2 style="grid-column: 1; grid-row: 1;">How it Could look:</h2>
+          <a style="grid-column: 1; grid-row: 2;" href="https://codyhouse.co/demo/style-guide-template/index.html">
+            <h4>Fleshed out example pattern library</h4>
+          </a>
         </div>
-    </article>
+      </article>
 
-	<article class="slide">
+      <article class="slide">
         <h2>Let's make our own Basic Pattern library!</h2>
         <p><small>(This could eventually be used for the FCC technical docs project)</small></p>
-        <p>To summarize what goes into these check out these articles: <a href="https://www.uxpin.com/create-design-system-guide/">UXPing</a>, <a href="https://www.csshero.org/create-web-design-style-guide/">CSSHero</a></p>
+        <p>To summarize what goes into these check out these articles: <a
+             href="https://www.uxpin.com/create-design-system-guide/">UXPing</a>, <a
+             href="https://www.csshero.org/create-web-design-style-guide/">CSSHero</a></p>
         <p><a href="pattern-library/">Pattern Library Starter Template</a></p>
-        <p><small><a href="https://github.com/JamieVaughn/code-along/tree/master/html_css/pattern-library">Github Link</a></small></p>
-        <p><a href="https://raw.githubusercontent.com/JamieVaughn/code-along/master/pattern-library/index.html">Raw HTML</a></p>
-	</article>
+        <p><small><a href="https://github.com/JamieVaughn/code-along/tree/master/html_css/pattern-library">Github
+              Link</a></small></p>
+        <p><a href="https://raw.githubusercontent.com/JamieVaughn/code-along/master/pattern-library/index.html">Raw
+            HTML</a></p>
+      </article>
 
-  <article class="slide">
-      <h2>Pre-Made Design Systems</h2>
-      <div class="d:flex gap:200 jc:center ai:center">
+      <article class="slide">
+        <h2>Pre-Made Design Systems</h2>
+        <div class="d:flex gap:200 jc:center ai:center">
           <ol class="w:max text:center">
-              <span>Frameworks:</span>
-              <li>
-                  <a href="https://getbootstrap.com/">Bootstrap</a>
-              </li>
-              <li>
-                  <a href="https://bulma.io/">Bulma</a>
-              </li>
-              <li>
-                  <a href="http://getskeleton.com/">Skeleton</a>
-              </li>
-              <li>
-                  <a href="https://milligram.io/">Milligram</a>
-              </li>
+            <span>Frameworks:</span>
+            <li>
+              <a href="https://getbootstrap.com/">Bootstrap</a>
+            </li>
+            <li>
+              <a href="https://bulma.io/">Bulma</a>
+            </li>
+            <li>
+              <a href="http://getskeleton.com/">Skeleton</a>
+            </li>
+            <li>
+              <a href="https://milligram.io/">Milligram</a>
+            </li>
           </ol>
           <ol class="w:max text:center">
-              <span>Lightweight Pattern Libraries</span>
-              <li>
-                  <a href="https://andybrewer.github.io/mvp/">MVP.css </a><small>(My Prefered one, <br/>for it's balance of breadth & simplicity)</small>
-              </li>
-              <li><a href="https://minicss.us/docs.htm#common-textual-elements">Mini.css</a></li>
-              <li><a href="https://purecss.io/">Pure.css (Yahoo)</a></li>
-              <li>
-                  <a href="https://yegor256.github.io/tacit/">Tacit</a>
-              </li>
+            <span>Lightweight Pattern Libraries</span>
+            <li>
+              <a href="https://andybrewer.github.io/mvp/">MVP.css </a><small>(My Prefered one, <br />for it's balance of
+                breadth & simplicity)</small>
+            </li>
+            <li><a href="https://minicss.us/docs.htm#common-textual-elements">Mini.css</a></li>
+            <li><a href="https://purecss.io/">Pure.css (Yahoo)</a></li>
+            <li>
+              <a href="https://yegor256.github.io/tacit/">Tacit</a>
+            </li>
           </ol>
-      </div>
-  </article>
-  <article class="slide">
-    <h2>Resources for Design Help</h2>
-    <ul>
-      <li><a href="https://lookup.design/">Lookup Design Examples Tool</a></li>
-    </ul>
-  </article>
-</section>
+        </div>
+      </article>
+      <article class="slide">
+        <h2>Resources for Design Help</h2>
+        <ul>
+          <li><a href="https://lookup.design/">Lookup Design Examples Tool</a></li>
+        </ul>
+      </article>
+    </section>
 
 
-<!-- Part 3 Advanced CSS-->
+    <!-- Part 3 Advanced CSS-->
 
-<section>
-    <header class="slide">
+    <section>
+      <header class="slide">
         <h2>Elements of Web Design</h2>
-		<h1>Advanced CSS</h1>
-    </header>
+        <h1>Advanced CSS</h1>
+      </header>
 
-    <!-- <article class="slide">
+      <!-- <article class="slide">
         <h2>First a point about CSS basics <a href='https://csswizardry.com/2013/01/mindbemding-getting-your-head-round-bem-syntax/'>(BEM?)</a></h2>
         <div class="l-multiple">
           <div style="margin:0 0.5em;">
@@ -769,34 +833,35 @@ header #logo {
         </details>
       </article> -->
 
-    <article class="slide">
+      <article class="slide">
         <h2>CSS Custom Properties</h2>
         <h4>a.k.a. "CSS Variables"</h4>
-        <p>Assign a property:</p> 
+        <p>Assign a property:</p>
         <pre class="language-css"><code>:root {
 --name: "value";
 --my-color: #1060bb;
 --my-font: Montserrat, sans-serif;
 }</code></pre>
         <p>Invoke a property with <code>var()</code>:</p>
-         <pre class="language-css"><code>button {
+        <pre class="language-css"><code>button {
 color: var(--my-color);
 }</code></pre>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">MDN: Custom Properties</a></p>
-    </article>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties">MDN: Custom
+            Properties</a></p>
+      </article>
 
-    <article class="slide">
+      <article class="slide">
         <h2>CSS Variable Scoping</h2>
         <ul>
-            <li>The variables on the <code>:root</code> selector will be available to all elements on the page</li>
-            <li>But you can declare variables lower down in the HTML render tree by using more specific selectors</li>
-            <li>This will "scope" those variables to only particular parts of your site</li>
+          <li>The variables on the <code>:root</code> selector will be available to all elements on the page</li>
+          <li>But you can declare variables lower down in the HTML render tree by using more specific selectors</li>
+          <li>This will "scope" those variables to only particular parts of your site</li>
         </ul>
         <p>
         <p>
         <p>
         <div class="flex" style="gap: 4px;align-items: stretch;">
-            <pre class="language-css"><code>:root {
+          <pre class="language-css"><code>:root {
 --my-color: royalblue;    
 }
 footer {
@@ -805,22 +870,22 @@ footer {
 body, footer {
 color: var(--my-color)
 }</code></pre>
-        <div>
+          <div>
             <pre class="language-html"><code>&lt;body&gt;
 &lt;p&gt;This is body text&lt;/p&gt;
 &lt;footer&gt;This is my footer&lt;/footer&gt;
 &lt;/body&gt;</code></pre>
-                <div class="text:center"><img class="m:20|auto" src="img/scoped_css_vars.png" alt=""></div>
-            </div>
+            <div class="text:center"><img class="m:20|auto" src="img/scoped_css_vars.png" alt=""></div>
+          </div>
         </div>
-        
+
       </article>
 
-    <article class="slide">
+      <article class="slide">
         <h2>CSS Math Functions</h2>
-              <pre class="language-css"><code>calc() min() max() clamp()</code></pre>
-              <p>CSS supports dynamic calculations:</p>
-                  <pre class="language-css"><code>div {
+        <pre class="language-css"><code>calc() min() max() clamp()</code></pre>
+        <p>CSS supports dynamic calculations:</p>
+        <pre class="language-css"><code>div {
   width: calc(100% - 20px);
   height: max(100%, 400px);
   margin: min(16px, 1vw);
@@ -832,28 +897,29 @@ color: var(--my-color)
   /* you can use /, *, -, or + operators with calc(), just
   don't forget the spaces and match up all the parens! */
 }</code></pre>
-    </article>
+      </article>
 
-    <article class="slide">
+      <article class="slide">
         <h2>CSS Filters</h2>
         <p>Modify appearances:</p>
         <pre class="language-css"><code>div {
   filter: hue-rotate(45deg) contrast(50%);
 }</code></pre>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter">MDN: Filter Function</a></p>
-<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions">MDN: All CSS Functions</a></p>
-  </article>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/filter">MDN: Filter Function</a></p>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Functions">MDN: All CSS Functions</a></p>
+      </article>
 
-          <article class="slide">
-            <h2>Splitting & Barreling CSS Files with:</h2>
-            <p><code style="font-size: 2rem; margin: 0 1rem;">@import </code><sup><a style="transform: translateY(-50px);" href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import">MDN</a></sup></p>
-            <div style="display: flex;">
-                <div>
-                    <p style="margin: 0">We can split our css files by concern/purpose</p>
-                    <img src="img/css_barrel.png" alt="file structure for css barreling">
-                </div>
-                <div style="width: 100%">
-                    <p style="margin: 0">Barreling: packaging split files to export to one <code>&lt;link /&gt;</code> tag</p>
+      <article class="slide">
+        <h2>Splitting & Barreling CSS Files with:</h2>
+        <p><code style="font-size: 2rem; margin: 0 1rem;">@import </code><sup><a style="transform: translateY(-50px);"
+               href="https://developer.mozilla.org/en-US/docs/Web/CSS/@import">MDN</a></sup></p>
+        <div style="display: flex;">
+          <div>
+            <p style="margin: 0">We can split our css files by concern/purpose</p>
+            <img src="img/css_barrel.png" alt="file structure for css barreling">
+          </div>
+          <div style="width: 100%">
+            <p style="margin: 0">Barreling: packaging split files to export to one <code>&lt;link /&gt;</code> tag</p>
             <pre class="language-css" style="margin: 20px 0; width: 100%"><code>/* content of styles/index.css above */
 
 /* variables have to be imported first so 
@@ -864,234 +930,249 @@ they are available to the other files */
 @import url(buttons.css);
 @import url(media.css);
             </code></pre>
-                </div>
-            </div>
-            <p>But the number of separate files increases, so does the page load speed... it's best to keep it under 7</p>
-        </article>
+          </div>
+        </div>
+        <p>But the number of separate files increases, so does the page load speed... it's best to keep it under 7</p>
+      </article>
 
-        <article class="slide">
-            <h2>Affordances in User Interfaces</h2>
-            <p><a href="https://en.wikipedia.org/wiki/Ethnography">Ethnography</a> & User Research</p>
-            <div style='text-align: center; width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;'>
-              <span>
-                <img src="img/design_of_everyday_things.jpeg" alt="">
-              </span>
-              <span style="position: relative" class="correct over">
-                <img src="img/push_pull.jpeg" alt="">
-              </span>
-              <span style="position: relative" class="wrong over" title="Ambiguous">
-                <img src="img/turn.jpg" alt="">
-              </span>
-              <div></div>
-              <div>Inuitive, Explicit, Obvious</div>
-              <div>Ambiguous, Implicit, Overloaded Uses</div>
-            </div>
-        </article>
-        <article class="slide">
-            <h2>CSS Transitions & Animations</h2>
-            <p>Design Systems do most of the affordances work</p>
-            <p>... but motion & animation can go along way to add affordances too!</p>
-            <div class="d:flex gap:32">
-                <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">Transition property</a></p>
-                <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">@Keyframes</a></p>
-                <p><a href="https://animate.style/">Animation Library: anime.style</a></p>
-            </div>
-            <div class="flex" style="padding: 0; margin: -1rem;">
-                <img src="img/CSS-Animated-Form.gif" style="max-width: 40vw; clip-path: polygon(25% 0%, 75% 0%, 75% 80%, 25% 80%);">
-                <img src="img/affordance_login.gif" style="max-width: 40vw; clip-path: polygon(0% 15%, 100% 15%, 100% 85%, 0% 85%);">
-            </div>
-        </article>
+      <article class="slide">
+        <h2>Affordances in User Interfaces</h2>
+        <p><a href="https://en.wikipedia.org/wiki/Ethnography">Ethnography</a> & User Research</p>
+        <div
+             style='text-align: center; width: 100%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.5rem;'>
+          <span>
+            <img src="img/design_of_everyday_things.jpeg" alt="">
+          </span>
+          <span style="position: relative" class="correct over">
+            <img src="img/push_pull.jpeg" alt="">
+          </span>
+          <span style="position: relative" class="wrong over" title="Ambiguous">
+            <img src="img/turn.jpg" alt="">
+          </span>
+          <div></div>
+          <div>Inuitive, Explicit, Obvious</div>
+          <div>Ambiguous, Implicit, Overloaded Uses</div>
+        </div>
+      </article>
+      <article class="slide">
+        <h2>CSS Transitions & Animations</h2>
+        <p>Design Systems do most of the affordances work</p>
+        <p>... but motion & animation can go along way to add affordances too!</p>
+        <div class="d:flex gap:32">
+          <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/transition">Transition property</a></p>
+          <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@keyframes">@Keyframes</a></p>
+          <p><a href="https://animate.style/">Animation Library: anime.style</a></p>
+        </div>
+        <div class="flex" style="padding: 0; margin: -1rem;">
+          <img src="img/CSS-Animated-Form.gif"
+               style="max-width: 40vw; clip-path: polygon(25% 0%, 75% 0%, 75% 80%, 25% 80%);">
+          <img src="img/affordance_login.gif"
+               style="max-width: 40vw; clip-path: polygon(0% 15%, 100% 15%, 100% 85%, 0% 85%);">
+        </div>
+      </article>
 
-</section>
+    </section>
 
-<!-- Part 4 Render Pipeline-->
+    <!-- Part 4 Render Pipeline-->
 
-<section>
-    <header class="slide">
+    <section>
+      <header class="slide">
         <h2>CSS Triggers and the CSSOM</h2>
         <h1>How The Browser<br><span class="j-emoji">⚡</span>Renders Stuff<span class="j-emoji">⚡</span></h1>
-    </header>
-    
-    <article class="slide">
+      </header>
+
+      <article class="slide">
         <h2>How browsers render stuff </h2>
         <small><a href="https://www.youtube.com/watch?v=SmE4OwHztCc&t=974s">visualized</a></small>
         <ul>
-            <li>Different browsers use different rendering engines but follow similar flow</li>
-            <li>Browser will parse the markup, then "Recalculate Style" to figure out what styles apply to which elements
-            </li>
-            <li>Next, it will "Layout" all the DOM elements</li>
-            <li>Then, "Paint" the pixel data for the elements</li>
-            <li>And, "Composite" will combine and render the painted layers out onto the screen</li>
+          <li>Different browsers use different rendering engines but follow similar flow</li>
+          <li>Browser will parse the markup, then "Recalculate Style" to figure out what styles apply to which elements
+          </li>
+          <li>Next, it will "Layout" all the DOM elements</li>
+          <li>Then, "Paint" the pixel data for the elements</li>
+          <li>And, "Composite" will combine and render the painted layers out onto the screen</li>
         </ul>
-    </article>
-    <article class="slide">
+      </article>
+      <article class="slide">
         <h2>Rendering: HTML and CSS Parsers</h2>
         <img src="https://miro.medium.com/max/991/0*kHHVVD-aPHl1-hqf." alt="">
         <p>Browser creates the DOM and the CSSOM</p>
-    </article>
-    <article class="slide">
+      </article>
+      <article class="slide">
         <h2>The DOM</h2>
         <img class="bg:white" src="https://miro.medium.com/max/1123/0*srDldqk7TnH9K8ap." alt="">
-    </article>
-    <article class="slide">
+      </article>
+      <article class="slide">
         <h2>The CSSOM</h2>
         <img src="https://miro.medium.com/max/582/0*Nj_cMcnaN2xw1O-r." alt="">
-    </article>
-    <article class="slide">
+      </article>
+      <article class="slide">
         <h2>The Render Tree</h2>
         <img class="bg:white" src="https://miro.medium.com/max/1150/0*APACDBNpjbwC_gMr." alt="">
-        
+
         <p>But if you change anything in the DOM or CSSOM, the Render Tree must be recalculated</p>
-    </article>
-    <article class="slide">
+      </article>
+      <article class="slide">
         <h2>Think of it as a pyramid</h2>
         <div class="bg:goldenrod w:250 text:center f:bold">Composite</div>
         <div class="bg:dodgerblue w:375 text:center f:bold">Paint</div>
         <div class="bg:seagreen w:500 text:center f:bold">Layout</div>
         <p>If you change something at the bottom, the whole pyramid has to be rebuilt.</p>
         <p>If you change just the top layer, the foundation beneath remains intact.</p>
-    </article>
-    
-    <article class="slide">
+      </article>
+
+      <article class="slide">
         <h3 class="bg:seagreen color:white f:bold p:8">Layout</h3>
         <ul>
-            <li>Generate geometry and position of each element</li>
-            <li>Very expensive because engine must reflow the relevant element and all its children to take into account
-                the new layout</li>
-            <li>Occurs when the DOM tree is manipulated, or a style which affects layout is changed, when browser window
-                size is changed, when className property is changed</li>
+          <li>Generate geometry and position of each element</li>
+          <li>Very expensive because engine must reflow the relevant element and all its children to take into account
+            the new layout</li>
+          <li>Occurs when the DOM tree is manipulated, or a style which affects layout is changed, when browser window
+            size is changed, when className property is changed</li>
         </ul>
-    </article>
-    <article class="slide">
+      </article>
+      <article class="slide">
         <h3>Visualizing The <span class="bg:seagreen color:white f:bold p:8">Layout</span> FLow</h3>
         <div class="d:flex ai:center jc:center gap:16">
-            <ul>
-                <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a> property</li>
-                <li>Outside: Inline vs Block Elements</li>
-                <li>Inside: Flow-root, table, flex, grid</li>
-            </ul>
-            <img class="bg:white w:600" src="./img/inside-display.svg" alt="">
+          <ul>
+            <li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/display">display</a> property</li>
+            <li>Outside: Inline vs Block Elements</li>
+            <li>Inside: Flow-root, table, flex, grid</li>
+          </ul>
+          <img class="bg:white w:600" src="./img/inside-display.svg" alt="">
         </div>
-    </article>
+      </article>
 
-    <article class="slide">
+      <article class="slide">
         <h2>CSS properties that trigger <span class="bg:seagreen color:white f:bold p:8">Layout</span></h2>
-        <span><small>You don't want to dynamically change these - <a href='https://csstriggers.com/'>Reference</a></small></span>
+        <span><small>You don't want to dynamically change these - <a
+               href='https://csstriggers.com/'>Reference</a></small></span>
         <ul style="columns: 3; list-style: none;">
-            <li><code>width</code></li>
-            <li><code>height</code></li>
-            <li><code>padding</code></li>
-            <li><code>margin</code></li>
-            <li><code>display</code></li>
-            <li><code>border-width</code></li>
-            <li><code>border</code></li>
-            <li><code>top</code></li>
-            <li><code>position</code></li>
-            <li><code>font-size</code></li>
-            <li><code>float</code></li>
-            <li><code>text-align</code></li>
-            <li><code>overflow-y</code></li>
-            <li><code>font-weight</code></li>
-            <li><code>overflow</code></li>
-            <li><code>left</code></li>
-            <li><code>font-family</code></li>
-            <li><code>line-height</code></li>
-            <li><code>vertical-align</code></li>
-            <li><code>right</code></li>
-            <li><code>clear</code></li>
-            <li><code>white-space</code></li>
-            <li><code>bottom</code></li>
-            <li><code>min-height</code></li>
+          <li><code>width</code></li>
+          <li><code>height</code></li>
+          <li><code>padding</code></li>
+          <li><code>margin</code></li>
+          <li><code>display</code></li>
+          <li><code>border-width</code></li>
+          <li><code>border</code></li>
+          <li><code>top</code></li>
+          <li><code>position</code></li>
+          <li><code>font-size</code></li>
+          <li><code>float</code></li>
+          <li><code>text-align</code></li>
+          <li><code>overflow-y</code></li>
+          <li><code>font-weight</code></li>
+          <li><code>overflow</code></li>
+          <li><code>left</code></li>
+          <li><code>font-family</code></li>
+          <li><code>line-height</code></li>
+          <li><code>vertical-align</code></li>
+          <li><code>right</code></li>
+          <li><code>clear</code></li>
+          <li><code>white-space</code></li>
+          <li><code>bottom</code></li>
+          <li><code>min-height</code></li>
         </ul>
-    </article>
+      </article>
 
 
-    <article class="slide">
+      <article class="slide">
         <h3 class="bg:dodgerblue f:bold p:8">Paint</h3>
         <ul>
-            <li>Fill out pixels for each element into layers</li>
-            <li>Make something visible when it previously was not, like adding outline or changing background colour
-            </li>
-            <li>Expensive because the engine searches through all elements to determine what is visible and what should
-                be displayed</li>
-            <li>Browser vendors are scrambling to improve the renderer, but until recently browsers weren't built to
-                handle animations efficiently</li>
+          <li>Fill out pixels for each element into layers</li>
+          <li>Make something visible when it previously was not, like adding outline or changing background colour
+          </li>
+          <li>Expensive because the engine searches through all elements to determine what is visible and what should
+            be displayed</li>
+          <li>Browser vendors are scrambling to improve the renderer, but until recently browsers weren't built to
+            handle animations efficiently</li>
         </ul>
-    </article>
+      </article>
 
-    <article class="slide">
+      <article class="slide">
         <h2>CSS properties that trigger <span class="bg:dodgerblue color:white f:bold p:8">Paint</span></h2>
-        <span><small>Generally ok to change. Doesn't reflow the DOM, but some have intensive calculations so fluid animation of these can be costly.</small></span>
+        <span><small>Generally ok to change. Doesn't reflow the DOM, but some have intensive calculations so fluid
+            animation of these can be costly.</small></span>
         <ul style="columns: 3; list-style: none">
-            <li><code>color</code></li>
-            <li><code>border-style</code></li>
-            <li><code>visibility</code></li>
-            <li><code>background</code></li>
-            <li><code>text-decoration</code></li>
-            <li><code>background-image</code></li>
-            <li><code>background-position</code></li>
-            <li><code>background-repeat</code></li>
-            <li><code>outline-color</code></li>
-            <li><code>outline</code></li>
-            <li><code>outline-style</code></li>
-            <li><code>border-radius</code></li>
-            <li><code>outline-width</code></li>
-            <li><code>box-shadow</code></li>
-            <li><code>background-size</code></li>
+          <li><code>color</code></li>
+          <li><code>border-style</code></li>
+          <li><code>visibility</code></li>
+          <li><code>background</code></li>
+          <li><code>text-decoration</code></li>
+          <li><code>background-image</code></li>
+          <li><code>background-position</code></li>
+          <li><code>background-repeat</code></li>
+          <li><code>outline-color</code></li>
+          <li><code>outline</code></li>
+          <li><code>outline-style</code></li>
+          <li><code>border-radius</code></li>
+          <li><code>outline-width</code></li>
+          <li><code>box-shadow</code></li>
+          <li><code>background-size</code></li>
         </ul>
-    </article>
-    <article class="slide">
+      </article>
+      <article class="slide">
         <h3 class="bg:goldenrod color:white f:bold p:8">Composite</h3>
         <p><small>These are safe to dynamically change and animate.</small></p>
         <ul>
-            <li>Opacity and Transforms trigger composite</li>
-            <li>Blink and Webkit creates new layer for elements with CSS transforms or opacity</li>
-            <li><code>translateZ(0)</code> is used to force layer creation which ensures both the layer is painted as soon as the
-                animation starts</li>
-            <li>Watch <a href="https://www.youtube.com/watch?v=9rizDPIIYEY">The Web's Black Magic</a> for best explanation
-                on rendering and compositing</li>
+          <li>Opacity and Transforms trigger composite</li>
+          <li>Blink and Webkit creates new layer for elements with CSS transforms or opacity</li>
+          <li><code>translateZ(0)</code> is used to force layer creation which ensures both the layer is painted as soon
+            as the
+            animation starts</li>
+          <li>Watch <a href="https://www.youtube.com/watch?v=9rizDPIIYEY">The Web's Black Magic</a> for best explanation
+            on rendering and compositing</li>
         </ul>
-    </article>
-    <article class="slide">
+      </article>
+      <article class="slide">
         <h2>Why is <span class="bg:goldenrod color:white f:bold p:8">compositing</span> so much faster?</h2>
-        <p>Using the GPU for the paint step is supported on some browsers under some conditions, but not widespread yet. <a href="https://chromestatus.com/metrics/css/animated">But they're working on it!</a></p>
+        <p>Using the GPU for the paint step is supported on some browsers under some conditions, but not widespread yet.
+          <a href="https://chromestatus.com/metrics/css/animated">But they're working on it!</a></p>
         <div class="flex">
-            <div>
-                <ul>
-                    <li>GPU accelerated: <code>opacity</code>, <code>transform</code>, <code>filter</code>, <code>clip-path</code></li>
-                    <li>Multi-thread compositing - separate GPU thread</li>
-                    <li>Both Painting & compositing could be on GPU, but compositing is easier than painting to do there.</li>
-                </ul>
-            </div>
-            <img src="img/composite_threading.jpg" style="height: 550px"/>
+          <div>
+            <ul>
+              <li>GPU accelerated: <code>opacity</code>, <code>transform</code>, <code>filter</code>,
+                <code>clip-path</code></li>
+              <li>Multi-thread compositing - separate GPU thread</li>
+              <li>Both Painting & compositing could be on GPU, but compositing is easier than painting to do there.</li>
+            </ul>
+          </div>
+          <img src="img/composite_threading.jpg" style="height: 550px" />
         </div>
-    </article>
-    <article class="slide">
+      </article>
+      <article class="slide">
         <h2>Bottom Line</h2>
         <p>Reach for these first when animating:</p>
         <ul>
-            <li><code>transform</code> <br> <small>...ignores inline elements (i.e. <code>&lt;span&gt;</code>); change to inline-block/block</small></li>
-            <li><code>opacity</code></li>
-            <li><code>filter</code></li>
-            <li><code>clip path</code> & <code>background-color</code> are soon to be added <a href="https://developer.chrome.com/blog/hardware-accelerated-animations/">(in chrome)</a></li>
-            <li>If you are animating a property (especially one above), <code>will-change</code> <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/will-change">MDN</a></sup> creates a composite layer for it</li>
-            <li>i.e. Animating color? <code>will-change: color;</code></li>
+          <li><code>transform</code> <br> <small>...ignores inline elements (i.e. <code>&lt;span&gt;</code>); change to
+              inline-block/block</small></li>
+          <li><code>opacity</code></li>
+          <li><code>filter</code></li>
+          <li><code>clip path</code> & <code>background-color</code> are soon to be added <a
+               href="https://developer.chrome.com/blog/hardware-accelerated-animations/">(in chrome)</a></li>
+          <li>If you are animating a property (especially one above), <code>will-change</code> <sup><a
+                 href="https://developer.mozilla.org/en-US/docs/Web/CSS/will-change">MDN</a></sup> creates a composite
+            layer for it</li>
+          <li>i.e. Animating color? <code>will-change: color;</code></li>
         </ul>
-        
-    </article>
-    <article class="slide">
+
+      </article>
+      <article class="slide">
         <a href="https://www.w3.org/TR/CSS22/visuren.html#block-formatting">Visual Formatting Model</a>
         <h2>Who establishes new block formatting contexts?</h2>
         <ul>
           <li class="delayed">Floats</li>
           <li class="delayed">Absolutely positioned elements</li>
           <li class="delayed">Block containers that are <strong>not</strong> block boxes</li>
-          <li class="delayed">Block boxes with <code>overflow</code> <strong>other than</strong> <code>visible</code></li>
-          <li class="delayed"><strong>Isolation Property:</strong> a special property that does only this one thing - <code>isolation: isolate;</code></li>
-          
+          <li class="delayed">Block boxes with <code>overflow</code> <strong>other than</strong> <code>visible</code>
+          </li>
+          <li class="delayed"><strong>Isolation Property:</strong> a special property that does only this one thing -
+            <code>isolation: isolate;</code></li>
+
         </ul>
         <details class="notes">
-          <p>Earlier I mentioned that when a new formatting context is established, boxes within this new context are largely
+          <p>Earlier I mentioned that when a new formatting context is established, boxes within this new context are
+            largely
             shielded from their outside environment. Which can come in pretty handy at times.</p>
           <p>There are a number of ways to establish new BFCs:</p>
           <ul>
@@ -1099,7 +1180,8 @@ they are available to the other files */
             <li>Or position it absolutely</li>
             <li>If you make the box an inline-block, a table-cell or table-caption, that can give you a new BFC</li>
             <li>Or you could set a block box's <code>overflow</code> value to anything but its initial value of
-              <code>visible</code></li>
+              <code>visible</code>
+            </li>
             <li>And in some situations, via <code>transform</code> and <code>opacity</code></li>
           </ul>
         </details>
@@ -1109,7 +1191,7 @@ they are available to the other files */
         <div class="flex ai:center">
           <figure class="fragment" style="margin-right:1em">
             <img data-src="img/normal-flow.svg" alt="Normal flow" class="plain" style="height:2.5em">
-            <figcaption>Normal  flow</figcaption>
+            <figcaption>Normal flow</figcaption>
           </figure>
           <figure class="fragment" style="margin-right:1em">
             <img data-src="img/floats.svg" alt="Floats" class="plain" style="height:3em">
@@ -1122,88 +1204,95 @@ they are available to the other files */
         </div>
         <details class="notes">
           <p>There are 3 types of positioning schemes, normal flow, floats and absolute positioning.
-            <p>Boxes in a normal flow will belong to a formatting context. And right now, we have several of those. Relatively
-              positioned boxes remain part of this normal flow.</p>
-            <p>When we float a box, it is first laid out in the normal flow, then taken out of it and shifted as far left, or
-              right, as possible.</p>
-            <p>When a box is absolutely positioned, it's removed from the normal flow altogether, and given a position with
-              respect to its containing box.</p>
-            </details>
-        </article>
-        <article class="slide">
-            <h2>Stacking Context and Position Property</h2>
-            <h2 class="tilt-stamp">Use Carefully!!</h2>
-        </article>
+          <p>Boxes in a normal flow will belong to a formatting context. And right now, we have several of those.
+            Relatively
+            positioned boxes remain part of this normal flow.</p>
+          <p>When we float a box, it is first laid out in the normal flow, then taken out of it and shifted as far left,
+            or
+            right, as possible.</p>
+          <p>When a box is absolutely positioned, it's removed from the normal flow altogether, and given a position
+            with
+            respect to its containing box.</p>
+        </details>
+      </article>
+      <article class="slide">
+        <h2>Stacking Context and Position Property</h2>
+        <h2 class="tilt-stamp">Use Carefully!!</h2>
+      </article>
 
-          <article class="slide">
-            <h2>Position Property Values</h2>
-            <ul>
-              <li><code>static</code></li>
-              <li><code>relative</code></li>
-              <li><code>fixed</code></li>
-              <li><code>absolute</code></li>
-              <li><code>sticky</code></li>
-            </ul>
-          </article>
+      <article class="slide">
+        <h2>Position Property Values</h2>
+        <ul>
+          <li><code>static</code></li>
+          <li><code>relative</code></li>
+          <li><code>fixed</code></li>
+          <li><code>absolute</code></li>
+          <li><code>sticky</code></li>
+        </ul>
+      </article>
 
-          <article class="slide">
-            <h2>Adjacent Positioning Properties</h2>
-            <ul>
-              <li><code>top</code></li>
-              <li><code>bottom</code></li>
-              <li><code>left</code></li>
-              <li><code>right</code></li>
-              <li><code>z-index</code></li>
-            </ul>
-          </article>
+      <article class="slide">
+        <h2>Adjacent Positioning Properties</h2>
+        <ul>
+          <li><code>top</code></li>
+          <li><code>bottom</code></li>
+          <li><code>left</code></li>
+          <li><code>right</code></li>
+          <li><code>z-index</code></li>
+        </ul>
+      </article>
 
-          <article class="slide">
-            <h2>Z-index and the Stacking Context</h2>
-            <ul>
-              <li><a href='https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context'>MDN Stacking context</a></li>
-              <li><a href='https://coder-coder.com/z-index-isnt-working/'>Why doesn't z-index work?</a></li>
-              <li><a href='https://philipwalton.com/articles/what-no-one-told-you-about-z-index/'>What I wish I knew about z-index</a></li>
-            </ul>
-            <div>
-              <img src="/img/inside-display.svg" alt="">
-            </div>
-        </article>
+      <article class="slide">
+        <h2>Z-index and the Stacking Context</h2>
+        <ul>
+          <li><a
+               href='https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context'>MDN
+              Stacking context</a></li>
+          <li><a href='https://coder-coder.com/z-index-isnt-working/'>Why doesn't z-index work?</a></li>
+          <li><a href='https://philipwalton.com/articles/what-no-one-told-you-about-z-index/'>What I wish I knew about
+              z-index</a></li>
+        </ul>
+        <div>
+          <img src="/img/inside-display.svg" alt="">
+        </div>
+      </article>
 
-        <article class="slide">
-          <h2>
-            Children of a stacking Context are painted in order of:
-          </h2>
-          <ul>
-            <li>Elements with negative z-index</li>
-            <li>Elements with position static</li>
-            <li>Elements with stack level of 0 (i.e. positioned elements)</li>
-            <li>Positioned elements with positive z-index</li>
-          </ul>
-        </article>
-      
-    <article class="slide">
+      <article class="slide">
+        <h2>
+          Children of a stacking Context are painted in order of:
+        </h2>
+        <ul>
+          <li>Elements with negative z-index</li>
+          <li>Elements with position static</li>
+          <li>Elements with stack level of 0 (i.e. positioned elements)</li>
+          <li>Positioned elements with positive z-index</li>
+        </ul>
+      </article>
+
+      <article class="slide">
         <h2>A Few Advanced Things to File Away</h2>
         <p><small>Not important early in your CSS journey, but as JS is added these offer lots of power</small></p>
         <ul>
-            <li><a href='https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model'>CSS Object Model Docs</a></li>
-            <li><a href='https://developer.mozilla.org/en-US/docs/Web/API/CSS_Typed_OM_API'>CSS Object Model API</a></li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Painting_API">CSS Paint API</a></li>
-            <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Properties_and_Values_API">CSS Properties & Values API</a></li>
-            <!-- <li><a href='https://developer.mozilla.org/en-US/docs/Web/Houdini'>CSS Houdini API</a> -  <a href='https://github.com/nucliweb/awesome-css-houdini/'>When is it ready?</a></li>  -->
+          <li><a href='https://developer.mozilla.org/en-US/docs/Web/API/CSS_Object_Model'>CSS Object Model Docs</a></li>
+          <li><a href='https://developer.mozilla.org/en-US/docs/Web/API/CSS_Typed_OM_API'>CSS Object Model API</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Painting_API">CSS Paint API</a></li>
+          <li><a href="https://developer.mozilla.org/en-US/docs/Web/API/CSS_Properties_and_Values_API">CSS Properties &
+              Values API</a></li>
+          <!-- <li><a href='https://developer.mozilla.org/en-US/docs/Web/Houdini'>CSS Houdini API</a> -  <a href='https://github.com/nucliweb/awesome-css-houdini/'>When is it ready?</a></li>  -->
         </ul>
-    </article>
+      </article>
 
-    <article class="slide">
+      <article class="slide">
         <h2>Let's Try making some Media Objects!!</h2>
-    </article>
-    
-</section>
+      </article>
 
-<section>
-    <header class="slide">
+    </section>
+
+    <section>
+      <header class="slide">
         <h2>Media Queries</h2>
         <h1>Responsive Web Design</h1>
-    </header>
+      </header>
       <article class="slide">
         <h2 class="fragment j-stamp">Media Queries</h2>
         <p>Media Queries allow you to conditionally apply different css rules to your html elements</p>
@@ -1214,7 +1303,8 @@ they are available to the other files */
       </article>
       <article class="slide">
         <h2>The Go-to Media Queries</h2>
-        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width">width</a> & <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover">hover</a></p>
+        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/width">width</a> & <a
+             href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media/hover">hover</a></p>
         <ul style='columns: 2;' class="arrow-marker">
           <li class="red">width <small>(min/max-width)</small></li>
           <li>height <small>(min/max-height)</small></li>
@@ -1255,7 +1345,7 @@ they are available to the other files */
     box-shadow: 3px 3px 6px grey;
   }
 }</code></pre>
-        
+
       </article>
       <article class="slide">
         <h2>Media Queries with the Link tag</h2>
@@ -1273,17 +1363,20 @@ they are available to the other files */
       <article class="slide">
         <h2>Media Types</h2>
         <div style="display: flex; flex-direction: column; justify-content: space-between;">
-          <p><code>all</code>	Default. Used for all media type devices</p>
-          <p><code>print</code>	Used for printers</p>
-          <p><code>screen</code>	Used for computer screens, tablets, smart-phones etc.</p>
-          <p><code>speech</code>	Used for screenreaders that "reads" the page out loud</p>
+          <p><code>all</code> Default. Used for all media type devices</p>
+          <p><code>print</code> Used for printers</p>
+          <p><code>screen</code> Used for computer screens, tablets, smart-phones etc.</p>
+          <p><code>speech</code> Used for screenreaders that "reads" the page out loud</p>
         </div>
       </article>
       <article class="slide">
         <h2>All Media Queries</h2>
         <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/@media">Media Queries</a></p>
-        <p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features">MDN</a></p>
-        <p><a href="https://css-tricks.com/a-complete-guide-to-css-media-queries/">Complete Guide to Media Queries</a></p>
+        <p><a
+             href="https://developer.mozilla.org/en-US/docs/Web/CSS/Media_Queries/Using_media_queries#media_features">MDN</a>
+        </p>
+        <p><a href="https://css-tricks.com/a-complete-guide-to-css-media-queries/">Complete Guide to Media Queries</a>
+        </p>
       </article>
       <article class="slide">
         <h2>Mobile First Responsiveness</h2>
@@ -1295,15 +1388,15 @@ they are available to the other files */
         <h2>Let's try making our media object Responsive</h2>
       </article>
 
-</section>
+    </section>
 
-<footer class="slide" title="The End">
-    <h3>Thank you!</h3>
-</footer>
-<section>
-  <article class="demo slide" id="Preview">
-    <a href="./" id="preview-back-btn">🔙</a>
-    <textarea class="language-html">
+    <footer class="slide" title="The End">
+      <h3>Thank you!</h3>
+    </footer>
+    <section>
+      <article class="demo slide" id="Preview">
+        <a href="./" id="preview-back-btn">🔙</a>
+        <textarea class="language-html">
 <div class="preview">
 <div><p>Item A</p></div>
 <div><p>Item B</p></div>
@@ -1313,15 +1406,16 @@ they are available to the other files */
 <div><p>Item F</p></div>
 </div>
  </textarea>
-  <textarea class="language-css">
+        <textarea class="language-css">
     .preview > div {
       padding: 1rem;
       border: 1px solid silver;
     }
   </textarea>
-</article>
-</section>
+      </article>
+    </section>
 
-<script src="../laser/laser.js"></script>
-</body>
+    <script src="../laser/laser.js"></script>
+  </body>
+
 </html>
