@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html>
+
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, maximum-scale=1"
-    />
+          name="viewport"
+          content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="MCC Web Design & Development Slides" />
     <meta name="author" content="Jamie Vaughn" />
     <title>Template</title>
@@ -19,11 +19,11 @@
     <!-- Custom css -->
     <link rel="stylesheet" href="../laser/laser.css" />
   </head>
+
   <body
-    class="language-markup"
-    data-prism-plugins="normalize-whitespace"
-    data-duration="30"
-  >
+        class="language-markup"
+        data-prism-plugins="normalize-whitespace"
+        data-duration="30">
     <header id="intro" class="slide">
       <h1>Web Design & Development</h1>
       <h2>Images</h2>
@@ -70,12 +70,9 @@
           <li>.SVG (vector format)</li>
           <li>
             .WEBP & .AVIF
-            <sup
-              ><a
-                href="https://fronius.me/articles/2020-10-14-comparing-image-formats-jpg-webp-avif.html"
-                >compare</a
-              >, <a href="https://caniuse.com/?search=avif">support</a></sup
-            >
+            <sup><a
+                 href="https://fronius.me/articles/2020-10-14-comparing-image-formats-jpg-webp-avif.html">compare</a>,
+              <a href="https://caniuse.com/?search=avif">support</a></sup>
           </li>
         </ul>
         <p>Raster vs Vector</p>
@@ -92,14 +89,12 @@
         <h2>Pixel Density</h2>
         <p>
           <a
-            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag#a_pixel_is_not_a_pixel"
-            >A pixel is not a pixel</a
-          >
+             href="https://developer.mozilla.org/en-US/docs/Web/HTML/Viewport_meta_tag#a_pixel_is_not_a_pixel">A pixel
+            is not a pixel</a>
         </p>
         <p>Hardware pixel vs CSS pixels</p>
         <pre
-          style="margin: 0 auto; min-width: 35vw"
-        ><code>&lt;meta name="viewport" content="width=device-wdith, initial-scale=1.0"&gt;</code></pre>
+             style="margin: 0 auto; min-width: 35vw"><code>&lt;meta name="viewport" content="width=device-wdith, initial-scale=1.0"&gt;</code></pre>
       </article>
       <article class="slide">
         <h2>Responsive Breakpoints</h2>
@@ -119,13 +114,12 @@
         <p>
           <a href="https://squoosh.app/">
             <img
-              style="
+                 style="
                 max-height: 100px;
                 filter: drop-shadow(0 0 20px white) drop-shadow(0 0 10px white);
               "
-              src="img/squoosh_logo.svg"
-              alt=""
-            />
+                 src="img/squoosh_logo.svg"
+                 alt="" />
           </a>
         </p>
       </article>
@@ -153,13 +147,9 @@
           <p>
             Elements:
             <a
-              href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture"
-              >picture</a
-            >,
+               href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/picture">picture</a>,
             <a
-              href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source"
-              >source</a
-            >
+               href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/source">source</a>
           </p>
           <p>Attributes on <code>&lt;source&gt; & &lt;img&gt;</code></p>
         </div>
@@ -210,9 +200,8 @@ srcset=""
           <a href="http://responsiveimages.org/">Specification Committee</a>
         </p>
         <p>
-          <a href="https://scottjehl.github.io/picturefill/#examples"
-            >picture element fallbacks/polyfill for IE/Safari</a
-          >
+          <a href="https://scottjehl.github.io/picturefill/#examples">picture element fallbacks/polyfill for
+            IE/Safari</a>
         </p>
       </article>
       <article class="slide">
@@ -233,12 +222,8 @@ srcset=""
       <article class="slide">
         <h2>
           The <code>sizes</code> attribute
-          <sup
-            ><a
-              href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes"
-              >MDN</a
-            ></sup
-          >
+          <sup><a
+               href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/sizes">MDN</a></sup>
         </h2>
         <ul>
           <li>
@@ -260,11 +245,9 @@ srcset=""
           </li>
         </ul>
         <p>
-          <small
-            >Good to have an automated workflow to do this, since with large
+          <small>Good to have an automated workflow to do this, since with large
             image galleries there is a lot of sizes attrs to change if the
-            styling changes.</small
-          >
+            styling changes.</small>
         </p>
         <p></p>
       </article>
@@ -272,16 +255,11 @@ srcset=""
       <article class="slide">
         <h2>
           Srcset attribute
-          <sup
-            ><a
-              href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset"
-              >MDN</a
-            ></sup
-          >
+          <sup><a
+               href="https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/srcset">MDN</a></sup>
         </h2>
         <pre
-          style="min-width: 75vw"
-        ><code>&lt;img srcset="img1.jpg 1x, img1.5.jpg 1.5x, img2.jpg 2x" &gt;
+             style="min-width: 75vw"><code>&lt;img srcset="img1.jpg 1x, img1.5.jpg 1.5x, img2.jpg 2x" &gt;
 
 &lt;img srcset="img1.jpg 200w, img1.5.jpg 400w, img2.jpg 800w" sizes="50vw"&gt;
 &lt;!-- sizes="(max-width: 400px) 200px, 
@@ -309,9 +287,7 @@ srcset=""
         <h2>Img on MDN</h2>
         <p>
           <a
-            href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"
-            ><code>img</code></a
-          >
+             href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img"><code>img</code></a>
         </p>
       </article>
       <article class="slide">
@@ -333,14 +309,10 @@ srcset=""
           Choosing the important parts of the image for mobile viewports
           <li>Cropping with standard image editor</li>
           <li>
-            <a href="https://github.com/trekhleb/js-image-carver"
-              >About Seam Carving</a
-            >
+            <a href="https://github.com/trekhleb/js-image-carver">About Seam Carving</a>
           </li>
           <li>
-            <a href="https://trekhleb.dev/js-image-carver/"
-              >Seam Carving Web Tool</a
-            >
+            <a href="https://trekhleb.dev/js-image-carver/">Seam Carving Web Tool</a>
           </li>
         </ul>
         <p>
@@ -377,16 +349,15 @@ srcset=""
           </li>
           <li>
             <a
-              href="https://developers.google.com/web/updates/2018/05/lighthouse"
-              >Getting more out of Lighthouse</a
-            >
+               href="https://developers.google.com/web/updates/2018/05/lighthouse">Getting more out of Lighthouse</a>
           </li>
         </ul>
       </article>
       <article class="slide">
         <h2>More Resources</h2>
         <ul>
-          <li><a href="https://bholmes.dev/blog/picture-perfect-image-optimization/">Picture Perfect Image Article</a></li>
+          <li><a href="https://bholmes.dev/blog/picture-perfect-image-optimization/">Picture Perfect Image Article</a>
+          </li>
         </ul>
       </article>
     </section>
@@ -427,11 +398,7 @@ Sorry…. your browser does not support the video element.
       <article class="slide">
         <p>
           <code>web.vtt</code> File
-          <small
-            ><a href="https://developer.mozilla.org/fr/docs/Web/API/WebVTT_API"
-              >MDN</a
-            ></small
-          >
+          <small><a href="https://developer.mozilla.org/fr/docs/Web/API/WebVTT_API">MDN</a></small>
         </p>
         <p>Each entry associated with a time interval is called a "cue"</p>
         <p>Cues can be given IDs</p>
@@ -470,34 +437,22 @@ font-size: 1.5rem;
       <article class="slide">
         <h2>Example Challenge</h2>
         <p>
-          <a href="https://jsbin.com/sodihux/1/edit?html,css,js,output"
-            >Syncing VTT files</a
-          >
+          <a href="https://jsbin.com/sodihux/1/edit?html,css,js,output">Syncing VTT files</a>
         </p>
         <p>
-          <a href="https://jsbin.com/bixoru/1/edit?html,css,js,output"
-            >Toggling Modes</a
-          >
+          <a href="https://jsbin.com/bixoru/1/edit?html,css,js,output">Toggling Modes</a>
         </p>
         <p>
-          <a href="https://jsbin.com/balowuq/1/edit?html,css,js,output"
-            >Toggling Captions</a
-          >
+          <a href="https://jsbin.com/balowuq/1/edit?html,css,js,output">Toggling Captions</a>
         </p>
         <p>
-          <a href="https://jsbin.com/rifekik/edit?html,css,js,output"
-            >Chapter Links</a
-          >
+          <a href="https://jsbin.com/rifekik/edit?html,css,js,output">Chapter Links</a>
         </p>
         <p>
-          <a href="https://jsbin.com/pulefe/1/edit?html,css,js,output"
-            >Chapter Thumbnail Links</a
-          >
+          <a href="https://jsbin.com/pulefe/1/edit?html,css,js,output">Chapter Thumbnail Links</a>
         </p>
         <p>
-          <a href="https://jsbin.com/zewemaj/edit?html,js,output"
-            >All together now</a
-          >
+          <a href="https://jsbin.com/zewemaj/edit?html,js,output">All together now</a>
         </p>
       </article>
       <article class="slide">
@@ -509,32 +464,25 @@ font-size: 1.5rem;
           <li><code>addCue</code></li>
         </ul>
         <p>
-          <a href="https://jsbin.com/lodiju/edit?html,js,output"
-            >Animals Sounds</a
-          >
+          <a href="https://jsbin.com/lodiju/edit?html,js,output">Animals Sounds</a>
         </p>
         <p>
-          <a href="https://codepen.io/w3devcampus/pen/jOqyprY"
-            >Collision sounds</a
-          >
+          <a href="https://codepen.io/w3devcampus/pen/jOqyprY">Collision sounds</a>
         </p>
       </article>
       <article class="slide">
         <h2>Live Video Syncing</h2>
         <p><a href="https://simpl.info/track/map/index.html">Google Maps</a></p>
         <p>
-          <a href="https://jsbin.com/gucutiyoyu/2/edit?html,js,output"
-            >Update Wikipedia pg</a
-          >
+          <a href="https://jsbin.com/gucutiyoyu/2/edit?html,js,output">Update Wikipedia pg</a>
         </p>
       </article>
       <article class="slide">
         <h2>Web Audio Inspector Extension</h2>
         <p>
           <a
-            href="https://chrome.google.com/webstore/detail/web-audio-inspector/cmhomipkklckpomafalojobppmmidlgl"
-            >Chrome Extension</a
-          >
+             href="https://chrome.google.com/webstore/detail/web-audio-inspector/cmhomipkklckpomafalojobppmmidlgl">Chrome
+            Extension</a>
         </p>
       </article>
       <article class="slide">
@@ -546,45 +494,31 @@ font-size: 1.5rem;
           <a href="https://jsbin.com/jarimu/edit?html,js,output">Balance</a>
         </p>
         <p>
-          <a href="https://jsbin.com/belide/edit?html,js,console,output"
-            >Reverb</a
-          >
+          <a href="https://jsbin.com/belide/edit?html,js,console,output">Reverb</a>
         </p>
         <p>
-          <a href="https://jsbin.com/momixok/edit?html,js,console,output"
-            >Compressor</a
-          >
+          <a href="https://jsbin.com/momixok/edit?html,js,console,output">Compressor</a>
         </p>
         <p>
-          <a href="https://webaudiodemos.appspot.com/Vocoder/index.html#"
-            >Example (only in Firefox)</a
-          >
+          <a href="https://webaudiodemos.appspot.com/Vocoder/index.html#">Example (only in Firefox)</a>
         </p>
         <p>
           <a href="https://jsbin.com/tuvaxar/edit?html,js,output">Filters</a>
         </p>
         <p>
-          <a href="https://webaudioapi.com/samples/frequency-response/"
-            >WebAudio API Viz</a
-          >
+          <a href="https://webaudioapi.com/samples/frequency-response/">WebAudio API Viz</a>
         </p>
         <p>
-          <a href="https://webaudioapi.com/samples/room-effects/"
-            >WebAudio API Effects</a
-          >
+          <a href="https://webaudioapi.com/samples/room-effects/">WebAudio API Effects</a>
         </p>
       </article>
       <article class="slide">
         <h2>Equalizer Demo</h2>
         <p>
-          <a href="https://jsbin.com/loquwih/edit?html,css,js,output"
-            >For Audio</a
-          >
+          <a href="https://jsbin.com/loquwih/edit?html,css,js,output">For Audio</a>
         </p>
         <p>
-          <a href="https://jsbin.com/kukupot/edit?html,css,js,output"
-            >For Video</a
-          >
+          <a href="https://jsbin.com/kukupot/edit?html,css,js,output">For Video</a>
         </p>
       </article>
       <article class="slide">
@@ -596,14 +530,10 @@ font-size: 1.5rem;
           <a href="https://jsbin.com/sufatup/edit?html,js,output">Styled</a>
         </p>
         <p>
-          <a href="https://jsbin.com/qijujuz/edit?html,js,output"
-            >With equalizer</a
-          >
+          <a href="https://jsbin.com/qijujuz/edit?html,js,output">With equalizer</a>
         </p>
         <p>
-          <a href="https://jsbin.com/jafoboh/edit?js,console,output"
-            >video w/ equalizer</a
-          >
+          <a href="https://jsbin.com/jafoboh/edit?js,console,output">video w/ equalizer</a>
         </p>
       </article>
     </section>
@@ -615,4 +545,5 @@ font-size: 1.5rem;
     <script src="../lib/inspire.js"></script>
     <script src="../laser/laser.js"></script>
   </body>
+
 </html>
