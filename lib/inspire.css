@@ -247,3 +247,7 @@ body.show-all .slide {
 		display: none;
 	}
 }
+
+.slide.live-demo .demo-controls {
+	display: none;
+}

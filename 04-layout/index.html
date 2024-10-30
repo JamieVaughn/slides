@@ -115,14 +115,18 @@
         --grid-side: 450px;
         justify-content: start;
         gap: 0;
-        width: 750px;
-        height: 300px;
+        width: 452px;
+        height: 452px;
         overflow: visible;
       }
 
       .grid.lines>div {
-        width: calc(var(--grid-side) / 6);
-        height: calc(var(--grid-side) / 6);
+        min-width: calc(var(--grid-side) / 6);
+        min-height: calc(var(--grid-side) / 6);
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       .grid.lines>svg {
@@ -230,9 +234,9 @@ display: flex;
 flex-direction: column;
 flex-wrap: wrap;
 			</code></pre>
-          <img data-src="img/daisy-h.svg" />
+          <img src="img/daisy-h.svg" />
 
-          <img data-src="img/daisy-v.svg" />
+          <img src="img/daisy-v.svg" />
         </div>
         <details class="notes">
           Flexbox is suited for laying out items in a single dimension. Where
@@ -401,7 +405,7 @@ gap: 1rem 2rem;
 					flex-wrap: wrap;
 					gap: 0px;
 				}
-				.flexbox > div:first-child {
+				.flexbox > div:nth-child(2) {
 					order: 0;
 				}
 				.flexbox > div {
@@ -441,7 +445,7 @@ gap: 1rem 2rem;
               margin: 0;
             ">
             <a
-               href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink"><code>flex-grow</code></a>
+               href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow"><code>flex-grow</code></a>
             - proportion of available space to be allocated to this flex-item
           </p>
           <p
@@ -452,7 +456,7 @@ gap: 1rem 2rem;
               padding: 0 2rem;
               margin: 0;
             ">
-            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow"><code>flex-shrink</code></a>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink"><code>flex-shrink</code></a>
             - tells this flex-item to shrink as available space shrinks
           </p>
           <p
@@ -554,7 +558,7 @@ gap: 1rem 2rem;
           <a href="https://flexboxfroggy.com/">Flexbox Froggies - No account needed!</a>
         </p>
         <p>
-          <a href="https://mastery.games/p/flexbox-zombies">Flexbox Zombies - free w/ account</a>
+          <a href="https://flexboxzombies.com/p/flexbox-zombies">Flexbox Zombies - free w/ account</a>
         </p>
       </article>
     </section>
@@ -653,15 +657,10 @@ gap: 1rem 2rem;
       </article>
       <article class="demo slide" id="livedemo">
         <textarea class="language-html">
-          <h1>
-            Layout Technique: <small><code>inline-block</code></small>
-          </h1>
+<h1>Layout Technique: <small><code>inline-block</code></small></h1>
+
 <div class="inlineblock">
-	<!-- inlineblock tags must 
-		be on one line, otherwise 
-		the spaces are rendered
-		as horizontal spacing -->
-	<div><p>Item A</p></div>
+  <div><p>Item A</p></div>
   <div><p>Item B</p></div>
   <div><p>Item C</p></div>
   <div><p>Item D</p></div>
@@ -678,8 +677,7 @@ gap: 1rem 2rem;
 		</textarea>
       </article>
 
-      <article class="demo slide" id="livedemo">
-
+      <article class="demo" id="livedemo"  >
         <textarea class="language-html">
           <h1>
             Layout Technique: <small><code>float</code></small>
@@ -705,9 +703,8 @@ gap: 1rem 2rem;
 
       <article class="demo slide" id="livedemo">
         <textarea class="language-html">
-          <h1>
-            Layout Technique: <small><code>flexbox</code></small>
-          </h1>
+<h1>Layout Technique: <small><code>flexbox</code></small></h1>
+
 <div class="flexbox">
 	<div><p>Item A</p></div>
 	<div><p>Item B</p></div>
@@ -860,7 +857,8 @@ gap: 1rem 2rem;
 
       <article class="demo slide" id="livedemo">
         <textarea class="language-html">
-          <h1>Let's Define a Grid!</h1>
+<h1>Let's Define a Grid!</h1>
+
 <div class="grid">
 	<div><p>Item A</p></div>
 	<div><p>Item B</p></div>
@@ -871,16 +869,15 @@ gap: 1rem 2rem;
 </div>
 		</textarea>
         <textarea class="language-css">
-			.grid {
-				display: grid;
-				/*grid-template-columns: 1fr 1fr 1fr; */
-				/*grid-template-rows: 1fr 1fr; */
-			}
-			.grid > div {
-				/* no rules for grid items needed! */
-				/* but you can add some if you want: */
-				/*width: 100%; */
-			}
+.grid {
+  display: grid;
+/*grid-template-columns: 1fr 1fr 1fr; */
+/*grid-template-rows: 1fr 1fr; */
+}
+.grid > div {
+/* grid item rules optional! */
+  /* width: 100%; */
+}
 		</textarea>
       </article>
 
@@ -917,7 +914,7 @@ gap: 1rem 2rem;
                src="img/implicit-grid.svg"
                alt="Implicit grid" />
           <pre
-               style="grid-column: 1 / 3; grid-row: 1 / -1"
+               style="grid-column: 1 / 3; grid-row: 1 / -1;"
                class="language-css"><code>.grid-container {
   display: grid;
   /* three columns  */
@@ -934,8 +931,8 @@ gap: 1rem 2rem;
   /* grid-row-start: 2; 
   grid-row-end: 3;  */
   grid-row:  2 / 3; 
-  /* you can use -1 to reference 
-  the last explicit grid track */
+  /* use -1 to reference the 
+  last explicit grid track */
   grid-row: 2 / -1;
 }</code></pre>
         </div>
@@ -959,39 +956,44 @@ gap: 1rem 2rem;
 
       <article class="demo slide">
         <textarea class="language-html">
-<h1><code>grid-column</code> <span>&</span> <code>grid-row</code></h1>
-			<div class="grid lines">
-				<div>(1)🍏</div>
-				<div>(2)🍊</div>
-				<div>(3)🥥</div>
-				<div>(4)🥑</div>
-				<div>(5)🍇</div>
-				<div>(6)🍌</div>
-				<svg><rect/></svg>
-			</div>
-		</textarea>
+<h1><code>grid-column</code> <span style="color: gold;"">&</span> <code>grid-row</code></h1>
+
+<div class="grid lines">
+  <div>(1)🍏</div>
+  <div>(2)🍊</div>
+  <div>(3)🥥</div>
+  <div>(4)🥑</div>
+  <div>(5)🍇</div>
+  <div>(6)🍌</div>
+  <svg><rect/></svg>
+</div>
+</textarea>
         <textarea class="language-css">
-			.grid {
-			  display: grid;
-			  grid-template-columns: repeat(6, 70px);
-			  grid-template-rows: repeat(6, 70px);
-			}
-			.grid > div:nth-child(1) {
-			  grid-column: 4;
-			  grid-row: 2;
-			}
-			.grid > div:nth-child(3) {
-			  grid-column: 2;
-			  grid-row: 5;
-			}
-			.grid > div:nth-child(4) {
-			  grid-column: 5;
-			  grid-row: 1;
-			}
-			.grid > div:nth-child(6) {
-			  grid-column: 3;
-			  grid-row: 3;
-			}
+.grid {
+  display: grid;
+  grid-template-columns: 
+    repeat(6, 75px);
+  grid-template-rows: 
+    repeat(6, 75px);
+  /* align-items: stretch; */
+  /* justify-items: stretch; */
+}
+.grid > div:nth-child(1) {
+  grid-column: 4 / span 2;
+  grid-row: 2 / span 2;
+}
+.grid > div:nth-child(3) {
+  grid-column: 2;
+  grid-row: 5;
+}
+.grid > div:nth-child(4) {
+  grid-column: 5;
+  grid-row: 1;
+}
+.grid > div:nth-child(6) {
+  grid-column: 3;
+  grid-row: 3;
+}
 		</textarea>
         <details class="hidden">
           <p>
@@ -1013,7 +1015,7 @@ gap: 1rem 2rem;
 
       <article class="slide">
         <h2>Let's Create a Grid-based Media Object</h2>
-        <img class="backdrop corners" src="img/grid_media_object.png" alt="" />
+        <img class="backdrop corners" src="img/grid_media_object.png" alt=""/>
       </article>
 
       <article class="slide">
@@ -1069,22 +1071,25 @@ gap: 1rem 2rem;
 				  <div><p>Item A</p></div>
 				  <div><p>Item B</p></div>
 				  <div>
-				    <p>Item C has much longer content</p>
+				    <p>
+    Item C has much longer content
+    </p>
 				  </div>
 				</div>
 			</textarea>
         <textarea class="language-css">
-				.grid {
-					display: grid;
-					grid-template-columns: max-content 1fr min-content;
-					gap: 0;
-					height: 300px;
-					width: 100%;
-				}
-				.grid > div {
-					width: 100%;
-					height: 100%;
-				}
+.grid {
+  display: grid;
+  grid-template-columns: 
+    max-content 1fr min-content;
+  gap: 0;
+  height: 300px;
+  width: 100%;
+}
+.grid > div {
+  width: 100%;
+  height: 100%;
+}
 			</textarea>
       </article>
 
@@ -1118,65 +1123,61 @@ gap: 1rem 2rem;
 
       <article class="demo slide">
         <textarea class="language-html">
-          <span>
-            The <code>minmax()</code> function
-            <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/minmax()">MDN</a></sup>
-            <small>Defines a size range for columns or rows in a grid</small>
-          </span>
-			<div class="grid">
-				<div><p>Item A</p></div>
-				<div><p>Item B</p></div>
-				<div><p>Item C</p></div>
-			</div>
+<span>The <code>minmax()</code> function <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/minmax()">MDN</a></sup><div><small> Defines size range for columns/rows in a grid</small></div><br /></span>
+
+<div class="grid">
+  <div><p>Item A</p></div>
+  <div><p>Item B</p></div>
+  <div><p>Item C</p></div>
+</div>
 		</textarea>
         <textarea class="language-css">
-			.grid {
-				display: grid;
-				grid-template-columns: minmax(200px, 1fr) 45% 45%;
-				gap: 0;
-				height: 300px;
-				width: 100%;
-				overflow-x: scroll;
-			}
-			.grid > div {
-				width: 100%;
-				height: 100%;
-			}
+.grid {
+  display: grid;
+  grid-template-columns: 
+    minmax(200px, 1fr) 45% 45%;
+  gap: 0;
+  height: 300px;
+  width: 100%;
+  overflow-x: scroll;
+}
+.grid > div {
+  width: 100%;
+  height: 100%;
+}
 		</textarea>
       </article>
 
       <article class="demo slide">
 
         <textarea class="language-html">
-          <span>
-            The <code>repeat()</code> function
-            <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat()">MDN</a></sup>
-            <small>Specify many columns/rows that follow a pattern</small>
-          </span>
-			<div class="grid">
-				<div><p>Item</p></div>
-				<div><p>Item</p></div>
-				<div><p>Item</p></div>
-				<div><p>Item</p></div>
-				<div><p>Item</p></div>
-				<div><p>Item</p></div>
-				<div><p>Item</p></div>
-				<div><p>Item</p></div>
-			</div>
+          <span>The <code>repeat()</code> function <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat()">MDN</a></sup><div><small> Specify many columns/rows that follow a pattern</small></div></span>
+
+<div class="grid">
+  <div><p>Item</p></div>
+  <div><p>Item</p></div>
+  <div><p>Item</p></div>
+  <div><p>Item</p></div>
+  <div><p>Item</p></div>
+  <div><p>Item</p></div>
+  <div><p>Item</p></div>
+  <div><p>Item</p></div>
+</div>
 		</textarea>
         <textarea class="language-css">
-			.grid {
-				display: grid;
-				grid-template-columns: repeat(4, 75px 150px);
-				gap: 0;
-				height: 300px;
-				width: 100%;
-				overflow-x: scroll;
-			}
-			.grid > div {
-				width: 100%;
-				height: 100%;
-			}
+.grid {
+  display: grid;
+  grid-template-columns: 
+    repeat(4, 75px 150px);
+  gap: 0;
+  height: 300px;
+  width: 100%;
+  overflow-x: scroll;
+}
+.grid > div {
+  width: 100%;
+  height: 100%;
+}
 		</textarea>
         <details class="hidden">
           Also, if your design calls for a rather complex and large grid, you
@@ -1239,32 +1240,34 @@ gap: 1rem 2rem;
 
       <article class="demo slide">
         <textarea class="language-html">
-          <span style="font-size: 125%">
-            <code>auto-fill</code> versus <code>auto-fit</code>
-          </span>
-			<div class="grid">
-				<div><p>A</p></div>
-				<div><p>B</p></div>
-				<div><p>C</p></div>
-				<div><p>D</p></div>
-				<div><p>E</p></div>
-				<div><p>F</p></div>
-			</div>
+          <span style="font-size: 125%"><code>auto-fill</code> versus <code>auto-fit</code></span>
+
+<div class="grid">
+  <div><p>A</p></div>
+  <div><p>B</p></div>
+  <div><p>C</p></div>
+  <div><p>D</p></div>
+  <div><p>E</p></div>
+  <div><p>F</p></div>
+</div>
 		</textarea>
         <textarea class="language-css">
-			.grid {
-				display: grid;
-				grid-template-columns: 
-				  repeat(auto-fill, minmax(100px, 1fr));
-				gap: 0;
-				height: 300px;
-				width: 100%;
-				overflow-x: scroll;
-			}
-			.grid > div {
-				width: 100%;
-				height: 100%;
-			}
+.grid {
+  display: grid;
+/* Compare fit/fill & fr/px */
+  grid-template-columns: 
+    repeat(
+      auto-fill, 
+      minmax(100px, 1fr)
+    );
+  gap: 0;
+  width: 100%;
+  overflow-x: scroll;
+}
+.grid > div {
+  width: 100%;
+  height: 300px;
+}
 		</textarea>
         <details class="hidden">
           <p>
@@ -1747,42 +1750,42 @@ gap: 1rem 2rem;
               <img
                    class="backdrop corners"
                    style="max-height: 4.5em"
-                   data-src="img/jc-center.png"
+                   src="img/jc-center.png"
                    alt="justify-content:center" />
             </td>
             <td style="text-align: center">
               <img
                    class="backdrop corners"
                    style="max-height: 4.5em"
-                   data-src="img/jc-start.png"
+                   src="img/jc-start.png"
                    alt="justify-content:start" />
             </td>
             <td style="text-align: center">
               <img
                    class="backdrop corners"
                    style="max-height: 4.5em"
-                   data-src="img/jc-end.png"
+                   src="img/jc-end.png"
                    alt="justify-content:end" />
             </td>
             <td style="text-align: center">
               <img
                    class="backdrop corners"
                    style="max-height: 4.5em"
-                   data-src="img/jc-sa.png"
+                   src="img/jc-sa.png"
                    alt="justify-content:space-around" />
             </td>
             <td style="text-align: center">
               <img
                    class="backdrop corners"
                    style="max-height: 4.5em"
-                   data-src="img/jc-sb.png"
+                   src="img/jc-sb.png"
                    alt="justify-content:space-between" />
             </td>
             <td style="text-align: center">
               <img
                    class="backdrop corners"
                    style="max-height: 4.5em"
-                   data-src="img/jc-se.png"
+                   src="img/jc-se.png"
                    alt="justify-content:space-evenly" />
             </td>
           </tr>
@@ -1792,7 +1795,7 @@ gap: 1rem 2rem;
               <img
                    class="backdrop corners"
                    style="max-height: 4.5em"
-                   data-src="img/ac-center.png"
+                   src="img/ac-center.png"
                    alt="align-content:center" />
             </td>
 
@@ -1800,35 +1803,35 @@ gap: 1rem 2rem;
               <img
                    class="backdrop corners"
                    style="max-height: 4.5em"
-                   data-src="img/ac-start.png"
+                   src="img/ac-start.png"
                    alt="align-content:start" />
             </td>
             <td style="text-align: center">
               <img
                    class="backdrop corners"
                    style="max-height: 4.5em"
-                   data-src="img/ac-end.png"
+                   src="img/ac-end.png"
                    alt="align-content:end" />
             </td>
             <td style="text-align: center">
               <img
                    class="backdrop corners"
                    style="max-height: 4.5em"
-                   data-src="img/ac-sa.png"
+                   src="img/ac-sa.png"
                    alt="align-content:space-around" />
             </td>
             <td style="text-align: center">
               <img
                    class="backdrop corners"
                    style="max-height: 4.5em"
-                   data-src="img/ac-sb.png"
+                   src="img/ac-sb.png"
                    alt="align-content:space-between" />
             </td>
             <td style="text-align: center">
               <img
                    class="backdrop corners"
                    style="max-height: 4.5em"
-                   data-src="img/ac-se.png"
+                   src="img/ac-se.png"
                    alt="align-content:space-evenly" />
             </td>
           </tr>
@@ -1867,7 +1870,7 @@ gap: 1rem 2rem;
           </figcaption>
           <img
                class="backdrop corners"
-               data-src="img/fit.svg"
+               src="img/fit.svg"
                alt="Self-alignment properties" />
         </figure>
         <details class="notes">
@@ -1896,7 +1899,7 @@ gap: 1rem 2rem;
           </figcaption>
           <img
                class="plain"
-               data-src="img/flex.svg"
+               src="img/flex.svg"
                alt="Display flex on grid items" />
         </figure>
         <details class="notes">
@@ -2027,7 +2030,7 @@ gap: 1rem 2rem;
         <img
              class="plain"
              style="max-height: 65vh"
-             data-src="img/chessboard.jpg"
+             src="img/chessboard.jpg"
              alt="Chessboard" />
         <details class="notes">
           The next thing we're going to cover is manual placement of grid items.
@@ -2045,7 +2048,7 @@ grid-template-rows: [first header-start] 100px [header-end content-start] 1fr [c
         <img
              class="backdrop corners"
              style="margin: 0; max-height: 65vh"
-             data-src="img/named-lines.svg"
+             src="img/named-lines.svg"
              alt="Named lines" />
         <details class="notes">
           <p>
@@ -2174,7 +2177,7 @@ h2 {
         <h2>Building a grid layout</h2>
         <img
              class="plain"
-             data-src="img/tycho.jpg"
+             src="img/tycho.jpg"
              alt="Tycho artist blog/profile concept" />
         <p>
           <small>Design credit:
@@ -2675,7 +2678,7 @@ header {
         <div class="flex">
           <figure>
             <img
-                 data-src="img/cssworkshop.jpg"
+                 src="img/cssworkshop.jpg"
                  alt="CSS layout workshop by Rachel Andrew" />
             <figcaption>
               <small><a href="http://labs.jensimmons.com/">https://thecssworkshop.com/</a></small>
@@ -2683,7 +2686,7 @@ header {
           </figure>
           <figure>
             <img
-                 data-src="img/layoutlab.jpg"
+                 src="img/layoutlab.jpg"
                  alt="Jen Simmons' experimental layout lab" />
             <figcaption>
               <small><a href="http://labs.jensimmons.com/">http://labs.jensimmons.com/</a></small>
