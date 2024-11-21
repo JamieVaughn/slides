@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1" />
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
     <meta name="description" content="MCC Web Design & Development Slides" />
     <meta name="author" content="Jamie Vaughn" />
     <title>Regular Expressions</title>
@@ -24,7 +24,7 @@
         grid-gap: 4px;
       }
 
-      .flag-table>p {
+      .flag-table > p {
         width: 100%;
         height: 100%;
         text-align: center;
@@ -44,9 +44,10 @@
   </head>
 
   <body
-        class="language-markup"
-        data-prism-plugins="normalize-whitespace"
-        data-duration="30">
+    class="language-markup"
+    data-prism-plugins="normalize-whitespace"
+    data-duration="30"
+  >
     <header id="intro" class="slide">
       <h1>Regular Expressions</h1>
       <h2>RegExp | Regex</h2>
@@ -78,8 +79,9 @@
       <article class="slide">
         <h2>Regex is essentially a language unto itself</h2>
         <img
-             src="https://imgs.xkcd.com/comics/regular_expressions.png"
-             alt="XKCD Regex Comic" />
+          src="https://imgs.xkcd.com/comics/regular_expressions.png"
+          alt="XKCD Regex Comic"
+        />
       </article>
       <article class="slide">
         <h2>Two Ways to Create a Regex in JS</h2>
@@ -102,8 +104,14 @@ let regex3 = new RegExp(/pattern/, "flags")
         </p>
         <div style="display: flex; gap: 2rem">
           <ul class="delayed">
-            <strong>Character Classes<sup><a
-                   href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes">MDN</a></sup></strong>
+            <strong
+              >Character Classes<sup
+                ><a
+                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Character_Classes"
+                  >MDN</a
+                ></sup
+              ></strong
+            >
             <li>Printable chars: <code>a</code>, <code>.</code></li>
             <li>Non printable chars: <code>\r\n</code>, <code>\t</code></li>
             <li>Escaping chars: <code>\</code>, i.e. <code>\.</code></li>
@@ -114,17 +122,27 @@ let regex3 = new RegExp(/pattern/, "flags")
             <li style="list-style: none"><br /></li>
           </ul>
           <ul class="delayed">
-            <strong>Operations: quantifiers, assertions, groups
-              <sup><a
-                   href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#using_special_characters">MDN</a></sup></strong>
+            <strong
+              >Operations: quantifiers, assertions, groups
+              <sup
+                ><a
+                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#using_special_characters"
+                  >MDN</a
+                ></sup
+              ></strong
+            >
             <li>
               Quantifiers: <code>*</code>, <code>+</code>, <code>{}</code>,
               <code>?</code>
             </li>
             <li>
               Greedy vs Lazy Quantifiers
-              <sup><a
-                   href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Quantifiers">MDN</a></sup>
+              <sup
+                ><a
+                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Quantifiers"
+                  >MDN</a
+                ></sup
+              >
             </li>
             <li>
               Assertions: <code>^</code>, <code>$</code>,
@@ -137,23 +155,34 @@ let regex3 = new RegExp(/pattern/, "flags")
             </li>
             <li style="list-style: none">
               <span
-                    style="
+                style="
                   display: inline-block;
                   transform: translateY(-10px) scaleX(-1);
-                ">⤴</span>
+                "
+                >⤴</span
+              >
               Capturing <code>()</code> vs Non Capturing <code>?:</code>
-              <sup><a
-                   href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges">MDN</a></sup>
+              <sup
+                ><a
+                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges"
+                  >MDN</a
+                ></sup
+              >
             </li>
           </ul>
         </div>
         <div class="flex delayed" style="text-align: center">
           <a
-             href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet">MDN
-            Cheet Sheet</a>
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Cheatsheet"
+            >MDN Cheet Sheet</a
+          >
           <a
-             href="http://web.mit.edu/hackl/www/lab/turkshop/slides/regex-cheatsheet.pdf">MIT Cheat Sheet</a>
-          <a href="https://www.debuggex.com/cheatsheet/regex/javascript">JS Sheet</a>
+            href="http://web.mit.edu/hackl/www/lab/turkshop/slides/regex-cheatsheet.pdf"
+            >MIT Cheat Sheet</a
+          >
+          <a href="https://www.debuggex.com/cheatsheet/regex/javascript"
+            >JS Sheet</a
+          >
         </div>
       </article>
 
@@ -213,7 +242,8 @@ let regex3 = new RegExp(/pattern/, "flags")
       <article class="slide">
         <h2>Backslash Escape Operators</h2>
         <pre
-             class="language-js"><code>// The backslash char '\' is the escape Operator
+          class="language-js"
+        ><code>// The backslash char '\' is the escape Operator
 // Examples
 /a$/.test("a$") // false
 /a\$/.test("a$") // true
@@ -228,12 +258,18 @@ let regex3 = new RegExp(/pattern/, "flags")
       <article class="slide">
         <h2>
           Built-in String Methods for Regex
-          <sup><a
-               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Using_regular_expressions_in_JavaScript">MDN</a></sup>
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions#Using_regular_expressions_in_JavaScript"
+              >MDN</a
+            ></sup
+          >
         </h2>
         <ul>
-          <strong>Usage is inconsistent between chaining off of string vs
-            regex:</strong>
+          <strong
+            >Usage is inconsistent between chaining off of string vs
+            regex:</strong
+          >
           <li style="list-style: none">
             <code>'hello'.search(/L/gi)</code> vs.
             <code>/w/gi.test('Hello World')</code>
@@ -257,12 +293,13 @@ exec()</code></pre>
         <h2 style="margin: -10vh 0 0">Regex Flags</h2>
         <p><code>/pattern/flags</code> i.e. <code>/[a-zA-Z]/g</code></p>
         <div
-             class="grid flag-table"
-             style="
+          class="grid flag-table"
+          style="
             max-height: 500px;
             grid-template-columns: 100px 1fr 1fr;
             grid-template-rows: repeat(7, 1fr);
-          ">
+          "
+        >
           <p>Flag</p>
           <p>Description</p>
           <p>Corresponding Property</p>
@@ -307,13 +344,19 @@ str.match(/example/g)
       <article class="slide">
         <h2>
           Positive/Negative Look Behind/Ahead
-          <sup><a
-               href="https://www.stefanjudis.com/today-i-learned/the-complicated-syntax-of-lookaheads-in-javascript-regular-expressions/">article</a></sup>
+          <sup
+            ><a
+              href="https://www.stefanjudis.com/today-i-learned/the-complicated-syntax-of-lookaheads-in-javascript-regular-expressions/"
+              >article</a
+            ></sup
+          >
         </h2>
         <p>
           More
           <a
-             href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Assertions">Assertions</a>
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Assertions"
+            >Assertions</a
+          >
         </p>
         <pre class="language-js"><code>// Examples for all four cases:
 /b(?=o)/.test('bob') // Positive Look ahead
@@ -329,7 +372,8 @@ str.match(/example/g)
           input
         </p>
         <pre
-             class="language-js"><code>// Saving a dynamic matching pattern from an input into a variable:
+          class="language-js"
+        ><code>// Saving a dynamic matching pattern from an input into a variable:
 let userInput = document.querySelector('input').value
 
 // Then use that variable in a RegExp constructor
@@ -343,17 +387,24 @@ let regex = new RegExp(userInput, "flags")
       <article class="slide">
         <h2>
           HTML <code>pattern</code> Attribute
-          <sup><a
-               href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern">MDN</a></sup>
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/pattern"
+              >MDN</a
+            ></sup
+          >
         </h2>
         <p>
           <a
-             href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation">Client-side Validation</a>
+            href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation"
+            >Client-side Validation</a
+          >
         </p>
         <p>
           <a
-             href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#the_constraint_validation_api">Constraint
-            Validation</a>
+            href="https://developer.mozilla.org/en-US/docs/Learn/Forms/Form_validation#the_constraint_validation_api"
+            >Constraint Validation</a
+          >
         </p>
 
         <pre class="language-html"><code>&lt;form&gt;
@@ -373,18 +424,23 @@ let regex = new RegExp(userInput, "flags")
       <ul>
         <li>
           <a
-             href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp">RegExp
-            Object</a>
+            href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp"
+            >RegExp Object</a
+          >
         </li>
         <li>
-          <a href="https://eloquentjavascript.net/09_regexp.html">Eloquent Javscript: Regex</a>
+          <a href="https://eloquentjavascript.net/09_regexp.html"
+            >Eloquent Javscript: Regex</a
+          >
         </li>
       </ul>
     </article>
     <article class="slide">
       <h2>Regex Tools</h2>
       <p>
-        <a href="https://github.com/aloisdg/awesome-regex">Awesome list of regex resources</a>
+        <a href="https://github.com/aloisdg/awesome-regex"
+          >Awesome list of regex resources</a
+        >
       </p>
       <ul>
         <li><a href="https://regex101.com/">Regex101</a></li>
@@ -415,5 +471,4 @@ let regex = new RegExp(userInput, "flags")
     <script src="../lib/inspire.js"></script>
     <script src="../laser/laser.js"></script>
   </body>
-
 </html>

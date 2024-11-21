@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=1" />
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1"
+    />
     <meta name="description" content="MCC Web Design & Development Slides" />
     <meta name="author" content="Jamie Vaughn" />
     <title>CSS Layout</title>
@@ -22,7 +22,7 @@
 
     <script src="../inspire_/inspire.mjs" type="module"></script>
     <style>
-      .flex-demo>div {
+      .flex-demo > div {
         height: 200px;
         width: 200px;
         line-height: 200px;
@@ -34,13 +34,13 @@
 
       /* Live demo editor code */
       .flexbox,
-      .demo-target>div {
+      .demo-target > div {
         border: 1px dashed darkgray;
         font-size: 75%;
       }
 
-      .flexbox>div,
-      .demo-target>div>div {
+      .flexbox > div,
+      .demo-target > div > div {
         box-sizing: border-box;
         border: 1px solid black;
         text-align: center;
@@ -49,36 +49,36 @@
         font-weight: bold;
       }
 
-      .demo-target>div>div>p {
+      .demo-target > div > div > p {
         padding: 0.25rem 1rem;
       }
 
-      .demo-target>div>div:nth-of-type(n) {
+      .demo-target > div > div:nth-of-type(n) {
         background: seagreen;
       }
 
-      .demo-target>div>div:nth-of-type(2n) {
+      .demo-target > div > div:nth-of-type(2n) {
         background: goldenrod;
       }
 
-      .demo-target>div>div:nth-of-type(3n) {
+      .demo-target > div > div:nth-of-type(3n) {
         background: crimson;
       }
 
-      .demo-target>div>div:nth-of-type(4n) {
+      .demo-target > div > div:nth-of-type(4n) {
         background: royalblue;
       }
 
-      .demo-target>div>div:nth-of-type(5n) {
+      .demo-target > div > div:nth-of-type(5n) {
         background: tomato;
       }
 
-      .demo-target>div>div:nth-of-type(6n) {
+      .demo-target > div > div:nth-of-type(6n) {
         background: rebeccapurple;
       }
 
       /* Specific Example setup */
-      .flexbox>div {
+      .flexbox > div {
         flex-basis: calc(100% / 3);
       }
 
@@ -88,7 +88,7 @@
         word-spacing: 0px;
       }
 
-      .inlineblock>div {
+      .inlineblock > div {
         display: inline-block;
       }
 
@@ -98,7 +98,7 @@
         padding: 1px;
       }
 
-      .grid.reticle>svg {
+      .grid.reticle > svg {
         position: absolute;
         top: 0;
         left: 0;
@@ -120,7 +120,7 @@
         overflow: visible;
       }
 
-      .grid.lines>div {
+      .grid.lines > div {
         min-width: calc(var(--grid-side) / 6);
         min-height: calc(var(--grid-side) / 6);
         padding: 0;
@@ -129,7 +129,7 @@
         justify-content: center;
       }
 
-      .grid.lines>svg {
+      .grid.lines > svg {
         position: absolute;
         top: 0;
         left: 0;
@@ -147,10 +147,11 @@
   </head>
 
   <body
-        class="language-markup"
-        data-prism-plugins="normalize-whitespace"
-        data-duration="30"
-        spellcheck="false">
+    class="language-markup"
+    data-prism-plugins="normalize-whitespace"
+    data-duration="30"
+    spellcheck="false"
+  >
     <header id="intro" class="slide">
       <h1>Web Design & Development</h1>
       <h2>CSS Layouts: Flexbox & Grid</h2>
@@ -165,24 +166,26 @@
       <article class="slide">
         <h2>Flexbox</h2>
         <div
-             class="flex align justify flex-demo"
-             style="
+          class="flex align justify flex-demo"
+          style="
             width: 65vw;
             position: relative;
             border: 5px solid gold;
             padding: 4rem;
             color: white;
             text-align: center;
-          ">
+          "
+        >
           <h3
-              style="
+            style="
               line-height: 38px;
               position: absolute;
               left: 0;
               top: -40px;
               font-size: 38px;
               z-index: 10;
-            ">
+            "
+          >
             Flex Container
           </h3>
 
@@ -207,7 +210,9 @@
             <img src="img/flex-direction-row.gif" alt="" />
             <p>
               <a
-                 href="https://www.freecodecamp.org/news/flexbox-the-ultimate-css-flex-cheatsheet/">Flexbox Animated</a>
+                href="https://www.freecodecamp.org/news/flexbox-the-ultimate-css-flex-cheatsheet/"
+                >Flexbox Animated</a
+              >
             </p>
           </div>
           <img src="img/main_cross_axis.png" style="flex: 1 0 50%" alt="" />
@@ -215,13 +220,14 @@
       </article>
       <article class="slide">
         <div
-             class="grid col-2"
-             style="
+          class="grid col-2"
+          style="
             justify-items: stretch;
             grid-template-rows: min-content min-content 1fr;
             gap: 1rem 3rem;
             max-height: 90vh;
-          ">
+          "
+        >
           <h2 class="m0" style="grid-column: 1 / -1">
             Flexbox ➡ Wrapping on single dimension
           </h2>
@@ -264,12 +270,13 @@ flex-wrap: wrap;
         </details>
       </article>
       <article
-               class="slide grid col-2"
-               style="
+        class="slide grid col-2"
+        style="
           justify-items: center;
           align-items: center;
           grid-template-rows: repreat(4, 1fr);
-        ">
+        "
+      >
         <h2>Flexbox Alignment</h2>
         <ul style="grid-row: 1 / span 2">
           <h4><code>justify-content</code> ➡ <small>Main Axis</small></h4>
@@ -283,9 +290,10 @@ flex-wrap: wrap;
           </div>
         </ul>
         <img
-             src="img/main_cross_axis.png"
-             style="max-height: 60vh; grid-row: 2 / span 3; grid-column: 1"
-             alt="" />
+          src="img/main_cross_axis.png"
+          style="max-height: 60vh; grid-row: 2 / span 3; grid-column: 1"
+          alt=""
+        />
         <ul style="grid-row: 3 / span 2; grid-column: 2">
           <h3><code>align-items</code> ➡ <small>Cross Axis</small></h3>
           <div class="col-2">
@@ -306,7 +314,8 @@ flex-wrap: wrap;
 	<div><p>Item C</p></div>
 	<div><p>Item D</p></div>
 </div>
-			</textarea>
+			</textarea
+        >
         <textarea class="language-css">
 				.flexbox > div {
 					flex-basis: auto;
@@ -319,7 +328,8 @@ flex-wrap: wrap;
 					align-items: center;
 				}
 				
-			</textarea>
+			</textarea
+        >
       </article>
       <article class="slide">
         <h2>Adding a Gap</h2>
@@ -338,7 +348,11 @@ gap: 1rem 2rem;
       <article class="slide">
         <h2>
           Flex Order
-          <small><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order">MDN</a></small>
+          <small
+            ><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/order"
+              >MDN</a
+            ></small
+          >
         </h2>
         <p>
           The <code>order</code> property can control where a flex-item will be
@@ -349,38 +363,42 @@ gap: 1rem 2rem;
   order: -1;
 }</code></pre>
         <div
-             class="flex align justify flex-demo"
-             style="
+          class="flex align justify flex-demo"
+          style="
             width: 65vw;
             position: relative;
             border: 5px solid gold;
             padding: 4rem;
             color: white;
             text-align: center;
-          ">
+          "
+        >
           <h3
-              style="
+            style="
               line-height: 38px;
               position: absolute;
               left: 0;
               top: -40px;
               font-size: 38px;
               z-index: 10;
-            ">
+            "
+          >
             Flex Container
           </h3>
 
           <div style="position: relative; background: crimson">
             3
             <code
-                  class="m0"
-                  style="
+              class="m0"
+              style="
                 position: absolute;
                 bottom: 0;
                 left: 0;
                 opacity: 0.85;
                 margin: 0.5rem;
-              ">.flex-item</code>
+              "
+              >.flex-item</code
+            >
           </div>
           <div style="background: seagreen">1</div>
           <div style="background: goldenrod">2</div>
@@ -398,7 +416,8 @@ gap: 1rem 2rem;
 	<div><p>Item E</p></div>
 	<div><p>Item F</p></div>
 </div>
-			</textarea>
+			</textarea
+        >
         <textarea class="language-css">
 				.flexbox {
 					display: flex;
@@ -411,13 +430,16 @@ gap: 1rem 2rem;
 				.flexbox > div {
 					/* flex-basis: calc(100% / 3 - 10px); */
 				}
-			</textarea>
+			</textarea
+        >
       </article>
 
       <article class="slide">
         <h2>Let's Practice Flexbox Basics:</h2>
         <p>
-          <a href="http://www.flexboxdefense.com/">Flexbox Tower Defense Game</a>
+          <a href="http://www.flexboxdefense.com/"
+            >Flexbox Tower Defense Game</a
+          >
         </p>
       </article>
       <article class="slide">
@@ -425,64 +447,78 @@ gap: 1rem 2rem;
         <p>These *may or may not* come in handy for you.</p>
         <div class="flex-col" style="align-items: flex-start">
           <p
-             style="
+            style="
               border: 1px solid grey;
               width: 100%;
               text-align: left;
               padding: 0 2rem;
               margin: 0;
-            ">
+            "
+          >
             <a
-               href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis"><code>flex-basis</code></a>
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-basis"
+              ><code>flex-basis</code></a
+            >
             - sets a starting width;
           </p>
           <p
-             style="
+            style="
               border: 1px solid grey;
               width: 100%;
               text-align: left;
               padding: 0 2rem;
               margin: 0;
-            ">
-            <a
-               href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow"><code>flex-grow</code></a>
+            "
+          >
+            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-grow"
+              ><code>flex-grow</code></a
+            >
             - proportion of available space to be allocated to this flex-item
           </p>
           <p
-             style="
+            style="
               border: 1px solid grey;
               width: 100%;
               text-align: left;
               padding: 0 2rem;
               margin: 0;
-            ">
-            <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink"><code>flex-shrink</code></a>
+            "
+          >
+            <a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/flex-shrink"
+              ><code>flex-shrink</code></a
+            >
             - tells this flex-item to shrink as available space shrinks
           </p>
           <p
-             style="
+            style="
               border: 1px solid grey;
               width: 100%;
               text-align: left;
               padding: 0 2rem;
               margin: 0;
-            ">
+            "
+          >
             <a
-               href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-self"><code>align-self</code></a>
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/align-self"
+              ><code>align-self</code></a
+            >
             - aligns this flex-item only
           </p>
         </div>
         <p>
-          <a href="https://www.youtube.com/watch?v=fm3dSg4cxRI">Deep dive video into the <code>flex</code>
-            properties</a>
+          <a href="https://www.youtube.com/watch?v=fm3dSg4cxRI"
+            >Deep dive video into the <code>flex</code> properties</a
+          >
         </p>
         <p>
           <a href="https://codepen.io/heliocrat/pen/KKWwKvv">Flex Codepen</a>
         </p>
         <p>
           <a
-             href="https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_Flexbox_layouts">Firefox
-            Flexbox Inspector</a>
+            href="https://developer.mozilla.org/en-US/docs/Tools/Page_Inspector/How_to/Examine_Flexbox_layouts"
+            >Firefox Flexbox Inspector</a
+          >
         </p>
       </article>
       <article class="slide">
@@ -514,17 +550,25 @@ gap: 1rem 2rem;
           <div>
             <h2>Flexbox References</h2>
             <p>
-              <a href="https://flexbox.malven.co/">Simple Flexbox Cheat Sheet</a>
+              <a href="https://flexbox.malven.co/"
+                >Simple Flexbox Cheat Sheet</a
+              >
             </p>
             <p>
-              <a href="https://yoksel.github.io/flex-cheatsheet/">In-Depth Flexbox Cheat Sheet</a>
+              <a href="https://yoksel.github.io/flex-cheatsheet/"
+                >In-Depth Flexbox Cheat Sheet</a
+              >
             </p>
             <p>
-              <a href="https://the-echoplex.net/flexyboxes/">Flexbox Playground</a>
+              <a href="https://the-echoplex.net/flexyboxes/"
+                >Flexbox Playground</a
+              >
             </p>
             <p>
               <a
-                 href="https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/">Interactive Guide to Flexbox</a>
+                href="https://www.joshwcomeau.com/css/interactive-guide-to-flexbox/"
+                >Interactive Guide to Flexbox</a
+              >
             </p>
           </div>
           <div>
@@ -537,11 +581,15 @@ gap: 1rem 2rem;
               <a href="https://www.flexboxpatterns.com/">Flexbox Patterns</a>
             </p>
             <p>
-              <a href="https://philipwalton.github.io/solved-by-flexbox/">Layouts Solved by Flexbox</a>
+              <a href="https://philipwalton.github.io/solved-by-flexbox/"
+                >Layouts Solved by Flexbox</a
+              >
             </p>
             <p>
               <a
-                 href="https://www.freecodecamp.org/news/learn-flexbox-build-5-layouts/">Page Layouts with Flexbox</a>
+                href="https://www.freecodecamp.org/news/learn-flexbox-build-5-layouts/"
+                >Page Layouts with Flexbox</a
+              >
             </p>
           </div>
         </div>
@@ -555,10 +603,14 @@ gap: 1rem 2rem;
         </ol>
         <h2>Further Practice</h2>
         <p>
-          <a href="https://flexboxfroggy.com/">Flexbox Froggies - No account needed!</a>
+          <a href="https://flexboxfroggy.com/"
+            >Flexbox Froggies - No account needed!</a
+          >
         </p>
         <p>
-          <a href="https://flexboxzombies.com/p/flexbox-zombies">Flexbox Zombies - free w/ account</a>
+          <a href="https://flexboxzombies.com/p/flexbox-zombies"
+            >Flexbox Zombies - free w/ account</a
+          >
         </p>
       </article>
     </section>
@@ -585,9 +637,10 @@ gap: 1rem 2rem;
       <article class="slide">
         <h2>Basic terminology</h2>
         <img
-             class="backdrop"
-             src="img/terminology.svg"
-             alt="Grid terminology" />
+          class="backdrop"
+          src="img/terminology.svg"
+          alt="Grid terminology"
+        />
         <details class="notes">
           <p>
             There are a number of terms I will constantly refer to throughout
@@ -637,8 +690,9 @@ gap: 1rem 2rem;
         <blockquote>
           “Grid works from the <strong class="highlight3">container</strong> in,
           other layout methods start with the
-          <strong class="highlight3">item</strong>”<br /><small>—<a href="https://rachelandrew.co.uk/">Rachel
-              Andrew</a></small>
+          <strong class="highlight3">item</strong>”<br /><small
+            >—<a href="https://rachelandrew.co.uk/">Rachel Andrew</a></small
+          >
         </blockquote>
         <p><a href="https://gridbyexample.com/">Grid By Example</a></p>
         <details class="notes">
@@ -667,17 +721,19 @@ gap: 1rem 2rem;
   <div><p>Item E</p></div>
   <div><p>Item F</p></div>
 </div>
-		</textarea>
+		</textarea
+        >
         <textarea class="language-css">
 			.inlineblock > div {
 				display: inline-block;
 				/* change to 100% / 2 or 4 */
 				width: calc(100% / 3);
 			}
-		</textarea>
+		</textarea
+        >
       </article>
 
-      <article class="demo" id="livedemo"  >
+      <article class="demo" id="livedemo">
         <textarea class="language-html">
           <h1>
             Layout Technique: <small><code>float</code></small>
@@ -690,7 +746,8 @@ gap: 1rem 2rem;
 	<div><p>Item E</p></div>
 	<div><p>Item F</p></div>
 </div>
-		</textarea>
+		</textarea
+        >
         <textarea class="language-css">
 			/* very similar to inline-block */
 			.float > div {
@@ -698,7 +755,8 @@ gap: 1rem 2rem;
 				/* change to 100% / 2 or 4 */
 				width: calc(100% / 3);
 			}
-		</textarea>
+		</textarea
+        >
       </article>
 
       <article class="demo slide" id="livedemo">
@@ -713,7 +771,8 @@ gap: 1rem 2rem;
 	<div><p>Item E</p></div>
 	<div><p>Item F</p></div>
 </div>
-		</textarea>
+		</textarea
+        >
         <textarea class="language-css">
 			.flexbox {
 				display: flex;
@@ -729,7 +788,8 @@ gap: 1rem 2rem;
 				flex-grow: 0; /* default */
 				/*flex-grow: 1; */
 			}
-		</textarea>
+		</textarea
+        >
       </article>
 
       <article class="slide">
@@ -740,7 +800,9 @@ gap: 1rem 2rem;
         <blockquote>
           “Grid is the only layout technique that establishes a
           <strong class="highlight3">relationship</strong> between rows and
-          columns of grid items.”<br /><small>—<a href="https://rachelandrew.co.uk/">Rachel Andrew</a></small>
+          columns of grid items.”<br /><small
+            >—<a href="https://rachelandrew.co.uk/">Rachel Andrew</a></small
+          >
         </blockquote>
         <p>
           Unique among CSS Layout systems, the dimensions for rows and columns
@@ -788,10 +850,11 @@ gap: 1rem 2rem;
             </ul>
           </div>
           <img
-               class="delayed backdrop corners"
-               style="grid-row: 2"
-               src="img/define-grid.svg"
-               alt="Define a grid" />
+            class="delayed backdrop corners"
+            style="grid-row: 2"
+            src="img/define-grid.svg"
+            alt="Define a grid"
+          />
           <div class="delayed">
             <p>Place grid items in the grid.</p>
             <ul style="list-style: none">
@@ -801,10 +864,11 @@ gap: 1rem 2rem;
             </ul>
           </div>
           <img
-               class="delayed backdrop corners"
-               style="grid-row: 2"
-               src="img/place-items.svg"
-               alt="Place items in the grid" />
+            class="delayed backdrop corners"
+            style="grid-row: 2"
+            src="img/place-items.svg"
+            alt="Place items in the grid"
+          />
         </div>
         <details class="notes">
           The basic premise of how grid works involves two steps. You define the
@@ -817,8 +881,9 @@ gap: 1rem 2rem;
         <h2>Defining the Grid</h2>
         <div class="flex" style="gap: 2rem">
           <img
-               alt="Parent-child relationship"
-               src="img/grid-parent-child.svg" />
+            alt="Parent-child relationship"
+            src="img/grid-parent-child.svg"
+          />
           <div style="flex: 1 0 56%; align-self: center">
             <p>
               The grid formatting context only applies to the direct child
@@ -867,7 +932,8 @@ gap: 1rem 2rem;
 	<div><p>Item E</p></div>
 	<div><p>Item F</p></div>
 </div>
-		</textarea>
+		</textarea
+        >
         <textarea class="language-css">
 .grid {
   display: grid;
@@ -878,44 +944,53 @@ gap: 1rem 2rem;
 /* grid item rules optional! */
   /* width: 100%; */
 }
-		</textarea>
+		</textarea
+        >
       </article>
 
       <article class="slide" style="justify-content: start">
         <div
-             class="grid"
-             style="
+          class="grid"
+          style="
             grid-template-rows: 20vh 20vh 1fr;
             grid-template-columns: 1fr 150px 1fr;
-          ">
+          "
+        >
           <h2 style="grid-column: 3; grid-row: 1 / 2; justify-self: center">
             Placing Items in the Grid
           </h2>
           <div
-               style="
+            style="
               grid-column: 3;
               grid-row: 2 / 3;
               align-items: center;
               width: 100%;
             "
-               class="flex-col">
+            class="flex-col"
+          >
             <p>Explicit vs Implicit tracks</p>
             <p>
-              <a href="https://cssreference.io/css-grid/#grid-row">grid-row on CSSReference.io</a>
+              <a href="https://cssreference.io/css-grid/#grid-row"
+                >grid-row on CSSReference.io</a
+              >
             </p>
             <p>
               <a
-                 href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column">grid-column on MDN</a>
+                href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-column"
+                >grid-column on MDN</a
+              >
             </p>
           </div>
           <img
-               style="grid-column: 2 / 4; grid-row: 3; z-index: 2"
-               class="backdrop corners"
-               src="img/implicit-grid.svg"
-               alt="Implicit grid" />
+            style="grid-column: 2 / 4; grid-row: 3; z-index: 2"
+            class="backdrop corners"
+            src="img/implicit-grid.svg"
+            alt="Implicit grid"
+          />
           <pre
-               style="grid-column: 1 / 3; grid-row: 1 / -1;"
-               class="language-css"><code>.grid-container {
+            style="grid-column: 1 / 3; grid-row: 1 / -1"
+            class="language-css"
+          ><code>.grid-container {
   display: grid;
   /* three columns  */
   grid-template-columns: 150px 150px 150px; 
@@ -967,7 +1042,8 @@ gap: 1rem 2rem;
   <div>(6)🍌</div>
   <svg><rect/></svg>
 </div>
-</textarea>
+</textarea
+        >
         <textarea class="language-css">
 .grid {
   display: grid;
@@ -994,7 +1070,8 @@ gap: 1rem 2rem;
   grid-column: 3;
   grid-row: 3;
 }
-		</textarea>
+		</textarea
+        >
         <details class="hidden">
           <p>
             Let's see how this works. <code>grid-row</code> and
@@ -1015,7 +1092,7 @@ gap: 1rem 2rem;
 
       <article class="slide">
         <h2>Let's Create a Grid-based Media Object</h2>
-        <img class="backdrop corners" src="img/grid_media_object.png" alt=""/>
+        <img class="backdrop corners" src="img/grid_media_object.png" alt="" />
       </article>
 
       <article class="slide">
@@ -1076,7 +1153,8 @@ gap: 1rem 2rem;
     </p>
 				  </div>
 				</div>
-			</textarea>
+			</textarea
+        >
         <textarea class="language-css">
 .grid {
   display: grid;
@@ -1090,7 +1168,8 @@ gap: 1rem 2rem;
   width: 100%;
   height: 100%;
 }
-			</textarea>
+			</textarea
+        >
       </article>
 
       <article class="slide">
@@ -1130,7 +1209,8 @@ gap: 1rem 2rem;
   <div><p>Item B</p></div>
   <div><p>Item C</p></div>
 </div>
-		</textarea>
+		</textarea
+        >
         <textarea class="language-css">
 .grid {
   display: grid;
@@ -1145,11 +1225,11 @@ gap: 1rem 2rem;
   width: 100%;
   height: 100%;
 }
-		</textarea>
+		</textarea
+        >
       </article>
 
       <article class="demo slide">
-
         <textarea class="language-html">
           <span>The <code>repeat()</code> function <sup><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat()">MDN</a></sup><div><small> Specify many columns/rows that follow a pattern</small></div></span>
 
@@ -1163,7 +1243,8 @@ gap: 1rem 2rem;
   <div><p>Item</p></div>
   <div><p>Item</p></div>
 </div>
-		</textarea>
+		</textarea
+        >
         <textarea class="language-css">
 .grid {
   display: grid;
@@ -1178,7 +1259,8 @@ gap: 1rem 2rem;
   width: 100%;
   height: 100%;
 }
-		</textarea>
+		</textarea
+        >
         <details class="hidden">
           Also, if your design calls for a rather complex and large grid, you
           probably don't want to type out each track's width by hand. The
@@ -1191,8 +1273,12 @@ gap: 1rem 2rem;
       <article class="slide">
         <h2>
           <code>auto-fill</code> vs. <code>auto-fit</code>
-          <sup><a
-               href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat()#values">MDN</a></sup>
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/repeat()#values"
+              >MDN</a
+            ></sup
+          >
         </h2>
         <p>
           Allow browser to create a number of tracks depending on grid track
@@ -1203,17 +1289,21 @@ gap: 1rem 2rem;
           <div>
             <img width="90%" src="img/auto-fill.png" alt="Auto-fill" />
             <pre
-                 class="language-css"><code>grid-template-columns: repeat(auto-fill, 100px);</code></pre>
+              class="language-css"
+            ><code>grid-template-columns: repeat(auto-fill, 100px);</code></pre>
           </div>
           <div>
             <img width="990%" src="img/auto-fit.png" alt="Auto-fit" />
             <pre
-                 class="language-css"><code class="css">grid-template-rows: repeat(auto-fit, 100px);</code></pre>
+              class="language-css"
+            ><code class="css">grid-template-rows: repeat(auto-fit, 100px);</code></pre>
           </div>
         </div>
         <p class="delayed"><code>auto-fit</code> collapses empty tracks.</p>
         <p class="delayed">
-          <a href="https://codepen.io/heliocrat/full/MWpyeLy">Codepen Example</a>
+          <a href="https://codepen.io/heliocrat/full/MWpyeLy"
+            >Codepen Example</a
+          >
         </p>
         <details class="notes">
           <p>
@@ -1250,7 +1340,8 @@ gap: 1rem 2rem;
   <div><p>E</p></div>
   <div><p>F</p></div>
 </div>
-		</textarea>
+		</textarea
+        >
         <textarea class="language-css">
 .grid {
   display: grid;
@@ -1268,7 +1359,8 @@ gap: 1rem 2rem;
   width: 100%;
   height: 300px;
 }
-		</textarea>
+		</textarea
+        >
         <details class="hidden">
           <p>
             In this example, I have asked the browser to make me columns that
@@ -1296,11 +1388,14 @@ gap: 1rem 2rem;
         <p>
           No Media Queries with
           <a
-             href="https://medium.com/samsung-internet-dev/common-responsive-layouts-with-css-grid-and-some-without-245a862f48df">CSS
-            Grid</a>
+            href="https://medium.com/samsung-internet-dev/common-responsive-layouts-with-css-grid-and-some-without-245a862f48df"
+            >CSS Grid</a
+          >
           /
           <a
-             href="https://css-tricks.com/how-to-make-a-media-query-less-card-component/">and Flexbox, too!</a>
+            href="https://css-tricks.com/how-to-make-a-media-query-less-card-component/"
+            >and Flexbox, too!</a
+          >
         </p>
         <video autoplay loop class="video" height="50%">
           <source src="videos/responsive-grid.mp4" type="video/mp4" />
@@ -1336,19 +1431,27 @@ gap: 1rem 2rem;
         <p>These properties give you control of implicit grid tracks.</p>
         <p>
           <a
-             href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns"><code>grid-auto-columns</code></a>
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-columns"
+            ><code>grid-auto-columns</code></a
+          >
         </p>
         <p>
           <a
-             href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows"><code>grid-auto-rows</code></a>
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-rows"
+            ><code>grid-auto-rows</code></a
+          >
         </p>
         <p>
           <a
-             href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow"><code>grid-auto-flow</code></a>
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/grid-auto-flow"
+            ><code>grid-auto-flow</code></a
+          >
         </p>
         <p>
-          <a href="https://codepen.io/imjuangarcia/pen/bzpYyj">Example Gallery w/ the
-            <code class="slack-code">dense</code> packing algo</a>
+          <a href="https://codepen.io/imjuangarcia/pen/bzpYyj"
+            >Example Gallery w/ the
+            <code class="slack-code">dense</code> packing algo</a
+          >
         </p>
       </article>
     </section>
@@ -1380,22 +1483,25 @@ gap: 1rem 2rem;
       </article>
       <article class="slide">
         <div
-             class="grid col-2"
-             style="
+          class="grid col-2"
+          style="
             max-height: 100vh;
             grid-template-rows: 250px 1fr;
             margin-left: 15%;
-          ">
+          "
+        >
           <h2 style="grid-row: 1 / 2">Responsively Position Semantic Areas</h2>
           <img
-               style="grid-row: 2 / 3"
-               src="img/braun-mid.jpg"
-               alt="Braun mid-width layout" />
+            style="grid-row: 2 / 3"
+            src="img/braun-mid.jpg"
+            alt="Braun mid-width layout"
+          />
           <img
-               class="delayed"
-               style="grid-row: 1 / span 2"
-               src="img/braun-narrow.jpg"
-               alt="Braun narrow layout" />
+            class="delayed"
+            style="grid-row: 1 / span 2"
+            src="img/braun-narrow.jpg"
+            alt="Braun narrow layout"
+          />
         </div>
         <details class="notes">
           <p>
@@ -1477,17 +1583,24 @@ gap: 1rem 2rem;
 
       <article class="slide">
         <h2>
-          Grid Placement with Named Areas<sup><a
-               href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Grid_Template_Areas">MDN</a></sup>
+          Grid Placement with Named Areas<sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Grid_Layout/Grid_Template_Areas"
+              >MDN</a
+            ></sup
+          >
         </h2>
         <div class="flex align">
           <img
-               class="backdrop corners"
-               src="img/named-areas.svg"
-               alt="Named grid areas" />
+            class="backdrop corners"
+            src="img/named-areas.svg"
+            alt="Named grid areas"
+          />
           <div>
             <p>
-              <a href="https://cssreference.io/css-grid/#grid-template-areas">CSSReference.io</a>
+              <a href="https://cssreference.io/css-grid/#grid-template-areas"
+                >CSSReference.io</a
+              >
             </p>
             <pre class="language-css"><code>.grid-container {
   display: grid;
@@ -1530,7 +1643,8 @@ gap: 1rem 2rem;
 				<div class="aside"><p>Aside</p></div>
 				<div class="main"><p>Main</p></div>
 			</div>
-		</textarea>
+		</textarea
+        >
         <textarea class="language-css">
 			.grid {
 				display: grid;
@@ -1549,7 +1663,8 @@ gap: 1rem 2rem;
 	.grid .main { grid-area: main; }
 	.grid .aside { grid-area: aside; }
 	.grid .footer { grid-area: footer; }
-		</textarea>
+		</textarea
+        >
       </article>
 
       <header class="slide">
@@ -1565,16 +1680,21 @@ gap: 1rem 2rem;
       <article class="slide">
         <h2>
           Grid Axes
-          <sup><a
-               href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Grid_Layout"></a></sup>
+          <sup
+            ><a
+              href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Grid_Layout"
+            ></a
+          ></sup>
         </h2>
         <div class="flex-col" style="gap: 3rem">
           <img
-               src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Grid_Layout/inline_axis.png"
-               alt="" />
+            src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Grid_Layout/inline_axis.png"
+            alt=""
+          />
           <img
-               src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Grid_Layout/block_axis.png"
-               alt="" />
+            src="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Box_Alignment/Box_Alignment_In_Grid_Layout/block_axis.png"
+            alt=""
+          />
         </div>
       </article>
 
@@ -1594,10 +1714,11 @@ gap: 1rem 2rem;
                 content within element<br />(effectively adjusts padding)
               </p>
               <img
-                   class="backdrop corners"
-                   style="max-width: 7em; vertical-align: top"
-                   src="img/content.svg"
-                   alt="Content diagram" />
+                class="backdrop corners"
+                style="max-width: 7em; vertical-align: top"
+                src="img/content.svg"
+                alt="Content diagram"
+              />
             </td>
             <td rowspan="2">
               block containers, flex containers and grid containers<br />
@@ -1615,10 +1736,11 @@ gap: 1rem 2rem;
                 element within parent<br />(effectively adjusts margins)
               </p>
               <img
-                   class="backdrop corners"
-                   style="max-width: 7em; vertical-align: top"
-                   src="img/self.svg"
-                   alt="Self diagram" />
+                class="backdrop corners"
+                style="max-width: 7em; vertical-align: top"
+                src="img/self.svg"
+                alt="Self diagram"
+              />
             </td>
             <td>
               block-level boxes, absolutely-positioned boxes and grid items<br />
@@ -1639,10 +1761,11 @@ gap: 1rem 2rem;
                 items inside box<br />(controls child items)
               </p>
               <img
-                   class="backdrop corners"
-                   style="max-width: 7em; vertical-align: top"
-                   src="img/items.svg"
-                   alt="Items diagram" />
+                class="backdrop corners"
+                style="max-width: 7em; vertical-align: top"
+                src="img/items.svg"
+                alt="Items diagram"
+              />
             </td>
             <td>block containers and grid containers<br /></td>
           </tr>
@@ -1653,8 +1776,12 @@ gap: 1rem 2rem;
           </tr>
         </table>
         <p>
-          <small>Source:
-            <a href="https://www.w3.org/TR/css-align-3/#overview">CSS Box Alignment Module Level 3</a></small>
+          <small
+            >Source:
+            <a href="https://www.w3.org/TR/css-align-3/#overview"
+              >CSS Box Alignment Module Level 3</a
+            ></small
+          >
         </p>
         <details class="notes">
           <p>
@@ -1684,7 +1811,8 @@ gap: 1rem 2rem;
 						<div><p>Item 3</p></div>
 						<div><p>Item 4</p></div>
 					</div>
-				</textarea>
+				</textarea
+        >
         <textarea class="language-css">
 					.grid {
 						justify-content: normal;
@@ -1709,7 +1837,8 @@ gap: 1rem 2rem;
 					.grid > div:nth-of-type(2) { grid-area: b; }
 					.grid > div:nth-of-type(3) { grid-area: c; }
 					.grid > div:nth-of-type(4) { grid-area: d; }
-				</textarea>
+				</textarea
+        >
         <details class="hidden">
           <p>
             The <code>justify-content</code> and
@@ -1748,91 +1877,103 @@ gap: 1rem 2rem;
             <td><code>justify-content</code></td>
             <td style="text-align: center">
               <img
-                   class="backdrop corners"
-                   style="max-height: 4.5em"
-                   src="img/jc-center.png"
-                   alt="justify-content:center" />
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                src="img/jc-center.png"
+                alt="justify-content:center"
+              />
             </td>
             <td style="text-align: center">
               <img
-                   class="backdrop corners"
-                   style="max-height: 4.5em"
-                   src="img/jc-start.png"
-                   alt="justify-content:start" />
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                src="img/jc-start.png"
+                alt="justify-content:start"
+              />
             </td>
             <td style="text-align: center">
               <img
-                   class="backdrop corners"
-                   style="max-height: 4.5em"
-                   src="img/jc-end.png"
-                   alt="justify-content:end" />
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                src="img/jc-end.png"
+                alt="justify-content:end"
+              />
             </td>
             <td style="text-align: center">
               <img
-                   class="backdrop corners"
-                   style="max-height: 4.5em"
-                   src="img/jc-sa.png"
-                   alt="justify-content:space-around" />
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                src="img/jc-sa.png"
+                alt="justify-content:space-around"
+              />
             </td>
             <td style="text-align: center">
               <img
-                   class="backdrop corners"
-                   style="max-height: 4.5em"
-                   src="img/jc-sb.png"
-                   alt="justify-content:space-between" />
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                src="img/jc-sb.png"
+                alt="justify-content:space-between"
+              />
             </td>
             <td style="text-align: center">
               <img
-                   class="backdrop corners"
-                   style="max-height: 4.5em"
-                   src="img/jc-se.png"
-                   alt="justify-content:space-evenly" />
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                src="img/jc-se.png"
+                alt="justify-content:space-evenly"
+              />
             </td>
           </tr>
           <tr>
             <td><code>align-content</code></td>
             <td style="text-align: center">
               <img
-                   class="backdrop corners"
-                   style="max-height: 4.5em"
-                   src="img/ac-center.png"
-                   alt="align-content:center" />
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                src="img/ac-center.png"
+                alt="align-content:center"
+              />
             </td>
 
             <td style="text-align: center">
               <img
-                   class="backdrop corners"
-                   style="max-height: 4.5em"
-                   src="img/ac-start.png"
-                   alt="align-content:start" />
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                src="img/ac-start.png"
+                alt="align-content:start"
+              />
             </td>
             <td style="text-align: center">
               <img
-                   class="backdrop corners"
-                   style="max-height: 4.5em"
-                   src="img/ac-end.png"
-                   alt="align-content:end" />
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                src="img/ac-end.png"
+                alt="align-content:end"
+              />
             </td>
             <td style="text-align: center">
               <img
-                   class="backdrop corners"
-                   style="max-height: 4.5em"
-                   src="img/ac-sa.png"
-                   alt="align-content:space-around" />
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                src="img/ac-sa.png"
+                alt="align-content:space-around"
+              />
             </td>
             <td style="text-align: center">
               <img
-                   class="backdrop corners"
-                   style="max-height: 4.5em"
-                   src="img/ac-sb.png"
-                   alt="align-content:space-between" />
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                src="img/ac-sb.png"
+                alt="align-content:space-between"
+              />
             </td>
             <td style="text-align: center">
               <img
-                   class="backdrop corners"
-                   style="max-height: 4.5em"
-                   src="img/ac-se.png"
-                   alt="align-content:space-evenly" />
+                class="backdrop corners"
+                style="max-height: 4.5em"
+                src="img/ac-se.png"
+                alt="align-content:space-evenly"
+              />
             </td>
           </tr>
         </table>
@@ -1869,9 +2010,10 @@ gap: 1rem 2rem;
             borders don't always lay flush with their cell boundary.
           </figcaption>
           <img
-               class="backdrop corners"
-               src="img/fit.svg"
-               alt="Self-alignment properties" />
+            class="backdrop corners"
+            src="img/fit.svg"
+            alt="Self-alignment properties"
+          />
         </figure>
         <details class="notes">
           <p>
@@ -1898,9 +2040,10 @@ gap: 1rem 2rem;
             Make each grid-item into a flex-container. That's more like it
           </figcaption>
           <img
-               class="plain"
-               src="img/flex.svg"
-               alt="Display flex on grid items" />
+            class="plain"
+            src="img/flex.svg"
+            alt="Display flex on grid items"
+          />
         </figure>
         <details class="notes">
           But if instead we apply <code>display: flex</code> on the grid item,
@@ -1924,7 +2067,8 @@ gap: 1rem 2rem;
 							<line x1="0" y1="50%" x2="100%" y2="50%" />
 						</svg>
 					</div>
-				</textarea>
+				</textarea
+        >
         <textarea class="language-css">
 					.grid {
 						display: grid;
@@ -1957,7 +2101,8 @@ gap: 1rem 2rem;
 						align-self: center;
 						/* justify-self: center; */
 					}
-				</textarea>
+				</textarea
+        >
         <details class="hidden">
           <p>
             The <code>justify-self</code> and <code>align-self</code> properties
@@ -1992,7 +2137,8 @@ gap: 1rem 2rem;
 							<line x1="0" y1="50%" x2="100%" y2="50%" />
 						</svg>
 					</div>
-				</textarea>
+				</textarea
+        >
         <textarea class="language-css">
 					.grid {
 						justify-items: normal;
@@ -2014,7 +2160,8 @@ gap: 1rem 2rem;
 					.grid > div:nth-of-type(2) { grid-area: b; }
 					.grid > div:nth-of-type(3) { grid-area: c; }
 					.grid > div:nth-of-type(4) { grid-area: d; }
-				</textarea>
+				</textarea
+        >
         <details class="hidden">
           <p>
             Finally, we have the <code>align-items</code> and
@@ -2028,10 +2175,11 @@ gap: 1rem 2rem;
       <article class="slide">
         <h2>Properties on the grid item</h2>
         <img
-             class="plain"
-             style="max-height: 65vh"
-             src="img/chessboard.jpg"
-             alt="Chessboard" />
+          class="plain"
+          style="max-height: 65vh"
+          src="img/chessboard.jpg"
+          alt="Chessboard"
+        />
         <details class="notes">
           The next thing we're going to cover is manual placement of grid items.
           When it comes to grid placement, my mind instinctively draws a
@@ -2042,14 +2190,16 @@ gap: 1rem 2rem;
       <article class="slide">
         <h2>Grid placement with Named Lines</h2>
         <pre
-             class="language-css"
-             style="margin-bottom: 12px"><code>grid-template-columns: [first sidebar-start] 250px [sidebar-end content-start] 1fr [content-end last];
+          class="language-css"
+          style="margin-bottom: 12px"
+        ><code>grid-template-columns: [first sidebar-start] 250px [sidebar-end content-start] 1fr [content-end last];
 grid-template-rows: [first header-start] 100px [header-end content-start] 1fr [content-end footer-start] 100px [footer-end last];</code></pre>
         <img
-             class="backdrop corners"
-             style="margin: 0; max-height: 65vh"
-             src="img/named-lines.svg"
-             alt="Named lines" />
+          class="backdrop corners"
+          style="margin: 0; max-height: 65vh"
+          src="img/named-lines.svg"
+          alt="Named lines"
+        />
         <details class="notes">
           <p>
             Other than using a numerical index to refer to specific grid lines,
@@ -2076,23 +2226,31 @@ grid-template-rows: [first header-start] 100px [header-end content-start] 1fr [c
         <h2>Grid Practice</h2>
         <p><a href="https://cssgridgarden.com/">CSS Grid Garden</a></p>
         <p><a href=" https://gridcritters.com/">Grid Critters 1</a></p>
-        <p><a href="https://james-priest.github.io/grid-critters-code/">Grid Critters 2</a></p>
-
+        <p>
+          <a href="https://james-priest.github.io/grid-critters-code/"
+            >Grid Critters 2</a
+          >
+        </p>
       </article>
 
       <article class="slide">
         <h2>Further Reading</h2>
         <p>
           <a
-             href="https://semicolon.dev/tutorial/css/complete-css-grid-tutorial">CSS Grid Illustrated</a>
+            href="https://semicolon.dev/tutorial/css/complete-css-grid-tutorial"
+            >CSS Grid Illustrated</a
+          >
         </p>
         <p>
           <a
-             href="https://dev.to/mustapha/css-grid-illustrated-introduction-52l5">Grid Overview & 12 Col Grid
-            Example</a>
+            href="https://dev.to/mustapha/css-grid-illustrated-introduction-52l5"
+            >Grid Overview & 12 Col Grid Example</a
+          >
         </p>
         <p>
-          <a href="https://dev.to/mustapha/css-grid-3-practical-examples-51p9">3 Grid Examples</a>
+          <a href="https://dev.to/mustapha/css-grid-3-practical-examples-51p9"
+            >3 Grid Examples</a
+          >
         </p>
         <h2>More Grid Tools</h2>
         <p><a href="https://grid.layoutit.com/">Layoutit!</a></p>
@@ -2176,12 +2334,17 @@ h2 {
       <article class="slide">
         <h2>Building a grid layout</h2>
         <img
-             class="plain"
-             src="img/tycho.jpg"
-             alt="Tycho artist blog/profile concept" />
+          class="plain"
+          src="img/tycho.jpg"
+          alt="Tycho artist blog/profile concept"
+        />
         <p>
-          <small>Design credit:
-            <a href="https://dribbble.com/shots/3002189-Tycho/">Drew Sullivan</a></small>
+          <small
+            >Design credit:
+            <a href="https://dribbble.com/shots/3002189-Tycho/"
+              >Drew Sullivan</a
+            ></small
+          >
         </p>
         <details class="notes">
           I'm going to give you a high-level walk-through of how I would build a
@@ -2261,9 +2424,10 @@ h2 {
         <h2>Fallback layout</h2>
         <div class="flex">
           <img
-               style="max-height: 75vh"
-               src="img/tycho-fallback.jpg"
-               alt="Fallback for browsers without grid" />
+            style="max-height: 75vh"
+            src="img/tycho-fallback.jpg"
+            alt="Fallback for browsers without grid"
+          />
           <pre class="language-css"><code>main {
   max-width: 45em;
   margin: 0 auto;
@@ -2313,8 +2477,9 @@ button {
       <article class="slide">
         <h2>
           <a
-             href="https://css-tricks.com/css-grid-in-ie-css-grid-and-the-new-autoprefixer/">CSS Grid in IE &
-            <code>@supports</code></a>
+            href="https://css-tricks.com/css-grid-in-ie-css-grid-and-the-new-autoprefixer/"
+            >CSS Grid in IE & <code>@supports</code></a
+          >
         </h2>
         <pre class="language-css"><code>
 @supports (grid-column: 1) {
@@ -2434,8 +2599,12 @@ button {
 
       <article class="slide">
         <h2>Browser support for <code>@supports</code></h2>
-        <iframe src="//caniuse.bitsofco.de/embed/index.html?feat=css-featurequeries&amp;periods=future_1,current,past_1,past_2"
-                frameborder="0" width="100%" height="390px"></iframe>
+        <iframe
+          src="//caniuse.bitsofco.de/embed/index.html?feat=css-featurequeries&amp;periods=future_1,current,past_1,past_2"
+          frameborder="0"
+          width="100%"
+          height="390px"
+        ></iframe>
         <details class="notes">
           <p>
             Support for feature queries is really good, with coverage in over
@@ -2457,8 +2626,7 @@ button {
       </article>
 
       <article class="slide">
-        <div
-             class="flex">
+        <div class="flex">
           <video autoplay loop>
             <source src="videos/ie11.mp4" type="video/mp4" />
             Sorry, your browser doesn't support embedded videos, but don't
@@ -2503,8 +2671,7 @@ header {
       </article>
 
       <article class="slide">
-        <div
-             class="flex">
+        <div class="flex">
           <video autoplay loop>
             <source src="videos/flexbox.mp4" type="video/mp4" />
             Sorry, your browser doesn't support embedded videos, but don't
@@ -2579,8 +2746,7 @@ header {
       </article>
 
       <article class="slide">
-        <div
-             class="flex">
+        <div class="flex">
           <video autoplay loop style="align-self: start">
             <source src="videos/grid.mp4" type="video/mp4" />
             Sorry, your browser doesn't support embedded videos, but don't
@@ -2678,18 +2844,28 @@ header {
         <div class="flex">
           <figure>
             <img
-                 src="img/cssworkshop.jpg"
-                 alt="CSS layout workshop by Rachel Andrew" />
+              src="img/cssworkshop.jpg"
+              alt="CSS layout workshop by Rachel Andrew"
+            />
             <figcaption>
-              <small><a href="http://labs.jensimmons.com/">https://thecssworkshop.com/</a></small>
+              <small
+                ><a href="http://labs.jensimmons.com/"
+                  >https://thecssworkshop.com/</a
+                ></small
+              >
             </figcaption>
           </figure>
           <figure>
             <img
-                 src="img/layoutlab.jpg"
-                 alt="Jen Simmons' experimental layout lab" />
+              src="img/layoutlab.jpg"
+              alt="Jen Simmons' experimental layout lab"
+            />
             <figcaption>
-              <small><a href="http://labs.jensimmons.com/">http://labs.jensimmons.com/</a></small>
+              <small
+                ><a href="http://labs.jensimmons.com/"
+                  >http://labs.jensimmons.com/</a
+                ></small
+              >
             </figcaption>
           </figure>
         </div>
@@ -2712,58 +2888,78 @@ header {
       <article class="slide">
         <h2>Useful references</h2>
         <ul style="column-count: 2; font-size: 70%">
-          <li><a href="https://css-tricks.com/snippets/css/complete-guide-grid/">CSS Tricks: Complete Grid Guide</a>
+          <li>
+            <a href="https://css-tricks.com/snippets/css/complete-guide-grid/"
+              >CSS Tricks: Complete Grid Guide</a
+            >
           </li>
-          <li><a href="https://cssprinciples.com/3/grid/">Dabbling with CSS Grid</a></li>
+          <li>
+            <a href="https://cssprinciples.com/3/grid/"
+              >Dabbling with CSS Grid</a
+            >
+          </li>
           <li>
             <a href="https://web.dev/learn/">Web.dev</a>: Everything HTML & CSS
           </li>
           <li>
-            <a href="https://www.w3.org/TR/css-grid-1/">CSS Grid Layout Module Level 1</a>
+            <a href="https://www.w3.org/TR/css-grid-1/"
+              >CSS Grid Layout Module Level 1</a
+            >
           </li>
           <li>
-            <a href="https://tympanus.net/codrops/css_reference/grid/">Codrops CSS Grid reference</a>
+            <a href="https://tympanus.net/codrops/css_reference/grid/"
+              >Codrops CSS Grid reference</a
+            >
           </li>
           <li><a href="https://gridbyexample.com/">Grid by Example</a></li>
           <li>
             <a
-               href="https://web.archive.org/web/20190305235601/http://jensimmons.com/post/feb-27-2017/learn-css-grid">Learn
-              CSS Grid</a>
+              href="https://web.archive.org/web/20190305235601/http://jensimmons.com/post/feb-27-2017/learn-css-grid"
+              >Learn CSS Grid</a
+            >
           </li>
           <li>
             <a
-               href="https://blogs.igalia.com/mrego/2015/02/25/grid-auto-placement-is-ready/">Grid Auto-Placement Is
-              Ready</a>
+              href="https://blogs.igalia.com/mrego/2015/02/25/grid-auto-placement-is-ready/"
+              >Grid Auto-Placement Is Ready</a
+            >
           </li>
           <li>
             <a
-               href="https://blogs.igalia.com/svillar/2016/05/10/automatizing-the-grid/">Automatizing the Grid</a>
+              href="https://blogs.igalia.com/svillar/2016/05/10/automatizing-the-grid/"
+              >Automatizing the Grid</a
+            >
           </li>
           <li>
             <a
-               href="https://blogs.igalia.com/mrego/2016/02/01/deep-dive-into-grid-layout-placement/">Deep Dive into
-              Grid Layout Placement</a>
+              href="https://blogs.igalia.com/mrego/2016/02/01/deep-dive-into-grid-layout-placement/"
+              >Deep Dive into Grid Layout Placement</a
+            >
           </li>
           <li>
             <a
-               href="https://blogs.igalia.com/mrego/2016/05/27/css-grid-layout-and-positioned-items/">CSS Grid Layout
-              and positioned items</a>
+              href="https://blogs.igalia.com/mrego/2016/05/27/css-grid-layout-and-positioned-items/"
+              >CSS Grid Layout and positioned items</a
+            >
           </li>
           <li>
             <a
-               href="https://alistapart.com/article/the-story-of-css-grid-from-its-creators">The Story of CSS Grid, from
-              Its Creators</a>
+              href="https://alistapart.com/article/the-story-of-css-grid-from-its-creators"
+              >The Story of CSS Grid, from Its Creators</a
+            >
           </li>
           <li>
             <a
-               href="https://blogs.igalia.com/mrego/2017/03/16/css-grid-layout-is-here-to-stay/">CSS Grid Layout is Here
-              to Stay</a>
+              href="https://blogs.igalia.com/mrego/2017/03/16/css-grid-layout-is-here-to-stay/"
+              >CSS Grid Layout is Here to Stay</a
+            >
           </li>
           <li>
             <a
-               href="https://www.smashingmagazine.com/2016/11/css-grids-flexbox-box-alignment-new-layout-standard/">The
-              New Layout Standard For The Web: CSS Grid, Flexbox And Box
-              Alignment</a>
+              href="https://www.smashingmagazine.com/2016/11/css-grids-flexbox-box-alignment-new-layout-standard/"
+              >The New Layout Standard For The Web: CSS Grid, Flexbox And Box
+              Alignment</a
+            >
           </li>
         </ul>
         <details class="notes">
@@ -2795,5 +2991,4 @@ header {
 
     <script src="../laser/laser.js"></script>
   </body>
-
 </html>

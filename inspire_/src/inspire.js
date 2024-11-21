@@ -66,7 +66,7 @@ let _ = {
 		// Make all external links open in a new window
 		$$('a[href^="http"]:not([target])').forEach(a => a.target = "_blank");
 
-		// Set <html> attributes from query string
+		// Set <html lang="en"> attributes from query string
 		const url = new URL(location);
 		const params = url.searchParams;
 
