@@ -213,15 +213,24 @@ viewBox="0 0 500 500"
 
       <article class="slide">
         <h2>Line</h2>
-        <pre><code class="large-code">&lt;line x1="0" y1="0" x2="2" y2="2" /&gt;</code></pre>
+        <pre><code class="large-code">&lt;line x1="1" y1="1" x2="4" y2="4" /&gt;</code></pre>
+        <svg viewBox="0 0 15 15" xmlns="https://www.w3.org/2000/svg">
+          <line x1="2" y1="2" x2="13" y2="13" stroke="white"/>
+        </svg>
       </article>
       <article class="slide">
         <h2>Rect</h2>
         <pre><code class="large-code">&lt;rect x="5" y="5" width="50" height="50" rx="1" ry="1" /&gt;</code></pre>
+        <svg viewBox="0 0 80 40" xmlns="https://www.w3.org/2000/svg">
+          <rect x="20" y="10" width="40" height="20" fill="white"/>
+        </svg>
       </article>
       <article class="slide">
         <h2>Circle</h2>
         <pre><code class="large-code">&lt;circle cx="5" cy="5" r="2" /&gt;</code></pre>
+        <svg viewBox="0 0 60 60" xmlns="https://www.w3.org/2000/svg">
+          <circle cx="30" cy="30" r="15" fill="white"/>
+        </svg>
       </article>
       <article class="slide">
         <h2>Ellipse</h2>
@@ -234,17 +243,68 @@ viewBox="0 0 500 500"
 
       <article class="slide">
         <h2>Polyline & Polygon</h2>
-        <p>
+        <div class="grid">
+        <p style="grid-column: span 2;">
           Takes a series of number pairs separated by a space with the pair
           delimited by a comma
-        </p>
+        </p> 
         <pre><code class="large-code">&lt;polyline points="n,n n,n" /&gt;</code></pre>
+        <svg style="grid-row: span 2; align-self: stretch;" viewBox="0 0 10 10" xmlns="https://www.w3.org/2000/svg">
+          <polyline points="0,5 2,2 3,3 4,2 5,1 6,1 7,1.5 8,1 9,3" stroke="white" stroke-width="0.2" fill="none"/>
+          <polygon points="0,10 2,7 3,8 4,7 5,6 6,6 7,6.5 8,6 9,8" stroke="white" stroke-width="0.2" fill="none"/>
+        </svg>
         <pre><code class="large-code">&lt;polygon points="n,n n,n" /&gt; </code></pre>
-        <p><code>points="1,1 2,3 4,5 7,2"</code></p>
-        <p>
-          The difference is the polygon draws a final stroke to close the shape
-          automatically
+        <p style="grid-column: span 2; justify-self: center;"><code>points="0,5 2,2 3,3 4,2 5,1 6,1 7,1.5 8,1 9,3"</code></p>
+        <p style="grid-column: span 2;">
+          Difference: <code>polygon</code> automatically draws a final enclosing stroke
         </p>
+      </article>
+
+      <article class="slide">
+        <h2>Common Attributes</h2>
+        <ul style="columns: 2">
+          <li><code>stroke="blue"</code></li>
+          <li><code>stroke-width="4"</code></li>
+          <li><code>fill="white"</code></li>
+          <li><code>transform="translateX(20px)"</code></li>
+          <li><code>transform-origin="translateX(20px)"</code></li>
+        </ul>
+        <p>Manipulate shapes with transform css rules as before</p>
+        <p>
+          In svg you can define the transform as an attribute (no style attr
+          needed)
+        </p>
+        <p>
+          Pitfall of transform: the origin is the 0, 0 point of the parent svg
+        </p>
+        <p>Use <code>transform-origin</code> to change the axis of rotation</p>
+        <p>(set it to the x+width/2, y+height/2 coords)</p>
+        <p>
+          <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute">MDN List</a>
+        </p>
+      </article>
+
+      <article class="demo slide" id="Preview">
+        <textarea class="language-html">
+<!-- 
+  Let's try out some 
+  shapes & attrs! 
+ -->
+<svg viewBox="0 0 300 300">
+  <circle 
+    cx="150" 
+    cy="150" 
+    r="50"
+    />
+</svg>
+     </textarea>
+        <textarea class="language-css">
+        svg circle {
+          fill: royalblue; 
+          stroke: gold;
+          stroke-width: 10px;
+        }
+      </textarea>
       </article>
 
       <article class="slide">
@@ -315,31 +375,7 @@ viewBox="0 0 500 500"
       </article>
 
       <article class="slide">
-        <h2>Common Attributes</h2>
-        <ul style="columns: 2">
-          <li><code>stroke="blue"</code></li>
-          <li><code>stroke-width="4"</code></li>
-          <li><code>fill="white"</code></li>
-          <li><code>transform="translateX(20px)"</code></li>
-          <li><code>transform-origin="translateX(20px)"</code></li>
-        </ul>
-        <p>Manipulate shapes with transform css rules as before</p>
-        <p>
-          In svg you can define the transform as an attribute (no style attr
-          needed)
-        </p>
-        <p>
-          Pitfall of transform: the origin is the 0, 0 point of the parent svg
-        </p>
-        <p>Use <code>transform-origin</code> to change the axis of rotation</p>
-        <p>(set it to the x+width/2, y+height/2 coords)</p>
-        <p>
-          <a href="https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute">MDN List</a>
-        </p>
-      </article>
-
-      <article class="slide">
-        <h2>Stroke Attributes</h2>
+        <h2>Advanced Stroke Attributes</h2>
         <ul>
           <li><code>stroke: color value</code></li>
           <li><code>stroke-width: number</code></li>
@@ -414,9 +450,15 @@ viewBox="0 0 500 500"
       <article class="slide">
         <h2>SVG accessibility</h2>
         <pre><code>&lt;svg aria-labelledby="title-id" aria-describedby="desc-id"&gt; <!-- must match the id"s below -->
-  &lt;title id="title-id">Descriptive title for svg image&lt;/title&gt;
-  &lt;desc id="desc-id">Description of image (like an alt tag)&lt;/desc>&gt;
-  &lt;text role="presentation" role="hidden">Text that we don't want read by screen reader&lt;/text&gt;
+  &lt;title id="title-id">
+    Descriptive title for svg image
+  &lt;/title&gt;
+  &lt;desc id="desc-id">
+    Description of image (like an alt tag)
+  &lt;/desc>&gt;
+  &lt;text role="presentation" role="hidden">
+    Text that we don't want read by screen reader
+  &lt;/text&gt;
 &lt;/svg&gt;
         </code></pre>
         <p>You can add <code>&lt;title&gt;</code> and <code>&lt;desc&gt;</code> inside a <code>&lt;use&gt;</code>
@@ -444,36 +486,6 @@ viewBox="0 0 500 500"
     </section>
 
     <footer class="slide" title="The End">Thank you!</footer>
-
-    <section>
-      <article class="demo slide" id="Preview">
-        <a href="./" id="preview-back-btn">🔙</a>
-        <textarea class="language-html">
-  <div class="preview">
-    <div>
-      <svg>
-        <circle 
-          cx="150" 
-          cy="75" 
-          r="50"
-          stroke="royalblue" 
-          />
-      </svg>
-    </div>
-  </div>
-     </textarea>
-        <textarea class="language-css">
-        .preview > div {
-          padding: 1rem;
-          border: 1px solid silver;
-        }
-        .preview svg circle {
-          fill: skyblue; 
-          stroke-width: 5px;
-        }
-      </textarea>
-      </article>
-    </section>
 
     <script src="../laser/laser.js"></script>
   </body>
