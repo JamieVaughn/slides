@@ -137,8 +137,10 @@
 						<time>starting 2016</time></li>
 					<li><a href="https://blog.learncodeonline.in/whats-new-in-javascript-21-es12">ES2021 Released!</a>
 						<time>2021</time></li>
-					<li><a href="https://yagmurcetintas.com/journal/whats-new-in-es2022">ES2022 Released!</a> And the saga
-						continues!<time>2022</time></li>
+					<li><a href="https://yagmurcetintas.com/journal/whats-new-in-es2022">ES2022 Released!</a> <time>2022</time></li>
+					<li><a href="https://yagmurcetintas.com/journal/whats-new-in-es2022">ES2023 Released!</a> <time>2023</time></li>
+					<li><a href="https://yagmurcetintas.com/journal/whats-new-in-es2022">ES2024 Released!</a> And the saga
+						continues!<time>2024</time></li>
 				</ol>
 			</article>
 			<article class="slide">
@@ -169,9 +171,10 @@
 				</ul>
 			</article>
 			<article class="slide">
-				<h2>There are 7 primitive types</h2>
+				<h2>There are 7 primitive data types</h2>
+				<div style="columns: 2">
 				<p>The Basic Data Types</p>
-				<ul style="columns: 2">
+				<ul>
 					<li><code>undefined</code></li>
 					<li><code>Number</code></li>
 					<li><code>String</code></li>
@@ -180,11 +183,17 @@
 					<li><code>BigInt</code></li>
 					<li><code>Symbol</code></li>
 				</ul>
+				<div>
 				<p>Use <code>typeof</code> operator to check types</p>
 				<pre class="language-js"><code >typeof 'hello' // 'string'
 typeof 100 // 'number'
 typeof false // 'boolean'
+// single line comment
+/* Multiline
+comment */
 	</code></pre>
+</div>
+</div>
 			</article>
 			<article class="slide">
 				<h2>Null and Undefined</h2>
@@ -216,7 +225,7 @@ typeof false // 'boolean'
 				<p>Just "post-fix" a number with <code>n</code> → <code>30903920193n</code></p>
 				<p><code>const biggestNumber = 9007199254740991n</code> (but not the biggest BigInt)</p>
 			</article>
-			<article class="slide">
+			<article>
 				<h2>NaN - Not a Number</h2>
 				<div class="flex">
 					<ul>
@@ -248,18 +257,19 @@ Number.isNaN(NaN) // true</code></pre>
 					</li>
 				</ul>
 				<p>Truthy or Falsey?</p>
-				<p>Let's see it in action:</p>
-				<ul class="delayed-children">
-					<pre class="language-js"><code>Boolean(null)</code></pre>
+				<p>Try using <code>console.log()</code> in the dev tools to see it in action:</p>
+				<ul class="delayed-children" style="display: flex; flex-wrap: wrap; justify-content: center;">
+					<pre class="language-js" style="margin-top: auto;""><code>Boolean(null)</code></pre>
 					<pre class="language-js"><code>Boolean(undefined)</code></pre>
-					<pre class="language-js"><code>Boolean('0')</code></pre>
 					<pre class="language-js"><code>Boolean("")</code></pre>
 					<pre class="language-js"><code>Boolean('false')</code></pre>
+					<pre class="language-js"><code>Boolean('0')</code></pre>
+					<pre class="language-js"><code>Boolean(0)</code></pre>
 				</ul>
 			</article>
 			<article class="slide">
 				<h2>Strings</h2>
-				<pre class="language-js"><code>var myStr = 'Hello World'
+				<pre class="language-js"><code>let myStr = 'Hello World'
 '...'    // Single Quotes               
 "..."    // Double Quotes 
 "It's a string" // Use single or double quotes
@@ -270,10 +280,34 @@ Number.isNaN(NaN) // true</code></pre>
 </code></pre>
 			</article>
 			<article class="slide">
+        <h2>
+          🧵 String Template Literals
+          <sup><a
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Template_literals">MDN</a></sup>
+        </h2>
+        <p>
+          Create <strong>Multiline Strings</strong> with backticks
+          <code>` `</code> (single or multi line)
+        </p>
+        <pre class="language-js"><code>let myStr = `This is
+a fancy
+multiline string`
+		</code></pre>
+        <p>
+          <strong>String Interpolation:</strong> embed javascript
+          expressions into string template literals with the <code>${ }</code> syntax
+        </p>
+        <pre class="language-js"><code>const myDog = 'Lucky'
+const myDogsAge = 8
+let myStr = `My dog's name is ${myDog}. She is ${myDogsAge} years old`
+// 'My dog's name is Lucky. She is 8 years old'
+		</code></pre>
+      </article>
+			<article class="slide">
 				<h2>Primitives Are Immutable</h2>
 				<p>Immutable vs. Mutable</p>
 				<pre class="language-js"><code>5 = 4 // Syntax Error
-var str = 'hello'
+let str = 'hello'
 console.log(str[0]) // 'h'
 str[0] = 'y' // unable to re-assign immutable value
 console.log(str, str[0]) // 'hello', 'h'
@@ -317,14 +351,21 @@ console.log(str, str[0]) // 'hello', 'h'
 							<li>such as primitives: <code>String</code>, <code>Boolean</code>, <code>Number</code>, etc</li>
 						</ul>
 					</li>
-					<li><strong>Dynamically typed language</strong>: variables may change their type
+					<li>
+						<strong>Type Coercion</strong>: the JS engine changing the data type during an operation
+						<ul>
+							<li><code>'1'+ 0 // '10' here a number is coerced to a string</code></li>
+						</ul>
+					</li>
+					<li><strong>Dynamically typed language</strong>: variables may be reassigned to a new type
 						<ul>
 							<li>Javascript is Dynamically typed</li>
 						</ul>
 					</li>
-					<li>
-						<strong>Coercion</strong>: the JS engine changing the data type during an operation
-					</li>
+					<li><strong>Statically typed Languages: variables may not be reassigned to a different type</strong></li>
+					<ul>
+						<li>Typescript is Statically typed</li>
+					</ul>
 				</ul>
 			</article>
 		</section>
@@ -336,31 +377,31 @@ console.log(str, str[0]) // 'hello', 'h'
 			</header>
 
 			<article class="slide">
-				<h2>Variables</h2>
-				<pre class="language-js"><code>var
-let
-const
-// single line comment
-/* Multiline
-comment */
-		</code></pre>
-				<p>Definition</p>
+				<h2>Variable Declaration Keywords</h2>
 				<p> A <strong>variable</strong> is a named container for a <strong>value</strong>, such as a primitive.</p>
 				<p>The <strong>name</strong> that refers to a variables is also called an <strong>identifier</strong></p>
+				<pre class="language-js"><code>let
+const</code></pre>
+							<pre class="language-js"><code>var // deprecated
+// may find in legacy code</code></pre>
 			</article>
 			<article class="slide">
-				<h2>Declaration</h2>
-				<pre class="language-js"><code>var; // Declaration
-var x; // + Initialization of an identifier;
-var y = 500; // + Assignment of a value
+				<h2>Declaration, Initialization, Assignment/h2>
+				<pre class="language-js" style="text-align: left;"><code>let; // Declaration
+let x; // + Initialization of an identifier;
+let y = 500; // + Assignment of a value
 y = 'Hello!'; // Re-assignment (overwrites)
 		</code></pre>
-				<hr style="width: 100%">
-				<p>You can split a declaration in two separate expressions.</p>
+		<p></p>
+				<img src="img/variable_labels.jpg">
+			</article>
+			<article class="slide">
+				<h2>You can split a let declaration in two separate expressions.</h2>
 				<p>Initialize → then Assign:</p>
-				<pre class="language-js"><code>var z;
+				<pre class="language-js"><code>let z;
 z = true;
 		</code></pre>
+		<p>With <code>const</code> you can't, since you can't re-assign a <code>const</code></p>
 			</article>
 			<article class="slide">
 				<h2>Containers of a Value</h2>
@@ -381,40 +422,46 @@ const y = 'Hello!';
 					<strong>value</strong>.</p>
 			</article>
 			<article class="slide">
-				<h2>Scope (aka Block Scope)</h2>
-				<pre class="language-js"><code>{ // Curly Braces Open a new Block Scope
-  let local = 'local';
-  const local2 = 'local2';
-  console.log(global1) // 'global'
-  console.log(deeply_nested) // ReferenceError: deeply_nested is not defined
-  {
-    let deeply_nested = 5
-    console.log(local) // 'local'
-  }
-} // And Curly Braces close a Block Scope
-{
-  var global1 = 'global';
-  console.log(local1) // ReferenceError: local1 is not defined
-}
-		</code></pre>
-				<p>The area of influence... bounded by curly braces.</p>
-				<p>Variables defined in a curly brace scope cannot be accessed outside of that scope, unless they are hoisted.
-				</p>
-				<p>Variables defined above/outside of the scope can be accessed within a nested scope.</p>
-				<p>The root level (i.e. no curly braces) is the "global" scope.</p>
-			</article>
-			<article class="slide">
 				<h2>Hoisting</h2>
-				<pre class="language-js"><code>{
+<pre class="language-js"><code>var i = 'baz';
+{
   var j = 'foo' + i;
-  var k = 'bar' + i;
+  let k = 'bar' + i;
+  let l = 'baz' + i
+  console.log(k) // 'barbaz'
 }
-var i = 'baz';
 console.log(j) // foobaz
-console.log(k) // barbaz
+console.log(l) // Reference error
 		</code></pre>
 				<p>Global <strong><code>var</code></strong> declarations are hoisted... moved to the top of the file. </p>
 				<p><code>let</code> & <code>const</code> are not hoisted. They respect their block scope.</p>
+			</article>
+			<article class="slide">
+				<h2>Scope (aka Block Scope)</h2>
+				<p>The area of influence... bounded by curly braces.</p>
+				<div class="flex">
+				<pre class="language-js"><code>{ // Curly Braces Open a new Block Scope
+  let local1 = 'local1';
+  const local2 = 'local2';
+  console.log(global) // 'global'
+  console.log(deeply_nested) 
+  // ReferenceError: deeply_nested is not defined
+  {
+    let deeply_nested = 5
+    console.log(local1) // 'local'
+  }
+} // And Curly Braces close a Block Scope
+{
+  var global = 'global'; // var doesn't respect scopes
+  console.log(local1) // ReferenceError: local1 is not defined
+}
+		</code></pre>
+		<ul>
+			<li>Variables defined in a curly brace scope cannot be accessed outside of that scope, unless they are hoisted.</li>
+			<li>Variables defined above/outside of the scope can be accessed within a nested scope.</li>
+			<li>The root level (i.e. no curly braces) is the "global" scope.</li>
+		</ul>
+	</div>
 			</article>
 			<article class="slide">
 				<h2>The Comma operator</h2>
@@ -496,17 +543,22 @@ a%=11</code></pre>
 					<li><span title="str2[0] + str2[1] + str1[1] + str1[0] + str1[0] + str2[2] + (str1 + str2).length">Create the
 							string: <code>"maroon5"</code></span>
 						<pre class="language-js"><code>// Given:
-var str1 = "or"
-var str2 = "man"</code></pre>
+let str1 = "or"
+let str2 = "man"</code></pre>
 					</li>
 					<li style="margin-top: 2rem;"><span
 									title="(typeof str)[0] + str[4] + str[3] + str[10] + str[5] + String(bool)[2] + String(bool)[0]">Create
 							the string: <code>"sold out"</code></span>
 						<pre class="language-js"><code>// Given
-var str = "hello world"
-var bool = true</code></pre>
+let str = "hello world"
+let bool = true</code></pre>
 					</li>
 				</ol>
+			</article>
+			<article class="slide">
+				<h2>Javascript Variables & Operators Challenge</h2>
+				<p>Let's get some practice!</p>
+				<a href="https://www.jschallenger.com/javascript-basics/variables">Try to complete the variables, booleans and operators challenges here.</a>
 			</article>
 			<article class="slide">
 				<h2>JS DOM Bonus Challenge</h2>
@@ -705,12 +757,12 @@ function fn(x, y){
 }
 fn(1, 5) // returns 1 & logs 5
 fn(1) // logs undefined & returns NaN</code></pre>
-				<p>Take advantage of Function Scope by using an IIFE to create a "Closure"</p>
 			</article>
-			<article class="slide">
+			<article>
 				<h2>IIFE</h2>
 				<h3>Immediately Invoked Function Expression</h3>
 				<p>These create a private scope</p>
+				<p>Take advantage of Function Scope by using an IIFE to create a "Closure"</p>
 				<pre class="language-js"><code>(function (parameters){
 	// use the arguments you pass in
   // to do stuff here
@@ -721,7 +773,7 @@ fn(1) // logs undefined & returns NaN</code></pre>
   // do stuff w/ arguments here
 }(arguments))</code></pre>
 			</article>
-			<article class="slide">
+			<article>
 				<h2>Closures</h2>
 				<pre class="language-js"><code>var publicAPI = (function (a, b){
   let privateVar = a + 'our secret';
@@ -1268,7 +1320,7 @@ do {
 				<img src="img/while_out.jpg" alt="while out buy milk">
 				<code>}</code>
 			</article>
-			<article class="slide">
+			<article>
 				<h2>Recursion <sup><a
 							 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#recursion">MDN</a></sup>
 				</h2>
