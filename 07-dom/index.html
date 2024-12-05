@@ -214,8 +214,18 @@
         </ul>
 
         <pre class="language-js"><code>document.querySelector('#contact')
-docuemnt.querySelectorAll('header > nav .logo')</code></pre>
+docuemnt.querySelectorAll('header > nav .logo')
+// change the array-like node-list into an array
+Array.from(document.querySelectorAll('div')) 
+</code></pre>
       </article>
+      <article class="slide">
+				<h2>JS DOM Bonus Challenge</h2>
+				<p>Visit <a href="https://javascript.info/">https://javascript.info/</a> and open the console.</p>
+				<p>Select the <code>nav</code> element w/ <code>document.querySelector()</code> & save in a <code>var</code></p>
+				<p>Then use <code>.innerHTML</code> on the <code>var</code> to set it equal to the string:</p>
+				<p><code>'&lt;h1 class="frontpage-banner__title"&gt;Hello World&lt;/h1&gt;'</code></p>
+			</article>
       <article class="slide">
         <h2>Old ways of DOM Access</h2>
         <p>

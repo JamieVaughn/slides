@@ -174,14 +174,18 @@
 				<h2>There are 7 primitive data types</h2>
 				<div style="columns: 2">
 				<p>The Basic Data Types</p>
-				<ul>
+				<ul style="columns: 2">
+					<div style="border: 2px solid crimson; border-radius: 4px; padding: 4px;">
 					<li><code>undefined</code></li>
-					<li><code>Number</code></li>
-					<li><code>String</code></li>
-					<li><code>Boolean</code></li>
 					<li><code>null</code></li>
+				</div>
 					<li><code>BigInt</code></li>
 					<li><code>Symbol</code></li>
+					<div style="border: 2px solid royalblue; border-radius: 4px; padding: 4px;">
+					<li><code>Number</code></li>
+					<li><code>Boolean</code></li>
+					<li><code>String</code></li>
+				</div>
 				</ul>
 				<div>
 				<p>Use <code>typeof</code> operator to check types</p>
@@ -214,6 +218,7 @@ comment */
 			<article class="slide">
 				<h2>Numbers</h2>
 				<ul>
+					<li><code>42</code>, <code>0</code>, <code>-10</code>, <code>3.14</code></li>
 					<li>64 bit Floating point per the IEEE 754 spec</li>
 					<li>Due to 64 bit maximum size, they are imprecise</li>
 					<li>Let's see it in action:
@@ -221,31 +226,43 @@ comment */
 					</li>
 					<li>Symbolic values: <code>Infinity</code>, <code>NaN</code></li>
 				</ul>
-				<p><code>BigInt</code> provides arbitray precision & fixes decimal bug in Numbers.</p>
-				<p>Just "post-fix" a number with <code>n</code> → <code>30903920193n</code></p>
-				<p><code>const biggestNumber = 9007199254740991n</code> (but not the biggest BigInt)</p>
 			</article>
-			<article>
-				<h2>NaN - Not a Number</h2>
+			<article class="slide">
+				<h2>Dealing with NaN (Not a Number)</h2>
 				<div class="flex">
 					<ul>
-						<li>When checking if value is a <code>NaN</code> literal use
-							<pre class="language-js"><code>Number.isNaN()</code></pre> (returns true only if the argument passed is
-							<code>NaN</code>)
-						</li>
-						<li>When checking if value is simply "not a number," use
-							<pre class="language-js"><code>isNaN()</code></pre>
-						</li>
-						<li><a
-								 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isNaN">Reference</a>
+						<li>Often you'll want to check if a value is an actual number and not a <code>NaN</code> literal.</li>
+						<li>For that use <code>Number.isFinite()</code> - <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite">Reference</a></li>
+
+							<pre class="language-js"><code>Number.isFinite(42) // true
+// returns true only if the value is of type number 
+// so you know it can be safely used in math calculations
+</code></pre> 
 						</li>
 						<li>Examples:</li>
-						<pre class="language-js"><code>isNaN('hello') // true
-Number.isNaN('hello') // false
-Number.isNaN(NaN) // true</code></pre>
+						<pre class="language-js"><code>Number.isFinite(NaN) // false
+Number.isFinite(Infinity) // false
+Number.isFinite('42') // false
+// Don't confuse Number.isFinite() with the
+// global isFinite(), which coerces the value</code></pre>
 					</ul>
 					<img style="flex-shrink: 2;  border-radius: 100rem;" src="img/i_heart_my_nan.jpg" alt="">
 				</div>
+			</article>
+			<article class="slide">
+				<h2>BigInt</h2>
+				<p><code>BigInt</code> provides arbitray precision & fixes decimal bug in Numbers.</p>
+				<p>Just "post-fix" a number with <code>n</code> → <code>100n</code></p>
+				<pre class="language-js"><code>// Adding to the max number overflows & fails
+let num = Number.MAX_SAFE_INTEGER + 1 
+// 9007199254740991
+
+const biggestNumber = 9007199254740991n + 1n 
+// 9007199254740992n
+// BigInt handles it without overflowing</code></pre>
+<p>the number type has a maximum allowable value of <code>9007199254740991</code></p>
+<p> aka <code>Number.MAX_SAFE_INTEGER</code> <sup><small><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER">MDN</a></small></sup></p>
+
 			</article>
 			<article class="slide">
 				<h2>Booleans</h2>
@@ -386,11 +403,11 @@ const</code></pre>
 // may find in legacy code</code></pre>
 			</article>
 			<article class="slide">
-				<h2>Declaration, Initialization, Assignment/h2>
+				<h2>Declaration, Initialization, Assignment</h2>
 				<pre class="language-js" style="text-align: left;"><code>let; // Declaration
-let x; // + Initialization of an identifier;
-let y = 500; // + Assignment of a value
-y = 'Hello!'; // Re-assignment (overwrites)
+let x; // Initialization of an identifier
+let y = 500 // Assignment of a value
+y = 'Hello!' // Re-assignment (overwrites)
 		</code></pre>
 		<p></p>
 				<img src="img/variable_labels.jpg">
@@ -423,7 +440,7 @@ const y = 'Hello!';
 			</article>
 			<article class="slide">
 				<h2>Hoisting</h2>
-<pre class="language-js"><code>var i = 'baz';
+<pre class="language-js"><code>let i = 'baz';
 {
   var j = 'foo' + i;
   let k = 'bar' + i;
@@ -466,7 +483,7 @@ console.log(l) // Reference error
 			<article class="slide">
 				<h2>The Comma operator</h2>
 				<p>Let's you initialize or declare multiple vars at once.</p>
-				<pre class="language-js"><code>var j, k, l; 
+				<pre class="language-js"><code>let j, k, l; 
 // j, k, l all initialized as undefined
 let i = 'baz';
 {
@@ -490,7 +507,7 @@ let i = 'baz';
 case else new var catch finally return void
 continue for switch while debugger function
 this with default if throw delete in try let 
-class  extends super const export import yield
+class extends super const export import yield
 </code></pre>
 				<p><a href="https://mothereff.in/js-variables">Variable names must start</a> with a letter, <code>_</code> or
 					<code>$</code></p>
@@ -524,7 +541,7 @@ class  extends super const export import yield
 			<code>-=</code>
 		</pre>
 
-				<pre class="language-js"><code>var a = 3;
+				<pre class="language-js"><code>let a = 3;
 a++
 a+=6
 a--
@@ -560,26 +577,30 @@ let bool = true</code></pre>
 				<p>Let's get some practice!</p>
 				<a href="https://www.jschallenger.com/javascript-basics/variables">Try to complete the variables, booleans and operators challenges here.</a>
 			</article>
-			<article class="slide">
-				<h2>JS DOM Bonus Challenge</h2>
-				<p>Visit <a href="https://javascript.info/">https://javascript.info/</a> and open the console.</p>
-				<p>Select the <code>nav</code> element w/ <code>document.querySelector()</code> & save in a <code>var</code></p>
-				<p>Then use <code>.innerHTML</code> on the <code>var</code> to set it equal to the string:</p>
-				<p><code>'&lt;h1 class="frontpage-banner__title"&gt;Hello World&lt;/h1&gt;'</code></p>
-			</article>
 		</section>
 
 		<section>
 			<header class="slide">
 				<h2>Functions</h2>
-				<h1>A re-usable batch of code</h1>
+				<h1>Making code re-usable</h1>
 			</header>
 			<article class="slide">
 				<h2>Javascript Functions</h2>
+				<div class="flex">
 				<pre class="language-js"><code>function fn(a, b){
-  // do stuff
+  // do stuff then
+  // return something
 }
-fn(1, true) // can be reused by invoking it</code></pre>
+// can be reused by invoking it
+fn(1, true) </code></pre>
+<pre class="language-js"><code>function add(a, b){
+  return a + b
+}
+add(1, 2) // 3
+add(5, 12) // 17
+add(-21, 22) // 1
+</code></pre>
+</div>
 			</article>
 			<article class="slide">
 				<h2>Vocab Preview</h2>
@@ -589,11 +610,13 @@ fn(1, true) // can be reused by invoking it</code></pre>
 					<li>Parameters (Params)</li>
 					<li>Passing Args/Params</li>
 					<li>Invoking/Calling/Executing</li>
+					<li>Return Statement</li>
 					<li>Function Declaration vs. Expression</li>
 					<li>Anonymous Function</li>
 					<li>Arrow Function</li>
 					<li>Method vs. Function</li>
 					<li>Hoisting</li>
+					<li>First Class Functions</li>
 				</ul>
 			</article>
 			<article class="slide">
@@ -602,20 +625,21 @@ fn(1, true) // can be reused by invoking it</code></pre>
 					<li>A <strong>function</strong> is fundamental building block in any Javascript app</li>
 					<li>It's a <strong>procedure</strong> that executes a set of statements when invoked</li>
 					<li>A procedure is a a set of serial instructions expressed as code</li>
-					<li>Any amount of arbitrary code can be written within a function block as the procedure</li>
-					<li>The procedures might calculate a value, modify the DOM or communicate with a server, etc..</li>
+					<li>A procedure can consist of any number of lines of code within a function block</li>
+					<li>A procedure might calculate a value, modify the DOM or communicate with a server, etc..</li>
 				</ul>
+					<h3>Think of a function as a wrapper for a procedure <br> that makes that procedure easily re-usable</h3>
 			</article>
 			<article class="slide">
 				<h2>Function Declaration vs Expression</h2>
 				<p>Hoisting applies differently to these:</p>
 				<pre class="language-js"><code>fnDeclaration() // works
-fnExpression() // will be undefined... TypeError: fnExpression is not a function
+fnExpression() // TypeError: fnExpression is not a function
 
-function fnDeclaration(d, e){ // Function Declaration
+function fnDeclaration(){ // Function Declaration
   //...
 } 
-var fnExpression = function(){ // Function Expression
+let fnExpression = function(){ // Function Expression
   //...
 }
 </code></pre>
@@ -634,7 +658,7 @@ fn() // If the argument list is empty, then 'a' is undefined</code></pre>
 				<pre class="language-js"><code>function fn(args){
   // do stuff
 }
-var func = function(){
+let func = function(){
   // do other stuff
 }
 fn(func) // Functions can be passed into other functions</code></pre>
@@ -648,16 +672,23 @@ fn(func) // Functions can be passed into other functions</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Pure Functions & Side Effects</h2>
-				<p>Does the return value of the function depend only on the parameters and/or internal state?</p>
+				<p>Does the return value of the function depend only on the parameters or internal state?</p>
+				<!-- <div class="flex center"><span>Pure Fn:</span> <span>Impure Fn:</span> <span>In code:</span></div> -->
 				<div class="flex" style="justify-content: space-around; max-height: 50vh;">
 					<img src="./img/blackbox.png" alt="">
 					<img src="./img/impure_blackbox.png" alt="">
+					<!-- <pre class="language-js"><code>let x = 4
+let impureSquare(a) {
+return x**a
+}
+let pureSquare(a, b) {
+	return a**b
+}</code></pre> -->
 				</div>
 				<div class="tilt-stamp delayed">
 					<p style="text-align: center;">Think of pure funcs<br> like a black box</p>
 					<img src="img/function_fn.png" width="100%" alt="">
 					<p style="text-align: center;">no side effects</p>
-
 				</div>
 			</article>
 			<article class="slide">
@@ -666,16 +697,15 @@ fn(func) // Functions can be passed into other functions</code></pre>
 				<p>Non-Mutating vs. Mutating Operations</p>
 				<div class="flex">
 					<pre class="language-js"><code>// Pure Fn
-function volumeOfCylinder(radius, height){
-  let areaOfCircle = 3.14 * radius ** 2
-  let volume = areaOfCircle * height 
+function cylinderVolume(radius, height){
+  let circleArea = 3.14 * radius ** 2
+  let volume = circleArea * height 
   return volume
 }</code></pre>
-					<pre class="language-js"><code>let globalVar = 10
+					<pre class="language-js"><code>let globalValue = 10
 // Impure Fn
 function sideEffects(arg){
-  console.log(globalVar)
-  globalVar += arg
+  globalValue += arg
   return globalVar
 }</code></pre>
 				</div>
@@ -689,32 +719,33 @@ function sideEffects(arg){
 					<li>Pure functions are referentially transparent</li>
 					<li>Functions with Side effects cannot be</li>
 				</ul>
-				<pre class="language-js"><code>var g = 5
+				<pre class="language-js"><code>let g = 5
 fn(g)
 fn(5)</code></pre>
 			</article>
 			<article class="slide">
-				<h2>ES6 Arrow Functions</h2>
+				<h2>Arrow Function Syntax</h2>
 				<p>A.K.A. Lambda Functions</p>
-				<pre class="language-js"><code>var fn = function(a) {
-  return a
+				<pre class="language-js"><code>let fn = function(a, b) {
+  return a + b
 }
-var fn = (a) => { 
-  return a;
+// these are equivalent
+let fn = (a, b) => { 
+  return a + b;
 }</code></pre>
 			</article>
 			<article class="slide">
 				<h2>The Implicit Return Statement</h2>
-				<div class="flex">
-					<pre class="language-js"><code>j => j ** 2</code></pre>
-					<pre class="language-js"><code>j => (
-  j ** 2
-)</code></pre>
-				</div>
-				<p>Equivalent to:</p>
-				<pre class="language-js"><code>j => {
+				
+				<pre class="language-js"><code>let fn = j => {
   return j ** 2
 }</code></pre>
+				<p>Equivalent to:</p>
+					<pre class="language-js"><code>let fn = j => j ** 2
+// or
+let fn = j => (
+  j ** 2
+)</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Passing Parameters in Arrow Functions</h2>
@@ -726,6 +757,7 @@ a => 100 ** a
 			<article class="slide">
 				<h2>Naming Functions</h2>
 				<p>In Javascript, the naming convention used is called Camel Case</p>
+				<p>Capitalize the first letter of each word, except for the first word</p>
 				<p>it looks like this:</p>
 				<pre class="language-js"><code>function camelCaseNaming(){}</code></pre>
 				<p>Similar to Semantic HTML, it's best to name functions in a semantically helpful way</p>
@@ -736,7 +768,7 @@ a => 100 ** a
 				<p>So being consistent is key</p>
 				<div class="flex">
 					<pre class="language-css"><code>.kebab-case-naming {
-  /* Allowed in CSS, 
+  /* Allowed in CSS or file names, 
 	but not in JS */
   font-size: 2rem;
 }</code></pre>
@@ -749,44 +781,14 @@ function snake_case_naming(){}</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Function Scope</h2>
-				<pre class="language-js"><code>var z = 10, x = 2, y = 10;
-function fn(x, y){
-  let z = 5;
-	console.log(y)
+				<pre class="language-js"><code>let z = 10
+function fn(x, y) {
+  console.log(y)
+  let z = 5; // this z is used below
   return (x * y) / z;
 }
 fn(1, 5) // returns 1 & logs 5
-fn(1) // logs undefined & returns NaN</code></pre>
-			</article>
-			<article>
-				<h2>IIFE</h2>
-				<h3>Immediately Invoked Function Expression</h3>
-				<p>These create a private scope</p>
-				<p>Take advantage of Function Scope by using an IIFE to create a "Closure"</p>
-				<pre class="language-js"><code>(function (parameters){
-	// use the arguments you pass in
-  // to do stuff here
-})(arguments)
-
-// same effect, but w/ arrow function:
-(parameters => {
-  // do stuff w/ arguments here
-}(arguments))</code></pre>
-			</article>
-			<article>
-				<h2>Closures</h2>
-				<pre class="language-js"><code>var publicAPI = (function (a, b){
-  let privateVar = a + 'our secret';
-  return [
-    true,
-    a + b
-  ]
-}(1, 2))
-publicAPI[0] // true
-publicAPI[1] // 3
-privateVar // ReferenceError
-privateVar[privateVar] // ReferenceError
-publicAPI.privateVar // ReferenceError</code></pre>
+fn(1) // returns NaN & logs undefined </code></pre>
 			</article>
 			<article class="slide">
 				<h2>Callbacks & Anonymous Functions</h2>
@@ -794,15 +796,15 @@ publicAPI.privateVar // ReferenceError</code></pre>
 					(like an event) later on</p>
 				<p>Callbacks are sometimes called "Predicates".</p>
 				<pre class="language-js"><code>// Using an anonymous function as a Callback
-var months = ['March', '', 'Jan', '', 'Feb']
-months.sort((a, b) => Boolean(b) - 1)
-// ['March', 'Jan', 'Feb', '', '']
+let months = ['March', '', 'Jan', '', 'Feb']
+months.filter(a => Boolean(a))
+// ['March', 'Jan', 'Feb']
 
 // Using a named function as a Callback
-function sortEmpties(a, b) {
-  return Number(Boolean(b)) - 1
+function filterEmpties(a) {
+  return Boolean(a)
 }
-months.sort(sortEmpties)</code></pre>
+months.sort(filterEmpties)</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Functions vs. Methods</h2>
@@ -863,7 +865,7 @@ Math.cos()
 			<article class="slide">
 				<h2>Function Challenges</h2>
 				<p><small>Think about good names for the function and the parameters</small></p>
-				<p>Open VSCode (or console) & write a function that accepts as arguments...</p>
+				<p>Open VSCode & write a function that accepts as arguments...</p>
 				<ol>
 					<li>A numerator and a denominator & logs the fraction & the remainder</li>
 					<li class="delayed">A radius & returns the area of that circle (hint: console.log(Math))</li>
@@ -879,12 +881,12 @@ Math.cos()
 			</header>
 			<article class="slide">
 				<h2>Recall Javascripts Array-like Strings</h2>
-				<pre class="language-js"><code>var str = 'Hello!'
+				<pre class="language-js"><code>let str = 'Hello!'
 str.length = 3;
 str.length // 6;
 str[2] = 'a' // str is still 'Hello'</code></pre>
 				<p>↑ But Strings are immutable, unlike Arrays</p>
-				<pre class="language-js"><code>var arr = ['H','e','l','l','o','!']
+				<pre class="language-js"><code>let arr = ['H','e','l','l','o','!']
 arr[0] // 'H'
 arr.length // 6
 arr.length = 3
@@ -921,8 +923,7 @@ let arr = new Array(3); // [undefined, undefined, undefined]</code></pre>
 				<p>via Static Methods:</p>
 				<pre class="language-js"><code>Array.of(1, 2, 3) // [1, 2, 3]
 Array.from('string') // ["s", "t", "r", "i", "n", "g"]
-Array.from(document.querySelectorAll('div')) 
-// array of div nodes</code></pre>
+</code></pre>
 				<p></p>
 			</article>
 			<article class="slide">
@@ -962,6 +963,7 @@ arr.length = 2; // [1, 2]</code></pre>
 			<article class="slide">
 				<h2>Non-Mutating vs Mutation in Arrays </h2>
 				<p><strong><a href="http://wjv.io/log/posts/immutability.html">JS Non-Mutating Toolkit</a></strong></p>
+				<p>The Functional Programming style prefers non-mutating techniques</p>
 			</article>
 			<article class="slide">
 				<h2>Array Challenge</h2>
@@ -977,7 +979,10 @@ arr.length = 2; // [1, 2]</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Time to combine arrays & functions</h2>
-				<p>Let's make a simple Todo List interface in the console!</p>
+				<p>Let's make a simple Todo List interface in VS Code!</p>
+				<p>We'll add a <code>script</code> tag in our usual HTML boilerplate</p>
+				<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script">MDN</a></p>
+
 			</article>
 		</section>
 
@@ -1042,7 +1047,7 @@ false ?? 42 // false</code></pre>
 1 ^ 1 // 0
 true ^ null // 1
 
-var foo = 'string', bar = false
+let foo = 'string', bar = false
 ( foo && !bar ) || ( !foo && bar ) // true
 !!foo != !!bar
 foo ? !bar : !!bar // true
@@ -1060,21 +1065,22 @@ return Boolean(!!a ^ !!b)
 			<article class="slide">
 				<h2 style="margin-top: -12rem;">Equality Examples <small><a
 							 href="https://dorey.github.io/JavaScript-Equality-Table/unified/">Overlaid Table</a></small></h2>
-				<div class="flex">
+				<div class="flex" style="max-height: 60%">
 					<pre class="language-js fit"><code>const num = 0;
 const big = 0n
 const str = '0'
 const bool = false
 const nil = null
 const un = undefined
-
-// Strict Equality has the type constraint as well
+// Strict Equality means
+// type equality too
 num === str // false
 big === num // false
 str === bool // false
 bool === big // false
 		</code></pre>
-					<pre class="language-js fit"><code>// Loose Equality uses truthiness & attempts to coerce values
+					<pre class="language-js fit"><code>// Loose Equality uses truthiness 
+// & attempts to coerce values
 num == str // true
 big == num // true
 str == big // true
@@ -1089,15 +1095,17 @@ bool == un // false</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Equality Comparison Table</h2>
-				<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness">MDN</a>
-				</p>
-				<p><a href="https://dorey.github.io/JavaScript-Equality-Table/">Table</a></p>
+				<ul>
+					<li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness">MDN</a> Explanation
+					</li>
+					<li><a href="https://dorey.github.io/JavaScript-Equality-Table/">Table</a> Visual</li>
+				</ul>
 			</article>
 			<article class="slide">
 				<h2>Use Cases</h2>
 				<ul>
 					<li>If Else Conditions</li>
-					<li>Ternary Operators</li>
+					<li>Ternary Operators Conditions/li>
 					<li>Switch Conditions</li>
 					<li>Default Values: <code>MyVar || 'default'</code></li>
 				</ul>
@@ -1115,7 +1123,7 @@ bool == un // false</code></pre>
 			</article>
 			<article class="slide">
 				<h2>If Else</h2>
-				<pre class="language-js"><code>var input = 0
+				<pre class="language-js"><code>let input = 0
 if (input < -1) {
 // do this
 } else if (input > 1) {
@@ -1131,15 +1139,15 @@ if (input < -1) {
 							 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_Operator">MDN</a></sup>
 				</h2>
 				<p>A more concise way to express simple if/else conditions</p>
-				<pre class="correct language-js"><code>var input = 0
+				<pre class="correct language-js"><code>let input = 0
 let result;
 result = input ? 'input was truthy!' : 'input was falsey!'
 
 console.log(result) // 'input was falsey'
 		</code></pre>
 				<p>Try not to nest ternary operators... it works but it can get hard to read.</p>
-				<pre class='wrong language-js'><code>var input = 0
-var condition = true
+				<pre class='wrong language-js'><code>let input = 0
+let condition = true
 input ? 'input was truthy!' : 
 condition ? 'condition was truthy' 
 					: 'input & condition were were falsey!'</code></pre>
@@ -1162,7 +1170,7 @@ condition ? 'condition was truthy'
 							</li>
 						</ul>
 					</di>
-					<pre class="language-js fit"><code>var input = 'Hello'
+					<pre class="language-js fit"><code>let input = 'Hello'
 switch(typeof input){
 case 'number': 
 	//do this
@@ -1313,25 +1321,12 @@ do {
   i = i + 1;
   result = result + i;
 } while (i &lt; arr.length);</code></pre>
-			</article class="slide">
+			</article>
 			<article class="slide">
 				<h2>Careful of inifinte loops!</h2>
 				<code>while (you_are_out) {</code>
 				<img src="img/while_out.jpg" alt="while out buy milk">
 				<code>}</code>
-			</article>
-			<article>
-				<h2>Recursion <sup><a
-							 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#recursion">MDN</a></sup>
-				</h2>
-				<p>An alternative way to implement a loop</p>
-				<p>The function repeatedly calls itself until the exit conditon (aka escape hatch) is met</p>
-				<pre class="language-js"><code>function factorial(num) {
-  return num === 0 ? 1 : num * factorial(num - 1)
-}</code></pre>
-				<p><a
-						 href="http://www.pythontutor.com/javascript.html#code=function%20fact%28n%29%20%7B%0A%20%20if%20%28n%20%3D%3D%200%29%20%7B%0A%20%20%20%20return%201%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20return%20n%20*%20fact%28n-1%29%3B%0A%20%20%7D%0A%7D%0A%0Afact%283%29%3B%0Afact%283%29%3B&mode=edit&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Visualize
-						Factorial Fn</a></p>
 			</article>
 			<article class="slide">
 				<h2>For Of Loops & For In Loops</h2>
@@ -1391,17 +1386,17 @@ arr.includes(4) // returns true only if it contains the parameter</code></pre>
 				<h2><code>.map()</code></h2>
 				<p>Transforms an array and always returns an array of the same length</p>
 				<pre class="language-js"><code>let arr = [1,2,3]
-var squares = arr.map(i => i **2) // returns [1,4,9]
+let squares = arr.map(i => i **2) // returns [1,4,9]
 console.log(arr) // [1,2,3]
 		</code></pre>
 			</article>
 			<article class="slide">
 				<h2><code>.flatMap()</code></h2>
 				<p>Works just like <code>.map()</code>, but also flattens the array by one level</p>
-				<pre class="language-js"><code>var arr = [1, 2, 3, 4];
+				<pre class="language-js"><code>let arr = [1, 2, 3, 4];
 arr.flatMap(x => [x, x * 2]); // [1, 2, 2, 4, 3, 6, 4, 8]
 
-var arr2 = [[1,2], [2,3], [3,4]]
+let arr2 = [[1,2], [2,3], [3,4]]
 arr2.flatMap(x => x) //  [1, 2, 2, 3, 3, 4]</code></pre>
 			</article>
 			<article class="slide">
