@@ -403,39 +403,38 @@ const</code></pre>
 // may find in legacy code</code></pre>
 			</article>
 			<article class="slide">
-				<h2>Declaration, Initialization, Assignment</h2>
-				<pre class="language-js" style="text-align: left;"><code>let; // Declaration
-let x; // Initialization of an identifier
+				<h2>Declaration & Assignment</h2>
+				<pre class="language-js" style="text-align: left;"><code>let x // Declaration of an identifier
 let y = 500 // Assignment of a value
-y = 'Hello!' // Re-assignment (overwrites)
-		</code></pre>
-		<p></p>
-				<img src="img/variable_labels.jpg">
+y = 'Hello!' // Re-assignment (overwrites)</code></pre>
+<img src="img/variable_labels.jpg">
 			</article>
 			<article class="slide">
 				<h2>You can split a let declaration in two separate expressions.</h2>
-				<p>Initialize → then Assign:</p>
-				<pre class="language-js"><code>let z;
-z = true;
-		</code></pre>
+				<p>Declaration → then Assignment:</p>
+				<pre class="language-js"><code>let i
+i = true
+const j // SyntaxError
+const k = 1</code></pre>
 		<p>With <code>const</code> you can't, since you can't re-assign a <code>const</code></p>
 			</article>
 			<article class="slide">
-				<h2>Containers of a Value</h2>
-				<pre class="language-js"><code>let x;
-const y = 'Hello!';
+				<h2>Variables are Containers of a Value</h2>
+				<p>The variables have names (<strong>identifiers</strong>)</p>
+				<pre class="language-js"><code>let x
+const y = 'Hello!'
 </code></pre>
-				<div class="flex" style="justify-content: center; width: 400px">
+				<div class="flex" style="justify-content: center; width: 400px; gap: 3rem;">
 					<fieldset>
-						<legend style='color: #66D9EF; font-size: 3rem;'>x</legend>
+						<legend style='color: #66D9EF; font-size: 3rem;'><strong style="font-size: 5rem;">x</strong></legend>
 						<code>undefined</code>
 					</fieldset>
 					<fieldset>
-						<legend style='color: #66D9EF; font-size: 3rem;'>y</legend>
+						<legend style='color: #66D9EF; font-size: 3rem;'><strong style="font-size: 5rem;">y</strong></legend>
 						<code>'Hello!'</code>
 					</fieldset>
 				</div>
-				<p>The variables have names (<strong>identifiers</strong>) and can contain any Javascript
+				 <p>And can contain any Javascript
 					<strong>value</strong>.</p>
 			</article>
 			<article class="slide">
@@ -539,20 +538,18 @@ class extends super const export import yield
 			<code>--</code>
 			<code>+=</code>
 			<code>-=</code>
+			<code>*=</code>
+			<code>/=</code>
 		</pre>
-
+		<p>These operations mutate the variable's value</p>
 				<pre class="language-js"><code>let a = 3;
-a++
-a+=6
-a--
-a-=1
-a*=2
-a%=11</code></pre>
+a++  // a -> 4
+a+=6 // a -> 10
+a--  // a -> 9
+a-=3 // a -> 6
+a*=2 // a -> 12
+a/=4 // a -> 3</code></pre>
 			</article>
-
-		</section>
-
-		<section>
 			<article class="slide">
 				<h2>Challenges</h2>
 				<p>Time to practice in the JS console!</p>
@@ -620,7 +617,7 @@ add(-21, 22) // 1
 				</ul>
 			</article>
 			<article class="slide">
-				<h2>More Definition on Functions</h2>
+				<h2>How to think about Functions</h2>
 				<ul>
 					<li>A <strong>function</strong> is fundamental building block in any Javascript app</li>
 					<li>It's a <strong>procedure</strong> that executes a set of statements when invoked</li>
@@ -630,6 +627,130 @@ add(-21, 22) // 1
 				</ul>
 					<h3>Think of a function as a wrapper for a procedure <br> that makes that procedure easily re-usable</h3>
 			</article>
+			<article class="slide">
+				<h2>Invoking a Function</h2>
+				<p>Use parenthesis to invoke a function</p>
+				<pre class="language-js"><code>function fn(a){
+  console.log(a) 
+}
+fn('hello') // Invocation of Function
+fn() // If the argument list is empty, then 'a' is undefined
+</code></pre>
+			</article>
+			<article class="slide">
+				<h2>The Return Statement</h2>
+				<pre class="language-js"><code>function fn(x, y){
+  let z = 5;
+  return (x * y) / z;
+}</code></pre>
+<p>The returned expression is the final value</p>
+<p>that your function will evaluate to.</p>
+			</article>
+			<article class="slide">
+				<h2>Naming Functions</h2>
+				<p>In Javascript, the naming convention used is called Camel Case</p>
+				<p>Capitalize the first letter of each word, except for the first word</p>
+				<p>it looks like this:</p>
+				<pre class="language-js"><code>function camelCaseNaming(){}</code></pre>
+				<p style="text-align: center">Similar to Semantic HTML, it's best to <br>name functions in a semantically helpful way</p>
+			</article>
+			<article class="slide">
+				<h2>There is also Kebab Case, Title/Pascal Case, Snake Case</h2>
+				<p>Some libraries need to convert between these naming conventions</p>
+				<p>So being consistent is key</p>
+				<div class="flex">
+					<pre class="language-css"><code>/* OK in CSS or file names, 
+   but not in JS */
+.kebab-case-naming {
+  font-size: 2rem;
+}</code></pre>
+					<pre class="language-js"><code>// Allowed in JS
+function camelCaseNaming(){}
+function TitleCaseNaming(){} 
+// ⤷ aka PascalCaseNaming
+function snake_case_naming(){}</code></pre>
+				</div>
+			</article>
+			<article class="slide">
+				<h2>Function Scope</h2>
+				<pre class="language-js"><code>let z = 10
+function fn(x, y) {
+  console.log(y)
+  let z = 5; // this z is used below
+  return (x * y) / z;
+}
+fn(1, 5) // returns 1 & logs 5
+fn(1) // returns NaN & logs undefined </code></pre>
+			</article>
+			<article class="slide">
+				<h2>Functions vs. Methods</h2>
+				<p style="max-width: 60%; text-align: center;">A <u>method</u> is simply a <u>function</u> that can be invoked using the <u>dot-syntax</u> (A.K.A "Chaining")</p>
+				<p>We've already seen this used before:</p>
+<pre class="language-js"><code>
+console.log()
+// the `log` function is placed 
+// within the console "wrapper"
+</code></pre>
+				<p>Therefore the <code>log()</code> function exists as a <u>method</u> on the <code>console</code> object</p>
+			</article>
+			<article class="slide">
+				<h2>The Math Object & its Methods<sup><a
+							 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math">MDN</a></sup>
+				</h2>
+				<div class="flex">
+					<pre class="language-js"><code>Math.PI
+Math.LN10
+Math.round()
+Math.sin()
+Math.cos()
+Math.random()
+Math.abs()
+</code></pre>
+					<pre class="language-js fit"><code>function cylinderVolume(radius, height) {
+  let radiusSquared = radius ** 2
+  let circleArea = Math.PI * radiusSquared
+  let volume = height * circleArea
+  // round volume to nearest integer & return it
+  return Math.round(volume) 
+}</code></pre>
+				</div>
+			</article>
+			<article class="slide">
+				<h2>Let's Look up some basic String Methods</h2>
+				<code class="language-js">String.prototype</code>
+				<pre class="language-js flex"><code>let str = 'Example'
+
+str.toLowerCase()
+str.repeat()
+str.trim()
+str.indexOf()
+str.lastIndexOf()
+</code>
+<code>
+str.split()
+str.substr()
+str.concat()
+str.replace()
+str.charCodeAt()
+str.includes()
+str.slice()</code></pre>
+	<code class="language-js">console.log(String.prototype) // try this in the console</code>
+			</article>
+			<article class="slide">
+				<h2>HTML Stamping Function Challenge</h2>
+				<p>Let's make a function that adds content to the DOM</p>
+				<p>It should take some text as an arg & append that as a DOM element</p>
+				<ul>We'll need a few new things:
+					<li><code>document.body</code> - <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/body">MDN</a></li>
+					<li><code>.innerHTML</code> property - <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML">MDN</a></li>
+					<li>use it like this:</li>
+				</ul>
+				<pre class="language-js"><code>let newContent = "<div>New Content</div>"
+document.body.innerHTML += newContent</code></pre>
+			</article>
+			<header class="slide">
+				<h1>Advanced Function Topics</h1>
+			</header>
 			<article class="slide">
 				<h2>Function Declaration vs Expression</h2>
 				<p>Hoisting applies differently to these:</p>
@@ -646,12 +767,34 @@ let fnExpression = function(){ // Function Expression
 				<p>During the parsing step, the JS Engine traverses .js files twice</p>
 			</article>
 			<article class="slide">
-				<h2>Invoking a Function</h2>
-				<pre class="language-js"><code>function fn(a){
-  console.log(a) 
+				<h2>Arrow Function Syntax</h2>
+				<p>A.K.A. Lambda Functions</p>
+				<pre class="language-js"><code>let fn = function(a, b) {
+  return a + b
 }
-fn('hello') // Invocation of Function
-fn() // If the argument list is empty, then 'a' is undefined</code></pre>
+// these are equivalent
+let fn = (a, b) => { 
+  return a + b;
+}</code></pre>
+			</article>
+			<article class="slide">
+				<h2>The Implicit Return Statement</h2>
+				<pre class="language-js"><code>let fn = j => {
+  return j ** 2
+}</code></pre>
+				<p>Equivalent to:</p>
+					<pre class="language-js"><code>let fn = j => j ** 2
+// or
+let fn = j => (
+  j ** 2
+)</code></pre>
+			</article>
+			<article class="slide">
+				<h2>Passing Parameters in Arrow Functions</h2>
+				<pre class="language-js"><code>() => 100 ** 2
+a => 100 ** a
+(a) => 100 ** a
+(a, b) => b ** a</code></pre>
 			</article>
 			<article class="slide">
 				<h2>First Class Functions</h2>
@@ -662,13 +805,6 @@ let func = function(){
   // do other stuff
 }
 fn(func) // Functions can be passed into other functions</code></pre>
-			</article>
-			<article class="slide">
-				<h2>The Return Statement</h2>
-				<pre class="language-js"><code>function fn(x, y){
-  let z = 5;
-  return (x * y) / z;
-}</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Pure Functions & Side Effects</h2>
@@ -698,7 +834,7 @@ let pureSquare(a, b) {
 				<div class="flex">
 					<pre class="language-js"><code>// Pure Fn
 function cylinderVolume(radius, height){
-  let circleArea = 3.14 * radius ** 2
+  let circleArea = Math.PI * radius ** 2
   let volume = circleArea * height 
   return volume
 }</code></pre>
@@ -706,10 +842,42 @@ function cylinderVolume(radius, height){
 // Impure Fn
 function sideEffects(arg){
   globalValue += arg
-  return globalVar
+  return globalValue
 }</code></pre>
 				</div>
-
+			</article>
+			<article class="slide">
+				<div>
+					<h2>Pure Function Challenges</h2><p>( Think about good names for the function & the parameters )</p>
+				</div>
+				<ol>
+					<li>Open VSCode & add an <code>index.html</code> & <code>index.js</code> file in a new directory</li>
+					<li>Add the usual HTML boilerplate to <code>index.html</code></li>
+					<li>We'll add a <code>&lt;script src="index.js"></code> tag in the <code>&lt;head></code> as well<sup><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script">MDN</a></sup></li>
+					<li>In the <code>index.js</code> file, write a function with:</li>
+				</ol>
+				<table>
+					<thead >
+						<tr>
+							<th style="background-color: royalblue">Arguments</th>
+							<th style="background-color: royalblue">Return Value</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>numerator,<br>denominator</td>
+							<td>logs the fraction &<br>returns the remainder</td>
+						</tr>
+						<tr class="delayed">
+							<td>radius</td>
+							<td>area of that circle <br>(hint: console.log(Math))</td>
+						</tr>
+						<tr class="delayed" title="C = (F - 32) / 1.8">
+							<td>°F temperature</td>
+							<td>the value converted into °C</td>
+						</tr>
+					</tbody>
+				</table>
 			</article>
 			<article class="slide">
 				<h2>Referential Transparency</h2>
@@ -722,73 +890,6 @@ function sideEffects(arg){
 				<pre class="language-js"><code>let g = 5
 fn(g)
 fn(5)</code></pre>
-			</article>
-			<article class="slide">
-				<h2>Arrow Function Syntax</h2>
-				<p>A.K.A. Lambda Functions</p>
-				<pre class="language-js"><code>let fn = function(a, b) {
-  return a + b
-}
-// these are equivalent
-let fn = (a, b) => { 
-  return a + b;
-}</code></pre>
-			</article>
-			<article class="slide">
-				<h2>The Implicit Return Statement</h2>
-				
-				<pre class="language-js"><code>let fn = j => {
-  return j ** 2
-}</code></pre>
-				<p>Equivalent to:</p>
-					<pre class="language-js"><code>let fn = j => j ** 2
-// or
-let fn = j => (
-  j ** 2
-)</code></pre>
-			</article>
-			<article class="slide">
-				<h2>Passing Parameters in Arrow Functions</h2>
-				<pre class="language-js"><code>() => 100 ** 2
-a => 100 ** a
-(a) => 100 ** a
-(a, b) => b ** a</code></pre>
-			</article>
-			<article class="slide">
-				<h2>Naming Functions</h2>
-				<p>In Javascript, the naming convention used is called Camel Case</p>
-				<p>Capitalize the first letter of each word, except for the first word</p>
-				<p>it looks like this:</p>
-				<pre class="language-js"><code>function camelCaseNaming(){}</code></pre>
-				<p>Similar to Semantic HTML, it's best to name functions in a semantically helpful way</p>
-			</article>
-			<article class="slide">
-				<h2>There is also Kebab Case, Title/Pascal Case, Snake Case</h2>
-				<p>Some libraries need to convert between these naming conventions</p>
-				<p>So being consistent is key</p>
-				<div class="flex">
-					<pre class="language-css"><code>.kebab-case-naming {
-  /* Allowed in CSS or file names, 
-	but not in JS */
-  font-size: 2rem;
-}</code></pre>
-					<pre class="language-js"><code>// Allowed in JS
-function camelCaseNaming(){}
-function TitleCaseNaming(){} 
-// ⤷ aka PascalCaseNaming
-function snake_case_naming(){}</code></pre>
-				</div>
-			</article>
-			<article class="slide">
-				<h2>Function Scope</h2>
-				<pre class="language-js"><code>let z = 10
-function fn(x, y) {
-  console.log(y)
-  let z = 5; // this z is used below
-  return (x * y) / z;
-}
-fn(1, 5) // returns 1 & logs 5
-fn(1) // returns NaN & logs undefined </code></pre>
 			</article>
 			<article class="slide">
 				<h2>Callbacks & Anonymous Functions</h2>
@@ -804,73 +905,7 @@ months.filter(a => Boolean(a))
 function filterEmpties(a) {
   return Boolean(a)
 }
-months.sort(filterEmpties)</code></pre>
-			</article>
-			<article class="slide">
-				<h2>Functions vs. Methods</h2>
-				<h4>A Method is simply a function that can be invoked using the dot-syntax A.K.A "Chaining" </h4>
-				<p>We've already seen this used. For example:</p>
-				<ul>
-					<li><code>Math.random()</code></li>
-					<li><code>console.log</code></li>
-				</ul>
-				<p>The function <code>log()</code> is a method contained on the <code>console</code> object</p>
-				<p>This means that the <code>log()</code> function exists as a property on the <code>console</code> object (more
-					on objects later)</p>
-			</article>
-			<article class="slide">
-				<h2>The Math Object & its Methods<sup><a
-							 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math">MDN</a></sup>
-				</h2>
-				<div class="flex">
-					<pre class="language-js"><code>Math.PI
-Math.E
-Math.random()
-Math.abs()
-Math.round()
-Math.sin()
-Math.cos()
-</code></pre>
-					<pre class="language-js fit"><code>function isRightTriangle(d, e, f) { 
-  let min = Math.min(d, e, f)
-  let max = Math.max(d, e, f)
-  let mid = d + e + f - min - max
-  let leg1 = min ** 2
-  let leg2 = mid ** 2
-  let hypotenuse = max ** 2
-  return leg1 + leg2 == hypotenuse
-}
-</code></pre>
-				</div>
-			</article>
-			<article class="slide">
-				<h2>Let's Look up some basic String Methods</h2>
-				<code>String.prototype</code>
-				<ul style="columns: 2">
-					<li><code>.toLowerCase()</code></li>
-					<li><code>.repeat()</code></li>
-					<li><code>.trim()</code></li>
-					<li><code>.indexOf()</code></li>
-					<li><code>.lastIndexOf()</code></li>
-					<li><code>.split()</code></li>
-					<li><code>.substr()</code></li>
-					<li><code>.concat()</code></li>
-					<li><code>.replace()</code></li>
-					<li><code>.charCodeAt()</code></li>
-					<li><code>.includes()</code></li>
-					<li><code>.slice()</code></li>
-				</ul>
-				<code class="fragment">console.log(String.prototype)</code>
-			</article>
-			<article class="slide">
-				<h2>Function Challenges</h2>
-				<p><small>Think about good names for the function and the parameters</small></p>
-				<p>Open VSCode & write a function that accepts as arguments...</p>
-				<ol>
-					<li>A numerator and a denominator & logs the fraction & the remainder</li>
-					<li class="delayed">A radius & returns the area of that circle (hint: console.log(Math))</li>
-					<li class="delayed" title="C = (F - 32) / 1.8">A °F temperature & returns the value converted into °C</li>
-				</ol>
+months.filter(filterEmpties)</code></pre>
 			</article>
 		</section>
 
@@ -879,6 +914,28 @@ Math.cos()
 				<h2>Arrays</h2>
 				<h1>List-like data structures</h1>
 			</header>
+			<article class="slide">
+				<h2>Arrays</h2>
+				<p>Arrays are list-like objects:</p>
+				<pre class="language-js"><code>[ 'a', 'man', 'a', 'plan', 'a', 'canal', 'panama' ]</code></pre>
+				<p>They can hold any number of different values (Primitives or Objects):</p>
+				<pre class="language-js"><code>[ 2, null, 'abc', {key: 'value'}, ['nested', 'array'] ]</code></pre>
+<p>They have built-in methods to perform list traversal & value mutation.</p>
+			</article>
+			<article class="slide">
+				<h2>Creating Arrays</h2>
+				<p>The recommended way to create arrays is declaring an Array literal:</p>
+				<pre class="language-js"><code>let array = [1, 2, 3]; // Array Literal
+</code></pre>
+<p>Other uncommon options to create Arrays:</p>
+				<pre class="language-js"><code>// via Array constructor
+let arr = new Array(1, 2, 3, 4) // [1, 2, 3, 4]
+let arr = new Array(2) // [undefined, undefined]
+// via Array Methods:
+Array.of(1, 2, 3) // [1, 2, 3]
+Array.from('string') // ["s", "t", "r", "i", "n", "g"]
+</code></pre>
+			</article>
 			<article class="slide">
 				<h2>Recall Javascripts Array-like Strings</h2>
 				<pre class="language-js"><code>let str = 'Hello!'
@@ -891,40 +948,6 @@ arr[0] // 'H'
 arr.length // 6
 arr.length = 3
 console.log(arr) // ['H','e','l']</code></pre>
-			</article>
-			<article class="slide">
-				<h2>Basic Array Methods <small><a href="https://javascript.info/array-methods">.info</a></small></h2>
-				<p>
-					Challenge use
-					<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">MDN</a>
-					to discover what each of these do:
-				</p>
-				<code>Array.prototype</code>
-				<div class="flex" style="text-align: center">
-					<pre class="language-js"><code>.concat()
-.slice()
-.indexOf()
-.split()
-.includes()
-.isArray()</code></pre>
-					<pre class="language-js"><code>.sort()
-.push()
-.pop()
-.shift()
-.unshift()
-.splice()</code></pre>
-				</div>
-			</article>
-			<article class="slide">
-				<h2>Creating Arrays</h2>
-				<pre class="language-js"><code>let array = [1, 2, 3]; // Array Literal (recommended)
-let arr = new Array(1, 2, 3); // Array constructor
-let arr = new Array(3); // [undefined, undefined, undefined]</code></pre>
-				<p>via Static Methods:</p>
-				<pre class="language-js"><code>Array.of(1, 2, 3) // [1, 2, 3]
-Array.from('string') // ["s", "t", "r", "i", "n", "g"]
-</code></pre>
-				<p></p>
 			</article>
 			<article class="slide">
 				<h2>The Array Index</h2>
@@ -947,42 +970,61 @@ arr[arr.length - 1] // 3
 arr.length = 2; // [1, 2]</code></pre>
 			</article>
 			<article class="slide">
-				<h2>Arrays</h2>
-				<p>Arrays are list-like objects</p>
-				<p>They have built-in methods to perform list traversal and value mutation.</p>
-				<p>They can hold any number of different values (Primitives or Objects)</p>
-				<pre class="language-js"><code>['a', 'man', 'a', 'plan', 'a', 'canal', 'panama']</code></pre>
-				<pre class="language-js"><code>[
-  2, 
-  null, 
-  'string', 
-  {key: 'value'}, 
-  ['nested', 'arrays']
-]</code></pre>
+				<h2>Array Challenge</h2>
+				<ol title="C = (F - 32) / 1.8 | F = C * 1.8 - 32">
+					<li>Open VSCode again</li>
+					<li>Open <code>index.js</code> file from earlier</li>
+					<li>Write a new function with:</li>
+				</ol>
+				<table>
+					<thead >
+						<tr>
+							<th style="background-color: royalblue">Arguments</th>
+							<th style="background-color: royalblue">Return Value</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="delayed">Temperature (F or C)<br>a "flag" arg (that is either 0 or 1)</td>
+							<td class="delayed">if "flag" is 0, converts from F -> C<br>if "flag" is 1, converts from C -> F</td>
+						</tr>
+					</tbody>
+				</table>
+						<p>Hint: Use the "flag" to access one of two positions in an array that holds two functions</p>
+			</article>
+			<article class="slide">
+				<h2>Basic Array Methods <small><a href="https://javascript.info/array-methods">.info</a></small></h2>
+				<code class="language-js">Array.prototype</code>
+				<p>
+					Challenge: use
+					<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">MDN</a>
+					to discover what each of these do:
+				</p>
+					<pre class="language-js flex" style="width: 60%"><code>let arr = [1,2,3]
+
+arr.isArray()
+arr.includes()
+arr.indexOf()
+arr.concat()
+arr.split()
+</code>
+<code>
+arr.slice()
+arr.sort()
+arr.push()
+arr.pop()
+arr.shift()
+arr.unshift()
+arr.splice()</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Non-Mutating vs Mutation in Arrays </h2>
-				<p><strong><a href="http://wjv.io/log/posts/immutability.html">JS Non-Mutating Toolkit</a></strong></p>
+				<p><strong><a href="https://wjv.io/blog/immutability/">JS Non-Mutating Toolkit</a></strong></p>
 				<p>The Functional Programming style prefers non-mutating techniques</p>
-			</article>
-			<article class="slide">
-				<h2>Array Challenge</h2>
-				<p>Open VSCode again & Refactor the Temp conversion function from earlier...</p>
-				<ol title="C = (F - 32) / 1.8 | F = C * 1.8 - 32">
-					<li>that converts a temperature from F -> C or C -> F depending on a 2nd argument <br>(that is either 0 or 1).
-					</li>
-					<ul>
-						<li>Use that number to access one of two different functions in an array</li>
-						<li>Return the invocation of the accessed function.</li>
-					</ul>
-				</ol>
 			</article>
 			<article class="slide">
 				<h2>Time to combine arrays & functions</h2>
 				<p>Let's make a simple Todo List interface in VS Code!</p>
-				<p>We'll add a <code>script</code> tag in our usual HTML boilerplate</p>
-				<p><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script">MDN</a></p>
-
 			</article>
 		</section>
 
@@ -1485,11 +1527,11 @@ arr.reduceRight((acc, cur) => acc.concat(cur), [])</code></pre>
 				<h2>Declaring Object Literals</h2>
 				<pre class="language-js"><code>let obj = {
   key: 'value', // key (not index)
-  "aka property": 2, // Use quotes for multi-word keys
+  "aka property": 2, // Use double quotes for multi-word keys
   key2: [1, 2, 3], // holds any data type
-  key3: { key: ' nested value' }, //even nested objects
-  key4: function(a, b) { console.log('method') }, // trailing commas
-  // ^ Functions on an object are called methods
+  key3: { key: ' nested value' }, // even nested objects
+  key4: function(a, b) { console.log('method') }, // trailing comma
+  //   ⤴ Functions on an object are called methods
 }</code></pre>
 			</article>
 			<article class="slide">
@@ -1834,9 +1876,11 @@ RegExp.prototype[serialize] = function() { return '/'+this.source+'/'+this.flags
 				<p><a href="https://validatejavascript.com/">ValidateJavascript.com (can choose linting rules)</a></p>
 				<h3>Use your new JS hammer wisely</h3>
 				<p><a href="http://youmightnotneedjs.com/">Not every problem is a nail...</a></p>
-				<hr>
-				<p><a href="https://jquery.com/">A word on jQuery (~234kb)</a></p>
-				<h4 style="text-align: center;">YAGNI</h4>
+			</article>
+			<!-- <article class="slide">
+				<h2>A word on jQuery: YAGNI</h2>
+				<p><a href="https://jquery.com/">It's heavy! (~234kb)</a></p>
+				<p style="text-align: center;">The DOM API probably supports what you need:</p>
 				<div style="display: flex; list-style: none; gap: 8px">
 					<li><a href="http://youmightnotneedjquery.com/">1</a></li>
 					<li><a href="https://blog.garstasio.com/you-dont-need-jquery/">2</a></li>
@@ -1844,7 +1888,7 @@ RegExp.prototype[serialize] = function() { return '/'+this.source+'/'+this.flags
 					<li><a href="https://github.com/you-dont-need-x/you-dont-need-jquery">4</a></li>
 					<li><a href="https://hackernoon.com/you-truly-dont-need-jquery-5f2132b32dd1">5</a></li>
 				</div>
-			</article>
+			</article> -->
 			<article class="slide">
 				<h2>Calculator Code Along</h2>
 				<p><a href="https://github.com/JamieVaughn/code-along/tree/master/calculator">Github Repo Starter</a></p>
