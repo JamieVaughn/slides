@@ -199,8 +199,8 @@ code ::selection, code::selection {
 section > header.slide {
 	/* background: linear-gradient(to bottom right, var(--accent3), var(--accent2), var(--accent1), var(--accent2), var(--accent3)); */
 	background: conic-gradient( 
-     var(--color-pink) 26deg, var(--token8) 26deg 96deg, var(--color-yellow) 96deg 115deg, 
-     var(--color-green) 115deg 150deg, var(--color-aqua) 150deg 250deg, var(--color-dark) 250deg 307deg, var(--color-pink) 307deg);
+     var(--color-dark) 32deg, var( --color-pink) 26deg 96deg, var(--token8) 96deg 132deg, 
+     var(--color-yellow) 132deg 185deg, var(--color-green) 185deg 250deg, var(--color-aqua) 250deg 303deg, var(--color-dark) 303deg);
 }
 
 section > section > header.slide {

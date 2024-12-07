@@ -43,12 +43,12 @@
 				<h2>A Primer On JS</h2>
 				<h4>What will we visit on our Journey?</h4>
 				<ol class="delayed-children">
-					<li class="fragment">Syntax <- we'll start here</p>
-					<li class="fragment">Organization of Code</li>
-					<li class="fragment">Organization of Components</li>
-					<li class="fragment">Organization of Views</li>
-					<li class="fragment">Architecture of an App</li>
-					<li class="fragment">Modern Dev Tooling</li>
+					<li>Syntax <- we'll start here</p>
+					<li>Organization of Code</li>
+					<li>Organization of Components</li>
+					<li>Organization of Views</li>
+					<li>Architecture of an App</li>
+					<li>Modern Dev Tooling</li>
 				</ol>
 			</article>
 			<article class="slide">
@@ -59,16 +59,16 @@
 				<h4 class="delayed">E-Textbooks</h4>
 				<p style='height: 50vh' class="delayed-children">
 					<a href="https://exploringjs.com/deep-js/toc.html">
-						<img class="fragment" src="img/deepjs_cover.jpg" alt="Deep Javascript book cover">
+						<img src="img/deepjs_cover.jpg" alt="Deep Javascript book cover">
 					</a>
 					<a href="https://exploringjs.com/es6/index.html">
-						<img class="fragment" src="img/exploringes6_cover.jpeg" alt="Exploring ES6 book cover">
+						<img src="img/exploringes6_cover.jpeg" alt="Exploring ES6 book cover">
 					</a>
 					<a href="https://eloquentjavascript.net/">
-						<img class="fragment" src="img/eloquent_cover.jpg" alt="Eloquent Javascript book cover">
+						<img src="img/eloquent_cover.jpg" alt="Eloquent Javascript book cover">
 					</a>
 					<a href="https://github.com/getify/You-Dont-Know-JS">
-						<img class="fragment" src="img/ydkjsy_cover.png" alt="You Don't Know JS Yet Book cover">
+						<img src="img/ydkjsy_cover.png" alt="You Don't Know JS Yet Book cover">
 					</a>
 				</p>
 			</article>
@@ -76,12 +76,12 @@
 			<article class="slide">
 				<h2>The Engines</h2>
 				<div class="delayed">
-					<h4 class="fragment">Javascript Engines</h4>
-					<p class="fragment">V8, Spider Monkey, Webkit/Nitro, Chakra(deprecated)</p>
+					<h4>Javascript Engines</h4>
+					<p>V8, Spider Monkey, Webkit/Nitro, Chakra(deprecated)</p>
 				</div>
 				<div class="delayed">
-					<h4 class="fragment">Render Engines</h4>
-					<p class="fragment">Blink, Webkit, Gecko</p>
+					<h4>Render Engines</h4>
+					<p>Blink, Webkit, Gecko</p>
 				</div>
 			</article>
 			<article class="slide">
@@ -145,7 +145,8 @@
 			</article>
 			<article class="slide">
 				<h2>ECMAScript</h2>
-				<p><a href="https://www.ecma-international.org/technical-committees/">TC39</a></p>
+				<p style="text-align: center;">ECMAScript is the <u>specification</u> <br>for the implemented language called Javascript</p>
+				<h3><a href="https://www.ecma-international.org/technical-committees/" style="color: royalblue">TC39 Committee website &#128279;</a></h3>
 			</article>
 
 		</section>
@@ -189,9 +190,9 @@
 				</ul>
 				<div>
 				<p>Use <code>typeof</code> operator to check types</p>
-				<pre class="language-js"><code >typeof 'hello' // 'string'
-typeof 100 // 'number'
+				<pre class="language-js"><code>typeof 100 // 'number'
 typeof false // 'boolean'
+typeof 'hello' // 'string'
 // single line comment
 /* Multiline
 comment */
@@ -231,28 +232,29 @@ comment */
 				<h2>Dealing with NaN (Not a Number)</h2>
 				<div class="flex">
 					<ul>
-						<li>Often you'll want to check if a value is an actual number and not a <code>NaN</code> literal.</li>
+						<li>Often you'll want to check if a value is an <u>actual number</u> and not a <code>NaN</code> literal.</li>
 						<li>For that use <code>Number.isFinite()</code> - <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Number/isFinite">Reference</a></li>
 
 							<pre class="language-js"><code>Number.isFinite(42) // true
-// returns true only if the value is of type number 
-// so you know it can be safely used in math calculations
+// returns true for only actual numbers
+// that are safe to use in math calculations
 </code></pre> 
 						</li>
 						<li>Examples:</li>
 						<pre class="language-js"><code>Number.isFinite(NaN) // false
 Number.isFinite(Infinity) // false
 Number.isFinite('42') // false
+Number.isFinite(true) // false
 // Don't confuse Number.isFinite() with the
 // global isFinite(), which coerces the value</code></pre>
 					</ul>
-					<img style="flex-shrink: 2;  border-radius: 100rem;" src="img/i_heart_my_nan.jpg" alt="">
+					<img style="border-radius: 100rem; max-height: 450px; max-width: 450px" src="img/i_heart_my_nan.jpg" alt="">
 				</div>
 			</article>
 			<article class="slide">
 				<h2>BigInt</h2>
 				<p><code>BigInt</code> provides arbitray precision & fixes decimal bug in Numbers.</p>
-				<p>Just "post-fix" a number with <code>n</code> → <code>100n</code></p>
+				<p>Just <u>post-fix</u> a number with <code>n</code> → <code>100n</code></p>
 				<pre class="language-js"><code>// Adding to the max number overflows & fails
 let num = Number.MAX_SAFE_INTEGER + 1 
 // 9007199254740991
@@ -266,23 +268,16 @@ const biggestNumber = 9007199254740991n + 1n
 			</article>
 			<article class="slide">
 				<h2>Booleans</h2>
-				<ul style="width: 300px">
-					<li style="list-style: none; display: flex; align-items: center; justify-content: space-between;">
-						<pre class="language-js"><code>true</code></pre>
-						<span style="margin: 0 1rem;">or</span>
-						<pre class="language-js"><code>false</code></pre>
-					</li>
-				</ul>
+				<p><code class="language-js">true</code> or <code class="language-js">false</code></p>
 				<p>Truthy or Falsey?</p>
-				<p>Try using <code>console.log()</code> in the dev tools to see it in action:</p>
-				<ul class="delayed-children" style="display: flex; flex-wrap: wrap; justify-content: center;">
-					<pre class="language-js" style="margin-top: auto;""><code>Boolean(null)</code></pre>
-					<pre class="language-js"><code>Boolean(undefined)</code></pre>
-					<pre class="language-js"><code>Boolean("")</code></pre>
-					<pre class="language-js"><code>Boolean('false')</code></pre>
-					<pre class="language-js"><code>Boolean('0')</code></pre>
-					<pre class="language-js"><code>Boolean(0)</code></pre>
-				</ul>
+				<p>Try using <code class="language-js">console.log()</code> in the dev tools to see it in action:</p>
+				<pre class="language-js"><code>Boolean(undefined)
+Boolean(null)
+Boolean("")
+Boolean('false')
+Boolean('0')
+Boolean(0)
+</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Strings</h2>
@@ -334,44 +329,33 @@ console.log(str, str[0]) // 'hello', 'h'
 			<article class="slide">
 				<h2>Primitive Wrappers</h2>
 				<p>Type Casting</p>
-				<div class="flex" style="text-align: center">
-					<ul style="list-style: none; width: 300px">
-						<li>
-							<pre class="language-js"><code>String()</code></pre>
-						</li>
-						<li>
-							<pre class="language-js"><code>Number()</code></pre>
-						</li>
-						<li>
-							<pre class="language-js"><code>Boolean()</code></pre>
-						</li>
-					</ul>
-					<ul style="list-style: none; width: 300px">
-						<li>
-							<pre class="language-js"><code>String(true) // 'true'</code></pre>
-						</li>
-						<li>
-							<pre class="language-js"><code>Number('22') // 22</code></pre>
-						</li>
-						<li>
-							<pre class="language-js"><code>Boolean(0) // false</code></pre>
-						</li>
-					</ul>
-				</div>
+				<p>Deliberately alter the type of a value</p>
+				<div style="margin: 0 auto;">
+							<pre class="language-js"><code>
+String(42) // '42'
+String(true) // 'true'
 
+Number('42') // 42
+Number(false) // 0
+
+Boolean(1) // true
+Boolean('') // false
+</code></pre>
+				</div>
 			</article>
 			<article class="slide">
-				<h2>Type Coercion</h2>
-				<ul>
-					<li><strong>Types</strong> refer to the data types
+				<h2>Types & Type Coercion</h2>
+				<ul style="list-style: none;" class="delayed-children">
+					<li><strong>Types</strong> refer to the <u>data types</u>, such as primitives:
 						<ul>
-							<li>such as primitives: <code>String</code>, <code>Boolean</code>, <code>Number</code>, etc</li>
+							<li> <code class="language-js">string</code>, <code class="language-js">boolean</code>, <code class="language-js">number</code>, etc</li>
 						</ul>
 					</li>
 					<li>
 						<strong>Type Coercion</strong>: the JS engine changing the data type during an operation
 						<ul>
-							<li><code>'1'+ 0 // '10' here a number is coerced to a string</code></li>
+							<li>Here a number is coerced to a string during an operation:</li>
+							<ul><li style="list-style: none;"><code class="language-js">'1'+ 0 // '10'</code></li></ul>
 						</ul>
 					</li>
 					<li><strong>Dynamically typed language</strong>: variables may be reassigned to a new type
@@ -379,10 +363,11 @@ console.log(str, str[0]) // 'hello', 'h'
 							<li>Javascript is Dynamically typed</li>
 						</ul>
 					</li>
-					<li><strong>Statically typed Languages: variables may not be reassigned to a different type</strong></li>
+					<li><strong>Statically typed Languages:</strong> variables may not be reassigned to a different type
 					<ul>
 						<li>Typescript is Statically typed</li>
 					</ul>
+				</li>
 				</ul>
 			</article>
 		</section>
@@ -398,25 +383,34 @@ console.log(str, str[0]) // 'hello', 'h'
 				<p> A <strong>variable</strong> is a named container for a <strong>value</strong>, such as a primitive.</p>
 				<p>The <strong>name</strong> that refers to a variables is also called an <strong>identifier</strong></p>
 				<pre class="language-js"><code>let
-const</code></pre>
-							<pre class="language-js"><code>var // deprecated
+const // constant</code></pre>
+							<pre class="language-js delayed"><code>var // deprecated
 // may find in legacy code</code></pre>
 			</article>
 			<article class="slide">
-				<h2>Declaration & Assignment</h2>
-				<pre class="language-js" style="text-align: left;"><code>let x // Declaration of an identifier
-let y = 500 // Assignment of a value
-y = 'Hello!' // Re-assignment (overwrites)</code></pre>
-<img src="img/variable_labels.jpg">
+				<h2>Declaration & Assignment Terms</h2>
+				<img src="img/variable_labels.jpg">
 			</article>
 			<article class="slide">
-				<h2>You can split a let declaration in two separate expressions.</h2>
+				<h2>Declaration & Assignment Examples</h2>
+				<pre class="language-js" style="text-align: left;"><code>let x // Declaration of an identifier
+let y = 500 // Declaraion & Assignment of a value at once
+y = 'Hello!' // Re-assignment (overwrites)
+
+const z = 'constant' // Must Declare & Assign a const
+<span class="wrong">const z = 'new value'</span> // SyntaxError (Can't change a const)
+</code></pre>
+			</article>
+			<article class="slide">
+				<h2>You can split a <code class="language-js">let</code> declaration into two steps</h2>
 				<p>Declaration → then Assignment:</p>
 				<pre class="language-js"><code>let i
 i = true
+
 const j // SyntaxError
-const k = 1</code></pre>
-		<p>With <code>const</code> you can't, since you can't re-assign a <code>const</code></p>
+const k = 1 // assign only once w/ consist</code></pre>
+		<h3>But you <u>can't re-assign</u> a <code class="language-js">const</code></h3>
+		<p>With <code class="language-js">const</code> you can <u>only assign it once</u></p>
 			</article>
 			<article class="slide">
 				<h2>Variables are Containers of a Value</h2>
@@ -438,6 +432,16 @@ const y = 'Hello!'
 					<strong>value</strong>.</p>
 			</article>
 			<article class="slide">
+				<h2>The Comma operator</h2>
+				<p>Let's you Declare or Assign multiple vars at once.</p>
+				<pre class="language-js"><code>let j, k, l; 
+// j, k, l all initialized as undefined
+j = 4, k = 5, l = 6 // all assigned
+
+// or Declare & Assign all at once
+const v = 4, x = 3, y = 2, z = 1</code></pre>
+			</article>
+			<!-- <article class="slide">
 				<h2>Hoisting</h2>
 <pre class="language-js"><code>let i = 'baz';
 {
@@ -451,53 +455,42 @@ console.log(l) // Reference error
 		</code></pre>
 				<p>Global <strong><code>var</code></strong> declarations are hoisted... moved to the top of the file. </p>
 				<p><code>let</code> & <code>const</code> are not hoisted. They respect their block scope.</p>
-			</article>
+			</article> -->
 			<article class="slide">
 				<h2>Scope (aka Block Scope)</h2>
-				<p>The area of influence... bounded by curly braces.</p>
-				<div class="flex">
-				<pre class="language-js"><code>{ // Curly Braces Open a new Block Scope
-  let local1 = 'local1';
-  const local2 = 'local2';
+				<p>Scope is like a variables area of influence... it's bounded by <u>curly braces</u></p>
+				<pre class="language-js"><code>// the root of a file is the global scope
+const global = 'global'
+{ // open curly Brace starts a Block Scope
+  const scoped = 'scoped';
   console.log(global) // 'global'
-  console.log(deeply_nested) 
-  // ReferenceError: deeply_nested is not defined
-  {
-    let deeply_nested = 5
-    console.log(local1) // 'local'
-  }
-} // And Curly Braces close a Block Scope
-{
-  var global = 'global'; // var doesn't respect scopes
-  console.log(local1) // ReferenceError: local1 is not defined
-}
-		</code></pre>
-		<ul>
-			<li>Variables defined in a curly brace scope cannot be accessed outside of that scope, unless they are hoisted.</li>
-			<li>Variables defined above/outside of the scope can be accessed within a nested scope.</li>
-			<li>The root level (i.e. no curly braces) is the "global" scope.</li>
-		</ul>
-	</div>
+  console.log(scoped) // 'scoped'
+} // closed curly brace ends Block Scope
+
+console.log(global) // 'global'
+console.log(scoped) // ReferenceError: local is undefined
+</code></pre>
 			</article>
 			<article class="slide">
-				<h2>The Comma operator</h2>
-				<p>Let's you initialize or declare multiple vars at once.</p>
-				<pre class="language-js"><code>let j, k, l; 
-// j, k, l all initialized as undefined
-let i = 'baz';
+				<h2>Nested Scopes</h2>
+				<p>Remember the <u>tree data structure</u> concept?</p>
+				<div class="flex">
+				<pre class="language-js"><code>const global = 'global'
 {
-  j = 'foo';
-  let i = 'bar' // notice block scoping of 'i' here
-  console.log(j + i) // 'foobar'
+  let local = 'local';
+  {
+    let deeply_nested = 5
+    console.log(deeply_nested, local, global) // 5 'local' 'global'
+  }
+  console.log(deeply_nested) // ReferenceError
 }
-{
-  k = 'bar';
-  l = 1
-  console.log(k + i + l) // 'barbaz1'
-}
+console.log(deeply_nested) // ReferenceError
+<!-- {
+  var global = 'global'; // var doesn't respect scopes
+  console.log(local1) // ReferenceError: local1 is not defined
+} -->
 		</code></pre>
 			</article>
-
 			<article class="slide">
 				<h2>Reserved Key Words (tokens)</h2>
 				<p>These can't be used as variable names: <a href="https://www.w3schools.com/js/js_reserved.asp">Full List</a>
@@ -521,9 +514,9 @@ class extends super const export import yield
 			</header>
 			<article class="slide">
 				<h2>The Main Operators</h2>
-				<code style="font-size: 3rem;">+   -   *    /</code>
-				<p>Exponent: <code> **  </code></p>
-				<p>Remainder (aka Modulo): <code> % </code></p>
+				<code class="language-js" style="font-size: 3rem;">+   -   *    /</code>
+				<p>Exponent: <code class="language-js"> **  </code></p>
+				<p>Remainder: <code class="language-js"> %</code><span> (aka Modulo)</span></p>
 				<pre class="language-js"><code>12 / 3 + 5 - 2 * 3 // 3 (remember PEMDAS?)
 10**2 // 100
 64**0.5 // 8
@@ -554,10 +547,10 @@ a/=4 // a -> 3</code></pre>
 				<h2>Challenges</h2>
 				<p>Time to practice in the JS console!</p>
 				<ol>
-					<li><span title="str2[0] + str2[1] + str1[1] + str1[0] + str1[0] + str2[2] + (str1 + str2).length">Create the
-							string: <code>"maroon5"</code></span>
+					<li><span title="str2.length + str1[2] + str1[1] + str2 + str1[3]">Create the
+							string: <code>"3romans"</code></span>
 						<pre class="language-js"><code>// Given:
-let str1 = "or"
+let str1 = "norse"
 let str2 = "man"</code></pre>
 					</li>
 					<li style="margin-top: 2rem;"><span
@@ -738,12 +731,15 @@ str.slice()</code></pre>
 			</article>
 			<article class="slide">
 				<h2>HTML Stamping Function Challenge</h2>
-				<p>Let's make a function that adds content to the DOM</p>
-				<p>It should take some text as an arg & append that as a DOM element</p>
+				<ul>In the console, let's make a function that stamps new content into the DOM
+					<li>Let's call it <code>textStamper</code></li>
+					<li>It should take <code>text</code> as an argument</li>
+					<li>It should append that <code>text</code> as a DOM element</li>
+				</ul>
 				<ul>We'll need a few new things:
-					<li><code>document.body</code> - <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/body">MDN</a></li>
-					<li><code>.innerHTML</code> property - <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML">MDN</a></li>
-					<li>use it like this:</li>
+					<li>The <code>document.body</code> element - <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/body">MDN</a></li>
+					<li>The <code>.innerHTML</code> property - <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/innerHTML">MDN</a></li>
+					<li>They are used together like this:</li>
 				</ul>
 				<pre class="language-js"><code>let newContent = "<div>New Content</div>"
 document.body.innerHTML += newContent</code></pre>
@@ -822,7 +818,7 @@ let pureSquare(a, b) {
 }</code></pre> -->
 				</div>
 				<div class="tilt-stamp delayed">
-					<p style="text-align: center;">Think of pure funcs<br> like a black box</p>
+					<p style="text-align: center;">Think of pure functions<br> like a black box</p>
 					<img src="img/function_fn.png" width="100%" alt="">
 					<p style="text-align: center;">no side effects</p>
 				</div>
@@ -878,18 +874,35 @@ function sideEffects(arg){
 						</tr>
 					</tbody>
 				</table>
+				<p class="delayed">Let's also add <code>textStamper</code> to our file, even though it's not a pure function</p>
 			</article>
 			<article class="slide">
 				<h2>Referential Transparency</h2>
-				<ul>
-					<li>The return value of any expression can be substituted for the expression itself & the program will work
-						exactly the same</li>
-					<li>Pure functions are referentially transparent</li>
-					<li>Functions with Side effects cannot be</li>
-				</ul>
-				<pre class="language-js"><code>let g = 5
-fn(g)
-fn(5)</code></pre>
+				<p>Something is <u>referentially transparent</u> if its evaluation can <u>always</u> be substituted for the expression itself</p>
+				<div class="flex">
+				<pre class="language-js"><code>let x = 2
+function pureFunc() {
+  let x = 2, y = 100, z = 25
+  return y / (z * x) // 2
+}
+pureFunc() // evaluates to 2
+x = 4
+pureFunc() // still evaluates to 2
+</code></pre>
+<pre class="language-js"><code> let x = 2
+function impureFunc() {
+	y = 100, z = 25
+  return y / (z * x)
+}
+pureFunc() // evaluates to 2
+x = 4
+pureFunc() // now it evaluates to 1
+</code></pre>
+</div>
+<ul>
+	<li>Pure functions are referentially transparent</li>
+	<li>Functions with Side effects cannot be</li>
+</ul>
 			</article>
 			<article class="slide">
 				<h2>Callbacks & Anonymous Functions</h2>
@@ -924,23 +937,25 @@ months.filter(filterEmpties)</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Creating Arrays</h2>
-				<p>The recommended way to create arrays is declaring an Array literal:</p>
-				<pre class="language-js"><code>let array = [1, 2, 3]; // Array Literal
+				<div style="padding: 2rem; border: 2px solid royalblue; border-radius: 1rem;">
+				<p>The <u>recommended way</u> to create arrays is declaring an <u>array literal</u>:</p>
+				<pre class="language-js"><code>let arr = [1, 2, 3] // this is an array literal
 </code></pre>
+</div>
 <p>Other uncommon options to create Arrays:</p>
 				<pre class="language-js"><code>// via Array constructor
 let arr = new Array(1, 2, 3, 4) // [1, 2, 3, 4]
-let arr = new Array(2) // [undefined, undefined]
+arr = new Array(2) // [undefined, undefined]
 // via Array Methods:
-Array.of(1, 2, 3) // [1, 2, 3]
-Array.from('string') // ["s", "t", "r", "i", "n", "g"]
+arr = Array.of(1, 2, 3) // [1, 2, 3]
+arr = Array.from('str') // ["s", "t", "r"]
 </code></pre>
 			</article>
 			<article class="slide">
 				<h2>Recall Javascripts Array-like Strings</h2>
 				<pre class="language-js"><code>let str = 'Hello!'
-str.length = 3;
-str.length // 6;
+str.length = 3
+str.length // 6
 str[2] = 'a' // str is still 'Hello'</code></pre>
 				<p>↑ But Strings are immutable, unlike Arrays</p>
 				<pre class="language-js"><code>let arr = ['H','e','l','l','o','!']
@@ -952,12 +967,12 @@ console.log(arr) // ['H','e','l']</code></pre>
 			<article class="slide">
 				<h2>The Array Index</h2>
 				<p>Arrays are zero-indexed & the indices must be integers</p>
-				<pre class="language-js"><code>let arr = [1, 2, 3];
+				<pre class="language-js"><code>let arr = [1, 2, 3]
 arr[0] // 1 
 arr[2] // 3
 arr[2] = 0 // 0
-console.log(arr[4]); // undefined
-arr[6] = 'ten';
+console.log(arr[4]) // undefined
+arr[6] = 'ten'
 console.log(arr) 
 // [1, 2, 0, undefined, undefined, "ten"]</code></pre>
 			</article>
