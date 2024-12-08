@@ -217,6 +217,11 @@
 docuemnt.querySelectorAll('header > nav .logo')
 // change the array-like node-list into an array
 Array.from(document.querySelectorAll('div')) 
+// You can use the .forEach method on node lists
+// Works on Nodelists too!
+document.querySelectorAll('div').forEach(callback)
+// But .forEach doesn't work on HTML Collections
+document.getElementsByTagName('div').forEach() // TypeError
 </code></pre>
       </article>
       <article class="slide">

@@ -53,17 +53,6 @@
             <li class="delayed">
               Ternary Operator: <code> condition ? true : false</code>
             </li>
-            <li class="delayed">
-              <pre class="language-js">
-            <code>try {
-  // ...
-} catch(e) {
-  // ...
-} finally {
-  // ...
-}</code>
-          </pre>
-            </li>
           </ul>
           <ul>
             <li class="delayed">
@@ -96,6 +85,8 @@
           <li class="delayed">Rest & Spread operators</li>
           <li class="delayed">Object Propery/Method Shorthand</li>
           <li class="delayed">Computed Properties</li>
+          <li class="delayed">For of & For in loops</li>
+          <li class="delayed">Try - Catch</li>
           <li class="delayed">Map & Set</li>
           <li class="delayed">Module Imports/Exports</li>
           <li class="delayed">Classes, Modules & Closures</li>
@@ -415,6 +406,74 @@ let computedObj = {
   [makeKey('name')]: 'value'
 }</code></pre>
       </article>
+      <article class="slide">
+				<h2>For Of Loops & For In Loops</h2>
+				<div class="flex" style="text-align: center;">
+					<strong>For Of</strong>
+					<strong>For In</strong>
+				</div>
+				<div class="flex">
+					<pre class="language-js"><code>const array1 = ['4', '5', '6'];
+for (const value of array1) {
+  console.log(value);
+} // prints 4, 5, 6</code></pre>
+					<pre class="language-js"><code>const obj = { a: 4, b: 5, c: 6 };
+for (const key in obj) {
+  console.log(`obj.${key} = ${obj[key]}`);
+} // prints 'a', 'b', 'c'</code></pre>
+				</div>
+				<p><code>for … in</code>: gets key, property or index (put a <strong>key</strong> IN a lock or think "in" for
+					index)</p>
+				<p><code>for … of</code>: gets value (think .value<strong>Of</strong>, a method that gets the value of
+					something)</p>
+			</article>
+      <article class="slide">
+				<div class="flex">
+					<div class="flex-col start">
+						<h2>Try Catch</h2>
+						<pre class="language-js fit"><code>try {
+  fetchDataFromServer(success, error)
+} catch (e) {
+  console.log(e)
+  redirectUserToHomeScreen()
+}</code></pre>
+					</div>
+
+					<img style="max-height: 70vh" src="https://i.redd.it/cmhc4anews571.png" alt="">
+
+				</div>
+			</article>
+			<article class="slide">
+				<h2>Throwing Errors</h2>
+				<div class="grid col-2" style="gap: 2rem">
+					<pre class="wrong language-js fit"><code>let authenticate = false
+if ( authenticate ) {
+  console.log('success')
+  userSignIn()
+} else {
+  throw "Error: User authentication failed"
+}</code></pre>
+					<span style="width: 45vw; align-self: start;">
+						<p>Use the <code>throw</code> statement to halt code execution & issue a custom exception.</p>
+						<p>Only use in places it can be caught. When the exception occurs, control transfers to the
+							<code>catch</code> block. The <code>finally</code> block always runs, error or not.</p>
+					</span>
+					<pre class="correct language-js fit" style="grid-row: 1 / span 2"><code>let authenticate = false
+try {
+  if ( authenticate ) {
+    userSignIn()
+  } else {
+    throw "Error: User authentication failed"
+  }
+} catch (e) {
+  console.log(e)
+  redirectUserToHomeScreen()
+} finally { // run clean up code here
+  resetForm()
+  closeSession()
+}</code></pre>
+				</div>
+			</article>
       <article class="slide">
         <div class="flex" style="align-items: center">
           <h2 class="bumpup">
