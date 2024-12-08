@@ -52,25 +52,27 @@
 				</ol>
 			</article>
 			<article class="slide">
-				<h2>Some resources to guide us</h2>
-				<p><a href="http://jargon.js.org/">Glossary of Jargon</a></p>
-				<p><a href="https://glossarytech.com/">Glossary Tech Extension</a></p>
-				<hr style="width: 33%; margin: 0 auto;">
-				<h4 class="delayed">E-Textbooks</h4>
-				<p style='height: 50vh' class="delayed-children">
-					<a href="https://exploringjs.com/deep-js/toc.html">
-						<img src="img/deepjs_cover.jpg" alt="Deep Javascript book cover">
-					</a>
-					<a href="https://exploringjs.com/es6/index.html">
-						<img src="img/exploringes6_cover.jpeg" alt="Exploring ES6 book cover">
-					</a>
-					<a href="https://eloquentjavascript.net/">
+				<h2>Some Supplemental Resources</h2>
+				<p style="width: 60%">Recommended Text:</p>
+				<div style='height: 50vh; gap: 1rem; display: grid; grid-template-columns: 1fr 215px 200px; grid-template-rows: 1fr 1fr 1fr; grid-auto-flow: dense;'>
+					<a href="https://eloquentjavascript.net/" style="grid-row: span 3; grid-column: 1;">
 						<img src="img/eloquent_cover.jpg" alt="Eloquent Javascript book cover">
 					</a>
-					<a href="https://github.com/getify/You-Dont-Know-JS">
+					<div style="grid-row: 1; grid-column: 2 / 2; display: flex; flex-direction: column;">
+						<p><a href="http://jargon.js.org/">JS Glossary</a></p>
+						<p><a href="https://glossarytech.com/">Extension</a></p>
+						<p style="font-size: 2rem; margin-top: auto" class="delayed">Other Textbooks<span style="font-size: 3rem; position: relative; top: 1.5rem;">⇘</span></p>
+					</div>
+					<a href="https://exploringjs.com/deep-js/toc.html"  class="delayed">
+						<img src="img/deepjs_cover.jpg" alt="Deep Javascript book cover">
+					</a>
+					<a href="https://exploringjs.com/es6/index.html" class="delayed">
+						<img src="img/exploringes6_cover.jpeg" alt="Exploring ES6 book cover">
+					</a>
+					<a href="https://github.com/getify/You-Dont-Know-JS" class="delayed">
 						<img src="img/ydkjsy_cover.png" alt="You Don't Know JS Yet Book cover">
 					</a>
-				</p>
+				</div>
 			</article>
 
 			<article class="slide">
@@ -544,6 +546,16 @@ a*=2 // a -> 12
 a/=4 // a -> 3</code></pre>
 			</article>
 			<article class="slide">
+				<h2>Javascript Variables & Operators Challenge</h2>
+				<p>Let's get some practice!</p>
+				<p>Take 15 minutes & try to solve the free challenges here:</p>
+				<ol>
+					<li><a href="https://www.jschallenger.com/javascript-basics/variables">Variabales Challenges</a></li>
+					<li><a href="https://www.jschallenger.com/javascript-basics/booleans/">Boolean Challenges</a></li>
+					<li><a href="https://www.jschallenger.com/javascript-basics/strings">Strings Challenges</a></li>
+				</ol>
+			</article>
+			<article class="slide">
 				<h2>Challenges</h2>
 				<p>Time to practice in the JS console!</p>
 				<ol>
@@ -561,11 +573,6 @@ let str = "hello world"
 let bool = true</code></pre>
 					</li>
 				</ol>
-			</article>
-			<article class="slide">
-				<h2>Javascript Variables & Operators Challenge</h2>
-				<p>Let's get some practice!</p>
-				<a href="https://www.jschallenger.com/javascript-basics/variables">Try to complete the variables, booleans and operators challenges here.</a>
 			</article>
 		</section>
 
@@ -733,8 +740,8 @@ str.slice()</code></pre>
 				<h2>HTML Stamping Function Challenge</h2>
 				<ul>In the console, let's make a function that stamps new content into the DOM
 					<li>Let's call it <code>textStamper</code></li>
-					<li>It should take <code>text</code> as an argument</li>
-					<li>It should append that <code>text</code> as a DOM element</li>
+					<li>It should take <code>text</code> & <code>size</code> as arguments</li>
+					<li>It should append that <code>text</code> as a DOM element at the given pixel <code>size</code></li>
 				</ul>
 				<ul>We'll need a few new things:
 					<li>The <code>document.body</code> element - <a href="https://developer.mozilla.org/en-US/docs/Web/API/Document/body">MDN</a></li>
@@ -1167,6 +1174,13 @@ bool == un // false</code></pre>
 					<li>Default Values: <code>MyVar || 'default'</code></li>
 				</ul>
 			</article>
+			<article class="slide">
+				<h2>Challenge</h2>
+				<p>Take 10 minutes and try to solve the free challenges here:</p>
+				<ol>
+					<li><a href="https://www.jschallenger.com/javascript-basics/operators">Operators Challenges</a></li>
+				</ol>
+			</article>
 		</section>
 
 		<section>
@@ -1190,6 +1204,13 @@ if (input < -1) {
 } else {
 // otherwise do that
 }</code></pre>
+			</article>
+			<article class="slide">
+				<h2>Challenge</h2>
+				<p>Take 5 minutes & try to solve the free challenges here:</p>
+				<ol>
+					<li><a href="https://www.jschallenger.com/javascript-basics/conditionals">Conditionals Challenges</a></li>
+				</ol>
 			</article>
 			<article class="slide">
 				<h2>Ternary Operator <sup><a
@@ -1463,6 +1484,13 @@ arr2.flatMap(x => x) //  [1, 2, 2, 3, 3, 4]</code></pre>
 [[1 ,2],[3, 3],[4, 5]].filter(i => i[0] > 3) // [[4, 5]]</code></pre>
 			</article>
 			<article class="slide">
+				<h2>Array Challenges</h2>
+				<p>Take 15 minutes & try to solve the free challenges here:</p>
+				<ol>
+					<li><a href="https://www.jschallenger.com/javascript-practice/javascript-arrays">Array Challenges</a></li>
+				</ol>
+			</article>
+			<article class="slide">
 				<h2><code>.reduce()</code></h2>
 				<p>The callback processes all the elements in the array and reduces them down to one value called the
 					accumulator.</p>
@@ -1721,6 +1749,13 @@ Object.keys(obj) // ['a', 'b', 'c']
 Object.values(obj) // [1, 2, 3]
 // Reverse the process:
 Object.fromEntries([['a', 1],['b', 2],['c', 3]]) //{a: 1, b: 2, c: 3}</code></pre>
+			</article>
+			<article class="slide">
+				<h2>Objects Challenges</h2>
+				<p>Take 10 minutes & try to solve the free challenges here:</p>
+				<ol>
+					<li><a href="https://www.jschallenger.com/javascript-practice/javascript-objects">JS Objects</a></li>
+				</ol>
 			</article>
 			<article class="slide">
 				<h2>Group By Method</h2>
