@@ -113,8 +113,9 @@ elem.addEventListener('click', function(e){
       <article class="slide">
         <h2>How did you solve this?</h2>
         <p class="delayed">
-          Mutating a global variable in the listener callback works.
+          How about mutating a global variable in the listener callback?
         </p>
+        <p class="delayed">It's simple. But it works!</p>
         <pre class="language-js delayed"><code>let clicks = 0
 let dragon = document.getElementById('dragon')
 dragon.addEventListener('click', function(e){
@@ -182,7 +183,7 @@ dragon.addEventListener('click', function(e){
       </article>
       <article class="slide">
         <h2>Dragon 🎭 Duo</h2>
-        <p>Same app, <strong>MORE DRAGONS!</strong></p>
+        <p>Same app, <strong>TWICE THE DRAGONS!</strong></p>
         <p>The client now wants 2 dragons. Can we do it?</p>
         <ul>
           <strong>Client's new Reqs:</strong>
@@ -193,51 +194,21 @@ dragon.addEventListener('click', function(e){
               They like elemental dragons, so how about <u>Fire</u> &
               <u>Water</u> dragons?
             </li>
-            <li>But feel free to be creative with the dragon types</li>
           </ul>
           <li>Use CSS to style the different dragon types distinctly</li>
           <li>Show the number of clicks next to each associated dragon</li>
           <li>Click counts should increment independently of each other</li>
         </ul>
-        <detail class="notes"> 2️⃣ 🎏 </detail>
+        <!-- <detail class="notes"> 2️⃣ 🎏 </detail> -->
       </article>
       <article class="slide">
-        <h2>How did you solve it?</h2>
+        <h2>Reflections</h2>
         <p>We could just add a second variable and eventListener...</p>
         <p class="delayed">
           But, that's more loose global variables... Would that continue to
           scale?
         </p>
-        <div class="flex">
-          <div>
-            <h3 class="delayed">Javascript</h3>
-            <ul>
-              <li class="delayed">
-                What if we contained the variables in an object?
-              </li>
-              <li class="delayed">
-                Is it too soon to consider some kind of re-usable setup
-                function?
-              </li>
-            </ul>
-          </div>
-          <div class="delayed">
-            <h3>Styling</h3>
-            <ul>
-              <li class="delayed">
-                To style the dragon types how about a CSS class like
-                <code>.fire</code>?
-              </li>
-              <li class="delayed">
-                How about using CSS <code>filter: hue-rotate();</code> perhaps?
-              </li>
-            </ul>
-          </div>
-        </div>
-      </article>
-      <article class="slide">
-        <h2>Reflections</h2>
-        <ul>
+        <ul class="delayed">
           <li>Are you happy with your method of 🐉 duplication?</li>
           <li>Is it scalable?</li>
           <li>Did you "hard-code" anything in the js or css?</li>
@@ -260,10 +231,63 @@ dragon.addEventListener('click', function(e){
               used?
             </li>
             <li class="delayed">
-              Try using a pattern to re-use code and/or functions
+              Try using a few functions to re-use more code
             </li>
           </ul>
         </ul>
+      </article>
+      <article class="slide">
+        <h2>Dragon 🌆 City</h2>
+        <em>This client is getting needy!</em>
+        <p>They loved <strong>Dragon 🎭 Duo</strong> so much that they want <strong style="position: relative; background: linear-gradient(45deg, black 45%, transparent 50%);">MORE DRAGONS!<img src="img/more_kylo.jpg" style="position: absolute; bottom: 40%; left: 0; min-height: 200px; z-index: -1;"></strong></p>
+        <p>The client would like at least <u>5 clickable dragons.</u></p>
+        <ul><strong>With these elemental types</strong>
+          <div class="col-2">
+          <li>Fire</li>
+          <li>Water</li>
+          <li>Earth</li>
+          <li>Air</li>
+          <li>Aether</li>
+          <li>Be creative!</li>
+        </div>
+        </ul>
+        <div class="tilt-stamp delayed">
+					<p style="text-align: center;">At this scale,</p>
+					<p style="text-align: center;">the simple approach</p>
+					<p style="text-align: center;">isn't gonna cut it.</p>
+					<p style="text-align: center;">We need a better way.</p>
+				</div>
+      </article>
+      <article class="slide">
+        <h2>Is there a better way to solve it?</h2>
+        <div class="flex">
+          <div>
+            <h3 class="delayed">Javascript</h3>
+            <ul><strong class="delayed">Could we...</strong>
+              <li class="delayed">
+                put <code>clicks</code> variables into objects?
+              </li>
+              <li class="delayed">
+                use a <code>dragonStamper</code> function?
+              </li>
+              <li class="delayed">use the <code>onclick</code> attribute? <br><a href="https://www.w3schools.com/tags/ev_onclick.asp">Simple Example</a>, <a href="https://javascript.info/introduction-browser-events">Detailed Article</a></li>
+            </ul>
+          </div>
+          <div class="delayed">
+            <h3>Styling</h3>
+            <ul><strong class="delayed">Could we...</strong>
+              <li class="delayed">
+                have a CSS class like <code>.dragon</code> for the default dragon appearance?
+              </li>
+              <li class="delayed">
+                and classes like <code>.fire</code>,  <code>.water</code>, etc to customize each dragon type?
+              </li>
+              <!-- <li class="delayed">
+                How about using CSS <code>filter: hue-rotate();</code> perhaps?
+              </li> -->
+            </ul>
+          </div>
+        </div>
       </article>
       <article class="slide">
         <h2>As a precursor to JS Frameworks...</h2>
@@ -494,9 +518,9 @@ const bobby = factoryFunction('Bobby', 'Ford', 23)
           </li>
         </ul>
         <pre class="language-js"><code>// normally: 
-plus2Button.addEventListener('click', () => increment())
+plusButton.addEventListener('click', () => increment())
 // but we can provide enums to functions to adjust their behavior:
-plusButton.addEventListener('click', () => increment('withDelay'))
+delayedButton.addEventListener('click', () => increment('withDelay'))
 plus2Button.addEventListener('click', () => increment('by2'))</code></pre>
       </article>
       <article class="slide">
@@ -1110,16 +1134,28 @@ const View2 = { // manages the display area view
       <article class="slide">
         <p>The Client loves <strong>Dragon 🧬 Spawner: Premium</strong></p>
         <p class="delayed">
-          <em>But they're insisting on one final req change</em>
+          <em>But they're insisting on one final req change <span style="font-size: 4rem">🤦🏽‍♀️</span></em>
         </p>
         <div class="delayed">
           <strong
-            ><span style="font-size: 4rem">🤦🏽‍♀️</span> (this is a needy
-            client!)</strong
+            > (Last one, I promise!)</strong
           >
         </div>
       </article>
       <article class="slide">
+        <h2>Dragon 🏟️ Arena</h2>
+        <p>
+          <strong>Code Along:</strong> Let's spice up our clicker app into an actual battle arena game!
+        </p>
+        <ol><strong>Game Features</strong>
+          <li>Turn <code>clicks</code> into <code>hitPoints</code> (HP) with an initial amount</li>
+          <li>Instead of clicking, we'll add swiping/slashing action</li>
+          <li>Defeat a dragon by swiping/slashing their HP down to zero!</li>
+          <li>Defeated dragons may drop some beneficial loot!</li>
+          <li>Dragons will be added to the arena automatically on a timer</li>
+        </ol>
+      </article>
+      <!-- <article class="slide">
         <h2>Dragon 🏯 Dojo</h2>
         <ol>
           <strong>For this implementation:</strong>
@@ -1169,20 +1205,7 @@ const View2 = { // manages the display area view
             completely new dragon type, with it's own color & icon/img
           </li>
         </ol>
-      </article>
-
-      <article class="slide">
-        <h2>Dragon 🏟️ Arena</h2>
-        <p>
-          Let's do a Code Along to spice up our basic clicker app into the
-          beginnings of an actual game!
-        </p>
-        <p>We're going to adding health bars and loot drops!</p>
-        <p>
-          We'll also adjust how dragons can be added to the display so it's like
-          a battle arena
-        </p>
-      </article>
+      </article> -->
     </section>
 
     <!-- Dragon Arena Pro Draft (with Modules) -->
