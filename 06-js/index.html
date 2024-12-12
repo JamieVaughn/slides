@@ -50,9 +50,9 @@
 					<li>Modern Dev Tooling</li>
 				</ol>
 			</article>
-			<article class="slide">
-				<h2>Some Supplemental Resources</h2>
-				<p style="width: 60%">Recommended Text:</p>
+			<article class="slide" style="justify-content: flex-start;">
+				<!-- <h2>Some Supplemental Resources</h2> -->
+				<h2 style="width: 80%; text-align: left; grid-column: 1 / -1;">Recommended Text:</h2>
 				<div style='height: 50vh; gap: 1rem; display: grid; grid-template-columns: 1fr 215px 200px; grid-template-rows: 1fr 1fr 1fr; grid-auto-flow: dense;'>
 					<a href="https://eloquentjavascript.net/" style="grid-row: span 3; grid-column: 1;">
 						<img src="img/eloquent_cover.jpg" alt="Eloquent Javascript book cover">
@@ -394,13 +394,13 @@ const // constant</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Declaration & Assignment Examples</h2>
-				<pre class="language-js" style="text-align: left;"><code>let x // Declaration of an identifier
-let y = 500 // Declaraion & Assignment of a value at once
+				<pre class="language-js" style="text-align: left; position: relative"><code>let x // Declaration of an identifier (uninitialized)
+let y = 500 // Declaration & Assignment of a value at once
 y = 'Hello!' // Re-assignment (overwrites)
 
 const z = 'constant' // Must Declare & Assign a const
-<span class="wrong">const z = 'new value'</span> // SyntaxError (Can't change a const)
-</code></pre>
+const z = 'new value' // SyntaxError (Can't change a const)
+</code><span style="position: absolute; bottom: 0.3rem; left: -3%">🚫</span></pre>
 			</article>
 			<article class="slide">
 				<h2>You can split a <code class="language-js">let</code> declaration into two steps</h2>
@@ -1023,22 +1023,24 @@ console.log(arr) // [1, 2]</code></pre>
 					<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array">MDN</a>
 					to discover what each of these do:
 				</p>
-					<pre class="language-js flex" style="width: 60%"><code>let arr = [1,2,3]
-
+				<div class="flex" style="gap: 1rem;">
+					<pre class="language-js" ><code>let arr = [1,2,3]
 Array.isArray(arr) // true
 arr.includes(1) // true
 arr.indexOf(3) // 2
 arr.at(-1) // 3
 arr.concat(4) // [1, 2, 3, 4]
-</code>
+arr.slice(1) // [2, 3]
+</code></pre>
+<pre class="language-js" >
 <code>
-arr.slice()
 arr.push()
 arr.pop()
 arr.shift() // converse of .pop()
 arr.unshift() // converse of .push()
+arr.flat()
 arr.toSorted()
-arr.toSpliced()</code></pre>
+arr.toSpliced()</code></pre></div>
 			</article>
 			<article class="slide">
 				<h2>Non-Mutating vs Mutation in Arrays </h2>
@@ -1046,8 +1048,16 @@ arr.toSpliced()</code></pre>
 				<p>The Functional Programming style prefers non-mutating techniques</p>
 			</article>
 			<article class="slide">
-				<h2>Time to combine arrays & functions</h2>
-				<p>Let's make a simple Todo List interface in VS Code!</p>
+				<h2>Combining Arrays & Functions!</h2>
+				<p>Let's make a simple <u>Todo List</u> interface in VS Code!</p>
+				<ol><strong>Project Objectives:</strong>
+					<li>Store a list of todos</li>
+					<li>Add todos to the list</li>
+					<li>Delete todos from the list</li>
+					<li>Clear all todos from the list</li>
+					<li>Display the todos list</li>
+					<li class="delayed">Combine with <code>textStamper</code>? <br><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/join">MDN: <code>.join()</code></a></li>
+				</ol>
 			</article>
 		</section>
 
@@ -1235,6 +1245,10 @@ if (input < -1) {
 }</code></pre>
 			</article>
 			<article class="slide">
+				<h2>Visualizing Code Execution <sup><a href="https://pythontutor.com/javascript.html#mode=edit">editor</a></sup></h2>
+				<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=const%20rollTheDice%20%3D%20%28%29%20%3D%3E%20Math.ceil%28Math.random%28%29%20*%206%29%0A%0Alet%20myRoll%20%3D%20rollTheDice%28%29%3B%0Alet%20myTotal%20%3D%20myRoll%3B%0A%0Aconst%20calcBonusPoints%20%3D%20%28roll%29%20%3D%3E%20%7B%0A%20%20if%28roll%20%3E%204%29%20%7B%0A%20%20%20%20return%20rollTheDice%28%29%20*%202%0A%20%20%7D%20else%20if%20%28roll%29%20%7B%0A%20%20%20%20return%20rollTheDice%28%29%0A%20%20%7D%20else%20%7B%0A%20%20%20%20return%20-1%20*%20rollTheDice%28%29%0A%20%20%7D%0A%7D%0A%0AmyTotal%20%3D%2B%20calcBonusPoints%28myRoll%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+			</article>
+			<article class="slide">
 				<h2>Challenge</h2>
 				<p>Take 5 minutes & try to solve the free challenges here:</p>
 				<ol>
@@ -1294,9 +1308,38 @@ default:
 				</div>
 			</article>
 			<article class="slide">
+				<h2>Control Flow Challenge</h2>
+				<ul title="F->C = (T - 32) / 1.8 | C->F = (C * 1.8) + 32">
+					<li>Jump into VSCode again</li>
+					<li>Refactor <code class="language-js">temperatureConverter</code> to use an:</li>
+					<ol>
+						<li>if-else conditional</li>
+						<li>ternary operator</li>
+						<li>switch statement</li>
+					</ol>
+					<li>Recall the <code class="language-js">temperatureConverter</code> requirements:</li>
+				</ul>
+				<table>
+					<thead >
+						<tr>
+							<th style="background-color: royalblue">Arguments</th>
+							<th style="background-color: royalblue">Return Value</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>Temperature (F or C),<br>a "flag" arg (that is either 0 or 1)</td>
+							<td>if "flag" is 0, converts from F -> C<br>if "flag" is 1, converts from C -> F</td>
+						</tr>
+					</tbody>
+				</table>
+			</article>
+			<!-- <article class="slide">
 				<h2>Code Execution Visualizer</h2>
-				<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=let%20globalVar%20%3D%20'Hello'%0A%20%20%20%20%0Afunction%20greetFriend%20%28salutation,%20name%29%20%7B%0A%20%20salutation%20%2B%3D%20'%20'%20%2B%20name%0A%20%20return%20salutation%0A%7D%0A%20%20%20%20%0Aconsole.log%28greetFriend%28globalVar,%20'Jamie'%29%29%0Aconsole.log%28greetFriend%28globalVar,%20'Kermit'%29%29%0Aconsole.log%28greetFriend%28globalVar,%20'Pikachu'%29%29%0Aconsole.log%28globalVar%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
-				<!-- <iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=let%20globalVar%20%3D%20'Hello'%0A%0Afunction%20greetFriend%20%28name%29%20%7B%0A%20%20globalVar%20%2B%3D%20'%20'%20%2B%20name%0A%20%20return%20globalVar%0A%7D%0A%0Aconsole.log%28greetFriend%28'Jamie'%29%29%0Aconsole.log%28greetFriend%28'Kermit'%29%29%0Aconsole.log%28greetFriend%28'Pikachu'%29%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe> -->
+				<div class="flex">
+					<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=let%20globalVar%20%3D%20'Hello'%0A%20%20%20%20%0Afunction%20greetFriend%20%28salutation,%20name%29%20%7B%0A%20%20salutation%20%2B%3D%20'%20'%20%2B%20name%0A%20%20return%20salutation%0A%7D%0A%20%20%20%20%0Aconsole.log%28greetFriend%28globalVar,%20'Jamie'%29%29%0Aconsole.log%28greetFriend%28globalVar,%20'Kermit'%29%29%0Aconsole.log%28greetFriend%28globalVar,%20'Pikachu'%29%29%0Aconsole.log%28globalVar%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+					<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=let%20globalVar%20%3D%20'Hello'%0A%0Afunction%20greetFriend%20%28name%29%20%7B%0A%20%20globalVar%20%2B%3D%20'%20'%20%2B%20name%0A%20%20return%20globalVar%0A%7D%0A%0Aconsole.log%28greetFriend%28'Jamie'%29%29%0Aconsole.log%28greetFriend%28'Kermit'%29%29%0Aconsole.log%28greetFriend%28'Pikachu'%29%29&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=0&heapPrimitives=nevernest&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+				</div>
 				<div class="">
 					<p><a
 						href="http://pythontutor.com/iframe-embed.html#code=var%20globalVar%20%3D%20'Hello'%0A%0Afunction%20greetFriend%20%28salutation,%20name%29%20%7B%0A%20%20salutation%20%2B%3D%20'%20'%20%2B%20name%0A%20%20return%20salutation%0A%7D%0A%0Aconsole.log%28greetFriend%28globalVar,%20'Jamie'%29%29%0Aconsole.log%28greetFriend%28globalVar,%20'Kermit'%29%29%0Aconsole.log%28greetFriend%28globalVar,%20'Pikachu'%29%29%0Aconsole.log%28globalVar%29&codeDivHeight=400&codeDivWidth=350&curInstr=17&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Pure Function Source</a></p>
@@ -1329,7 +1372,7 @@ console.log(greetFriend(globalVar, 'Pikachu'));
 console.log(globalVar);`">pure fn snippet</button>
 </div>
 				</div>
-			</article>
+			</article> -->
 			<article class="slide">
 				<h2>Further MDN Reading</h2>
 				<p><a href="https://developer.mozilla.org/en-US/docs/Glossary/Control_flow">Control Flow Basic Overview</a></p>
@@ -1413,41 +1456,99 @@ array.forEach(callback)
 			</article>
 			<article class="slide">
 				<h2>Let's update our Todo List</h2>
-				<p>Let's combine our <code>textStamper</code> function with our todo list</p>
-				<ul>
-					<li>For each todo item we add or delete</li>
-					<li>Loop through the array</li>
-					<li>then use <code>textStamper</code> to add the text to the DOM</li>
-				</ul>
+				<p>Let's combine our <code>textStamper</code> with a looping function</p>
+				<ol>
+					<li>Loop through an array of todo items</li>
+					<li>For each item use <code>textStamper</code> to add the text to the DOM</li>
+					<li>Wrap each item in its own <code>&lt;li></code></li>
+					<li>Provide a unique class to the even indexed items</li>
+				</ol>
 			</article>
 			<article class="slide">
-				<h2>Other Array Methods<sup><a href="Javascript.info](https://javascript.info/array-methods)">info</a></sup>
-				</h2>
+				<h2>Looping Array Methods</h2>
+				<p>These are non-mutating methods.</p>
+				<p>All of them take a callback function to customize their behavior.</p>
 				<pre class="language-js"><code>let arr = [5, 4, 3, 2, 1, 0]
+					
 arr.find(i => i &lt; 4) // return first matching element 
-
 arr.findIndex(i => i &lt; 4) // returns the index of the first matching element 
 arr.some(i => i &lt; 4) // returns true if condition is met at least once
 arr.every(i => i &lt; 4) // returns true only if condition is met for all
-arr.includes(4) // returns true only if it contains the parameter</code></pre>
+</code></pre>
 			</article>
 			<article class="slide">
-				<h2>Advanced Array Methods</h2>
-				<p>These do not mutate the array. They create a copy.</p>
-				<pre class="language-js" style="columns: 2"><code>.find()
-.map()
-.filter()
-.reduce()
-.every()
-.some()
-.flatMap()</code></pre>
-<p>All of them take a callback function to customize their behavior.</p>
+				<h2>More Looping Over Arrays</h2>
+				<p>Non-mutating & pass in a callback</p>
+				<p>Returns a transformed copy of the array (Except <code>reduce</code>)</p>
+					<pre class="language-js"><code>let arr = [2, 3, 4]
+arr.map(i => i**2) // [4, 9, 16]
+arr.filter(i => i%2 === 0) // [2, 4]
+arr.reduce((sum, next) => sum + next, 0) // 9
+
+let nestedArr = [1, [2, 3, 4]]
+nestedArr.flatMap(i => i) // [1, 2, 3, 4]
+</code></pre>
+				</div>
 			</article>
+			<article class="slide">
+				<img src="img/array_methods_animation.gif" alt="">
+			</article>
+			<!-- <article class="slide">
+				1. 𝐦𝐚𝐩()
+◾ Creates a new array by transforming each element
+◾ Returns: New array of same length
+◾ Example:
+const numbers = [1, 2, 3];
+const doubled = numbers.map(num => num * 2); // [2, 4, 6]
+
+2. 𝐟𝐢𝐥𝐭𝐞𝐫()
+◾ Creates new array with elements that pass a test
+◾ Returns: New array (possibly shorter)
+◾ Example:
+const numbers = [1, 2, 3, 4, 5];
+const evenNumbers = numbers.filter(num => num % 2 === 0); // [2, 4]
+
+3. 𝐟𝐢𝐧𝐝()
+◾ Returns first element that matches condition
+◾ Returns: Single element or undefined
+◾ Example:
+const numbers = [1, 2, 3, 4, 5];
+const firstEven = numbers.find(num => num % 2 === 0); // 2
+
+4. 𝐟𝐢𝐧𝐝𝐈𝐧𝐝𝐞𝐱()
+◾ Returns index of first matching element
+◾ Returns: Number (index) or -1 if not found
+◾ Example:
+const numbers = [1, 2, 3, 4, 5];
+const firstEvenIndex = numbers.findIndex(num => num % 2 === 0); // 1
+
+5. 𝐟𝐢𝐥𝐥()
+◾ Fills array elements with static value
+◾ Returns: Modified original array
+◾ Example:
+const array = [1, 2, 3, 4];
+array.fill(0); // [0, 0, 0, 0]
+
+6. 𝐬𝐨𝐦𝐞()
+◾ Tests if ANY element passes condition
+◾ Returns: Boolean
+◾ Example:
+const numbers = [1, 2, 3, 4, 5];
+const hasEven = numbers.some(num => num % 2 === 0); // true
+
+7. 𝐞𝐯𝐞𝐫𝐲()
+◾ Tests if ALL elements pass condition
+◾ Returns: Boolean
+◾ Example:
+const numbers = [2, 4, 6, 8];
+const allEven = numbers.every(num => num % 2 === 0); // true
+			</article> -->
 			<article class="slide">
 				<h2><code>.map()</code></h2>
 				<p>Transforms an array and always returns an array of the same length</p>
 				<pre class="language-js"><code>let arr = [1,2,3]
-let squares = arr.map(i => i**2) // returns [1,4,9]
+let squares = arr.map(i => i**2)
+console.log(squares) // [1,4,9]
 console.log(arr) // [1,2,3]
 		</code></pre>
 			</article>
@@ -1455,15 +1556,7 @@ console.log(arr) // [1,2,3]
 				<h2><code>.filter()</code></h2>
 				<p>Removes elements from array when the callback does not return true</p>
 				<pre class="language-js"><code>[1,2,3,4].filter(i => i > 2) // [3,4]
-[[1 ,2],[3, 3],[4, 5]].filter(i => i[0] > 3) // [[4, 5]]</code></pre>
-			</article>
-			<article class="slide">
-				<h2>Array Challenges</h2>
-				<p>Take 15 minutes & try to solve the free challenges here:</p>
-				<ol>
-					<li><a href="https://david-peter.de/cube-composer/">Array Methods Shapes Game</a></li>
-					<li><a href="https://www.jschallenger.com/javascript-practice/javascript-arrays">Array Challenges</a></li>
-				</ol>
+['a', 0, 'b', null, 'c', false].filter(Boolean) // ['a', 'b', 'c']</code></pre>
 			</article>
 			<article class="slide">
 				<h2><code>.reduce()</code></h2>
@@ -1538,9 +1631,18 @@ arr2.flatMap(x => x) //  [1, 2, 2, 3, 3, 4]</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Array Methods Code Along</h2>
+				<p>Jump into VSCode & Copy the starter code from here:</p>
 				<p><a href="https://github.com/JamieVaughn/code-along/blob/master/javascript/array-methods/starter.html">Github
 						Link</a></p>
-				<h4>You will have to do some <em>"Read, Search Asking"</em> <br> about <code>.some(), .every()</code></h4>
+						<p>Then let's try to solve each one!</p>
+			</article>
+			<article class="slide">
+				<h2>Array Challenges</h2>
+				<p>Take 15 minutes & try to solve the free challenges here:</p>
+				<ol>
+					<li><a href="https://david-peter.de/cube-composer/">Array Methods Shapes Game</a></li>
+					<li><a href="https://www.jschallenger.com/javascript-practice/javascript-arrays">Array Challenges</a></li>
+				</ol>
 			</article>
 		</section>
 
