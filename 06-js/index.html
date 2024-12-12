@@ -1389,38 +1389,78 @@ console.log(globalVar);`">pure fn snippet</button>
 			</header>
 			<article class="slide">
 				<h2>Standard For Loop</h2>
-				<pre class="language-js"><code>let arr = [1,2,3,4,5]
+				<ul>
+					<li>Initialize a counting variable;</li>
+					<li style="opacity: 0;">Set an end condition;</li>
+					<li style="opacity: 0;">Change the counting variable;</li>
+				</ul>
+				<pre class="language-js" style="position: relative;"><code>let arr = [1,2,3,4,5]
 for(let i = 0; i &lt; arr.length; i++){
   console.log(arr[i])
-}</code></pre>
+}</code><span style="box-sizing: border-box; position: absolute; border: 4px solid crimson; width: 230px; height: 3.5rem; top: 4.2rem; left: 6rem;"></span></pre>
+			</article>
+			<article class="slide">
+				<h2>Standard For Loop</h2>
+				<ul>
+					<li>Initialize a counting variable;</li>
+					<li>Set an end condition;</li>
+					<li style="opacity: 0;">Change the counting variable;</li>
+				</ul>
+				<pre class="language-js" style="position: relative;"><code>let arr = [1,2,3,4,5]
+for(let i = 0; i &lt; arr.length; i++){
+  console.log(arr[i])
+}</code><span style="box-sizing: border-box; position: absolute; border: 4px solid crimson; width: 355px; height: 3.5rem; top: 4.2rem; left: 21rem;"></span></pre>
+			</article>
+			<article class="slide">
+				<h2>Standard For Loop</h2>
+				<ul>
+					<li>Initialize a counting variable;</li>
+					<li>Set an end condition;</li>
+					<li>Change the counting variable;</li>
+				</ul>
+				<pre class="language-js" style="position: relative;"><code>let arr = [1,2,3,4,5]
+for(let i = 0; i &lt; arr.length; i++){
+  console.log(arr[i])
+}</code><span style="box-sizing: border-box; position: absolute; border: 4px solid crimson; width: 84px; height: 3.5rem; top: 4.2rem; left: 44rem;"></span></pre>
 			</article>
 			<article class="slide">
 				<h2>While Loops</h2>
+				<div class="flex">
+					<div>
+				<p style="text-align: center;">You're responsible for <br>how the condition changes</p>
 				<pre class="language-js"><code>let arr = [1,2,3,4,5]
-let i = 0;
+let i = 0 // you set this up
 while(i < arr.length) {
   console.log(arr[i])
-  i++
+  i++ // and you increment it
 }
-
+</code></pre>
+</div>
+<div>
+<p style="text-align: center;">Example use case:</p>
+<pre class="language-js"><code>
 let playing = true
 while(playing) {
   // game loop calculations
-  if(Player.clicks('Exit')) playing = false
-}</code></pre>
+  if(events.includes('quit')) {
+    playing = false
+  } 
+}</code></pre></div>
+</div>
 			</article>
 			<article class="slide">
 				<h2>Do While Loops</h2>
+				<p style="text-align: center;">Same as <code class="language-js">while</code> loops,<br> but the condition is checked after</p>
 				<pre class="language-js"><code>let arr = [1,2,3,4,5]
 let i = 0;
 do {
   i = i + 1;
   result = result + i;
-} while (i &lt; arr.length);</code></pre>
+} while (i &lt; arr.length)</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Careful of infinite loops!</h2>
-				<p>(They'll crash your browser)</p>
+				<p>( They'll crash your browser )</p>
 				<div class="flex">
 					<pre class="language-js"><code>const you_are_out = true
 let milk = 0
@@ -1545,7 +1585,8 @@ const allEven = numbers.every(num => num % 2 === 0); // true
 			</article> -->
 			<article class="slide">
 				<h2><code>.map()</code></h2>
-				<p>Transforms an array and always returns an array of the same length</p>
+				<p>Transforms each item in an array</p>
+				<p>Always returns an array of the same length</p>
 				<pre class="language-js"><code>let arr = [1,2,3]
 let squares = arr.map(i => i**2)
 console.log(squares) // [1,4,9]
@@ -1555,67 +1596,70 @@ console.log(arr) // [1,2,3]
 			<article class="slide">
 				<h2><code>.filter()</code></h2>
 				<p>Removes elements from array when the callback does not return true</p>
+				<p>Always returns an array of the equal or lesser length</p>
 				<pre class="language-js"><code>[1,2,3,4].filter(i => i > 2) // [3,4]
-['a', 0, 'b', null, 'c', false].filter(Boolean) // ['a', 'b', 'c']</code></pre>
+
+let arr = ['a', 0, 'b', null, 'c', false]
+arr.filter(Boolean) // ['a', 'b', 'c']</code></pre>
 			</article>
 			<article class="slide">
-				<h2><code>.reduce()</code></h2>
-				<p>The callback processes all the elements in the array and reduces them down to one value called the
-					accumulator.</p>
+				<h2><code>.reduce()</code> & <code>.reduceRight()</code></h2>
+				<p>The callback loops over all array items & <u>reduces</u> them down to one final value called the
+					accumulator</p>
 				<p>Always returns a single output value. </p>
 				<pre class="language-js"><code>let arr = [0, 1, 2, 3, 4]
-arr.reduce((accumulator, currentValue, currentIndex, array) => {
+arr.reduce((accumulator, currentValue) => {
   return accumulator + currentValue
 }, 0)
 
-// .reduceRight starts from the end and works towards the start
-arr.reduceRight((acc, cur) => acc.concat(cur), [])</code></pre>
+// .reduceRight starts from the end & works leftward
+arr.reduceRight((acc, cur) => {
+  return acc.concat(cur)
+}, [])</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Reduce Step-by-step</h2>
+				<pre class="language-js"><code>[3, 4, 5, 6].reduce((accumulator, currentValue, currentIndex) => {
+  return accumulator + currentValue
+}, 0)</code></pre>
 				<table>
 					<thead style="color: black;">
 						<tr>
-							<th>callback</th>
+							<th>iteration</th>
+							<th>currentIndex</th>
 							<th>accumulator</th>
 							<th>currentValue</th>
-							<th>currentIndex</th>
-							<th style="width: 400px; text-align: center;">array</th>
 							<th>return value</th>
 						</tr>
 					</thead>
 					<tbody class="center-tail">
 						<tr>
-							<td>first call</td>
+							<td>1<sup>st</sup> loop</td>
 							<td>0</td>
-							<td>1</td>
-							<td>1</td>
-							<td>[0, 1, 2, 3, 4]</td>
-							<td>1</td>
-						</tr>
-						<tr>
-							<td>second call</td>
-							<td>1</td>
-							<td>2</td>
-							<td>2</td>
-							<td>[0, 1, 2, 3, 4]</td>
+							<td>0</td>
+							<td>3</td>
 							<td>3</td>
 						</tr>
 						<tr>
-							<td>third call</td>
+							<td>2<sup>nd</sup> loop</td>
+							<td>1</td>
 							<td>3</td>
-							<td>3</td>
-							<td>3</td>
-							<td>[0, 1, 2, 3, 4]</td>
-							<td>6</td>
-						</tr>
-						<tr>
-							<td>fourth call</td>
-							<td>6</td>
 							<td>4</td>
-							<td>4</td>
-							<td>[0, 1, 2, 3, 4]</td>
-							<td>10</td>
+							<td>7</td>
+						</tr>
+						<tr>
+							<td>3<sup>rd</sup> loop</td>
+							<td>2</td>
+							<td>7</td>
+							<td>5</td>
+							<td>12</td>
+						</tr>
+						<tr>
+							<td>4<sup>th</sup> loop</td>
+							<td>3</td>
+							<td>12</td>
+							<td>6</td>
+							<td>18</td>
 						</tr>
 					</tbody>
 				</table>
