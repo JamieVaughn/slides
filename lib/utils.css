@@ -9,7 +9,12 @@
 pre {
   position: relative;
 }
-
+.challenge {
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  height: 300px;
+}
 :is(.wrong, .correct)::before {
   position: absolute;
   left: -2.1rem;

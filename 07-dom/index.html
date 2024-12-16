@@ -226,10 +226,15 @@ document.getElementsByTagName('div').forEach() // TypeError
       </article>
       <article class="slide">
 				<h2>JS DOM Bonus Challenge</h2>
-				<p>Visit <a href="https://javascript.info/">https://javascript.info/</a> and open the console.</p>
-				<p>Select the <code>nav</code> element w/ <code>document.querySelector()</code> & save in a <code>var</code></p>
-				<p>Then use <code>.innerHTML</code> on the <code>var</code> to set it equal to the string:</p>
-				<p><code>'&lt;h1 class="frontpage-banner__title"&gt;Hello World&lt;/h1&gt;'</code></p>
+        <ol style="width: fit-content; margin: 0 auto;">
+          <li>Visit <a href="https://javascript.info/">https://javascript.info/</a> & open the console.</li>
+          <li>Select the <code>h1</code> element w/ <code>document.querySelector()</code></li>
+          <li>Save the return value of that in a variable</li>
+          <li>Then use <code>.innerHTML</code> on the variable to set it equal to the string:</li>
+          <ul>
+            <li><code>'&lt;h1 class="frontpage-banner__title"&gt;Hello World&lt;/h1&gt;'</code></li>
+          </ul>
+        </ol>
 			</article>
       <article class="slide">
         <h2>Old ways of DOM Access</h2>
@@ -247,7 +252,7 @@ document.getElementsByName('myElementName')</code></pre>
           <li>HTML Collections are dynamic</li>
           <li>
             Can be used to limit "Selector Scope"
-            <code>getElementById('main').querySelector('article');</code>
+            <code class="language-js">document.getElementById('main').querySelector('article');</code>
           </li>
         </ul>
       </article>
@@ -389,7 +394,7 @@ element.style.transform = 'rotate(90deg)'
         <p>When the traversal reaches the clicked element, it fires the event handler and then bubbles back up the tree
           to the HTML root firing all other event handlers it encounters along the path it previously traversed.</p>
         <p>
-        <p>If you want you can set the optional <code>{capture: true}</code> to have it trigger handlers on the
+        <p>If you want you can set the optional <code class="language-js">{ capture: true }</code> to have it trigger handlers on the
           traversal downwards, instead of upwards.</p>
         <a href="https://www.youtube.com/watch?v=F1anRyL37lE">Wes Bos on Event Capturing & Bubbling</a>
         </p>
@@ -398,11 +403,11 @@ element.style.transform = 'rotate(90deg)'
       <article class="slide">
         <h2>Event Listeners Options</h2>
         <ul>
-          <li><code>{ capture: true }</code></li>
-          <li><code>{ once: true }</code></li>
-          <li><code>e.stopPropagation()</code></li>
+          <li><code class="language-js">{ capture: true }</code></li>
+          <li><code class="language-js">{ once: true }</code></li>
+          <li><code class="language-js">e.stopPropagation()</code></li>
         </ul>
-        <pre class="language-js"><code>div.addEventListener('click', e => {
+        <pre class="language-js"><code>document.addEventListener('click', e => {
     e.stopPropagation() // stops bubbling at this element
     // handle event
   },
@@ -457,12 +462,21 @@ element.style.transform = 'rotate(90deg)'
         </ol>
       </article>
       <article class="slide">
+        <h2>Use your new JS tools wisely</h2>
+        <h3>Just because you now have a hammer</h3>
+				<p><a href="http://youmightnotneedjs.com/">doesn't mean that every problem is a nail...</a></p>
+      </article>
+      <article class="slide">
         <h2>The Elevator Saga Coding Game</h2>
         <p>The elevator saga coding game is a fun way to practice using the Event paradigm while solving fun game
           challenges.</p>
         <p><a href="https://play.elevatorsaga.com/">Try to beat it here!</a></p>
         <p>(Don't forget to click on the Documentation links and practice reading docs to learn how something works)</p>
       </article>
+      <article class="slide">
+				<h2>Calculator Code Along</h2>
+				<p><a href="https://github.com/JamieVaughn/code-along/tree/master/calculator">Github Repo Starter</a></p>
+			</article>
     </section>
 
     <section>
@@ -552,9 +566,8 @@ element.style.transform = 'rotate(90deg)'
       <article class="slide">
         <h2>Mistakes are Good!</h2>
         <p>As long as you are equipped with the right tools.</p>
-        <p class="delayed">
-          ...with dev tools, trial & error is the teacher who is always with you
-        </p>
+        <p class="delayed">...with dev tools:</p>
+        <p class="delayed"><u>Trial & Error</u> is a teacher who is always with you!</p>
         <div class="flex delayed" style="align-items: center">
           <img
                src="img/Babe_Ruth_512.jpg"

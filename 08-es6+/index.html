@@ -26,6 +26,340 @@
         data-prism-plugins="normalize-whitespace"
         data-duration="30">
     <header id="intro" class="slide">
+      <h1>Advanced Javascript</h1>
+      <h2>Objects & Newest Features</h2>
+      <p class="attribution">MCC: Section 2</p>
+    </header>
+
+    <section>
+      <section>
+        <header class="slide">
+          <h1>Advanced Objects</h1>
+        </header>
+        <article class="slide">
+          <h2>Checking for Properties</h2>
+          <div class="flex">
+            <p>The old "Guard"</p>
+            <p>New in ES6+</p>
+          </div>
+          <div class="flex">
+            <pre class="language-js"><code>// Logical And ('&&') as a 'Guard'
+  obj && obj.key
+  obj && obj.key3 && obj.key3.key 
+  
+  // hasOwnProperty Method
+  obj.hasOwnProperty('key') // true</code></pre>
+            <pre class="language-js"><code>// Optional Chaining Operator
+  obj?.key3?.key 
+  
+  // the 'in' keyword:
+  'key' in obj // true
+  'fake' in obj // false
+  </code></pre>
+          </div>
+        </article>
+        <article class="slide">
+          <h2>Optional Chaining</h2>
+          <p><code>?.</code></p>
+          <pre
+               class="language-js"><code>let obj = { key: { maybe: { nested: 1} } }
+  obj.key.maybenot.nested // Throws an error
+  obj.key.maybenot?.nested // Evaluates to `undefined`
+  obj?.key?.maybenot?.nested // Chain multiple for full safety
+  </code></pre>
+        </article>
+        <article class="slide">
+          <h2>The Object Constructor</h2>
+          <pre class="language-js"><code>let obj = new Object // {}
+  obj.key = 'value' // must populate keys manually</code></pre>
+        </article>
+        <article class="slide">
+          <h2>The <code>this</code> keyword <sup><a
+                 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN</a></sup>
+            <sup>/</sup> <sup><a href="https://www.w3schools.com/js/js_this.asp">W3</a></sup></h2>
+          <pre class="language-js"><code>const person = {
+    name: 'Chris',
+    greet: function() {
+    alert('Hello ' + this.name + ', Welcome!');
+    },
+    lambdaGreet1: () => { // `this` is undefined
+      alert('Hello ' + this.name + ' Welcome!');
+    },
+    lambdaGreet2: () => {
+      alert('Hello ' + person.name + ' Welcome!');
+    }
+  }</code></pre>
+          <p><strong>Lexical Scoping:</strong> Arrow functions do not bind a value to <code>this</code>. They will take
+            the <code>Window</code> value for <code>this</code>.</p>
+        </article>
+        <article class="slide">
+          <h2>Inheritance</h2>
+          <p><code>Object.create()</code></p>
+          <pre class="language-js"><code>const person = {
+    isHuman: true,
+    greet:() => console.log(`Hello there!`);
+  };
+  const me = Object.create(person);
+  me.name = "Scooby Doo"; 
+  // "name" is a property set on "me", but not on "person"
+  
+  me.isHuman = false; 
+  // inherited properties can be overwritten
+  
+  me.greet() // 'Hello there!'</code></pre>
+        </article>
+        <article class="slide">
+          <h2>Merging Objects</h2>
+          <p><code>Object.assign()</code></p>
+          <p>This overwrites the target object and avoids inheritance</p>
+          <pre class="language-js"><code>const target = { a: 1, b: 2 };
+  const source = { b: 4, c: 5 };
+  const returnedTarget = Object.assign(target, source);
+  console.log(target);// Object { a: 1, b: 4, c: 5 }
+  console.log(returnedTarget);// Object { a: 1, b: 4, c: 5 }</code></pre>
+        </article>
+        <article class="slide">
+          <h2>Pass by Reference vs Pass by Value</h2>
+          <a href="https://blog.penjee.com/passing-by-value-vs-by-reference-java-graphical/">illustration</a>
+          <p>Objects (& Functions, Arrays) are <strong>passed by Reference</strong></p>
+          <p>Primitives are <strong>passed by Value</strong></p>
+          <pre class="language-js"><code>let obj = { key: 'value' }
+  let another = obj
+  another.test = 'same object in memory'
+  console.log(obj) // {key: 'value', test: 'same object in memory'}</code></pre>
+        </article>
+        <article class="slide">
+          <h2>Cloning an Object with <code>.assign()</code></h2>
+          <p>Recall Mutating vs. Non-Mutating Operations (creating a copy)</p>
+          <p>This will avoid the potential collisions due to <strong>passing by Reference</strong></p>
+          <pre class="language-js"><code>const obj = {name: 'Jamie', isHuman: true};
+  const uniqueObj = Object.assign({}, obj)
+  // now there are two separate objects in memory
+  // each with the same properties</code></pre>
+          <p>Note: this creates a <strong>shallow</strong> copy (omits deeply nested properties)</p>
+        </article>
+        <article class="slide">
+          <h2>Creating Deep Copies of Objects <sup><a
+                 href="https://developer.mozilla.org/en-US/docs/Web/API/structuredClone">MDN</a></sup></h2>
+          <p>for deep copies of objects use <code>structuredClone()</code></p>
+          <pre class="language-js"><code>const myObj = {
+    num: 5,
+    nested: [1, 2, 3]
+  }
+  const shallowClone = Object.assign({}, myObj)
+  const deepClone = structuredClone(myObj)
+  
+  deepClone.push(4)
+  console.log(deepClone.nested) // [1, 2, 3, 4]
+  console.log(myObj.nested) // [1, 2, 3]
+  
+  shallowClone.nested.push(4) // mutates the original object
+  console.log(myObj.nested) // [1, 2, 3, 4]
+      </code></pre>
+        </article>
+        <article class="slide">
+          <h2>Mutating Objects</h2>
+          <pre class="language-js"><code>let obj = { key: 'value' }
+  obj.prop = 1 // add a new key-value pair
+  obj.key = 5 // change an existing value
+  console.log(obj) // {key: 5, prop: 1}
+  delete obj.key // delete a key-value pair
+  console.log(obj) // {prop: 1}</code></pre>
+        </article>
+        <article class="slide">
+          <h2>Looping in Objects</h2>
+          <p>The For...in Loop (Does not garauntee order)</p>
+          <pre class="language-js"><code>const object = {a: 1, b: 2, c: 3};
+  for (const property in object) {
+    console.log(`${property}: ${object[property]}`);
+  }
+  // "a: 1"
+  // "b: 2"
+  // "c: 3"</code></pre>
+        </article>
+        <article class="slide">
+          <h2>Converting an Object to an Array</h2>
+          <p>Often it's easier to manipulate Objects as arrays (and then turn it back afterwards)</p>
+          <pre class="language-js"><code>const obj = {a: 1, b: 2, c: 3};
+  Object.entries(obj) // [['a', 1],['b', 2],['c', 3]]
+  Object.keys(obj) // ['a', 'b', 'c']
+  Object.values(obj) // [1, 2, 3]
+  // Reverse the process:
+  Object.fromEntries([['a', 1],['b', 2],['c', 3]]) //{a: 1, b: 2, c: 3}</code></pre>
+        </article>
+        <article class="slide">
+          <h2>Objects Challenges</h2>
+          <p>Take 10 minutes & try to solve the free challenges here:</p>
+          <ol>
+            <li><a href="https://www.jschallenger.com/javascript-practice/javascript-objects">JS Objects</a></li>
+          </ol>
+        </article>
+        <article class="slide">
+          <h2>Group By Method</h2>
+          <p><a
+               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/groupBy">`Object.groupBy`</a>
+          </p>
+          <div class="flex align">
+            <pre class="language-js"><code>const inventory = [
+    { name: "spinach", type: "vegetable", quantity: 5 },
+    { name: "bananas", type: "fruit", quantity: 0 },
+    { name: "almond", type: "nut", quantity: 23 },
+    { name: "cherries", type: "fruit", quantity: 5 },
+    { name: "pistachio", type: "nut", quantity: 22 },
+  ]
+  
+  // call it w an array & a callback fn that returns a string
+  const result = Object.groupBy(inventory,({ type }) => type)
+  
+  console.log(result)</code></pre>
+            <span>&rarr;</span>
+            <pre class="language-js"><code>{ // returns:
+    vegetable: [
+      { name: 'spinach', type: 'vegetable', quantity: 5 },
+    ],
+    fruit: [
+      { name: "bananas", type: "fruit", quantity: 0 },
+      { name: "cherries", type: "fruit", quantity: 5 }
+    ],
+    nut: [
+      { name: "almond", type: "nut", quantity: 23 },
+      { name: "pistachio", type: "nut", quantity: 22 }
+    ]
+  }</code></pre>
+          </div>
+        </article>
+        <article class="slide">
+          <h2>Protecting Objects</h2>
+          <p>Making an object read-only has some "gotchas"</p>
+          <pre class="language-js"><code>const obj = {key: 'value'}
+  obj.key = 3 // this works
+  obj = {name: 'new'} // Throws Error
+  Object.seal(obj)
+  Object.freeze(obj)</code></pre>
+        </article>
+        <article class="slide">
+          <code>Object.seal()</code>
+          <p>Prevents deletion of properties</p>
+          <pre class="language-js"><code>const obj = {prop: 2 };
+  Object.seal(obj);
+  // can mutate a sealed object's existing properties
+  obj.prop = 3;
+  console.log(obj.prop);// 3
+  // cannot delete when sealed
+  delete obj.prop; 
+  // cannot add new properties
+  obj.greet = 'hello'
+  console.log(obj.prop, obj.greet);// 3, undefined</code></pre>
+        </article>
+        <article class="slide">
+          <code>Object.freeze()</code>
+          <p>Prevents deletion and alteration of properties. But only on 1st level of nesting</p>
+          <pre class="language-js"><code>const obj = {prop: 2, key: {greet: 'hello'}};
+  Object.freeze(obj);
+  // cannot mutate nor delete a frozen object
+  obj.prop = 3;
+  obj.greet = 'hello'
+  delete obj.prop
+  console.log(obj) 
+  // {prop: 2, key: {greet: 'hello'}}
+  
+  
+  // But freezing is "shallow"
+  obj.key.greet = 'Aloha'
+  console.log(obj) 
+  // {prop: 2, key: {greet: 'Aloha'}}</code></pre>
+        </article>
+        <article class="slide">
+          <h2>Recursively Freezing an Object</h2>
+          <p>This is not a native JS function. You have to write it yourself. But here is an implementation we can use: <a
+               href="https://github.com/remix/simple-deep-freeze/blob/master/index.js">Github</a></p>
+          <pre class="language-js"><code>function deepFreeze (o) {
+    Object.freeze(o);
+    Object.getOwnPropertyNames(o).forEach(prop => {
+      if (o.hasOwnProperty(prop) 
+      && o[prop] !== null
+      && (typeof o[prop] === "object"
+      || typeof o[prop] === "function") 
+      && !Object.isFrozen(o[prop])) {
+        deepFreeze(o[prop]);
+      }
+    });
+    return o;
+  };</code></pre>
+        </article>
+        <article class="slide">
+          <h2>Prototypes</h2>
+          <p>We've been using Objects this whole time!</p>
+          <img src="img/always_has_been.jpg" alt="">
+        </article>
+        <article class="slide">
+          <h2>Prototype Objects</h2>
+          <p>Everything is an inspectable object, except <code>null, undefined</code>. <br> <small>(<code>null</code> is
+              kind of an object though, it's complicated)</small></p>
+          <p>Even Primitives can access their prototype's methods, because they're implicitly wrapped by an Object - <a
+               href="https://developer.mozilla.org/en-US/docs/Glossary/Primitive"
+               title='Primitives have no methods but still behave as if they do. When properties are accessed on primitives, JavaScript auto-boxes the value into a wrapper object and accesses the property on that object instead. For example, "foo".includes("f") implicitly creates a String wrapper object and calls String.prototype.includes() on that object. This auto-boxing behavior is not observable in JavaScript code but is a good mental model of various behaviors — for example, why "mutating" primitives does not work (because str.foo = 1 is not assigning to the property foo of str itself, but to an ephemeral wrapper object).'>autoboxing</a>
+          </p>
+          <pre class="language-js"><code>String.prototype
+  Number.prototype
+  Boolean.prototype
+  Symbol.prototype
+  BigInt.prototype
+  Array.prototype
+  Object.prototype
+  Function.prototype // no methods/properties of its own</code></pre>
+        </article>
+        <article class="slide">
+          <h2>Revisiting Symbol</h2>
+          <p><code>Symbol()</code></p>
+          <pre class="language-js"><code>let Sym = Symbol("Sym");
+  console.log(_Sym.description);</code></pre>
+          <ul>
+            <li>creates a unique identifier</li>
+            <li>Used a unique, collision-free key on objects</li>
+            <li>Especially if you're going to add a property to the Prototype, which is known as "monkey patching" but...
+            </li>
+          </ul>
+        </article>
+        <article class="slide">
+          <h2>"Monkey Patching" Prototypes considered harmful<sup><a
+                 href="https://maxheiber.medium.com/safe-monkey-patching-with-es2015-symbol-e36fb01ab794">Medium</a></sup>
+          </h2>
+          <pre class="language-js"><code>// Add useful toString Method to js objects:
+  Object.prototype.toString = function() {
+    return JSON.stringify(this)
+  }</code></pre>
+          <p>This can lead to naming collisions with other libraries</p>
+          <p>This is what <code>Symbol</code> is for!! So use it if you must do this.</p>
+          <pre class="language-js"><code>// toString path with `Symbol`:
+  const toString = Symbol('toString')
+  Object.prototype[toString] = function() {
+    return JSON.stringify(this)
+  }
+  {a: 1, b: 2}[toString]() // "{\"a\":1,\"b\":2}"</code></pre>
+        </article>
+        <article class="hidden">
+          <h2>Safe Serialization on all <code>prototypes</code></h2>
+          <p>Using Symbol for safe global prototypal inheritance</p>
+          <pre class="language-js" style="width: fit-content"><code>const serialize = Symbol('serialize');
+  Boolean.prototype[serialize] = Number.prototype[serialize] = String.prototype[serialize] =
+  function() { return JSON.stringify(this) }
+  Function.prototype[serialize] = function() { return this.toString() }
+  Array.prototype[serialize] = function() { 
+  const values = this.map(item => item[serialize]()).join(', ')
+    return '['+values+']'
+  };
+  Object.prototype[serialize] = function() { 
+    const properties = Object.entries( this ).map(
+      entry => entry[0][serialize]() +': '+ entry[1][serialize]()
+    )
+    return '{'+properties+'}'
+  };
+  RegExp.prototype[serialize] = function() { return '/'+this.source+'/'+this.flags }</code></pre>
+        </article>
+      </section>
+
+    <header id="intro" class="slide">
       <h1>ECMAScript Version 2015+</h1>
       <h2>ES6 & Beyond</h2>
       <p class="attribution">MCC: Section 2</p>
