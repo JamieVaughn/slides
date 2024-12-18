@@ -28,9 +28,9 @@
     <header id="intro" class="slide">
       <h1>The DOM API</h1>
       <h2>
-        The <u>D</u>ocument <u>O</u>bject <u>M</u>odel <br />
-        <u>A</u>pplication <u>P</u>rogramming <u>I</u>nterface
+        The <u>D</u>ocument <u>O</u>bject <u>M</u>odel
       </h2>
+      <h2><u>A</u>pplication <u>P</u>rogramming <u>I</u>nterface</h2>
       <p class="attribution">MCC: Section 2</p>
     </header>
     <section>
@@ -80,22 +80,17 @@
       <article class="slide">
         <h2><code>document</code></h2>
         <p>The Document Object Itself</p>
-        <p><code>console.log(document)</code></p>
+        <p><code class="language-js">console.log(document)</code></p>
       </article>
 
       <article class="slide">
-        <h2>The BOM & the Window</h2>
+        <h2>The Window Object <sup><a href="https://www.w3schools.com/js/js_window.asp">BOM</a></sup></h2>
         <p>The browser runtime's global object or global "scope"</p>
         <p>
           This is where JS code executes and where the DOM lives, so they can
           interface with one another.
         </p>
-        <p><code>console.log(window)</code></p>
-        <p>
-          There are no official standards for the
-          <a href="https://www.w3schools.com/js/js_window.asp">BOM</a>, so I
-          lump it into the DOM
-        </p>
+        <p><code class="language-js">console.log(window)</code></p>
       </article>
 
       <article class="slide">
@@ -112,123 +107,36 @@
           <a href="https://www.w3schools.com/jsref/obj_window.asp">More comprehesive list at w3 schools</a>
         </p>
       </article>
-
-      <article class="slide">
-        <h2>
-          The DOM Base Classes
-          <sup><a
-               href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#dom_interfaces">DOM
-              Interfaces</a></sup>
-        </h2>
-        <img src="img/Node_hierarchy.png" alt="" />
-        <ul>
-          <li>
-            <a
-               href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget</a>
-          </li>
-          <li>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">Node</a>
-          </li>
-          <li>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a>
-          </li>
-          <li>
-            <a
-               href="https://developer.mozilla.org/en-US/docs/Web/API/SVGElement">SVGElement</a>
-          </li>
-          <li>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Text">Text</a>
-          </li>
-          <li>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Comment">Comment</a>
-          </li>
-        </ul>
-      </article>
-
-      <article class="slide">
-        <h2>DOM API Lookup Challenge</h2>
-        <div class="flex-col">
-          <div class="flex" style="width: auto">
-            <ol>
-              <li><code>.createElement()</code></li>
-              <li><code>.createTextNode()</code></li>
-              <li><code>.cloneNode()</code></li>
-              <li><code>.removeChild()</code></li>
-              <li><code>.appendChild()</code></li>
-              <li><code>.append()</code> / <code>.prepend()</code></li>
-              <li><code>.insertAdjacentElement()</code></li>
-              <li>
-                <code>.classList</code>
-                <ul style="list-style: inside">
-                  <li><code>.add('fresh')</code></li>
-                  <li><code>.remove('stale')</code></li>
-                </ul>
-              </li>
-            </ol>
-            <ol start="9">
-              <li>
-                <code>.nodeName</code>
-                <ul style="list-style: inside">
-                  <li style="list-style: none">
-                    <span
-                          style="
-                        display: inline-block;
-                        transform: translateY(-10px) scaleX(-1);
-                      ">⤴</span>
-                    returns #text nodes
-                  </li>
-                </ul>
-              </li>
-              <li>unlike <code>.tagName</code></li>
-              <li><code>.innerHTML</code></li>
-              <li><code>.innerText</code></li>
-              <li><code>.nodeType</code></li>
-              <li><code>.id</code></li>
-              <li><code>.attributes</code></li>
-              <li>
-                <code>.getAttribute()</code> / <code>.setAttribute()</code>
-              </li>
-            </ol>
-          </div>
-          <hr />
-          <ol class="col-2">
-            <li>Is it a method or a property?</li>
-            <li>Basic summary of the use case</li>
-            <li>What Object is it chained off of</li>
-            <li>What are the args & return values?</li>
-          </ol>
-        </div>
-      </article>
-
       <article class="slide">
         <h2>New DOM Access</h2>
-        <p>Prefer these new querySelector methods because:</p>
         <ul>
-          <li>There are fewer to remember</li>
-          <li>They can use full CSS selector syntax</li>
-          <li>
-            They return "array-like"
-            <a href="https://www.w3schools.com/js/js_htmldom_nodelist.asp">Node Lists</a>
+          <li><strong>Prefer the querySelector methods on the <code>document</code></strong></li>
+          <li>There are only two methods to remember: 
+            <!-- <ul>
+              <li><code class="language-js">querySelector()</code></li>
+              <li><code class="language-js">querySelectorAll()</code></li>
+            </ul> -->
           </li>
-          <li>But Node Lists are static</li>
+          <li>They can use full CSS selector syntax</li>
         </ul>
+        <pre class="language-js"><code>document.querySelector('#id')
+docuemnt.querySelectorAll('.card a')</code></pre>
+<p><code class="language-js">document.querySelectorAll()</code> return a static, "array-like" <a href="https://www.w3schools.com/js/js_htmldom_nodelist.asp">Node Lists</a>
+  which has the <code class="language-js">.forEach()</code> on it</li>
+</p>
 
-        <pre class="language-js"><code>document.querySelector('#contact')
-docuemnt.querySelectorAll('header > nav .logo')
-// change the array-like node-list into an array
-Array.from(document.querySelectorAll('div')) 
-// You can use the .forEach method on node lists
-// Works on Nodelists too!
-document.querySelectorAll('div').forEach(callback)
-// But .forEach doesn't work on HTML Collections
-document.getElementsByTagName('div').forEach() // TypeError
+<pre class="language-js"><code>let nodelist = document.querySelectorAll('div')
+nodelist.forEach(div => console.log(div))
+
+// Copy arrays from node-lists to use .map() etc
+let arrayOfDivs = Array.from(nodelist)
 </code></pre>
       </article>
       <article class="slide">
 				<h2>JS DOM Bonus Challenge</h2>
         <ol style="width: fit-content; margin: 0 auto;">
           <li>Visit <a href="https://javascript.info/">https://javascript.info/</a> & open the console.</li>
-          <li>Select the <code>h1</code> element w/ <code>document.querySelector()</code></li>
+          <li>Select the <code>h1</code> element w/ <code class="language-js">document.querySelector()</code></li>
           <li>Save the return value of that in a variable</li>
           <li>Then use <code>.innerHTML</code> on the variable to set it equal to the string:</li>
           <ul>
@@ -239,87 +147,21 @@ document.getElementsByTagName('div').forEach() // TypeError
       <article class="slide">
         <h2>Old ways of DOM Access</h2>
         <p>
-          The legacy methods that return
+          The legacy methods that return dynamic
           <a href="https://www.w3schools.com/js/js_htmldom_collections.asp">HTML Collections</a>
         </p>
         <pre
-             class="language-js"><code>document.getElementById('myId') // This one still comes in handy
+             class="language-js"><code>// These don't accept CSS Selectors
+document.getElementById('myId')
 document.getElementsByClassName('myClass')            
 document.getElementsByTagName('div')            
-document.getElementsByName('myElementName')</code></pre>
-        <ul>
-          <li>Slightly faster (~5-10%)</li>
-          <li>HTML Collections are dynamic</li>
-          <li>
-            Can be used to limit "Selector Scope"
-            <code class="language-js">document.getElementById('main').querySelector('article');</code>
-          </li>
-        </ul>
+document.getElementsByName('myElementName')
+// And .forEach doesn't work on these HTML Collections
+document.getElementsByTagName('div').forEach() // TypeError</code></pre>
       </article>
-      <article class="slide">
-        <h2>DOM Traversal</h2>
-        <p>
-          Once you've selected an element you can chain off of it to select
-          nearby elements
-        </p>
-        <div class="flex" style="justify-content: space-between">
-          <ol>
-            <li><code>.parentNode</code></li>
-            <li><code>.childNodes</code></li>
-            <li><code>.firstElementChild</code></li>
-            <li><code>.lastElementChild</code></li>
-            <li><code>.nextElementSibling</code></li>
-            <li><code>.previousElementSibling</code></li>
-          </ol>
-          <ol style="flex: 3 0 60%">
-            <li><code>.childElementCount</code></li>
-            <li><code>.firstChild</code> (returns element or text nodes)</li>
-            <li><code>.lastChild</code> (returns element or text nodes)</li>
-            <li><code>.nextSibling</code> (returns element or text nodes)</li>
-            <li>
-              <code>.previousSibling</code> (returns element or text nodes)
-            </li>
-          </ol>
-        </div>
-      </article>
-
-      <article class="slide">
-        <h2>
-          Creating & Adding DOM Nodes
-          <sup><a href="https://www.w3schools.com/js/js_htmldom_nodes.asp">w3</a></sup>
-        </h2>
-
-        <pre
-             class="language-js"><code>let label = document.createElement('label');
-let input = document.createElement('input');
-label.append(input);
-label.setAttribute('for', 'form');
-input.id = 'form';
-
-// Creating a button element with text
-let button = document.createElement('button');
-let buttonText = document.createTextNode('Submit');
-button.append(buttonText);
-
-// Combining the Elements into a fragment to append to document
-let fragment = document.createDocumentFragment();
-fragment.append(label, button);
-document.body.append(fragment);</code></pre>
-      </article>
-
-      <article class="slide">
-        <h2>The DOM Style Object</h2>
-        <p><code>element.style</code></p>
-        <p>
-          <a href="https://www.w3schools.com/jsref/dom_obj_style.asp">w3.org docs</a>
-        </p>
-        <pre class="language-js"><code>element.style.display = 'inline'
-element.style.color = 'crimson'
-element.style.fontSize = '1.2rem'
-element.style.transform = 'rotate(90deg)'
-        </code></pre>
-      </article>
-
+      <header class="slide">
+        <h1>DOM Events</h1>
+      </header>
       <article class="slide">
         <h2>
           Events
@@ -417,13 +259,144 @@ element.style.transform = 'rotate(90deg)'
   }
 )}</code></pre>
       </article>
+      <article class="slide">
+        <img src="../img/challenge.svg" alt="" class="challenge">
+        <h2>Code Along Challenge</h2>
+        <p>Let's read about one more tool called <code class="language-js">.classlist.contains()</code>: <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element/classList">MDN</a></p>
+        <p>Then Jump into VSCode to a create a <strong><a href="https://en.wikipedia.org/wiki/Elementary_cellular_automaton">Cellular Automata</a></strong> project!</p>
+        
+        <ul><span>Further resources on Cellular Automata!</span>
+          <li><a href="https://mathworld.wolfram.com/ElementaryCellularAutomaton.html">Wolfram</a></li>
+          <li><a href="https://natureofcode.com/cellular-automata/">Nature of Code Site</a></li>
+          <li><a href=" https://www.youtube.com/watch?v=Ggxt06qSAe4">Coding Train Video</a></li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>The Elevator Saga Coding Game</h2>
+        <img src="../img/challenge.svg" alt="" class="challenge">
+        <p><a href="https://play.elevatorsaga.com/">Try to beat it here!</a></p>
+        <p>This coding game is a series of fun puzzles to practice using Javascript Events & Listeners!</p>
+        <small>Hint: click on the <span style="text-decoration: underline;">Documentation links</span> & read those docs to learn how something works!</small>
+      </article>
+      <header class="slide">
+        <h1>DOM Traversal & DOM Methods</h1>
+      </header>
+      <article class="slide">
+        <h2>DOM Traversal</h2>
+        <p>
+          Once you've selected an element you can chain off of it to select
+          nearby elements
+        </p>
+        <div class="flex" style="justify-content: space-between">
+          <ol>
+            <li><code>.parentNode</code></li>
+            <li><code>.childNodes</code></li>
+            <li><code>.firstElementChild</code></li>
+            <li><code>.lastElementChild</code></li>
+            <li><code>.nextElementSibling</code></li>
+            <li><code>.previousElementSibling</code></li>
+          </ol>
+          <ol style="flex: 3 0 60%">
+            <li><code>.childElementCount</code></li>
+            <li><code>.firstChild</code> (returns element or text nodes)</li>
+            <li><code>.lastChild</code> (returns element or text nodes)</li>
+            <li><code>.nextSibling</code> (returns element or text nodes)</li>
+            <li>
+              <code>.previousSibling</code> (returns element or text nodes)
+            </li>
+          </ol>
+        </div>
+      </article>
 
       <article class="slide">
-        <h2>Code Along</h2>
+        <h2>DOM API Lookup Challenge</h2>
+        <div class="flex-col">
+          <div class="flex" style="width: auto">
+            <ol>
+              <li><code>.createElement()</code></li>
+              <li><code>.createTextNode()</code></li>
+              <li><code>.cloneNode()</code></li>
+              <li><code>.removeChild()</code></li>
+              <li><code>.appendChild()</code></li>
+              <li><code>.append()</code> / <code>.prepend()</code></li>
+              <li><code>.insertAdjacentElement()</code></li>
+              <li>
+                <code>.classList</code>
+                <ul style="list-style: inside">
+                  <li><code>.add('fresh')</code></li>
+                  <li><code>.remove('stale')</code></li>
+                </ul>
+              </li>
+            </ol>
+            <ol start="9">
+              <li>
+                <code>.nodeName</code>
+                <ul style="list-style: inside">
+                  <li style="list-style: none">
+                    <span
+                          style="
+                        display: inline-block;
+                        transform: translateY(-10px) scaleX(-1);
+                      ">⤴</span>
+                    returns #text nodes
+                  </li>
+                </ul>
+              </li>
+              <li>unlike <code>.tagName</code></li>
+              <li><code>.innerHTML</code></li>
+              <li><code>.innerText</code></li>
+              <li><code>.nodeType</code></li>
+              <li><code>.id</code></li>
+              <li><code>.attributes</code></li>
+              <li>
+                <code>.getAttribute()</code> / <code>.setAttribute()</code>
+              </li>
+            </ol>
+          </div>
+          <hr />
+          <ol class="col-2">
+            <li>Is it a method or a property?</li>
+            <li>Basic summary of the use case</li>
+            <li>What Object is it chained off of</li>
+            <li>What are the args & return values?</li>
+          </ol>
+        </div>
+      </article>
+      <article class="slide">
+        <h2>
+          Creating & Adding DOM Nodes
+          <sup><a href="https://www.w3schools.com/js/js_htmldom_nodes.asp">w3</a></sup>
+        </h2>
+
+        <pre
+             class="language-js"><code>let label = document.createElement('label');
+let input = document.createElement('input');
+label.append(input);
+label.setAttribute('for', 'form');
+input.id = 'form';
+
+// Creating a button element with text
+let button = document.createElement('button');
+let buttonText = document.createTextNode('Submit');
+button.append(buttonText);
+
+// Combining the Elements into a fragment to append to document
+let fragment = document.createDocumentFragment();
+fragment.append(label, button);
+document.body.append(fragment);</code></pre>
+      </article>
+
+      <article class="slide">
+        <h2>The DOM Style Object</h2>
+        <p><code>element.style</code></p>
         <p>
-          Let's make
-          <a href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life">Conway's Game of Life</a>
+          <a href="https://www.w3schools.com/jsref/dom_obj_style.asp">w3.org docs</a>
         </p>
+        <pre class="language-js"><code>element.style.display = 'inline'
+element.style.color = 'crimson'
+element.style.fontSize = '1.2rem'
+element.style.transform = 'rotate(90deg)'
+        </code></pre>
       </article>
 
       <article class="slide">
@@ -462,21 +435,53 @@ element.style.transform = 'rotate(90deg)'
         </ol>
       </article>
       <article class="slide">
-        <h2>Use your new JS tools wisely</h2>
-        <h3>Just because you now have a hammer</h3>
-				<p><a href="http://youmightnotneedjs.com/">doesn't mean that every problem is a nail...</a></p>
-      </article>
-      <article class="slide">
-        <h2>The Elevator Saga Coding Game</h2>
-        <p>The elevator saga coding game is a fun way to practice using the Event paradigm while solving fun game
-          challenges.</p>
-        <p><a href="https://play.elevatorsaga.com/">Try to beat it here!</a></p>
-        <p>(Don't forget to click on the Documentation links and practice reading docs to learn how something works)</p>
+        <h2>Detour to MVC</h2>
+        <p>Hold on! We've got a client asking for a deliverable!</p>
+        <p><a href="/slides/11-mvc">Let's see what the job is!</a></p>
       </article>
       <article class="slide">
 				<h2>Calculator Code Along</h2>
 				<p><a href="https://github.com/JamieVaughn/code-along/tree/master/calculator">Github Repo Starter</a></p>
 			</article>
+      <article class="hidden">
+        <h2>
+          The DOM Base Classes
+          <sup><a
+               href="https://developer.mozilla.org/en-US/docs/Web/API/Document_Object_Model#dom_interfaces">DOM
+              Interfaces</a></sup>
+        </h2>
+        <img src="img/Node_hierarchy.png" alt="" />
+        <ul>
+          <li>
+            <a
+               href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget">EventTarget</a>
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Node">Node</a>
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Element">Element</a>
+          </li>
+          <li>
+            <a
+               href="https://developer.mozilla.org/en-US/docs/Web/API/SVGElement">SVGElement</a>
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Text">Text</a>
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/en-US/docs/Web/API/Comment">Comment</a>
+          </li>
+        </ul>
+      </article>
+      <article class="slide">
+        <img src="../img/challenge.svg" alt="" class="challenge">
+        <h2>Code Along Challenge</h2>
+        <p>Let's Jump into VSCode to a create a new project called:</p>
+        <p>
+          <a href="https://en.wikipedia.org/wiki/Conway's_Game_of_Life">Conway's Game of Life</a>
+        </p>
+      </article>
     </section>
 
     <section>

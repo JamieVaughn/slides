@@ -1211,10 +1211,24 @@ false == undefined // false</code></pre>
 				</ul>
 			</article>
 			<article class="slide">
-				<h2>Order of Operations</h2>
-				<p>Anything in parenthesis takes overall precedence.</p>
-				<p>Then Priority is to evaluate the relational & equality operations (We call these the comparators: >, >=, &lt;, &lt;=, ===)</p>
-				<p>Then evaluate the logical operators (&&, ||, ??)</p>
+				<h2>Operator Precedence<sup><small><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Operator_precedence#table">MDN</a></small></sup></h2>
+				<ol>
+					<li><strong style="color: dodgerblue">Overall Priority:</strong> evaluate anything in parenthesis first</li>
+					<li><strong style="color: rgb(64, 185, 251)">Next Priority:</strong> evaluate the relational & equality operations (AKA "comparators")
+						<ul>
+							<li>Comparators: <code class="language-js">>, >=, &lt;, &lt;=, ===, ==</code></li>
+						</ul></li>
+					<li><strong style="color: skyblue">Final Priority:</strong> evaluate the logical operators 
+						<ul>
+							<li>Logical Operators: <code class="language-js">&&, ||, ??</code></li>
+						</ul></li>
+				</ol>
+				<pre class="language-js"><code>//                              ⌜‾‾1a‾‾⌝ ‾‾1b‾‾⌝ ‾‾1c‾‾⌝
+undefined ?? false || 3 >= 2 && (5 === 5 && null ?? true)
+// └────── 3 ─────┘  └─ 2 ─┘│   └───────── 1 ──────────┘│     
+// └────────────── 4 ───────┘                           │
+// └───────────────────────── 5 ────────────────────────┘
+				</code></pre>
 			</article>
 			<article class="slide">
 				<h2>Use Cases</h2>
@@ -1405,38 +1419,38 @@ console.log(globalVar);`">pure fn snippet</button>
 			<article class="slide">
 				<h2>Standard For Loop</h2>
 				<ul>
-					<li>Initialize a counting variable;</li>
+					<li style="text-decoration: underline; text-decoration-color: crimson;">Initialize a counting variable;</li>
 					<li style="opacity: 0;">Set an end condition;</li>
 					<li style="opacity: 0;">Change the counting variable;</li>
 				</ul>
 				<pre class="language-js" style="position: relative;"><code>let arr = [1,2,3,4,5]
 for(let i = 0; i &lt; arr.length; i++){
   console.log(arr[i])
-}</code><span style="box-sizing: border-box; position: absolute; border: 4px solid crimson; width: 230px; height: 3.5rem; top: 4.2rem; left: 6rem;"></span></pre>
+}</code><span style="box-sizing: border-box; position: absolute; border: 4px solid crimson; width: 28%; height: 22%; top: 28%; left: 11%;"></span></pre>
 			</article>
 			<article class="slide">
 				<h2>Standard For Loop</h2>
 				<ul>
 					<li>Initialize a counting variable;</li>
-					<li>Set an end condition;</li>
+					<li style="text-decoration: underline; text-decoration-color: crimson;">Set an end condition;</li>
 					<li style="opacity: 0;">Change the counting variable;</li>
 				</ul>
 				<pre class="language-js" style="position: relative;"><code>let arr = [1,2,3,4,5]
 for(let i = 0; i &lt; arr.length; i++){
   console.log(arr[i])
-}</code><span style="box-sizing: border-box; position: absolute; border: 4px solid crimson; width: 355px; height: 3.5rem; top: 4.2rem; left: 21rem;"></span></pre>
+}</code><span style="box-sizing: border-box; position: absolute; border: 4px solid crimson; width: 42%; height: 22%; top: 28%; left: 41%;"></span></pre>
 			</article>
 			<article class="slide">
 				<h2>Standard For Loop</h2>
 				<ul>
 					<li>Initialize a counting variable;</li>
 					<li>Set an end condition;</li>
-					<li>Change the counting variable;</li>
+					<li style="text-decoration: underline; text-decoration-color: crimson;">Change the counting variable;</li>
 				</ul>
 				<pre class="language-js" style="position: relative;"><code>let arr = [1,2,3,4,5]
 for(let i = 0; i &lt; arr.length; i++){
   console.log(arr[i])
-}</code><span style="box-sizing: border-box; position: absolute; border: 4px solid crimson; width: 84px; height: 3.5rem; top: 4.2rem; left: 44rem;"></span></pre>
+}</code><span style="box-sizing: border-box; position: absolute; border: 4px solid crimson; width: 9.5%; height: 22%; top: 28%; left: 85%;"></span></pre>
 			</article>
 			<article class="slide">
 				<h2>While Loops</h2>
@@ -1685,8 +1699,9 @@ arr.reduceRight((acc, cur) => {
 				<h2><code>.flatMap()</code></h2>
 				<p>Works just like <code>.map()</code>, but also flattens the array by one level</p>
 				<pre class="language-js"><code>let arr = [1, 2, 3, 4];
-arr.flatMap(x => [x, x * 2]); // [1, 2, 2, 4, 3, 6, 4, 8]
+arr.flatMap(x => x * 2]); // [1, 4, 6, 8] 
 
+// With nested arrays, returns a flattened array
 let arr2 = [[1,2], [2,3], [3,4]]
 arr2.flatMap(x => x) //  [1, 2, 2, 3, 3, 4]</code></pre>
 			</article>
@@ -1709,7 +1724,9 @@ arr2.flatMap(x => x) //  [1, 2, 2, 3, 3, 4]</code></pre>
 			</article>
 			<article class="slide">
 				<h2>JS Validation Tool</h2>
-				<p><a href="https://validatejavascript.com/">ValidateJavascript.com (can choose linting rules)</a></p>
+				<p><a href="https://validatejavascript.com/">ValidateJavascript.com</a></p>
+				<br>
+				<small>(can choose custom linting rules in this tool)</small>
 			</article>
 		</section>
 
@@ -1720,14 +1737,14 @@ arr2.flatMap(x => x) //  [1, 2, 2, 3, 3, 4]</code></pre>
 			</header>
 			<article class="slide">
 				<h2>Declaring Object Literals</h2>
-				<p>A collection of key/value pairs</p>
+				<p>An object is a collection of <strong style="text-decoration: underline">key-value pairs</strong></p>
 				<pre class="language-js"><code>let obj = {
   key: 'value', // key (not index)
-  "aka property": 2, // Use double quotes for multi-word keys
-  key2: [1, 2, 3], // holds any data type
-  key3: { key: ' nested value' }, // even nested objects
-  key4: function(a, b) { console.log('method') }, // trailing comma
+  key2: [1, 2, '3'], // holds any data type
+  key3: { key: 'nested value' }, // even nested objects
+  key4: function(a, b) { console.log('method') },
   //   ⤴ Functions on an object are called methods
+  "multi word": 2, // Double quotes for multi-word keys
 }</code></pre>
 			</article>
 			<article class="slide">
@@ -1744,26 +1761,29 @@ obj.key4(a, b) // invokes key3 method</code></pre>
 			</article>
 			<article class="slide">
 				<h2>New Concept: Namespace</h2>
+				<p><strong>Objects</strong> are used as <strong>Namespaces</strong> in Javascript to wrap & protect values</p>
 				<div class="flex">
-				<ul>
-					<li>A namespace is an abstract container or environment created to hold a logical grouping of unique identifiers (i.e., names)</li>
-					<li>Objects are like namespaces for value and functions, so that not everything is in the global scope (Scope & Namespaces are related)</li>
-					<li>Namespaces allow us to group code, control naming and help us to avoid name-collisions</li>
-					<li>Name collisions with third part code/packages is especially hard without namespaces</li>
-					<li>When we put values and function in an Object namespace, they become properties & methods</li>
-				</ul>
-				<pre class="language-js"><code>let log = "🪵" // resource icon for a game
-console.log(log, console.log) // namespace prevents collision
-let console = 'my game console' // name collision
-console.log() // TypeError
-let game = {
-	log: "🪵" 
+				<pre class="language-js"><code>console.log(document) // DOM reference
+let document = "📄" // icon for a business
+console.log(document) // name collision causes TypeError
+// instead use a namespace:
+let myBusiness = { 
+  document: "📄"
 }
-let console = {
-	log: (item) => print(item)
-}
-game.log
-console.log()</code></pre>
+// namespacing avoids naming collision
+console.log(
+  myBusiness.document,
+  document
+)</code></pre>
+<ul>
+	<li><strong>Namespace</strong>: an abstract wrapper/container that holds a group of unique identifiers</li>
+	<li><strong>Namespaces</strong> help us to avoid <strong>name-collisions</strong></li>
+	<li>Avoiding <strong>name-collisions</strong> w/ 3rd-party code is almost impossible w/o namespaces</li>
+	<br>
+	<li>We put values & functions in an object namespace, so everything is not in the global scope <br>(Scope & Namespaces are related)</li>
+	<li>Values in an object are called properties</li>
+	<li>Functions in an object are called methods</li>
+</ul>
 			</div>
 			</article>
 			<!-- <article class="slide">
