@@ -1763,17 +1763,17 @@ obj.key4(a, b) // invokes key3 method</code></pre>
 				<h2>New Concept: Namespace</h2>
 				<p><strong>Objects</strong> are used as <strong>Namespaces</strong> in Javascript to wrap & protect values</p>
 				<div class="flex">
-				<pre class="language-js"><code>console.log(document) // DOM reference
-let document = "📄" // icon for a business
-console.log(document) // name collision causes TypeError
+				<pre class="language-js"><code>console.log(alert) // window function
+alert = "Warning: Proceed with Caution" // Alert message for an app
+console.log(alert) // name collision causes overwriting
 // instead use a namespace:
-let myBusiness = { 
-  document: "📄"
+let myApp = { 
+  alert: "Warning: Proceed with Caution"
 }
 // namespacing avoids naming collision
 console.log(
-  myBusiness.document,
-  document
+  myApp.alert,
+  alert
 )</code></pre>
 <ul>
 	<li><strong>Namespace</strong>: an abstract wrapper/container that holds a group of unique identifiers</li>

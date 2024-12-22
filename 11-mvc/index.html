@@ -104,8 +104,8 @@
           <li>Open a new Github repo and post your solution there</li>
           <li>Remember events and event listeners?</li>
         </ul>
-        <pre class="language-js"><code>var elem = document.getElementById('🐉');
-elem.addEventListener('click', function(e){
+        <pre class="language-js"><code>let div = document.querySelector('.dragon');
+div.addEventListener('click', function(e){
   //the element has been clicked... 
   // do stuff here, like increment the counter variable
 });</code></pre>
@@ -117,7 +117,7 @@ elem.addEventListener('click', function(e){
         </p>
         <p class="delayed">It's simple. But it works!</p>
         <pre class="language-js delayed"><code>let clicks = 0
-let dragon = document.getElementById('dragon')
+let dragon = document.querySelector('.dragon')
 dragon.addEventListener('click', function(e){
   // update our app data:
   clicks += 1
@@ -1216,10 +1216,10 @@ const View2 = { // manages the display area view
     <script src="../laser/laser.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/d3@7.0.0/dist/d3.min.js"></script>
     <script defer>
-      var width = 600,
+      let width = 600,
         height = 450;
 
-      var hubNodes = [
+      let hubNodes = [
         { name: "📡" },
         { name: "📞" },
         { name: "📞" },
@@ -1237,7 +1237,7 @@ const View2 = { // manages the display area view
         { name: "📞" },
         { name: "📞" },
       ];
-      var noHubNodes = [
+      let noHubNodes = [
         { id: 0, name: "📞" },
         { id: 1, name: "📞" },
         // {name: '📞'},
@@ -1272,8 +1272,8 @@ const View2 = { // manages the display area view
         simulation(noHubNodes, noHubLinks);
       }
 
-      var noHubLinks = [];
-      var hubLinks = [];
+      let noHubLinks = [];
+      let hubLinks = [];
 
       noHubNodes.forEach((node) => {
         noHubNodes.forEach((n) => noHubLinks.push({ source: node, target: n }));
@@ -1283,7 +1283,7 @@ const View2 = { // manages the display area view
         hubLinks.push({ source: node, target: hubNodes[0] });
       });
 
-      var simulation = (nodes, links, flag) => {
+      let simulation = (nodes, links, flag) => {
         d3.forceSimulation(nodes)
           .force("charge", d3.forceManyBody().strength(-100))
           .force("center", d3.forceCenter(width / 2, height / 2))
