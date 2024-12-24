@@ -812,6 +812,42 @@ let func = function(){
 fn(func) // Functions can be passed into other functions</code></pre>
 			</article>
 			<article class="slide">
+        <h2>Default Parameters</h2>
+        <p>
+          If no value or undefined is passed, then initialize with a default
+          value
+        </p>
+        <pre class="language-js"><code>function chatMsg(greeter, msg) {
+  console.log(`${greeter}: ${msg}`)
+}
+function chatMsg2(greeter = 'Auto-greeter', msg = 'Hello') {
+  console.log(`${greeter}: ${msg}`)
+}
+chatMsg("Joe", "What's up?") // "Joe: What's up?""
+chatMsg() // 'undefined: undefined'
+chatMsg2() // 'Auto-greeter: Hello'</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Hypothetical Use Case:</h2>
+        <p>
+          Use previous params or even functions in your default param expression
+        </p>
+        <pre
+             class="language-js"><code>const randNum = () => String(Math.random())
+function createUser(
+  name,
+  password, 
+  username = name+randNum(),
+  isAdmin = false
+) {
+  sendLoginData(user, password)
+  setPermissions(isAdmin)
+}
+createUser('Joe', 'h2jq9fn48',)
+createUser('Jay', 'y9i7h3ndk', undefined, true)
+</code></pre>
+      </article>
+			<article class="slide">
 				<h2>Pure Functions & Side Effects</h2>
 				<p>Does the return value of the function depend only on the parameters or internal state?</p>
 				<!-- <div class="flex center"><span>Pure Fn:</span> <span>Impure Fn:</span> <span>In code:</span></div> -->

@@ -124,9 +124,9 @@
           <p>Objects (& Functions, Arrays) are <strong>passed by Reference</strong></p>
           <p>Primitives are <strong>passed by Value</strong></p>
           <pre class="language-js"><code>let obj = { key: 'value' }
-  let another = obj
-  another.test = 'same object in memory'
-  console.log(obj) // {key: 'value', test: 'same object in memory'}</code></pre>
+let another = obj
+another.test = 'same object in memory'
+console.log(obj) // {key: 'value', test: 'same object in memory'}</code></pre>
         </article>
         <article class="slide">
           <h2>Cloning an Object with <code>.assign()</code></h2>
@@ -201,91 +201,91 @@
           </p>
           <div class="flex align">
             <pre class="language-js"><code>const inventory = [
-    { name: "spinach", type: "vegetable", quantity: 5 },
-    { name: "bananas", type: "fruit", quantity: 0 },
-    { name: "almond", type: "nut", quantity: 23 },
-    { name: "cherries", type: "fruit", quantity: 5 },
-    { name: "pistachio", type: "nut", quantity: 22 },
-  ]
-  
-  // call it w an array & a callback fn that returns a string
-  const result = Object.groupBy(inventory,({ type }) => type)
-  
-  console.log(result)</code></pre>
+  { name: "spinach", type: "vegetable", amount: 5 },
+  { name: "bananas", type: "fruit", amount: 0 },
+  { name: "almond", type: "nut", amount: 23 },
+  { name: "cherries", type: "fruit", amount: 5 },
+  { name: "pistachio", type: "nut", amount: 22 },
+]
+// call it w/ an array & a callback fn
+// that returns a string
+const result = Object.groupBy(
+  inventory,
+  ({ type }) => type
+)
+console.log(result)</code></pre>
             <span>&rarr;</span>
-            <pre class="language-js"><code>{ // returns:
-    vegetable: [
-      { name: 'spinach', type: 'vegetable', quantity: 5 },
-    ],
-    fruit: [
-      { name: "bananas", type: "fruit", quantity: 0 },
-      { name: "cherries", type: "fruit", quantity: 5 }
-    ],
-    nut: [
-      { name: "almond", type: "nut", quantity: 23 },
-      { name: "pistachio", type: "nut", quantity: 22 }
-    ]
-  }</code></pre>
+            <pre class="language-js"><code>// returns:
+{
+  vegetable: [
+    { name: 'spinach', type: 'vegetable', amount: 5 },
+  ],
+  fruit: [
+    { name: "bananas", type: "fruit", amount: 0 },
+    { name: "cherries", type: "fruit", amount: 5 }
+  ],
+  nut: [
+    { name: "almond", type: "nut", amount: 23 },
+    { name: "pistachio", type: "nut", amount: 22 }
+  ]
+}</code></pre>
           </div>
         </article>
         <article class="slide">
           <h2>Protecting Objects</h2>
           <p>Making an object read-only has some "gotchas"</p>
           <pre class="language-js"><code>const obj = {key: 'value'}
-  obj.key = 3 // this works
-  obj = {name: 'new'} // Throws Error
-  Object.seal(obj)
-  Object.freeze(obj)</code></pre>
+obj.key = 3 // this works
+obj = {name: 'new'} // Throws Error
+Object.seal(obj)
+Object.freeze(obj)</code></pre>
         </article>
         <article class="slide">
           <code>Object.seal()</code>
           <p>Prevents deletion of properties</p>
           <pre class="language-js"><code>const obj = {prop: 2 };
-  Object.seal(obj);
-  // can mutate a sealed object's existing properties
-  obj.prop = 3;
-  console.log(obj.prop);// 3
-  // cannot delete when sealed
-  delete obj.prop; 
-  // cannot add new properties
-  obj.greet = 'hello'
-  console.log(obj.prop, obj.greet);// 3, undefined</code></pre>
+Object.seal(obj);
+// can mutate a sealed object's existing properties
+obj.prop = 3;
+console.log(obj.prop);// 3
+// cannot delete when sealed
+delete obj.prop; 
+// cannot add new properties
+obj.greet = 'hello'
+console.log(obj.prop, obj.greet);// 3, undefined</code></pre>
         </article>
         <article class="slide">
           <code>Object.freeze()</code>
           <p>Prevents deletion and alteration of properties. But only on 1st level of nesting</p>
           <pre class="language-js"><code>const obj = {prop: 2, key: {greet: 'hello'}};
-  Object.freeze(obj);
-  // cannot mutate nor delete a frozen object
-  obj.prop = 3;
-  obj.greet = 'hello'
-  delete obj.prop
-  console.log(obj) 
-  // {prop: 2, key: {greet: 'hello'}}
-  
-  
-  // But freezing is "shallow"
-  obj.key.greet = 'Aloha'
-  console.log(obj) 
-  // {prop: 2, key: {greet: 'Aloha'}}</code></pre>
+Object.freeze(obj);
+// cannot mutate nor delete a frozen object
+obj.prop = 3;
+obj.greet = 'hello'
+delete obj.prop
+console.log(obj) 
+// {prop: 2, key: {greet: 'hello'}}
+
+// But freezing is "shallow"
+obj.key.greet = 'Aloha'
+console.log(obj) 
+// {prop: 2, key: {greet: 'Aloha'}}</code></pre>
         </article>
         <article class="slide">
           <h2>Recursively Freezing an Object</h2>
           <p>This is not a native JS function. You have to write it yourself. But here is an implementation we can use: <a
                href="https://github.com/remix/simple-deep-freeze/blob/master/index.js">Github</a></p>
           <pre class="language-js"><code>function deepFreeze (o) {
-    Object.freeze(o);
-    Object.getOwnPropertyNames(o).forEach(prop => {
-      if (o.hasOwnProperty(prop) 
-      && o[prop] !== null
-      && (typeof o[prop] === "object"
-      || typeof o[prop] === "function") 
-      && !Object.isFrozen(o[prop])) {
-        deepFreeze(o[prop]);
-      }
-    });
-    return o;
-  };</code></pre>
+  Object.freeze(o);
+  Object.getOwnPropertyNames(o).forEach(prop => {
+    if (o.hasOwnProperty(prop) && o[prop] !== null
+    && (typeof o[prop] === "object" || typeof o[prop] === "function") 
+    && !Object.isFrozen(o[prop])) {
+      deepFreeze(o[prop]);
+    }
+  });
+  return o;
+};</code></pre>
         </article>
         <article class="slide">
           <h2>Prototypes</h2>
@@ -301,19 +301,19 @@
                title='Primitives have no methods but still behave as if they do. When properties are accessed on primitives, JavaScript auto-boxes the value into a wrapper object and accesses the property on that object instead. For example, "foo".includes("f") implicitly creates a String wrapper object and calls String.prototype.includes() on that object. This auto-boxing behavior is not observable in JavaScript code but is a good mental model of various behaviors — for example, why "mutating" primitives does not work (because str.foo = 1 is not assigning to the property foo of str itself, but to an ephemeral wrapper object).'>autoboxing</a>
           </p>
           <pre class="language-js"><code>String.prototype
-  Number.prototype
-  Boolean.prototype
-  Symbol.prototype
-  BigInt.prototype
-  Array.prototype
-  Object.prototype
-  Function.prototype // no methods/properties of its own</code></pre>
+Number.prototype
+Boolean.prototype
+Symbol.prototype
+BigInt.prototype
+Array.prototype
+Object.prototype
+Function.prototype // no methods/properties of its own</code></pre>
         </article>
         <article class="slide">
           <h2>Revisiting Symbol</h2>
           <p><code>Symbol()</code></p>
           <pre class="language-js"><code>let Sym = Symbol("Sym");
-  console.log(_Sym.description);</code></pre>
+console.log(_Sym.description);</code></pre>
           <ul>
             <li>creates a unique identifier</li>
             <li>Used a unique, collision-free key on objects</li>
@@ -326,17 +326,17 @@
                  href="https://maxheiber.medium.com/safe-monkey-patching-with-es2015-symbol-e36fb01ab794">Medium</a></sup>
           </h2>
           <pre class="language-js"><code>// Add useful toString Method to js objects:
-  Object.prototype.toString = function() {
-    return JSON.stringify(this)
-  }</code></pre>
+Object.prototype.toString = function() {
+  return JSON.stringify(this)
+}</code></pre>
           <p>This can lead to naming collisions with other libraries</p>
           <p>This is what <code>Symbol</code> is for!! So use it if you must do this.</p>
           <pre class="language-js"><code>// toString path with `Symbol`:
-  const toString = Symbol('toString')
-  Object.prototype[toString] = function() {
-    return JSON.stringify(this)
-  }
-  {a: 1, b: 2}[toString]() // "{\"a\":1,\"b\":2}"</code></pre>
+const toString = Symbol('toString')
+Object.prototype[toString] = function() {
+  return JSON.stringify(this)
+}
+{a: 1, b: 2}[toString]() // "{\"a\":1,\"b\":2}"</code></pre>
         </article>
         <article class="hidden">
           <h2>Safe Serialization on all <code>prototypes</code></h2>
@@ -360,16 +360,12 @@
       </section>
 
     <header id="intro" class="slide">
-      <h1>ECMAScript Version 2015+</h1>
       <h2>ES6 & Beyond</h2>
-      <p class="attribution">MCC: Section 2</p>
+      <h1>ECMAScript Version 2015+</h1>
+      <h1>AKA Edition 6 or ES6</h1>
     </header>
 
     <section>
-      <header class="slide">
-        <h2>ECMAScript Version 2015+</h2>
-        <h1>AKA Edition 6 or ES6</h1>
-      </header>
       <article class="slide">
         <h2>ES6+ We've already Seen</h2>
         <div class="flex">
@@ -414,7 +410,6 @@
         <h2>New ES6+ Features</h2>
         <ul class="col-2">
           <li class="delayed">Tagged Templates</li>
-          <li class="delayed">Default Parameters</li>
           <li class="delayed">Destructuring & Param Context matching</li>
           <li class="delayed">Rest & Spread operators</li>
           <li class="delayed">Object Propery/Method Shorthand</li>
@@ -484,42 +479,6 @@ myTag`That person's name is ${ person } and they are a ${ job }.`</code></pre>
           It will provide as parameters the chunked string in an array, and the
           other parameters separately.
         </p>
-      </article>
-      <article class="slide">
-        <h2>Default Parameters</h2>
-        <p>
-          If no value or undefined is passed, then initialize with a default
-          value
-        </p>
-        <pre class="language-js"><code>function chatMsg(greeter, msg) {
-  console.log(`${greeter}: ${msg}`)
-}
-function chatMsg2(greeter = 'Auto-greeter', msg = 'Hello') {
-  console.log(`${greeter}: ${msg}`)
-}
-chatMsg("Joe", "What's up?") // "Joe: What's up?""
-chatMsg() // 'undefined: undefined'
-chatMsg2() // 'Auto-greeter: Hello'</code></pre>
-      </article>
-      <article class="slide">
-        <h2>Hypothetical Use Case:</h2>
-        <p>
-          Use previous params or even functions in your default param expression
-        </p>
-        <pre
-             class="language-js"><code>const randNum = () => Math.random().toString().slice(3, 5)
-function createUser(
-  name,
-  password, 
-  username = name+randNum(),
-  isAdmin = false
-) {
-  sendLoginData(user, password)
-  setPermissions(isAdmin)
-}
-createUser('Joe', 'h2jq9fn48',)
-createUser('Jay', 'y9i7h3ndk', undefined, true)
-</code></pre>
       </article>
       <article class="slide">
         <h2>Destructuring</h2>
@@ -657,23 +616,6 @@ g() // Type Error, won't work without the object</code></pre>
         </p>
       </article>
       <article class="slide">
-        <h2>Rest</h2>
-        <p>
-          Used in for function parameters to create a
-          <u>Variadic</u> function (a function that accepts a varying number of
-          parameters)
-        </p>
-        <p>
-          Function <u>Arity</u>: The number of parameters a function accepts
-          (see <code>Function.length</code>)
-        </p>
-        <pre
-             class="language-js"><code>function addFirstTwo(a, b, ...manyMoreArgs) {
-  return a + b
-}
-addFirstTwo([1,1,5,6,7]) // 2 </code></pre>
-      </article>
-      <article class="slide">
         <h2>Object Spread</h2>
         <pre class="language-js"><code>const names1 = {cat: 'Bob'}
 const names2 = {dog: 'Fred', alligator: 'Benedict'}
@@ -689,6 +631,23 @@ var arr3 = arr.slice() // also a copy of arr</code></pre>
           It can be used to create a copy of an array, similar to
           <code>.slice()</code>
         </p>
+      </article>
+      <article class="slide">
+        <h2>Rest</h2>
+        <p>
+          Used in for function parameters to create a
+          <u>Variadic</u> function (a function that accepts a varying number of
+          parameters)
+        </p>
+        <p>
+          Function <u>Arity</u>: The number of parameters a function accepts
+          (see <code>Function.length</code>)
+        </p>
+        <pre
+             class="language-js"><code>function addFirstTwo(a, b, ...manyMoreArgs) {
+  return a + b
+}
+addFirstTwo([1,1,5,6,7]) // 2 </code></pre>
       </article>
       <article class="slide">
         <h2>Object Property & Method Shorthand</h2>
@@ -907,627 +866,6 @@ const myWeakSet = new WeakSet()
           </p>
         </details>
       </article>
-    </section>
-
-    <section>
-      <header class="slide">
-        <h2>Code Organization Techniques</h2>
-        <h1>Modules, Closures & Classes</h1>
-      </header>
-
-      <article class="slide">
-        <h2>Code Encapsulation</h2>
-        <p>We'll learn about three ways to encapsulate our code</p>
-        <ul class="delayed-chidren">
-          <li><strong>Modules</strong>
-            <ul>
-              <li><small>based on files</small></li>
-            </ul>
-          </li>
-          <li><strong>Closures</strong>
-            <ul>
-              <li><small>based on functions</small></li>
-            </ul>
-          </li>
-          <li><strong>Classes</strong>
-            <ul>
-              <li><small>based on classes (new in es6+)</small></li>
-            </ul>
-          </li>
-        </ul>
-        <p style="padding: 0 10rem;">All of these let us wrap our code inside of a "black box" so we can expose only the
-          parts of it that we deliberately intend to and we can keep the nitty gritty implementation details hidden &
-          inaccessible inside. </p>
-      </article>
-
-      <article class="slide">
-        <h2>Modules 📦</h2>
-        <p>Little packages for our code</p>
-        <ul class="delayed-children">
-          <li>Modules provide a new way to organize our code into manageable chunks.
-          <li>By using the <code>import</code> & <code>export</code> keywords, we can modularize code &
-            organize it <u>into a unit defined by a file.</u></li>
-          </li>
-          <li>Modules wrap up parts of your code into easily resusable pieces</li>
-          <li>Modules makes those pieces of code easily composed together</li>
-        </ul>
-      </article>
-      <article class="slide">
-        <h2>A simple single file Module</h2>
-        <pre class="language-js"><code>import myArr from './data.js'
-
-const power = 3
-
-function module(arr) {
-  let biggerArr = myArr.concat(arr)
-  return biggerArr.map(item => item ** power)
-}
-  
-export default module</code></pre>
-      </article>
-      <article class="slide">
-        <h2>Export & Import</h2>
-        <ul>
-          <li>Export is used when creating JavaScript modules to export functions,
-            objects, or primitive values from the module so they can be used by
-            other programs with the import statement.</li>
-          <li>Import is used to import bindings (i.e. functions, vars, etc) which
-            are exported by another module.</li>
-          <li>This will come in handy with React & other frameworks</li>
-          <li>But we can also take advantage of this for own code organization</li>
-        </ul>
-      </article>
-      <article class="slide">
-        <h2>Export Syntax</h2>
-        <pre class="language-js"><code>export let name1, name2, …,;
-export const name1 = …, name2 = …, …;
-export function functionName(){...}
-export class ClassName {...}
-// Defaults
-export default expression;
-export default function (…) { … }</code></pre>
-      </article>
-      <article class="slide">
-        <h2>Import Syntax</h2>
-        <pre class="language-js"><code>import defaultExport from "module-name.js";
-import * as name from "module-name.js";
-import { export1 } from "module-name.js";
-import { export1 as alias1 } from "module-name.js";
-import { export1 , export2 } from "module-name.js";</code></pre>
-      </article>
-      <article class="slide">
-        <h2>
-          Closures
-          <sup><a href="https://www.w3schools.com/js/js_function_closures.asp">W3</a>,
-          </sup>
-          <sup><a
-               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">MDN</a></sup>
-        </h2>
-        <p style="padding: 0 10rem">
-          Before Modules, code encapsulation was accomplished with the
-          <a
-             href="https://www.codeproject.com/Articles/1164113/Module-and-Revealing-Module-Patterns-in-JavaScript">Revealing
-            Module Pattern</a>
-          using IIFEs
-        </p>
-      </article>
-      <article>
-				<h2>IIFE</h2>
-				<h3>Immediately Invoked Function Expression</h3>
-				<p>These create a private scope</p>
-				<p>Take advantage of Function Scope by using an IIFE to create a "Closure"</p>
-				<pre class="language-js"><code>(function (parameters){
-	// use the arguments you pass in
-  // to do stuff here
-})(arguments)
-
-// same effect, but w/ arrow function:
-(parameters => {
-  // do stuff w/ arguments here
-}(arguments))</code></pre>
-			</article>
-			<article>
-				<h2>Closures</h2>
-				<pre class="language-js"><code>let publicAPI = (function (a, b){
-  let privateVar = a + 'our secret';
-  return [
-    true,
-    a + b
-  ]
-}(1, 2))
-publicAPI[0] // true
-publicAPI[1] // 3
-privateVar // ReferenceError
-privateVar[privateVar] // ReferenceError
-publicAPI.privateVar // ReferenceError</code></pre>
-			</article>
-      <article class="slide">
-        <h2>Closure Building Blocks</h2>
-        <ol>
-          <li>Scope (Global vs. Local)</li>
-          <li>Nested Functions</li>
-          <li>Currying: Returning an Inner Function</li>
-        </ol>
-        <pre class="language-js"><code>// Local vs Global
-function fn() {
-  let base = 9
-  var power = 2 // even var is local to a function scope
-}
-console.log(power, base) // Reference Error
-// Nesting & Returning Functions 
-function gn() {
-  let temp = 9
-  var power = 2
-  return function() {
-    temp * power
-  }
-}</code></pre>
-      </article>
-      <article class="slide">
-        <h2>Closures Illustration</h2>
-        <p>
-          <strong>Global variables are long-lived</strong>: until page is
-          discarded (navigate away, close)
-        </p>
-        <p>
-          <strong>Local variables are short-lived</strong>: Function invocation
-          creates them, <br />
-          Function Return destroys them (garbage collected)
-        </p>
-        <pre class="language-js"><code>for (var i = 1; i &lt;= 4; i++) {
-  setTimeout(function() { 
-    console.log(i)
-  }, 1000*i)     // 5 5 5 5
-}
-for (var i = 1; i &lt;= 4; i++) {
-  setTimeout(function(x) { 
-    return () =&gt; console.log(x) 
-  }(i), 1000*i)
-// 1 2 3 4
-}</code></pre>
-      </article>
-      <article class="slide">
-        <h2>
-          Block Scope Fix with <code>let</code>, <code>const</code>,
-          <code>.forEach</code>
-        </h2>
-        <pre class="language-js"><code>for (let i = 1; i &lt;= 4; i++) {
-  setTimeout(function() { 
-    console.log(i)
-  }, 1000*i)     // 1 2 3 4
-}</code></pre>
-
-        <pre class="language-js"><code>[...Array(4).keys()].forEach(i =&gt; {
-  setTimeout(function() { 
-    console.log(i)
-  }, 1000*i) // 0 1 2 3
-})</code></pre>
-      </article>
-      <article class="slide">
-        <h2>Simple Curried Function</h2>
-        <pre class="language-js"><code>let fn = x =&gt; y =&gt; x + y
-// let fn = (x) =&gt; (y =&gt; x + y)
-let n = fn(3)
-// Some indefinite amount of time may pass, then:
-n(4) // 7
-
-// Could also be invoked at once:
-fn(3)(4) // 7</code></pre>
-        <p>
-          Due to referential transparency, these are identical evaluations,
-          despite difference in time.
-        </p>
-      </article>
-      <article class="slide">
-        <h2>The same curried function written 4 ways</h2>
-        <pre class="language-js"><code>const add = x =&gt; y =&gt; x + y
-
-const add = x =&gt; { 
-    return y =&gt; {
-        return x + y
-    }
-}
-
-function add(x) {
-    return function(y) {
-      return x + y
-  }
-}
-
-// calling add:
-const partial = add(1) // return a function with 1 in its closure
-const continuation = partial(2) // returns 3, because it added 1 from above with 2
-</code></pre>
-      </article>
-      <article class="slide">
-        <h2>Parallel Closures</h2>
-        <p>
-          Curried Functions allow us to reuse code by creating
-          <strong>Parallel Closures</strong>.
-        </p>
-        <p>
-          Closures can create multiple instances of closed over variables that
-          are independent of each other.
-        </p>
-        <img src="img/parallel_closures.png" alt="" />
-      </article>
-      <article class="slide">
-        <h2>Closures & Modules Code Along</h2>
-      </article>
-    </section>
-
-    <section>
-      <header class="slide">
-        <h2>Code Encapsulation</h2>
-        <h1>Intro to JS Classes</h1>
-      </header>
-      <article class="slide">
-        <h2>Object Oriented Patterns</h2>
-        <p>
-          ES6 classes are a syntactic sugar over the prototype-based OO pattern.
-          It's not <strong>true</strong> Classical Inheritance that other languages have (like Java)
-        </p>
-        <p>
-          Having a single convenient declarative form makes class patterns
-          easier to use, and encourages interoperability.
-        </p>
-        <p>
-          Classes support prototype-based inheritance, <code>super</code> calls,
-          instance/static methods, constructors and finally private identifiers.
-        </p>
-      </article>
-      <article class="slide">
-        <h2>Javascript <code>Class</code> Keyword</h2>
-        <div class="flex">
-          <pre class="language-js"><code>class Point2D {
-  constructor(x, y) {
-    this.x = x;
-    this.y = y;
-  }
-  // ...define more variables and methods here
-}
-
-const instanceXYPoint = new Point2D(1, 2)
-instanceXYPoint.x // 1
-instanceXYPoint.y // 2
-</code></pre>
-          <ul>
-            <li>Constructor/Super <ul>
-                <li><code>constructor</code></li>
-                <li><code>super</code></li>
-                <li>Instantiating with the <code>new</code> keyword</li>
-              </ul>
-            </li>
-            <li>Getters/Setters
-              <ul>
-                <li><code>get</code></li>
-                <li><code>set</code></li>
-              </ul>
-            </li>
-            <li>Private members with the hash symbol
-              <ul>
-                <li><code>#</code></li>
-              </ul>
-            </li>
-            <li>Prototypal Inheritance</li>
-          </ul>
-        </div>
-
-      </article>
-      <article class="slide">
-        <h2>Made Possible by Enhance Object Literals</h2>
-        <pre class="language-js"><code>var obj = {
-  // set a custom __proto__
-  __proto__: theProtoObj, // the constructor
-  // Methods
-  toMyString() {
-    // Super calls
-    return "My " + super.toString();
-  }
-}
-obj.toMyString() // 'My [object Object]'
-obj.toString() // '[object Object]'</code></pre>
-        <p>
-          Along with property shorthand & computed properties, these also bring
-          object literals and class declarations closer together, and allow
-          object-based design to benefit from some of the same conveniences
-        </p>
-      </article>
-      <article class="slide">
-        <h2>Not your Java's Inheritance</h2>
-        <p>
-          <a
-             href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Details_of_the_Object_Model">Classical
-            vs Prototypal Inheritance</a>
-        </p>
-        <p>
-          They lack the classical inheritance model like other OOP language
-          classes
-        </p>
-        <p>They use Prototypal Inheritance just like Objects.</p>
-      </article>
-      <article class="slide">
-        <h2>Typical Class Declaration</h2>
-        <pre class="language-js"><code>class Vegetable {
-  constructor(name){
-    this.name = name
-  }
-}
-const carrot = new Vegetable('carrot');
-console.log(carrot.name); // 'carrot'</code></pre>
-      </article>
-      <article class="slide">
-        <h2>Equivalent Function</h2>
-        <pre class="language-js"><code>function vegetable(name) {
-  return {
-    name
-  }
-}
-const carrot = vegetable('carrot')
-console.log(carrot.name) // 'carrot'</code></pre>
-      </article>
-      <article class="slide">
-        <h2>Get and Set</h2>
-        <pre class="language-js"><code>class TempConverter {
-  constructor(F) {
-    this.F = F;
-  }
-  get boilsWater() {
-    return this.F &gt;= 212;
-  }
-  get C () {
-    return (5 / 9) * (this.F - 32)
-  }
-  set C (degrees) {
-    this.F = (degrees * 9.0) / 5 + 32;
-  }
-} // can't use arrow function syntax for getters/setters because of lexical scoping</code></pre>
-      </article>
-      <article class="slide">
-        <h2>Class Example</h2>
-        <pre class="language-js"><code>class Person {
-  constructor(name, email, address) {
-    this.name = name
-    this.email = email
-    this.address = address
-  }
-  getInfo() {
-    return {
-      Name: this.name, 
-      Email: this.email, 
-      Address: this.address
-    }
-  }
-}</code></pre>
-      </article>
-      <article class="slide">
-        <h2>Extending Classes</h2>
-        <pre class="language-js"><code>class Employee extends Person {
-  constructor(job, address, ...args) {
-    // super is a link w/ Parent Class
-    super(...args) // calls parent w/ rest of args
-    this.job = job
-    this.address = address // Can overwrite parent properties
-    // such as with the work address here
-  }
-  getInfo() { // Can overwrite methods too
-    return {
-      Name: this.name, 
-      Email: this.email,
-      Address: this.address, 
-      Job: this.job 
-    }
-  }
-}
-</code></pre>
-      </article>
-      <article class="slide">
-        <h2>What is <code>super</code></h2>
-        <ul>
-          <li>
-            <code>super</code> maintains the connection between parent and child
-            classes - It establishes the inheritance chain.
-          </li>
-          <li><code>super</code> method is used to call parent's constructor & populates the class with all of it's
-            parents properties & methods</li>
-          <li>
-            It is optional to use it - only if you need to use
-            properties/methods of your parent class in your derived class
-          </li>
-          <li>
-            You can create a class without a constructor, but it will use a
-            default one
-          </li>
-        </ul>
-        <pre class="language-js"><code>// default will inherit from Object
-constructor() {}
-
-// For the derived class, if you don't specify a constructor, it will use
-constructor(...args) {
-  super(...args);
-}</code></pre>
-      </article>
-      <article class="slide">
-        <h2>Results</h2>
-        <div class="flex" style="gap: 3rem;">
-          <pre class="language-js"><code>const joPerson = new Person(
-  "Jo", "jo@home.com", "123 Home Ave"
-)
-const joEmployee = new Employee(
-  "Developer", "321 Work Ave", "Jo", "jo@work.com"
-)
-</code></pre>
-          <div>
-            <pre class="language-js"><code>console.table({
-  emp: joEmployee.getInfo(), 
-  per: joPerson.getInfo()
-})
-  </code></pre>
-            <img src="img/employee.png" alt="" />
-          </div>
-        </div>
-      </article>
-      <article class="slide">
-        <h2>Instances</h2>
-        <p>For determining or asserting the chain of inheritance</p>
-        <p>Binary Operator: <code>instanceof()</code></p>
-        <pre class="language-js"><code>const joEmployee = new Employee(
-  "Developer", "321 Work Ave", "Jo", "jo@work.com"
-)
-joEmployee instanceof Person // true
-
-// OR check the __proto__ property (references the parent)
-joEmployee.__proto__ // Person {constructor: ƒ, getInfo: ƒ}</code></pre>
-      </article>
-
-      <article class="slide">
-        <h2>Class vs Object differences</h2>
-        <p>
-          Classes and objects from the essential part of Object-oriented programming, where a class can be considered as
-          a construct that encapsulates a group of variables and methods; whereas, an object acts as member or instance
-          of that class.
-        </p>
-        <table>
-          <thead>
-            <tr>
-              <th style="color: black;">Class</th>
-              <th style="color: black;">Object</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>A class is a blueprint from which you can create the instance, i.e., objects.</td>
-              <td>An object is the instance of the class, which helps programmers to use variables and methods from
-                inside the class.</td>
-            </tr>
-            <tr>
-              <td>A class is used to bind data & methods into a single unit.</td>
-              <td>Object acts like a variable/instance of the class.</td>
-            </tr>
-            <tr>
-              <td>Classes have logical existence (exist in code).</td>
-              <td>Objects have a tangible existence (exist in memory).</td>
-            </tr>
-            <tr>
-              <td>A class doesn't take any memory spaces when a programmer creates one.</td>
-              <td>An object takes memory when a programmer creates one.</td>
-            </tr>
-            <tr>
-              <td>The class has to be declared only once.</td>
-              <td>Objects can be declared several times depending on the requirement.</td>
-            </tr>
-          </tbody>
-        </table>
-      </article>
-
-      <article class="slide">
-        <h2>Private methods/properties <sup><a
-               href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes/Private_class_fields">MDN</a></sup>
-        </h2>
-        <p>Private members on a class are fully protected and inaccessible, except within the class block scope</p>
-        <div class="flex">
-
-
-          <pre class="language-js"><code>class ClassWithPrivate {
-  #privateField = 42;
-  #privateMethod() {
-    console.log("can't access me directly")
-    return this.#privateField
-  }
-  logPrivateMethod() {
-    console.log(this.#privateMethod())
-  }
-}</code></pre>
-          <pre class="language-js"><code>const instance = new ClassWithPrivate()
-
-// Public members can be access, called or deleted
-instance.logPrivateMethod() // works
-
-// Private members can't be accessed nor deleted
-instance.#privateField === 42 // Syntax Error
-instance.#privateMethod() // Syntax Error
-delete instance.#privateMethod() // Syntax Error</code></pre>
-        </div>
-      </article>
-      <article class="slide">
-        <h2>The <code>static</code> Keyword</h2>
-        <p>For running some procedural code once for a class & sharing it between instances</p>
-        <pre class="language-js"><code>class ClassWithPrivateStatic {
-  static field = 'some value'
-  static method () {
-    return 42;
-  }
-
-  static {
-    // …setup code to run once
-  }
-}</code></pre>
-        <p>Code in a <code>constructor</code> runs once per instance, while code in a <code>static</code> block runs
-          once per class declaration.</p>
-      </article>
-      <article class="slide">
-        <h2>Prototypal Inheritance</h2>
-        <div class="flex" style="gap: 1rem">
-          <img src="img/prototype_chain.png" alt="" style="max-height: 70vh;" />
-          <div>
-            <strong>Steps to access inherited properties in JS:</strong>
-            <ol style="font-size: 2rem; line-height: 3.5rem">
-              <li>
-                Check if the key exists locally. If it does, return local value.
-              </li>
-              <li>
-                If there is no local key, check up the prototype chain
-                <br />(via the <code>__proto__</code> property).
-              </li>
-              <li>
-                Iterate up the prototype chain looking for the next object w/
-                the specified key
-              </li>
-              <li>
-                For the first object encountered in the prototype chain w/ the
-                key, return that key's value.
-              </li>
-              <li>
-                If the key is not found in entire prototype chain, return
-                undefined.
-              </li>
-            </ol>
-          </div>
-        </div>
-      </article>
-      <article class="slide">
-        <h2>Compostion vs Inheritance</h2>
-        <div class="flex" style="align-items: center">
-          <ul>
-            <li>
-              The functional programming paradigm prefers composition over
-              inheritance
-            </li>
-            <li>
-              Composition means simply <strong>Composing Functions</strong>
-            </li>
-            <li>Composition is a more modular & flexible approach</li>
-            <li>With inheritance you often inherit more than needed</li>
-            <li>
-              In general, with deeply nested inheritance chains, you're gonna
-              have a bad time & end up overwriting a lot
-            </li>
-          </ul>
-          <a href="http://www.johndcook.com/blog/2011/07/19/you-wanted-banana/" style="text-align: center;">
-            <div>If you ask for a banana...</div>
-            <img
-                 src="http://www.johndcook.com/gorilla_holding_banana.jpg"
-                 alt="" />
-          </a>
-        </div>
-      </article>
-    </section>
-
-    <section>
-      <header class="slide">
-        <h2>Extras</h2>
-        <h1>Iterators & Generators</h1>
-      </header>
       <article class="slide">
 				<h2>Recursion <sup><a
 							 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#recursion">MDN</a></sup>
@@ -1541,6 +879,13 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
 						 href="http://www.pythontutor.com/javascript.html#code=function%20fact%28n%29%20%7B%0A%20%20if%20%28n%20%3D%3D%200%29%20%7B%0A%20%20%20%20return%201%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20return%20n%20*%20fact%28n-1%29%3B%0A%20%20%7D%0A%7D%0A%0Afact%283%29%3B%0Afact%283%29%3B&mode=edit&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Visualize
 						Factorial Fn</a></p>
 			</article>
+    </section>
+
+    <section>
+      <header class="slide">
+        <h2>Extras</h2>
+        <h1>Iterators & Generators</h1>
+      </header>
       <article class="slide">
         <h2>Iterators & Generators</h2>
         <p><a href="https://felixgerschau.com/javascript-iterators-and-generators-explained/">Generators Explained

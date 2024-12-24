@@ -40,23 +40,16 @@
       </header>
       <article class="slide">
         <h2>THE DOM API vs JS</h2>
-        <p>
-          <em>The DOM API Looks like JS, but it's separate. Yet it inter<em
-                style="font-style: normal">f</em>aces with JS.</em>
-        </p>
-        <p class="delayed">
-          DOM represents the built-in objects, methods & properties that
-          interface w/ nodes in the Render Tree
-        </p>
-        <p class="delayed">
-          JS is the language that can store, iterate-over and manipulate those
-          nodes
-        </p>
-        <p class="delayed">
-          The link between JS & the DOM is key to building dynamic apps as it
-          allows JavaScript to change your HTML reactively based on user input
-          triggers.
-        </p>
+        <ul>
+          <li>The DOM API Looks like JS & it interfaces with JS.</li>
+          <li class="delayed"><b>But the DOM API & JS are separate, distinct things.</b></li>
+          <div class="flex" style="gap: 1rem; margin-left: -1.5rem;">
+          <li class="delayed" style="list-style: none; padding: 0 8px; border: 1px solid royalblue;"><strong>DOM API</strong> = browser's built-in properties, methods & objects</li>
+          <li class="delayed" style="list-style: none; padding: 0 8px; border: 1px solid royalblue;"><strong>Javascript</strong> = language for iterating, transforming & storing data</li>
+          </div>
+          <li class="delayed">Javascript can change HTML reactively using the DOM API based on user input
+            triggers. Using JS & the DOM API together is key to creating dynamic apps. </li>
+        </ul>
       </article>
 
       <article class="slide">
@@ -190,9 +183,8 @@ document.getElementsByTagName('div').forEach() // TypeError</code></pre>
       </article>
 
       <article class="slide">
-        <h2>Listening to Events</h2>
-        <pre
-             class="language-js"><code>document.addEventListener('submit', callback)</code></pre>
+        <h2>Add an Event Listener</h2>
+        <pre class="language-js"><code>document.addEventListener('submit', callback)</code></pre>
         <p>
           Then we need to <strong>handle</strong> that event with our callback
           function that we define
@@ -224,7 +216,29 @@ document.getElementsByTagName('div').forEach() // TypeError</code></pre>
           Try it out!
         </button>
       </article>
-
+      <article class="slide">
+        <h2>Listening to Events in HTML</h2>
+        <p>Using the <code>onclick</code> attribute as an alternative way to listen to events</p>
+        <div class="flex">
+          <pre class="language-html"><code>&lt;!-- HTML file --&gt;
+&lt;body>
+  &lt;!-- Add `onclick` attr to button
+  & invoke your function --&gt;
+  &lt;button onclick="my.func()">
+    Click Me
+  &lt;/button>
+&lt;/body></code></pre>
+          <pre class="language-js"><code>// .js file
+const my = {
+  func: () => console.log('Clicked!'),
+}
+// Or
+const btn = document.querySelector('button')
+// assign function to the `onclick` attr:
+btn.onclick = my.func 
+</code></pre>
+        </div>
+      </article>
       <article class="slide">
         <h2>Visualizing Events</h2>
         <p><a href="https://domevents.dev/">DomEvents.dev</a></p>
@@ -243,13 +257,15 @@ document.getElementsByTagName('div').forEach() // TypeError</code></pre>
       </article>
 
       <article class="slide">
-        <h2>Event Listeners Options</h2>
+        <h2>Event Listeners Options <sup><small><a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener#options">MDN</a></small></sup></h2>
         <ul>
           <li><code class="language-js">{ capture: true }</code></li>
           <li><code class="language-js">{ once: true }</code></li>
+          <li><code class="language-js">e.preventDefault()</code></li>
           <li><code class="language-js">e.stopPropagation()</code></li>
         </ul>
         <pre class="language-js"><code>document.addEventListener('click', e => {
+    e.preventDefault() // prevents default event behavior
     e.stopPropagation() // stops bubbling at this element
     // handle event
   },
@@ -440,7 +456,7 @@ element.style.transform = 'rotate(90deg)'
       <article class="slide">
         <h2>Detour to MVC</h2>
         <p>Hold on! We've got a client asking for a deliverable!</p>
-        <p><a href="/slides/11-mvc">Let's see what the job is!</a></p>
+        <p><a href="/slides/08-mvc">Let's see what the job is!</a></p>
       </article>
       <article class="slide">
 				<h2>Calculator Code Along</h2>
@@ -625,19 +641,19 @@ element.style.transform = 'rotate(90deg)'
           <sup><a href="https://developer.mozilla.org/en-US/docs/Web/API/console">MDN</a></sup>
         </h2>
         <div class="flex">
-          <pre class="language-js"><code>console.log
-console.dir
-console.table
-console.assert
-console.trace
-console.debug
-				</code></pre>
+          <pre class="language-js"><code>console.log()
+console.dir()
+console.table()
+console.assert()
+console.trace()
+console.debug()
+</code></pre>
           <pre class="language-js"><code>console.time
-console.timeLog
-console.timeEnd
-console.count
-console.group
-                  </code></pre>
+console.timeLog()
+console.timeEnd()
+console.count()
+console.group()
+</code></pre>
         </div>
       </article>
 
