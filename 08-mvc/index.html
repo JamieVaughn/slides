@@ -57,14 +57,14 @@
     data-duration="30"
   >
     <header id="intro" class="slide">
-      <h1>Javascript Design Patterns</h1>
+      <h1>Code Architecture</h1>
       <h2>MVC</h2>
       <p class="attribution">MCC: Section 2</p>
     </header>
     <section>
       <header class="slide">
-        <h2>Design Patterns</h2>
-        <h1>Patterns for Code Organization</h1>
+        <h2>Dragon Clicker App</h2>
+        <h1>Learning by Building</h1>
       </header>
       <article class="slide">
         <h2>The Saga of the Dragon Clicker App</h2>
@@ -237,18 +237,18 @@ dragon.addEventListener('click', function(e){
         </ul>
       </article>
       <article class="slide">
-        <h2>Dragon 🌆 City</h2>
+        <h2>Dragon 📈 Gang</h2>
         <em>This client is getting needy!</em>
-        <p>They loved <strong>Dragon 🎭 Duo</strong> so much that they want <strong style="position: relative; background: linear-gradient(45deg, black 45%, transparent 50%);">MORE DRAGONS!<img src="img/more_kylo.jpg" style="position: absolute; bottom: 40%; left: 0; min-height: 200px; z-index: -1;"></strong></p>
-        <p>The client would like at least <u>5 clickable dragons.</u></p>
-        <ul><strong>With these elemental types</strong>
+        <p>They loved <strong>Dragon 🎭 Duo</strong> so much that they want <strong style="position: relative; background-color: black;">MORE DRAGONS!<img src="img/more_kylo.webp" style="position: absolute; bottom: -8%; left: 0; min-height: 200px; z-index: -1;"></strong></p>
+        <p style="text-align: center;">They request the same reqs as <strong>Dragon 🎭 Duo</strong> but with <u>5+ clickable dragons.</u></p>
+        <ul><strong>Suggested elemental types:</strong>
           <div class="col-2">
           <li>Fire</li>
           <li>Water</li>
           <li>Earth</li>
           <li>Air</li>
           <li>Aether</li>
-          <li>Be creative!</li>
+          <li>Or be creative!</li>
         </div>
         </ul>
         <div class="tilt-stamp delayed">
@@ -289,6 +289,13 @@ dragon.addEventListener('click', function(e){
           </div>
         </div>
       </article>
+      <articles class="slide">
+        <h2>Reflections</h2>
+        <p><strong>Dragon 📈 Gang</strong> is starting to grow out of control huh?</p>
+        <p>How did you solve it this time?</p>
+        <p>Did the old approach work? If not, why?</p>
+        <p>Did you have to try something new? If so, what?</p>
+      </articles>
     </section>
     <section>
       <header class="slide">
@@ -352,7 +359,7 @@ export default module</code></pre>
           <li>Export is used when creating JavaScript modules to export functions,
             objects, or primitive values from the module so they can be used by
             other programs with the import statement.</li>
-          <li>Import is used to import bindings (i.e. functions, vars, etc) which
+          <li>Import is used to import bindings (i.e. functions, variables, etc) which
             are exported by another module.</li>
           <li>This will come in handy with React & other frameworks</li>
           <li>But we can also take advantage of this for own code organization</li>
@@ -429,20 +436,24 @@ publicAPI.privateVar // ReferenceError</code></pre>
           <li>Nested Functions</li>
           <li>Currying: Returning an Inner Function</li>
         </ol>
-        <pre class="language-js"><code>// Local vs Global
-function fn() {
-  let base = 9
-  var power = 2 // even var is local to a function scope
+        <div class="flex">
+        <pre class="language-js"><code>// Review: Local Scope vs Global
+
+function getSquare(base) {
+  let power = 2
+  return base ** power
 }
-console.log(power, base) // Reference Error
-// Nesting & Returning Functions 
-function gn() {
-  let temp = 9
-  var power = 2
-  return function() {
-    temp * power
+
+console.log(power) // Reference Error
+fn(5) // 25</code></pre>
+<pre class="language-js"><code>// Nesting & Returning Functions 
+function getBase(base) {
+  return function (power) {
+    base * power
   }
-}</code></pre>
+}
+let raiseToPower = getBase(5)
+raiseToPower(3) // 125</code></pre></div>
       </article>
       <article class="slide">
         <h2>Closures Illustration</h2>
@@ -455,12 +466,12 @@ function gn() {
           creates them, <br />
           Function Return destroys them (garbage collected)
         </p>
-        <pre class="language-js"><code>for (var i = 1; i &lt;= 4; i++) {
+        <pre class="language-js"><code>for (let i = 1; i &lt;= 4; i++) {
   setTimeout(function() { 
     console.log(i)
   }, 1000*i)     // 5 5 5 5
 }
-for (var i = 1; i &lt;= 4; i++) {
+for (let i = 1; i &lt;= 4; i++) {
   setTimeout(function(x) { 
     return () =&gt; console.log(x) 
   }(i), 1000*i)
@@ -534,6 +545,7 @@ const continuation = partial(2) // returns 3, because it added 1 from above with
       </article>
       <article class="slide">
         <h2>Closures & Modules Code Along</h2>
+        <p><a href="https://github.com/JamieVaughn/code-along/tree/master/javascript/Module-codealong">Code Repo</a></p>
       </article>
     </section>
 
@@ -597,7 +609,7 @@ instanceXYPoint.y // 2
       </article>
       <article class="slide">
         <h2>Made Possible by Enhance Object Literals</h2>
-        <pre class="language-js"><code>var obj = {
+        <pre class="language-js"><code>let obj = {
   // set a custom __proto__
   __proto__: theProtoObj, // the constructor
   // Methods
@@ -898,12 +910,17 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
             <div>If you ask for a banana...</div>
             <img
                  src="http://www.johndcook.com/gorilla_holding_banana.jpg"
-                 alt="" />
+                 alt="Gorilla with banana" 
+                 height="300"/>
           </a>
         </div>
       </article>
     </section>
     <section>
+      <header class="slide">
+        <h2>Design Patterns</h2>
+        <h1>Patterns for Code Organization</h1>
+      </header>
       <article class="slide">
         <h2>As a precursor to JS Frameworks...</h2>
         <p>
@@ -922,10 +939,10 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
             <u style="text-decoration-color: crimson">Factory Method Pattern</u>
           </li>
           <li><u style="text-decoration-color: crimson">Command Pattern</u></li>
-          <li>State Pattern</li>
-          <li>Strategy Pattern</li>
-          <li>Observer Pattern</li>
           <li>Singleton Pattern</li>
+          <li>Facade Pattern</li>
+          <li>Mediator Pattern</li>
+          <li>Observer Pattern</li>
         </ul>
       </article>
       <article class="slide">
@@ -940,7 +957,7 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
             <details>
               <summary class="highlight3">Creational</summary>
               <ol style="font-size: 75%">
-                <li>
+                <li class="hidden">
                   <strong class="highlight">Singleton</strong> restricts the
                   initialization of a class to ensure that only one instance of
                   the class can be created.
@@ -954,11 +971,11 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
                   <strong class="highlight">Abstract Factory</strong> Allows us
                   to create a Factory for factory classes.
                 </li>
-                <li>
+                <li class="hidden">
                   <strong class="highlight">Builder</strong> Creating an object
                   step by step and a method to finally get the object instance.
                 </li>
-                <li>
+                <li class="hidden">
                   <strong class="highlight">Prototype</strong> Creating a new
                   object instance from another similar instance and then modify
                   according to our requirements.
@@ -970,36 +987,36 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
             <details>
               <summary class="highlight3">Structural</summary>
               <ol style="font-size: 75%">
-                <li>
+                <li class="hidden">
                   <strong class="highlight">Adapter</strong> Provides an
                   interface between two unrelated entities so that they can work
                   together.
                 </li>
-                <li>
+                <li class="hidden">
                   <strong class="highlight">Composite</strong> Used when we have
                   to implement a part-whole hierarchy. For example, a diagram
                   made of other pieces such as circle, square, triangle, etc.
                 </li>
                 <li>
-                  <strong class="highlight">Proxy</strong> Provide a surrogate
+                  <strong  class="highlight">Proxy</strong> Provide a surrogate
                   or placeholder for another object to control access to it.
                 </li>
-                <li>
+                <li class="hidden">
                   <strong class="highlight">Flyweight</strong> Caching and
                   reusing object instances, used with immutable objects. For
                   example, string pool.
                 </li>
                 <li>
-                  <strong class="highlight">Facade</strong> Creating a wrapper
+                  <strong class="highlight">Facade</strong> (View) Creating a wrapper
                   interface on top of existing interfaces to help client
                   applications.
                 </li>
-                <li>
+                <li class="hidden">
                   <strong class="highlight">Bridge</strong> used to decouple the
                   interfaces from implementation and hiding the implementation
                   details from the client program.
                 </li>
-                <li>
+                <li class="hidden">
                   <strong class="highlight">Decorator</strong> used to modify
                   the functionality of an object at runtime.
                 </li>
@@ -1010,46 +1027,46 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
             <details>
               <summary class="highlight3">Behavioral</summary>
               <ol style="font-size: 75%">
-                <li>
+                <li class="hidden">
                   <strong class="highlight">Template Method</strong> used to
                   create a template method stub and defer some of the steps of
                   implementation to the subclasses.
                 </li>
                 <li>
-                  <strong class="highlight">Mediator</strong> used to provide a
+                  <strong class="highlight">Mediator</strong> (Controller) used to provide a
                   centralized communication medium between different objects in
                   a system.
                 </li>
-                <li>
+                <li class="hidden">
                   <strong class="highlight">Chain of Responsibility</strong>
                   used to achieve loose coupling in software design where a
                   request from the client is passed to a chain of objects to
                   process them.
                 </li>
                 <li>
-                  <strong class="highlight">Observer</strong> useful when you
-                  are interested in the state of an object and want to get
-                  notified whenever there is any change.
-                </li>
-                <li>
-                  <strong class="highlight">Strategy</strong> used when we have
-                  multiple algorithm for a specific task and client decides the
-                  actual implementation to be used at runtime.
-                </li>
-                <li>
                   <strong class="highlight">Command</strong> used to implement
                   lose coupling in a request-response model.
                 </li>
                 <li>
+                  <strong class="highlight">Observer</strong> useful when you
+                  are interested in the state of an object and want to get
+                  notified whenever there is any change.
+                </li>
+                <li class="hidden">
+                  <strong class="highlight">Strategy</strong> used when we have
+                  multiple algorithm for a specific task and client decides the
+                  actual implementation to be used at runtime.
+                </li>
+                <li class="hidden">
                   <strong class="highlight">State Design Pattern</strong> used
                   when an Object change it’s behavior based on it’s internal
                   state.
                 </li>
-                <li>
+                <li class="hidden">
                   <strong class="highlight">Visitor</strong> used when we have
                   to perform an operation on a group of similar kind of Objects.
                 </li>
-                <li>
+                <li class="hidden">
                   <strong class="highlight">Interpreter</strong> defines a
                   grammatical representation for a language and provides an
                   interpreter to deal with this grammar.
@@ -1058,7 +1075,7 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
                   <strong class="highlight">Iterator</strong> used to provide a
                   standard way to traverse through a group of Objects.
                 </li>
-                <li>
+                <li class="hidden">
                   <strong class="highlight">Memento</strong> used when we want
                   to save the state of an object so that we can restore later
                   on.
@@ -1699,27 +1716,27 @@ const View2 = { // manages the display area view
       <article class="slide">
         <h2>Our MVC Blueprint - Let's Build it!!</h2>
         <div class="flex" style="gap: 6px; align-items: stretch">
-          <pre class="language-js"><code>const Model = { 
-  list: [...types],
+          <pre class="language-js"><code>// model.js
+const Model = { 
+  types: ['fire', 'air', ...],
   dragons: [
-    {...}, 
-    {...},
-    ...
+    {...}, {...}, ...
   ],
   dragonFactory(type)
 }</code></pre>
-          <pre class="language-js"><code>const View = {
+          <pre class="language-js"><code>// view.js
+const View = {
   node,
   init(),
   templateFactory(),
   render()
 }
-// Could have
-// a MainView 
-// & ListView</code></pre>
-          <pre class="language-js"><code>const Controller = {
+// Could separate into
+// MainView & ListView</code></pre>
+          <pre class="language-js"><code>// controller.js
+const Controller = {
   init(),
-  getList(),
+  getTypes(),
   getDragons(),
   increment(),
   dispatch(type)
@@ -1760,14 +1777,19 @@ const View2 = { // manages the display area view
       <article class="slide">
         <h2>Dragon 🏟️ Arena</h2>
         <p>
-          <strong>Code Along:</strong> Let's spice up our clicker app into an actual battle arena game!
+          The client wants to spice up our clicker app into an actual battle arena game!
         </p>
-        <ol><strong>Game Features</strong>
-          <li>Turn <code>clicks</code> into <code>hitPoints</code> (HP) with an initial amount</li>
-          <li>Instead of clicking, we'll add swiping/slashing action</li>
-          <li>Defeat a dragon by swiping/slashing their HP down to zero!</li>
-          <li>Defeated dragons may drop some beneficial loot!</li>
-          <li>Dragons will be added to the arena automatically on a timer</li>
+        <ol><strong>Client's Requested Game Features:</strong>
+          <li>Now, dragons get added to the arena automatically on a timer</li>
+          <li>Turn the dragon's <code>clicks</code> into <code>hitPoints</code> with an initial amount</li>
+          <li>Replace the <code>click</code> event with the <code>mouseenter</code> event & decrement <code>hitPoints</code> 
+            <ul>
+              <li>So it's like a slashing action</li>
+            </ul>
+          </li>
+          <li>Defeat & remove a dragon by slashing their <code>hitPoints</code> down to zero!</li>
+          <li title=".health-potion { filter: hue-rotate(245deg) }">Defeated dragons randomly drop some loot! ( gem: 💎, potion: 🧪 )</li>
+          <li>Bonus: Dragons attack you on a timer as well!</li>
         </ol>
       </article>
       <!-- <article class="slide">
