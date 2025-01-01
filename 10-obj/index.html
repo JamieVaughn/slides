@@ -44,17 +44,17 @@
           </div>
           <div class="flex">
             <pre class="language-js"><code>// Logical And ('&&') as a 'Guard'
-  obj && obj.key
-  obj && obj.key3 && obj.key3.key 
-  
-  // hasOwnProperty Method
-  obj.hasOwnProperty('key') // true</code></pre>
+obj && obj.key
+obj && obj.key3 && obj.key3.key 
+
+// hasOwnProperty Method
+obj.hasOwnProperty('key') // true</code></pre>
             <pre class="language-js"><code>// Optional Chaining Operator
-  obj?.key3?.key 
-  
-  // the 'in' keyword:
-  'key' in obj // true
-  'fake' in obj // false
+obj?.key3?.key 
+
+// the 'in' keyword:
+'key' in obj // true
+'fake' in obj // false
   </code></pre>
           </div>
         </article>
@@ -63,32 +63,32 @@
           <p><code>?.</code></p>
           <pre
                class="language-js"><code>let obj = { key: { maybe: { nested: 1} } }
-  obj.key.maybenot.nested // Throws an error
-  obj.key.maybenot?.nested // Evaluates to `undefined`
-  obj?.key?.maybenot?.nested // Chain multiple for full safety
+obj.key.maybenot.nested // Throws an error
+obj.key.maybenot?.nested // Evaluates to `undefined`
+obj?.key?.maybenot?.nested // Chain multiple for full safety
   </code></pre>
         </article>
         <article class="slide">
           <h2>The Object Constructor</h2>
           <pre class="language-js"><code>let obj = new Object // {}
-  obj.key = 'value' // must populate keys manually</code></pre>
+obj.key = 'value' // must populate keys manually</code></pre>
         </article>
         <article class="slide">
           <h2>The <code>this</code> keyword <sup><a
                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN</a></sup>
             <sup>/</sup> <sup><a href="https://www.w3schools.com/js/js_this.asp">W3</a></sup></h2>
           <pre class="language-js"><code>const person = {
-    name: 'Chris',
-    greet: function() {
-    alert('Hello ' + this.name + ', Welcome!');
-    },
-    lambdaGreet1: () => { // `this` is undefined
-      alert('Hello ' + this.name + ' Welcome!');
-    },
-    lambdaGreet2: () => {
-      alert('Hello ' + person.name + ' Welcome!');
-    }
-  }</code></pre>
+  name: 'Chris',
+  greet: function() {
+  alert('Hello ' + this.name + ', Welcome!');
+  },
+  lambdaGreet1: () => { // `this` is undefined
+    alert('Hello ' + this.name + ' Welcome!');
+  },
+  lambdaGreet2: () => {
+    alert('Hello ' + person.name + ' Welcome!');
+  }
+}</code></pre>
           <p><strong>Lexical Scoping:</strong> Arrow functions do not bind a value to <code>this</code>. They will take
             the <code>Window</code> value for <code>this</code>.</p>
         </article>
@@ -96,27 +96,27 @@
           <h2>Inheritance</h2>
           <p><code>Object.create()</code></p>
           <pre class="language-js"><code>const person = {
-    isHuman: true,
-    greet:() => console.log(`Hello there!`);
-  };
-  const me = Object.create(person);
-  me.name = "Scooby Doo"; 
-  // "name" is a property set on "me", but not on "person"
-  
-  me.isHuman = false; 
-  // inherited properties can be overwritten
-  
-  me.greet() // 'Hello there!'</code></pre>
+  isHuman: true,
+  greet:() => console.log(`Hello there!`);
+};
+const me = Object.create(person);
+me.name = "Scooby Doo"; 
+// "name" is a property set on "me", but not on "person"
+
+me.isHuman = false; 
+// inherited properties can be overwritten
+
+me.greet() // 'Hello there!'</code></pre>
         </article>
         <article class="slide">
           <h2>Merging Objects</h2>
           <p><code>Object.assign()</code></p>
           <p>This overwrites the target object and avoids inheritance</p>
           <pre class="language-js"><code>const target = { a: 1, b: 2 };
-  const source = { b: 4, c: 5 };
-  const returnedTarget = Object.assign(target, source);
-  console.log(target);// Object { a: 1, b: 4, c: 5 }
-  console.log(returnedTarget);// Object { a: 1, b: 4, c: 5 }</code></pre>
+const source = { b: 4, c: 5 };
+const returnedTarget = Object.assign(target, source);
+console.log(target);// Object { a: 1, b: 4, c: 5 }
+console.log(returnedTarget);// Object { a: 1, b: 4, c: 5 }</code></pre>
         </article>
         <article class="slide">
           <h2>Pass by Reference vs Pass by Value</h2>
@@ -133,9 +133,9 @@ console.log(obj) // {key: 'value', test: 'same object in memory'}</code></pre>
           <p>Recall Mutating vs. Non-Mutating Operations (creating a copy)</p>
           <p>This will avoid the potential collisions due to <strong>passing by Reference</strong></p>
           <pre class="language-js"><code>const obj = {name: 'Jamie', isHuman: true};
-  const uniqueObj = Object.assign({}, obj)
-  // now there are two separate objects in memory
-  // each with the same properties</code></pre>
+const uniqueObj = Object.assign({}, obj)
+// now there are two separate objects in memory
+// each with the same properties</code></pre>
           <p>Note: this creates a <strong>shallow</strong> copy (omits deeply nested properties)</p>
         </article>
         <article class="slide">
@@ -143,49 +143,49 @@ console.log(obj) // {key: 'value', test: 'same object in memory'}</code></pre>
                  href="https://developer.mozilla.org/en-US/docs/Web/API/structuredClone">MDN</a></sup></h2>
           <p>for deep copies of objects use <code>structuredClone()</code></p>
           <pre class="language-js"><code>const myObj = {
-    num: 5,
-    nested: [1, 2, 3]
-  }
-  const shallowClone = Object.assign({}, myObj)
-  const deepClone = structuredClone(myObj)
-  
-  deepClone.push(4)
-  console.log(deepClone.nested) // [1, 2, 3, 4]
-  console.log(myObj.nested) // [1, 2, 3]
-  
-  shallowClone.nested.push(4) // mutates the original object
-  console.log(myObj.nested) // [1, 2, 3, 4]
+  num: 5,
+  nested: [1, 2, 3]
+}
+const shallowClone = Object.assign({}, myObj)
+const deepClone = structuredClone(myObj)
+
+deepClone.push(4)
+console.log(deepClone.nested) // [1, 2, 3, 4]
+console.log(myObj.nested) // [1, 2, 3]
+
+shallowClone.nested.push(4) // mutates the original object
+console.log(myObj.nested) // [1, 2, 3, 4]
       </code></pre>
         </article>
         <article class="slide">
           <h2>Mutating Objects</h2>
           <pre class="language-js"><code>let obj = { key: 'value' }
-  obj.prop = 1 // add a new key-value pair
-  obj.key = 5 // change an existing value
-  console.log(obj) // {key: 5, prop: 1}
-  delete obj.key // delete a key-value pair
-  console.log(obj) // {prop: 1}</code></pre>
+obj.prop = 1 // add a new key-value pair
+obj.key = 5 // change an existing value
+console.log(obj) // {key: 5, prop: 1}
+delete obj.key // delete a key-value pair
+console.log(obj) // {prop: 1}</code></pre>
         </article>
         <article class="slide">
           <h2>Looping in Objects</h2>
           <p>The For...in Loop (Does not garauntee order)</p>
           <pre class="language-js"><code>const object = {a: 1, b: 2, c: 3};
-  for (const property in object) {
-    console.log(`${property}: ${object[property]}`);
-  }
-  // "a: 1"
-  // "b: 2"
-  // "c: 3"</code></pre>
+for (const property in object) {
+  console.log(`${property}: ${object[property]}`);
+}
+// "a: 1"
+// "b: 2"
+// "c: 3"</code></pre>
         </article>
         <article class="slide">
           <h2>Converting an Object to an Array</h2>
           <p>Often it's easier to manipulate Objects as arrays (and then turn it back afterwards)</p>
           <pre class="language-js"><code>const obj = {a: 1, b: 2, c: 3};
-  Object.entries(obj) // [['a', 1],['b', 2],['c', 3]]
-  Object.keys(obj) // ['a', 'b', 'c']
-  Object.values(obj) // [1, 2, 3]
-  // Reverse the process:
-  Object.fromEntries([['a', 1],['b', 2],['c', 3]]) //{a: 1, b: 2, c: 3}</code></pre>
+Object.entries(obj) // [['a', 1],['b', 2],['c', 3]]
+Object.keys(obj) // ['a', 'b', 'c']
+Object.values(obj) // [1, 2, 3]
+// Reverse the process:
+Object.fromEntries([['a', 1],['b', 2],['c', 3]]) //{a: 1, b: 2, c: 3}</code></pre>
         </article>
         <article class="slide">
           <h2>Objects Challenges</h2>
@@ -342,20 +342,20 @@ Object.prototype[toString] = function() {
           <h2>Safe Serialization on all <code>prototypes</code></h2>
           <p>Using Symbol for safe global prototypal inheritance</p>
           <pre class="language-js" style="width: fit-content"><code>const serialize = Symbol('serialize');
-  Boolean.prototype[serialize] = Number.prototype[serialize] = String.prototype[serialize] =
-  function() { return JSON.stringify(this) }
-  Function.prototype[serialize] = function() { return this.toString() }
-  Array.prototype[serialize] = function() { 
-  const values = this.map(item => item[serialize]()).join(', ')
-    return '['+values+']'
-  };
-  Object.prototype[serialize] = function() { 
-    const properties = Object.entries( this ).map(
-      entry => entry[0][serialize]() +': '+ entry[1][serialize]()
-    )
-    return '{'+properties+'}'
-  };
-  RegExp.prototype[serialize] = function() { return '/'+this.source+'/'+this.flags }</code></pre>
+Boolean.prototype[serialize] = Number.prototype[serialize] = String.prototype[serialize] =
+function() { return JSON.stringify(this) }
+Function.prototype[serialize] = function() { return this.toString() }
+Array.prototype[serialize] = function() { 
+const values = this.map(item => item[serialize]()).join(', ')
+  return '['+values+']'
+};
+Object.prototype[serialize] = function() { 
+  const properties = Object.entries( this ).map(
+    entry => entry[0][serialize]() +': '+ entry[1][serialize]()
+  )
+  return '{'+properties+'}'
+};
+RegExp.prototype[serialize] = function() { return '/'+this.source+'/'+this.flags }</code></pre>
         </article>
       </section>
 
@@ -522,10 +522,10 @@ const { tomato, bacon, cheese, burger: patty } = burger
       </article>
       <article class="slide">
         <h2>Array Destructuring</h2>
-        <pre class="language-js"><code>var list = [ 1, 2, 3 ]
-var [ a, , b ] = list
+        <pre class="language-js"><code>let list = [ 1, 2, 3 ]
+let [ a, , b ] = list
 
-// We can avoid needing a temp var when swapping
+// We can avoid a temp variable when swapping
 [ b, a ] = [ a, b ]
 
 // can also use default assignment here
@@ -553,8 +553,8 @@ console.log(myStr);  // "John's email is jdoe@home.com"</code></pre>
       <article class="slide">
         <h2>Default Value Assignment for Destructuring</h2>
         <p>Available to use for either Objects or Arrays</p>
-        <pre class="language-js"><code>var list = [ 7, 42 ]
-var [ a = 1, b = 2, c = 3, d ] = list
+        <pre class="language-js"><code>let list = [ 7, 42 ]
+let [ a = 1, b = 2, c = 3, d ] = list
 console.log(a, b, c, d) // 7, 42, 3, undefined</code></pre>
         <pre class="language-js"><code>const burger = { /* ...previous values... */}
 const { tomato, bacon, onion, pickles = 'dill' } = burger
@@ -622,9 +622,9 @@ const newNames = { ...names1, ...names2 };</code></pre>
       </article>
       <article class="slide">
         <h2>Array Spread</h2>
-        <pre class="language-js"><code>var arr = [1, 2, 3]
-var arr2 = [...arr] // copy of arr
-var arr3 = arr.slice() // also a copy of arr</code></pre>
+        <pre class="language-js"><code>let arr = [1, 2, 3]
+let arr2 = [...arr] // copy of arr
+let arr3 = arr.slice() // also a copy of arr</code></pre>
         <p>
           It can be used to create a copy of an array, similar to
           <code>.slice()</code>

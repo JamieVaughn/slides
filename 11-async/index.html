@@ -32,8 +32,8 @@
     </header>
     <section>
       <header class="slide">
+        <h2>Long-running tasks</h2>
         <h1>Promises</h1>
-        <h3>...and other long-running tasks.</h3>
       </header>
 
       <article class="slide" title="">
@@ -78,7 +78,7 @@
             onError)
           </li>
           <li>
-            😵 Settled: it’s the promise final state. The promise is dead.
+            🏁 Settled: it’s the promise final state. The promise is over.
             Nothing else can be resolved or rejected anymore. The .finally
             method is invoked.
           </li>
@@ -451,51 +451,6 @@ document.dispatchEvent(myCustomEvent)</code></pre>
       <article class="slide">
         <h2>Async Animation Code Along</h2>
         <p>Animating a multi-step Spinner</p>
-      </article>
-      <header class="slide">
-        <h2>True Parallel Processing</h2>
-        <h1>Web Workers</h1>
-      </header>
-      <article class="slide">
-        <h2>
-          Web Workers
-          <sup
-            ><a href="https://developer.mozilla.org/en-US/docs/Web/API/Worker"
-              >MDN</a
-            ></sup
-          >
-        </h2>
-        <p>
-          True Multi-threading: A Full Javascript runtime in an isolated thread
-        </p>
-        <p>Has limitations on what it can access (i.e. No DOM Access)</p>
-        <p>
-          Supports simple Message Passing between itself and the main thread
-        </p>
-        <p>
-          <a
-            href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers"
-            >Using the Web Worker API</a
-          >
-        </p>
-        <p>
-          <a
-            href="https://medium.com/young-coder/a-simple-introduction-to-web-workers-in-javascript-b3504f9d9d1c"
-            >Article</a
-          >
-        </p>
-      </article>
-      <article class="slide">
-        <h2>Web Workers Aparatus</h2>
-        <p>No checkpoints, only <code>postMessage()</code></p>
-        <img style="width: 40vw" src="img/Web_worker.png" alt="" />
-      </article>
-      <article class="slide">
-        <h2>Code Along: Let's Launch a Rocket</h2>
-        <h3 style="font-size: 10rem">🚀</h3>
-        <p>
-          <a href="https://codepen.io/heliocrat/pen/mdmBZEo?editors=1010">.</a>
-        </p>
       </article>
     </section>
 
@@ -1105,6 +1060,54 @@ let otherItems = [...otherParams.entries()]
             portfolio
           </li>
         </ul>
+      </article>
+    </section>
+
+    <section>
+      <header class="slide">
+        <h2>True Parallel Processing</h2>
+        <h1>Web Workers</h1>
+      </header>
+      <article class="slide">
+        <h2>
+          Web Workers
+          <sup
+            ><a href="https://developer.mozilla.org/en-US/docs/Web/API/Worker"
+              >MDN</a
+            ></sup
+          >
+        </h2>
+        <p>
+          True Multi-threading: A Full Javascript runtime in an isolated thread
+        </p>
+        <p>Has limitations on what it can access (i.e. No DOM Access)</p>
+        <p>
+          Supports simple Message Passing between itself and the main thread
+        </p>
+        <p>
+          <a
+            href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Workers_API/Using_web_workers"
+            >Using the Web Worker API</a
+          >
+        </p>
+        <p>
+          <a
+            href="https://medium.com/young-coder/a-simple-introduction-to-web-workers-in-javascript-b3504f9d9d1c"
+            >Article</a
+          >
+        </p>
+      </article>
+      <article class="slide">
+        <h2>Web Workers Aparatus</h2>
+        <p>No checkpoints, only <code>postMessage()</code></p>
+        <img style="width: 40vw" src="img/Web_worker.png" alt="" />
+      </article>
+      <article class="slide">
+        <h2>Code Along: Let's Launch a Rocket</h2>
+        <h3 style="font-size: 10rem">🚀</h3>
+        <p>
+          <a href="https://codepen.io/heliocrat/pen/mdmBZEo?editors=1010">.</a>
+        </p>
       </article>
     </section>
 
