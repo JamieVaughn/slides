@@ -95,17 +95,8 @@
       <article class="slide">
         <h2>User Stories</h2>
         <p>Let's setup each of the following things:</p>
-        <sup
-             style="
-            cursor: pointer;
-            color: white;
-            position: absolute;
-            bottom: 3%;
-            right: 3%;
-          "
-             class="reset ×">
-          🧹</sup>
-        <ol class="user-stories col-2 margin:4px">
+        <sup class="reset ×">🧹</sup>
+        <ol class="user-stories col-2">
           <li><input type="checkbox" /> Supabase Account & DB</li>
           <li><input type="checkbox" /> Vite/React project & directories</li>
           <li>
@@ -130,39 +121,6 @@
           <li><input type="checkbox" /> Build & Deploy app to github pages!</li>
           <li><input type="checkbox" /> Test live site!</li>
         </ol>
-        <style>
-          .user-stories>li>input {
-            scale: 2;
-            margin: 0 4px 6px 0;
-            vertical-align: middle;
-          }
-        </style>
-        <script async defer>
-          function updateTask( e, index ) {
-            const store = JSON.parse( localStorage.getItem( "userstories" ) )
-            store[index] = e.target.checked
-            const updatedTask = JSON.stringify( store )
-            localStorage.setItem( "userstories", updatedTask )
-          }
-          const tasks = Array.from(
-            document.querySelectorAll( ".user-stories > li >input" )
-          )
-          tasks.forEach( ( task, index ) =>
-            task.addEventListener( "click", ( e ) => updateTask( e, index ) )
-          )
-          if ( !localStorage.getItem( "userstories" ) ) {
-            localStorage.setItem( "userstories", "[]" )
-          } else {
-            const curState = JSON.parse( localStorage.getItem( "userstories" ) )
-            tasks.forEach(
-              ( task, index ) => ( task.checked = curState[index] ? true : false )
-            )
-          }
-          document.querySelector( ".reset.×" ).addEventListener( "click", ( e ) => {
-            localStorage.setItem( "userstories", "[]" )
-            tasks.forEach( ( task, index ) => ( task.checked = false ) )
-          } );
-        </script>
       </article>
 
       <article class="slide">
@@ -427,6 +385,7 @@ export default defineConfig({
 
     <script src="../lib/inspire.js"></script>
     <script src="../laser/laser.js"></script>
+    <script src="../lib/utils.js"></script>
   </body>
 
 </html>

@@ -348,16 +348,8 @@ const reducer = (state, action) => {
       <article class="slide">
         <h2>Let's use Redux in our Todo App!!</h2>
         <p>Todo User Stories: let's do the following things:</p>
-        <sup
-             style="
-        cursor: pointer;
-        color: white;
-        position: absolute;
-        bottom: 3%;
-        right: 3%;
-      "
-             class="reset ×">🧹</sup>
-        <ol class="user-stories col-2 margin:4px">
+        <sup class="reset ×">🧹</sup>
+        <ol class="user-stories col-2">
           <li><input type="checkbox" /> Create a article with class of card and with id of 'container'</li>
           <li>
             <input type="checkbox" /> Create a h1 with id='heading' that will be at the top of the page
@@ -385,39 +377,6 @@ const reducer = (state, action) => {
           <li><input type="checkbox" /> For total field, show a number that is equal to the number of todos that are not
             deleted</li>
         </ol>
-        <style>
-          .user-stories>li>input {
-            scale: 2;
-            margin: 0 4px 6px 0;
-            vertical-align: middle;
-          }
-        </style>
-        <script async defer>
-          function updateTask( e, index ) {
-            const store = JSON.parse( localStorage.getItem( "userstories" ) )
-            store[index] = e.target.checked
-            const updatedTask = JSON.stringify( store )
-            localStorage.setItem( "userstories", updatedTask )
-          }
-          const tasks = Array.from(
-            document.querySelectorAll( ".user-stories > li >input" )
-          )
-          tasks.forEach( ( task, index ) =>
-            task.addEventListener( "click", ( e ) => updateTask( e, index ) )
-          )
-          if ( !localStorage.getItem( "userstories" ) ) {
-            localStorage.setItem( "userstories", "[]" )
-          } else {
-            const curState = JSON.parse( localStorage.getItem( "userstories" ) )
-            tasks.forEach(
-              ( task, index ) => ( task.checked = curState[index] ? true : false )
-            )
-          }
-          document.querySelector( ".reset.×" ).addEventListener( "click", ( e ) => {
-            localStorage.setItem( "userstories", "[]" )
-            tasks.forEach( ( task, index ) => ( task.checked = false ) )
-          } );
-        </script>
       </article>
 
       <article class="slide">
@@ -786,5 +745,6 @@ store.dispatch(incrementAsync(5))</code></pre>
 
     <script src="../lib/inspire.js"></script>
     <script src="../laser/laser.js"></script>
+    <script src="../lib/utils.js"></script>
   </body>
 </html>

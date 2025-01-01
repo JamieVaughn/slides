@@ -176,3 +176,20 @@ color: black;
   transform: rotate(-25deg);
   box-shadow: 0 0 50px rgba(150, 50, 120, 0.85);
 }
+
+
+.user-stories {
+  margin: 4px;
+}
+.user-stories>li>input {
+  scale: 2;
+  margin: 0 4px 6px 0;
+  vertical-align: middle;
+}
+sup.reset {
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  bottom: 3%;
+  right: 3%;
+}
