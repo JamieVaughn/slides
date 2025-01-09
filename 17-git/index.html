@@ -50,6 +50,34 @@
           <li><code>git switch &lt;branch-name&gt;</code></li>
         </ul>
       </article>
+      <article class="slide">
+        <ul>
+          <li></li>
+          0. git init: Initializes a new Git repository.
+1. git clone [url]: Creates a local copy of a remote repository.
+2. git status: Displays the state of the working directory and staging area.
+3. git add [file]: Adds a file to the staging area.
+4. git reset [file]: Unstages a file while retaining the changes.
+5. git diff --staged: Shows differences between the staging area and the last commit.
+6. git commit -m "[message]": Records staged changes with a descriptive message.
+7. git branch: Lists all local branches.
+8. git checkout -b [name]: Creates and switches to a new branch.
+9. git log: Displays commit history.
+10. git remote add [ref] [url]: Adds a new remote repository.
+11. git push [alias] [branch]: Uploads local branch commits to a remote repository.
+12. git pull: Fetches and merges changes from the remote to the local repository.
+13. git stash: Temporarily stores modified tracked files.
+14. git stash pop: Restores the most recently stashed files.
+15. git stash drop: Discards the most recently stashed changeset.
+16. git rebase [branch]: Reapplies commits on top of another base tip.
+17. git rebase -i HEAD~<n>: Starts an interactive rebase for the last n commits.
+18. git reset --hard [commit]: Resets the working directory to a specified commit.
+19. git log branchB..branchA: Shows commits on branchA that are not on branchB.
+20. git diff branchB...branchA: Displays differences between two branches.
+21. git show [SHA]: Shows the changes in a specific commit.
+22. git config --global core.excludesfile [file]: Sets up a global file for ignoring files.
+        </ul>
+      </article>
 
       <article class="slide">
         <h2>Git in VSCode</h2>

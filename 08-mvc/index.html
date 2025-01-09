@@ -1781,8 +1781,9 @@ const Controller = {
         </p>
         <ol><strong>Client's Requested Game Features:</strong>
           <li>Now, dragons get added to the arena automatically on a timer</li>
-          <li>Turn the dragon's <code>clicks</code> into <code>hitPoints</code> with an initial amount</li>
-          <li>Replace the <code>click</code> event with the <code>mouseenter</code> event & decrement <code>hitPoints</code> 
+          <li>Add <code>hitPoints</code> to the dragon with an initial amount. Keep <code>clicks</code> to track damage points.</li>
+          <li>Change <code>increment</code> to <code>decrement</code> & reduce <code>hitPoints</code> based on <code>clicks</code> count.</li>
+          <li>Replace the <code>click</code> event with the <code>mouseleave</code> event 
             <ul>
               <li>So it's like a slashing action</li>
             </ul>

@@ -37,25 +37,30 @@
           <h1>Advanced Objects</h1>
         </header>
         <article class="slide">
-          <h2>Checking for Properties</h2>
+          <h2>Guarding</h2>
+          <p>Also called "safe property access". This guards against a <code>RefError</code></p>
           <div class="flex">
-            <p>The old "Guard"</p>
-            <p>New in ES6+</p>
-          </div>
-          <div class="flex">
-            <pre class="language-js"><code>// Logical And ('&&') as a 'Guard'
-obj && obj.key
-obj && obj.key3 && obj.key3.key 
+            <div>
+              <p>object data</p>
+            <pre class="language-js"><code>const obj = {
+  key: {
+    key2: 'val'
+  },
+} </code></pre></div>
+<div style="border: 2px solid dodgerblue; border-radius: 8px; padding: 4px 4px 0 4px;"">
+  <p>New in ES6+ (recommended)</p>
+            <pre class="language-js"><code>// Optional Chaining
+// ?.
 
-// hasOwnProperty Method
-obj.hasOwnProperty('key') // true</code></pre>
-            <pre class="language-js"><code>// Optional Chaining Operator
-obj?.key3?.key 
+obj?.key?.key2 // 'val'
+obj?.key2?.key // undefined</code></pre></div>
+<div>
+  <p>The old "Guard"</p>
+    <pre class="language-js"><code>// `&&` as a "Guard"
+obj && obj.key // { key2: 'val'}
 
-// the 'in' keyword:
-'key' in obj // true
-'fake' in obj // false
-  </code></pre>
+obj && obj.key2 && obj.key2.key
+// false</code></pre></div>
           </div>
         </article>
         <article class="slide">
@@ -69,44 +74,46 @@ obj?.key?.maybenot?.nested // Chain multiple for full safety
   </code></pre>
         </article>
         <article class="slide">
+          <h2>Checking for Properties</h2>
+          <div class="flex">
+            <p>New in ES6+</p>
+            <p>The old "Guard"</p>
+          </div>
+          <div class="flex">
+            <pre class="language-js"><code>// the 'in' keyword:
+'key' in obj // true
+'fake' in obj // false
+  </code></pre>
+    <pre class="language-js"><code>// hasOwnProperty Method
+obj.hasOwnProperty('key') // true
+obj.hasOwnProperty('fake') // false
+</code></pre>
+          </div>
+        </article>
+        <article class="slide">
           <h2>The Object Constructor</h2>
           <pre class="language-js"><code>let obj = new Object // {}
-obj.key = 'value' // must populate keys manually</code></pre>
+// then populate keys manually
+obj.key = 'value' 
+obj.key2 = { key: 'val'}
+</code></pre>
+<p>Good to know, but still recommend declaring object literals: code>let obj = {}</code></p>
         </article>
         <article class="slide">
-          <h2>The <code>this</code> keyword <sup><a
-                 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN</a></sup>
-            <sup>/</sup> <sup><a href="https://www.w3schools.com/js/js_this.asp">W3</a></sup></h2>
-          <pre class="language-js"><code>const person = {
-  name: 'Chris',
-  greet: function() {
-  alert('Hello ' + this.name + ', Welcome!');
-  },
-  lambdaGreet1: () => { // `this` is undefined
-    alert('Hello ' + this.name + ' Welcome!');
-  },
-  lambdaGreet2: () => {
-    alert('Hello ' + person.name + ' Welcome!');
-  }
-}</code></pre>
-          <p><strong>Lexical Scoping:</strong> Arrow functions do not bind a value to <code>this</code>. They will take
-            the <code>Window</code> value for <code>this</code>.</p>
-        </article>
-        <article class="slide">
-          <h2>Inheritance</h2>
+          <h2>Object.create & Inheritance</h2>
           <p><code>Object.create()</code></p>
           <pre class="language-js"><code>const person = {
   isHuman: true,
   greet:() => console.log(`Hello there!`);
 };
-const me = Object.create(person);
-me.name = "Scooby Doo"; 
+const scooby = Object.create(person);
+scooby.name = "Scooby Doo"; 
 // "name" is a property set on "me", but not on "person"
 
-me.isHuman = false; 
+scooby.isHuman = false; 
 // inherited properties can be overwritten
 
-me.greet() // 'Hello there!'</code></pre>
+scooby.greet() // 'Hello there!'</code></pre>
         </article>
         <article class="slide">
           <h2>Merging Objects</h2>
@@ -117,16 +124,6 @@ const source = { b: 4, c: 5 };
 const returnedTarget = Object.assign(target, source);
 console.log(target);// Object { a: 1, b: 4, c: 5 }
 console.log(returnedTarget);// Object { a: 1, b: 4, c: 5 }</code></pre>
-        </article>
-        <article class="slide">
-          <h2>Pass by Reference vs Pass by Value</h2>
-          <a href="https://blog.penjee.com/passing-by-value-vs-by-reference-java-graphical/">illustration</a>
-          <p>Objects (& Functions, Arrays) are <strong>passed by Reference</strong></p>
-          <p>Primitives are <strong>passed by Value</strong></p>
-          <pre class="language-js"><code>let obj = { key: 'value' }
-let another = obj
-another.test = 'same object in memory'
-console.log(obj) // {key: 'value', test: 'same object in memory'}</code></pre>
         </article>
         <article class="slide">
           <h2>Cloning an Object with <code>.assign()</code></h2>
@@ -156,6 +153,16 @@ console.log(myObj.nested) // [1, 2, 3]
 shallowClone.nested.push(4) // mutates the original object
 console.log(myObj.nested) // [1, 2, 3, 4]
       </code></pre>
+        </article>
+        <article class="slide">
+          <h2>Pass by Reference vs Pass by Value</h2>
+          <a href="https://blog.penjee.com/passing-by-value-vs-by-reference-java-graphical/">illustration</a>
+          <p>Objects (& Functions, Arrays) are <strong>passed by Reference</strong></p>
+          <p>Primitives are <strong>passed by Value</strong></p>
+          <pre class="language-js"><code>let obj = { key: 'value' }
+let another = obj
+another.test = 'same object in memory'
+console.log(obj) // {key: 'value', test: 'same object in memory'}</code></pre>
         </article>
         <article class="slide">
           <h2>Mutating Objects</h2>
@@ -288,6 +295,25 @@ console.log(obj)
 };</code></pre>
         </article>
         <article class="slide">
+          <h2>The <code>this</code> keyword <sup><a
+                 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this">MDN</a></sup>
+            <sup>/</sup> <sup><a href="https://www.w3schools.com/js/js_this.asp">W3</a></sup></h2>
+          <pre class="language-js"><code>const person = {
+  name: 'Chris',
+  greet: function() {
+  alert('Hello ' + this.name + ', Welcome!');
+  },
+  lambdaGreet1: () => { // `this` is undefined
+    alert('Hello ' + this.name + ' Welcome!');
+  },
+  lambdaGreet2: () => {
+    alert('Hello ' + person.name + ' Welcome!');
+  }
+}</code></pre>
+          <p><strong>Lexical Scoping:</strong> Arrow functions do not bind a value to <code>this</code>. They will take
+            the <code>Window</code> value for <code>this</code>.</p>
+        </article>
+        <article class="slide">
           <h2>Prototypes</h2>
           <p>We've been using Objects this whole time!</p>
           <img src="img/always_has_been.jpg" alt="">
@@ -418,7 +444,7 @@ RegExp.prototype[serialize] = function() { return '/'+this.source+'/'+this.flags
           <li class="delayed">Try - Catch</li>
           <li class="delayed">Map & Set</li>
           <li class="delayed">Promises & fetch</li>
-          <li class="delayed">Extras: Currying, Internationalization & Generators</li>
+          <li class="delayed">Extras: Recursion, Internationalization & Generators</li>
         </ul>
       </article>
       <article class="slide">
@@ -668,10 +694,11 @@ let myPets = {
 }
 
 myPets.speak(myPets.cat) // 'Meow'</code></pre>
-          <pre class="language-js"><code>// It's a bit shorter...
+          <pre class="language-js"><code>
+// If you have those variables declared anyways,            
+// then it can be shorter
+// than the old syntax
 
-
-// than the old syntax:
 let myPets = {
   shout: shout
   cat: cat, 
@@ -679,7 +706,9 @@ let myPets = {
   speak: function (pet) {
     console.log(this[pet])
   }
-} </code></pre>
+} 
+
+myPets.speak(myPets.cat) // 'Meow'</code></pre>
         </div>
       </article>
       <article class="slide">
@@ -700,8 +729,16 @@ let computedObj = {
       <article class="slide">
 				<h2>For Of Loops & For In Loops</h2>
 				<div class="flex" style="text-align: center;">
-					<strong>For Of</strong>
-					<strong>For In</strong>
+					<div>
+            <strong>For Of</strong>
+            <p><u>loops over values</u></p>
+            <p>(think of built in <code>.valueOf</code> method)</p>
+          </div>
+          <div>
+            <strong>For In</strong>
+            <p><u>loops over key</u></p>
+            <p>(think of <strong>'key' in obj</strong> syntax from earlier)</p>
+          </div>
 				</div>
 				<div class="flex">
 					<pre class="language-js"><code>const array1 = ['4', '5', '6'];
@@ -713,10 +750,6 @@ for (const key in obj) {
   console.log(`obj.${key} = ${obj[key]}`);
 } // prints 'a', 'b', 'c'</code></pre>
 				</div>
-				<p><code>for … in</code>: gets key, property or index (put a <strong>key</strong> IN a lock or think "in" for
-					index)</p>
-				<p><code>for … of</code>: gets value (think .value<strong>Of</strong>, a method that gets the value of
-					something)</p>
 			</article>
       <article class="slide">
 				<div class="flex">
@@ -766,39 +799,52 @@ try {
 				</div>
 			</article>
       <article class="slide">
-        <div class="flex" style="align-items: center">
-          <h2 class="bumpup">
+          <h2>
             Map
             <sup><a
                  href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map">MDN</a></sup>
           </h2>
-          <ul><strong>Use Maps over objects when:</strong>
-            <li>its properties will be changing frequently</li>
-            <li>you need the <code>size</code> property</li>
-            <li>you need the properties to preserve their order.</li>
-            <li>Keys can be any value, not just Strings or Symbols.</li>
-            <li>There are no prototype keys, which can simplify looping</li>
-          </ul>
-        </div>
         <div class="flex">
           <pre class="language-js"><code>const myMap = new Map()
 myMap.set('key', 'value')
 myMap.set(true, 'value')
+
 let func = key => null
 myMap.set(func, 100)
 myMap.has(func) // true
+
 let obj = {a: 'A'}
 myMap.set(obj, 'B')
 myMap.get(obj) // 'B'
 myMap.size // 3
 myMap.delete('key') // true
 myMap.clear() // deletes all
-// initializing a Map with an array of entries (tuples):
+</code></pre>
+<div class="flex" style="flex-direction: column;">
+  <p>Not to be confused with <code>Array.map()</code></p>
+  <ul><strong>Use Maps over objects when:</strong>
+    <li>its properties will be mutating frequently</li>
+    <li>you need the <code>size</code> property</li>
+    <li>you need the properties to preserve their order.</li>
+    <li>you need keys of any value
+      <ul>
+        <li>not just <code>Strings</code> or <code>Symbols</code>.</li>
+      </ul></li>
+    <!-- <li>There are no prototype keys, which can simplify looping</li> -->
+  </ul>
+  <pre class="language-js"><code>// Or initialize a Map w/ an
+// array of entries (tuples):
 const initMap = new Map([ 
   ['dog', 'woof'],
   ['cat', 'meow'],
 ]); </code></pre>
-          <pre class="language-js"><code>// Looping over a Map
+  </code></pre>
+</div>
+        </div>
+      </article>
+      <article class="slide">
+        <h2>Looping over a Map</h2>
+<pre class="language-js"><code>// Looping over a Map
 // ✅ Using forEach OR for ... of
 map1.forEach((value, key) => {
   console.log(value, key); // woof dog, meow cat
@@ -814,7 +860,6 @@ for (const key of map1.keys()) {
 for (const value of map1.values()) {
   console.log(value); // woof, meow
 }</code></pre>
-        </div>
       </article>
       <article class="slide">
         <h2>
@@ -864,6 +909,13 @@ const myWeakSet = new WeakSet()
           </p>
         </details>
       </article>
+    </section>
+
+    <section>
+      <header class="slide">
+        <h2>Extras</h2>
+        <h1>Recursion, Iterators & Generators</h1>
+      </header>
       <article class="slide">
 				<h2>Recursion <sup><a
 							 href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Functions#recursion">MDN</a></sup>
@@ -877,13 +929,6 @@ const myWeakSet = new WeakSet()
 						 href="http://www.pythontutor.com/javascript.html#code=function%20fact%28n%29%20%7B%0A%20%20if%20%28n%20%3D%3D%200%29%20%7B%0A%20%20%20%20return%201%3B%0A%20%20%7D%0A%20%20else%20%7B%0A%20%20%20%20return%20n%20*%20fact%28n-1%29%3B%0A%20%20%7D%0A%7D%0A%0Afact%283%29%3B%0Afact%283%29%3B&mode=edit&origin=opt-frontend.js&py=js&rawInputLstJSON=%5B%5D">Visualize
 						Factorial Fn</a></p>
 			</article>
-    </section>
-
-    <section>
-      <header class="slide">
-        <h2>Extras</h2>
-        <h1>Iterators & Generators</h1>
-      </header>
       <article class="slide">
         <h2>Iterators & Generators</h2>
         <p><a href="https://felixgerschau.com/javascript-iterators-and-generators-explained/">Generators Explained
