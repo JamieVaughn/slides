@@ -669,9 +669,10 @@ let arr3 = arr.slice() // also a copy of arr</code></pre>
         </p>
         <pre
              class="language-js"><code>function addFirstTwo(a, b, ...manyMoreArgs) {
+  console.log(manyMoreArgs) // will gather up into array
   return a + b
 }
-addFirstTwo([1,1,5,6,7]) // 2 </code></pre>
+addFirstTwo(1,1,5,6,7) // returns 2 </code></pre>
       </article>
       <article class="slide">
         <h2>Object Property & Method Shorthand</h2>

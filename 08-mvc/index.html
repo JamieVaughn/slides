@@ -296,6 +296,299 @@ dragon.addEventListener('click', function(e){
         <p>Did the old approach work? If not, why?</p>
         <p>Did you have to try something new? If so, what?</p>
       </articles>
+      <article class="slide">
+        <h2>The Client Called Again with new Reqs!!</h2>
+        <h2>😱</h2>
+        <p>They want to be able to spawn as many dragons as they'd like!</p>
+      </article>
+      <article class="slide">
+        <h2>Dragon 🧬 Spawner</h2>
+        <ul>
+          <li>
+            A topbar <code>nav</code> with a list of at least 5 dragon types
+            <ul>
+              <li>
+                They still enjoy elemental dragons like Fire, Water, Earth &
+                Air, but be creative with the rest!
+              </li>
+            </ul>
+          </li>
+          <li>A separate area to display the 🐉's themselves</li>
+          <li>
+            The display area should show the 🐉's type, icon, and click count
+          </li>
+          <li>
+            When the dragon type in the <code>nav</code> is clicked, <br> a new 🐉 of
+            the type that was clicked should be added to the display area <br> (i.e.
+            so you could have two separate fire dragons sitting next to other
+            dragons)
+          </li>
+          <li>
+            Click count must be unique to each 🐉 & increment when clicked
+          </li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2 style="margin: 0">Working from a Design Wireframe</h2>
+        <p><a href="https://excalidraw.com">Excalidraw</a></p>
+        <img src="img/dragon_spawner.jpg" alt="" />
+      </article>
+      <article class="slide">
+        <h2>As a preview to JS Frameworks...</h2>
+        <p>
+          Before we dive into a framework like React, <br />let's explore
+          patterns for reusing and organizing code and how it helps us make
+          repeated tasks easier...
+        </p>
+        <p class="delayed">Introducing: Design Patterns!</p>
+        <strong class="delayed"
+          >Some Examples from the
+          <a href="https://www.gofpatterns.com/">"Gang Of Four"</a>
+          book:</strong
+        >
+        <ul class="delayed" style="columns: 2">
+          <li>
+            <u style="text-decoration-color: crimson">Factory Method Pattern</u>
+          </li>
+          <li><u style="text-decoration-color: crimson">Command Pattern</u></li>
+          <li>Singleton Pattern</li>
+          <li>Facade Pattern</li>
+          <li>Mediator Pattern</li>
+          <li>Observer Pattern</li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Design Patterns</h2>
+        <p>
+          <a href="https://www.dofactory.com/javascript/design-patterns/"
+            >GoF Patterns for Javascript Developers</a
+          >
+        </p>
+        <ul style="list-style: none">
+          <li>
+            <details>
+              <summary class="highlight3">Creational</summary>
+              <ol style="font-size: 75%">
+                <li class="hidden">
+                  <strong class="highlight">Singleton</strong> restricts the
+                  initialization of a class to ensure that only one instance of
+                  the class can be created.
+                </li>
+                <li>
+                  <strong class="highlight">Factory</strong> extracts the
+                  responsibility of instantiating a object from the class to a
+                  reusable function.
+                </li>
+                <li>
+                  <strong class="highlight">Abstract Factory</strong> Allows us
+                  to create a Factory for factory classes.
+                </li>
+                <li class="hidden">
+                  <strong class="highlight">Builder</strong> Creating an object
+                  step by step and a method to finally get the object instance.
+                </li>
+                <li class="hidden">
+                  <strong class="highlight">Prototype</strong> Creating a new
+                  object instance from another similar instance and then modify
+                  according to our requirements.
+                </li>
+              </ol>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary class="highlight3">Structural</summary>
+              <ol style="font-size: 75%">
+                <li class="hidden">
+                  <strong class="highlight">Adapter</strong> Provides an
+                  interface between two unrelated entities so that they can work
+                  together.
+                </li>
+                <li class="hidden">
+                  <strong class="highlight">Composite</strong> Used when we have
+                  to implement a part-whole hierarchy. For example, a diagram
+                  made of other pieces such as circle, square, triangle, etc.
+                </li>
+                <li>
+                  <strong  class="highlight">Proxy</strong> Provide a surrogate
+                  or placeholder for another object to control access to it.
+                </li>
+                <li class="hidden">
+                  <strong class="highlight">Flyweight</strong> Caching and
+                  reusing object instances, used with immutable objects. For
+                  example, string pool.
+                </li>
+                <li>
+                  <strong class="highlight">Facade</strong> (View) Creating a wrapper
+                  interface on top of existing interfaces to help client
+                  applications.
+                </li>
+                <li class="hidden">
+                  <strong class="highlight">Bridge</strong> used to decouple the
+                  interfaces from implementation and hiding the implementation
+                  details from the client program.
+                </li>
+                <li class="hidden">
+                  <strong class="highlight">Decorator</strong> used to modify
+                  the functionality of an object at runtime.
+                </li>
+              </ol>
+            </details>
+          </li>
+          <li>
+            <details>
+              <summary class="highlight3">Behavioral</summary>
+              <ol style="font-size: 75%">
+                <li class="hidden">
+                  <strong class="highlight">Template Method</strong> used to
+                  create a template method stub and defer some of the steps of
+                  implementation to the subclasses.
+                </li>
+                <li>
+                  <strong class="highlight">Mediator</strong> (Controller) used to provide a
+                  centralized communication medium between different objects in
+                  a system.
+                </li>
+                <li class="hidden">
+                  <strong class="highlight">Chain of Responsibility</strong>
+                  used to achieve loose coupling in software design where a
+                  request from the client is passed to a chain of objects to
+                  process them.
+                </li>
+                <li>
+                  <strong class="highlight">Command</strong> used to implement
+                  lose coupling in a request-response model.
+                </li>
+                <li>
+                  <strong class="highlight">Observer</strong> useful when you
+                  are interested in the state of an object and want to get
+                  notified whenever there is any change.
+                </li>
+                <li class="hidden">
+                  <strong class="highlight">Strategy</strong> used when we have
+                  multiple algorithm for a specific task and client decides the
+                  actual implementation to be used at runtime.
+                </li>
+                <li class="hidden">
+                  <strong class="highlight">State Design Pattern</strong> used
+                  when an Object change it’s behavior based on it’s internal
+                  state.
+                </li>
+                <li class="hidden">
+                  <strong class="highlight">Visitor</strong> used when we have
+                  to perform an operation on a group of similar kind of Objects.
+                </li>
+                <li class="hidden">
+                  <strong class="highlight">Interpreter</strong> defines a
+                  grammatical representation for a language and provides an
+                  interpreter to deal with this grammar.
+                </li>
+                <li>
+                  <strong class="highlight">Iterator</strong> used to provide a
+                  standard way to traverse through a group of Objects.
+                </li>
+                <li class="hidden">
+                  <strong class="highlight">Memento</strong> used when we want
+                  to save the state of an object so that we can restore later
+                  on.
+                </li>
+              </ol>
+            </details>
+          </li>
+        </ul>
+      </article>
+      <article class="slide">
+        <h2>Factory Method Pattern</h2>
+        <p><strong>a.k.a The Factory Function</strong>: a function that returns an object</p>
+        <!-- <p>So it's similar to a constructor pattern, but without the <code>class</code>, <code>this</code> or <code>new</code> keywords</p> -->
+        <div style="position: relative">
+          <pre
+            class="language-js"
+            style="position: relative"
+          ><code>factoryFunction(name, carMake, age) {
+  const canDrive = age > 16 ? true : false
+
+  return {
+    name,
+    carMake,
+    canDrive,
+    id: Math.random(),
+    timestamp: Date.now()
+  }
+}
+const bobby = factoryFunction('Bobby', 'Ford', 23)
+        </code></pre>
+          <pre
+            class="delayed language-js"
+            style="position: absolute; top: -7%"
+          ><code>factoryFunction(name, carMake, age) {
+  const canDrive = age > 16 ? true : false
+  // You can return a frozen object too!
+  return Object.freeze({
+    name,
+    carMake,
+    canDrive,
+    id: Math.random(),
+    timestamp: Date.now()
+  })
+}
+const bobby = factoryFunction('Bobby', 'Ford', 23)
+                  </code></pre>
+        </div>
+        <details class="notes">
+          <p>Similar to a Template Function (a function that returns a template of some kind).</p>
+          <p>Remember our <code style="text-shadow: none;">textStamper</code> function? That's a template function</p>
+          <p>How can we use a Factory Function & a Template Function together to solve Dragon Spawner?</p>
+        </details>
+      </article>
+      <article class="slide">
+        <h2>The Command Pattern</h2>
+        <h3>Event Dispatching with Enums</h3>
+        <ul>
+          <li>
+            <strong class="highlight3">What's an Enum?</strong> It's one string
+            value in a list of discrete string values
+          </li>
+          <li>
+            <strong class="highlight3">Command pattern</strong>: use enums to
+            indicate one of several available user actions that the UI supports
+          </li>
+          <li>
+            For example, a specific button the user clicks will trigger a
+            discrete, deterministic change in our app's state.
+          </li>
+          <li>
+            <strong>Discrete User Actions</strong>: map one UI element to one
+            dispatchable action to maintain determinism.
+          </li>
+        </ul>
+        <pre class="language-js"><code>// normally: 
+plusButton.addEventListener('click', () => increment())
+// but we can provide enums to functions to adjust their behavior:
+delayedButton.addEventListener('click', () => increment('withDelay'))
+plus2Button.addEventListener('click', () => increment('by2'))</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Reflections</h2>
+        <ul>
+          <li>How much harder was that?</li>
+          <li>How do you like your solution?</li>
+          <li>Are there any problems with it that you foresee as it scales?</li>
+          <li>Do you think it could adapt easily to yet more changes?</li>
+          <li>
+            Do you feel your code is brittle or flexible? Simple or Complicated?
+          </li>
+          <li>
+            Were you able to separate out any of your code into distinct chunks
+            with singular jobs?
+            <ul>
+              <li>
+                ..using any data structures, factory functions, or command patterns?
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </article>
     </section>
     <section>
       <header class="slide">
@@ -921,276 +1214,7 @@ delete instance.#privateMethod() // Syntax Error</code></pre>
         <h2>Design Patterns</h2>
         <h1>Patterns for Code Organization</h1>
       </header>
-      <article class="slide">
-        <h2>As a precursor to JS Frameworks...</h2>
-        <p>
-          Before we dive into a framework like React, <br />let's explore
-          patterns for reusing and organizing code and how it helps us make
-          repeated tasks easier...
-        </p>
-        <p class="delayed">Introducing: Design Patterns!</p>
-        <strong class="delayed"
-          >Some Examples from the
-          <a href="https://www.gofpatterns.com/">"Gang Of Four"</a>
-          book:</strong
-        >
-        <ul class="delayed" style="columns: 2">
-          <li>
-            <u style="text-decoration-color: crimson">Factory Method Pattern</u>
-          </li>
-          <li><u style="text-decoration-color: crimson">Command Pattern</u></li>
-          <li>Singleton Pattern</li>
-          <li>Facade Pattern</li>
-          <li>Mediator Pattern</li>
-          <li>Observer Pattern</li>
-        </ul>
-      </article>
-      <article class="slide">
-        <h2>Design Patterns</h2>
-        <p>
-          <a href="https://www.dofactory.com/javascript/design-patterns/"
-            >GoF Patterns for Javascript Developers</a
-          >
-        </p>
-        <ul style="list-style: none">
-          <li>
-            <details>
-              <summary class="highlight3">Creational</summary>
-              <ol style="font-size: 75%">
-                <li class="hidden">
-                  <strong class="highlight">Singleton</strong> restricts the
-                  initialization of a class to ensure that only one instance of
-                  the class can be created.
-                </li>
-                <li>
-                  <strong class="highlight">Factory</strong> extracts the
-                  responsibility of instantiating a object from the class to a
-                  reusable function.
-                </li>
-                <li>
-                  <strong class="highlight">Abstract Factory</strong> Allows us
-                  to create a Factory for factory classes.
-                </li>
-                <li class="hidden">
-                  <strong class="highlight">Builder</strong> Creating an object
-                  step by step and a method to finally get the object instance.
-                </li>
-                <li class="hidden">
-                  <strong class="highlight">Prototype</strong> Creating a new
-                  object instance from another similar instance and then modify
-                  according to our requirements.
-                </li>
-              </ol>
-            </details>
-          </li>
-          <li>
-            <details>
-              <summary class="highlight3">Structural</summary>
-              <ol style="font-size: 75%">
-                <li class="hidden">
-                  <strong class="highlight">Adapter</strong> Provides an
-                  interface between two unrelated entities so that they can work
-                  together.
-                </li>
-                <li class="hidden">
-                  <strong class="highlight">Composite</strong> Used when we have
-                  to implement a part-whole hierarchy. For example, a diagram
-                  made of other pieces such as circle, square, triangle, etc.
-                </li>
-                <li>
-                  <strong  class="highlight">Proxy</strong> Provide a surrogate
-                  or placeholder for another object to control access to it.
-                </li>
-                <li class="hidden">
-                  <strong class="highlight">Flyweight</strong> Caching and
-                  reusing object instances, used with immutable objects. For
-                  example, string pool.
-                </li>
-                <li>
-                  <strong class="highlight">Facade</strong> (View) Creating a wrapper
-                  interface on top of existing interfaces to help client
-                  applications.
-                </li>
-                <li class="hidden">
-                  <strong class="highlight">Bridge</strong> used to decouple the
-                  interfaces from implementation and hiding the implementation
-                  details from the client program.
-                </li>
-                <li class="hidden">
-                  <strong class="highlight">Decorator</strong> used to modify
-                  the functionality of an object at runtime.
-                </li>
-              </ol>
-            </details>
-          </li>
-          <li>
-            <details>
-              <summary class="highlight3">Behavioral</summary>
-              <ol style="font-size: 75%">
-                <li class="hidden">
-                  <strong class="highlight">Template Method</strong> used to
-                  create a template method stub and defer some of the steps of
-                  implementation to the subclasses.
-                </li>
-                <li>
-                  <strong class="highlight">Mediator</strong> (Controller) used to provide a
-                  centralized communication medium between different objects in
-                  a system.
-                </li>
-                <li class="hidden">
-                  <strong class="highlight">Chain of Responsibility</strong>
-                  used to achieve loose coupling in software design where a
-                  request from the client is passed to a chain of objects to
-                  process them.
-                </li>
-                <li>
-                  <strong class="highlight">Command</strong> used to implement
-                  lose coupling in a request-response model.
-                </li>
-                <li>
-                  <strong class="highlight">Observer</strong> useful when you
-                  are interested in the state of an object and want to get
-                  notified whenever there is any change.
-                </li>
-                <li class="hidden">
-                  <strong class="highlight">Strategy</strong> used when we have
-                  multiple algorithm for a specific task and client decides the
-                  actual implementation to be used at runtime.
-                </li>
-                <li class="hidden">
-                  <strong class="highlight">State Design Pattern</strong> used
-                  when an Object change it’s behavior based on it’s internal
-                  state.
-                </li>
-                <li class="hidden">
-                  <strong class="highlight">Visitor</strong> used when we have
-                  to perform an operation on a group of similar kind of Objects.
-                </li>
-                <li class="hidden">
-                  <strong class="highlight">Interpreter</strong> defines a
-                  grammatical representation for a language and provides an
-                  interpreter to deal with this grammar.
-                </li>
-                <li>
-                  <strong class="highlight">Iterator</strong> used to provide a
-                  standard way to traverse through a group of Objects.
-                </li>
-                <li class="hidden">
-                  <strong class="highlight">Memento</strong> used when we want
-                  to save the state of an object so that we can restore later
-                  on.
-                </li>
-              </ol>
-            </details>
-          </li>
-        </ul>
-      </article>
-      <article class="slide">
-        <h2>Factory Method Pattern</h2>
-        <h3>a.k.a The Factory Function</h3>
-        <p>
-          It is a function that returns an object. So it's similar to a
-          constructor pattern, but without the <code>class</code>,
-          <code>this</code> or <code>new</code> keywords
-        </p>
-        <div style="position: relative">
-          <pre
-            class="language-js"
-            style="position: relative"
-          ><code>factoryFunction(name, carMake, age) {
-  const canDrive = age > 16 ? true : false
-
-  return {
-    name,
-    carMake,
-    canDrive,
-    id: Math.random(),
-    timestamp: Date.now()
-  }
-}
-const bobby = factoryFunction('Bobby', 'Ford', 23)
-        </code></pre>
-          <pre
-            class="delayed language-js"
-            style="position: absolute; top: -7%"
-          ><code>factoryFunction(name, carMake, age) {
-  const canDrive = age > 16 ? true : false
-  // You can return a frozen object too!
-  return Object.freeze({
-    name,
-    carMake,
-    canDrive,
-    id: Math.random(),
-    timestamp: Date.now()
-  })
-}
-const bobby = factoryFunction('Bobby', 'Ford', 23)
-                  </code></pre>
-        </div>
-      </article>
-      <article class="slide">
-        <h2>The Command Pattern</h2>
-        <h3>Event Dispatching with Enums</h3>
-        <ul>
-          <li>
-            <strong class="highlight3">What's an Enum?</strong> It's one string
-            value in a list of discrete string values
-          </li>
-          <li>
-            <strong class="highlight3">Command pattern</strong>: use enums to
-            indicate one of several available user actions that the UI supports
-          </li>
-          <li>
-            For example, a specific button the user clicks will trigger a
-            discrete, deterministic change in our app's state.
-          </li>
-          <li>
-            <strong>Discrete User Actions</strong>: map one UI element to one
-            dispatchable action to maintain determinism.
-          </li>
-        </ul>
-        <pre class="language-js"><code>// normally: 
-plusButton.addEventListener('click', () => increment())
-// but we can provide enums to functions to adjust their behavior:
-delayedButton.addEventListener('click', () => increment('withDelay'))
-plus2Button.addEventListener('click', () => increment('by2'))</code></pre>
-      </article>
-      <article class="slide">
-        <h1>The Client Called Again with new Reqs!!</h1>
-        <h2>😱</h2>
-      </article>
-      <article class="slide">
-        <h2>Dragon 🧬 Spawner</h2>
-        <ul>
-          <li>
-            A topbar <code>nav</code> with a list of at least 5 dragon types
-            <ul>
-              <li>
-                They still enjoy elemental dragons like Fire, Water, Earth &
-                Air, but be creative with the rest!
-              </li>
-            </ul>
-          </li>
-          <li>A separate area to display the 🐉's themselves</li>
-          <li>
-            The display area should show the 🐉's type, icon, and click count
-          </li>
-          <li>
-            When the dragon type in the <code>nav</code> is clicked, a new 🐉 of
-            the type that was clicked should be added to the display area (i.e.
-            so you could have two separate fire dragons sitting next to other
-            dragons)
-          </li>
-          <li>
-            Click count must be unique to each 🐉 & increment when clicked
-          </li>
-        </ul>
-      </article>
-      <article class="slide">
-        <h2>Working from a Design Wireframe</h2>
-        <img src="img/dragon_spawner.jpg" alt="" />
-      </article>
-      <article class="slide">
+      <!-- <article class="slide">
         <h2>Reminder on Code Organization with Closures & Classes</h2>
         <p>Here's a Closure example:</p>
         <pre class="language-js"><code>function updateClicks() {
@@ -1207,29 +1231,7 @@ plus2Button.addEventListener('click', () => increment('by2'))</code></pre>
 // create two Closures with independent clicks
 const closure1 = updateClicks();
 const closure2 = updateClicks();</code></pre>
-      </article>
-      <article class="slide">
-        <h2>Reflections</h2>
-        <ul>
-          <li>How much harder was that?</li>
-          <li>How do you like your solution?</li>
-          <li>Are there any problems with it that you foresee as it scales?</li>
-          <li>Do you think it could adapt easily to yet more changes?</li>
-          <li>
-            Do you feel your code is brittle or flexible? Simple or Complicated?
-          </li>
-          <li>
-            Were you able to separate out any of your code into distinct chunks
-            with singular jobs?
-            <ul>
-              <li>
-                ..using modules, factory functions, closures, classes or data
-                structures
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </article>
+      </article> -->
       <article class="slide">
         <h2>The Tools vs. The Blueprints</h2>
         <img class="delayed" style="width: 800px" src="img/tools.jpeg" alt="" />
