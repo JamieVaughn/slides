@@ -38,7 +38,7 @@
         </header>
         <article class="slide">
           <h2>Guarding</h2>
-          <p>Also called "safe property access". This guards against a <code>RefError</code></p>
+          <p>Also called "safe property access". This guards against a <code>TypeError</code></p>
           <div class="flex">
             <div>
               <p>object data</p>
@@ -92,7 +92,7 @@ obj.hasOwnProperty('fake') // false
         </article>
         <article class="slide">
           <h2>The Object Constructor</h2>
-          <pre class="language-js"><code>let obj = new Object // {}
+          <pre class="language-js"><code>let obj = new Object() // {}
 // then populate keys manually
 obj.key = 'value' 
 obj.key2 = { key: 'val'}
@@ -303,7 +303,7 @@ console.log(obj)
   greet: function() {
   alert('Hello ' + this.name + ', Welcome!');
   },
-  lambdaGreet1: () => { // `this` is undefined
+  lambdaGreet1: () => { // `this` is `window`
     alert('Hello ' + this.name + ' Welcome!');
   },
   lambdaGreet2: () => {
@@ -694,14 +694,14 @@ let myPets = {
   }
 }
 
-myPets.speak(myPets.cat) // 'Meow'</code></pre>
+myPets.speak('cat') // 'meow'</code></pre>
           <pre class="language-js"><code>
 // If you have those variables declared anyways,            
 // then it can be shorter
 // than the old syntax
 
 let myPets = {
-  shout: shout
+  shout: shout,
   cat: cat, 
   dog: dog, 
   speak: function (pet) {
@@ -709,7 +709,7 @@ let myPets = {
   }
 } 
 
-myPets.speak(myPets.cat) // 'Meow'</code></pre>
+myPets.speak('cat') // 'meow'</code></pre>
         </div>
       </article>
       <article class="slide">
