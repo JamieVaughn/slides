@@ -277,12 +277,12 @@ let regex3 = new RegExp(/pattern/, "flags")
         </ul>
         <div class="flex">
           <pre class="language-js"><code>// string.method(regex)
+split()
 search()
 match()
-matchall()
 replace()
-replaceAll()
-split()</code></pre>
+matchAll()
+replaceAll()</code></pre>
           <pre class="language-js"><code>// regex.method(string)
 test()
 exec()</code></pre>
@@ -368,7 +368,7 @@ str.match(/example/g)
       <article class="slide">
         <h2>Creating Dynamic regexes with RegExp</h2>
         <p>
-          Use <code>new RexExp()</code> to create a dynamic Regex with user
+          Use <code>new RegExp()</code> to create a dynamic Regex with user
           input
         </p>
         <pre
@@ -409,10 +409,10 @@ let regex = new RegExp(userInput, "flags")
 
         <pre class="language-html"><code>&lt;form&gt;
   &lt;label for='pattern'&gt; Username
-    &lt;input id='pattern' type='text' pattern='\w+{4,25}' required/&gt;
+    &lt;input id='pattern' type='text' pattern='\w{4,25}' required/&gt;
   &lt;/label&gt;
   &lt;label&gt; Bio
-    &lt;textarea pattern='\w'&gt;&lt;/textarea&gt;
+    &lt;textarea pattern='\w+'&gt;&lt;/textarea&gt;
   &lt;/label&gt;
   &lt;button&gt;Submit&lt;/button&gt;
 &lt;/form&gt;</code></pre>

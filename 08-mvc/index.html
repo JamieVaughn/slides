@@ -72,7 +72,7 @@
         <p>...and <strong>YOU</strong> are the protagonist!</p>
       </article>
       <article class="slide">
-        <h2>Your Hired!!</h2>
+        <h2>You're Hired!!</h2>
         <p>I'm your new project manager at our new Dev Agency</p>
         <img
           src="img/ctrl-alt-logo.png"
@@ -675,6 +675,37 @@ import * as name from "module-name.js";
 import { export1 } from "module-name.js";
 import { export1 as alias1 } from "module-name.js";
 import { export1 , export2 } from "module-name.js";</code></pre>
+      </article>
+      <article class="slide">
+        <h2>Implementation in our files</h2>
+        <div class="flex">
+          <pre class="language-html"><code>&lt;html>
+  &lt;head>
+  &lt;/head>
+  &lt;body>
+    &lt;!-- HTML document --&gt;
+    &lt;script src="index.js" type="module">
+    &lt;/script>
+  &lt;/body>
+&lt;/html>
+</code></pre>
+        <pre class="language-js"><code>// index.js
+import { sortString } from 'utils.js'
+
+const sorted = sortString('hello world')
+
+// more related code here...
+
+export { sorted }</code></pre>
+        <pre class="language-js"><code>// utils.js
+function sortString (str){
+  const split = str.split('')
+  const sorted = split.toSorted((a, b) => {
+    return a.localeCompare(b)
+  })
+  return sorted.join('')
+}</code></pre>
+      </div>
       </article>
       <article class="slide">
         <h2>
