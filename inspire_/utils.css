@@ -168,3 +168,13 @@ color: black;
   transform: rotate(-25deg);
   box-shadow: 0 0 50px rgba(150, 50, 120, 0.85);
 }
+.slide .tilt-text {
+  position: absolute;
+  padding: 0;
+  color: crimson;
+  background: white;
+  background: rgba(255, 255, 255, 0.65);
+  border-radius: 1rem;
+  font-weight: 600;
+  transform: rotate(-25deg);
+}
