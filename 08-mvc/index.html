@@ -698,11 +698,11 @@ const sorted = sortString('hello world')
 
 export { sorted }</code></pre>
         <pre class="language-js"><code>// utils.js
-function sortString (str){
+export function sortString(str){
   const split = str.split('')
-  const sorted = split.toSorted((a, b) => {
-    return a.localeCompare(b)
-  })
+  const sorted = split.toSorted(
+    (a, b) => a.localeCompare(b)
+  )
   return sorted.join('')
 }</code></pre>
       </div>
@@ -1669,22 +1669,20 @@ const closure2 = updateClicks();</code></pre>
       </article>
       <article class="slide">
         <h2>Our Dragon Model</h2>
-        <pre class="language-js"><code>const Model = {
+        <pre class="language-js"><code>// model.js
+const dragonList = [ // the navbar types
+  'fire', 
+  'air', 
+  ... 
+],
 
-  dragonList: [ // the navbar types
-    'fire', 
-    'air', 
-    ... 
-  ],
+const dragons = [
+  {id: 0, type: 'fire', clicks: 0, img: '🐉'},
+  {id: 1, type: 'air', clicks: 0, img: '🐉'},
+  ...
+],
 
-  dragons = [
-    {id: 0, type: 'fire', clicks: 0, img: '🐉'},
-    {id: 1, type: 'air', clicks: 0, img: '🐉'},
-    ...
-  ],
-
-  dragonFactory(type) {...} // could go in Model or Controller
-}</code></pre>
+dragonFactory(type) {...} // could go in Model or Controller</code></pre>
         <span class="delayed tilt-stamp"
           >← unique <code>id</code>s distinguish dragons with the same
           type!</span
@@ -1717,63 +1715,55 @@ const closure2 = updateClicks();</code></pre>
       </article>
       <article class="slide">
         <h2>Views</h2>
-        <pre class="language-js"><code>const View1 = { // manages the nav view
-  node,
-  initializeView1(),
-  templateFactoryFn(list),
-  renderView1()
-}
+        <pre class="language-js"><code>// view1.js // manages the nav view
+const nodeNav = document.querySelector('nav')
+initializeView1() {...}
+templateFactoryFn(list) {...}
+renderView1() {...}
 
-const View2 = { // manages the display area view
-  node, 
-  initializeView2(),
-  templateFactoryFn(dragon),
-  renderView2()
-}</code></pre>
+// possibly in view2.js 
+// manages the display area view
+const nodeMain = document.querySelector('main') 
+initializeView2() {...}
+templateFactoryFn(dragon) {...}
+renderView2() {...}</code></pre>
       </article>
       <article class="slide">
         <h2>Our Dragon Controller</h2>
-        <pre class="language-js"><code>const Controller = {
-  init(),
-  increment(),
-  getList(),
-  getDragons(),
-  dispatchCommand(action) // often shortened to dispatch()
-  // dragonFactory(type), // could be here or Model
-  // hide
-  // filter
-  // delete
-  // modify etc...
-}</code></pre>
+        <pre class="language-js"><code>// controller.js
+init() {...}
+increment() {...}
+getList() {...}
+getDragons() {...}
+dispatchCommand(action) {...} // often shortened to dispatch()
+// dragonFactory(type) {...} // could be here or Model
+// hide
+// filter
+// delete
+// modify etc...</code></pre>
       </article>
       <article class="slide">
         <h2>Our MVC Blueprint - Let's Build it!!</h2>
         <div class="flex" style="gap: 6px; align-items: stretch">
           <pre class="language-js"><code>// model.js
-const Model = { 
-  types: ['fire', 'air', ...],
-  dragons: [
-    {...}, {...}, ...
-  ],
-  dragonFactory(type)
-}</code></pre>
+types: ['fire', 'air', ...],
+dragons: [
+  {...}, {...}, ...
+],
+dragonFactory(type)</code></pre>
           <pre class="language-js"><code>// view.js
-const View = {
-  node,
-  init(),
-  templateFactory(),
-  render()
-}
+const node = document.querySelector('nav')
+init() {...}
+templateFactory() {...}
+render() {...}
 // Could separate into
 // MainView & ListView</code></pre>
           <pre class="language-js"><code>// controller.js
-const Controller = {
-  init(),
-  getTypes(),
-  getDragons(),
-  increment(),
-  dispatch(type)
-}</code></pre>
+init() {...}
+getTypes() {...}
+getDragons() {...}
+increment() {...}
+dispatch(type) {...}</code></pre>
         </div>
         <p>Could each of these be in a separate js file? Maybe Modules?</p>
       </article>

@@ -98,15 +98,15 @@
       <article class="slide">
         <h2>Promises Provide a Placeholder for a Future Value</h2>
         <pre class="language-js"><code>function futureValue(x) {
-return wait(x, 5000)
+  return wait(x, 5000)
 }
 function wait(value, time) { 
-return new Promise(function(resolve, reject) {
-  setTimeout(() => {
-    console.log(`done after ${time/1000} seconds`)
-    return resolve(value)
-  }, time)
-})
+  return new Promise(function(resolve, reject) {
+    setTimeout(() => {
+      console.log(`done after ${time/1000} seconds`)
+      return resolve(value)
+    }, time)
+  })
 }
 let test = futureValue('test')</code></pre>
       </article>
