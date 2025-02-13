@@ -1271,6 +1271,26 @@ useImperativeHandle(inputRef, () => {
 					<li>Can handle Sync or Async effects easily!</li>
 				</ul>
 			</article>
+			<articles class="slide">
+				<h2>Example Custom Hook Usage</h2>
+				<pre class="language-js"><code>const useTodos = () => { // Custom Hook
+  const [todos, setTodos] = useState([])
+	useEffect(() => fetch('/todos').then(res => res.json()).then(data => setTodos(data)))
+	return todos
+}
+function TodosContainer () { // Container Component
+	const todos = useTodos()
+	return &gt;TodosList todos={todos} />
+}
+function TodoList({ todos }) { // Presentational Component
+	return (
+		&gt;ul>
+			todos.map(todo => &gt;li key={todo.id}>{todo.title}&gt;/li>)
+		<&gt;/ul>
+	)
+}
+</code></pre>
+			</articles>
 			<article class="slide">
 				<h2>Hooks Links</h2>
 				<div class="flex">
